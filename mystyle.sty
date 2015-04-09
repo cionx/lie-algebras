@@ -1,12 +1,14 @@
 \usepackage{amsmath} % mash stuff
 \usepackage{amssymb} % math stuff
 \usepackage{amsthm} % math stuff
+\usepackage{enumitem} % for better enumerates
 \usepackage{mathtools} % math stuff
 \usepackage{xltxtra} % xelatex
-\usepackage{ellipsis} % right ellipsis when using \dots
+\usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
 \usepackage{tikz} % for diagrams
 
 \setromanfont[Mapping=tex-text]{Linux Libertine O}
+\setlist[enumerate,1]{leftmargin=*} % deletes some leftmargin from enumerates
 
 % proposition-like enviroments
 \newcounter{propositions}
@@ -30,5 +32,22 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 
-% ???
+% macros for spaces
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Mat}{M}
+
+% macros for functions
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\can}{can}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
+
+% fancy symbols and such
 \newcommand{\g}{\mathfrak{g}}
+\newcommand{\gl}{\mathfrak{gl}}
+\newcommand{\Loop}{\mathcal{L}}
+
+% shortcuts for frequently used stuff
+\newcommand{\subideal}{\vartriangleleft}
