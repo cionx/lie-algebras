@@ -3,3 +3,4 @@
 *.backup
 *.kilepr
 *.toc
+tikz/*
