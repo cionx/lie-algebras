@@ -296,7 +296,7 @@ We have the usual theorems about homomorphisms and ideals.
   \item
    $\im f$ is a Lie subalgebra.
   \item
-   If $I \subideal \g$ such that $\ker f \subseteq I$ then there exists a unique Lie algebra homomorphism $\bar{f} \colon \g_1/I \to \g_2$ with $f = \bar{f} \circ \pi$ where $\pi \colon \g \to \g/I$ is the canonical projection.
+   If $I \subideal \g$ is an ideal with $\ker f \subseteq I$ then there exists a unique homomorphism of Lie algebras $\tilde{f} \colon \g_1/I \to \g_2$ with $f = \tilde{f} \circ \pi$ where $\pi \colon \g \to \g/I$ is the canonical projection.
    \tikzsetnextfilename{universal_property_of_quotient_of_lie_algebras}
    \begin{center}
     \begin{tikzpicture}[node distance = 2cm]
@@ -305,7 +305,7 @@ We have the usual theorems about homomorphisms and ideals.
      \node (g2) [right of = gI] {$\g_2$};
      \draw[->] (g1) to node[above right] {$f$} (g2);
      \draw[->] (g1) to node[left] {$\pi$} (gI);
-     \draw[->] (gI) to node[below] {$\hat{f}$} (g2);
+     \draw[->] (gI) to node[below] {$\exists! \tilde{f}$} (g2);
     \end{tikzpicture}
    \end{center}
  \end{enumerate}
