@@ -3,4 +3,5 @@
 *.backup
 *.kilepr
 *.toc
+*.auxlock
 tikz/*
