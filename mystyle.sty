@@ -6,6 +6,13 @@
 \usepackage{xltxtra} % xelatex
 \usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
 \usepackage{tikz} % for diagrams
+\usetikzlibrary{external} % storing tikz figures externially to reduce build time
+\tikzexternalize[prefix=tikz/]
+\tikzset{external/system call={%
+  xelatex \tikzexternalcheckshellescape
+  -halt-on-error -interaction=batchmode
+  -jobname "\image" "\texsource"}}
+
 
 \setromanfont[Mapping=tex-text]{Linux Libertine O}
 \setlist[enumerate,1]{leftmargin=*} % deletes some leftmargin from enumerates
