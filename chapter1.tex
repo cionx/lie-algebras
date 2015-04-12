@@ -200,7 +200,7 @@ As for all algebraic structures morphisms are of interest.
 
 
 \begin{defi}
- Given $k$-Lie algebras $\g_1$ and $\g_2$ a homomorphism of Lie algebras $\g_1 \to \g_2$ is a $k$-linear map $f \colon \g_1 \to \g_2$ such that
+ Given $k$-Lie algebras $\g_1$ and $\g_2$ a \emph{homomorphism of Lie algebras} $\g_1 \to \g_2$ is a $k$-linear map $f \colon \g_1 \to \g_2$ such that
  \[
   f([x,y]) =[f(x),f(y)] \quad \text{for all $x,y \in \g_1$}.
  \]
@@ -218,7 +218,14 @@ As for all algebraic structures morphisms are of interest.
 
 
 \begin{rem}
- We find that we have a category of $k$-Lie algebras.
+ We find that we have a category of $k$-Lie algebras. An \emph{isomorphism of $k$-Lie algebras} is an isomorphism in the category of $k$-Lie algebras. Clearly every isomorphism is an homomorphism and bijective. The converse also holds: If $f \colon \g_1 \to \g_2$ is a bijective homomorphism of $k$-Lie algebras, then the $k$-linear map $f^{-1} \colon \g_2 \to \g_1$ is also an homomorphism of $k$-Lie algebras, because for all $x,y \in \g_2$
+ \begin{align*}
+  f^{-1}( [x,y] )
+  &= f^{-1}( [ f(f^{-1}(x)), f(f^{-1}(y)) ] ) \\
+  &= f^{-1}(f( [f^{-1}(x) , f^{-1}(y)] )) \\
+  &= [f^{-1}(x), f^{-1}(y)].
+ \end{align*}
+ So an isomorphism of Lie algebras is just a homomorphism of Lie algebras which is bijective.
 \end{rem}
 
 
@@ -345,11 +352,11 @@ We have the usual theorems about homomorphisms and ideals.
     \end{tikzpicture}
    \end{center}
   \item
-   If $I, J \subideal \g$ are subideals with $I \subseteq J$ then the map
+   If $I, J \subideal \g$ are subideals with $I \subseteq J$ then $J/I$ is an ideal inside $\g/I$ and the map
    \[
     (\g/I)/(J/I) \to \g/I, (x+I)+(J/I) \mapsto x+I
    \]
-   is a natural isomorphism.
+   is a natural isomorphism of Lie algebras.
   \item
    If $I, J \subideal \g$ are subideals then there is a natural isomorphism
    \begin{gather*}
@@ -357,7 +364,7 @@ We have the usual theorems about homomorphisms and ideals.
    \shortintertext{defined by}
     (x+J)+I \mapsto x + (I \cap J) \quad \text{ for every $x \in I$}
    \end{gather*}
-   is a natural isomorphism.
+   is a natural isomorphism of Lie algebras.
  \end{enumerate}
 \end{prop}
 
