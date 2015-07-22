@@ -28,19 +28,20 @@
 \setlist[enumerate,1]{leftmargin=*} % deletes some leftmargin from enumerates
 
 % proposition-like enviroments
-\newcounter{propositions}
-\newtheorem{prop}[propositions]{Proposition}
-\newtheorem{lem}[propositions]{Lemma}
-\newtheorem{thrm}[propositions]{Theorem}
-\newtheorem{cor}[propositions]{Corollary}
-\newtheorem*{claim}{Claim}
+\newcounter{everything}
+\newtheorem{prop}[everything]{Proposition}
+\newtheorem{lem}[everything]{Lemma}
+\newtheorem{thrm}[everything]{Theorem}
+\newtheorem{cor}[everything]{Corollary}
+\newtheorem*{claim*}{Claim} % unnumbered version
+\newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
 
 % more text-like enviroments
 \theoremstyle{definition}
-\newtheorem*{defi}{Definition}
-\newtheorem*{expl}{Example}
-\newtheorem*{expls}{Examples}
-\newtheorem*{rem}{Remark}
+\newtheorem{defi}[everything]{Definition}
+\newtheorem{expl}[everything]{Example}
+\newtheorem{expls}[everything]{Examples}
+\newtheorem{rem}[everything]{Remark}
 
 % numbers and fields
 \newcommand{\N}{\mathbb{N}}
