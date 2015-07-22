@@ -1,5 +1,7 @@
 *.log
 *.aux
+*.bbl
+*.blg
 *.backup
 *.kilepr
 *.toc
