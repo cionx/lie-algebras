@@ -6,4 +6,5 @@
 *.auxlock
 *.dpth
 *.md5
+*.synctex.gz
 PBW Programm/*
