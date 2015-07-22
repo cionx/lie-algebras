@@ -5,6 +5,7 @@
 \usepackage{mathtools} % math stuff
 \usepackage{xltxtra} % xelatex
 \usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
+\usepackage[autooneside,headsepline]{scrlayer-scrpage} %for headers
 \usepackage{tikz} % for diagrams
 \usetikzlibrary{external} % storing tikz figures externially to reduce build time
 \tikzexternalize[prefix=tikz/]
@@ -13,6 +14,15 @@
   -halt-on-error -interaction=batchmode
   -jobname "\image" "\texsource"}}
 
+
+
+% settings for scrlayer-scrpage
+\pagestyle{scrheadings}
+\clearscrheadfoot
+\lehead{\leftmark}
+\rehead{\rightmark}
+\lohead{\leftmark}
+\rohead{\rightmark}
 
   
 \setlist[enumerate,1]{leftmargin=*} % deletes some leftmargin from enumerates
