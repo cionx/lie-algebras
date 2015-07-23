@@ -4,6 +4,9 @@
 
 
 
+\subsection{Definition und some properties}
+
+
 \begin{defi}
  Let $A$ be an associative $k$-algebra. An element $a \in A$ is called \emph{nilpotent} if $a^n = 0$ for some $n \geq 1$. Given a Lie algebra $\g$ an element $x \in \g$ is called \emph{$\ad$-nilpotent} if $\ad(x) \in \End_k(\g)$ is nilpotent.
 \end{defi}
@@ -114,6 +117,12 @@ It is clear that every nilpotent Lie algebra is also solvable.
 \end{proof}
 
 
+
+
+
+\subsection{Engel’s theorem}
+
+
 From now on \emph{all} fields over which we work will be assumed to be algebraically closed, unless otherwise specified.
 
 
@@ -132,7 +141,7 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
    \]
    with $x(V_i) \subseteq V_{i-1}$ for every $i = 1, \dotsc, n$.
   \item
-   There exists a basis $\mc{B} = (v_1, \dotsc, v_n)$ of $V$ such that with respect to $\mc{B}$ every $x \in \g$ is represented by an strictly upper triangular matrix.
+   There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an strictly upper triangular matrix.
  \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -200,6 +209,167 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
  
  On the other hand suppose that $\g$ consists of $\ad$-nilpotent elemenents. If $\g = Z(\g)$ then $\g$ is abelian and hence nilpotent, so it sufficies to show the statement under the additional assumption that $Z(\g) \subsetneq \g$. Because $\g/Z(\g) \cong \ad \g$ is a Lie subalgebra of $\gl(\g)$ consisting of nilpotent Elemenents it follows from Proposition \ref{prop: stuff for engels theorem} that $\g/Z(\g)$ is isomorphic to a Lie subalgebra of $\nl_n(k)$ for $n = \dim \g/Z(\g) \geq 1$. Because $\nl_n(k)$ is nilpotent the same goes for $\g/Z(\g)$ as seen in Proposition \ref{prop: properties of solvable and nilpotent}.
 \end{proof}
+
+
+
+
+
+\subsection{Lie’s theorem}
+
+
+From now on we will not only require \emph{all} fields we work with to be algebraically closed, but also to be of characteristic $0$.
+
+
+\begin{defi}
+ Let $V$ be a $k$-vector space and $\g \subseteq \gl(V)$ a Lie subalgebra. For $\lambda \in \g^*$ is
+ \[
+  V_\lambda \coloneqq \{v \in V \mid \text{$x(v) = \lambda x$ for every $x \in \g$}
+ \]
+ the \emph{$\g$-weight space} of $V$ with \emph{weight} $\lambda$.
+\end{defi}
+
+
+
+\begin{lem}[Invariance Lemma]
+ Let $\g \subseteq \gl(V)$ a Lie subalgebra for a finite dimensional $k$-vector space $V$ and $I \subideal \g$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with weight $\lambda$. Then $V_\lambda$ is $\g$-invariant, i.e.\ $x$-invariant for every $x \in \g$.
+\end{lem}
+
+
+\begin{thrm}[Lie]
+ Let $V \neq 0$ be a finite dimensional $k$-vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a solvable Lie subalgebra.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   There exists a common eigenvector for $\g$, i.e.\ some $v \in V$, $v \neq 0$ with $x(v) \in k v$ for every $x \in \g$.
+  \item
+   $\g$ stabilizes some complete flag of $V$, i.e.\ there exists a complete flag
+   \[
+    V = V_n \supsetneq V_{n-1} \supsetneq V_{n-2} \supsetneq \dotsb \supsetneq V_1 \supsetneq V_0 = 0,
+   \]
+   with $x(V_i) \subseteq V_i$ for every $x \in \g$ and $i = 0, \dotsc, n$.
+  \item
+   There exists a basis of $V$ up to which every $x \in \g$ is represented by an upper triangular matrix. In particular $\g$ is isomorphic to a Lie-subalgebra of $\tl_n(k)$ for $n = \dim V$.
+ \end{enumerate}
+\end{thrm}
+
+
+
+
+
+\subsection{The Killing form and Cartan’s criterion}
+
+
+
+\subsubsection{The Killing form}
+
+
+\begin{cor}
+ A finite-dimensional $k$-Lie algebra $\g$ is solvable if and only if $[\g,\g]$ is nilpotent.
+\end{cor}
+
+
+\begin{defi}
+ Let $\g$ be a Lie algebra over an arbitrary field $k$. A bilinear form $\beta \colon \g \times \g \to k$ is called \emph{associative} if
+ \[
+  \beta([x,y],z) = \beta(x,[y,z])
+  \quad \text{for all $x,y,z \in \g$}.
+ \]
+\end{defi}
+
+
+\begin{lem}
+ Let $\g$ be a Lie algebra over an arbitrary field $k$ and \mbox{$\beta \colon \g \times \g \to k$} a symmetric and associative bilinear form. For any ideal $I \subideal \g$ the orthogonal complement
+ \[
+  I^\perp \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in I$}\}
+ \]
+ is also an ideal in $\g$. In particular is
+ \[
+  \rad \beta \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in \g$}\} = \g^\perp
+ \]
+ an Ideal in $\g$.
+\end{lem}
+
+
+\begin{defi}
+ Let $\g$ be a finite dimensional Lie algebra over an arbitrary field $k$. The \emph{Killing form} of $\g$ is the bilinear form
+ \[
+  \kappa \colon \g \times \g \to k
+  \quad\text{with}\quad
+  \kappa(x,y) = \tr(\ad(x) \ad(y))
+  \quad\text{for all $x,y \in \g$}.
+ \]
+\end{defi}
+
+
+\begin{lem}
+ The Killing form $\kappa$ of an finite dimensional Lie algebra $\g$ over an arbitrary field $k$ is symmetric and associative.
+\end{lem}
+
+
+
+\subsubsection{The concrete Jordan decomposition}
+
+
+\begin{defi}
+ Let $V$ be an $n$-dimensional $k$-vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(y)$). Then $x$ (resp.\ $y$) is called \emph{semisimple} if it is diagonalizable.
+\end{defi}
+
+
+\begin{rem}
+ An endomorphism $x \in \End_k(V)$ as above is semisimple if and only if every $x$-invariant subspace of $V$ has a direct summand which is also $x$-invariant. (This depends on $k$ being algebraically closed.)
+\end{rem}
+
+
+\begin{thrm}
+ Let $V$ be a finite dimensional $k$-vector space and $x \in \End_k(V)$.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   There exist unique $x_s, x_n \in \End_k(V)$ satisfying the following properties:
+   \begin{enumerate}
+    \item
+     $x = x_s + x_n$.
+    \item
+     $x_s$ is semisimple and $x_n$ is nilpotent.
+    \item
+     $x_s$ and $x_n$ commute.
+   \end{enumerate}
+  \item
+   $x_s$ and $x_n$ are Polynomials in $x$ without constant term, i.e.\ there exist polynomials $P,Q \in k[T]$ such that $P(0) = Q(0) = 0$ and $x_s = P(x)$ and $x_n = P(x)$. In particular an endomorphism of $V$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$.
+  \item
+   If $A \subseteq B \subseteq V$ are linear subspaces with $x(B) \subseteq A$ then also $x_s(B) \subseteq A$ and $x_n(B) \subseteq A$.
+ \end{enumerate}
+\end{thrm}
+
+
+
+
+
+
+
+\subsubsection{Cartan’s Criterion}
+
+
+\begin{lem}
+ Let $V$ be a finite dimensional $k$-vector space. Let $A \subseteq B \subseteq \gl(V)$ be linear subspaces and let
+ \[
+  T \coloneqq \{z \in \gl(V) \mid \ad(z)(B) \subseteq A\}.
+ \]
+ If $x \in T$ and $\tr(xz) = 0$ for every $z \in T$ then $x$ is nilpotent.
+\end{lem}
+
+
+\begin{lem}[Cartan’s criterion for $\gl(V)$]
+ Let $V$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a Lie subalgebra. Then $\g$ is solvable if and only if $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
+\end{lem}
+
+
+\begin{thrm}[Cartan’s criterion for solvability]
+ Let $\g$ be a finite dimensional $k$-Lie algebra. Then $\g$ is solvable if and only if
+ \[
+  \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
+ \]
+\end{thrm}
+
+
 
 
 
