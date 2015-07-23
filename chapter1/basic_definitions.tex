@@ -1,0 +1,563 @@
+
+\section{Basic Definitions}
+
+
+\begin{defi}
+ Let $\g$ be a vector space over some field $k$. A $k$-bilinear map
+ \[
+  [\cdot, \cdot] \colon \g \times \g \to \g
+ \]
+ is called a \emph{Lie bracket} if it satisfies the following two conditions:
+ \begin{enumerate}
+  \item
+   $[\cdot, \cdot]$ is \emph{alternating}, i.e.\ $[x,x] = 0$ for every $x \in \g$.
+  \item
+   $[\cdot, \cdot]$ satisfies the \emph{Jacobi identity}
+   \[
+    [x,[y,z]] + [y,[z,x]] + [z,[x,y]] = 0
+    \quad
+    \text{for all $x,y,z \in \g$}.
+   \]
+ \end{enumerate}
+ A $k$-vector space $\g$ together with the Lie-bracket $[\cdot,\cdot]$ is called a \emph{$k$-Lie algebra}.
+\end{defi}
+
+
+\begin{rem}
+ Any Lie bracket $[\cdot, \cdot]$ is antisymmetric, i.e.\ $[y,x] = -[x,y]$ for all $x,y \in \g$, because
+ \[
+  0 = [x+y, x+y] = [x,x] + [x,y] + [y,x] + [y,y] = [x,y] + [y,x].
+ \]
+\end{rem}
+
+
+\begin{expls}
+ \begin{enumerate}
+  \item
+   Any vector space $V$ becomes a Lie algebra via
+   \[
+    [x,y] = 0 \quad \text{for all $x,y \in V$}.
+   \]
+  \item
+   Any \emph{associative} $k$-algebra $A$ becomes a Lie algebra via
+   \[
+    [a,b] = ab-ba \quad \text{for all $a,b \in A$}.
+   \]
+   It is clear that $[\cdot, \cdot]$ is alternating, and because $A$ is associative it follows that for all $a,b,c \in A$
+   \begin{align*}
+    &\, [a,[b,c]] + [b,[c,a]] + [c,[a,b]] \\
+    &= [a, (bc-cb)] + [b, (ca-ac)] + [c, (ab-ba)] \\
+    &= a(bc-cb)-(bc-cb)a + b(ca-ac) - (ca-ac)b + c(ab-ba) - (ab-ba)c \\
+    &= abc -acb -bca +cba +bca -bac -cab +acb +cab -cba -abc +bac \\
+    &= 0.
+   \end{align*}
+   
+   The following two are important examples of this construction:
+   \begin{enumerate}
+    \item
+     The $k$-algebra of ($n \times n$)-matrices $\Mat_n(k)$ becomes a Lie algebra via
+     \[
+      [A,B] = AB-BA \quad \text{for all $A,B \in \Mat_n(k)$}.
+     \]
+     This is called the \emph{general linear Lie algebra} and is denoted by $\gl_n(k)$.
+    \item
+     More generally for any $k$-vector space the $k$-algebra $\End_k(V)$ becomes a Lie algebra via
+     \[
+      [\varphi_1, \varphi_2] \coloneqq \varphi_1 \circ \varphi_2 - \varphi_2 \circ \varphi_1
+      \quad
+      \text{for all $\varphi_1, \varphi_2 \in \End_k$}.
+     \]
+     This is called the \emph{general linear Lie algebra for $V$} and is denoted by $\gl(V)$.
+   \end{enumerate}
+ \end{enumerate}
+\end{expls}
+
+
+\begin{defi}
+ Let $A$ be a $k$-algebra (not necessarily unitary of even associative). A \emph{derivation of $A$} is a $k$-linear map $d \colon A \to A$ such that
+ \[
+  d(ab) = d(a)b + ad(b) \quad \text{for all $a,b \in A$}.
+ \]
+ We set
+ \[
+  \Der(A) \coloneqq \{d \colon A \to A \mid \text{$d$ is a derivation of $A$} \}.
+ \]
+\end{defi}
+
+
+\begin{rem}
+ $\Der(A)$ is a $k$-linear subspace of $\End_k(A)$.
+\end{rem}
+
+
+\begin{expl}
+  Let $A$ be a $k$-algebra. $\Der(A)$ becomes a Lie algebra via
+  \[
+   [d, d'] \coloneqq d \circ d' - d' \circ d
+   \quad 
+   \text{for all $d, d' \in \Der(A)$}.
+  \]
+  Is is an easy calculation to show that $[d,d']$ is again a derivation. Notice that the Jacobi identity for $\Der(A)$ follows from the Jacobi identity for $\gl(A)$.
+\end{expl}
+
+
+We will now look at how to construct new Lie algebras from old ones.
+
+
+\begin{defi}
+ Let $\g_1$ and $\g_2$ be Lie algebras over the same field $k$. Then the \emph{product} of $\g_1$ and $\g_2$ is defined as the $k$-vector space $\g_1 \times \g_2$ together with the Lie bracket
+ \[
+  [(x_1, y_1), (x_2, y_2)]
+  = ([x_1, x_2], [y_1, y_2])
+  \quad
+  \text{for all $(x_1, y_1), (x_2, y_2) \in \g_1 \times \g_2$}.
+ \]
+\end{defi}
+
+
+\begin{lem}\label{lem: quasi extension of scalars for Lie algebras}
+Let $\g$ be a Lie algebra over $k$ and $A$ an associative, commutative $k$-algebra. Then $A \otimes_k \g$ is a Lie algebra over $k$ via
+\[
+ [a \otimes x, b \otimes y] = (ab) \otimes [x,y]
+ \quad
+ \text{for all $a,b \in A$ and $x,y \in \g$}.
+\]
+Similarly $\g \otimes_k A$ carries the structure of a Lie algebra over $k$ via
+\[
+ [x \otimes a, y \otimes b] = [x,y] \otimes (ab)
+ \quad
+ \text{for all $x,y \in \g$ and $a,b \in A$}.
+\]
+\end{lem}
+
+
+\begin{expl}
+ If $L/k$ is a field extension and $\g$ a Lie algebra over $k$, then $L \otimes_k \g$ is a Lie algebra over $k$ via
+ \[
+  [\lambda \otimes x, \mu \otimes y] = (\lambda \mu) \otimes [x,y]
+  \quad
+  \text{for alle $\lambda, \mu \in k$ and $x,y \in \g$}.
+ \]
+ $L \otimes_k \g$ also carries the structure of an $L$-vector space via extension of scalars, i.e.
+ \[
+  \lambda \cdot (\mu \otimes x) = (\lambda \mu) \otimes x
+  \quad
+  \text{for alle $\lambda, \mu \in k$ and $x \in \g$},
+ \]
+ and the Lie bracket is not only $k$-bilinear, but also $L$-bilinear. Hence the structure of a $k$-Lie algebra on $L \otimes_k \g$ can be extended to the structure of an $L$-Lie algebra. (Notice that the Jacobi-Identity is independent of the ground field.)
+\end{expl}
+
+
+\begin{defi}
+ Let $\g$ be a Lie algebra and $A = k[t,t^{-1}]$ be the algebra of Laurent polynomials over $k$. Then
+ \[
+  \Loop(\g) \coloneqq \g \otimes_k A
+ \]
+ with the Lie bracket as in Lemma \ref{lem: quasi extension of scalars for Lie algebras} is called the \emph{loop (Lie) algebra} of $\g$.
+\end{defi}
+
+
+Another example for constructing new Lie algebras out of old ones are \emph{central extensions}: Let $\g$ be any $k$-Lie algebra.
+\[
+ \tilde{\g}
+ \coloneqq \g \oplus k
+ = \{x + \lambda c \mid x \in \g, \lambda \in k\},
+\]
+where we understand $c$ as a formal variable. Suppose that $\kappa \colon \g \times \g \to k$ is a $k$-bilinear map satisfying the following properties:
+\begin{enumerate}
+ \item
+  $\kappa$ is antisymmetric, i.e.\ $\kappa(x,y) = -\kappa(y,x)$ for all $x,y \in \g$.
+ \item
+  $\kappa$ satisfies the $2$-cocycle condition
+  \[
+   \kappa([x,y],z) + \kappa([y,z],x) + \kappa([z,x],y) = 0
+   \quad
+   \text{for all $x,y,z \in \g$}.
+  \]
+\end{enumerate}
+Then $\tilde{\g}$ becomes a Lie algebra via
+\[
+ [x + \lambda c, y + \mu c] \coloneqq [x,y] + \kappa(x,y) \lambda \mu c.
+\]
+Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $x \in \g$.
+
+
+\begin{expl}
+ Let $\g = \gl_n(k)$. We define a symmetric bilinear form on $\g$ via
+ \[
+  (A,B)_{\tr} = \tr(AB).
+ \]
+ We define a bilinear form
+ \[
+  \Loop(\g) \times \Loop(\g) \to k[t,t^{-1}],
+  (x \otimes p, y \otimes q) \mapsto (x,y)_{\tr}\ pq
+ \]
+ We now get a $2$-cocycle $\kappa \colon \Loop(\g) \times \Loop(\g) \to k$ via
+ \[
+  \kappa(a,b) \coloneqq \mathrm{Res}\left(\frac{\partial a}{\partial t}, b\right).
+ \]
+ $\kappa$ is also antisymmetric: Let $a = x \otimes t^i$ and $b = y \otimes t^j$ with $x,y \in \g$ and $i,j \in \Z$. Then
+ \begin{align*}
+  \kappa(x \otimes t^i, y \otimes t^j)
+  = \mathrm{Res}(i x \otimes t^{i-1}, y \otimes t^j)
+  &= \mathrm{Res}(i t^{i+j-1} (x,y)_{\tr}) \\
+  &=
+  \begin{cases}
+   i (x,y)_{\tr} & \text{if $i+j = 0$}, \\
+               0 & \text{otherwise}.
+  \end{cases}
+ \end{align*}
+ In the same way we find that
+ \[
+  \kappa(y \otimes t^j, x \otimes t^i) =
+  \begin{cases}
+   j (x,y)_{\tr} & \text{if $i+j = 0$}, \\
+               0 & \text{otherwise}.
+  \end{cases}
+ \]
+ Since $(\cdot,\cdot)_{\tr}$ is symmetric we find that
+ \begin{align*}
+  \kappa(x \otimes t^i, y \otimes t^j)
+  &=
+  \begin{cases}
+   i (x,y)_{\tr} & \text{if $i+j = 0$}, \\
+               0 & \text{otherwise},
+  \end{cases} \\
+  &=
+  \begin{cases}
+   -j (x,y)_{\tr} & \text{if $i+j = 0$}, \\
+                0 & \text{otherwise},
+  \end{cases} \\
+  &=
+  -\kappa(y \otimes t^j, x \otimes t^i).
+ \end{align*}
+\end{expl}
+
+
+\begin{defi}
+ Given Lie algebras $\g_1$ and $\g_2$ over the same field $k$ a \emph{homomorphism of Lie algebras} $\g_1 \to \g_2$ is a $k$-linear map $f \colon \g_1 \to \g_2$ such that
+ \[
+  f([x,y]) =[f(x),f(y)] \quad \text{for all $x,y \in \g_1$}.
+ \]
+\end{defi}
+
+
+\begin{expls}
+ \begin{enumerate}
+  \item
+   For any Lie algebra $\g$ the identity $\id_\g \colon \g \to \g$ is a Lie algebra homomorphism.
+  \item
+   Given Lie algebras $\g_1$, $\g_2$ and $\g_3$ and Lie algebra homomorphisms $f_1 \colon \g_1 \to \g_2$ and $f_2 \colon \g_2 \to \g_3$ the composition $f_2 \circ f_1 \colon \g_1 \to \g_3$ is also a homomorphism of Lie algebras.
+ \end{enumerate}
+\end{expls}
+
+
+\begin{defi}
+ Let $\g_1, \g_2$ be Lie algebras over the same field $k$. A homomorphism of Lie algebras $f \colon \g_1 \to \g_2$ is called an \emph{isomorphism of $k$-Lie algebras} if $f$ is bijective.
+\end{defi}
+
+
+\begin{lem}
+ If $f \colon \g_1 \to \g_2$ is an isomorphism of $k$-Lie algebras, then the $k$-linear map $f^{-1} \colon \g_2 \to \g_1$ is also a homomorphism of Lie-algebras and therefore also an isomorphism.
+\end{lem}
+\begin{proof}
+ For all $x,y \in \g_2$
+ \begin{align*}
+  f^{-1}( [x,y] )
+  &= f^{-1}( [ f(f^{-1}(x)), f(f^{-1}(y)) ] ) \\
+  &= f^{-1}(f( [f^{-1}(x) , f^{-1}(y)] )) \\
+  &= [f^{-1}(x), f^{-1}(y)].
+ \qedhere
+ \end{align*}
+\end{proof}
+
+
+\begin{rem}
+ It follows that Lie algebras over the same field $k$ together with homomorphisms of Lie algebras and their usual composition form a category. An \emph{isomorphism of $k$-Lie algebras} is an isomorphism in the category of $k$-Lie algebras.
+\end{rem}
+
+
+\begin{defi}
+ Let $\g$ be a $k$-Lie algebra. A representation of $\g$ is a $k$-vector space $V$ together with a homomorphism of Lie algebras $\rho \colon \g \to \gl(V)$.
+\end{defi}
+
+
+\begin{rem}
+  Equivalently a representation of $\g$ is a $k$-vector space $V$ together with a $k$-bilinear map $\g \times V \to V, (x,v) \mapsto x.v$ such that
+ \[
+  x.(y.v) - y.(x.v) = [x,y].v \quad \text{for all $x,y \in \g$ and $v \in V$}.
+ \]
+\end{rem}
+
+
+\begin{defi}
+ Let $\g$ be a Lie algebra. Then
+ \[
+  \ad \colon \g \to \gl(\g), \quad x \mapsto [x,\cdot]
+ \]
+ is called the \emph{adjoint representation} of $\g$.
+\end{defi}
+
+
+\begin{rem}
+ That $\ad$ is a homomorphism of Lie algebras is equivalent to
+ \begin{gather*}
+  \ad([x,y])(z) = [\ad(x),\ad(y)](z) \quad \text{for all $x,y,z \in \g$}.
+ \shortintertext{Because}
+  \ad([x,y])(z) = [[x,y],z] = -[z,[x,y]]
+ \shortintertext{and}
+  \begin{aligned}
+   [\ad(x),\ad(y)](z)
+   &= (\ad(x) \circ \ad(y))(z) - (\ad(y) \circ \ad(x))(z) \\
+   &= [x,[y,z]] - [y,[x,z]]
+   = [x,[y,z]] + [y,[z,x]]
+  \end{aligned}
+ \end{gather*}
+ this is equivalent to the Jacobi identity. Hence $\ad$ really is a representation of $\g$.
+ 
+ By using that the Lie bracket is anti symmetric the Jacobi identity can also be rewritten as
+ \[
+  \ad(x)([y,z]) = [\ad(x)(y), \ad(x)(z)] \quad \text{for all $x,y,z \in \g$}.
+ \]
+ Hence the Jacobi identity to $\ad(x)$ being a derivation of $\g$ for every $x \in \g$.
+ 
+ In particular $\g$ acts on itself via the adjoin representation by derivations of itself.
+\end{rem}
+
+
+\begin{defi}
+ For a Lie-algebra $\g$ over some field $k$ and subsets $X,Y \subseteq \g$ let
+ \[
+  [X,Y] \coloneqq \vspan_k \{[x,y] \mid x \in X, y \in Y\}.
+ \]
+\end{defi}
+
+
+
+\begin{defi}
+ Let $\g$ be a $k$-Lie algebra. A \emph{Lie subalgebra} of a $\g$ is a $k$-linear subspace $\h \subseteq \g$ such that
+ \[
+  [x,y] \in \h \quad \text{for all $x,y \in \h$}.
+ \]
+ An \emph{ideal} inside $\g$ is a $k$-linear subspace $I \subseteq \g$ such that
+ \[
+  [x,y] \in I \quad \text{for all $x \in \g$ and $y \in I$}.
+ \]
+ We denote ideals by $I \subideal \g$.
+\end{defi}
+
+
+For a Lie algebra $\g$ and a subalgebra $\h \subseteq \g$ it is clear that $\h$ becomes a Lie algebra by restricting the Lie bracket of $\g$ to $\h$. The inclusion $\h \inc \g$  is then clearly a homomorphism of Lie algebras.
+
+Also notice that every ideal inside $\g$ is also a subalgebra of $\g$.
+
+
+\begin{rem}
+ As the Lie bracket of a Lie algebra $\g$ is anti symmetric it is not necessary to distinguish between left ideals or right ideals inside $\g$.
+\end{rem}
+
+
+\begin{defi}
+ A Lie algebra $\g$ is called \emph{linear} if $\g$ is a Lie subalgebra of $\gl(V)$ for some finite dimensional vector space $V$.
+\end{defi}
+
+
+\begin{lem}
+ Let $\g$ be a Lie algebra over some field $k$.
+ \begin{enumerate}
+  \item
+   If $I_\lambda$, $\lambda \in \Lambda$ is a collection of ideals $I_\lambda \subideal \g$ then also $\bigcap_{\lambda \in \Lambda} I_\lambda \subideal \g$ and $\sum_{\lambda \in \Lambda} I_\lambda \subideal \g$.
+  \item
+   If $I, J \subideal \g$ then also $[I,J] \subideal \g$.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   This follows from direct calculation.
+  \item
+   As $[I,J]$ is spanned by the elements $[y,z]$ with $y \in I$ and $z \in J$ it is enough to show that $[x,[y,z]] \in [I,J]$ for every $x \in \g$, $y \in I$ and $z \in J$. This follows from $I, J \subideal \g$ and the Jacobi identity, because
+   \[
+    [x,[y,z]]
+    = [\underbrace{[x,y]}_{\in I},z] + [y,\underbrace{[x,z]}_{\in J}]
+    \in [I,J].
+   \qedhere
+   \]
+ \end{enumerate}
+\end{proof}
+
+
+
+
+\begin{expl}
+ Let $\g = \gl_n(k)$. Then
+ \[
+  \Sl_n(k) = \{A \in \g \mid \tr A = 0\}
+ \]
+ is a subalgebra. Even more
+ \[
+  \Sl_n(k) = [\g,\g].
+ \]
+ So $\Sl_n(k) \subideal \g$. To see this first notice that on the one hand
+ \[
+  \tr [A,B]
+  = \tr(AB-BA)
+  = \tr(AB) - \tr(BA)
+  = \tr(AB) - \tr(AB)
+  = 0
+ \]
+ for all $A, B \in \g$. Therefore $[\g,\g] \subseteq \Sl_n(k)$.
+ 
+ On the other hand notice that $\Sl_n(k)$ has a basis given by the elementary matrices $e_{ij}$ with $1 \leq i \neq j \leq n$ and $e_{11} - e_{ii}$ with $i = 2, \dotsc, n$. Each of these matrices is given as a commutator, namely $e_{ij} = [e_{ii},e_{ij}]$ for $1 \leq i \neq j \leq n$ and $e_{11} - e_{ii} = [e_{1i},e_{i1}]$ for $i = 2, \dotsc, n$. Therefore $\Sl_n(k) \subseteq [\g,\g]$.
+\end{expl}
+
+
+\begin{rem}
+ If $\g$ is a Lie algebra and $I \subideal \g$ then the quotient vector space $\g/I$ is also a Lie algebra via
+ \[
+  [x+I, y+I] = [x,y] + I \quad \text{for all $x,y \in \g$}.
+ \]
+ This map is well-defined: If $x,y, x',y' \in \g$ with $x+I = x'+I$ and $y+I = y'+I$ then $x-x' \in I$ and $y-y' \in I$ and thus
+ \begin{align*}
+  [x,y] + I
+  &= [x' + x-x', y' + y-y'] + I \\
+  &= [x',y'] + \underbrace{[x', y-y']}_{\in I} + \underbrace{[x-x', y']}_{\in I} + \underbrace{[x-x', y-y']}_{\in I} + I
+  = [x', y'] + I.
+ \end{align*}
+ That this map satisfies the properties of a Lie bracket follows from the Lie bracket of $\g$ safisfying them.
+ 
+ The Lie algebra structure on $\g/I$ is defined precisely so that the canonical projection $\pi \colon \g \to \g/I$ is a homomorphism of Lie algebras.
+\end{rem}
+
+
+We have the usual theorems about homomorphisms and ideals.
+
+
+\begin{prop}
+ Let $\g_1$ and $\g_2$ be Lie algebras and $f \colon \g_1 \to \g_2$ a homomorphism of Lie algebras.
+ \begin{enumerate}
+  \item
+   $\ker f \subideal \g_1$ is an ideal.
+  \item
+   $\im f \subseteq \g_2$ is a Lie subalgebra.
+  \item
+   If $I \subideal \g_1$ is an ideal with $\ker f \subseteq I$ then there exists a unique homomorphism of Lie algebras $\tilde{f} \colon \g_1/I \to \g_2$ with $f = \tilde{f} \circ \pi$ where $\pi \colon \g_1 \to \g_1/I$ is the canonical projection.
+   \tikzsetnextfilename{universal_property_of_quotient_of_lie_algebras}
+   \begin{center}
+    \begin{tikzpicture}[node distance = 2cm]
+     \node (g1) {$\g_1$};
+     \node (gI) [below of = g1] {$\g_1/I$};
+     \node (g2) [right of = gI] {$\g_2$};
+     \draw[->] (g1) to node[above right] {$f$} (g2);
+     \draw[->] (g1) to node[left] {$\pi$} (gI);
+     \draw[->] (gI) to node[below] {$\exists! \tilde{f}$} (g2);
+    \end{tikzpicture}
+   \end{center}
+  \item
+   If $I, J \subideal \g$ are subideals with $I \subseteq J$ then $J/I \subideal \g/I$ and the natural isomorphism of vector spaces
+   \[
+    (\g/I)/(J/I) \to \g/I, \quad (x+I)+(J/I) \mapsto x+I
+   \]
+   is already a natural isomorphism of Lie algebras.
+  \item
+   If $I, J \subideal \g$ are subideals then the natural isomorphism of vector spaces
+   \begin{gather*}
+    (I + J)/J \to I/(I \cap J)
+   \shortintertext{defined by}
+    (x+J)+I \mapsto x + (I \cap J) \quad \text{for every $x \in I$}
+   \end{gather*}
+   is already a natural isomorphism of Lie algebras.
+ \end{enumerate}
+\end{prop}
+
+
+\begin{defi}
+ Let $\g$ be a Lie algebra. The \emph{center} of $\g$ is
+ \[
+  Z(\g)
+  \coloneqq \{x \in \g \mid \text{$[x,y] = 0$ for every $y \in \g$}\}
+  = \ker \ad.
+ \]
+ $\g$ is called \emph{abelian} if $[\g,\g] = 0$.
+\end{defi}
+
+
+\begin{rem}
+ Clearly $\g$ is abelian if and only if $Z(\g) = \g$. Also notice that $[\g,\g]$ and $Z(\g)$ are ideals inside $\g$.
+\end{rem}
+
+
+\begin{defi}
+ A Lie algebra $\g$ is \emph{simple} if $0$ and $\g$ are the only ideals inside $\g$ and $\g$ is not abelian.
+\end{defi}
+
+
+\begin{lem}
+ Let $\g$ be a simple Lie algebra. Then $[\g,\g] = \g$ and $Z(\g)=0$.
+\end{lem}
+\begin{proof}
+ Because $\g$ is simple it is not abelian. Therefore $[\g,\g] \neq 0$ and $Z(\g) \neq \g$. Since $[\g,\g]$ and $Z(\g)$ are ideals inside $\g$ it follows that $[\g,\g] = \g$ and $Z(\g) = 0$.
+\end{proof}
+
+
+\begin{cor}
+ Let $\g$ be simple. Then $\ad \colon \g \to \gl(\g)$ is injective. In particular $\g$ can be realized as a linear Lie algebra.
+\end{cor}
+\begin{proof}
+ This directly follows from $\ker \ad = Z(\g) = 0$.
+\end{proof}
+
+
+It can be shown that every finite dimensional Lie algebra can be realized as a linear Lie algebra. This will not be proven in this lecture and is by far not trivial.
+
+
+\begin{thrm}[Ado]
+ Any finite dimensional Lie algebra is linear.
+\end{thrm}
+
+
+\begin{rem}
+ For a Lie algebra $\g$ the ideal $[\g,\g]$ is the minimal ideal inside $\g$ such that $\g/[\g,\g]$ is abelian. Furthermore given any abelian Lie algebra $\h$ any homomorphism of Lie algebras $\g \to \h$ factorizes through a unique homomorphism of Lie algebras $\g/[\g,\g] \to \h$.
+ \begin{center}
+  \tikzsetnextfilename{universal_property_of_abelization}
+  \begin{tikzpicture}[node distance = 2cm]
+   \node (gab) {$\g/[\g,\g]$};
+   \node (g) [above left of = gab] {$\g$};
+   \node (h) [above right of = gab] {$\h$};
+   \draw[->] (g) to (h);
+   \draw[->] (g) to (gab);
+   \draw[->] (gab) to node[below right] {$\exists!$} (h);
+  \end{tikzpicture}
+ \end{center}
+\end{rem}
+
+
+\begin{expls}
+ \begin{enumerate}
+  \item
+   Since $[\gl_n(k),\gl_n(k)] = \Sl_n(k) \neq \gl_n(k)$ we find that $\gl_n(k)$ is not simple.
+  \item
+   Let $\g = \Sl_2(k)$. Then $\g$ is simple if and only if $\kchar k \neq 2$. To see this consider the basis $(e,h,f)$ of $\Sl_2(k)$ consisting of the matrices
+   \[
+    e = \begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}, \quad
+    h = \vect{1 & 0 \\ 0 & -1}, \quad
+    f = \vect{0 & 0 \\ 1 & 0}.
+   \]
+   of $\Sl_2(k)$. Then
+   \[
+    [h,e] = 2e, \quad
+    [h,f] = -2f, \quad
+    [e,f] = h.
+   \]
+   If $\kchar k = 2$ then $h$ spans a $1$-dimensional ideal, thus $\Sl_2(k)$ is not simple. Suppose that $\kchar k \neq 2$ and let $I \subseteq \Sl_2(k)$ be an ideal with $I \neq 0$. It is clear that if $I$ contains one of the basis vectors $e$, $h$ or $f$ it follows that $I = \Sl_2(k)$. Let $x \in I$ with $x \neq 0$ and write $x = \alpha e + \beta h + \gamma f$. Then
+   \[
+    [e,x] = -2 \beta e + \gamma h \quad \text{and} \quad [e,[e,x]] = -2 \gamma e.
+   \]
+   Since $\gamma = 0$ or $\gamma \neq 0$ we find that $e \in I$.
+ \end{enumerate}
+\end{expls}
+
+
+\begin{rem}
+ $\Sl_n(\C)$ is simple for all $n \geq 2$.
+\end{rem}

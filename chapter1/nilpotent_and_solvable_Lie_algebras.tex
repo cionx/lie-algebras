@@ -1,0 +1,102 @@
+\section{Nilpotent and solvable Lie algebras}
+
+
+
+
+
+\begin{defi}
+ Let $A$ be an associative $k$-algebra. An element $a \in A$ is called \emph{nilpotent} if $a^n = 0$ for some $n \geq 1$. Given a Lie algebra $\g$ an element $x \in \g$ is called \emph{$\ad$-nilpotent} if $\ad(x) \in \End_k(\g)$ is nilpotent.
+\end{defi}
+
+
+\begin{defi}
+ Let $g$ be a Lie algebra. Define $\g^0 \coloneqq \g$ and $\g^{i+1} \coloneqq [\g,\g^i]$ for all $i \in \N$. Then
+ \[
+  \g = \g^0 \supseteq \g^1 \supseteq \g^2 \supseteq \dots
+ \]
+ is called the \emph{central series} of $\g$. Also define $\g^{(0)} \coloneqq \g$ and $\g^{(i+1)} \coloneqq [\g^{(i)},\g^{(i)}]$ for all $i \in \N$. Then
+ \[
+  \g^{(0)} \supseteq \g^{(1)} \supseteq \g^{(2)} \supseteq \dots
+ \]
+ is called the \emph{derived series} of $\g$. $\g$ is called \emph{nilpotent} if $\g^i = 0$ for some $i$ and \emph{solvable} if $g^{(i)} = 0$ for some $i$.
+\end{defi}
+
+
+It is clear that every nilpotent Lie algebra is also solvable.
+
+
+\begin{expls}
+ \begin{enumerate}
+  \item
+   If $n \geq 2$ then $\Sl_2(\C)$ is simple and therefore $[\Sl_n(\C),\Sl_n(\C)] = \Sl_n(\C)$. Since $[\gl_n(\C),\gl_n(\C)] = \Sl_n(\C)$ it follows that $\gl_n(\C)$ is not solvable.
+  \item
+   If $\g$ is abelian then $\g$ is nilpotent.
+  \item
+   A \emph{Heisenberg Lie algebra} consists of a real vector space with basis $P_1, \dotsc, P_n$, $Q_1, \dotsc, Q_n$, $C$ together with the Lie bracket satisfying the following conditions:
+   \[
+    [P_i, P_j] = [Q_i, Q_j] = [P_i, C] = [Q_i, C] = 0
+    \quad \text{and} \quad
+    [P_i, Q_j] = \delta_{ij} C.
+   \]
+   This defines a nilpotent Lie algebra.
+ \end{enumerate}
+\end{expls}
+
+
+\begin{prop}
+ Let $\g$ be a Lie algebra.
+ \begin{enumerate}
+  \item
+   If $\h$ is a Lie algebra and $f \colon \g \to \h$ aLie algebras homomorphism then $f(\g)^i = f(\g^i)$ and $f(\g)^{(i)} = f(\g^{(i)})$ for all $i \geq 0$.
+  \item
+   If $\g$ is nilpotent (resp.\ solvable) then any Lie subalgebra $\h \subseteq \g$ and any quotient of $\g$ (by an ideal $I$) is nilpotent (resp.\ nilpotent).
+  \item
+   If $I \subideal \g$ with $I \subseteq Z(\g)$ and $\g/I$ is nilpotent then $\g$ is nilpotent.
+  \item
+   If $\g \neq 0$ is nilpotent then $Z(\g) \neq 0$.
+  \item
+   If $\g$ is nilpotent and $x \in \g$ then $x$ is $\ad$-nilpotent.
+  \item
+   If $I \subideal \g$ then $I^i$ and $I^{(i)}$ are ideals inside $\g$ for all $i \geq 0$.
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   It suficies to show that for any two subsets $X, Y \subseteq \g$
+   \[
+    f([X,Y])= [f(X),f(Y)]
+   \]
+   the statement then follows inductively. It holds because $f$ is a Lie algebra homomorphism and therefore
+   \begin{align*}
+    f([X,Y])
+    &= f(\vspan_k \{[x, y] \mid x \in X, y \in Y\}) \\
+    &= \vspan_k \{f([x, y]) \mid x \in X, y \in Y\} \\
+    &= \vspan_k \{[f(x),f(y)] \mid x \in X, y \in Y\} \\
+    &= \vspan_k \{[x',y'] \mid x' \in f(X), y' \in f(Y)\} \\
+    &= [f(X),f(Y)].
+   \end{align*}
+  \item
+   The statement about subalgebras follows from $\h^i \subseteq \g^i$ and $\h^{(i)} \subseteq \g^{(i)}$ for all $i \in \N$. The statement about quotient follow by using the canonical projection $\pi \colon \g \to \g/I$. Because $\pi$ is a Lie algebra homomorphism it follows that
+   \[
+    (\g/I)^i = \pi(\g)^i = \pi(\g^i) = 0
+   \]
+   for $i$ big enough. For solvable $\g$ the corresponding statements follow in the same way.
+  \item
+   Let $\pi \colon \g \to \g/I$ be the canonical projection. Because $\g/I$ is nilpotent there exists some $i \geq 0$ with $(\g/I)^i = 0$ and therefore
+   \[
+    0 = (\g/I)^i = \pi(\g)^i = \pi(\g^i).
+   \]
+   Thus $\g^i \subseteq I \subseteq Z(G)$ and hence $\g^{i+1} = 0$.
+  \item
+   Let $i \in \N$ be minimal with $\g^i \neq 0$ but $\g^{i+1} = 0$. Then $\g^i \subseteq Z(\g)$ and thus $Z(\g) \neq 0$.
+  \item
+   Since $\g$ is nilpotent there exists some $i \in \N$ with $\g^i = 0$. Then
+   \[
+    (\ad(x))^i(\g) \subseteq \g^i = 0,
+   \]
+   so $(\ad(x))^i = 0$.
+  \item
+   This follows inductively by using that $[I,J]$ is an ideal inside $\g$ for any $I,J \subideal \g$.
+ \end{enumerate}
+\end{proof}
