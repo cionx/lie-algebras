@@ -7,6 +7,7 @@
 *.kilepr
 *.log
 *.md5
+*.out
 *.pdf
 *.synctex.gz
 *.toc
