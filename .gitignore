@@ -1,13 +1,13 @@
-*.log
 *.aux
+*.auxlock
+*.backup
 *.bbl
 *.blg
-*.backup
-*.kilepr
-*.toc
-*.auxlock
 *.dpth
+*.kilepr
+*.log
 *.md5
-*.synctex.gz
 *.pdf
+*.synctex.gz
+*.toc
 PBW Programm/*
