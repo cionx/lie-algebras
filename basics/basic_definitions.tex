@@ -390,25 +390,62 @@ Also notice that every ideal inside $\g$ is also a subalgebra of $\g$.
 
 
 \begin{expl}
- Let $\g = \gl_n(k)$. Then
- \[
-  \Sl_n(k) = \{A \in \g \mid \tr A = 0\}
- \]
- is a subalgebra. Even more
- \[
-  \Sl_n(k) = [\g,\g].
- \]
- So $\Sl_n(k) \subideal \g$. To see this first notice that on the one hand
- \[
-  \tr [A,B]
-  = \tr(AB-BA)
-  = \tr(AB) - \tr(BA)
-  = \tr(AB) - \tr(AB)
-  = 0
- \]
- for all $A, B \in \g$. Therefore $[\g,\g] \subseteq \Sl_n(k)$.
- 
- On the other hand notice that $\Sl_n(k)$ has a basis given by the elementary matrices $e_{ij}$ with $1 \leq i \neq j \leq n$ and $e_{11} - e_{ii}$ with $i = 2, \dotsc, n$. Each of these matrices is given as a commutator, namely $e_{ij} = [e_{ii},e_{ij}]$ for $1 \leq i \neq j \leq n$ and $e_{11} - e_{ii} = [e_{1i},e_{i1}]$ for $i = 2, \dotsc, n$. Therefore $\Sl_n(k) \subseteq [\g,\g]$.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Let $\g = \gl_n(k)$. Then
+   \[
+     \Sl_n(k) = \{A \in \g \mid \tr A = 0\}
+   \]
+   is a subalgebra. Even more
+   \[
+     \Sl_n(k) = [\g,\g].
+   \]
+   So $\Sl_n(k) \subideal \g$. To see this first notice that on the one hand
+   \[
+     \tr [A,B]
+     = \tr(AB-BA)
+     = \tr(AB) - \tr(BA)
+     = \tr(AB) - \tr(AB)
+     = 0
+   \]
+   for all $A, B \in \g$. Therefore $[\g,\g] \subseteq \Sl_n(k)$.
+   
+   On the other hand notice that $\Sl_n(k)$ has a basis given by the elementary matrices $e_{ij}$ with $1 \leq i \neq j \leq n$ and $e_{11} - e_{ii}$ with $i = 2, \dotsc, n$. Each of these matrices is given as a commutator, namely $e_{ij} = [e_{ii},e_{ij}]$ for $1 \leq i \neq j \leq n$ and $e_{11} - e_{ii} = [e_{1i},e_{i1}]$ for $i = 2, \dotsc, n$. Therefore $\Sl_n(k) \subseteq [\g,\g]$.
+   
+  \item
+   The upper triangular matrices
+   \[
+    \tl_n(k) \coloneqq
+    \left\{
+     \begin{pmatrix}
+      a_{11} & \cdots & \cdots & a_{1n} \\
+           0 & \ddots &        & \vdots \\
+      \vdots & \ddots & \ddots & \vdots \\
+           0 & \cdots &      0 &  a_{nn}
+     \end{pmatrix}
+     \,\middle|\,
+     \text{$a_{ij} \in k$ for every $1 \leq i \leq j \leq n$}
+    \right\}
+   \]
+   are a Lie subalgebra of $\gl_n(k)$.
+   
+  \item
+   The strictly upper triangular matrices
+   \[
+    \nl_n(k) \coloneqq
+    \left\{
+     \begin{pmatrix}
+           0 & a_{12} & \cdots &    a_{1n} \\
+      \vdots & \ddots & \ddots &    \vdots \\
+      \vdots &        & \ddots & a_{n-1,n} \\
+           0 & \cdots & \cdots &         0   
+     \end{pmatrix}
+     \,\middle|\,
+     \text{$a_{ij} \in k$ for every $1 \leq i < j \leq n$}
+    \right\}
+   \]
+   are a Lie subalgebra of $\tl_n(k)$ and therefore also of $\gl_n(k)$. It is even an ideal in $\tl_n(k)$ because $\nl_n(k) = [\tl_n(k), \tl_n(k)]$.
+ \end{enumerate}
 \end{expl}
 
 
@@ -537,7 +574,7 @@ It can be shown that every finite dimensional Lie algebra can be realized as a l
   \item
    Since $[\gl_n(k),\gl_n(k)] = \Sl_n(k) \neq \gl_n(k)$ we find that $\gl_n(k)$ is not simple.
   \item
-   Let $\g = \Sl_2(k)$. Then $\g$ is simple if and only if $\kchar k \neq 2$. To see this consider the basis $(e,h,f)$ of $\Sl_2(k)$ consisting of the matrices
+   Let $\g = \Sl_2(k)$. Then $\g$ is simple if and only if $\chara k \neq 2$. To see this consider the basis $(e,h,f)$ of $\Sl_2(k)$ consisting of the matrices
    \[
     e = \begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}, \quad
     h = \vect{1 & 0 \\ 0 & -1}, \quad
@@ -549,7 +586,7 @@ It can be shown that every finite dimensional Lie algebra can be realized as a l
     [h,f] = -2f, \quad
     [e,f] = h.
    \]
-   If $\kchar k = 2$ then $h$ spans a $1$-dimensional ideal, thus $\Sl_2(k)$ is not simple. Suppose that $\kchar k \neq 2$ and let $I \subseteq \Sl_2(k)$ be an ideal with $I \neq 0$. It is clear that if $I$ contains one of the basis vectors $e$, $h$ or $f$ it follows that $I = \Sl_2(k)$. Let $x \in I$ with $x \neq 0$ and write $x = \alpha e + \beta h + \gamma f$. Then
+   If $\chara k = 2$ then $h$ spans a $1$-dimensional ideal, thus $\Sl_2(k)$ is not simple. Suppose that $\chara k \neq 2$ and let $I \subseteq \Sl_2(k)$ be an ideal with $I \neq 0$. It is clear that if $I$ contains one of the basis vectors $e$, $h$ or $f$ it follows that $I = \Sl_2(k)$. Let $x \in I$ with $x \neq 0$ and write $x = \alpha e + \beta h + \gamma f$. Then
    \[
     [e,x] = -2 \beta e + \gamma h \quad \text{and} \quad [e,[e,x]] = -2 \gamma e.
    \]

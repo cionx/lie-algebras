@@ -16,7 +16,6 @@
   -jobname "\image" "\texsource"}}
 
 
-
 % settings for scrlayer-scrpage
 \pagestyle{scrheadings}
 \clearscrheadfoot
@@ -24,7 +23,6 @@
 \rehead{\rightmark}
 \lohead{\leftmark}
 \rohead{\rightmark}
-
 
 
 % proposition-like enviroments
@@ -36,12 +34,18 @@
 \newtheorem*{claim*}{Claim} % unnumbered version
 \newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
 
+
 % more text-like enviroments
 \theoremstyle{definition}
 \newtheorem{defi}[everything]{Definition}
 \newtheorem{expl}[everything]{Example}
 \newtheorem{expls}[everything]{Examples}
 \newtheorem{rem}[everything]{Remark}
+
+
+% the style of counters
+\renewcommand{\theeverything}{\arabic{chapter}.\arabic{everything}}
+
 
 % numbers and fields
 \newcommand{\N}{\mathbb{N}}
@@ -51,6 +55,17 @@
 \newcommand{\Cbb}{\mathbb{Cbb}}
 \newcommand{\F}{\mathbb{F}}
 
+
+% lie algebras
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\h}{\mathfrak{h}}
+\newcommand{\gl}{\mathfrak{gl}}
+\newcommand{\Sl}{\mathfrak{sl}}
+\newcommand{\tl}{\mathfrak{t}}
+\newcommand{\nl}{\mathfrak{n}}
+\newcommand{\Loop}{\mathcal{L}}
+
+
 % macros for spaces
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
@@ -58,23 +73,20 @@
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\vspan}{span}
 
+
 % macros for functions
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\can}{can}
-\DeclareMathOperator{\kchar}{char}
+\DeclareMathOperator{\chara}{char}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\tr}{tr}
 
-% lie algebras
-\newcommand{\g}{\mathfrak{g}}
-\newcommand{\h}{\mathfrak{h}}
-\newcommand{\gl}{\mathfrak{gl}}
-\newcommand{\Sl}{\mathfrak{sl}}
-\newcommand{\Loop}{\mathcal{L}}
 
-% shortcuts for frequently used stuff
+% shortcuts for frequently used stuff and laziness
+\newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\inc}{\hookrightarrow}
 \newcommand{\subideal}{\trianglelefteq}
+
 
 % stuff taking arguments
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}

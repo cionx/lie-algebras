@@ -9,6 +9,14 @@
 \end{defi}
 
 
+\begin{lem}
+ If $A$ is an associative $k$-algebra and $x \in A$ nilpotent then $x$ is also $\ad$-nilpotent.
+\end{lem}
+\begin{proof}
+ Let $\lambda_x \colon A \to A, a \mapsto xa$ and $\rho_x \colon A \to A, a \mapsto ax$. Because $x$ is nilpotent both $\lambda_x$ and $\rho_x$ are nilpotent. Because $A$ is associative $\lambda_x$ and $\rho_x$ commute. Hence $\ad(x) = \lambda_x - \rho_x$ is the sum of two commuting, nilpotent endomorphisms, and therefore also nilpotent.
+\end{proof}
+
+
 \begin{defi}
  Let $g$ be a Lie algebra. Define $\g^0 \coloneqq \g$ and $\g^{i+1} \coloneqq [\g,\g^i]$ for all $i \in \N$. Then
  \[
@@ -28,6 +36,10 @@ It is clear that every nilpotent Lie algebra is also solvable.
 \begin{expls}
  \begin{enumerate}[leftmargin=*]
   \item
+   The upper triangular matrices $\tl_n(k)$ are solvable. But they are not nilpotent.
+  \item
+   The strictly upper triangular matrices $\nl_n(k)$ not only solvable but also nilpotent.
+  \item
    If $n \geq 2$ then $\Sl_2(\Cbb)$ is simple and therefore $[\Sl_n(\Cbb),\Sl_n(\Cbb)] = \Sl_n(\Cbb)$. Since $[\gl_n(\Cbb),\gl_n(\Cbb)] = \Sl_n(\Cbb)$ it follows that $\gl_n(\Cbb)$ is not solvable.
   \item
    If $\g$ is abelian then $\g$ is nilpotent.
@@ -43,7 +55,7 @@ It is clear that every nilpotent Lie algebra is also solvable.
 \end{expls}
 
 
-\begin{prop}
+\begin{prop}\label{prop: properties of solvable and nilpotent}
  Let $\g$ be a Lie algebra.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -100,3 +112,102 @@ It is clear that every nilpotent Lie algebra is also solvable.
    This follows inductively by using that $[I,J]$ is an ideal inside $\g$ for any $I,J \subideal \g$.
  \end{enumerate}
 \end{proof}
+
+
+From now on \emph{all} fields over which we work will be assumed to be algebraically closed, unless otherwise specified.
+
+
+If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpotent endomorphism then $0$ is the only eigenvalue of $x$ (and occurs with multiplicity $n$) (here we use that $k$ is algebraically closed). Hence there exists an eigenvector $v \in V$, $v \neq 0$ with $x(v) = 0$. The following proposition generalizes this observations for linear Lie algebras consisting of nilpotent endomorphisms.
+
+
+\begin{prop}\label{prop: stuff for engels theorem}
+ Let $V \neq 0$ be a finite dimensional vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a Lie subalgebra such that every $x \in \g$ in nilpotent.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   There exists $v \in V$ mit $v \neq 0$ and $x(v) = 0$ for every $x \in \g$, i.e.\ $v$ is a common eigenvector of all $x \in \g$ (all of which are nilpotent and thus have $0$ as their only eigenvalue).
+  \item
+   There exists a complete flag of $V$
+   \[
+    V = V_n \supsetneq V_{n-1} \supsetneq V_{n-2} \supsetneq \dotsb \supsetneq V_1 \supsetneq V_0 = 0,
+   \]
+   with $x(V_i) \subseteq V_{i-1}$ for every $i = 1, \dotsc, n$.
+  \item
+   There exists a basis $\mc{B} = (v_1, \dotsc, v_n)$ of $V$ such that with respect to $\mc{B}$ every $x \in \g$ is represented by an strictly upper triangular matrix.
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   The statement can be then shown by induction over $\dim \g$. For $\dim \g = 0$ the statement follows from $\g = 0$ and for $\dim \g = 1$ the statement follows as previously discussed from $\g = k x$ with $x$ being a nilpotent endomorphism of $V$.
+   
+   So let $\dim \g \geq 2$ and suppose that the statement holds for all smaller dimensions. Let $I \subseteq \g$ be a maximal proper Lie subalgebra (such a subalgebra exists because it is precisely one of maximal dimension strictly smaller than $n$). Any $x \in \g$ with $x \neq 0$ spans a one-dimensional subalgebra $k x$ of $\g$; because $\dim \g \geq 2$ it is a proper one. This show that $I \neq 0$. It turns out that $I$ is already in ideal in $\g$:
+   
+   By assumption $\g$ consists of nilpotent endomorphisms and therefore of $\ad$-nilpotent elemenents. In particular every $x \in I$ acts nilpotent on $\g$ via $\ad(x)$ with $I$ being an $\ad(x)$-invariant linear subspace. Therefore every $x \in I$ acts on the quotient vector space $\g/I$ by an induced nilpotent endomorphism
+   \[
+    \overline{\ad}(x) \colon \g/I \to \g/I, \quad y + I \mapsto \ad(x)(y) + I = [x,y] + I.
+   \]
+   As the map $\overline{\ad} \colon I \to \gl(\g/I)$ is an homomorphism of Lie algebras (because $\ad$ is) the image $\{\overline{\ad}(x) \mid x \in I\} \subseteq \gl(\g/I)$ is an Lie subalgebra, consisting of nilpotent endomorphisms. From $I \neq 0$ it follows that $\dim \g/I < \dim \g$, so by induction assumption there exists some $y \in \g$ with $\overline{\ad}(x)(y+I) = 0$ for every $x \in I$ and $y+I \neq 0+I$. Hence $[x,y] \in I$ for every $x \in I$ but $y \neq I$. Hence $y \in N_\g(I)$ with $y \neq I$, so $I$ is properly contained in its normalizer. As $I$ is a maximal proper subalgebra of $\g$ it follows that $N_\g(I) = \g$, so $I$ is an ideal. It is even one of codimension $1$:
+   
+   If $I$ had not codimension $1$ then $\dim \g/I > 1$. Then $\g/I$ contains a one-dimensional proper subalgebra $L$ (as seen above), and the preimage $\pi^{-1}(J)$ under the canonical projection $\pi \colon \g \to \g/I$ is then a proper subalgebra of $\g$ properly containing $I$, which contradicts the maximality of $I$. Hence $I$ has codimension $1$.
+
+   As $I \subseteq \g$ has codimension $1$ there exists some $y \in \g$ with $g = I \oplus ky$ (as vector spaces). Because $\dim I < \dim \g$ it follows from the induction assumption that
+   \[
+    U \coloneqq \{v \in V \mid \text{$x(v) = 0$ for every $x \in I$}\} = \bigcap_{x \in I} \ker x
+   \]
+   is a nonzero linear subspace of $V$. It sufficies to show that $U$ is $y$-invariant: Then there exists some eigenvector $u \in U$ of $y$ for which necessarily $y(u) = 0$. If $u\in U$ then $[x,y] \in I$ for every $x \in I$ because $I \subideal \g$ and therefore
+   \[
+    x(y(u)) = [x,y](u) - y(x(u)) = 0 - y(0) = 0.
+   \]
+   Hence $y(u) \in U$, so $U$ is $y$-invariant.
+   
+  \item
+   This can be shown by induction over $\dim V$. For $\dim V = 1$ set $V_0 \coloneqq 0$ and $V_1 \coloneqq V$. By assumption every $x \in \g$ acts nilpotent on $V$, so $x(V) = 0$ because $V$ is one-dimensional. Thus $V = V_1 \supsetneq V_0 = 0$ is a complete flag for $V$ satisfying the condititons.
+   
+   Now let $\dim V = n \geq 2$ and suppose the statement holds for all smaller dimensions. Let $v \in V$, $v \neq 0$ with $x(v) = 0$ for every $x \in \g$ and $W \coloneqq V / kv$. Every $x \in \g$ induces an endomorphism
+   \[
+    \overline{x} \colon W \to W, \quad v + kv \mapsto x(v) + kv.
+   \]
+   By induction assumption exists a complete flag
+   \[
+    W = W_{n-1} \supsetneq W_{n-2} \supsetneq W_{n-3} \supsetneq \dotsb \supsetneq W_1 \supsetneq W_0 = 0
+   \]
+   with $\overline{x}(W_i) \subseteq W_{i-1}$ for every $x \in \g$ and $i = 1, \dotsc, n-1$. By setting $V_i \coloneqq \pi^{-1}(W_{i-1})$ for every $i = 1, \dotsc, n$ and $V_0 = 0$ it follows that
+   \[
+    V = V_n \supsetneq V_{n-1} \supsetneq V_{n-2} \supsetneq \dotsb \supsetneq V_1 \supsetneq V_0 = 0,
+   \]
+   is a complete flag of $V$. On the one hand $x(V_1) = x(kv) = 0 = V_0$ for every $x \in \g$ and on the other hand
+   \[
+    \pi(x(V_i))
+    = \overline{x}(\pi(V_i))
+    = \overline{x}(W_{i-1})
+    \subseteq W_{i-2}
+   \]
+   and therefore $x(V_i) \subseteq \pi^{-1}(W_{i-2}) = V_{i-1}$ for every $i = 2, \dotsc, n$.
+   
+  \item
+   This is a direct consequence from the previous part.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+
+\begin{thrm}[Engel]
+ Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is nilpotent if and only if all its elements are $\ad$-nilpotent.
+\end{thrm}
+\begin{proof}
+ If $\g$ is nilpotent then there exists some $i \in \N$ with $\g^i = 0$, from which is follows from $\ad(x)^i(y) \in \g^i$ for every $x,y \in \g$ that $\ad(x)^i = 0$ for every $x \in \g$, hence every $x \in \g$ is $\ad$-nilpotent.
+ 
+ On the other hand suppose that $\g$ consists of $\ad$-nilpotent elemenents. If $\g = Z(\g)$ then $\g$ is abelian and hence nilpotent, so it sufficies to show the statement under the additional assumption that $Z(\g) \subsetneq \g$. Because $\g/Z(\g) \cong \ad \g$ is a Lie subalgebra of $\gl(\g)$ consisting of nilpotent Elemenents it follows from Proposition \ref{prop: stuff for engels theorem} that $\g/Z(\g)$ is isomorphic to a Lie subalgebra of $\nl_n(k)$ for $n = \dim \g/Z(\g) \geq 1$. Because $\nl_n(k)$ is nilpotent the same goes for $\g/Z(\g)$ as seen in Proposition \ref{prop: properties of solvable and nilpotent}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
