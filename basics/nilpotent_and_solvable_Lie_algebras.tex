@@ -12,7 +12,7 @@
 \end{defi}
 
 
-\begin{lem}
+\begin{lem}\label{lem: nilpotent implies ad-nilpotent}
  If $A$ is an associative $k$-algebra and $x \in A$ nilpotent then $x$ is also $\ad$-nilpotent.
 \end{lem}
 \begin{proof}
@@ -555,6 +555,53 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 \begin{defi}
  Let $V$ be an $n$-dimensional vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(k)$). Then the decomposition $x = x_s + x_n$ from Theorem \ref{thrm: concrete Jordan decomposition} (resp.\ the decomposition $y = y_s + y_n$ from Remark \ref{rem: concrete Jordan decomposition for matrices}) is called the \emph{concrete Jordandecomposition} of $x$ (resp.\ $y$). The element $x_s$ (resp.\ $y_s$) is called the \emph{semisimple part} of $x$ (resp.\ $y$) and the element $x_n$ (resp.\ $y_n$) is called the \emph{nilpotent part} of $x$ (resp.\ $y$).
 \end{defi}
+
+
+\begin{defi}
+ Let $\g$ be a finite dimensional Lie algebra. Then $x \in \g$ is called \emph{$\ad$-semisimple} if $\ad(x)$ is a semisimple endomorphism of $\g$.
+\end{defi}
+
+
+\begin{lem}
+ Let $\g \subseteq \gl(V)$ be a Lie subalgebra for some finite dimensional vector space $V$ (resp.\ $\g \subseteq \gl_n(k)$) and $x \in \g$.
+ \begin{enumerate}
+  \item
+   If $x$ is semisimple then $x$ is also $\ad$-semisimple.
+  \item
+   If $x$ is nilpotent then $x$ is also $\ad$-nilpotent.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ We only show the case $\g \subseteq \gl(V)$, the proof for the case $\g \subseteq \gl_n(k)$ being essentially the same.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Let $e_1$, \dots, $e_n$ be a basis of $\g$ consisting of eigenvectors of $x$, where $e_i$ belongs to the eigenvalue $\lambda_i \in k$. Then for all \mbox{$i,j = 1, \dotsc, n$} let $E_{ij} \in \End_k(\g)$ be defined by
+   \[
+    E_{ij}(e_k) = \delta_{jk} e_i \quad \text{for every $k = 1, \dotsc, n$}.
+   \]
+   Then $(E_{ij})_{i,j=1,\dotsc,n}$ is a basis of $\End_k(\g)$. For all $i,j,k = 1, \dotsc, n$ it follows that
+   \begin{align*}
+    [x,E_{ij}](e_k)
+    &= (x E_{ij} - E_{ij} x)(e_k)
+    = x(E_{ij}(e_k)) - E_{ij}(x(e_k)) \\
+    &= \delta_{jk} x(e_i) - \lambda_k E_{ij}(e_k)
+    = \delta_{jk} \lambda_i e_i - \delta_{jk} \lambda_k e_i \\
+    &= (\lambda_i - \lambda_j) \delta_{jk} e_i
+    = (\lambda_i - \lambda_j) E_{ij} e_k.
+   \end{align*}
+   It follows that
+   \[
+    \ad_{\gl(V)}(x)(E_{ij}) = [x,E_{ij}] = (\lambda_i - \lambda_j) E_{ij}
+    \quad \text{for all $i,j = 1, \dotsc, n$},
+   \]
+   so $\ad_{\gl(V)}$ is semisimple and therefore also the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$.
+   
+  \item
+   In Lemma \ref{lem: nilpotent implies ad-nilpotent} it was already shown that $\ad_{\gl(V)}(x)$ is nilpotent. From this it follows that the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$ is also nilpotent.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
 
 
 
