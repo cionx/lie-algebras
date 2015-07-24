@@ -121,7 +121,7 @@ It is clear that every nilpotent Lie algebra is also solvable.
  If $I \subideal \g$ is an ideal inside a Lie algebra $\g$ then $\g$ is solvable if and only if both $I$ and $\g/I$ are solvable.
 \end{cor}
 \begin{proof}
- If $\g$ is solvable then $I$ and $\g/I$ are also solvable by Proposition \ref{prop: properties of solvable and nilpotent}. Suppose that on the other hand both $I$ and $\g/I$ are solvable. Then there exists $i_1, i_2 \in \N$ with $(\g/I)^{(i_1)} = 0$ and $I^{i_2} = 0$. Let $\pi \colon \g \to \g/I, x \mapsto x + I$ be the canical projection. Because
+ If $\g$ is solvable then $I$ and $\g/I$ are also solvable by Proposition~\ref{prop: properties of solvable and nilpotent}. Suppose that on the other hand both $I$ and $\g/I$ are solvable. Then there exists $i_1, i_2 \in \N$ with $(\g/I)^{(i_1)} = 0$ and $I^{i_2} = 0$. Let $\pi \colon \g \to \g/I, x \mapsto x + I$ be the canical projection. Because
  \[
   0 = (\g/I)^{(i_1)} = \pi(\g)^{(i_1)} = \pi(\g^{(i_1)})
  \]
@@ -239,7 +239,7 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 \begin{proof}
  If $\g$ is nilpotent then there exists some $i \in \N$ with $\g^i = 0$, from which is follows from $\ad(x)^i(y) \in \g^i$ for every $x,y \in \g$ that $\ad(x)^i = 0$ for every $x \in \g$, hence every $x \in \g$ is $\ad$-nilpotent.
  
- On the other hand suppose that $\g$ consists of $\ad$-nilpotent elemenents. If $\g = Z(\g)$ then $\g$ is abelian and hence nilpotent, so it sufficies to show the statement under the additional assumption that $Z(\g) \subsetneq \g$. Because $\g/Z(\g) \cong \ad \g$ is a Lie subalgebra of $\gl(\g)$ consisting of nilpotent Elemenents it follows from Proposition \ref{prop: stuff for Engels theorem} that $\g/Z(\g)$ is isomorphic to a Lie subalgebra of $\nl_n(k)$ for $n = \dim \g/Z(\g) \geq 1$. Because $\nl_n(k)$ is nilpotent the same goes for $\g/Z(\g)$ as seen in Proposition \ref{prop: properties of solvable and nilpotent}.
+ On the other hand suppose that $\g$ consists of $\ad$-nilpotent elemenents. If $\g = Z(\g)$ then $\g$ is abelian and hence nilpotent, so it sufficies to show the statement under the additional assumption that $Z(\g) \subsetneq \g$. Because $\g/Z(\g) \cong \ad \g$ is a Lie subalgebra of $\gl(\g)$ consisting of nilpotent Elemenents it follows from Proposition~\ref{prop: stuff for Engels theorem} that $\g/Z(\g)$ is isomorphic to a Lie subalgebra of $\nl_n(k)$ for $n = \dim \g/Z(\g) \geq 1$. Because $\nl_n(k)$ is nilpotent the same goes for $\g/Z(\g)$ as seen in Proposition~\ref{prop: properties of solvable and nilpotent}.
 \end{proof}
 
 
@@ -315,7 +315,7 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 \end{proof}
 
 
-As a generalization of Proposition \ref{prop: common eigenvector for nilpotent Lie algebras} we have the following result about solvable linear Lie algebras.
+As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} we have the following result about solvable linear Lie algebras.
 
 
 \begin{thrm}[Lie]\label{thrm: Lie’s theorem}
@@ -324,7 +324,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 \begin{proof}
  The statement can be shown by induction over $\dim \g$. If $\dim \g = 0$ then $\g = 0$ and any $v \in V$ with $v \neq 0$ does the job. If $\dim \g = 1$ then $\g = k x$ for some $x \in \gl(V)$ with $x \neq 0$. Then any eigenvector of $x$ does the job (since $k$ is assumed to be algebraically closed and $V \neq 0$ such an eigenvector does exist).
  
- Suppose that $\dim \g = n \geq 2$ and the statement holds for every smaller dimension. Similarly to the proof of Proposition \ref{prop: common eigenvector for nilpotent Lie algebras} we will split this proof into four consecutive parts:
+ Suppose that $\dim \g = n \geq 2$ and the statement holds for every smaller dimension. Similarly to the proof of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} we will split this proof into four consecutive parts:
  \begin{enumerate}
   \item
    Finding an ideal $I \subideal \g$ of codimension $1$.
@@ -347,7 +347,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 
 
 \begin{rem}
- The proof for Lie’s theorem given in the lecture is basically a less structured version of the one in \cite[\S 4.1]{Humphreys}, from where we took the idea of breaking down the proof into four steps to emphasize the similarities with the proof of Proposition \ref{prop: common eigenvector for nilpotent Lie algebras} (which we found very useful for understanding the structure of the previous proof).
+ The proof for Lie’s theorem given in the lecture is basically a less structured version of the one in \cite[\S 4.1]{Humphreys}, from where we took the idea of breaking down the proof into four steps to emphasize the similarities with the proof of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} (which we found very useful for understanding the structure of the previous proof).
 \end{rem}
 
 
@@ -387,9 +387,9 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 
 
 \begin{rem}
- Corollary \ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} is actually equivalent to Lie’s theorem: If $\g \subseteq \gl(V)$ is a Lie subalgebra with then $V$ is a representation of $\g$ via $x.v = x(v)$ for every $x \in \g$ and $v \in V$. If $V \neq 0$ is finite dimensional then $V$ contains an irreducible subrepresentation $U$ of $\g$ (simply take some nonzero subrepresentation of minimal dimension.) If $\g$ additionally is solvable then by Corollary \ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} the irreducible subrepresentation $U$ is onedimensional, hence of the form $U = kv$ for some $v \in V$ with $v \neq 0$. From the definition of the action of $\g$ on $V$ it follows that $v$ is common eigenvector of $\g$.
+ Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} is actually equivalent to Lie’s theorem: If $\g \subseteq \gl(V)$ is a Lie subalgebra with then $V$ is a representation of $\g$ via $x.v = x(v)$ for every $x \in \g$ and $v \in V$. If $V \neq 0$ is finite dimensional then $V$ contains an irreducible subrepresentation $U$ of $\g$ (simply take some nonzero subrepresentation of minimal dimension.) If $\g$ additionally is solvable then by Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} the irreducible subrepresentation $U$ is onedimensional, hence of the form $U = kv$ for some $v \in V$ with $v \neq 0$. From the definition of the action of $\g$ on $V$ it follows that $v$ is common eigenvector of $\g$.
  
- As a consequence of this Lie’s theorem as formulated in Theorem \ref{thrm: Lie’s theorem} was called ``Lie’s theorem -- concrete form'' in the lecture while Corollary \ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} was stated as ``Lie’s theorem -- abstract version''.
+ As a consequence of this Lie’s theorem as formulated in Theorem~\ref{thrm: Lie’s theorem} was called ``Lie’s theorem -- concrete form'' in the lecture while Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} was stated as ``Lie’s theorem -- abstract version''.
 \end{rem}
 
 
@@ -442,7 +442,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 
 
 \begin{rem}
- The proof of Lemma \ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) The main example of an associative bilinear form will be the Killing form, which is symmetric, so this assumption will pose no problems to us.
+ The proof of Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) The main example of an associative bilinear form will be the Killing form, which is symmetric, so this assumption will pose no problems to us.
 \end{rem}
 
 
@@ -493,7 +493,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
  \[
   \phi_\rho(x,y) \coloneqq \tr(\rho(x) \rho(y)) \quad \text{for all $x,y \in \g$}.
  \]
- Replacing $\ad$ with $\rho$ in the proof of Lemma \ref{lem: killing form is associative and symmetric} shows that $\phi_\rho$ is an associative and symmetric bilinear form on $\g$. The Killing form $\kappa$ of $\g$ is then just the special case $\kappa = \phi_{\ad}$.
+ Replacing $\ad$ with $\rho$ in the proof of Lemma~\ref{lem: killing form is associative and symmetric} shows that $\phi_\rho$ is an associative and symmetric bilinear form on $\g$. The Killing form $\kappa$ of $\g$ is then just the special case $\kappa = \phi_{\ad}$.
 \end{rem}
 
 
@@ -583,12 +583,12 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 
 
 \begin{rem}\label{rem: concrete Jordan decomposition for matrices}
- An analogeous statement of Theorem \ref{thrm: concrete Jordan decomposition} can be shown for $\Mat_n(k)$ instead of $\End_k(V)$. More precisely: Every matrix $x \in \Mat_n(k)$ can be uniquely decomposed into $x = x_s + x_n$ such that $x_s$ is semisimple, $x_n$ is nilpotent and $x_s$ and $x_n$ commute. Both $x_s$ and $x_n$ are polynomials without constant term in $x$, so any matrix in $\Mat_n(k)$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$. If $A \subseteq B \subseteq k^n$ are linear subspaces such that $B$ is carried into $A$ by left multiplication with $x$, then the same goes for $x_s$ and $x_n$.
+ An analogeous statement of Theorem~\ref{thrm: concrete Jordan decomposition} can be shown for $\Mat_n(k)$ instead of $\End_k(V)$. More precisely: Every matrix $x \in \Mat_n(k)$ can be uniquely decomposed into $x = x_s + x_n$ such that $x_s$ is semisimple, $x_n$ is nilpotent and $x_s$ and $x_n$ commute. Both $x_s$ and $x_n$ are polynomials without constant term in $x$, so any matrix in $\Mat_n(k)$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$. If $A \subseteq B \subseteq k^n$ are linear subspaces such that $B$ is carried into $A$ by left multiplication with $x$, then the same goes for $x_s$ and $x_n$.
 \end{rem}
 
 
 \begin{defi}
- Let $V$ be an $n$-dimensional vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(k)$). Then the decomposition $x = x_s + x_n$ from Theorem \ref{thrm: concrete Jordan decomposition} (resp.\ the decomposition $y = y_s + y_n$ from Remark \ref{rem: concrete Jordan decomposition for matrices}) is called the \emph{concrete Jordandecomposition} of $x$ (resp.\ $y$). The element $x_s$ (resp.\ $y_s$) is called the \emph{semisimple part} of $x$ (resp.\ $y$) and the element $x_n$ (resp.\ $y_n$) is called the \emph{nilpotent part} of $x$ (resp.\ $y$).
+ Let $V$ be an $n$-dimensional vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(k)$). Then the decomposition $x = x_s + x_n$ from Theorem~\ref{thrm: concrete Jordan decomposition} (resp.\ the decomposition $y = y_s + y_n$ from Remark~\ref{rem: concrete Jordan decomposition for matrices}) is called the \emph{concrete Jordandecomposition} of $x$ (resp.\ $y$). The element $x_s$ (resp.\ $y_s$) is called the \emph{semisimple part} of $x$ (resp.\ $y$) and the element $x_n$ (resp.\ $y_n$) is called the \emph{nilpotent part} of $x$ (resp.\ $y$).
 \end{defi}
 
 
@@ -632,7 +632,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
    so $\ad_{\gl(V)}$ is semisimple and therefore also the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$.
    
   \item
-   In Lemma \ref{lem: nilpotent implies ad-nilpotent} it was already shown that $\ad_{\gl(V)}(x)$ is nilpotent. From this it follows that the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$ is also nilpotent.
+   In Lemma~\ref{lem: nilpotent implies ad-nilpotent} it was already shown that $\ad_{\gl(V)}(x)$ is nilpotent. From this it follows that the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$ is also nilpotent.
   \qedhere
  \end{enumerate}
 \end{proof}
@@ -642,7 +642,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
  Let $\g \subseteq \gl(V)$ be a Lie subalgebra for a finite dimensional vector space $V$ (resp.\ $\g = \gl_n(k)$). If $x \in \g$ has the Jordan decomposition $x = x_s + x_n$ then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the Jordan decomposition of $\ad(x)$.
 \end{cor}
 \begin{proof}
- As $x_s$ is semisimple the same goes for $\ad(x_s)$ and as $x_n$ is nilpotent the same goes for $\ad(x_n)$, each following from Lemma \ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent}. As $x_s$ and $x_n$ commute so do $\ad(x_n)$ and $\ad(x_s)$ because $\ad$ is a homomorphism of Lie algebras.
+ As $x_s$ is semisimple the same goes for $\ad(x_s)$ and as $x_n$ is nilpotent the same goes for $\ad(x_n)$, each following from Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent}. As $x_s$ and $x_n$ commute so do $\ad(x_n)$ and $\ad(x_s)$ because $\ad$ is a homomorphism of Lie algebras.
 \end{proof}
 
 
@@ -669,7 +669,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
  If $x \in T$ and $\tr(xz) = 0$ for every $z \in T$ then $x$ is nilpotent.
 \end{lem}
 \begin{proof}
- Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ by Corollary \ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem \ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
+ Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ by Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem~\ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
  
  Let $(v_1, \dotsc, v_n)$ be an ordered basis of $V$ with respect to which $x$ is in Jordan normal form. Then with respect to this basis $x_s$ is diagonal and $x_n$ is strictly upper triangular. Let $\lambda_i \in k$ with $x_s(v_i) = \lambda_i v_i$ for every $i = 1, \dotsc, n$ and set
  \[
@@ -688,7 +688,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
   \[
    e_{ij}(v_k) = \delta_{jk} v_i \quad \text{for every $k = 1, \dotsc, n$}.
   \]
-  Then $(e_{ij})_{i,j = 1, \dotsc, n}$ is a $k$-basis of $\gl(V)$. As already seen in the proof of Corollary \ref{cor: concrete Jordan decomposition compatible with adjoint representation} this is a basis of eigenvectors of $\ad(x_s)$ where $e_{ij}$ is an eigenvector of $\ad(x_s)$ with respect to the eigenvalue $\lambda_i - \lambda_j$. Because $(v_1, \dotsc, v_n)$ is also a basis of $V$ consisting of eigenvalues of $z$, where $v_i$ belongs to the eigenvalue $f(\lambda_i)$, it follows in the same way, that $e_{ij}$ is an eigenvector of $\ad(z)$ with respect to the eigenvalue
+  Then $(e_{ij})_{i,j = 1, \dotsc, n}$ is a $k$-basis of $\gl(V)$. As already seen in the proof of Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation} this is a basis of eigenvectors of $\ad(x_s)$ where $e_{ij}$ is an eigenvector of $\ad(x_s)$ with respect to the eigenvalue $\lambda_i - \lambda_j$. Because $(v_1, \dotsc, v_n)$ is also a basis of $V$ consisting of eigenvalues of $z$, where $v_i$ belongs to the eigenvalue $f(\lambda_i)$, it follows in the same way, that $e_{ij}$ is an eigenvector of $\ad(z)$ with respect to the eigenvalue
   \[
    \mu_{ij} \coloneqq f(\lambda_i) - f(\lambda_j) = f(\lambda_i - \lambda_j)
   \]
@@ -710,7 +710,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 
 
 \begin{rem}
- The proof of Lemma \ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the one given in \cite[\S 4.3]{Humphreys}.
+ The proof of Lemma~\ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the one given in \cite[\S 4.3]{Humphreys}.
  
  In the lecture a proof was given for the special case $k = \Cbb$. But since I have some trouble understanding the details it is not included here (yet).
 \end{rem}
@@ -735,7 +735,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
   = \sum_{i=1}^n \tr(a_i \underbrace{[b_i, z]}_{\in [\g,\g]})
   = 0,
  \end{align*}
- where the last step uses the asumption. It follows from Lemma \ref{lem: Cartan's criterion technical lemma} that $x$ is nilpotent. Because $[\g,\g]$ consists of nilpotent elements there exists a basis of $V$ with respect to which $[\g,\g]$ is represented by stricly upper triangular matrices. Hence $[\g,\g]$ is nilpotent und $\g$ therefore solvable.
+ where the last step uses the asumption. It follows from Lemma~\ref{lem: Cartan's criterion technical lemma} that $x$ is nilpotent. Because $[\g,\g]$ consists of nilpotent elements there exists a basis of $V$ with respect to which $[\g,\g]$ is represented by stricly upper triangular matrices. Hence $[\g,\g]$ is nilpotent und $\g$ therefore solvable.
 \end{proof}
 
 
