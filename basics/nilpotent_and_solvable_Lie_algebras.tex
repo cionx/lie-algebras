@@ -686,6 +686,25 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 \begin{lem}[Cartan’s criterion for $\gl(V)$]
  Let $V$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a Lie subalgebra. Then $\g$ is solvable if and only if $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
 \end{lem}
+\begin{proof}
+ Suppose that $\g$ is solvable. Then by Lie’s theorem there exists a basis of $V$ with respect to which $\g$ is represented by upper triangular matrices. Then $[\g,\g]$ is represented by strictly upper triangular matrices, which is why $xy$ is also represented by a stricly upper triangular matrix for every $x \in \g$ and $y \in [\g,\g]$. Hence $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
+ 
+ Now suppose that $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$. Set $A \coloneqq [\g,\g]$, $B \coloneqq \g$ and
+ \[
+  T \coloneqq \{x \in \gl(V) \mid \ad(x)(B) \subseteq A\}.
+ \]
+ Let $x \in [\g,\g] \subseteq T$ and $z \in T$. Then $[z,\g] = [z,B] \subseteq A = [\g,\g]$. Writing $x$ as $x = \sum_{i=1}^n [a_i, b_i]$ with $a_i, b_i \in \g$ for every $i = 1, \dotsc, n$ it follows that
+ \begin{align*}
+  \tr(xz)
+  &= \sum_{i=1}^n \tr([a_i, b_i] z)
+  = \sum_{i=1}^n \kappa_{\gl(V)}([a_i, b_i], z) \\
+  &= \sum_{i=1}^n \kappa_{\gl(V)}(a_i, [b_i, z])
+  = \sum_{i=1}^n \tr(a_i \underbrace{[b_i, z]}_{\in [\g,\g]})
+  = 0,
+ \end{align*}
+ where the last step uses the asumption. It follows from Lemma \ref{lem: Cartan's criterion technical lemma} that $x$ is nilpotent. Because $[\g,\g]$ consists of nilpotent elements there exists a basis of $V$ with respect to which $[\g,\g]$ is represented by stricly upper triangular matrices. Hence $[\g,\g]$ is nilpotent und $\g$ therefore solvable.
+\end{proof}
+
 
 
 \begin{thrm}[Cartan’s criterion for solvability]
@@ -694,6 +713,18 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
   \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
  \]
 \end{thrm}
+\begin{proof}
+ Because $Z(\g)$ is a solvable ideal in $\g$ it follows that $\g$ is solvable if and only if $\g/Z(\g) \cong \ad \g \subseteq \gl(\g)$ is solvable. By Cartan’s criterion for $\gl(\g)$ this is the case if and only if
+ \[
+  \tr(xy) = 0 \quad \text{for every $x \in \ad \g$ and $y \in [\ad(\g), \ad(\g)]$}.
+ \]
+ Because $[\ad(\g), \ad(\g)] = \ad([\g,\g])$ and $\tr(\ad(x)\ad(y)) = \kappa(x,y)$ for all $x,y \in \g$ this is equivalent to
+ \[
+  \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
+  \qedhere
+ \]
+\end{proof}
+
 
 
 
