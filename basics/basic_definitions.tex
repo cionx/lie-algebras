@@ -220,6 +220,52 @@
 \end{expl}
 
 
+\begin{defi}
+ If $\g$ is a Lie algebra and $U \subseteq \g$ a linear subspace then
+ \[
+  N_\g(U) \coloneqq \{x \in \g \mid \text{$[x,y] \in \g$ for every $y \in U$}\}
+ \]
+ is called the \emph{normalizer} of $U$ in $\g$ and
+ \[
+  Z_\g(U) \coloneqq \{x \in \g \mid \text{$[x,y] = 0$ for every $y \in U$}\}
+ \]
+ is called the \emph{centralizer} of $U$ in $\g$. For a single element $x \in \g$ the centralizer of $x$ in $\g$ defined as
+ \[
+  Z_\g(x) \coloneqq \{y \in \g \mid [x,y] = 0\}.
+ \]
+\end{defi}
+
+
+\begin{lem}
+ Let $\g$ be a Lie algebra and $U \subseteq \g$ a linear subspace. Then $N_\g(U)$ and $Z_\g(U)$ are Lie subalgebras of $\g$. $Z_\g(x)$ is a Lie subalgebra of $\g$ for every $x \in \g$.
+\end{lem}
+\begin{proof}
+ If $x,y \in N_\g(U)$ then by the Jacobi identity it follows for every $z \in U$ that
+ \[
+  [[x,y],z]
+  = -[z,[x,y]]
+  = -[[z,x],y]-[x,[z,y]]
+  = \in \h
+ \]
+ and therefore $[x,y] \in N_\g(U)$. In the same way it follows for all $x,y \in \g$ and $z \in U$ that
+ \[
+  [[x,y],z]
+  = -[[z,x],y]-[x,[z,y]]
+  = 0
+ \]
+ and therefore $[x,y] \in Z_\g(U)$. For every $x \in \g$ the span $kx \subseteq \g$ is a linear subspace with $Z_\g(x) = Z_\g(kx)$, which is why $Z_\g(x)$ is a Lie subalgebra of $\g$.
+\end{proof}
+
+
+\begin{rem}
+ Let $\g$ be a Lie algebra and $L \subseteq \g$ a linear subspace. Then $L$ is a Lie subalgebra if and only if $L \subseteq N_\g(L)$. Then $L$ is not only contained in $N_\g(L)$ but $N_\g(L)$ is the maximal subalgebra of $\g$ which contains $L$ as an ideal. In particular $L$ is an ideal in $\g$ if and only if $N_\g(L) = \g$.
+\end{rem}
+
+
+
+
+
+
 
 
 
