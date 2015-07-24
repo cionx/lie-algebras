@@ -337,9 +337,17 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 \begin{defi}
  Let $\g$ be a Lie algebra over an arbitrary field $k$. A bilinear form $\beta \colon \g \times \g \to k$ is called \emph{associative} if
  \[
-  \beta([x,y],z) = \beta(x,[y,z])
-  \quad \text{for all $x,y,z \in \g$}.
+  \beta(x,[y,z]) = \beta([x,y],z) \quad \text{for all $x,y,z \in \g$}.
  \]
+\end{defi}
+
+
+\begin{defi}
+ Let $V$ be a vector space and $\beta \colon \g \times \g \to k$ a symmetric bilinear form. Then
+ \[
+  \rad \beta \coloneqq \{x \in V \mid \text{$\beta(x,y) = 0$ for every $y \in V$}\}
+ \]
+ is the \emph{radical} of $\beta$.
 \end{defi}
 
 
@@ -348,23 +356,19 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
  \[
   I^\perp \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in I$}\}
  \]
- is also an ideal in $\g$. In particular
- \[
-  \rad \beta \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in \g$}\} = \g^\perp
- \]
- is an Ideal in $\g$.
+ is also an ideal in $\g$. In particular $\rad \beta = \g^\perp$ is an Ideal in $\g$.
 \end{lem}
 \begin{proof}
- For $z \in g$ and $y \in I^\perp$ it follows for every $x \in I$ that
+ For $z \in g$ and $y \in I^\perp$ it follows for every $x \in I$ that $[x,y] = 0$ and thus
  \[
-  \beta(x,[y,z]) = \beta(\underbrace{[x,y]}_{=0},z) = 0
+  \beta(x,[y,z]) = \beta([x,y],z) = 0.
+  \qedhere
  \]
- and thus $[y,z] \in I^\perp$.
 \end{proof}
 
 
 \begin{rem}
- The proof of Lemma \ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) As the main example of an associative bilinear form will be the Killing form, which is symmetric, this simplification will pose no problems to us.
+ The proof of Lemma \ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) The main example of an associative bilinear form will be the Killing form, which is symmetric, so this assumption will pose no problems to us.
 \end{rem}
 
 
