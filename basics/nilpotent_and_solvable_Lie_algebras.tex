@@ -231,8 +231,12 @@ From now on we will not only require \emph{all} fields we work with to be algebr
 
 
 \begin{lem}[Invariance Lemma]
- Let $\g \subseteq \gl(V)$ a Lie subalgebra for a finite dimensional $k$-vector space $V$ and $I \subideal \g$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with weight $\lambda$. Then $V_\lambda$ is $\g$-invariant, i.e.\ $x$-invariant for every $x \in \g$.
+ Let $\g \subseteq \gl(V)$ be a Lie subalgebra for a finite dimensional $k$-vector space $V$ and $I \subideal \g$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with weight $\lambda$. Then $V_\lambda$ is $\g$-invariant, i.e.\ $x$-invariant for every $x \in \g$.
 \end{lem}
+\begin{proof}
+ 
+\end{proof}
+
 
 
 \begin{thrm}[Lie]
@@ -321,7 +325,7 @@ From now on we will not only require \emph{all} fields we work with to be algebr
 \end{rem}
 
 
-\begin{thrm}
+\begin{thrm}\label{thrm: concrete Jordan decomposition}
  Let $V$ be a finite dimensional $k$-vector space and $x \in \End_k(V)$.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -340,6 +344,20 @@ From now on we will not only require \emph{all} fields we work with to be algebr
    If $A \subseteq B \subseteq V$ are linear subspaces with $x(B) \subseteq A$ then also $x_s(B) \subseteq A$ and $x_n(B) \subseteq A$.
  \end{enumerate}
 \end{thrm}
+
+
+\begin{rem}\label{rem: concrete Jordan decomposition for matrices}
+ An analogeous statement of Theorem \ref{thrm: concrete Jordan decomposition} can be shown for $\Mat_n(k)$ instead of $\End_k(V)$. More precisely: Every matrix $x \in \Mat_n(k)$ can be uniquely decomposed into $x = x_s + x_n$ such that $x_s$ is semisimple, $x_n$ is nilpotent and $x_s$ and $x_n$ commute. Both $x_s$ and $x_n$ are polynomials without constant term in $x$, so any matrix in $\Mat_n(k)$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$. If $A \subseteq B \subseteq k^n$ are linear subspaces such that $B$ is carried into $A$ by left multiplication with $x$, then the same goes for $x_s$ and $x_n$.
+\end{rem}
+
+
+\begin{defi}
+ Let $V$ be an $n$-dimensional vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(k)$). Then the decomposition $x = x_s + x_n$ from Theorem \ref{thrm: concrete Jordan decomposition} (resp.\ the decomposition $y = y_s + y_n$ from Remark \ref{rem: concrete Jordan decomposition for matrices}) is called the \emph{concrete Jordandecomposition} of $x$ (resp.\ $y$). The element $x_s$ (resp.\ $y_s$) is called the \emph{semisimple part} of $x$ (resp.\ $y$) and the element $x_n$ (resp.\ $y_n$) is called the \emph{nilpotent part} of $x$ (resp.\ $y$).
+\end{defi}
+
+
+
+
 
 
 
