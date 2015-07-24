@@ -635,6 +635,52 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
  \]
  If $x \in T$ and $\tr(xz) = 0$ for every $z \in T$ then $x$ is nilpotent.
 \end{lem}
+\begin{proof}
+ Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ by Corollary \ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem \ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
+ 
+ Let $(v_1, \dotsc, v_n)$ be an ordered basis of $V$ with respect to which $x$ is in Jordan normal form. Then with respect to this basis $x_s$ is diagonal and $x_n$ is strictly upper triangular. Let $\lambda_i \in k$ with $x_s(v_i) = \lambda_i v_i$ for every $i = 1, \dotsc, n$ and set
+ \[
+  E \coloneqq \vspan_\Q(\lambda_1, \dotsc, \lambda_n) \subseteq k.
+ \]
+ To show that $x$ is nilpotent it sufficies to show that $x_s = 0$, which is equivalent to $\lambda_i = 0$ for every $i = 1, \dotsc, n$. As this is the same as $E = 0$ it is enough to show that $f = 0$ for every $\Q$-linear map $f \colon E \to \Q$. For the rest of the proof we fix such an $f$. Let $z \colon V \to V$ be defined by
+ \[
+  z(v_i) \coloneqq f(\lambda_i) v_i \quad \text{for every $i = 1, \dotsc, n$}.
+ \]
+ 
+ \begin{claim*}
+  $z \in T$.
+ \end{claim*}
+ \begin{proof}
+  For all $i,j = 1, \dotsc, n$ let $e_{ij} \in \gl(V)$ with
+  \[
+   e_{ij}(v_k) = \delta_{jk} v_i \quad \text{for every $k = 1, \dotsc, n$}.
+  \]
+  Then $(e_{ij})_{i,j = 1, \dotsc, n}$ is a $k$-basis of $\gl(V)$. As already seen in the proof of Corollary \ref{cor: concrete Jordan decomposition compatible with adjoint representation} this is a basis of eigenvectors of $\ad(x_s)$ where $e_{ij}$ is an eigenvector of $\ad(x_s)$ with respect to the eigenvalue $\lambda_i - \lambda_j$. Because $(v_1, \dotsc, v_n)$ is also a basis of $V$ consisting of eigenvalues of $z$, where $v_i$ belongs to the eigenvalue $f(\lambda_i)$, it follows in the same way, that $e_{ij}$ is an eigenvector of $\ad(z)$ with respect to the eigenvalue
+  \[
+   \mu_{ij} \coloneqq f(\lambda_i) - f(\lambda_j) = f(\lambda_i - \lambda_j)
+  \]
+  for all $i,j = 1, \dotsc, n$. In particular it follows that if $e_{ij}$ and $e_{i'j'}$ have the same eigenvalue with respect to $\ad(x_s)$, i.e.\ if $\lambda_i - \lambda_j = \lambda_{i'} - \lambda_{j'}$ then the same goes holds with respect to $\ad(z)$. Hence if $y \in \gl(V)$ is an eigenvector of $\ad(x_s)$ with respect to the eigenvalue $\lambda$ then $y$ is an eigenvector of $\ad(z)$ with respect to the eigenvalue $f(y)$.
+  
+  As $\ad(x)(B) \subseteq A \subseteq B$ there exists a decomposition $B = A \oplus N$ into linear subspaces with $A$ being $\ad(x)$-invariant and thus decomposing into $\ad(x)$-eigenspaces and $N \subseteq \ker \ad(x)$. Then by the previous observations it follows that $A$ also decomposes into $\ad(z)$-eigenspaces and that $\ad(z)(N) = 0$. Hence $\ad(z)(B) \subseteq A$ and thus $z \in T$.
+ \end{proof}
+ 
+ Now \mbox{$\tr(x z) = \tr(x_s z) + \tr(x_n z)$}. As $x_s$ and $z$ are both diagonal with respect to the basis $(v_1, \dotsc, v_n)$ it follows that $\tr(x_s z) = \sum_{i=1}^n f(\lambda_i) \lambda_i$, and as $x_n z$ is also stricly upper triangular it also follows that $\tr(x_n z) = 0$. Together with $z \in T$ this results in
+ \[
+  0 = \tr(xz) = \sum_{i=1}^n f(\lambda_i) \lambda_i
+ \]
+ Because $f(\lambda_i) \in \Q$ and $\lambda_i \in E$ for every $i = 1, \dotsc, n$ applying $f$ to this equation results in
+ \[
+  0 = \sum_{i=1}^n f(\lambda_i)^2.
+ \]
+ It follows that $f(\lambda_i) = 0$ for every $i = 1, \dotsc, n$ and thus $f = 0$.
+\end{proof}
+
+
+\begin{rem}
+ The proof of Lemma \ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the one given in \cite[\S 4.3]{Humphreys}.
+ 
+ In the lecture a proof was given for the special case $k = \Cbb$. But since I have some trouble understanding the details it is not included here (yet).
+\end{rem}
 
 
 \begin{lem}[Cartan’s criterion for $\gl(V)$]
