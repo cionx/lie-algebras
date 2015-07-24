@@ -139,7 +139,7 @@ It is clear that every nilpotent Lie algebra is also solvable.
 \end{rem}
 
 
-\begin{cor}
+\begin{cor}\label{cor: sum of solvable ideals is solvable}
  Let $\g$ be a Lie algebra and $I, J \subideal \g$ two solvable ideal. Then $I + J$ is also solvable.
 \end{cor}
 \begin{proof}
@@ -149,6 +149,13 @@ It is clear that every nilpotent Lie algebra is also solvable.
  \]
  both $I$ and $(I+J)/I \cong J/(I \cap J)$ are solvable. Hence $I+J$ is solvable by Corollary~\ref{cor: solvable via ses}.
 \end{proof}
+
+
+\begin{defi}
+ Let $\g$ be a finite dimenisonal Lie algebra. It follows from Corollary \ref{cor: sum of solvable ideals is solvable} that $\g$ contains a unique maximal solvable ideal. This ideal is called the \emph{radical} of $\g$ and is denoted by $\rad \g$.
+\end{defi}
+
+
 
 
 
@@ -446,8 +453,6 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{rem}
 
 
-
-
 \begin{defi}
  Let $\g$ be a finite dimensional Lie algebra over an arbitrary field $k$. The \emph{Killing form} of $\g$ is the bilinear form
  \[
@@ -649,15 +654,6 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 
 
 
-
-
-
-
-
-
-
-
-
 \subsubsection{Cartan’s Criterion}
 
 
@@ -669,7 +665,7 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
  If $x \in T$ and $\tr(xz) = 0$ for every $z \in T$ then $x$ is nilpotent.
 \end{lem}
 \begin{proof}
- Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ by Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem~\ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
+ Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then the concrete Jordan decomposition of $\ad(x)$ is given by $\ad(x) = \ad(x_s) + \ad(x_n)$ by Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem~\ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
  
  Let $(v_1, \dotsc, v_n)$ be an ordered basis of $V$ with respect to which $x$ is in Jordan normal form. Then with respect to this basis $x_s$ is diagonal and $x_n$ is strictly upper triangular. Let $\lambda_i \in k$ with $x_s(v_i) = \lambda_i v_i$ for every $i = 1, \dotsc, n$ and set
  \[
@@ -710,7 +706,7 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 
 
 \begin{rem}
- The proof of Lemma~\ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the one given in \cite[\S 4.3]{Humphreys}.
+ The proof of Lemma~\ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the proof given in \cite[\S 4.3]{Humphreys}.
  
  In the lecture a proof was given for the special case $k = \Cbb$. But since I have some trouble understanding the details it is not included here (yet).
 \end{rem}
