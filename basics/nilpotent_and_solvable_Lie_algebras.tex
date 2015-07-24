@@ -282,17 +282,31 @@ From now on we will not only require \emph{all} fields we work with to be algebr
 \end{defi}
 
 
-\begin{lem}
+\begin{lem}\label{lem: orthogonal complement of an ideal is again an ideal}
  Let $\g$ be a Lie algebra over an arbitrary field $k$ and \mbox{$\beta \colon \g \times \g \to k$} a symmetric and associative bilinear form. For any ideal $I \subideal \g$ the orthogonal complement
  \[
   I^\perp \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in I$}\}
  \]
- is also an ideal in $\g$. In particular is
+ is also an ideal in $\g$. In particular
  \[
   \rad \beta \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in \g$}\} = \g^\perp
  \]
- an Ideal in $\g$.
+ is an Ideal in $\g$.
 \end{lem}
+\begin{proof}
+ For $z \in g$ and $y \in I^\perp$ it follows for every $x \in I$ that
+ \[
+  \beta(x,[y,z]) = \beta(\underbrace{[x,y]}_{=0},z) = 0
+ \]
+ and thus $[y,z] \in I^\perp$.
+\end{proof}
+
+
+\begin{rem}
+ The proof of Lemma \ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) As the main example of an associative bilinear form will be the Killing form, which is symmetric, this simplification will pose no problems to us.
+\end{rem}
+
+
 
 
 \begin{defi}
@@ -306,9 +320,43 @@ From now on we will not only require \emph{all} fields we work with to be algebr
 \end{defi}
 
 
-\begin{lem}
- The Killing form $\kappa$ of an finite dimensional Lie algebra $\g$ over an arbitrary field $k$ is symmetric and associative.
+\begin{lem}\label{lem: killing form is associative and symmetric}
+ The Killing form $\kappa$ of an finite dimensional Lie algebra $\g$ over an arbitrary field $k$ is associative and symmetric.
 \end{lem}
+\begin{proof}
+ Recall from linear algebra that for any finite dimensional $k$-vector space $V$ and all endomorphisms $f_1, \dotsc, f_n \in \End_k(V)$
+ \[
+  \tr(f_1 \dotsm f_n) = \tr(f_2 \dotsm f_n f_1).
+ \]
+ For all $x,y \in \g$ it follows that
+ \[
+  \kappa(x,y) = \tr(\ad(x) \ad(y)) = \tr(\ad(y) \ad(x)) = \kappa(y,x),
+ \]
+ so $\kappa$ is symmetric. For all $x,y,z$ it follows that
+ \begin{align*}
+  \kappa(x,[y,z])
+  &= \tr(\ad(x) \ad([y,z]))
+  = \tr(\ad(x) [\ad(y), \ad(z)]) \\
+  &= \tr(\ad(x) (\ad(y) \ad(z) - \ad(z) \ad(y))) \\
+  &= \tr(\ad(x) \ad(y) \ad(z)) - \tr(\ad(x) \ad(z) \ad(y)) \\
+  &= \tr(\ad(x) \ad(y) \ad(z)) - \tr(\ad(y) \ad(x) \ad(z)) \\
+  &= \tr((\ad(x) \ad(y)- \ad(y) \ad(x)) \ad(z)) \\
+  &= \tr([\ad(x), \ad(y)] \ad(z))
+  = \tr(\ad([x,y]) \ad(z))
+  = \kappa([x,y],z).
+ \qedhere
+ \end{align*}
+\end{proof}
+
+
+\begin{rem}
+ If $\g$ is a Lie algebra and $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ then the corresponding trace form $\phi_\rho$ is defined as
+ \[
+  \phi_\rho(x,y) \coloneqq \tr(\rho(x) \rho(y)) \quad \text{for all $x,y \in \g$}.
+ \]
+ Replacing $\ad$ with $\rho$ in the proof of Lemma \ref{lem: killing form is associative and symmetric} shows that $\phi_\rho$ is an associative and symmetric bilinear form on $\g$. The Killing form $\kappa$ of $\g$ is then just the special case $\kappa = \phi_{\ad}$.
+\end{rem}
+
 
 
 
