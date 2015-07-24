@@ -126,7 +126,7 @@ It is clear that every nilpotent Lie algebra is also solvable.
 From now on \emph{all} fields over which we work will be assumed to be algebraically closed, unless otherwise specified.
 
 
-If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpotent endomorphism then $0$ is the only eigenvalue of $x$ (and occurs with multiplicity $n$) (here we use that $k$ is algebraically closed). Hence there exists an eigenvector $v \in V$, $v \neq 0$ with $x(v) = 0$. The following proposition generalizes this observations for linear Lie algebras consisting of nilpotent endomorphisms.
+If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpotent endomorphism then $0$ is the only eigenvalue of $x$ (and occurs with multiplicity $n$) (here it is used that $k$ is algebraically closed). Hence there exists an eigenvector $v \in V$, $v \neq 0$ with $x(v) = 0$. The following proposition generalizes this observations for linear Lie algebras consisting of nilpotent endomorphisms.
 
 
 \begin{prop}\label{prop: stuff for engels theorem}
@@ -344,6 +344,55 @@ From now on we will not only require \emph{all} fields we work with to be algebr
    If $A \subseteq B \subseteq V$ are linear subspaces with $x(B) \subseteq A$ then also $x_s(B) \subseteq A$ and $x_n(B) \subseteq A$.
  \end{enumerate}
 \end{thrm}
+\begin{proof}
+ Let $\chi(T)$ be the characteristic polynomial of $x$ with $\chi(T) = \prod_{i=1}^n (T-\lambda_i)^{m_i}$ where $\lambda_i \neq \lambda_j$ for $i \neq j$. By the chinese reminder theorem the map
+ \begin{equation}\label{eqn: use of chinese reminder theorem}
+  \begin{aligned}
+   k[T]/(\chi) &\longrightarrow \prod_{i=1}^n k[T]/((T-\lambda_i)^{m_i}),\\
+   F + (\chi) &\longmapsto (F+((T-\lambda_1)^{m_1}), \dotsc, F+(((T-\lambda_n)^{m_n}))
+  \end{aligned}
+ \end{equation}
+ is surjective. Thus there exists some polynomial $P \in k[T]$ with
+ \begin{equation}\label{eqn: congruences of P}
+  P(T) \equiv \lambda_i \mod (T-\lambda_i)^{m_i} \quad \text{for ever $i = 1, \dotsc, n$}.
+ \end{equation}
+ 
+ We can also assume that $P(0) = 0$. If $\lambda_i = 0$ for some $i$ then this follows directly from \eqref{eqn: congruences of P}. Otherwise the polynomials $(T-\lambda_1)^{m_1}$, \dots, $(T-\lambda_n)^{m_n}$, $T$ are pairwise coprime, so by replacing $\chi(T)$ with $\tilde{\chi}(T) \coloneqq \chi(T) T$ in \eqref{eqn: use of chinese reminder theorem} results in a polynomial $\tilde{P}$ which does not only satisfy \eqref{eqn: congruences of P} (with $P$ replaced by $\tilde{P}$) but also $\tilde{P} \bmod T = 0$.
+ 
+ Now let $Q(T) \coloneqq T - P(T)$ as well as $x_s \coloneqq P(x)$ and $x_n \coloneqq Q(x)$. Then $x = x_s + x_n$ and $x_s$ and $x_n$ commute, as both are polynomials in $x$. For every $i = 1, \dotsc, n$ let
+ \[
+  V_i \coloneqq \ker (x-\lambda_i)^{m_i}
+ \]
+ be the generalized eigenspace of $x$ with respect to the eigenvalue $\lambda_i$. Is is known from linear algebra that $V = \bigoplus_{i=1}^n V_i$.
+ 
+ It follows from \eqref{eqn: use of chinese reminder theorem} that for every $i = 1, \dotsc, n$ there exists some polynomial \mbox{$P_i \in k[T]$} with
+ \[
+  P(T) = \lambda_i + P_i(T) (T-\lambda_i)^{m_i},
+ \]
+ from which follows for every $v \in V_i$ that
+ \[
+  x_s(v)
+  = (\lambda_i \id_V + P_i(x)(x-\lambda_i)^{m_i})(v)
+  = \lambda_i v + P_i(x)(\underbrace{(x-\lambda_i)^{m_i}(v)}_{=0})
+  = \lambda_i v.
+ \]
+ Hence $V_i$ is $x_s$-invariant with $x_s|_{V_i} = \lambda_i \id_{V_i}$ for every $i = 1, \dotsc, n$. As $V = \bigoplus_{i=1}^n V_i$ this shows that $x_s$ is semisimple and $V_i$ is precisely the eigenspace of $x_s$ to the eigenvalue $\lambda_i$.
+ 
+ To see that $x_s$ is nilpotent notice that for every $i = 1, \dotsc, n$ and $v \in V_i$
+ \[
+  x_n(v) = x(v) - x_s(v) = x(v) - \lambda_i (v) = (x - \lambda_i \id_V)(v).
+ \]
+ Hence $V_i$ is $x_n$-invariant with $x_n|_{V_i} = x - \lambda_i \id_{V_i}$ for every $i = 1, \dotsc, n$. By definition of $V_i$ it follows that $x_n|_{V_i}$ is nilpotent for every $i = 1, \dotsc, n$. Because $V = \bigoplus_{i=1}^n V_i$ it follows that $x_n$ is nilpotent.
+ 
+ This shows the existence of the claimed decomposition. For the uniqueness let $y_s, y_n \in \End_k(V)$ be any two endomorphisms with $x = y_s + y_n$ where $y_s$ is semisimple, $y_n$ is nilpotent and $y_s$ and $y_n$ commute. As $y_s$ and $y_n$ commute it follows that each of them commutes with $x = y_s + y_n$. Because $x_s$ and $x_n$ are polynomials in $x$ it follows from this that $y_s$ and $y_n$ both commute with $x_s$ and $x_n$. Hence $x_s$, $x_n$, $y_s$ and $y_n$ are pairwise commuting. In particular $x_s$ and $y_s$ are simultaneously diagonalizable which is why $x_s - y_s$ is also semisimple. As $x_n$ and $y_n$ commute and are both nilpotent it also follows that $y_n - x_n$ is nilpotent. But from $x_s + x_n = x = y_s + y_n$ it follows that
+ \[
+  \underbrace{x_s - y_s}_{\text{semisimple}} = \underbrace{y_n - x_n}_{\text{nilpotent}}.
+ \]
+ Hence $x_s - y_s = y_n - x_n = 0$.
+ 
+ All other statements of the theorem directly follow from the construction of $x_s$ and $x_n$ and the fact that they are polynomials without constant term in $x$.
+\end{proof}
+
 
 
 \begin{rem}\label{rem: concrete Jordan decomposition for matrices}
