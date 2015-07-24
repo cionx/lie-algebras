@@ -200,9 +200,6 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 \end{proof}
 
 
-
-
-
 \begin{thrm}[Engel]
  Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is nilpotent if and only if all its elements are $\ad$-nilpotent.
 \end{thrm}
@@ -211,6 +208,11 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
  
  On the other hand suppose that $\g$ consists of $\ad$-nilpotent elemenents. If $\g = Z(\g)$ then $\g$ is abelian and hence nilpotent, so it sufficies to show the statement under the additional assumption that $Z(\g) \subsetneq \g$. Because $\g/Z(\g) \cong \ad \g$ is a Lie subalgebra of $\gl(\g)$ consisting of nilpotent Elemenents it follows from Proposition \ref{prop: stuff for Engels theorem} that $\g/Z(\g)$ is isomorphic to a Lie subalgebra of $\nl_n(k)$ for $n = \dim \g/Z(\g) \geq 1$. Because $\nl_n(k)$ is nilpotent the same goes for $\g/Z(\g)$ as seen in Proposition \ref{prop: properties of solvable and nilpotent}.
 \end{proof}
+
+
+\begin{warn}
+ It is not true that every nilpotent Lie-subalgebra $\g \subseteq \gl(V)$ with $V$ being a finite dimensional vector space is represented by upper triangular matrices with respect to some basis of $V$. For example the onedimensional subalgebra $k \id_V \subseteq \gl(V)$ is abelian and hence nilpotent, but with respect to every basis of $V$ represented by $kI \subseteq \gl_n(k)$.
+\end{warn}
 
 
 
@@ -562,7 +564,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 \end{defi}
 
 
-\begin{lem}
+\begin{lem}\label{lem: ss and nilpotent implies ad-ss and ad-nilpotent}
  Let $\g \subseteq \gl(V)$ be a Lie subalgebra for some finite dimensional vector space $V$ (resp.\ $\g \subseteq \gl_n(k)$) and $x \in \g$.
  \begin{enumerate}
   \item
@@ -603,6 +605,16 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
+\begin{cor}\label{cor: concrete Jordan decomposition compatible with adjoint representation}
+ Let $\g \subseteq \gl(V)$ be a Lie subalgebra for a finite dimensional vector space $V$ (resp.\ $\g = \gl_n(k)$). If $x \in \g$ has the Jordan decomposition $x = x_s + x_n$ then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the Jordan decomposition of $\ad(x)$.
+\end{cor}
+\begin{proof}
+ As $x_s$ is semisimple the same goes for $\ad(x_s)$ and as $x_n$ is nilpotent the same goes for $\ad(x_n)$, each following from Lemma \ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent}. As $x_s$ and $x_n$ commute so do $\ad(x_n)$ and $\ad(x_s)$ because $\ad$ is a homomorphism of Lie algebras.
+\end{proof}
+
+
+
+
 
 
 
@@ -616,7 +628,7 @@ As a generalization of Proposition \ref{prop: common eigenvector for nilpotent L
 \subsubsection{Cartan’s Criterion}
 
 
-\begin{lem}
+\begin{lem}\label{lem: Cartan's criterion technical lemma}
  Let $V$ be a finite dimensional $k$-vector space. Let $A \subseteq B \subseteq \gl(V)$ be linear subspaces and let
  \[
   T \coloneqq \{z \in \gl(V) \mid \ad(z)(B) \subseteq A\}.
