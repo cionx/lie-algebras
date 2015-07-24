@@ -221,20 +221,60 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 
 
 \begin{defi}
- Let $V$ be a $k$-vector space and $\g \subseteq \gl(V)$ a Lie subalgebra. For $\lambda \in \g^*$ is
+ Let $V$ be a representation of a Lie algebra $\g$. For $\lambda \in \g^*$ the linear subspace space
  \[
-  V_\lambda \coloneqq \{v \in V \mid \text{$x(v) = \lambda x$ for every $x \in \g$}\}
+  V_\lambda \coloneqq \{v \in V \mid \text{$x.v = \lambda x$ for every $x \in \g$}\}
  \]
- the \emph{$\g$-weight space} of $V$ with \emph{weight} $\lambda$.
+ is called the \emph{$\g$-weight space} of $V$ with \emph{weight} $\lambda$.
 \end{defi}
 
 
 
 \begin{lem}[Invariance Lemma]
- Let $\g \subseteq \gl(V)$ be a Lie subalgebra for a finite dimensional $k$-vector space $V$ and $I \subideal \g$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with weight $\lambda$. Then $V_\lambda$ is $\g$-invariant, i.e.\ $x$-invariant for every $x \in \g$.
+ Let $V$ be a finite dimensional representation of a Lie algebra $\g$ and $I \subideal \g$ an ideal. Then $V$ is also a representation of $I$ by restriction of the action of $\g$ on $V$ to $I$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with weight $\lambda$. Then $V_\lambda$ is a subrepresentation of $\g$.
 \end{lem}
 \begin{proof}
+ For $v \in V$ and $x_1, \dotsc, x_n \in \g$ we will write
+ \[
+  x_1 \dotsm x_n v \coloneqq x_1.(\dotsc.(x_n.v)).
+ \]
+ If $V_\lambda = 0$ the statement is clear, so for this proof we fix some $\lambda \in I^*$ with $V_\lambda \neq 0$.
  
+ That $V_\lambda$ is a subrepresentation of $\g$ means that $yv \in V_\lambda$ for every $y \in \g$ and $v \in V_\lambda$, which is equivalent to $xyv = \lambda(x)yv$for every $x \in I$, $y \in \g$ and $v \in V_\lambda$. Because
+ \[
+  xyv = [x,y]v + yxv = \lambda([x,y])v + \lambda(x)yv \quad \text{for every $x \in I$, $y \in \g$ and $v \in V_\lambda$}
+ \]
+ this is equivalent to $\lambda([x,y]) = 0$ for every $x \in I$ and $y \in \g$.
+ 
+ Until further notice we fix some $y \in \g$ and $v \in V_\lambda$ with $v \neq 0$. As $V$ is finite dimensional there exists some maximal $n \geq 1$ such that $v$, $yv$, \dots, $y^n v$ are linearly independent. Let
+ \[
+  W_i \coloneqq \vspan_k(v, yv, \dotsc, y^i v) \quad \text{for every $i = 0, \dotsc, n$}.
+ \]
+ Because $v$, $yv$, \dots, $y^n v$, $y^{n+1} v$ are linearly dependent it follows that $W_n$ is invariant under the action of $y$.
+ 
+ \begin{claim*}
+  The linear subspace $W_i$ is for every $i = 0, \dotsc, n$ a subrepresentation of $I$. With respect to the basis $w$, $yw$, \dots, $y^i w$ of $W_i$ the action of $x \in I$ is represented by an upper triangular matrix where every diagonal entry is $\lambda(x)$.
+ \end{claim*}
+ \begin{proof}
+  The claim can be proven by induction over $i$. As $W_0 = kv$ with $xv = \lambda(x)v$ for every $x \in I$ the claim holds for $i = 0$. Suppose that $i < n$ and that the claim holds for $W_0$, \dots, $W_i$. If $x \in I$ then also $[x,y] \in I$ and therefore
+  \[
+   x y^{i+1} v
+   = \underbrace{[x,y] y^i v}_{\mathclap{\substack{\in W_i \\ \text{by induction}}}} + y x y^i v
+   \equiv y x y^i v
+   \mod W_i.
+  \]
+  By induction it is not only $x y^i v \in W_i$ but also $x y^i v + W_{i-1} = \lambda(x) y^i v + W_{i-1}$. Therefore
+  \[
+   y x y^i v \equiv \lambda(x) y^{i+1} v \mod W_i.
+  \]
+  This shows the claim for $W_{i+1}$.
+ \end{proof}
+ 
+ Let $x \in I$. As $[x,y] \in I$ it follows from the previous claim that the $(n+1)$-dimensional linear subspace $W_n$ is invariant under the action of $[x,y]$, which is given by an endomorphism $\phi_{[x,y]} \in \End_k(W_n)$, and that $\phi_{[x,y]}$ is represented by an upper triangular matrix for which all diagonal entries are $\lambda([x,y])$. It follows that in particular
+ \begin{equation}\label{eqn: invariance lemma zero trace}
+  \tr \phi_{[x,y]} = (n+1) \lambda([x,y])
+ \end{equation}
+ On the other hand $W_n$ is invariant under the action of both $x$ (by the claim) and $y$, which act by endomorphisms $\phi_x, \phi_y \in \End_k(V)$. As $V$ is a representation of the Lie algebra $\g$ it follows that $\phi_{[x,y]} = [\phi_x, \phi_y]$ and thus $\tr \phi_{[x,y]} = 0$. Together with \eqref{eqn: invariance lemma zero trace} it follows that $\lambda([x,y]) = 0$.
 \end{proof}
 
 
