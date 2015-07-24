@@ -223,7 +223,7 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 
 
 \begin{defi}
- Let $V$ be a representation of a Lie algebra $\g$. For $\lambda \in \g^*$ the linear subspace space
+ Let $V$ be a representation of a Lie algebra $\g$. For $\lambda \in \g^*$ the linear subspace
  \[
   V_\lambda \coloneqq \{v \in V \mid \text{$x.v = \lambda x$ for every $x \in \g$}\}
  \]
@@ -242,7 +242,7 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
  \]
  If $V_\lambda = 0$ the statement is clear, so for this proof we fix some $\lambda \in I^*$ with $V_\lambda \neq 0$.
  
- That $V_\lambda$ is a subrepresentation of $\g$ means that $yv \in V_\lambda$ for every $y \in \g$ and $v \in V_\lambda$, which is equivalent to $xyv = \lambda(x)yv$for every $x \in I$, $y \in \g$ and $v \in V_\lambda$. Because
+ That $V_\lambda$ is a subrepresentation of $\g$ means that $yv \in V_\lambda$ for every $y \in \g$ and $v \in V_\lambda$, which is equivalent to $xyv = \lambda(x)yv$ for every $x \in I$, $y \in \g$ and $v \in V_\lambda$. Because
  \[
   xyv = [x,y]v + yxv = \lambda([x,y])v + \lambda(x)yv \quad \text{for every $x \in I$, $y \in \g$ and $v \in V_\lambda$}
  \]
@@ -280,12 +280,47 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 \end{proof}
 
 
+As a generalization of Proposition \ref{prop: common eigenvector for nilpotent Lie algebras} we have the following result about solvable linear Lie algebras.
 
-\begin{thrm}[Lie]
- Let $V \neq 0$ be a finite dimensional $k$-vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a solvable Lie subalgebra.
+
+\begin{thrm}[Lie]\label{thrm: Lie’s theorem}
+ Let $V \neq 0$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a solvable Lie subalgebra. Then there exists a common eigenvector for $\g$, i.e.\ some $v \in V$, $v \neq 0$ with $x(v) \in k v$ for every $x \in \g$.
+\end{thrm}
+\begin{proof}
+ The statement can be shown by induction over $\dim \g$. If $\dim \g = 0$ then $\g = 0$ and any $v \in V$ with $v \neq 0$ does the job. If $\dim \g = 1$ then $\g = k x$ for some $x \in \gl(V)$ with $x \neq 0$. Then any eigenvector of $x$ does the job (since $k$ is assumed to be algebraically closed and $V \neq 0$ such an eigenvector does exist).
+ 
+ Suppose that $\dim \g = n \geq 2$ and the statement holds for every smaller dimension. Similarly to the proof of Proposition \ref{prop: common eigenvector for nilpotent Lie algebras} we will split this proof into four consecutive parts:
+ \begin{enumerate}
+  \item
+   Finding an ideal $I \subideal \g$ of codimension $1$.
+  \item
+   Finding common eigenvectors for $I$ by induction.
+  \item
+   Showing that $\g$ stabilizes as nonzero subspace $U \subseteq V$ of such eigenvectors.
+  \item
+   Writing $\g = I \oplus k y$ (as vector spaces) and finding an eigenvector of $y$ in $U$.
+ \end{enumerate}
+ 
+ For the first step notice that $\g$ is nonzero but solvable, so $[\g,\g] \subideal \g$ is a proper ideal. Hence $\g/[\g,\g]$ is nonzero abelian Lie algebra. Therefore there exists a linear subspace $J \subseteq \g/[\g,\g]$ of codimension $1$ and $J$ is an ideal in $\g/[\g,\g]$. Hence the preimage $I = \pi^{-1}(J)$ for the canonical projection $\g \to \g/[\g,\g], x \mapsto x + [\g,\g]$ is an ideal in $\g$ of codimension $1$.
+ 
+ For the second step notice that because $\g$ is solvable the same goes for $I$. So by induction hypothesis there exists a common eigenvector for $I$. Hence there exists some $\lambda \in I^*$ with $U \coloneqq V_\lambda \neq 0$, where we view $V$ as a representation of $\g$ via $x.v = x(v)$ for every $x \in \g$ and $v \in V$.
+ 
+ The third step follows directly from the invariance lemma.
+ 
+ For the fourth step let $y \in \g$ with $\g = I \oplus k y$ (as vector spaces). Since $\g$ stabilizes $U$ this holds in particular for $y$. As $U \neq 0$ it follows that there exists some eigenvector of $y$ inside of $U$, which is then a common eigenvector for $\g$.
+\end{proof}
+
+
+\begin{rem}
+ The proof for Lie’s theorem given in the lecture is basically a less structured version of the one in \cite[\S 4.1]{Humphreys}, from where we took the idea of breaking down the proof into four steps to emphasize the similarities with the proof of Proposition \ref{prop: common eigenvector for nilpotent Lie algebras} (which we found very useful for understanding the structure of the previous proof).
+\end{rem}
+
+
+\begin{prop}\label{prop: common eigenvector for solvable Lie algebras}
+ Let $V \neq 0$ be a finite dimensional $k$-vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a Lie subalgebra. Then the following are equivalent:
  \begin{enumerate}[leftmargin=*]
   \item
-   There exists a common eigenvector for $\g$, i.e.\ some $v \in V$, $v \neq 0$ with $x(v) \in k v$ for every $x \in \g$.
+   $\g$ is solvable.
   \item
    $\g$ stabilizes some complete flag of $V$, i.e.\ there exists a complete flag
    \[
@@ -295,7 +330,7 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
   \item
    There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an upper triangular matrix. In particular $\g$ is isomorphic to a Lie-subalgebra of $\tl_n(k)$ for $n = \dim V$.
  \end{enumerate}
-\end{thrm}
+\end{prop}
 
 
 \begin{cor}
