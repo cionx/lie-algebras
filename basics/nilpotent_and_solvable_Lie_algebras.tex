@@ -117,6 +117,39 @@ It is clear that every nilpotent Lie algebra is also solvable.
 \end{proof}
 
 
+\begin{cor}\label{cor: solvable via ses}
+ If $I \subideal \g$ is an ideal inside a Lie algebra $\g$ then $\g$ is solvable if and only if both $I$ and $\g/I$ are solvable.
+\end{cor}
+\begin{proof}
+ If $\g$ is solvable then $I$ and $\g/I$ are also solvable by Proposition \ref{prop: properties of solvable and nilpotent}. Suppose that on the other hand both $I$ and $\g/I$ are solvable. Then there exists $i_1, i_2 \in \N$ with $(\g/I)^{(i_1)} = 0$ and $I^{i_2} = 0$. Let $\pi \colon \g \to \g/I, x \mapsto x + I$ be the canical projection. Because
+ \[
+  0 = (\g/I)^{(i_1)} = \pi(\g)^{(i_1)} = \pi(\g^{(i_1)})
+ \]
+ it follows that $\g^{(i_1}) \subseteq \ker \pi = I$. Thus
+ \[
+  \g^{(i_1 + i_2)} = (\g^{(i_1)})^{i_2} \subseteq I^{i_2} = 0,
+ \]
+ which shows that $\g$ is solvable.
+\end{proof}
+
+
+\begin{rem}
+ The analogeous statement about nilpotent Lie algebras is not generally true.
+ % TODO: Add explicit example.
+\end{rem}
+
+
+\begin{cor}
+ Let $\g$ be a Lie algebra and $I, J \subideal \g$ two solvable ideal. Then $I + J$ is also solvable.
+\end{cor}
+\begin{proof}
+ Because $J$ is solvable the same goes for $J/(I \cap J)$. Hence in the short exact sequence
+ \[
+  0 \to I \to I+J \to (I+J)/I \to 0
+ \]
+ both $I$ and $(I+J)/I \cong J/(I \cap J)$ are solvable. Hence $I+J$ is solvable by Corollary~\ref{cor: solvable via ses}.
+\end{proof}
+
 
 
 
