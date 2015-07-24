@@ -590,7 +590,7 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
 
 
 \begin{defi}
- Let $\g$ be a $k$-Lie algebra. A \emph{representation} of $\g$ is a $k$-vector space $V$ together with a homomorphism of Lie algebras $\rho \colon \g \to \gl(V)$. $\rho$ is called \emph{faithful} if it is injective.
+ Let $\g$ be a $k$-Lie algebra. A \emph{representation} of $\g$ is a $k$-vector space $V$ together with a homomorphism of Lie algebras $\rho \colon \g \to \gl(V)$. This representation is called \emph{faithful} if $\rho$ is injective. The \emph{dimension} of this representation is the dimension of $V$.
 \end{defi}
 
 
@@ -599,6 +599,7 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
  \[
   x.(y.v) - y.(x.v) = [x,y].v \quad \text{for all $x,y \in \g$ and $v \in V$}.
  \]
+ We will not distinguish between these two concepts and choose whichever is more useful in the given situation.
 \end{rem}
 
 
@@ -704,18 +705,18 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
   \item
    If $V$ and $W$ are finite dimensional representations of $\g$ then the map
    \[
-    V^* \oplus W \to \Hom_k(V,W), \varphi \otimes w \mapsto (v \mapsto \varphi(v) w)
+    V^* \otimes W \to \Hom_k(V,W), \quad \varphi \otimes w \mapsto (v \mapsto \varphi(v) w)
    \]
    is a homomorphism of representations. If $V$ and $W$ are both finite dimensional this is an isomorphism of vector spaces and thus already an isomorphism of representations.
   \item
    If $V^i_j$ with $i = 1, \dotsc, r$ and $j = 1, \dotsc, n_i$ is a collection of representations of $\g$ then the isomorphism of vector spaces
    \begin{align*}
     \bigotimes_{i=1}^r \bigotimes_{j=1}^{n_j} V^{i}_j
-    \to V^1_1 \otimes \dotsb \otimes V^1_{n_1} \otimes \dotsb \otimes V^r_1 \otimes \dotsb \otimes V^{r}_{n_r}, \\
+    &\to V^1_1 \otimes \dotsb \otimes V^1_{n_1} \otimes \dotsb \otimes V^r_1 \otimes \dotsb \otimes V^{r}_{n_r}, \\
     (v^1_1 \otimes \dotsb \otimes v^1_{n_1}) \otimes \dotsb \otimes (v^r_1 \otimes \dotsb \otimes v^r_{n_r})
-    \mapsto v^1_1 \otimes \dotsb \otimes v^1_{n_1} \otimes \dotsb \otimes v^r_1 \otimes \dotsb \otimes v^r_{n_r}
+    &\mapsto v^1_1 \otimes \dotsb \otimes v^1_{n_1} \otimes \dotsb \otimes v^r_1 \otimes \dotsb \otimes v^r_{n_r}
    \end{align*}
-   is already an isomorphism of Lie algebras.
+   is already an isomorphism of representations.
   \item
    If $V_1, \dotsc, V_n$ and $W_1, \dotsc, W_n$ are representations of $\g$ and $f_i \colon V_i \to W_i$ for every $i = 1, \dotsc, n$ a homomorphism of representations it follows that the map
    \[
@@ -725,6 +726,47 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
    is also a homomorphism of representations.
  \end{enumerate}
 \end{prop}
+
+
+\subsubsection{Subrepresentations and irreducible representations}
+
+
+\begin{defi}
+ Let $\g$ be a Lie algebra and $\rho \colon \g \to \gl(V)$ a representation of $\g$. A \emph{subrepresentation} of $V$ is a linear subpace $U \subseteq V$ such that $x.u \in U$ for every $x \in \g$ and $u \in U$. Equivalently $U$ is $\rho(x)$ invariant for every $x \in \g$.
+ 
+ If $(U_i)_{i \in I}$ is a collection of subrepresentations of $\g$ then $V$ is called the \emph{direct sum} of the $U_i$ if $V = \bigoplus_{i \in I} U_i$ as vector spaces.
+\end{defi}
+
+
+\begin{expls}
+ Let $\g$ be a Lie algebra.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   If $V$ is a representation of $\g$ then $0$ and $V$ itself are subrepresentations. These are also called the \emph{trivial subrepresentations}.
+  \item
+   If $V$ is a representation and $(U_i)_{i \in I}$ a collection of subrepresentations $U_i \subseteq V_i$ then $\sum_{i \in I} U_i$ is also a subrepresentation of $V$.
+  \item
+   The subrepresentations of the adjoint representation of $\g$ are precisely the ideals in $\g$.
+ \end{enumerate}
+\end{expls}
+
+
+\begin{defi}
+ A representation $V$ of a Lie algebra $\g$ is called \emph{irreducible} if it has precisely two subrepresentations. Equivalently $V$ is nonzero and has only the trivial subrepresentations.
+ 
+ $V$ is called \emph{decomposable} if there exist non-trivial subrepresentations $U_1, U_2 \subseteq V$ with $V = U_1 \oplus U_2$. Otherwise $V$ is called \emph{indecomposable}.
+\end{defi}
+
+
+\begin{rem}
+ By definition every irreducible representation is also indecomposable. The converse does not hold.
+\end{rem}
+
+
+
+\begin{expl}
+ The adjoint representation of a Lie algebra $\g$ is irreducible if and only if $\g \neq 0$ and $\g$ has no ideals besides $0$ and $\g$ itself. So $\g$ is either the onedimensional abelian Lie algebra or a simple Lie algebra.
+\end{expl}
 
 
 
