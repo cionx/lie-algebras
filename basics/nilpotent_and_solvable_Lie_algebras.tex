@@ -291,7 +291,7 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
    \]
    with $x(V_i) \subseteq V_i$ for every $x \in \g$ and $i = 0, \dotsc, n$.
   \item
-   There exists a basis of $V$ up to which every $x \in \g$ is represented by an upper triangular matrix. In particular $\g$ is isomorphic to a Lie-subalgebra of $\tl_n(k)$ for $n = \dim V$.
+   There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an upper triangular matrix. In particular $\g$ is isomorphic to a Lie-subalgebra of $\tl_n(k)$ for $n = \dim V$.
  \end{enumerate}
 \end{thrm}
 
@@ -299,11 +299,21 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 \begin{cor}
  A finite-dimensional $k$-Lie algebra $\g$ is solvable if and only if $[\g,\g]$ is nilpotent.
 \end{cor}
+\begin{proof}
+ If $[\g,\g]$ is nilpotent then $[\g,\g]^{(i)} = 0$ for some $i \in \N$. Hence $\g^{(i+1)} = [\g,\g]^{(i)} = 0$, so $\g$ is solvable.
+ 
+ Suppose that $\g$ is solvable. Then $\ad \g \cong \g/Z(\g)$ is a solvable subalgebra von $\gl(\g)$. By Lie’s theorem there exists a basis of $\g$ with respect to which $\ad x$ is represented by an upper triangular matrix for each $x \in \g$. As $\ad$ is an homomorphism of Lie algebras it follows that with respect to this basis $\ad(x)$ is represented by a strictly upper triangular matrix for every $x \in [\g,\g]$. Hence every $x \in [\g,\g]$ is $\ad$-nilpotent, and therefore also $\ad_{[\g,\g]}$-nilpotent. By Engel’s theorem $[\g,\g]$ is nilpotent.
+\end{proof}
 
 
-\begin{cor}
+\begin{cor}\label{cor: irreducible representations of solvable Lie algebras are onedimenisonal}
  Every irreducible representation of a solvable Lie algebra $\g$ over $k$ is onedimensional.
 \end{cor}
+\begin{proof}
+ Let $\rho \colon \g \to \gl(V)$ be an irreducible representation of $\g$, and therefore in particular $V \neq 0$. Then $\im \rho \subseteq \gl(V)$ is also solvable and by Lie’s theorem there exists a common eigenvector $v \in V$, $v \neq 0$ for $\im \rho$. Because $x.v = \rho(x)(v) \in kv$ for every $x \in \g$ it follows that the onedimensional linear subspace $kv \subseteq V$ is a nonzero subrepresentation of $V$. Because $V$ is irreducible it follows that $V = kv$.
+\end{proof}
+
+
 
 
 
