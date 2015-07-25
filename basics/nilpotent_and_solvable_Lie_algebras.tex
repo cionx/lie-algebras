@@ -894,11 +894,15 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
-\begin{cor}
- Let $\g$ be a finite dimensional Lie algebra and $\kappa$ the Killing form of $\g$. Then $\rad \kappa$ is a solvable ideal of $\g$.
+\begin{cor}\label{cor: rad kappa is a solvable ideal}
+ Let $\g$ be a finite dimensional Lie algebra and $\kappa$ the Killing form of $\g$. Then $\rad \kappa$ is a solvable ideal of $\g$. In particular $\rad \kappa \subseteq \rad \g$.
 \end{cor}
 \begin{proof}
- Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} already showed that $\rad \kappa$ is an ideal in $\g$. That it is solvable follows from Cartan’s criterion: 
+ Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} already showed that $\rad \kappa$ is an ideal in $\g$. From Lemma~\ref{lem: restriction of the Killing form to an ideal} and the definition of $\rad \kappa$ it follows that 
+ \[
+  \kappa_{\rad \g}(x,y) = \kappa(x,y) = 0 \quad \text{for all $x,y \in \rad \kappa$}.
+ \]
+ Hence by Cartan’s criterion $\rad \kappa$ is solvable.
 \end{proof}
 
 
