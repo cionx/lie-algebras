@@ -446,6 +446,25 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{defi}
 
 
+\begin{rem}
+ As $\g$ acts on itself by the adjoint representation it also acts on $(\g \otimes_k \g)^*$ such that for every $\beta \in (\g \otimes_k \g)^*$ and all $x,y,z \in \g$
+ \begin{align*}
+  (y.\beta)(x \otimes z)
+  &= -\beta(y.(x \otimes z))
+  = -\beta((y.x) \otimes z + x \otimes (y.z)) \\
+  &= -\beta([y,x] \otimes z) -\beta(x \otimes [y,z])
+  = \beta([x,y] \otimes z) - \beta(x \otimes [y,z]).
+ \end{align*}
+ 
+ \begin{samepage} Identifying $(\g \otimes_k \g)^*$ with the bilinear forms on $\g$ via the universal property of the tensor product it follows that a bilinear form $\beta \colon \g \times \g \to k$ is associative if and only if
+ \[
+  y.\beta = 0 \quad \text{for every $y \in \g$}.
+ \]
+ Because of this associative bilinear forms on $\g$ are also called \emph{invariant}. \end{samepage}
+\end{rem}
+
+
+
 \begin{defi}
  Let $V$ be a vector space and $\beta \colon \g \times \g \to k$ a symmetric bilinear form. Then
  \[
