@@ -418,7 +418,7 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
   f.\vect{x \\ y} = \vect{0 \\ x}
   \quad \text{for every $\vect{x \\ y} \in V$}.
  \]
- It follows that if $U \subseteq V$ is a nonzero subrepresentation then $U$ contains either $e_1$ or $e_2$, and therefore also the other one. Hence $U = V$, which shows that $V$ is an irreducible representation of $\g$.
+ It follows that if $U \subseteq V$ is a nonzero subrepresentation then $U$ contains either $e_1$ or $e_2$, and therefore also the other one. Hence $U = V$, which shows that $V$ is an irreducible representation of $\g$. 
 \end{rem}
 
 
@@ -516,6 +516,66 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
+\begin{expl}
+ Let $\g \coloneqq \gl_n(k)$ for some arbitrary field $k$. Then
+ \[
+  \kappa(x,y) = 2n\tr(xy) - 2(\tr x)(\tr y) \eqqcolon \beta(x,y).
+  \quad \text{for all $x,y \in \g$}.
+ \]
+ To see this let $(e_{ij})_{i,j=1,\dotsc,n}$ be the standard basis of $\gl_n(k)$, i.e.\ the $(i,j)$-th entry of $e_{ij}$ is $1$, all other entries are $0$ (hence $e_{ij} e_k = \delta_{jk} e_i$ for every $j = 1, \dotsc, n$ where $(e_1, \dotsc, e_n)$ is the standard basis of $k^n$). In particular
+ \begin{equation}\label{eqn: product of elementary matrices}
+  e_{ij} e_{kl} = \delta_{jk} e_{il} \quad \text{for all $i,j,k,l = 1, \dotsc, n$}.
+ \end{equation}
+
+ To show that $\kappa = \beta$ is sufficies to show that
+ \[
+  \kappa(e_{ij}, e_{kl}) = \beta(e_{ij}, e_{kl})
+  \quad \text{for all $i,j,k,l = 1, \dotsc, n$},
+ \]
+ as both $\kappa$ and $\beta$ are bilinear forms on $\g$. For all $k,l,g,h = 1, \dotsc, n$ it follows from \eqref{eqn: product of elementary matrices} that
+ \[
+  \ad(e_{kl})(e_{gh})
+  = [e_{kl}, e_{gh}]
+  = e_{kl} e_{gh} - e_{gh} e_{kl}
+  = \delta_{lg} e_{kh} - \delta_{kh} e_{gl}.
+ \]
+ It follows that for all $i,j,k,l,g,h = 1, \dotsc, n$
+ \begin{align*}
+  \ad(e_{ij})\ad(e_{kl})(e_{gh})
+  &= \ad(e_{ij})(\delta_{lg} e_{kh} - \delta_{kh} e_{gl})
+  = \delta_{lg} \ad(e_{ij})(e_{kh}) - \delta_{kh} \ad(e_{ij})(e_{gl}) \\
+  &= \delta_{lg}(\delta_{jk} e_{ih} - \delta_{ih} e_{kj}) - \delta_{kh}(\delta_{jg} e_{il} - \delta_{il} e_{gj}) \\
+  &= \delta_{jk}\delta_{lg} e_{ih} - \delta_{ih} \delta_{lg} e_{kj} - \delta_{jg} \delta_{kh} e_{il} + \delta_{il} \delta_{kh} e_{gj}
+ \end{align*}
+ and the coefficient of $e_{gh}$ in this expression is
+ \[
+  a_{gh}
+  = \delta_{jk} \delta_{lg} \delta_{ig}
+    + \delta_{il} \delta_{kh} \delta_{jh}
+    - \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
+    - \delta_{jg} \delta_{kh} \delta_{ig} \delta_{hl}.
+ \]
+ It follows that for all $i,j,k,l = 1, \dotsc, n$
+ \begin{align*}
+  \kappa(e_{ij}, e_{kl})
+  &= \sum_{g,h=1}^n ( \delta_{jk} \delta_{lg} \delta_{ig}
+     + \delta_{il} \delta_{kh} \delta_{jh}
+     - \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
+     - \delta_{jg} \delta_{kh}\delta_{ig} \delta_{hl} ) \\
+  &= \sum_{g,h=1}^n \delta_{jk} \delta_{lg} \delta_{ig}
+     + \sum_{g,h=1}^n \delta_{il} \delta_{kh} \delta_{jh}
+     - \sum_{g,h=1}^n \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
+     - \sum_{g,h=1}^n\delta_{jg} \delta_{kh}\delta_{ig} \delta_{hl} \\
+  &= n \delta_{jk} \delta_{il} + n \delta_{il} \delta_{jk} - \delta_{ij} \delta_{kl} - \delta_{ij} \delta_{kl}
+  = 2n \delta_{il} \delta_{jk} - 2 \delta_{ij} \delta_{kl} \\
+  &= 2n \delta_{jk} (\tr e_{il})  - 2 (\tr e_{ij})(\tr e_{kl})
+  = 2n \tr(e_{ij} e_{kl}) - 2(\tr e_{ij})(\tr e_{kl}) \\
+  &= \beta(e_{ij}, e_{kl}).
+ \end{align*}
+
+\end{expl}
+
+
 \begin{rem}
  If $\g$ is a Lie algebra and $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ then the corresponding trace form $\phi_\rho$ is defined as
  \[
@@ -523,6 +583,30 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
  \]
  Replacing $\ad$ with $\rho$ in the proof of Lemma~\ref{lem: killing form is associative and symmetric} shows that $\phi_\rho$ is an associative and symmetric bilinear form on $\g$. The Killing form $\kappa$ of $\g$ is then just the special case $\kappa = \phi_{\ad}$.
 \end{rem}
+
+
+\begin{lem}
+ Let $\g$ be a finite-dimensional Lie algebra over an arbitrary field $k$. Then for any ideal $I \subseteq \g$ the Killing form $\kappa_I$ is given by restriction of the Killing form $\kappa_\g$ to $I$, i.e.\ $\kappa_I = \kappa_\g|_{I \times I}$.
+\end{lem}
+\begin{proof}
+ Let $x, y \in I$. Then $I$ is $\ad_\g(x)$-invariant. Let $(x_1, \dotsc, x_r)$ be a basis of $I$ and $(x_1, \dotsc, x_r, x_{r+1}, \dotsc, x_s)$ one of $\g$. With respect to the basis $(x_1, \dotsc, x_r)$ of $I$ the endomorphism $\ad_I(x)$ is represented by a matrix $A_x \in \Mat_r(k)$ and $\ad_I(y)$ is represented by a matrix $A_y \in \Mat_r(k)$. As $I \subideal \g$ is in ideal it follows that $\im \ad_\g(x) \subseteq \g$ and $\im \ad_\g(y) \subseteq \g$, which is why with respect to the basis $(x_1, \dotsc, x_s)$ the endomorphism $\ad_\g(x)$ and $\ad_\g(y)$ are represented by a matrices
+ \[
+  C_x = \begin{pmatrix} A_x & B_x \\ 0 & 0 \end{pmatrix} \in \Mat_s(k)
+  \quad\text{and}\quad
+  C_y = \begin{pmatrix} A_y & B_y \\ 0 & 0 \end{pmatrix} \in \Mat_s(k)
+ \]
+ for some matrices $B_x, B_y \in \Mat_{s-r,r}(k)$. Hence
+ \begin{align*}
+  \kappa_\g(x,y)
+  &= \tr(\ad_\g(x) \ad_\g(y))
+  = \tr\left( \begin{pmatrix} A_x & B_x \\ 0 & 0 \end{pmatrix} \begin{pmatrix} A_y & B_y \\ 0 & 0 \end{pmatrix} \right) \\
+  &= \tr \begin{pmatrix} A_x A_y & A_x B_y \\ 0 & 0 \end{pmatrix}
+  = \tr(A_x A_y)
+  = \tr(\ad_I(x) \ad_I(y))
+  = \kappa_I(x,y).
+ \qedhere
+ \end{align*}
+\end{proof}
 
 
 
@@ -758,9 +842,8 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
-
 \begin{thrm}[Cartan’s criterion for solvability]
- Let $\g$ be a finite dimensional $k$-Lie algebra. Then $\g$ is solvable if and only if
+ Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is solvable if and only if
  \[
   \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
  \]
@@ -776,6 +859,16 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
   \qedhere
  \]
 \end{proof}
+
+
+\begin{cor}
+ Let $\g$ be a finite dimensional Lie algebra and $\kappa$ the Killing form of $\g$. Then $\rad \kappa$ is a solvable ideal of $\g$.
+\end{cor}
+\begin{proof}
+ Lemma \ref{lem: orthogonal complement of an ideal is again an ideal} already showed that $\rad \kappa$ is an ideal in $\g$. That it is solvable follows from Cartan’s criterion: 
+\end{proof}
+
+
 
 
 
