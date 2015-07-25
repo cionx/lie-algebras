@@ -288,6 +288,8 @@
    Given Lie algebras $\g_1$, $\g_2$ and $\g_3$ and Lie algebra homomorphisms $f_1 \colon \g_1 \to \g_2$ and $f_2 \colon \g_2 \to \g_3$ the composition $f_2 \circ f_1 \colon \g_1 \to \g_3$ is also a homomorphism of Lie algebras.
   \item
    If $\g$ is a Lie algebra and $\h \subseteq \g$ a Lie subalgebra then the inclusion $\h \inc \g$ is a homomorphism of Lie algebras.
+  \item
+   Given two abelian Lie algebras $\g_1$ and $\g_2$ any linear map $\g_1 \to \g_2$ is already a homomorphism of Lie algebras.
  \end{enumerate}
 \end{expls}
 
@@ -317,7 +319,27 @@
 \end{rem}
 
 
-We have the usual theorems about homomorphisms and ideals.
+\begin{expl}[Classification of one- and two-dimensional Lie algebras]
+ Let $k$ be any field.
+ 
+ As every linear map between abelian Lie algebras is already a homomorphism of Lie algebras it follows that there exists up to isomorphism exactly one $n$-dimensional abelian Lie algebra over $k$ for every $n \in \N$.
+ 
+ If $\g$ is a one-dimensional Lie algebra over $k$ then the Lie bracket of $\g$ is zero because it is alternating, which is why $\g$ is abelian. Hence there is up to isomorphism exactly one one-dimensional Lie algebra over $k$.
+ 
+ Up to isomorphism there exists exactly one two-dimensional abelian $k$-Lie algebra
+ 
+ Suppose that $\g$ is a two-dimensional, non-abelian Lie algebra over $k$. Let $\tilde{x}$,$\tilde{y}$ be a basis of $\g$. Because $[\g,\g]$ is non-abelian it follows that $[\g,\g] \neq 0$ and on the other hand $[\g,\g]$ is spanned by $[\tilde{x},\tilde{y}]$ because the Lie bracket is alternating, so $[\g,\g] = k [\tilde{x},\tilde{y}]$ with $[\tilde{x},\tilde{y}] \neq 0$. Let $x \coloneqq [\tilde{x},\tilde{y}]$ and $y \in \g$ such that $x,y$ is a basis of $\g$. Then $[x,y] \neq 0$ and $[x,y] \in k x$. By rescaling $y$ it can be assumed that $[x,y] = x$. This that up to isomorphism there is at most one two-dimensional, non-abelian Lie algebra $\g$ over $k$.
+ 
+ Such an Lie algebra also exists. It can be realized as a subalgebra of $\gl_2(k)$ by choosing
+ \begin{gather*}
+  x \coloneqq \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} = e_{12}
+  \quad\text{and}\quad
+  y \coloneqq \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = e_{22}
+ \shortintertext{because}
+  [x,y] = [e_{12}, e_{22}] = e_{12} e_{22} - e_{22} e_{12} = e_{12} = x.
+ \end{gather*}
+ Hence there are up to isomorphism exactly two two-dimensional Lie algebras over $k$.
+\end{expl}
 
 
 \begin{prop}
