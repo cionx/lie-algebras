@@ -402,6 +402,27 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{rem}
 
 
+\begin{rem}
+ Corollary \ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} does not hold for general fields $k$, even if algebraically closed. To see this let $k$ be an algebraically closed field with $\chara k = 2$ and $\g \coloneqq \sll_2(k)$. Then $\g$ has a basis $(e,h,f)$ where
+ \begin{gather*}
+  e = \vect{0 & 1 \\ 0 & 0}, \quad
+  h = \vect{1 & 0 \\ 0 & -1} = \vect{1 & 0 \\ 0 & 1}, \quad
+  f = \vect{0 & 0 \\ 1 & 0}
+ \shortintertext{with}
+  [h,e] = [h,f] = 0 \quad\text{and}\quad [e,f] = h.
+ \end{gather*}
+ Hence $\g$ is solvable. Let $V \coloneqq k^2$ be the natural representation of $\g$, i.e.\ $\g$ acts on $V$ by $x.v = x(v)$ for every $x \in \g$ and $v \in V$. Then
+ \[
+  e.\vect{x \\ y} =  \vect{y \\ 0}
+  \quad \text{and} \quad
+  f.\vect{x \\ y} = \vect{0 \\ x}
+  \quad \text{for every $\vect{x \\ y} \in V$}.
+ \]
+ It follows that if $U \subseteq V$ is a nonzero subrepresentation then $U$ contains either $e_1$ or $e_2$, and therefore also the other one. Hence $U = V$, which shows that $V$ is an irreducible representation of $\g$.
+\end{rem}
+
+
+
 
 
 
