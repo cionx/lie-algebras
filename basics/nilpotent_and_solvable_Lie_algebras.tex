@@ -641,6 +641,25 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{expl}
 
 
+\begin{lem}
+ Let $\g$ be a Lie algebra and $I_1, I_2 \subideal \g$ ideals with $\g = I_1 \oplus I_2$. Then $I_1 \perp I_2$ with respect to the Killing form $\kappa$ of $\g$. In particular it follows that for all $x,y \in \g$ with $x = x_1 + x_2$ and $y = y_1 + y_2$ with respect to $\g = I_1 \oplus I_2$
+ \[
+  \kappa(x,y) = \kappa_{I_1}(x_1, y_1) + \kappa_{I_2}(x_2, y_2)
+ \]
+\end{lem}
+\begin{proof}
+ Because $[I_1, I_2] \subseteq I_1 \cap I_2 = 0$ it follows that for every $z_1 \in I_1$ and $z_2 \in I_2$
+ \[
+  (\ad(z_1)\ad(z_2))(\g) = \ad(z_1)(\ad(z_2)(\g)) \subseteq \ad(z_1)(I_2) = 0.
+ \]
+ Therefore $\ad(z_1)\ad(z_2) = 0$ and in particular $\kappa(z_1,z_2) = \tr(\ad(z_1)\ad(z_2)) = 0$. From Lemma \ref{lem: restriction of the Killing form to an ideal} it further follows that
+ \begin{align*}
+  \kappa(x,y)
+  &= \kappa(x_1, y_1) + \kappa(x_1, y_2) + \kappa(x_2, y_1) + \kappa(x_2, y_2) \\
+  &= \kappa(x_1, y_1) + \kappa(x_2, y_2)
+  = \kappa_{I_1}(x_1, y_1) + \kappa_{I_2}(x_2, y_2).
+ \end{align*}
+\end{proof}
 
 
 
