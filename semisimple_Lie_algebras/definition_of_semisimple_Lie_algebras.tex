@@ -16,6 +16,32 @@
    $\g$ has no nonzero abelian ideals.
  \end{enumerate}
 \end{thrm}
+\begin{proof}
+ (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra killing form nondegenerate}) This directly follows from the fact that $\rad \kappa$ is a solvable ideal in $\g$.
+ 
+ (\ref{enum: definition semisimple Lie algebra killing form nondegenerate} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra sum of simple ideals}) The implication can be shown by induction over $\dim \g$. If $\dim \g = 0$ then $\g = 0$ is the empty sum over zero simple ideals in $\g$. Suppose that $\dim \g \geq 1$ and the implication holds for all smaller dimensions. If $\g$ is simple then there is nothing left to show. Otherwise $\g$ contains a non-trivial ideal $I \subideal \g$, i.e.\ $I \neq 0$ and $I \neq \g$. Then
+ \[
+  I^\perp \coloneqq \{y \in \g \mid \text{$\kappa(x,y) = 0$ for every $x \in I$}\}
+ \]
+ is an ideal in $\g$ and because $\kappa$ is non-degenerate it follows that $\dim \g = \dim I + \dim I^\perp$. Because $I \cap I^\perp$ is an ideal in $\g$ it also follows that
+ \[
+  \kappa_{I \cap I^\perp}(x,y) = \kappa(x,y) = 0 \quad \text{for all $x,y \in I \cap I^\perp$}.
+ \]
+ By Cartan’s criterion $I \cap I^\perp$ is a solvable ideal in $\g$, from which it follows from the previous implication (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra killing form nondegenerate}) that $I \cap I^\perp = 0$. Therefore $\g = I \oplus I^\perp$, where $I$ and $I^\perp$ are proper ideals in $\g$. By Lemma \ref{lem: orthogonal ideals with respect to the killing form} the Killing form $\kappa$ is given by the sum of the Killing forms $\kappa_{I_1}$ and $\kappa_{I_2}$. AS $\kappa$ is non-degenerate it follows that the same goes for $\kappa_{I_1}$ and $\kappa_{I_2}$. Hence by induction hypothesis both $I_1$ and $I_2$ are the sum of simple ideals $I_1 = J_1 \oplus \dotsb \oplus J_r$ and $I_2 = K_1 \oplus \dotsb \oplus K_s$. It follows that
+ \[
+  \g = I_1 \oplus I_2 = J_1 \oplus \dotsb J_r \oplus K_1 \oplus \dotsb \oplus K_s
+ \]
+ is a decomposition into simple ideals.
+
+ (\ref{enum: definition semisimple Lie algebra sum of simple ideals} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra product of simple Lie algebras}) Follows from $\g = I_1 \oplus \dotsb \oplus I_s \cong I_1 \times \dotsb \times I_s$.
+ 
+ (\ref{enum: definition semisimple Lie algebra product of simple Lie algebras} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra radical is zero}) For each $i = 1, \dotsc, r$ let $\pi_i \colon \g \to \g_i$ be the canonical projection and let $I \subideal \g$ be a solvable ideal. Then for any $i = 1, \dotsc, r$ the image $\pi_i(I) \subseteq \g_i$ is a solvable ideal. Because $\g_i$ is simple it follows that $\pi_i(I) = 0$ for every $i = 1, \dotsc, n$. Hence $I = 0$.
+ 
+ (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra no nonzero abelian ideals}) This directly follows from the fact that every abelian ideal is solvable.
+ 
+ (\ref{enum: definition semisimple Lie algebra no nonzero abelian ideals} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra radical is zero}) Suppose that there exists a nonzero solvable ideal $I \subideal \g$. Then let $i \geq 0$ such that $I^{(i+1)} = 0$ but $I^{(i)} \neq 0$. Then $I^{(i)}$ is a nonzero abelian ideal in $\g$.
+\end{proof}
+
 
 
 \begin{defi}
