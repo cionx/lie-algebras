@@ -516,7 +516,7 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
-\begin{expl}
+\begin{expl}\label{expl: Killing form of gl_n}
  Let $\g \coloneqq \gl_n(k)$ for some arbitrary field $k$. Then
  \[
   \kappa(x,y) = 2n\tr(xy) - 2(\tr x)(\tr y) \eqqcolon \beta(x,y).
@@ -572,7 +572,6 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
   = 2n \tr(e_{ij} e_{kl}) - 2(\tr e_{ij})(\tr e_{kl}) \\
   &= \beta(e_{ij}, e_{kl}).
  \end{align*}
-
 \end{expl}
 
 
@@ -585,7 +584,7 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{rem}
 
 
-\begin{lem}
+\begin{lem}\label{lem: restriction of the Killing form to an ideal}
  Let $\g$ be a finite-dimensional Lie algebra over an arbitrary field $k$. Then for any ideal $I \subseteq \g$ the Killing form $\kappa_I$ is given by restriction of the Killing form $\kappa_\g$ to $I$, i.e.\ $\kappa_I = \kappa_\g|_{I \times I}$.
 \end{lem}
 \begin{proof}
@@ -607,6 +606,21 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
  \qedhere
  \end{align*}
 \end{proof}
+
+
+\begin{expl}
+ Let $\g \coloneqq \sll_n(k) = [\gl_n(k), \gl_n(k)]$. As seen in example \ref{expl: Killing form of gl_n} the Killing form of $\gl_n(k)$ is given by
+ \[
+  \kappa_{\gl_n(k)}(x,y) = 2n \tr(xy) - 2(\tr x)(\tr y)
+  \quad \text{for all $x,y \in \gl_n(k)$}.
+ \]
+ Because $\sll_n(k) \subideal \gl_n(k)$ it follows from Lemma \ref{lem: restriction of the Killing form to an ideal} that the Killing form of $\sll_n(k)$ is given by
+ \[
+  \kappa_{\sll_n(k)}(x,y) = 2n \tr(xy) \quad \text{for all $x,y \in \sll_n(k)$}.
+ \]
+ In particular the Killing form of $\sll_n(k)$ is just a multiple of the trace form.
+\end{expl}
+
 
 
 
