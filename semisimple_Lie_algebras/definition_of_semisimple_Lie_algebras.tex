@@ -43,7 +43,36 @@
 \end{proof}
 
 
-
 \begin{defi}
  A finite-dimensional Lie algebra $\g$ is called \emph{semisimple} if it satisfies any, and therefore all, of the conditions in Theorem~\ref{thrm: characterisations of semisimple Lie algebras}.
 \end{defi}
+
+
+\begin{lem}
+ Let $\g$ be a finite dimensional Lie algebra and $\beta \colon \g \times \g \to k$ an associative and symmetric bilinear form which is non-degenerate. Then the map
+ \[
+  \phi \colon \g \to \g^*, \quad x \mapsto \beta(x,\cdot)
+ \]
+ is an isomorphism of representations of $\g$.
+\end{lem}
+\begin{proof}
+ The linearity of $\phi$ follows from the bilinearity of $\beta$. Because $\beta$ is non-degenerate and $\g$ is finite dimensional $\phi$ is even an isomorphism of vector spaces. That $\phi$ is already an isomorphism of representations of $\g$ follows from the associativity of $\beta$, because for all $x,y,z \in \g$
+ \begin{align*}
+  (x.\phi(y))(z)
+  &= -\phi(y)(x.z)
+  = -\beta(y,[x,z]) \\
+  &= -\beta([y,x],z)
+  = \beta([x,y],z)
+  = \phi([x,y])(z)
+  = \phi(x.y)(z)
+ \end{align*}
+ and therefore $x.\phi(y) = \phi(x.y)$ for all $x,y \in \g$.
+\end{proof}
+
+\begin{cor}
+ If $\g$ is a semisimple Lie algebra then the map
+ \[
+  \g \to \g^*, \quad x \mapsto \kappa(x,\cdot)
+ \]
+ is an isomorphism of representations of $\g$.
+\end{cor}
