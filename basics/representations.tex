@@ -48,19 +48,23 @@
 
 \begin{expls}
  \begin{enumerate}[leftmargin=*]
+ 
   \item 
    If $\g \subseteq \gl(V)$ is a Lie subalgebra then $V$ is a representation of $\g$ via the inclusion $\g \inc \gl(V)$. This corresponds to the action
    \[
     x.v = x(v) \quad \text{for every $x \in \g$ and $v \in V$}.
    \]
+   This is then called the \emph{natural representation} of $\g$.
+   
   \item
    If $\g \subseteq \gl_n(k)$ is a Lie subalgebra then $\g$ acts on $k^n$ via
    \[
     x.v = x \cdot v \quad \text{for every $x \in \g$ and $v \in k^n$},
    \]
-   which correspondings to the Lie algebra homomorphism $\g \to \gl(k^n), x \mapsto (v \mapsto x \cdot v)$.
+   which correspondings to the Lie algebra homomorphism $\g \to \gl(k^n), x \mapsto (v \mapsto x \cdot v)$. This is then called the \emph{natural representation} of $\g$.
+   
   \item
-   Let $\g = \sll_2(k)$ for any field $k$. Then $k[x,y]$ becomes a representation of $\g$ via the homomorphism of Lie algebras $\rho \colon \g \to \gl(k[x,y])$ given by
+   Let $\g \coloneqq \sll_2(k)$ for any field $k$. Then $k[x,y]$ becomes a representation of $\g$ via the homomorphism of Lie algebras $\rho \colon \g \to \gl(k[x,y])$ given by
    \[
     \rho(e) = y\dd{x}, \quad
     \rho(h) = y\dd{y} - x\dd{x}, \quad
@@ -97,9 +101,55 @@
       = [h,f].(x^n y^{m-1}).
     \end{aligned}
    \end{gather*}
+   
+  \item
+   Let $\g \coloneqq \sll_2(k)$ for any field $k$. Then the polynomial ring in one variable $k[x]$ is a representation of $\g$ via the action the homomorphism of Lie algebras $\rho \colon \g \to \gl(k[x])$ with
+   \[
+    \rho(e) = \dd{x}, \quad
+    \rho(h) = -2x\dd{x}, \quad
+    \rho(f) = -\dd{x}.
+   \]
+   Then $\g$ acts on $k[x]$ via
+   \[
+    e.x^n = n x^{n-1}, \quad
+    h.x^n = -2n x^n, \quad
+    f.x^n = n x^{n+1} \quad
+    \text{for every $n \geq 0$},
+   \]
+   where we set $x^m \coloneqq 0$ for $m < 0$. To see that this is really a representation of $\g$ notice that for every $n \geq 0$
+   \begin{gather*}
+    e.f.x^n - f.e.x^n
+    = -n(n+1) x^n + n(n-1) x^n
+    = -2n x^n
+    = h.x^n
+    = [e,f].x^n
+   \shortintertext{as well as}
+    h.e.x^n - e.h.x^n
+    = -2n(n-1) x^{n-1} + 2n^2 x^{n-1}
+    = 2n x^{n-1}
+    = 2e.x^n
+    = [h,e].x^n
+   \shortintertext{and}
+    h.f.x^n - f.h.x^n
+    = 2n(n+1) x^{n+1} - 2 n^2 x^{n+1}
+    = 2n x^{n+1}
+    = -2f.x^n
+    = [h,f].x^n.
+   \end{gather*}
+   
+  \item
+   The map $\ad \colon \g \to \gl(\g), x \mapsto \ad(x)$ is a homomorphism of Lie algebras and hence a representation of $\g$.
  \end{enumerate}
 \end{expls}
 
+
+\begin{defi}
+ Let $\g$ be a Lie algebra. Then
+ \[
+  \ad \colon \g \to \gl(\g), \quad x \mapsto [x,\cdot]
+ \]
+ is called the \emph{adjoint representation} of $\g$.
+\end{defi}
 
 
 \begin{defi}

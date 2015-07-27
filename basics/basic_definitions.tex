@@ -280,7 +280,7 @@
 \end{defi}
 
 
-\begin{expls}
+\begin{expls}\label{expls: homomorphisms of Lie algebras}
  \begin{enumerate}[leftmargin=*]
   \item
    For any Lie algebra $\g$ the identity $\id_\g \colon \g \to \g$ is a Lie algebra homomorphism.
@@ -290,6 +290,22 @@
    If $\g$ is a Lie algebra and $\h \subseteq \g$ a Lie subalgebra then the inclusion $\h \inc \g$ is a homomorphism of Lie algebras.
   \item
    Given two abelian Lie algebras $\g_1$ and $\g_2$ any linear map $\g_1 \to \g_2$ is already a homomorphism of Lie algebras.
+  \item
+   Let $\g$ ba a Lie algebra over an arbitrary fielid $k$. Then for every $x \in \g$ let
+   \[
+    \ad(x) \colon \g \to \g \quad \text{mit} \quad \ad(x)(y) = [x,y]
+    \quad \text{for every $y \in \g$}.
+   \]
+   Then the map $\ad \colon \g \to \gl(\g)$ is a homomorphism of Lie algebras. This follows from the Jacobi identity because for all $x,y,z \in \g$
+   \begin{align*}
+    \ad([x,y])(z)
+    &= [[x,y],z]
+    = -[z,[x,y]]
+    = -[[z,x],y] -[x,[z,y]]
+    = [x,[y,z]] - [y,[x,z]] \\
+    &= \ad(x)\ad(y)(z) - \ad(y)\ad(x)(z)
+    = [\ad(x),\ad(y)](z).
+   \end{align*}
  \end{enumerate}
 \end{expls}
 
@@ -342,7 +358,7 @@
 \end{expl}
 
 
-\begin{prop}
+\begin{prop}[Homomorphism theorem]
  Let $\g_1$ and $\g_2$ be Lie algebras and $f \colon \g_1 \to \g_2$ a homomorphism of Lie algebras.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -596,17 +612,12 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
 \end{expl}
 
 
-\begin{defi}
- Let $\g$ be a Lie algebra. Then
- \[
-  \ad \colon \g \to \gl(\g), \quad x \mapsto [x,\cdot]
- \]
- is called the \emph{adjoint representation} of $\g$.
-\end{defi}
-
-
 \begin{lem}\label{lem: Lie algebras act adjoint by derivations}
- Let $\g$ be a Lie algebra. Then for any $x \in \g$ the map $\ad(x) \colon \g \to \g$ is a derivation of $\g$.
+ Let $\g$ be a Lie algebra. Then for any $x \in \g$ the map
+ \[
+  \ad(x) \colon \g \to \g, \quad y \mapsto [x,y]
+ \]
+ is a derivation of $\g$.
 \end{lem}
 \begin{proof}
  By the Jacobi identity
@@ -657,15 +668,15 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
  Let $\g$ be a simple Lie algebra. Then $[\g,\g] = \g$ and $Z(\g)=0$.
 \end{lem}
 \begin{proof}
- Because $\g$ is simple it is not abelian. Therefore $[\g,\g] \neq 0$ and $Z(\g) \neq \g$. Since $[\g,\g]$ and $Z(\g)$ are ideals inside $\g$ it follows that $[\g,\g] = \g$ and $Z(\g) = 0$.
+ Because $\g$ is simple it is not abelian. Therefore $[\g,\g] \neq 0$ and $Z(\g) \neq \g$. Since $[\g,\g]$ and $Z(\g)$ are ideals inside $\g$ it follows that $[\g,\g] = \g$ and $Z(\g) = 0$. By the homomorphism theorem $\g$ is isomorphic to its image $\ad \g$ and hence to a linear Lie algebra.
 \end{proof}
 
 
 \begin{cor}
- Let $\g$ be simple. Then $\ad \colon \g \to \gl(\g)$ is injective. In particular $\g$ can be realized as a linear Lie algebra.
+ Let $\g$ be simple. Then the homomorphism $\ad \colon \g \to \gl(\g), x \mapsto \ad(x)$ is injective. In particular $\g$ can be realized as a linear Lie algebra.
 \end{cor}
 \begin{proof}
- This directly follows from $\ker \ad = Z(\g) = 0$.
+ As part of Examples~\ref{expls: homomorphisms of Lie algebras} has already been shown that $\ad$ is a homomorphism of Lie algebras. That it is injective follows directly from $\ker \ad = Z(\g) = 0$.
 \end{proof}
 
 
