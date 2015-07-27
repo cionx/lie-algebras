@@ -4,7 +4,7 @@
 
 
 
-\subsection{Definition of a representation}
+\subsection{Definition and examples}
 
 
 \begin{defi}
@@ -152,6 +152,11 @@
 \end{defi}
 
 
+\begin{rem}
+ Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself not only by any endomorphisms but by derivations of itself. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I suppose).
+\end{rem}
+
+
 \begin{defi}
  Let $V$ und $W$ be representations of a $k$-Lie algebra $\g$. A $k$-linear map $f \colon V \to W$ is called a \emph{homomorphism of representations} if
  \[
@@ -172,39 +177,6 @@
  \]
  for every $x \in \g$ and $v \in V$. It also follows for every $x \in \g$ from $f \rho_V(x) = \rho_W(x) f$ that $\rho_V(x) f^{-1} = f^{-1} \rho_W(x)$.
 \end{rem}
-
-
-
-
-
-\subsection{The adjoint representation}
-
-
-\begin{expl}
- For any Lie algebra $\g$ the adjoint representation $\ad \colon \g \to \gl(V)$ is a representation of $\g$: That $\ad$ is a homomorphism of Lie algebras is equivalent to
- \begin{gather*}
-  \ad([x,y])(z) = [\ad(x),\ad(y)](z) \quad \text{for all $x,y,z \in \g$}.
- \shortintertext{Because}
-  \ad([x,y])(z) = [[x,y],z] = -[z,[x,y]]
- \shortintertext{and}
-  \begin{aligned}
-   [\ad(x),\ad(y)](z)
-   &= (\ad(x) \circ \ad(y))(z) - (\ad(y) \circ \ad(x))(z) \\
-   &= [x,[y,z]] - [y,[x,z]]
-   = [x,[y,z]] + [y,[z,x]]
-  \end{aligned}
- \end{gather*}
- this is equivalent to the Jacobi identity. Hence $\ad$ really is a representation of $\g$.
-
- As $\ker \ad = Z(\g)$ the adjoint representation is faithful if and only if $Z(\g) = 0$.
-\end{expl}
-
-
-\begin{rem}
- Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself not only by any endomorphisms but by derivations of itself. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I suppose).
-\end{rem}
-
-
 
 
 
