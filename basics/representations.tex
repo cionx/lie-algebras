@@ -81,19 +81,26 @@
   \end{aligned}
  \end{gather*}
  this is equivalent to the Jacobi identity. Hence $\ad$ really is a representation of $\g$.
- 
- Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that $\g$ acts on itself by derivations of itself.
 
  As $\ker \ad = Z(\g)$ the adjoint representation is faithful if and only if $Z(\g) = 0$.
 \end{expl}
 
 
-\begin{expl}
+\begin{rem}
+ Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself not only by any endomorphisms but by derivations of itself. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I suppose).
+\end{rem}
+
+
+\begin{defi}
  If $\g \subseteq \gl(V)$ is a Lie subalgebra then $V$ is a representation of $\g$ via the inclusion $\g \inc \gl(V)$. This corresponds to the action
  \[
   x.v = x(v) \quad \text{for every $x \in \g$ and $v \in V$}.
  \]
-\end{expl}
+ This is the called the \emph{natural representation} of $\g$. If $\g \subseteq \gl_n(k)$ is a Lie subalgebra then the \emph{natural representation} of $\g$ is defined as
+ \[
+  x.v = x \cdot v \quad \text{for every $x \in \g$ and $v \in k^n$}.
+ \]
+\end{defi}
 
 
 
