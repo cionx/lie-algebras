@@ -306,6 +306,27 @@
     &= \ad(x)\ad(y)(z) - \ad(y)\ad(x)(z)
     = [\ad(x),\ad(y)](z).
    \end{align*}
+  \item
+   If $A_1$ and $A_2$ are associative $k$-algebras and $f \colon A_1 \to A_2$ a homomorphism of $k$-algebras then it is also a homomorphism of Lie algebras because
+   \[
+    f([a,b]) = f(ab-ba) = f(a)f(b)-f(b)f(a) = [f(a),f(b)]
+    \quad \text{for all $a,b \in A_1$}.
+   \]
+  \item
+   Let $\g$ be a Lie algebra over an arbitary field $k$. If $\phi \colon \sll_2(k) \to \g$ is a homomorphism of Lie algebras then the images
+   \[
+    E \coloneqq \phi(e), \quad H \coloneq \phi(h), \quad F \coloneqq \phi(f)
+   \]
+   satisfy the relations
+   \[
+    [H,E] = 2E, \quad [H,F] = 2F, \quad [E,F] = H.
+   \]
+   On the other hand every triple $(E', H', F')$ of elements satisfying the relations above (with $X$ replaced by $X'$ for $X \in \{E,H,F\}$) gives rise to a unique homomorphism of Lie algebras $\phi' \colon \sll_2(k) \to \g$ with
+   \[
+    \phi'(E) = E', \quad \phi'(H) = H', \quad \phi'(F) = F'.
+   \]
+   
+   Hence there is a bijection between Lie algebra homomorphisms $\sll_2(k) \to \g$ and triples as above. Such triples will play an important part later on.
  \end{enumerate}
 \end{expls}
 
