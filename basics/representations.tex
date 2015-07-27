@@ -14,9 +14,9 @@
 
 \begin{rem}
  Equivalently a representation of $\g$ is a $k$-vector space $V$ together with a $k$-bilinear map $\g \times V \to V, (x,v) \mapsto x.v$ such that
- \[
+ \begin{equation}\label{eqn: representation via action}
   x.(y.v) - y.(x.v) = [x,y].v \quad \text{for all $x,y \in \g$ and $v \in V$}.
- \]
+ \end{equation}
  
  Such an action results in a homomorphism of Lie algebras $\rho \colon \g \to \gl(V)$ by setting
  \[
@@ -34,8 +34,78 @@
 
 
 \begin{rem}
+ If $(x_i)_{i \in I}$ is a basis of a Lie algebra $\g$ then for $\rho \colon \g \to \gl(V)$ to be a homomorphism of Lie algebras it is enough to check that $\rho([x_i,x_j])= [\rho(x_i), \rho(x_j)]$ for all $i,j \in I$. Therefore it also sufficies to check \eqref{eqn: representation via action} for basis elements, i.e.\ that
+ \[
+  x_i.(x_j.v) - x_j.(x_i.v) = [x_i, x_j].v \quad \text{for all $i,j \in I$ and $v \in V$}.
+ \]
+\end{rem}
+
+
+\begin{rem}
  Ado’s theorem is equivalent to every finite dimenisonal Lie algebra having a faithful representation.
 \end{rem}
+
+
+\begin{defi}
+ 
+ This is the called the \emph{natural representation} of $\g$. 
+\end{defi}
+
+
+\begin{expls}
+ \begin{enumerate}[leftmargin=*]
+  \item 
+   If $\g \subseteq \gl(V)$ is a Lie subalgebra then $V$ is a representation of $\g$ via the inclusion $\g \inc \gl(V)$. This corresponds to the action
+   \[
+    x.v = x(v) \quad \text{for every $x \in \g$ and $v \in V$}.
+   \]
+  \item
+   If $\g \subseteq \gl_n(k)$ is a Lie subalgebra then $\g$ acts on $k^n$ via
+   \[
+    x.v = x \cdot v \quad \text{for every $x \in \g$ and $v \in k^n$},
+   \]
+   which correspondings to the Lie algebra homomorphism $\g \to \gl(k^n), x \mapsto (v \mapsto x \cdot v)$.
+  \item
+   Let $\g = \sll_2(k)$ for any field $k$. Then $k[x,y]$ becomes a representation of $\g$ via the homomorphism of Lie algebras $\rho \colon \g \to \gl(k[x,y])$ given by
+   \[
+    \rho(e) = y\dd{x}, \quad
+    \rho(h) = y\dd{y} - x\dd{x}, \quad
+    \rho(f) = x\dd{y},
+   \]
+   where $x$ and $y$ also denote the multiplication with the respective variable and $(e,h,f)$ denotes the standard basis of $\sll_2(k)$. To see that this is a homomorphism of representations notice that for all $n, m \geq 0$
+   \begin{align*}
+    e.(x^n y^m) &= n x^{n-1} y^{m+1}, \\
+    h.(x^n y^m) &= (m-n) x^n y^m, \\
+    f.(x^n y^m) &= m x^{n+1} y^{m-1},
+   \end{align*}
+   where we write $x^\nu = 0$ and $y^\mu = 0$ for every $\nu, \mu < 0$. From this it follows that for all $n,m \geq 0$
+   \begin{gather*}
+    \begin{aligned}
+     e.f.(x^n y^m) - f.e.(x^n y^m)
+     &= (n+1)m x^n y^m - n(m+1) x^n y^m \\
+     &= (m-n) x^n y^m
+     = h.m = [e,f].(x^n y^m)
+    \end{aligned}
+   \shortintertext{as well as}
+    \begin{aligned}
+     h.e.(x^n y^m) - e.h.(x^n y^m)
+     &=  n(m-n+2) x^{n-1} y^{m+1} - n(m-n) x^{n-1} y^{m+1} \\
+     &= 2 x^{n-1} y^{m+1}
+     = 2e.(x^n y^m)
+     = [h,e].(x^n y^m)
+    \end{aligned}
+   \shortintertext{and}
+     \begin{aligned}
+      h.f.(x^n y^m) - f.h.(x^n y^m)
+      &= m(m-n-2) x^{n+1} y^{m-1} - m(m-n) x^{n+1} y^{m-1} \\
+      &= -2 x^{n+1} y^{m-1}
+      = -2f.(x^n y^{m-1})
+      = [h,f].(x^n y^{m-1}).
+    \end{aligned}
+   \end{gather*}
+ \end{enumerate}
+\end{expls}
+
 
 
 \begin{defi}
@@ -89,18 +159,6 @@
 \begin{rem}
  Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself not only by any endomorphisms but by derivations of itself. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I suppose).
 \end{rem}
-
-
-\begin{defi}
- If $\g \subseteq \gl(V)$ is a Lie subalgebra then $V$ is a representation of $\g$ via the inclusion $\g \inc \gl(V)$. This corresponds to the action
- \[
-  x.v = x(v) \quad \text{for every $x \in \g$ and $v \in V$}.
- \]
- This is the called the \emph{natural representation} of $\g$. If $\g \subseteq \gl_n(k)$ is a Lie subalgebra then the \emph{natural representation} of $\g$ is defined as
- \[
-  x.v = x \cdot v \quad \text{for every $x \in \g$ and $v \in k^n$}.
- \]
-\end{defi}
 
 
 
@@ -220,7 +278,6 @@
 \begin{rem}
  By definition every irreducible representation is also indecomposable. The converse does not hold. Irreducible representations are precisely the ones which are both indecomposable and completely reducible.
 \end{rem}
-
 
 
 \begin{expl}
