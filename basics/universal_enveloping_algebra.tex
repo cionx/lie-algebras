@@ -96,6 +96,50 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 
 
+\subsection{Casimir operators}
+For this subsection we additionaly assume that $\g$ is finite-dimensional. We also fix some bilinear form $\beta \colon \g \times \g \to k$ which is associative, symmetric and non-degenerate.
+
+
+\begin{defi}\label{defi: definition of Casimir element}
+ Let $\varphi_1 \colon \g \otimes \g^*$ and $\varphi_2 \colon \g \to \g^*$ be the isomorphisms of vector spaces defined by
+ \[
+  \varphi_1(x \otimes \phi)(y) = \phi(y) x
+  \quad\text{and}\quad
+  \varphi_2(x) = \beta(x, \cdot)
+  \quad\text{for all $x,y \in \g$ and $\phi \in \g^*$}.
+ \]
+ Then the image of $1$ under the map
+ \begin{equation}\label{eqn: Casimir without coordinates}
+  k
+  \xrightarrow{\lambda \mapsto \lambda \id_\g}
+  \End_k(\g)
+  \xrightarrow{\varphi_1^{-1}}
+  \g \otimes \g^*
+  \xrightarrow{\id_\g \otimes \varphi_2^{-1}}
+  \g \otimes \g
+  \xrightarrow{x \otimes y \mapsto x y}
+  \Ue(\g)
+ \end{equation}
+ is called the \emph{Casimir element of $\beta$} and denoted by $C_\beta$.
+\end{defi}
+
+
+\begin{lem}[Casimir in coordinates]
+ Let $x_1, \dotsc, x_n$ be a basis of $\g$ and $x^1, \dotsc, x^n$ the dual basis of $\g$ with respect to $\beta$, i.e.\ $\beta(x_i, x^j) = \delta_{ij}$ for all $i,j = 1, \dotsc, n$. Then
+ \[
+  C_\beta = \sum_{i=1}^n x_i x^i.
+ \]
+\end{lem}
+\begin{proof}
+ Let $\varphi_1$ and $\varphi_2$ as in Definitionn~\ref{defi: definition of Casimir element}. In \eqref{eqn: Casimir without coordinates} $1$ is mapped to $\id_\g$, which is then mapped to $\sum_{i=1}^n x_i \otimes x_i^*$, where $x_1^*, \dotsc, x_n^*$ denotes the dual basis of $\g^*$. As $\varphi_2(x^i) = x_i^*$ it follows that $\sum_{i=1}^n x_i \otimes x_i^*$ is then mapped to $\sum_{i=1}^n x_i \otimes x^i$, which is then further mapped to the element $\sum_{i=1}^n x_i x^i$ in $\Ue(\g)$.
+\end{proof}
+
+
+
+
+
+
+
 
 
 
