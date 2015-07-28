@@ -1,5 +1,11 @@
 \section{The universal enveloping algebra}
-The following hold for this section alone: We fix a Lie algebra $\g$ over an arbitrary field $k$. All $k$-algebras have to be associative and unitary and all homomorphisms of $k$-algebras have to respect the unit.
+The following hold for this section alone: We fix an arbitrary field $k$ and a Lie algebra $\g$ over $k$. All $k$-algebras have to be associative and unitary and all homomorphisms of $k$-algebras have to respect the unit.
+
+
+
+
+
+\subsection{Definition and properties}
 
 
 \begin{defi}
@@ -16,3 +22,22 @@ The following hold for this section alone: We fix a Lie algebra $\g$ over an arb
   \end{tikzpicture}
  \end{center}
 \end{defi}
+
+
+\begin{rem}
+ As always with universal objects any two enveloping algebras of $\Ue(\g)_1$ with $\iota_1 \colon \g_1 \to \Ue(\g)_1$ and $\Ue(\g)_2$ with $\iota_2 \colon \g \to \Ue(\g)_2$ of $\g$ are isomorphic, and there exists a unique isomorphism $\varphi \colon \Ue(\g_1) \to \Ue(\g_2)$ with $\iota_2 = \varphi \colon \iota_1$, i.e.\ making the following diagram commute:
+ \begin{center}
+  \tikzsetnextfilename{uniqueness_of_universal_enveloping_algebra}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (g) {$\g$};
+   \node[below left of = g] (U1) {$\Ue(\g)_1$};
+   \node[below right of = g] (U2) {$\Ue(\g)_2$};
+   \draw[->] (g) to node[above left] {$\iota_1$} (U1);
+   \draw[->] (g) to node[above right] {$\iota_2$} (U2);
+   \draw[->] (U1) to node[below] {$\varphi$} (U2);
+  \end{tikzpicture}
+ \end{center}
+ Hence we will talk about \emph{the} universal enveloping algebra of $\g$.
+\end{rem}
+
+
