@@ -1,0 +1,18 @@
+\section{The universal enveloping algebra}
+The following hold for this section alone: We fix a Lie algebra $\g$ over an arbitrary field $k$. All $k$-algebras have to be associative and unitary and all homomorphisms of $k$-algebras have to respect the unit.
+
+
+\begin{defi}
+ An \emph{universal enveloping algebra} of $\g$ is an $k$-algebra $\Ue(\g)$ together with a homomorphism of Lie algebras $\iota \colon \g \to \Ue(\g)$ such that for every $k$-Algebra $A$ and homomorphism of Lie algebras $\phi \colon \g \to A$ there exists a unique homomorphism of $k$-algebras $\Phi \colon \Ue(\g) \to A$ with $\phi = \Phi \circ \iota$, i.e.\ making the following diagram commute:
+ \begin{center}
+  \tikzsetnextfilename{universal_property_of_universal_enveloping_algebra}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (g) {$\g$};
+   \node[below of = g] (Ug) {$\Ue(\g)$};
+   \node[right = 5em of Ug] (A) {$A$};
+   \draw[->] (g) to node[left] {$\iota$} (Ug);
+   \draw[->] (g) to node[above right] {$\phi$} (A);
+   \draw[->, dashed] (Ug) to node[below] {$\Phi$} (A);
+  \end{tikzpicture}
+ \end{center}
+\end{defi}

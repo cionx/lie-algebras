@@ -9,6 +9,7 @@
 \usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
 \usepackage[autooneside,headsepline]{scrlayer-scrpage} %for headers
 \usepackage{tikz} % for diagrams
+\usetikzlibrary{positioning} % for better positioning of nodes relative to each other
 \usetikzlibrary{external} % storing tikz figures externially to reduce build time
 \tikzexternalize[prefix=tikz/]
 \tikzset{external/system call={%
@@ -65,7 +66,7 @@
 \newcommand{\F}{\mathbb{F}}
 
 
-% lie algebras
+% lie algebras and the universal enveloping algebra
 \newcommand{\g}{\mathfrak{g}}
 \newcommand{\h}{\mathfrak{h}}
 \newcommand{\gl}{\mathfrak{gl}}
@@ -73,6 +74,7 @@
 \newcommand{\tl}{\mathfrak{t}}
 \newcommand{\nl}{\mathfrak{n}}
 \newcommand{\Loop}{\mathcal{L}}
+\newcommand{\Ue}{\mathcal{U}}
 
 
 % macros for spaces
