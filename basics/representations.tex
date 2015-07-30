@@ -46,9 +46,8 @@
 \end{rem}
 
 
-\begin{expls}
+\begin{expls}\label{expls: representations of Lie algebras}
  \begin{enumerate}[leftmargin=*]
- 
   \item 
    If $\g \subseteq \gl(V)$ is a Lie subalgebra then $V$ is a representation of $\g$ via the inclusion $\g \inc \gl(V)$. This corresponds to the action
    \[
@@ -266,11 +265,11 @@
  \[
   f(x.v) = x.f(v) \quad \text{for every $x \in \g$ and $v \in V$}.
  \]
- If $\rho_V \colon \g \to \gl(V)$ and $\rho_W \colon \g \to \gl(W)$ are the corresponding Lie algebra homomomorphisms this is equivalent to
+ $f$ is an \emph{isomorphism of representations} if it is additionally bijective. If $\rho_V \colon \g \to \gl(V)$ and $\rho_W \colon \g \to \gl(W)$ are the corresponding Lie algebra homomomorphisms then $f$ is a homomorphism of representations if and only if
  \[
   f \circ \rho_V(x) = \rho_W(x) \circ f \quad \text{for every $x \in X$}.
  \]
- $f$ is an \emph{isomorphism of representations} if it is additionally bijective.
+ The linear subspace of $\Hom_k(V,W)$ consisting of the homomorphisms of representations is denoted by $\Hom_\g(V,W)$, and for $V = W$ by $\End_\g(V) \coloneqq \Hom_\g(V,V)$. 
 \end{defi}
 
 
@@ -402,5 +401,27 @@
 
 
 \begin{expl}
- The adjoint representation of a Lie algebra $\g$ is irreducible if and only if $\g \neq 0$ and $\g$ has no ideals besides $0$ and $\g$ itself. So $\g$ is either the onedimensional abelian Lie algebra or a simple Lie algebra.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Every one-dimensional representation is irreducible.
+  \item
+   The adjoint representation of a Lie algebra $\g$ is irreducible if and only if $\g \neq 0$ and $\g$ has no ideals besides $0$ and $\g$ itself. So $\g$ is either the onedimensional abelian Lie algebra or a simple Lie algebra.   
+ \end{enumerate}
 \end{expl}
+
+
+\begin{lem}[Schur]
+ Let $\g$ be a Lie algebra over a field $k$.
+ \begin{enumerate}
+  \item
+   Let $V$ and $W$ be irreducible representations of $\g$ and $\varphi \colon V \to W$ a homomorphism of representation. Then either $\varphi = 0$ or $\varphi$ is an isomorphism of representations. In particular $\Hom_\g(V,W) = 0$ if $V \ncong W$, and $\End_\g(V)$ is a skew field.
+  \item
+   If $k$ is algebraically closed and $V$ an irreducible representation of $\g$ then every $\varphi \in \End_\g(V)$ is given by multiplication with some $\lambda \in k$. In particular $\End_\g(V) \cong k$ as rings.
+ \end{enumerate}
+\end{lem}
+
+
+
+
+
+
