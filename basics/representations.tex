@@ -381,6 +381,8 @@
   \item
    If $V$ is a representation and $(U_i)_{i \in I}$ a collection of subrepresentations $U_i \subseteq V_i$ then $\sum_{i \in I} U_i$ is also a subrepresentation of $V$.
   \item
+   Let $V$ and $W$ be representations of a Lie algebra $\g$ and $\varphi \colon V \to W$ a homomorphism of representations. Then $\ker \varphi \subseteq V$ and $\im \varphi \subseteq W$ are subrepresentations.
+  \item
    The subrepresentations of the adjoint representation of $\g$ are precisely the ideals in $\g$.
  \end{enumerate}
 \end{expls}
@@ -416,9 +418,19 @@
   \item
    Let $V$ and $W$ be irreducible representations of $\g$ and $\varphi \colon V \to W$ a homomorphism of representation. Then either $\varphi = 0$ or $\varphi$ is an isomorphism of representations. In particular $\Hom_\g(V,W) = 0$ if $V \ncong W$, and $\End_\g(V)$ is a skew field.
   \item
-   If $k$ is algebraically closed and $V$ an irreducible representation of $\g$ then every $\varphi \in \End_\g(V)$ is given by multiplication with some $\lambda \in k$. In particular $\End_\g(V) \cong k$ as rings.
+   If $k$ is algebraically closed and $V$ a finite-dimensional irreducible representation of $\g$ then every $\varphi \in \End_\g(V)$ is given by multiplication with some $\lambda \in k$. In particular $\End_\g(V) \cong k$ as rings.
  \end{enumerate}
 \end{lem}
+\begin{proof}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   From $V \neq 0$ and $W \neq 0$ it follows that $\varphi$ cannot be zero and an isomorohpism at the same time. Suppose that $\varphi \neq 0$. Then $\im \varphi$ is a nonzero subrepresentation of $W$, hence $\im \varphi = W$ because $W$ is irreducible. Similarly it follows that $\ker \varphi$ is a proper subrepresentation of $V$, hence $\ker \varphi = 0$ because $V$ is irreducible. By combining these two observations it follows $\varphi$ is an isomorphism.
+  \item
+   As $k$ is algebraically closed it follows that $\varphi$ has an eigenvalue $\lambda \in k$. Therefore $\varphi - \lambda$ is an endomorphism of $V$ as a representation of $\g$ with nonzero kernel. Hence it is no isomorphism, so $\varphi - \lambda \id_V = 0$ because $\End_\g(V)$ is a skew field.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
 
 
 
