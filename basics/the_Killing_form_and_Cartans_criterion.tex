@@ -16,7 +16,7 @@
 
 
 \begin{rem}
- As $\g$ acts on itself by the adjoint representation it also acts on $(\g \otimes_k \g)^*$ such that for every $\beta \in (\g \otimes_k \g)^*$ and all $x,y,z \in \g$
+ As $\g$ acts on itself by the adjoint representation it also acts on $(\g \otimes_k \g)^*$ as described in Proposition \ref{prop: new representations from old ones}, i.e.\ for every $\beta \in (\g \otimes_k \g)^*$ and all $x,y,z \in \g$
  \begin{align*}
   (y.\beta)(x \otimes z)
   &= -\beta(y.(x \otimes z))
@@ -32,6 +32,38 @@
  Because of this associative bilinear forms on $\g$ are also called \emph{invariant}. \end{samepage}
 \end{rem}
 
+
+\begin{lem}
+ Let $\g$ be a Lie algebra and $\beta \colon \g \to \g^*$ a symmetric bilinear form. Then $\beta$ is associative if and only if the map
+ \[
+  \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x, \cdot)
+ \]
+ is a homomorphism of representations (where $\g$ acts on itself by the adjoint representation and therefore on $\g^*$ as described in Proposition \ref{prop: new representations from old ones}). 
+\end{lem}
+\begin{proof}
+ For every $x,y,z \in \g$ and $y \in \g$ the equalities
+ \begin{gather*}
+  (x.\varphi(y))(z)
+  = -\varphi(y)(x.z)
+  = -\beta(y,x.z)
+  = -\beta(y,[x,z])
+ \shortintertext{and}
+  \varphi(x.y)(z)
+  = \beta(x.y,z)
+  = \beta([x,y],z)
+  = -\beta([y,x],z)
+ \end{gather*}
+ hold. Hence the associativity of $\beta$ is equivalent to the equality $x.\varphi(y) = \varphi(x.y)$ holding for all $x,y \in \g$.
+\end{proof}
+
+
+\begin{cor}\label{cor: associative non-degenerate bilinear forms induce isomorphism to the dual}
+ If $\g$ is a finite-dimensional Lie algebra and $\beta \colon \g \times \g \to k$ an associative and symmetric bilinear form which is non-degenerate then the map
+ \[
+  \varphi \colon \g \to \g^*, \quad x \mapsto \varphi(x,\cdot)
+ \]
+ is an isomorphism of representations.
+\end{cor}
 
 
 \begin{defi}

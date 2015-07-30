@@ -138,7 +138,7 @@
    \end{gather*}
    
   \item
-   If $\rho \g \colon \gl(V)$ is a representation of a Lie algebra $\g$ and $\phi \colon \g' \to \g$ a homomorphism of Lie algebras then via the composition $\rho \circ \phi \colon \g' \to \gl(V)$ the vector space $V$ becomes a representation of $\g$. This corresponds to the action
+   If $\rho \colon \g \to \gl(V)$ is a representation of a Lie algebra $\g$ and $\phi \colon \g' \to \g$ a homomorphism of Lie algebras then via the composition $\rho \circ \phi \colon \g' \to \gl(V)$ the vector space $V$ becomes a representation of $\g$. This corresponds to the action
    \[
     x.v = \rho(x).v = \rho(\phi(x))(v) \quad \text{for every $x \in \g$ and $v \in V$}.
    \]
@@ -159,8 +159,100 @@
 
 
 \begin{rem}
- Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself not only by any endomorphisms but by derivations of itself. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I suppose).
+ Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself by derivations of itself via the adjoint representation. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I guess).
 \end{rem}
+
+
+\begin{prop}[New representations from old ones]\label{prop: new representations from old ones}
+ Let $\g$ be a Lie algebra over an arbitrary field $k$.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   If $(V_i)_{i \in I}$ is a collection of representations of $\g$ then $\bigoplus_{i \in I} V_i$ is a representation of $\g$ via
+   \[
+    x.\sum_{i \in I} v_i = \sum_{i \in I} x.v_i
+   \]
+   or every $x \in \g$ and $v_i \in V_i$ for all $i \in I$, with $v_i = 0$ for all but finitely many $i \in I$.
+  \item
+   If $V$ and $W$ are representations of $\g$ then $V \otimes W$ is a representation of $\g$ via
+   \[
+    x.(v \otimes w) = (x.v) \otimes w + v \otimes (x.w) \quad \text{for every $x \in \g$, $v \in V$ and $w \in W$}.
+   \]
+   More generally: If $V_1, \dotsc V_n$ are representations of $\g$ then $V_1 \otimes \dotsb \otimes V_n$ is a representation of $\g$ via
+   \[
+    x.(v_1 \otimes \dotsb \otimes v_n)
+    = \sum_{i=1}^n v_1 \otimes \dotsb \otimes v_{i-1} \otimes (x.v_i) \otimes v_{i+1} \otimes \dotsb \otimes v_n.
+   \]
+   for every $x \in \g$ and $v_i \in V_i$ for every $i = 1, \dotsc, n$.
+  \item
+   If $V, W$ are representations of $V$ then $\Hom_k(V,W)$ is a representation of $\g$ via
+   \[
+    (x.f)(v) = x.f(v) - f(x.v) \quad \text{for every $x \in \g$, $f \in \Hom(V,W)$ and $v \in V$}.
+   \]
+  \item
+   By letting $\g$ act trivially on $k$ the dual $V^* = \Hom_k(V,k)$ becomes a representation of $\g$ in the above way, i.e.
+   \[
+    (x.\varphi)(v) = -\varphi(x.v) \quad \text{for every $x \in \g$, $\varphi \in V^*$ and $v \in V$}.
+   \]
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Let $x,y \in \g$ and $v_i \in V_i$ for every $i \in I$. Then
+   \[
+    x.y.\sum_{i=1}^n v_i - y.x.\sum_{i=1}^n v_i
+    = \sum_{i=1}^n (x.y.v_i - y.x.v_i)
+    = \sum_{i=1}^n [x,y].v_i
+    = [x,y].\sum_{i=1}^n v_i.
+   \]
+   
+  \item
+   Let $x,y \in \g$ and $v_i \in V_i$ for every $i = 1, \dotsc, n$. For all $i,j,m = 1, \dotsc, n$ set
+   \[
+    \tilde{w}^{ij}_m \coloneqq
+    \begin{cases}
+     \phantom{y.}x.v_i & \text{if $i = m \neq j$}, \\
+     \phantom{x.}y.v_i & \text{if $i \neq m = j$}, \\
+               x.y.v_i & \text{if $i = m= j$}, \\
+     \phantom{x.y.}v_i & \text{otherwise},
+    \end{cases}
+    \quad\text{and}\quad
+    \hat{w}^{ij}_m \coloneqq
+    \begin{cases}
+     \phantom{y.}x.v_i & \text{if $i = m \neq j$}, \\
+     \phantom{x.}y.v_i & \text{if $i \neq m = j$}, \\
+               y.x.v_i & \text{if $i = m = j$}, \\
+     \phantom{y.x.}v_i & \text{otherwise}.
+    \end{cases}
+   \]
+   In particular $\tilde{w}^{ij}_m = \hat{w}^{ij}_m$ holds for all $m = 1, \dotsc, n$ and $i \neq j$. Therefore
+   \begin{align*}
+     &\, x.y.(v_1 \otimes \dotsb \otimes v_n) - y.x.(v_1 \otimes \dotsb \otimes v_n) \\
+    =&\, \sum_{i,j=1}^n \tilde{w}^{ij}_1 \otimes \dotsb \otimes \tilde{w}^{ij}_m
+         - \sum_{i,j=1}^n \hat{w}^{ij}_1 \otimes \dotsb \otimes \hat{w}^{ij}_m \\
+    =&\, \sum_{i=1}^n ( \tilde{w}^{ii}_1 \otimes \dotsb \otimes \tilde{w}^{ii}_m
+                       -\hat{w}^{ii}_1 \otimes \dotsb \otimes \hat{w}^{ii}_m ) \\
+    =&\, \sum_{i=1}^n \left( v_1 \otimes \dotsb \otimes (x.y.v_i) \otimes \dotsb \otimes v_n
+                            -v_1 \otimes \dotsb \otimes (y.x.v_i) \otimes \dotsb \otimes v_n \right) \\
+    =&\, \sum_{i=1}^n v_1 \otimes \dotsb \otimes v_{i-1} \otimes (x.y.v_i - y.x.v_i)
+                          \otimes v_{i+1} \otimes \dotsb v_n \\
+    =&\, \sum_{i=1}^n v_1 \otimes \dotsb \otimes v_{i-1} \otimes ([x,y].v_i) \otimes v_{i+1} \otimes \dotsb v_n
+    = [x,y].(v_1, \otimes \dotsb \otimes v_n).
+   \end{align*}
+   
+  \item
+   For all $x,y \in \g$, $f \in \Hom(V,W)$ it follows for every $v \in V$ that
+   \begin{align*}
+    (x.y.\varphi)(v) - (y.x.\varphi)(v)
+    &= -(y.\varphi)(x.v) + (x.\varphi(y.v)
+    = \varphi(y.x.v) - (\varphi(x.y.v) \\
+    &= -\varphi(x.y.v - y.x.v)
+    = -\varphi([x,y].v)
+    = ([x.y].\varphi)(v).
+   \qedhere
+   \end{align*}
+ \end{enumerate}
+\end{proof}
 
 
 
@@ -191,45 +283,6 @@
 \end{rem}
 
 
-
-
-\subsection{New representations from old ones}
-
-
-\begin{prop}
- Let $\g$ be a Lie algebra over a field $k$.
- \begin{enumerate}[leftmargin=*]
-  \item
-   If $(V_i)_{i \in I}$ is a collection of representations of $\g$ then $\bigoplus_{i \in I} V_i$ is a representation of $\g$ via
-   \[
-    x.\sum_{i \in I} v_i = \sum_{i \in I} x.v_i
-   \]
-   or every $x \in \g$ and $v_i \in V_i$ for all $i \in I$, with $v_i = 0$ for all but finitely many $i \in I$.
-  \item
-   If $V$ and $W$ are representations of $\g$ then $V \otimes W$ is a representation of $\g$ via
-   \[
-    x.(v \otimes w) = (x.v) \otimes w + v \otimes (x.w) \quad \text{for every $x \in \g$, $v \in V$ and $w \in W$}.
-   \]
-   More generally: If $V_1, \dotsc V_n$ are representations of $\g$ then $\bigotimes_{i=1}^n V_i$ is a representation of $\g$ via
-   \[
-    x.(v_1 \otimes \dotsb \otimes v_n)
-    = \sum_{i=1}^n v_1 \otimes \dotsb \otimes v_{i-1} \otimes (x.v_i) \otimes v_{i+1} \otimes \dotsb \otimes v_n.
-   \]
-   for every $x \in \g$ and $v_i \in V_i$ for every $i = 1, \dotsc, n$.
-  \item
-   If $V, W$ are representations of $V$ then $\Hom_k(V,W)$ is a representation of $\g$ via
-   \[
-    (x.f)(v) = x.f(v) - f(x.v) \quad \text{for every $x \in \g$, $f \in \Hom(V,W)$ and $v \in V$}.
-   \]
-  \item
-   By letting $\g$ act trivially on $k$ the dual $V^* = \Hom_k(V,k)$ becomes a representation of $\g$ in the above way, i.e.
-   \[
-    (x.\varphi)(v) = -\varphi(x.v) \quad \text{for every $x \in \g$, $\varphi \in V^*$ and $v \in V$}.
-   \]
- \end{enumerate}
-\end{prop}
-
-
 \begin{rem}
  Given two representations $V$ and $W$ of a Lie algebra $\g$ a linear map $f \colon V \to W$ is a homomorphism of representations if and only if
  \[
@@ -239,34 +292,76 @@
 \end{rem}
 
 
-
 \begin{prop}
  Let $\g$ be a Lie algebra.
  \begin{enumerate}[leftmargin=*]
   \item
    If $V$ and $W$ are finite dimensional representations of $\g$ then the map
    \[
-    V^* \otimes W \to \Hom_k(V,W), \quad \varphi \otimes w \mapsto (v \mapsto \varphi(v) w)
+    \Phi_1 \colon V^* \otimes W \to \Hom_k(V,W), \quad \varphi \otimes w \mapsto (v \mapsto \varphi(v) w)
    \]
    is a homomorphism of representations. If $V$ and $W$ are both finite dimensional this is an isomorphism of vector spaces and thus already an isomorphism of representations.
   \item
-   If $V^i_j$ with $i = 1, \dotsc, r$ and $j = 1, \dotsc, n_i$ is a collection of representations of $\g$ then the isomorphism of vector spaces
+   If $V_1, \dotsc, V_r$ and $W_1, \dotsc, W_s$ are representations of $\g$ then the isomorphism of vector spaces
    \begin{align*}
-    \bigotimes_{i=1}^r \bigotimes_{j=1}^{n_j} V^{i}_j
-    &\to V^1_1 \otimes \dotsb \otimes V^1_{n_1} \otimes \dotsb \otimes V^r_1 \otimes \dotsb \otimes V^{r}_{n_r}, \\
-    (v^1_1 \otimes \dotsb \otimes v^1_{n_1}) \otimes \dotsb \otimes (v^r_1 \otimes \dotsb \otimes v^r_{n_r})
-    &\mapsto v^1_1 \otimes \dotsb \otimes v^1_{n_1} \otimes \dotsb \otimes v^r_1 \otimes \dotsb \otimes v^r_{n_r}
+    \Phi_2 \colon
+    (V_1 \otimes \dotsb \otimes V_r) \otimes (W_1 \otimes \dotsb \otimes W_s)
+    &\longrightarrow V_1 \otimes \dotsb \otimes V_r \otimes W_1 \otimes \dotsb \otimes W_s, \\
+    (v_1 \otimes \dotsb \otimes v_r) \otimes (w_1 \otimes \dotsb \otimes w_s)
+    &\longmapsto v_1 \otimes \dotsb \otimes v_r \otimes w_1 \otimes \dotsb \otimes w_s
    \end{align*}
+   is already an isomorphism of representations.
+  \item
+   If $V$ and $W$ are representations of $\g$ then the isomorphism of vector spaces
+   \[
+    \Phi_3 \colon V \otimes W \to W \otimes V, \quad v \otimes w \mapsto w \otimes v
+   \]
+   is already an isomorphism of representations.
+  \item
+   If $V_1$, $V_2$ and $W$ are representations of $\g$ then the isomorphism of vector spaces
+   \begin{align*}
+    \Phi_4 \colon
+    (V_1 \otimes V_2) \otimes W &\to (V_1 \otimes W) \oplus (V_2 \otimes W), \\
+    (v_1 + v_2) \otimes w &\mapsto (v_1 \otimes w) + (v_2 \otimes w)
+   \end{align*}
+   is already an isomorphism of representations.
+  \item
+   If $V_1, \dotsc, V_n$ are representations of $\g$ and $\sigma \in S_n$ then the isomorphism of vector spaces
+   \[
+    \Phi_5 \colon 
+    V_1 \otimes \dotsb \otimes V_n \to V_{\sigma(1)} \otimes \dotsb \otimes V_{\sigma(n)}, \quad
+    v_1 \otimes \dotsb \otimes v_n \mapsto v_{\sigma(1)} \otimes \dotsb \otimes v_{\sigma(n)}
+   \]
    is already an isomorphism of representations.
   \item
    If $V_1, \dotsc, V_n$ and $W_1, \dotsc, W_n$ are representations of $\g$ and $f_i \colon V_i \to W_i$ for every $i = 1, \dotsc, n$ a homomorphism of representations it follows that the map
    \[
-    f_1 \otimes \dotsb \otimes f_n \colon \bigotimes_{i=1}^n V_i \to \bigotimes_{i=1}^n W_i,
+    \Phi_6 \colon 
+    f_1 \otimes \dotsb \otimes f_n \colon \bigotimes_{i=1}^n V_i \to \bigotimes_{i=1}^n W_i, \quad
     v_1 \otimes \dotsb \otimes v_n \mapsto f(v_1) \otimes \dotsb \otimes f(v_n)
    \]
    is also a homomorphism of representations.
  \end{enumerate}
 \end{prop}
+\begin{proof}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   For $x \in \g$, $\varphi \in V^*$ and $w \in W$ it follows for every $v \in V$ that
+   \begin{align*}
+    \Phi_1(x.(\varphi \otimes w))(v)
+    &= \Phi_1((x.\varphi) \otimes w + \varphi \otimes (x.w))(v)
+    = (x.\varphi)(v) w + \varphi(v) x.w \\
+    &= \varphi(v) x.w -\varphi(x.v) w
+    = x.(\varphi(v) w) - \varphi(x.v) w \\
+    &= x.\Phi_1(\varphi \otimes w)(v) - \Phi_1(\varphi \otimes w)(x.v)
+    = (x.\Phi_1(\varphi \otimes w))(v).
+   \end{align*}
+  
+  \item
+   
+ \end{enumerate}
+\end{proof}
+
 
 
 
