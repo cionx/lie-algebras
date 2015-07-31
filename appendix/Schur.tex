@@ -142,6 +142,33 @@ The following Proposition traces back to \cite{Dixmier}. (At least this is what 
 
 
 
+\section{Generalizaton by Quillen}
+
+
+The following Proposition is due to \cite{Quillen}.
+
+
+\begin{prop}[Quillen] \label{prop: Quillen}
+ Let $k$ be a field and $A$ a filtered $k$-algebra, such that $\gr A$ is finitely generated and commutative as a $k$-algebra. If $M$ is a simple $A$-module then every $\varphi \in \End_A(M)$ is algebraic over $k$.
+\end{prop}
+
+
+\begin{cor}
+ Let $\g$ be finite-dimensional Lie algebra over an algebraically closed field $k$ and $V$ as irreducible representation of $\g$. Then $\End_\g(V) = k$.
+\end{cor}
+\begin{proof}
+ Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$. If $x_1, \dotsc, x_n$ is a $k$-basis of $\g$ then by the abstract version of the PBW theorem
+ \[
+  \gr \Ue(\g) \cong S(\g) \cong k[x_1, \dotsc, x_n].
+ \]
+ Applying Proposition~\ref{prop: Quillen} to $\Ue(\g)$ and $V$ the statement follows from Corollary~\ref{cor: Schur generally needs only algebraic endomorphisms}.
+\end{proof}
+
+
+
+
+
+
 
 
 
