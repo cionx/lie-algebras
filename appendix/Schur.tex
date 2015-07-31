@@ -1,1 +1,51 @@
 \chapter{Schur’s Lemma}
+Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk about a ring (resp.\ $k$-algebra) we always mean an associative and unitary one, and homomorphisms of rings (resp.\ $k$-algebras) are required to respect the unit. We assume that the reader is familiar with the definition of a module over a ring notion of a submodules. By an (left) $R$-module $M$ over a ring $R$ we always mean an unitial module, i.e.\ $1 \cdot m = m$ for every $m \in M$.
+
+
+
+
+
+\section{Classic version}
+
+
+\begin{defi}
+ Let $M$ be a module over a ring $R$. Then $M$ is called \emph{simple} or \emph{irreducible} if $M$ contains precisely two sumbodules. Equivalently $M$ in nonzero and its only submodules are the \emph{trivial} ones, namely $0$ and $M$ itself.
+\end{defi}
+
+
+\begin{lem}[Schur]
+ Let $R$ be a ring and $M$ a simple module over $R$. Then any endomorphism of modules $f \colon M \to M$ is either zero or an isomorphism. In particular $\End_R(M)$ is a skew field.
+\end{lem}
+\begin{proof}
+ As $M$ is nonzero $f$ cannot be zero and an isomorphism at the same time. If $f \neq 0$ then $\ker f$ is a proper submodule of $M$ and $\im f$ is a nonzero submodule of $M$, so $\ker f = 0$ and $\im f = M$ because $M$ is simple.
+\end{proof}
+
+
+\begin{cor}
+ Let $M$ be an $A$-module over a $k$-algebra $A$. Then $\End_A(M)$ is a division algebra over $k$.
+\end{cor}
+
+
+\begin{lem}
+ Let $k$ be an algebraically closed field and $L$ a finite-dimensional division algebra over $k$. Then $L = k$.
+\end{lem}
+\begin{proof}
+ Let $x \in L$. Because $L$ is finite-dimenisonal over $k$ it follows that $x$ is algebraic over $k$. (To see this that there exists some $n \geq 1$ such that $1, x, x^2, \dotsc, x^n$ are linearly dependent over $k$. Therefore there exist some $a_0, a_1, \dotsc, a_n \in k$ such that
+ \[
+  a_0 + a_1 x + \dotsb + a_n x^n = 0
+ \]
+ is a non-trivial linear combination. Then $P = \sum_{i=0}^n a_i T^i \in k[T]$ is nonzero with $P(x) = 0$.) Let $P \in k[T]$ be nonzero with $P(x) = 0$. Because $k$ is algebraically closed there exists $c, \alpha_1, \dotsc, \alpha_r \in k$ with $P = c \prod_{i=1}^r (x-\alpha_i)$. Because $P$ is nonzero it follows that $c \neq 0$. Because
+ \[
+  0 = P(x) = c \prod_{i=1}^n (x-\alpha_i)
+ \]
+ and $L$ is a skew field it follows that $x = \alpha_i$ for some $i$ and therefore $x \in k$.
+\end{proof}
+
+
+\begin{cor}[Schur]
+ Let $k$ be an algebraically closed field and $M$ a simple $A$-module for a $k$-algebra $A$. If $M$ is finite-dimensional over $k$ then $\End_A(M) = k$, i.e.\ every module endomorphism of $M$ is given by multiplication with a scalar.
+\end{cor}
+
+
+
+
