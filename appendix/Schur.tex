@@ -30,11 +30,7 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
  Let $D$ be a division algebra over an algebraically closed field $k$. If $x \in D$ is algebraic over $k$ then already $x \in k$.
 \end{lem}
 \begin{proof}
- Let $P \in k[T]$ be nonzero with $P(x) = 0$. W.l.o.g.\ $P$ can assumed to be monic. Because $k$ is algebraically closed there exist $\alpha_1, \dotsc, \alpha_r \in k$ with $P = \prod_{i=1}^r (x-\alpha_i)$. Because
- \[
-  0 = P(x) = c \prod_{i=1}^n (x-\alpha_i)
- \]
- and $D$ is a skew field it follows that $x = \alpha_i$ for some $i$ and therefore $x \in k$.
+ Let $P \in k[T]$ be nonzero with $P(x) = 0$. W.l.o.g.\ $P$ can assumed to be monic. Because $k$ is algebraically closed there exist $\alpha_1, \dotsc, \alpha_r \in k$ with $P = \prod_{i=1}^r (x-\alpha_i)$. Because $0 = P(x) = c \prod_{i=1}^n (x-\alpha_i)$ and $D$ is a skew field it follows that $x = \alpha_i$ for some $i$ and therefore $x \in k$.
 \end{proof}
 
 
@@ -42,11 +38,7 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
  Let $k$ be an algebraically closed field and $L$ a finite-dimensional division algebra over $k$. Then $L = k$.
 \end{cor}
 \begin{proof}
- Let $x \in L$. Because $L$ is finite-dimenisonal over $k$ there exists some $n \geq 1$ such that $1, x, x^2, \dotsc, x^n$ are linearly dependent over $k$. Therefore there exist some $a_0, a_1, \dotsc, a_n \in k$ such that
- \[
-  a_0 + a_1 x + \dotsb + a_n x^n = 0
- \]
- is a non-trivial linear combination. Then $P = \sum_{i=0}^n a_i T^i \in k[T]$ is nonzero with $P(x) = 0$, so $x$ is algebraic over $k$. From Lemma \ref{lem: algebraic elements over algebraically closed fields} it follows that $x \in k$.
+ Let $x \in L$. Because $L$ is finite-dimenisonal over $k$ there exists some $n \geq 1$ such that $1, x, x^2, \dotsc, x^n$ are linearly dependent over $k$. Therefore there exist some $a_0, a_1, \dotsc, a_n \in k$ such that $a_0 + a_1 x + \dotsb + a_n x^n = 0$ is a non-trivial linear combination. Then $P = \sum_{i=0}^n a_i T^i \in k[T]$ is nonzero with $P(x) = 0$, so $x$ is algebraic over $k$. From Lemma~\ref{lem: algebraic elements over algebraically closed fields} it follows that $x \in k$.
 \end{proof}
 
 
@@ -59,14 +51,14 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
  Let $\g$ be a Lie algebra over an algebraically closed field $k$ and $V$ a irreducible and finite-dimensional representation of $\g$. Then $\End_\g(V) = k$, i.e.\ every endomorpism of $V$ as a representation of $\g$ is given by an multiplication with some scalar.
 \end{cor}
 \begin{proof}
- Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$ and apply Corollary \ref{cor: classic Schur}.
+ Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$ and apply Corollary~\ref{cor: classic Schur}.
 \end{proof}
 
 
 
 
 
-\section{Diximier}
+\section{Generalization by Dixmier}
 
 
 \begin{defi}
@@ -74,11 +66,27 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 \end{defi}
 
 
+\begin{lem}\label{lem: algebraic endomorphisms over algebraically closed fields}
+ Let $k$ be an algebraically closed field, $V$ a vector space over $k$ and $D \subseteq \End_k(V)$ a division algebra over $k$. If $\varphi \in D$ is algebraic over $k$ then $\varphi = \alpha \id_V$ for some $\alpha \in k$.
+\end{lem}
+\begin{proof}
+ This follows directly from Lemma~\ref{lem: algebraic elements over algebraically closed fields}.
+\end{proof}
+
+
+\begin{cor}\label{cor: Schur generally needs only algebraic endomorphisms}
+ Let $k$ be an algebraically closed field, $A$ a $k$-algebra and $M$ a simple $A$-module. If $\varphi \in \End_A(M)$ is algebraic then $\varphi = \alpha \id_M$ for some $\alpha \in k$.
+\end{cor}
+\begin{proof}
+ This follows directly from Lemma~\ref{lem: algebraic endomorphisms over algebraically closed fields} because $\End_A(M) \subseteq \End_k(M)$ is a division algebra over $k$ by Lemma~\ref{lem: Schur general part about skew field}.
+\end{proof}
+
+
 The following Proposition traces back to \cite{Dixmier}. (At least this is what I found on the web --- I could not find the original article, nor would I be able to read it (as it was apparently written in French)).
 
 
 \begin{prop}[Dixmier]\label{prop: Dixmier}
- Let $M$ be a simple module over a $k$-algebra $A$, such that $\dim_k M > \card k$. Then every $\varphi \in \End_A(M)$ is algebraic over $k$.
+ Let $M$ be a simple $A$-module for a $k$-algebra $A$, such that $\dim_k M > \card k$. Then every $\varphi \in \End_A(M)$ is algebraic over $k$.
 \end{prop}
 \begin{proof}
  Suppose that there exists some $\varphi \in \End_A(M)$ which is not algebraic over $k$. Then the kernel of the map
@@ -109,7 +117,7 @@ The following Proposition traces back to \cite{Dixmier}. (At least this is what 
  Let $k$ be an algebraically closed field, $A$ a $k$-algebra and $M$ a simple $A$-module. If $\card k > \dim_k M$ then $\End_A(M) = k$.
 \end{cor}
 \begin{proof}
- This is a direct consequence of Lemma \ref{lem: algebraic elements over algebraically closed fields} because $\End_A(M)$ is a division algebra over $k$ by Lemma \ref{lem: Schur general part about skew field} in which every element is algebraic over $k$ by Proposition \ref{prop: Dixmier}.
+ This is a combination of Corollary \ref{cor: Schur generally needs only algebraic endomorphisms} and Proposition \ref{prop: Dixmier}.
 \end{proof}
 
 
@@ -129,7 +137,6 @@ The following Proposition traces back to \cite{Dixmier}. (At least this is what 
 \begin{rem}
  The requirement that $\card k > \dim_k M$ in Corollary \ref{cor: Dixmier algebraically closed} can not be dropped without adding some other restraints. To see this take $k \coloneqq \overline{\Q}$ as well as $A = M = \overline{\Q}(T)$. Then $\dim_k M = \card k$ and $\End_A(M) = \End_{\overline{\Q}(T)}(\overline{\Q}(T)) = \overline{\Q}(T)$.
 \end{rem}
-
 
 
 
