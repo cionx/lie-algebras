@@ -13,7 +13,7 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 \end{defi}
 
 
-\begin{lem}[Schur]
+\begin{lem}[Schur] \label{lem: Schur general part about skew field}
  Let $R$ be a ring and $M$ a simple module over $R$. Then any endomorphism of modules $f \colon M \to M$ is either zero or an isomorphism. In particular $\End_R(M)$ is a skew field.
 \end{lem}
 \begin{proof}
@@ -26,23 +26,31 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 \end{cor}
 
 
-\begin{lem}
- Let $k$ be an algebraically closed field and $L$ a finite-dimensional division algebra over $k$. Then $L = k$.
+\begin{lem}\label{lem: algebraic elements over algebraically closed fields}
+ Let $D$ be a division algebra over an algebraically closed field $k$. If $x \in D$ is algebraic over $k$ then already $x \in k$.
 \end{lem}
 \begin{proof}
- Let $x \in L$. Because $L$ is finite-dimenisonal over $k$ it follows that $x$ is algebraic over $k$. (To see this that there exists some $n \geq 1$ such that $1, x, x^2, \dotsc, x^n$ are linearly dependent over $k$. Therefore there exist some $a_0, a_1, \dotsc, a_n \in k$ such that
- \[
-  a_0 + a_1 x + \dotsb + a_n x^n = 0
- \]
- is a non-trivial linear combination. Then $P = \sum_{i=0}^n a_i T^i \in k[T]$ is nonzero with $P(x) = 0$.) Let $P \in k[T]$ be nonzero with $P(x) = 0$. Because $k$ is algebraically closed there exists $c, \alpha_1, \dotsc, \alpha_r \in k$ with $P = c \prod_{i=1}^r (x-\alpha_i)$. Because $P$ is nonzero it follows that $c \neq 0$. Because
+ Let $P \in k[T]$ be nonzero with $P(x) = 0$. W.l.o.g.\ $P$ can assumed to be monic. Because $k$ is algebraically closed there exist $\alpha_1, \dotsc, \alpha_r \in k$ with $P = \prod_{i=1}^r (x-\alpha_i)$. Because
  \[
   0 = P(x) = c \prod_{i=1}^n (x-\alpha_i)
  \]
- and $L$ is a skew field it follows that $x = \alpha_i$ for some $i$ and therefore $x \in k$.
+ and $D$ is a skew field it follows that $x = \alpha_i$ for some $i$ and therefore $x \in k$.
 \end{proof}
 
 
-\begin{cor}[Schur] \label{cor: classic Schur}
+\begin{cor}
+ Let $k$ be an algebraically closed field and $L$ a finite-dimensional division algebra over $k$. Then $L = k$.
+\end{cor}
+\begin{proof}
+ Let $x \in L$. Because $L$ is finite-dimenisonal over $k$ there exists some $n \geq 1$ such that $1, x, x^2, \dotsc, x^n$ are linearly dependent over $k$. Therefore there exist some $a_0, a_1, \dotsc, a_n \in k$ such that
+ \[
+  a_0 + a_1 x + \dotsb + a_n x^n = 0
+ \]
+ is a non-trivial linear combination. Then $P = \sum_{i=0}^n a_i T^i \in k[T]$ is nonzero with $P(x) = 0$, so $x$ is algebraic over $k$. From Lemma \ref{lem: algebraic elements over algebraically closed fields} it follows that $x \in k$.
+\end{proof}
+
+
+\begin{cor}[Schur, classic Version] \label{cor: classic Schur}
  Let $k$ be an algebraically closed field and $M$ a simple $A$-module for a $k$-algebra $A$. If $M$ is finite-dimensional over $k$ then $\End_A(M) = k$, i.e.\ every module endomorphism of $M$ is given by multiplication with a scalar.
 \end{cor}
 
@@ -59,6 +67,75 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 
 
 \section{Diximier}
+
+
+\begin{defi}
+ Let $V$ be a vector space over a field $k$. An endomorphism $\varphi \in \End_k(V)$ is called \emph{algebraic} over $k$ there exists some nonzero polynomial $P \in k[T]$ mit $P(\varphi) = 0$.
+\end{defi}
+
+
+The following Proposition traces back to \cite{Dixmier}. (At least this is what I found on the web --- I could not find the original article, nor would I be able to read it (as it was apparently written in French)).
+
+
+\begin{prop}[Dixmier]\label{prop: Dixmier}
+ Let $M$ be a simple module over a $k$-algebra $A$, such that $\dim_k M > \card k$. Then every $\varphi \in \End_A(M)$ is algebraic over $k$.
+\end{prop}
+\begin{proof}
+ Suppose that there exists some $\varphi \in \End_A(M)$ which is not algebraic over $k$. Then the kernel of the map
+ \[
+  \iota \colon k[T] \to \End_A(M), \quad P \mapsto P(\varphi)
+ \]
+ is zero, hence $\iota$ is an inclusion of $k[T]$ into $\End_A(M)$, which is a skew field by Lemma \ref{lem: Schur general part about skew field}. It follows That $\iota$ can be extended to a well-defined inclusion
+ \[
+  \theta \colon k(T) \to \End_A(M), \quad \frac{P}{Q} \mapsto P(\varphi) Q(\varphi)^{-1}.
+ \]
+ Hence $M$ carries the structure of a $k(T)$-vector space with
+ \[
+  \frac{P}{Q} \cdot m = P(\varphi)Q(\varphi)^{-1}(m)
+  \quad \text{for every $\frac{P}{Q} \in k(T)$ and $m \in M$}.
+ \]
+ 
+ As $M$ is a nonzero $k(T)$-vector space it follows that $\dim_k M \geq \dim_k k(T)$. To see this notice that if $L/k$ is any field extension and $V$ a nonzero $L$-vector space then there exists an inclusion $L \inc V$ of $L$-vector spaces. This is then also an inclusion of $k$-vector spaces, which is why $\dim_k V \geq \dim_k L$. The statement follows with $L = k(T)$ and $V = M$. (This is a straightforward generalization of the fact that every complex nonzero vector space is at least twodimensional as a real vector space.) Since $(1/(T-a))_{a \in k}$ is a familiy of elements of $k(T)$ which is linearly independent over $k$ it also follows that $\dim_k k(T) \geq \card k$.
+
+ Putting the above observations together it follows that
+ \[
+  \dim_k M \geq \dim_k k(T) \geq \card k,
+ \]
+ contradicting the assumption that $\card k > \dim_k M$.
+\end{proof}
+
+
+\begin{cor}\label{cor: Dixmier algebraically closed}
+ Let $k$ be an algebraically closed field, $A$ a $k$-algebra and $M$ a simple $A$-module. If $\card k > \dim_k M$ then $\End_A(M) = k$.
+\end{cor}
+\begin{proof}
+ This is a direct consequence of Lemma \ref{lem: algebraic elements over algebraically closed fields} because $\End_A(M)$ is a division algebra over $k$ by Lemma \ref{lem: Schur general part about skew field} in which every element is algebraic over $k$ by Proposition \ref{prop: Dixmier}.
+\end{proof}
+
+
+\begin{cor}
+ Let $\g$ be a Lie algebra over an algebraically closed field $k$ and $V$ an irreducible representation of $\g$ with $\card k > \dim_k V$. Then $\End_\g(V) = k$.
+\end{cor}
+\begin{proof}
+ Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$ and apply Corollary \ref{cor: Dixmier algebraically closed}.
+\end{proof}
+
+
+\begin{expl}
+ Let $\g$ be complex Lie algebra and $V$ an irreducible representation of $\g$ of countable dimension. Then $\End_\g(V) = \Cbb$.
+\end{expl}
+
+
+\begin{rem}
+ The requirement that $\card k > \dim_k M$ in Corollary \ref{cor: Dixmier algebraically closed} can not be dropped without adding some other restraints. To see this take $k \coloneqq \overline{\Q}$ as well as $A = M = \overline{\Q}(T)$. Then $\dim_k M = \card k$ and $\End_A(M) = \End_{\overline{\Q}(T)}(\overline{\Q}(T)) = \overline{\Q}(T)$.
+\end{rem}
+
+
+
+
+
+
+
 
 
 
