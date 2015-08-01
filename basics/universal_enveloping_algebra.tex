@@ -135,12 +135,17 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \subsection{Poincar\'{e}-Birkhoff-Witt}
 
 
-\begin{defi}
+\begin{defi}\label{defi: graded algebras}
  A \emph{graded $k$-algebra} is a $k$-algebra $A$ together with a direct sum decomposition $A = \bigoplus_{i \in \N} A_i$ as vector spaces such that
  \[
   A_i A_j \subseteq A_{i+j} \quad \text{for all $i,j \in \N$}.
  \]
 \end{defi}
+
+
+\begin{rem}
+ Given any semigroup $(S,\cdot)$ an \emph{$M$-graded $k$-algebra} is a $k$-algebra $A$ together with a decomposition $A = \bigoplus_{s \in S} A_s$ such that $A_s A_t \subseteq A_{s \cdot t}$ for all $s,t \in S$. A graded $k$-algebra in the sense of Definition \ref{defi: graded algebras} is then the special case of an $\N$-graded $k$-algebra.
+\end{rem}
 
 
 \begin{lem}
@@ -167,14 +172,12 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
   \item
    The polynomial ring $A = k[x_1, \dotsc, x_n]$ is a graded $k$-algebra by setting
    \[
-    A_d \coloneqq \vspan_k \{ x_1^{p_1} \dotsm x_n^{p_n} \mid p_1 + \dotsb + p_n = 0\}
+    A_d \coloneqq \vspan_k \{ x_1^{p_1} \dotsm x_n^{p_n} \mid p_1 + \dotsb + p_n = d\}
     \quad \text{for every $d \in \N$},
    \]
    i.e.\ $A_d$ consists of the homogeneous polynomials of degree $d$.
   \item
-   Let $V$ be a $k$-vector space. Then the the tensor algebra $T(V) = \bigoplus_{n \in \N} V^{\otimes n}$, the symmetric algebra $S(V) = \bigoplus_{n \in \N} S^n(V)$ as well as the alternating algebra $\Lambda(V) = \bigoplus_{n \in \N} \Lambda^n(V)$ carry the structure of a graded $k$-algebra via $T(V)_n \coloneqq V^{\otimes n}$, $S(V)_n \coloneqq S^n(V)$ and $\Lambda(V)_n \coloneqq \Lambda^n(V)$ for every $n \in \N$.
-  \item
-   
+   Let $V$ be a $k$-vector space. Then the the tensor algebra $T(V) = \bigoplus_{n \in \N} V^{\otimes n}$, the symmetric algebra $S(V) = \bigoplus_{n \in \N} S^n(V)$ as well as the exterior algebra $\Lambda(V) = \bigoplus_{n \in \N} \Lambda^n(V)$ carry the structure of a graded $k$-algebra via $T(V)_n \coloneqq V^{\otimes n}$, $S(V)_n \coloneqq S^n(V)$ and $\Lambda(V)_n \coloneqq \Lambda^n(V)$ for every $n \in \N$.
  \end{enumerate}
 \end{expl}
 
