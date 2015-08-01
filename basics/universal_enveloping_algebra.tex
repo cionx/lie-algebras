@@ -144,7 +144,7 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 
 \begin{lem}
- Let $A$ be a graded $k$-algebra. Then $1 \in A_0$ and $A_0$ is a subalgebra.
+ Let $A$ be a graded $k$-algebra. Then $1 \in A_0$ and $A_0$ is a $k$-subalgebra.
 \end{lem}
 \begin{proof}
  Let $1 = \sum_{i \in \N} e_i$ with respect to $A = \bigoplus_{n \in \N} A_n$. Then for any $j \in \N$ and $a \in A_j$
@@ -155,7 +155,29 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
   = \sum_{i \in \N} \underbrace{a e_i}_{\in A_{i+j}},
  \]
  and it follows from the directness of the decomposition $A = \bigoplus_{n \in \N} A_n$ that $a = a e_0$. It follows that $a e_0 = a$ for every $a \in A$, hence $e_0$ is the unit of $A$.
+ 
+ That $A_0$ is a linear subspace which is closed under the multiplication follows from the definition of a graded $k$-algebra. As it contains the unit of $A$ it is a $k$-subalgebra.
 \end{proof}
+
+
+\begin{expl}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Any $k$-algebra $A$ becomes a graded $k$-algebra by setting $A_0 \coloneqq A$ and $A_i \coloneqq 0$ for every $i > 1$.
+  \item
+   The polynomial ring $A = k[x_1, \dotsc, x_n]$ is a graded $k$-algebra by setting
+   \[
+    A_d \coloneqq \vspan_k \{ x_1^{p_1} \dotsm x_n^{p_n} \mid p_1 + \dotsb + p_n = 0\}
+    \quad \text{for every $d \in \N$},
+   \]
+   i.e.\ $A_d$ consists of the homogeneous polynomials of degree $d$.
+  \item
+   Let $V$ be a $k$-vector space. Then the the tensor algebra $T(V) = \bigoplus_{n \in \N} V^{\otimes n}$, the symmetric algebra $S(V) = \bigoplus_{n \in \N} S^n(V)$ as well as the alternating algebra $\Lambda(V) = \bigoplus_{n \in \N} \Lambda^n(V)$ carry the structure of a graded $k$-algebra via $T(V)_n \coloneqq V^{\otimes n}$, $S(V)_n \coloneqq S^n(V)$ and $\Lambda(V)_n \coloneqq \Lambda^n(V)$ for every $n \in \N$.
+  \item
+   
+ \end{enumerate}
+\end{expl}
+
 
 
 
