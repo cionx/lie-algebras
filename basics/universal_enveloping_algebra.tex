@@ -105,7 +105,7 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
  \]
  It follows that $\hat{\phi}(x) = 0$ for every $x \in \mc{I}$. Hence $\hat{\phi}$ factors through a unique homomorphism of $k$-algebras
  \[
-  \Phi \colon \mc{U}(\g) \to A, \quad
+  \Phi \colon \Ue(\g) \to A, \quad
   x_1 \otimes \dotsb \otimes x_n + \mc{I} \mapsto \phi(x_1) \dotsm \phi(x_n)
  \]
  for all $n \geq 0$ and $x_1, \dotsc, x_n \in \g$. For every $x \in \g$ it follows that
@@ -335,17 +335,65 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \begin{expls}
  \begin{enumerate}[leftmargin=*]
   \item
-   If $A$ is a graded $k$-algebra then $\gr(\flt(A))$ is naturally isomorphic to $A$.
+   If $A$ is a graded $k$-algebra then $\gr(\flt(A))$ is naturally isomorphic to $A$. We will therefore identify $A$ with $\gr A$.
   \item 
    If $A$ is a filtered algebra and $I \subseteq A$ any two-sided ideal then $A/I$ is a filtered $k$-algebra via $(A/I)_{(n)} \coloneqq \pi(A_{(n)})$ for every $n \in \N$ where $\pi \colon A \to A/I, a \mapsto A + I$ denotes the canonical projection.
   \item
-   If $\g$ is a $k$-Lie algebra then $\mc{U}(\g)$ carries the structure of a filtered $k$-algebra induced by the filtration of $T(\g)$, which in turn is induced by the gradation of $T(V)$. Explicitely
+   If $\g$ is a $k$-Lie algebra then $\Ue(\g)$ carries the structure of a filtered $k$-algebra induced by the filtration of $T(\g)$, which in turn is induced by the gradation of $T(V)$. Explicitely
    \[
-    \mc{U}(\g)_{(n)}
-    = \vspan_k \{x_1^{p_1} \dotsm x_m^{p_m} \mid m \in \N, x_1, \dotsc, x_m \in \g, p_1 + \dotsb + p_m = n\}.
+    \Ue(\g)_{(n)}
+    = \vspan_k \{x_1 \dotsm x_m \mid m \in \N, m \leq n, x_1, \dotsc, x_m \in \g\}.
    \]
  \end{enumerate}
 \end{expls}
+
+
+
+\subsubsection{The PBW theorem}
+
+
+\begin{thrm}[Poincar\'{e}-Birkhoff-Witt (abstract version)]
+ Let $\g$ be a Lie algebra over $k$ and
+ \[
+  \pi \colon T(\g) \to \Ue(\g), \quad
+  x_1 \otimes \dotsb \otimes x_n \mapsto x_1 \dotsm x_n
+  \quad \text{for all $x_1, \dotsc, x_n \in \g$}.
+ \]
+ the canonical projection. Then the homomorphisms of graded $k$-algebras
+ \[
+  \varphi \colon T(\g) \to S(\g), \quad 
+  x_1 \otimes \dotsb \otimes x_n \mapsto x_1 \dotsm x_n
+  \quad \text{for all $x_1, \dotsc, x_n \in \g$}.
+ \]
+ and $\gr(\pi) \colon T(g) \to \gr(\Ue(\g))$ have the same kernel and thus induce an isomorphism of graded algebras
+ \[
+  \psi \colon \gr(\Ue(\g)) \to S(\g), \quad
+  [x_1 \dotsm x_n] \mapsto x_1 \dotsm x_n
+  \quad \text{for all $x_1, \dotsc, x_n \in \g$}.
+ \]
+\end{thrm}
+
+
+\begin{thrm}[Poincar\'{e}-Birkhoff-Witt (concrete version)]
+ Let $\g$ be a $k$-Lie algebra and $(x_i)_{i \in I}$ a $k$-basis of $\g$ where $(I,\leq)$ is a totally ordered index set. Then the familiy
+ \[
+  \left(
+  x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+  \mid
+  n \in \N, i_1, \dotsc, i_n \in I, i_1 < \dotsb < i_n, p_1, \dotsc, p_n \geq 1
+  \right)
+ \]
+ is a $k$-basis of $\Ue(\g)$.
+\end{thrm}
+
+
+\begin{expl}
+ If $\g$ is a finite $k$-Lie algebra with basis $x_1, \dotsc, x_n$ then $\Ue(\g)$ has a basis given by $(x_1^{p_1} \dotsm x_n^{p_n} \mid p_1, \dotsc, p_n \in \N)$. In particular a basis of $\Ue(\sll_2(k))$ is given by $(e^\ell h^m f^n \mid \ell, m ,n \in \N)$.
+\end{expl}
+
+
+
+
 
 
 
