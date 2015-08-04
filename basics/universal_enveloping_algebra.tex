@@ -194,7 +194,7 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \end{proof}
 
 
-\begin{expl}
+\begin{expls}\label{expls: graded algebras}
  \begin{enumerate}[leftmargin=*]
   \item
    Any $k$-algebra $A$ becomes a graded $k$-algebra by setting $A_0 \coloneqq A$ and $A_i \coloneqq 0$ for every $i > 1$.
@@ -208,7 +208,7 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
   \item
    Let $V$ be a $k$-vector space. Then the tensor algebra $T(V) = \bigoplus_{n \in \N} V^{\otimes n}$, the symmetric algebra $S(V) = \bigoplus_{n \in \N} S^n(V)$ and the exterior algebra $\Lambda(V) = \bigoplus_{n \in \N} \Lambda^n(V)$ carry the structure of a graded $k$-algebra via $T(V)_n \coloneqq V^{\otimes n}$, $S(V)_n \coloneqq S^n(V)$ and $\Lambda(V)_n \coloneqq \Lambda^n(V)$ for every $n \in \N$.
  \end{enumerate}
-\end{expl}
+\end{expls}
 
 
 \begin{defi}
@@ -306,9 +306,21 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \end{rem}
 
 
-\begin{expl}
- Any graded $k$-algebra $A$ also carries the structure of an filtered $k$-algebra by setting $A_{(n)} \coloneqq \bigoplus_{i \leq n} A_i$. If $\varphi \colon A \to B$ is a homomorphism of graded $k$-algebras then $\varphi$ is then also a homomorphism of filtered $k$-algebres. Hence this construction results into a functor $\flt \colon \cGrad{k} \to \cFilt{k}$.
-\end{expl}
+\begin{expls}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Any graded $k$-algebra $A$ also carries the structure of an filtered $k$-algebra by setting $A_{(n)} \coloneqq \bigoplus_{i \leq n} A_i$ for every $n \in \N$. If $\varphi \colon A \to B$ is a homomorphism of graded $k$-algebras then it is also a homomorphism of filtered $k$-algebras. Hence this construction results into a functor $\flt \colon \cGrad{k} \to \cFilt{k}$.
+  \item 
+   If $A$ is a filtered algebra and $I \subseteq A$ any two-sided ideal then $A/I$ is a filtered $k$-algebra via $(A/I)_{(n)} \coloneqq \pi(A_{(n)})$ for every $n \in \N$, where $\pi \colon A \to A/I, a \mapsto a + I$ denotes the canonical projection.
+  \item
+   If $\g$ is a $k$-Lie algebra then $\Ue(\g)$ carries the structure of a filtered $k$-algebra induced by the filtration of $T(\g)$, which in turn is induced by the gradation of $T(\g)$. Explicitely
+   \[
+   \Ue(\g)_{(n)}
+   = \vspan_k \{x_1 \dotsm x_m \mid m \in \N, m \leq n, x_1, \dotsc, x_m \in \g\}
+   \quad\text{for every $n \in \N$}.
+   \]
+ \end{enumerate}
+\end{expls}
 
 
 \begin{lem}
@@ -341,7 +353,7 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 
 \begin{rem}
- If $A$ and $B$ are graded $k$-algebras and $\varphi \colon A \to B$ is a homomorphism of graded $k$-algebras then $\varphi$ induces a $k$-linear map $\varphi_n \colon \gr(A)_n \to \gr(B)_n, [a] \mapsto [\varphi(a)]$ for every $n \in \N$, which result in a homomorphism of graded $k$-algebras
+ If $A$ and $B$ are filtered $k$-algebras and $\varphi \colon A \to B$ is a homomorphism of filtered $k$-algebras then $\varphi$ induces a $k$-linear map $\varphi_n \colon \gr(A)_n \to \gr(B)_n, [a] \mapsto [\varphi(a)]$ for every $n \in \N$, which result in a homomorphism of graded $k$-algebras
  \[
   \gr(\varphi) \coloneqq \bigoplus_{n \in \N} \varphi_n \colon \gr(A) \to \gr(B),
   \quad
@@ -354,15 +366,28 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \begin{expls}
  \begin{enumerate}[leftmargin=*]
   \item
-   If $A$ is a graded $k$-algebra then $\gr(\flt(A))$ is naturally isomorphic to $A$. We will therefore identify $A$ with $\gr A$.
-  \item 
-   If $A$ is a filtered algebra and $I \subseteq A$ any two-sided ideal then $A/I$ is a filtered $k$-algebra via $(A/I)_{(n)} \coloneqq \pi(A_{(n)})$ for every $n \in \N$ where $\pi \colon A \to A/I, a \mapsto A + I$ denotes the canonical projection.
-  \item
-   If $\g$ is a $k$-Lie algebra then $\Ue(\g)$ carries the structure of a filtered $k$-algebra induced by the filtration of $T(\g)$, which in turn is induced by the gradation of $T(V)$. Explicitely
+   If $A$ is a graded $k$-algebra then $\gr(\flt(A))$ is naturally isomorphic to $A$ in the following way: The filtration on $\flt(A)$ is given by $A_{(n)} = \bigoplus_{i \leq n} A_i$ for every $n \in \N$. Hence there is for every $n \in \N$ an isomorphism of vector spaces
    \[
-    \Ue(\g)_{(n)}
-    = \vspan_k \{x_1 \dotsm x_m \mid m \in \N, m \leq n, x_1, \dotsc, x_m \in \g\}.
+    \varphi_n \colon A_n \to A_{(n)}/A_{(n-1)} = \gr(\flt(A))_n, \quad a \mapsto [a].
    \]
+   Combining these isomorphisms results in an isomorphism of graded $k$-algebras
+   \[
+    \bigoplus_{n \in \N} \varphi_n \colon
+    \bigoplus_{n \in \N} A_n \to \bigoplus_{n \in \N} \gr(\flt(A))_n, \quad
+    \sum_{n \in \N} a_n \mapsto \sum_{n \in \N} [a_n].
+   \]
+   We will therefore identify $A$ with $\gr A$ in the above way.
+  \item
+   Let $\g$ be a $k$-Lie algebra. The canonical projection
+   \[
+    \pi \colon T(\g) \to \Ue(\g), \quad x_1 \otimes \dotsb \otimes x_n \to x_1 \dotsm x_n
+    \quad \text{for every $n \in \N$ and all $x_1, \dotsc, x_n \in \g$}
+   \]
+   is a homomorphism of filtered $k$-algebras, where the filtration of $T(\g)$ is induced by the gradation discussed in Examples \ref{expls: graded algebras}. Hence it induces a homomorphism of graded $k$-algebras
+   \[
+    \gr(\pi) \colon T(\g) \to \gr(\Ue(\g)),
+   \]
+   where $T(\g)$ is identified with $\gr(T(\g))$ as above. This homomorphism maps an element $x_1 \otimes \dotsb \otimes x_n$ with $x_1, \dots, x_n \in \g$ to the residue class $[x_1 \dotsm x_n] \in \gr(\Ue(\g))_n$.
  \end{enumerate}
 \end{expls}
 
@@ -416,6 +441,8 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \end{prop}
 \begin{proof}
  (concrete $\Rightarrow$ abstract)
+ 
+ 
 \end{proof}
 
 
