@@ -393,10 +393,65 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 
 
-\subsubsection{The PBW theorem}
+\subsubsection{The Poincar\'{e}-Birkhoff-Witt theorem}
+For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}$ where $(I, \leq)$ is a totally ordered index set. Before stating and proving the \emph{Poincar\'{e}-Birkhoff-Witt theorem} (PBW) we fix some notation which we will only use in this subsection.
 
 
-\begin{thrm}[Poincar\'{e}-Birkhoff-Witt (abstract version)] \label{thrm: pbw abstract}
+\begin{defi}
+ Let $\mc{I}_n \coloneqq \{(i_1, \dotsc, i_n) \mid i_1, \dotsc, i_n \in I, \; i_1 \leq \dotsb \leq i_n\}$ for every $n \in \N$ and set $\mc{I} \coloneqq \bigcup_{n \in \N} \mc{I}_n$. For every $\alpha = (i_1, \dotsc, i_n)$ with $n \in \N$ and $i_1, \dotsc, i_n \in I$ let $x_\alpha \coloneqq x_{i_1} \dotsm x_{i_n} \in \Ue(\g)$.
+\end{defi}
+
+
+\begin{rem}
+ Notice that $\mc{I}_0$ contains the empty tupel.
+\end{rem}
+
+
+\begin{thrm}[PBW (concrete version)] \label{thrm: pbw concrete}
+ The familiy $(x_\alpha \mid \alpha \in \mc{I})$ is a $k$-basis of $\Ue(\g)$.
+\end{thrm}
+
+
+\begin{rem}
+ The basis $(x_\alpha \mid \alpha \in \mc{I})$ can also be written as
+ \[
+  \left(
+   x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+  \mid
+   n \in \N,\;
+   i_1, \dotsc, i_n \in I,\;
+   i_1 < \dotsb < i_n,\;
+   p_1, \dotsc, p_n \geq 1
+  \right).
+ \]
+\end{rem}
+
+
+\begin{expl}
+ If $\g$ is a finite dimensional $k$-Lie algebra with basis $x_1, \dotsc, x_n$ then $\Ue(\g)$ has a basis given by $(x_1^{p_1} \dotsm x_n^{p_n} \mid p_1, \dotsc, p_n \in \N)$. In particular a basis of $\Ue(\sll_2(k))$ is given by $(e^\ell h^m f^n \mid \ell, m ,n \in \N)$.
+\end{expl}
+
+
+\begin{lem}
+ The collection $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector space.
+\end{lem}
+\begin{proof}
+ To show that $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector space it sufficies to show that $\mc{B}_n \coloneqq (x_\alpha \mid m \leq n, \alpha \in \mc{I}_m)$ generates $\Ue(\g)_{(n)}$ as a vector space, which will be shown by induction over $n \in \N$: For $n = 0$ this is clear as $\Ue(\g) = k$ is one-dimensional and thus spanned by $x_{(\;)}$, the monomial corresponding to the empty tupel.
+ 
+ Suppose that the statement holds for some $n \in \N$. Then $\Ue(\g)_{(n+1)}$ is generated as a vector space as a by the monomials $(x_{(i_1, \dotsc, i_n)} \mid m \leq n+1, \; i_1, \dotsc, i_m \in I)$. Therefore it sufficies to express these monomials in terms of $\mc{B}_{n+1}$. By induction hypothesis is it enough to check this for the monomials $(x_{(i_1, \dotsc, i_{n+1})} \mid i_1, \dotsc, i_{n+1} \in I)$. For this let $\alpha = (i_1, \dotsc, i_{n+1})$ be some fixed multiindex with $i_1, \dotsc, i_{n+1} \in I$.
+ 
+ For any two $x,y \in \g$ one has $xy = yx + [x,y]$ with $[x,y] \in \Ue(\g)_{(1)}$. Hence there exists for any permutation $\sigma \in S_{n+1}$ a linear combination $R_\sigma \in \Ue(\g)_{(1)}$ with
+ \[
+  x_\alpha
+  = x_{i_1} \dotsm x_{i_{n+1}}
+  = x_{i_{\sigma(1)}} \dotsm x_{i_{\sigma(n+1)}} + R_\sigma
+  = x_{(i_{\sigma(1)}, \dotsc, x_{\sigma(n+1)})} + R_\sigma.
+ \]
+ Let $\sigma \in S_{n+1}$ be a permutation with $i_{\sigma(1)} \leq \dotsb \leq i_{\sigma(n+1)}$. By induction hypothesis $R_\sigma \in \Ue(\g)_{(n)}$ can be expressed as a linear combination of the monomials $\mc{B}_n$. Hence $x_\alpha = x_{(i_{\sigma(1)}, \dotsc, i_{\sigma(n+1)})} + R_\sigma$ can be expressed as a linear combination of the monomials $\mc{B}_{n+1}$ because $x_{(i_{\sigma(1)}, \dotsc, i_{\sigma(n+1)})}$ is one of them.
+\end{proof}
+
+
+\begin{thrm}[PBW (abstract version)] \label{thrm: pbw abstract}
  Let $\g$ be a Lie algebra over $k$ and denote by $\pi$ the canonical projection
  \[
   \pi \colon T(\g) \to \Ue(\g), \quad
@@ -423,62 +478,6 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \end{rem}
 
 
-\begin{thrm}[Poincar\'{e}-Birkhoff-Witt (concrete version)] \label{thrm: pbw concrete}
- Let $\g$ be a $k$-Lie algebra and $(x_i)_{i \in I}$ a $k$-basis of $\g$ where $(I,\leq)$ is a totally ordered index set. Then the familiy
- \begin{equation}\label{eqn: concrete pbw basis}
-  \left(
-   x_{i_1} \dotsm x_{i_n}
-  \mid
-   n \in \N,\;
-   i_1, \dotsc, i_n \in I,\;
-   i_1 \leq \dotsb \leq i_n
-  \right)
- \end{equation}
- is a $k$-basis of $\Ue(\g)$.
-\end{thrm}
-
-
-\begin{rem}
- The basis in \eqref{eqn: concrete pbw basis} can also be written as
- \[
-  \left(
-   x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
-  \mid
-   n \in \N,\;
-   i_1, \dotsc, i_n \in I,\;
-   i_1 < \dotsb < i_n,\;
-   p_1, \dotsc, p_n \geq 1
-  \right).
- \]
-\end{rem}
-
-
-\begin{expl}
- If $\g$ is a finite dimensional $k$-Lie algebra with basis $x_1, \dotsc, x_n$ then $\Ue(\g)$ has a basis given by $(x_1^{p_1} \dotsm x_n^{p_n} \mid p_1, \dotsc, p_n \in \N)$. In particular a basis of $\Ue(\sll_2(k))$ is given by $(e^\ell h^m f^n \mid \ell, m ,n \in \N)$.
-\end{expl}
-
-
-\begin{lem}
- Let $\g$ be a $k$-Lie algebra and $(x_i)_{i \in I}$ a basis of $\g$. Then the collection defined by \eqref{eqn: concrete pbw basis} generates $\Ue(\g)$ as a vector space.
-\end{lem}
-\begin{proof}
- For every $n \in \N$ let $\mc{I}_n \coloneqq \{(i_1, \dotsc, i_n) \mid i_1, \dotsc, i_n \in I, \; i_1 \leq \dotsb \leq i_n\}$ and let $\mc{I} = \bigcup_{n \in \N} \mc{I}_n$. Notice that $\mc{I}_0$ contains the empty tupel. For every $\alpha = (i_1, \dotsc, i_n)$ with $n \in \N$ and $i_1, \dotsc, i_n \in I$ let $x_\alpha \coloneqq x_{i_1} \dotsm x_{i_n}$.
-
- The collection defined in \eqref{eqn: concrete pbw basis} is precisely $(x_\alpha \mid \alpha \in \mc{I})$. To show that this generates $\Ue(\g)$ as a vector space it sufficies to show that $\mc{B}_n \coloneqq (x_\alpha \mid m \leq n, \alpha \in \mc{I}_m)$ generates $\Ue(\g)_{(n)}$ as a vector space, which will be shown by induction over $n \in \N$: For $n = 0$ this is clear as $\Ue(\g) = k$ is one-dimensional and thus spanned by $x_{(\;)}$, the monomial corresponding to the empty tupel.
- 
- Suppose that the statement holds for some $n \in \N$. Then $\Ue(\g)_{(n+1)}$ is generated as a vector space as a by the monomials $(x_{(i_1, \dotsc, i_n)} \mid m \leq n+1, \; i_1, \dotsc, i_m \in I)$. Therefore it sufficies to express these monomials in terms of $\mc{B}_{n+1}$. By induction hypothesis is it enough to check this for the monomials $(x_{(i_1, \dotsc, i_{n+1})} \mid i_1, \dotsc, i_{n+1} \in I)$. For this let $\alpha = (i_1, \dotsc, i_{n+1})$ be some fixed multiindex with $i_1, \dotsc, i_{n+1} \in I$.
- 
- For any two $x,y \in \g$ one has $xy = yx + [x,y]$ with $[x,y] \in \Ue(\g)_{(1)}$. Hence there exists for any permutation $\sigma \in S_{n+1}$ a linear combination $R_\sigma \in \Ue(\g)_{(1)}$ with
- \[
-  x_\alpha
-  = x_{i_1} \dotsm x_{i_{n+1}}
-  = x_{i_{\sigma(1)}} \dotsm x_{i_{\sigma(n+1)}} + R_\sigma
-  = x_{(i_{\sigma(1)}, \dotsc, x_{\sigma(n+1)})} + R_\sigma.
- \]
- Let $\sigma \in S_{n+1}$ be a permutation with $i_{\sigma(1)} \leq \dotsb \leq i_{\sigma(n+1)}$. By induction hypothesis $R_\sigma \in \Ue(\g)_{(n)}$ can be expressed as a linear combination of the monomials $\mc{B}_n$. Hence $x_\alpha = x_{(i_{\sigma(1)}, \dotsc, i_{\sigma(n+1)})} + R_\sigma$ can be expressed as a linear combination of the monomials $\mc{B}_{n+1}$ because $x_{(i_{\sigma(1)}, \dotsc, i_{\sigma(n+1)})}$ is one of them.
-\end{proof}
-
-
 \begin{prop}
  The concrete version and the abstract versions of the PBW-theorem are equivalent.
 \end{prop}
@@ -491,30 +490,24 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
  
  As the kernel of $\pi'$ is generated by the element $x \otimes y - y \otimes x$ with $x,y \in \g$ it follows that $\pi'$ factorizes through a homomorphism of graded $k$-algebras $\varphi$ as in Theorem~\ref{thrm: pbw abstract}.
  
- (concrete $\Rightarrow$ abstract) The algebra $\Ue(\g)$ has a basis
- \[
-  \left(
-   x_{i_1} \dotsm x_{i_n}
-  \mid
-   n \in \N, \;
-   i_1, \dotsc, i_n \in I, \;
-   i_1 \leq \dotsb \leq i_n
-  \right).
- \]
- It follows that $\gr(\Ue(\g))_n$ has a basis given by the residue classes
- \[
-  \left(
-   [x_{i_1} \dotsm x_{i_n}]
-  \mid
-   i_1, \dotsc, i_n \in I, \;
-   i_1 \leq \dotsb \leq i_n
-  \right).
- \]
- The linear subspace $S(\g)_n$ has a basis $(x_1 \dotsm x_n \mid i_1, \dotsc, i_n \in I \; i_1 \leq \dotsb \leq i_n)$ which is mapped by $\varphi_n$ to the above basis of $\gr(\Ue(\g))_n$. Hence $\varphi_n$ is an isomorphism for every $n \in \N$, which is why $\varphi$ is an isomorphism.
+ (concrete $\Rightarrow$ abstract) The algebra $\Ue(\g)$ has a basis $(x_\alpha \mid \alpha \in \mc{I})$ It follows that $\gr(\Ue(\g))_n$ has a basis given by the residue classes $([x_\alpha] \mid \alpha \in \mc{I}_n)$. The linear subspace $S(\g)_n$ has a basis $(x_1 \dotsm x_n \mid (i_1, \dotsc, i_n) \in \mc{I}_n)$ which is mapped by $\varphi_n$ to the above basis of $\gr(\Ue(\g))_n$. Hence $\varphi_n$ is an isomorphism for every $n \in \N$, which is why $\varphi$ is an isomorphism.
  
- (abstract $\Rightarrow$ concrete) A
+ (abstract $\Rightarrow$ concrete) As $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector spaces it sufficies to show that they are linearly independent. Suppose otherwise. Then there exists some minimal $n \in \N$ such that $(x_\alpha \mid m \leq n, \alpha \in \mc{I}_m)$ is linearly dependent. Hence there exists a non-trivial linear combination
+ \[
+  0 = \sum_{m=0}^n \sum_{\alpha \in \mc{I}_m} \lambda_\alpha x_\alpha
+ \quad
+ \text{where $\lambda_\alpha = 0$ for all but finitely many $\alpha \in \bigcup_{m=0}^n \mc{I}_m$}.
+ \]
+ From this it follows that
+ \[
+  0
+  = \sum_{m=0}^n \sum_{\alpha \in \mc{I}_m} \lambda_\alpha x_\alpha
+  \equiv \sum_{\alpha \in \mc{I}_n} \lambda_\alpha x_\alpha
+  \mod \Ue(g)_{(n-1)}
+ \]
+ and hence that the equality $\sum_{\alpha \in \mc{I}_n} \lambda_\alpha [x_\alpha] = 0$ holds in $\gr(\Ue(\g))_n = \Ue(\g)_{(n)}/\Ue(\g)_{(n-1)}$. By the minimality of $n$ it follows that this is a non-trivial linear combination in $\gr(\Ue(\g))_n$, so $([x_\alpha] \mid \alpha \in \mc{I}_n)$ in $\gr(\Ue(\g))_n$ is linearly dependent.
  
- (abstract $\Rightarrow$ concrete) Because $\gr(\pi)$ is surjective it follows that the same goes for $\varphi$. As the basis $(x_{i_1} \dotsm x_{i_n} \mid n \in \N, \; i_1, \dotsc, i_n \in I, \; i_1 \leq \dotsb \leq i_n)$ of $S(\g)$ is mapped to \eqref{eqn: concrete pbw basis} by $\varphi$ it follows that \eqref{eqn: concrete pbw basis} generates $\gr(\Ue(\g))$ as a vector space.
+ By assumption $\varphi$ is a homomorphism of graded $k$-algebras and therefore $\varphi_n$ is an isomorphism of vector spaces. As the basis $(x_{i_1} \dotsm x_{i_n} \mid (i_1, \dotsc, i_n) \in \mc{I}_n)$ of $S(\g)_n$ is mapped by $\varphi_n$ bijectively to $([x_\alpha] \mid \alpha \in \mc{I}_n)$ it follows that this is a basis of $\gr(\Ue(\g))_n$, contradicting the linearly dependency.
 \end{proof}
 
 
