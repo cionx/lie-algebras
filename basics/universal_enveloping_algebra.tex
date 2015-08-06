@@ -148,6 +148,12 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \end{rem}
 
 
+% TODO: Requires Hopf algebra structure
+% \begin{lem}
+%  Let $\g_1$ and $\g_2$ be $k$-Lie algebras. Then $\Ue(\g_1 \times \g_2)$ and $\Ue(\g_1) \otimes \Ue(\g_2)$ are naturally isomorphic.
+% \end{lem}
+
+
 
 
 
@@ -393,7 +399,7 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 
 
-\subsubsection{The Poincar\'{e}-Birkhoff-Witt theorem}
+\subsubsection{The Poincar\'{e}-Birkhoff-Witt theorem (concrete version)}
 For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}$ where $(I, \leq)$ is a totally ordered index set. Before stating and proving the \emph{Poincar\'{e}-Birkhoff-Witt theorem} (PBW) we fix some notation which we will only use in this subsection.
 
 
@@ -562,6 +568,22 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
  \end{proof}
  This finishes the proof. 
 \end{proof}
+
+
+\begin{cor}
+ Let $\g$ be a Lie algebra and $\h, \n \subseteq \g$ Lie subalgebras with $\g = \h \oplus \n$ as vector spaces. Then the map
+ \[
+  \Ue(\h) \otimes \Ue(\h) \to \Ue(\g), \quad x \otimes y \mapsto xy
+ \]
+ is a isomorphism of vector spaces.
+\end{cor}
+\begin{proof}
+ Let $(x_i)_{i \in I}$ is a basis of $\h$ and $(x_j)_{j \in J}$ a basis of $\n$. Then $(x_k)_{k \in K}$ for the index set $K \coloneqq I \dotcup J$ is a basis of $\g$. Then the statement follows directly from the concrete PBW theorem.
+\end{proof}
+
+
+
+\subsubsection{The Poincar\'{e}-Birkhoff-Witt theorem (abstract version)}
 
 
 \begin{thrm}[PBW (abstract version)] \label{thrm: pbw abstract}
@@ -746,33 +768,6 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
  \end{center}
  Leaving out the middle part of the diagram shows the existence. The uniqueness of $\Psi$ follows from the uniqueness of $\psi$.
 \end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
