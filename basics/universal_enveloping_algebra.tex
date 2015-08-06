@@ -725,6 +725,31 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
 \end{rem}
 
 
+\begin{lem}
+ Let $X$ be any set and $F(X)$ the free Lie algebra over $X$. Then $\Ue(F(X))$ is the free $k$-algebra over $X$, where the canonical inclusion $X \inc \Ue(F(X))$ is given by composition of the canonical inclusions $X \inc F(X)$ and $F(X) \inc \Ue(F(X))$.
+\end{lem}
+\begin{proof}
+ It will be shown that $\Ue(F(X))$ together with the canonical inclusion $X \inc \Ue(F(X))$ satisfies universal property of the free $k$-algebras. Let $A$ be a $k$-algebra and $\phi \colon X \to A$ a map. Then $\phi$ induces a unique homomorphism of Lie algebras $\psi \colon F(X) \to A$ by the universal property of the free Lie algebra. Then $\psi$ induces a unique homomorphism of $k$-algebras $\Psi \colon \Ue(F(X)) \to A$ by the universal property of the universal enveloping algebra. Hence the following diagram commutes, where the vertical maps denote the canonical inclusions.
+ \tikzsetnextfilename{universal_enveloping_algebra_of_the_free_Lie_algebra}
+ \begin{center}
+  \begin{tikzpicture}[node distance = 4em]
+   \node (X) {$X$};
+   \node[below of = X] (FX) {$F(X)$};
+   \node[below of = FX] (UFX) {$\Ue(F(X)$};
+   \node[right = 5em of FX] (A) {$A$};
+   \draw[->] (X) to (FX);
+   \draw[->] (FX) to (UFX);
+   \draw[->] (X) to node[above] {$\phi$} (A);
+   \draw[->] (FX) to node[above left] {$\psi$} (A);
+   \draw[->] (UFX) to node[below] {$\Psi$} (A);
+  \end{tikzpicture}
+ \end{center}
+ Leaving out the middle part of the diagram shows the existence. The uniqueness of $\Psi$ follows from the uniqueness of $\psi$.
+\end{proof}
+
+
+
+
 
 
 
