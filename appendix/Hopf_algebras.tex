@@ -1,6 +1,89 @@
 \chapter{Hopf algebras}
+In this chapter we give the definition of $k$-algebras, $k$-coalgebra, $k$-bialgebras and Hopf algebras. For this we fix an arbitrary field $k$. We start by reintroducing the notion of a $k$-algebra in terms of diagrams, where we require all $k$-algebras to be unitary and associative. Then we dualize this concept to obtain the notion of a $k$-coalgebra. Combining the previous two we arrive at $k$-bilalgebras, which will then lead to definition of a Hopf algebra by equipping a $k$-bialgebra with an antipodel map.
 
 
 
 
-\section{Coalgebras}
+
+
+
+\section{algebras, coalgebra and bialgebras}
+
+
+
+
+
+\subsection{\texorpdfstring{$k$}{k}-algebras}
+
+
+\begin{defi}
+ For any $k$-vector space let
+ \[
+  \tau_A \colon A \otimes A \to A \otimes A, \quad a \otimes b \mapsto b \otimes a
+ \]
+ be the \emph{flip map} (of $A$).
+\end{defi}
+
+
+\begin{defi}\label{defi: algebras via diagrams}
+ A $k$-algebra is a tupel $(A, m, u)$ consisting of a $k$-vector space $A$, linear maps $m \colon A \otimes A \to A$, called the \emph{multiplication} and a linear map $u \colon k \to A$, called the \emph{unit} such that the following two diagrams commute, where $s$ denotes the respective scalar multiplication.
+ \begin{center}
+  \tikzsetnextfilename{associativity_of_algebras}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (AAA) {$A \otimes A \otimes A$};
+   \node[right = 5em of AAA] (AA1) {$A \otimes A$};
+   \node[below of = AAA] (AA2) {$A \otimes A$};
+   \node[below of = AA1] (A) {$A$};
+   \draw[->] (AAA) to node[above] {$m \otimes \id_A$} (AA1);
+   \draw[->] (AAA) to node[left] {$\id_A \otimes\, m$} (AA2);
+   \draw[->] (AA1) to node[right] {$m$} (A);
+   \draw[->] (AA2) to node[below] {$m$} (A);
+  \end{tikzpicture}
+  \quad
+  \tikzsetnextfilename{unit_of_algebras}
+  \begin{tikzpicture}[node distance = 3em]
+   \node (middle) {$ $};
+   \node[above of = middle] (AA) {$A \otimes A$};
+   \node[left = 5em of middle] (kA) {$k \otimes A$};
+   \node[right = 5em of middle] (Ak) {$A \otimes k$};
+   \node[below of = middle] (A) {$A$};
+   \draw[->] (kA) to node[above left] {$u \otimes \id_A$} (AA);
+   \draw[->] (Ak) to node[above right] {$\id_A \otimes \, u$} (AA);
+   \draw[->] (AA) to node[right] {$m$} (A);
+   \draw[->] (kA) to node[below left]  {$s$} (A);
+   \draw[->] (Ak) to node[below right] {$s$} (A);
+  \end{tikzpicture}
+ \end{center}
+ The commutativity of the left diagram is the \emph{associativity aximion} and the commutativity of the right diagram is the \emph{unit axiom}. The $k$-algebra $(A, m, u)$ is called \emph{commutative} if the following diagram commutes:
+ \begin{center}
+  \tikzsetnextfilename{commutativity_of_algebras}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (AA1) {$A \otimes A$};
+   \node[below right of = AA1] (A) {$A$};
+   \node[above right of = A] (AA2) {$A \otimes A$};
+   \draw[->] (AA1) to node[above] {$\tau_A$} (AA2);
+   \draw[->] (AA1) to node[below left] {$m$} (A);
+   \draw[->] (AA2) to node[below right] {$m$} (A);
+  \end{tikzpicture}
+ \end{center}
+\end{defi}
+
+
+\begin{rem}
+ Definition \ref{defi: algebras via diagrams} is equivalent to the usual definition of a $k$-algebra, namely a $k$-vector space $A$ together with a bilinear map $\hat{m} \colon A \times A \to A, (a,b) \mapsto a \cdot b$ which is associative in the sense that $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for all $a,b,c \in A$, and such that a unit $1 \in A$ exists, i.e.\ an element for which $1 \cdot a = a \cdot 1 = a$ for every $a \in A$.
+ 
+ Given a $k$-algebra in the usual sense the multiplication $\hat{m}$ corresponds to a linear map $m \colon A \otimes A \to A, a \otimes b \mapsto a \cdot b$, and that $m$ satisfies the associativity axiom is equivalent to $\hat{m}$ being associative. That a linear map $u \colon k \to A$ satisfies the unit axiom is equivalent to $u(1)$ being a unit in $A$. That $(A,\hat{m})$ is commutative is then also equivalent to $(A,m,u)$ being commutative.
+\end{rem}
+
+
+\begin{expl}
+ Let $G$ be any group. Then the \emph{group algebra} $k[G]$ is defined by the underlying vector space being $kG$, the free vector space with basis $G$, and the multiplication which arises from extending the multiplication of $G$ linearly, i.e.
+ \[
+  \left( \sum_{g \in G} \lambda_g g \right) \cdot \left( \sum_{h \in G} \mu_h h \right)
+  = \sum_{g,h \in G} (\lambda_g \mu_h) (gh)
+  = \sum_{g \in G} \left( \sum_{h \in G} \lambda_{gh^{-1}} \mu_h \right) g.
+ \]
+ The associativity of the multiplication can be checked by direct calculation. The unit of the group algebra $k[G]$ is given by the identity of the group $e \in G \subseteq k[G]$. The group algebra $k[G]$ is commutative if and only if $G$ is.
+\end{expl}
+
+
