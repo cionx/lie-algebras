@@ -398,7 +398,7 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
 
 
 \begin{defi}
- Let $\mc{I}_n \coloneqq \{(i_1, \dotsc, i_n) \mid i_1, \dotsc, i_n \in I, \; i_1 \leq \dotsb \leq i_n\}$ for every $n \in \N$ and set $\mc{I} \coloneqq \bigcup_{n \in \N} \mc{I}_n$. For every $\alpha = (i_1, \dotsc, i_n)$ with $n \in \N$ and $i_1, \dotsc, i_n \in I$ let $x_\alpha \coloneqq x_{i_1} \dotsm x_{i_n} \in \Ue(\g)$.
+ Let $\mc{I}_n \coloneqq \{(i_1, \dotsc, i_n) \mid i_1, \dotsc, i_n \in I, \; i_1 \leq \dotsb \leq i_n\}$ for every $n \in \N$ and set $\mc{I} \coloneqq \bigcup_{n \in \N} \mc{I}_n$. For every $\alpha = (i_1, \dotsc, i_n) \in I^n$ with $n \in \N$ let $x_\alpha \coloneqq x_{i_1} \dotsm x_{i_n} \in \Ue(\g)$.
 \end{defi}
 
 
@@ -432,7 +432,7 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
 \end{expl}
 
 
-\begin{lem}
+\begin{lem}\label{lem: pbw concrete generating part}
  The collection $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector space.
 \end{lem}
 \begin{proof}
@@ -448,6 +448,119 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
   = x_{(i_{\sigma(1)}, \dotsc, x_{\sigma(n+1)})} + R_\sigma.
  \]
  Let $\sigma \in S_{n+1}$ be a permutation with $i_{\sigma(1)} \leq \dotsb \leq i_{\sigma(n+1)}$. By induction hypothesis $R_\sigma \in \Ue(\g)_{(n)}$ can be expressed as a linear combination of the monomials $\mc{B}_n$. Hence $x_\alpha = x_{(i_{\sigma(1)}, \dotsc, i_{\sigma(n+1)})} + R_\sigma$ can be expressed as a linear combination of the monomials $\mc{B}_{n+1}$ because $x_{(i_{\sigma(1)}, \dotsc, i_{\sigma(n+1)})}$ is one of them.
+\end{proof}
+
+
+\begin{proof}[Proof of PBW (concrete version)]
+ By Lemma~\ref{lem: pbw concrete generating part} the collection $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector space, so all that’s left to show is that it is linearly independent.
+ 
+ Let $V \coloneqq k[Z_i \mid i \in I]$ and for every $n \in \N$ let $V_{(n)}$ be the polynomials of degree $\leq n$. For every $n \in \N$ and $\alpha = (i_1, \dotsc, i_n) \in I^n$ write $Z_\alpha \coloneqq Z_{i_1} \dotsm Z_{i_n}$. If $i \in I$ and $\alpha = (i_1, \dotsc, i_n) \in I^n$ then write $i \leq \alpha$ if $i \leq i_j$ for every $j = 1, \dotsc, n$. Also set $i \cdot \alpha = (i, i_1, \dotsc, i_n) \in I^{n+1}$.
+ 
+ To show that $(x_\alpha \mid \alpha \in \mc{I})$ is linearly independent $V$ will be given the structure of a representation of $\g$ such that
+ \[
+  x_i.Z_\alpha = Z_{i \cdot \alpha}
+  \quad \text{for every $i \in I$ and $\alpha \in \mc{I}$ with $i \leq \alpha$}.
+ \]
+ Then for the corresponding $\Ue(\g)$-module structure on $V$ it follows that
+ \[
+  x_\alpha \cdot 1
+  = x_\alpha \cdot Z_{(\;)}
+  = Z_\alpha
+  \quad \text{for every $\alpha \in \mc{I}$}
+ \]
+ where $1 \in V = k[Z_i \mid i \in I]$ and $(\;)$ denotes the empty tupel. Because $(Z_\alpha \mid \alpha \in \mc{I})$ is linearly independent it then follows that $(x_\alpha \mid \alpha \in \mc{I})$ is linearly independent. The existence of such an action follows from the following:
+ 
+ \begin{claim*}
+  There exists a unique sequence $(\varphi_n)_{n \in \N}$ of bilinear maps
+  \[
+   \varphi_n \colon \g \times V_{(n)} \to V_{(n+1)}, \quad (x,p) \mapsto x.p
+  \]
+  satisfying the following conditions:
+  \begin{enumerate}
+   \item\label{enum: pbw restriction coincides}
+    The restriction of $\varphi_{n+1}$ to $\g \times V_{(n)}$ coincides with $\varphi_n$ for every $n \in \N$
+   \item\label{enum: pbw essential condition}
+    $x_i.Z_\alpha = Z_{i \cdot \alpha}$ for every $i \in I$ and $\alpha \in \mc{I}$ with $i \leq \alpha$.
+   \item\label{enum: pbw representation of lie algebra}
+    $x_i.x_j.Z_\alpha - x_j.x_i.Z_\alpha = [x_i, x_j].Z_\alpha$ for all $i,j \in I$ and every $\alpha \in \mc{I}$.
+   \item\label{enum: pbw technical detail for construction}
+    $x_i.Z_\alpha - Z_{i \cdot \alpha} \in V_{(n)}$ for every $n \in \N$, $i \in I$ and $\alpha \in \mc{I}_n$.
+   \end{enumerate}
+   (Condition \ref{enum: pbw restriction coincides} actually follows from the other conditions by the uniqueness of the sequence $(\varphi_n)_{n \in \N}$. See \cite[\S 17.4]{Humphreys} for more details.)
+ \end{claim*}
+ \begin{proof}
+  Notice thet the notation $x.p$ with $x \in \g$ and $p \in V$ is unambiguous by condition \ref{enum: pbw restriction coincides}. The maps $\varphi_n$ will be defined by induction over $n$:
+  
+  As $V_{(0)}$ is one-dimensional and spanned by $1 = Z_{(\;)}$ it follows from condition \ref{enum: pbw essential condition} that $x_i.1 = x_i \cdot Z_{(\;)} = Z_{i \cdot (\;)} = Z_i$ for every $i \in I$. This defines $\varphi_0$ uniquely. Conditions \ref{enum: pbw essential condition} and \ref{enum: pbw technical detail for construction} hold by construction and the conditions \ref{enum: pbw restriction coincides} and \ref{enum: pbw representation of lie algebra} do not affect $\varphi_0$.
+  
+  Let $n \in \N$ and suppose $\varphi_m$ is constructed for every $m \leq n$. By condition \ref{enum: pbw restriction coincides} all that is left to define is $x_i.Z_\alpha$ for $\alpha \in \mc{I}_{n+1}$. If $i \leq \alpha$ then $x_i.Z_\alpha = Z_{i \cdot \alpha}$ by condition \ref{enum: pbw essential condition}.
+  
+  If $i > \alpha$ then there exists $\beta \in \mc{I}_n$ and $j \in I$ with $\alpha = j \cdot \beta$ such that $i > j$ and $j \leq \beta$. If condition \ref{enum: pbw representation of lie algebra} was to hold for $\varphi_{n+1}$ it follows that
+  \begin{equation}\label{eqn: action defined as lie action}
+   x_i.Z_\alpha
+   = x_i.x_j.Z_\beta
+   = x_j.x_i.Z_\beta + [x_i, x_j].Z_\beta.
+  \end{equation}
+  Because $\beta \in \mc{I}_n$ the term $[x_i, x_j].Z_\beta$ in the above sum is already defined. Because $x_i.Z_\beta \equiv Z_{i \cdot \beta} \pmod{V_{(n)}}$ there exists some $Y \in V_{(n)}$ with $x_i.Z_\beta = Z_{i \cdot \beta} + Y$. Let $\gamma \in \mc{I}_{n+1}$ be defined by taking $\beta$ and inserting $i$ at the right position. Then $Z_\gamma = Z_{i \cdot \beta}$. Because $j < i$ and $j \leq \beta$ it follows that $j \leq \gamma$ and therefore 
+  \[
+   x_j.Z_{i \cdot \beta}
+   = x_j.Z_\gamma
+   = Z_{i \cdot \gamma}
+   = Z_{i \cdot (j \cdot \beta)}
+   = Z_{i \cdot \alpha}
+  \]
+  Because every summand in
+  \begin{equation}\label{eqn: I really wish Humphreys had explained this}
+   \begin{aligned}
+    x_i.Z_\alpha
+    = x_j.x_i.Z_\beta + [x_i, x_j].Z_\beta
+    &= x_j.(Z_{i \cdot \beta} + Y) + [x_i, x_j].Z_\beta \\
+    &= Z_{i \cdot \alpha} + x_j.Y + [x_i, x_j].Z_\beta
+   \end{aligned}
+  \end{equation}
+  is defined it follows that $\varphi_{n+1}$ is uniquely defined.
+  
+  Conditions \ref{enum: pbw restriction coincides} and \ref{enum: pbw essential condition} hold for $\varphi_{n+1}$ by construction. Condition \ref{enum: pbw technical detail for construction} holds for $i \leq \alpha$ by condition \ref{enum: pbw essential condition} and for $i > \alpha$ by \eqref{eqn: I really wish Humphreys had explained this} because $x_j.Y \in V_{(n+1)}$ and $[x_i, x_j].Z_\beta \in V_{(n+1)}$.
+  
+  It remains to check Condition \ref{enum: pbw representation of lie algebra} for $\varphi_{n+1}$, i.e.\ when $i,j \in I$ and $\alpha \in \mc{I}_n$. For $i = j$ this follows from the Lie bracket being alternating. Suppose that $i \neq j$. By the Lie bracket is antisymmetric it can be w.l.o.g.\ assumed that $i < j$.
+  
+  If $i \leq \alpha$ then $x_j.x_i.Z_\alpha$ is defined above by using \eqref{eqn: action defined as lie action} (where $\beta$ has to be replaced by $\alpha$ and $i$ and $j$ have to be switched), hence condition \ref{enum: pbw essential condition} holds in this case by construction. Notice that if $j \leq \alpha$ then also $i \leq \alpha$ because $i < j$.
+  
+  Hence the only case left is $i \nleq \alpha$. By the above it then follows that also $j \nleq \alpha$. As this cannot happen for $n = 0$ it can be w.l.o.g.\ assumed that $n \geq 1$. Let $k \in I$ and $\beta \in \mc{I}_{n-1}$ with $\alpha = k \cdot \beta$. Because condition \ref{enum: pbw representation of lie algebra} holds for $\varphi_n$ it follows that
+  \begin{align*}
+   x_i.x_j.Z_\alpha
+   = x_i.x_j.x_k.Z_\beta
+   &= x_i.(x_k.x_j.Z_\beta + [x_j, x_k].Z_\beta) \\
+   &= x_i.x_k.x_j.Z_\beta + x_i.[x_j, x_k].Z_\beta
+  \end{align*}
+  Because $k < j$ and $k \leq \beta$ it follows from the previous discussed cases that
+  \[
+   x_i.x_k.(x_j.Z_\beta)
+   = x_k.x_i.(x_j.Z_\beta) + [x_i, x_k].(x_j.Z_\beta).
+  \]
+  Combining the above results in the equality
+  \[
+   x_i.x_j.Z_\alpha
+   = x_k.x_i.x_j.Z_\beta + [x_i, x_k].x_j.Z_\beta + x_i.[x_j, x_k].Z_\beta
+  \]
+  By switching $i$ and $j$ in the above calculations it also follows that 
+  \[
+   x_j.x_i.Z_\alpha
+   = x_k.x_j.x_i.Z_\beta + [x_j, x_k].x_i.Z_\beta + x_j.[x_i, x_k].Z_\beta
+  \]
+  By using that condition \ref{enum: pbw representation of lie algebra} holds for $\varphi_n$ it follows from these two equalities and the Jacobi identity that
+  \begin{align*}
+        x_i.x_j.Z_\alpha - x_j.x_i.Z_\alpha 
+   =&\, x_k.x_i.x_j.Z_\beta + [x_i, x_k].x_j.Z_\beta + x_i.[x_j, x_k].Z_\beta \\
+    &\, - x_k.x_j.x_i.Z_\beta - [x_j, x_k].x_i.Z_\beta - x_j.[x_i, x_k].Z_\beta \\
+   =&\, x_k.[x_i, x_j].Z_\beta + [[x_i, x_k], x_j].Z_\beta +  [x_i,[x_j,x_k]].Z_\beta \\
+   =&\, x_k.[x_i, x_j].Z_\beta - [x_k, [x_i, x_j]].Z_\beta
+   =    [x_i, x_j].x_k.Z_\beta
+   =    [x_i, x_j].Z_\alpha.
+  \qedhere
+  \end{align*}
+ \end{proof}
+ This finishes the proof. 
 \end{proof}
 
 
@@ -492,7 +605,7 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
  
  (concrete $\Rightarrow$ abstract) The algebra $\Ue(\g)$ has a basis $(x_\alpha \mid \alpha \in \mc{I})$ It follows that $\gr(\Ue(\g))_n$ has a basis given by the residue classes $([x_\alpha] \mid \alpha \in \mc{I}_n)$. The linear subspace $S(\g)_n$ has a basis $(x_1 \dotsm x_n \mid (i_1, \dotsc, i_n) \in \mc{I}_n)$ which is mapped by $\varphi_n$ to the above basis of $\gr(\Ue(\g))_n$. Hence $\varphi_n$ is an isomorphism for every $n \in \N$, which is why $\varphi$ is an isomorphism.
  
- (abstract $\Rightarrow$ concrete) As $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector spaces it sufficies to show that they are linearly independent. Suppose otherwise. Then there exists some minimal $n \in \N$ such that $(x_\alpha \mid m \leq n, \alpha \in \mc{I}_m)$ is linearly dependent. Hence there exists a non-trivial linear combination
+ (abstract $\Rightarrow$ concrete) As $(x_\alpha \mid \alpha \in \mc{I})$ generates $\Ue(\g)$ as a vector spaces by Lemma~\ref{lem: pbw concrete generating part} it sufficies to show that this collection is linearly independent. Suppose otherwise. Then there exists some minimal $n \in \N$ such that $(x_\alpha \mid m \leq n, \alpha \in \mc{I}_m)$ is linearly dependent. Hence there exists a non-trivial linear combination
  \[
   0 = \sum_{m=0}^n \sum_{\alpha \in \mc{I}_m} \lambda_\alpha x_\alpha
  \quad
