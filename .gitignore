@@ -2,6 +2,7 @@
 *.auxlock
 *.backup
 *.bbl
+*.bcf
 *.blg
 *.dpth
 *.kilepr
@@ -11,5 +12,6 @@
 *.pdf
 *.synctex.gz
 *.toc
+*.xml
 .directory
 PBW Programm/*
