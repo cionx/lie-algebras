@@ -49,7 +49,7 @@
 \end{proof}
 
 
-\begin{cor}
+\begin{cor}\label{cor: semisimple Lie algebra identification with dual space}
  Let $\g$ be a finite-dimensional, semisimple Lie algebra. Then the map
  \[
   \g \to \g^*, \quad x \mapsto \kappa(x,\cdot)
@@ -59,4 +59,26 @@
 \begin{proof}
  The statement follows from Corollary \ref{cor: associative non-degenerate bilinear forms induce isomorphism to the dual} because $\kappa$ is non-degenerate.
 \end{proof}
+
+
+\begin{cor}
+ Let $\g$ be a finite dimensional simple Lie algebra and $\beta \colon \g \times \g \to k$ an associative bilinear form. Then $\beta$ is a scalar multiple of the killing form $\kappa \colon \g \times \g \to k$.
+\end{cor}
+\begin{proof}
+ Because $\beta$ is associative the map
+ \[
+  \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x, \cdot)
+ \]
+ is a homomorphism of representations of $\g$ by Lemma~\ref{lem: associative bilinear form induces homomorphism of representations}. Because $\g$ is simple, and therefore also semisimple, the Killing form $\kappa$ is non-degenerate. Therefore the map
+ \[
+  \psi \colon \g \to \g^*, \quad x \mapsto \kappa(x, \cdot)
+ \]
+ is an isomorphism of representations of $\g$ by Corollary~\ref{cor: semisimple Lie algebra identification with dual space}. It follows that
+ \[
+  \alpha \coloneqq \varphi \circ \psi^{-1} \colon \g \to \g, 
+ \]
+ is a homomorphism of representations of $\g$. Because $\g$ is simple the adjoint representation of $\g$ is irreducible. By Schur’s Lemma $\alpha$ is given by multiplication with a scalar $\lambda \in k$. It follows that $\varphi = \lambda \psi$.
+\end{proof}
+
+
 
