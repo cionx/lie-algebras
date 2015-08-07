@@ -85,6 +85,37 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 \end{expl}
 
 
+\begin{defi}
+ Let $A$ and $B$ be $k$-algebras. A linear map $f \colon A \to B$ is a \emph{homomorphism of $k$-algebras} if the following two diagrams commute:
+ \begin{center}
+  \raisebox{-\height}{
+  \tikzsetnextfilename{homomorphism_of_algebras_multiplication}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (AA) {$A \otimes A$};
+   \node[right = 5em of AA] (BB) {$B \otimes B$};
+   \node[below of = AA] (A) {$A$};
+   \node[below of = BB] (B) {$B$};
+   \draw[->] (AA) to node[above] {$f \otimes f$} (BB);
+   \draw[->] (A) to node[below] {$f$} (B);
+   \draw[->] (AA) to node[left] {$m_A$} (A);
+   \draw[->] (BB) to node[right] {$m_B$} (B);
+  \end{tikzpicture}}
+  \hspace{0.5cm}
+  \raisebox{-\height}{
+  \tikzsetnextfilename{homomorphism_of_algebras_unit}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (A) {$A$};
+   \node[below right = of A] (k) {$k$};
+   \node[above right = of k] (B) {$B$};
+   \draw[->] (A) to node[above] {$f$} (B);
+   \draw[->] (k) to node[below left] {$u_A$} (A);
+   \draw[->] (k) to node[below right] {$u_B$} (B);
+  \end{tikzpicture}}
+ \end{center}
+\end{defi}
+
+
+
 
 \subsection{\texorpdfstring{$k$}{k}-coalgebras}
 
