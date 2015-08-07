@@ -15,11 +15,11 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 
 
 \begin{defi}
- For any $k$-vector space let
+ For any $k$-vector spaces $A$ and $B$ let
  \[
-  \tau_A \colon A \otimes A \to A \otimes A, \quad a \otimes b \mapsto b \otimes a
+  \tau_{A,B} \colon A \otimes B \to B \otimes A, \quad a \otimes b \mapsto b \otimes a.
  \]
- be the \emph{flip map} (of $A$).
+ For any vector space $A$ abbreviate $\tau_A \coloneqq \tau_{A,A}$.
 \end{defi}
 
 
@@ -70,9 +70,16 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 
 
 \begin{rem}
+ We will often just refer to a $k$-algebra $(A,m,u)$ by $A$ without explicitely mentioning $m$ and $u$. If necessary we will then refer to the multiplication by $m_A$ and the unit by $u_A$.
+\end{rem}
+
+
+\begin{rem}
  Definition \ref{defi: algebras via diagrams} is equivalent to the usual definition of a $k$-algebra, namely a $k$-vector space $A$ together with a bilinear map $\hat{m} \colon A \times A \to A, (a,b) \mapsto a \cdot b$ which is associative in the sense that $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for all $a,b,c \in A$, and such that a unit $1 \in A$ exists, i.e.\ an element for which $1 \cdot a = a \cdot 1 = a$ for every $a \in A$.
  
  Given a $k$-algebra in the usual sense the multiplication $\hat{m}$ corresponds to a linear map $m \colon A \otimes A \to A, a \otimes b \mapsto a \cdot b$, and that $m$ satisfies the associativity axiom is equivalent to $\hat{m}$ being associative. That a linear map $u \colon k \to A$ satisfies the unit axiom is equivalent to $u(1)$ being a unit in $A$. That $(A,\hat{m})$ is commutative is then also equivalent to $(A,m,u)$ being commutative.
+ 
+ We will use both definitions, depending on which is more useful in a given situation, and switch between them if necessary.
 \end{rem}
 
 
@@ -85,6 +92,35 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
  \]
  The associativity of the multiplication can be checked by direct calculation. The unit of the group algebra $k[G]$ is given by the identity of the group $e \in G \subseteq k[G]$. The group algebra $k[G]$ is commutative if and only if $G$ is.
 \end{expl}
+
+
+\begin{expl}
+ Let $A$ and $B$ be $k$-algebras. Then $A \otimes B$ carries the structure of a $k$-algebra via
+ \[
+  (a_1 \otimes b_1) \cdot (a_2 \otimes b_2)
+  = (a_1 \cdot a_2) \otimes (b_1 \cdot b_2)
+  \quad\text{for all $a_1, a_2 \in A$ and $b_1, b_2 \in B$}.
+ \]
+ Then $1_{A \otimes B} = 1_A \otimes 1_B$. The multiplication can also be expressed by the equality
+ \[
+  m_{A \otimes B} \colon
+  A \otimes B \otimes A \otimes B
+  \xrightarrow{\id_A \otimes\, \tau_{A,B} \otimes\, \id_A}
+  A \otimes A \otimes B \otimes B
+  \xrightarrow{m_A \otimes\, m_B}
+  A \otimes B
+ \]
+ and the unit by
+ \[
+  u_{A \otimes B} \colon
+  k
+  \xrightarrow{\lambda \mapsto \lambda \otimes 1}
+  k \otimes k
+  \xrightarrow{u_A \otimes\, u_B}
+  A \otimes B
+ \]
+\end{expl}
+
 
 
 \begin{defi}
@@ -115,6 +151,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
   \end{tikzpicture}}
  \end{center}
 \end{defi}
+
 
 
 
@@ -198,4 +235,60 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    At a special case of the above example it follows that for any group $G$ the group algebra $k[G]$ also carries the structure of a $k$-coalgebra via the comultiplication $\Delta \colon k[G] \to k[G] \otimes k[G], g \mapsto g \otimes g$ and counit $\varepsilon \colon k[G] \to k, \sum_{g \in G} \lambda_g g \mapsto \sum_{g \in G} \lambda_g$.
  \end{enumerate}
 \end{expls}
+
+
+\begin{expl}
+ If $C$ and $D$ are $k$-coalgebras then $C \otimes D$ is a also a $k$-coalgebra via the comultiplication
+ \[
+  \Delta_{C \otimes D} \colon
+  C \otimes D
+  \xrightarrow{\Delta_C \otimes \Delta_D}
+  C \otimes C \otimes D \otimes D
+  \xrightarrow{\id_C \otimes \tau_{C,D} \otimes\, \id_C}
+  C \otimes D \otimes C \otimes D
+ \]
+ and the counit
+ \[
+  \varepsilon_{C \otimes D} \colon
+  C \otimes D
+  \xrightarrow{\varepsilon_C \otimes\, \varepsilon_D}
+  k \otimes k
+  \xlongrightarrow{\lambda \otimes \mu \mapsto \lambda \mu}
+  k.
+ \]
+\end{expl}
+
+
+\begin{defi}
+ Let $C$ and $D$ be $k$-coalgebras. A linear map $f \colon C \to D$ is a homomorphism of $k$-coalgebras if the following diagrams commute:
+ \begin{center}
+  \raisebox{-\height}{
+  \tikzsetnextfilename{homomorphism_of_coalgebras_comultiplication}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (C) {$C$};
+   \node[right = 5em of C] (D) {$D$};
+   \node[below of = C] (CC) {$C \otimes C$};
+   \node[below of = D] (DD) {$D \otimes D$};
+   \draw[->] (C) to node[above] {$f$} (D);
+   \draw[->] (CC) to node[below] {$f \otimes f$} (DD);
+   \draw[->] (C) to node[left] {$\Delta_C$} (CC);
+   \draw[->] (D) to node[right] {$\Delta_D$} (DD);
+  \end{tikzpicture}}
+  \hspace{0.5cm}
+  \raisebox{-\height}{
+  \tikzsetnextfilename{homomorphism_of_coalgebras_counit}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (C) {$C$};
+   \node[below right = of C] (k) {$k$};
+   \node[above right = of k] (D) {$D$};
+   \draw[->] (C) to node[above] {$f$} (D);
+   \draw[->] (C) to node[below left] {$\varepsilon_C$} (k);
+   \draw[->] (D) to node[below right] {$\varepsilon_D$} (k);
+  \end{tikzpicture}}
+ \end{center}
+\end{defi}
+
+
+
+
 
