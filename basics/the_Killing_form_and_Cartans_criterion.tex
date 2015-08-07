@@ -25,23 +25,25 @@
   = \beta([x,y] \otimes z) - \beta(x \otimes [y,z]).
  \end{align*}
  
- \begin{samepage} Identifying $(\g \otimes_k \g)^*$ with the bilinear forms on $\g$ via the universal property of the tensor product it follows that a bilinear form $\beta \colon \g \times \g \to k$ is associative if and only if
+ Identifying $(\g \otimes_k \g)^*$ with the bilinear forms on $\g$ via the universal property of the tensor product it follows that a bilinear form $\beta \colon \g \times \g \to k$ is associative if and only if
  \[
   y.\beta = 0 \quad \text{for every $y \in \g$}.
  \]
- Because of this associative bilinear forms on $\g$ are also called \emph{invariant}. \end{samepage}
+ Because of this associative bilinear forms on $\g$ are also called \emph{invariant}.
 \end{rem}
 
 
 \begin{lem}\label{lem: associative bilinear form induces homomorphism of representations}
- Let $\g$ be a Lie algebra and $\beta \colon \g \to \g^*$ a symmetric bilinear form. Then $\beta$ is associative if and only if the map
+ Let $\g$ be a Lie algebra and $\beta \colon \g \to \g^*$ a bilinear form. Then $\beta$ is associative if and only if the maps
  \[
   \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x, \cdot)
+  \quad\text{and}\quad
+  \psi \colon \g \to \g^*, \quad x \mapsto \beta(\cdot, x)
  \]
- is a homomorphism of representations (where $\g$ acts on itself by the adjoint representation and therefore on $\g^*$ as described in Proposition \ref{prop: new representations from old ones}). 
+ are homomorphisms of representations of $\g$ (where $\g$ acts on itself by the adjoint representation and therefore on $\g^*$ as described in Proposition~\ref{prop: new representations from old ones}). 
 \end{lem}
 \begin{proof}
- For every $x,y,z \in \g$ and $y \in \g$ the equalities
+ For all $x,y,z \in \g$ the equalities
  \begin{gather*}
   (x.\varphi(y))(z)
   = -\varphi(y)(x.z)
@@ -53,7 +55,7 @@
   = \beta([x,y],z)
   = -\beta([y,x],z)
  \end{gather*}
- hold. Hence the associativity of $\beta$ is equivalent to the equality $x.\varphi(y) = \varphi(x.y)$ holding for all $x,y \in \g$.
+ hold. Hence the associativity of $\beta$ is equivalent to the equality $x.\varphi(y) = \varphi(x.y)$ holding for all $x,y \in \g$. It can be shown similarly that the associativity of $\beta$ is equivalent to $\psi$ being a homomorphism of representations.
 \end{proof}
 
 
