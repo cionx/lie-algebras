@@ -87,3 +87,57 @@ In this chapter we give the definition of $k$-algebras, $k$-coalgebra, $k$-bialg
 \end{expl}
 
 
+
+
+
+\subsection{\texorpdfstring{$k$}{k}-coalgebras}
+
+
+\begin{defi}
+ A $k$-coalgebra is a tupel $(A,\Delta,\varepsilon)$ consisting of a $k$-vector space $A$, a linear map $\Delta \colon A \to A \otimes A$, called the \emph{comultiplication} and a linear map $\varepsilon \colon A \to k$, called the \emph{counit}, such that the following two diagrams commute:
+ \begin{center}
+  \tikzsetnextfilename{coassociativity_of_coalgebras}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (A) {$A$};
+   \node[right = 7em of A] (AA1) {$A \otimes A$};
+   \node[below of = A] (AA2) {$A \otimes A$};
+   \node[below of = AA1] (AAA) {$A \otimes A \otimes A$};
+   \draw[->] (A) to node[above] {$\Delta$} (AA1);
+   \draw[->] (A) to node[left] {$\Delta$} (AA2);
+   \draw[->] (AA1) to node[right] {$\id_A \otimes\, \Delta$} (AAA);
+   \draw[->] (AA2) to node[below] {$\Delta \otimes \id_A$} (AAA);
+  \end{tikzpicture}
+  \quad
+  \tikzsetnextfilename{counit_of_coalgebras}
+  \begin{tikzpicture}[node distance = 3em]
+   \node (middle) {$ $};
+   \node[above of = middle] (AA) {$A \otimes A$};
+   \node[left = 5em of middle] (kA) {$k \otimes A$};
+   \node[right = 5em of middle] (Ak) {$A \otimes k$};
+   \node[below of = middle] (A) {$A$};
+   \draw[->] (AA) to node[above left] {$\varepsilon \otimes \id_A$} (kA);
+   \draw[->] (AA) to node[above right] {$\id_A \otimes \, \varepsilon$} (Ak);
+   \draw[->] (A) to node[right] {$\Delta$} (AA);
+   \draw[->] (A) to node[below left]  {$1 \otimes \id_A$} (kA);
+   \draw[->] (A) to node[below right] {$\id_A \otimes\, 1$} (Ak);
+  \end{tikzpicture}
+ \end{center}
+ The commutativity of the left diagram is the \emph{coassociativity axiom} and the commutativity of the right diagram is the \emph{counit axiom}. The coalgebra $(A, \Delta, \varepsilon)$ is called \emph{cocommutative} if the following diagram commutes:
+ \begin{center}
+  \tikzsetnextfilename{cocommutativity_of_coalgebras}
+  \begin{tikzpicture}[node distance = 5em]
+   \node (AA1) {$A \otimes A$};
+   \node[above right of = AA1] (A) {$A$};
+   \node[below right of = A] (AA2) {$A \otimes A$};
+   \draw[->] (AA1) to node[below] {$\tau_A$} (AA2);
+   \draw[->] (A) to node[above left] {$\Delta$} (AA1);
+   \draw[->] (A) to node[above right] {$\Delta$} (AA2);
+  \end{tikzpicture}
+ \end{center}
+\end{defi}
+
+
+\begin{expl}
+ 
+\end{expl}
+
