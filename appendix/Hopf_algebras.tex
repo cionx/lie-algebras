@@ -7,11 +7,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 
 
 
-
-
 \section{algebras, coalgebra and bialgebras}
-
-
 
 
 
@@ -90,56 +86,83 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 
 
 
-
-
 \subsection{\texorpdfstring{$k$}{k}-coalgebras}
 
 
 \begin{defi}
- A $k$-coalgebra is a tupel $(A,\Delta,\varepsilon)$ consisting of a $k$-vector space $A$, a linear map $\Delta \colon A \to A \otimes A$, called the \emph{comultiplication} and a linear map $\varepsilon \colon A \to k$, called the \emph{counit}, such that the following two diagrams commute:
+ A $k$-coalgebra is a tupel $(C,\Delta,\varepsilon)$ consisting of a $k$-vector space $C$, a linear map $\Delta \colon C \to C \otimes C$, called the \emph{comultiplication} and a linear map $\varepsilon \colon C \to k$, called the \emph{counit}, such that the following two diagrams commute:
  \begin{center}
   \tikzsetnextfilename{coassociativity_of_coalgebras}
   \begin{tikzpicture}[node distance = 5em]
-   \node (A) {$A$};
-   \node[right = 7em of A] (AA1) {$A \otimes A$};
-   \node[below of = A] (AA2) {$A \otimes A$};
-   \node[below of = AA1] (AAA) {$A \otimes A \otimes A$};
-   \draw[->] (A) to node[above] {$\Delta$} (AA1);
-   \draw[->] (A) to node[left] {$\Delta$} (AA2);
-   \draw[->] (AA1) to node[right] {$\id_A \otimes\, \Delta$} (AAA);
-   \draw[->] (AA2) to node[below] {$\Delta \otimes \id_A$} (AAA);
+   \node (C) {$C$};
+   \node[right = 7em of C] (CC1) {$C \otimes C$};
+   \node[below of = C] (C2) {$C \otimes C$};
+   \node[below of = CC1] (CCC) {$C \otimes C \otimes C$};
+   \draw[->] (C) to node[above] {$\Delta$} (CC1);
+   \draw[->] (C) to node[left] {$\Delta$} (CC2);
+   \draw[->] (CC1) to node[right] {$\id_C \otimes\, \Delta$} (CCC);
+   \draw[->] (CC2) to node[below] {$\Delta \otimes \id_C$} (CCC);
   \end{tikzpicture}
   \quad
   \tikzsetnextfilename{counit_of_coalgebras}
   \begin{tikzpicture}[node distance = 3em]
    \node (middle) {$ $};
-   \node[above of = middle] (AA) {$A \otimes A$};
-   \node[left = 5em of middle] (kA) {$k \otimes A$};
-   \node[right = 5em of middle] (Ak) {$A \otimes k$};
-   \node[below of = middle] (A) {$A$};
-   \draw[->] (AA) to node[above left] {$\varepsilon \otimes \id_A$} (kA);
-   \draw[->] (AA) to node[above right] {$\id_A \otimes \, \varepsilon$} (Ak);
-   \draw[->] (A) to node[right] {$\Delta$} (AA);
-   \draw[->] (A) to node[below left]  {$1 \otimes \id_A$} (kA);
-   \draw[->] (A) to node[below right] {$\id_A \otimes\, 1$} (Ak);
+   \node[above of = middle] (CC) {$C \otimes C$};
+   \node[left = 5em of middle] (kC) {$k \otimes C$};
+   \node[right = 5em of middle] (Ck) {$C \otimes k$};
+   \node[below of = middle] (C) {$C$};
+   \draw[->] (CC) to node[above left] {$\varepsilon \otimes \id_C$} (kC);
+   \draw[->] (CC) to node[above right] {$\id_C \otimes \, \varepsilon$} (Ck);
+   \draw[->] (C) to node[right] {$\Delta$} (CC);
+   \draw[->] (C) to node[below left]  {$1 \otimes \id_C$} (kC);
+   \draw[->] (C) to node[below right] {$\id_C \otimes\, 1$} (Ck);
   \end{tikzpicture}
  \end{center}
- The commutativity of the left diagram is the \emph{coassociativity axiom} and the commutativity of the right diagram is the \emph{counit axiom}. The coalgebra $(A, \Delta, \varepsilon)$ is called \emph{cocommutative} if the following diagram commutes:
+ The commutativity of the left diagram is the \emph{coassociativity axiom} and the commutativity of the right diagram is the \emph{counit axiom}. The coalgebra $(C, \Delta, \varepsilon)$ is called \emph{cocommutative} if the following diagram commutes:
  \begin{center}
   \tikzsetnextfilename{cocommutativity_of_coalgebras}
   \begin{tikzpicture}[node distance = 5em]
-   \node (AA1) {$A \otimes A$};
-   \node[above right of = AA1] (A) {$A$};
-   \node[below right of = A] (AA2) {$A \otimes A$};
-   \draw[->] (AA1) to node[below] {$\tau_A$} (AA2);
-   \draw[->] (A) to node[above left] {$\Delta$} (AA1);
-   \draw[->] (A) to node[above right] {$\Delta$} (AA2);
+   \node (CC1) {$C \otimes C$};
+   \node[above right of = CC1] (C) {$C$};
+   \node[below right of = C] (CC2) {$C \otimes C$};
+   \draw[->] (CC1) to node[below] {$\tau_C$} (CC2);
+   \draw[->] (C) to node[above left] {$\Delta$} (CC1);
+   \draw[->] (C) to node[above right] {$\Delta$} (CC2);
   \end{tikzpicture}
  \end{center}
 \end{defi}
 
 
-\begin{expl}
- 
-\end{expl}
+\begin{expls}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Let $C$ be a $k$-vector space and $(x_i)_{i \in I}$ a basis of $V$. Then $V$ carries the structure of a $k$-coalgebra via the comultiplication $\Delta \colon C \to C \otimes C$ defined by
+   \[
+    \Delta(x_i) \coloneqq x_i \otimes x_i \quad \text{for every $i \in I$}
+   \]
+   and the counit $\varepsilon \colon C \to k$ defined by
+   \[
+    \varepsilon\left( \sum_{i \in I} \lambda_i x_i \right) \coloneqq \sum_{i \in I} \lambda_i.
+   \]
+   To see that $\Delta$ is coassociative notice that for every $i \in I$
+   \begin{align*}
+     ((\id_C \otimes\, \Delta) \circ \Delta)(x_i)
+     &= (\id_C \otimes\, \Delta)(x_i \otimes x_i)
+     = x_i \otimes x_i \otimes x_i \\
+     &= (\Delta \otimes \id_C)(x_i \otimes x_i)
+     = ((\Delta \otimes \id_C) \circ \Delta)(x_i).
+   \end{align*}
+   To notice that $\varepsilon$ is a counit notice that for every $i \in I$
+   \[
+     ((\varepsilon \otimes \id_C) \circ \Delta)(x_i)
+     = (\varepsilon \otimes \id_C)(x_i \otimes x_i)
+     = 1 \otimes x_i
+     = (1 \otimes \id_C)(x_i)
+   \]
+   and similarly $(\id_C \otimes\, \varepsilon) \circ \Delta = \id_C \otimes\, 1$.
+   
+  \item
+   At a special case of the above example it follows that for any group $G$ the group algebra $k[G]$ also carries the structure of a $k$-coalgebra via the comultiplication $\Delta \colon k[G] \to k[G] \otimes k[G], g \mapsto g \otimes g$ and counit $\varepsilon \colon k[G] \to k, \sum_{g \in G} \lambda_g g \mapsto \sum_{g \in G} \lambda_g$.
+ \end{enumerate}
+\end{expls}
 
