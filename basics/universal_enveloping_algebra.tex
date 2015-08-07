@@ -805,13 +805,13 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
 
 
 
-%\subsection{Hopf algebra structure}
+%TODO: Hopf algebra structure
 
 
 
 
 
-\subsection{Casimir elements and operators}
+\subsection{Casimir elements}
 For this subsection we additionaly assume that $\g$ is finite-dimensional. We also fix some bilinear form $\beta \colon \g \times \g \to k$ which is associative and non-degenerate.
 
 
@@ -881,7 +881,26 @@ For this subsection we additionaly assume that $\g$ is finite-dimensional. We al
 \end{proof}
 
 
-\begin{lem}[Casimir in coordinates]
+\begin{cor}
+ Let $V$ be a representation of $\g$ and $\Ue(\g) \times V \to V, (x,v) \mapsto x \cdot v$ the corresponding $\Ue(\g)$-module structure on $V$. Then the map
+ \[
+  C_\beta^V \colon V \to V, \quad v \mapsto C_\beta \cdot v
+ \]
+ is an endomorphism of representations of $\g$ (equivalently an endomorphism of $\Ue(\g)$-modules).
+\end{cor}
+\begin{proof}
+ Because $C_\beta \in Z(\Ue(\g))$ it follows that for every $x \in \Ue(\g)$ and $v \in V$
+ \[
+  x \cdot C_\beta^V(v)
+  = x \cdot C_\beta \cdot v
+  = C_\beta \cdot x \cdot v
+  = C_\beta^V(x \cdot v).
+  \qedhere
+ \]
+\end{proof}
+
+
+\begin{lem}[Casimir in coordinates] \label{lem: casimir in coordinates}
  Let $x_1, \dotsc, x_n$ be a basis of $\g$ and $x^1, \dotsc, x^n$ the dual basis of $\g$ with respect to $\beta$, i.e.\ $\beta(x_i, x^j) = \delta_{ij}$ for all $i,j = 1, \dotsc, n$. Then
  \[
   C_\beta = \sum_{i=1}^n x_i x^i.
@@ -890,6 +909,31 @@ For this subsection we additionaly assume that $\g$ is finite-dimensional. We al
 \begin{proof}
  Let $\varphi_1$ and $\varphi_2$ as in Definition~\ref{defi: definition of Casimir element}. In \eqref{eqn: Casimir without coordinates} $1$ is mapped to $\id_\g$, which is then mapped to $\sum_{i=1}^n x_i \otimes x_i^*$, where $x_1^*, \dotsc, x_n^*$ denotes the dual basis of $\g^*$. As $\varphi_2(x^i) = x_i^*$ it follows that $\sum_{i=1}^n x_i \otimes x_i^*$ is then mapped to $\sum_{i=1}^n x_i \otimes x^i$, which is then further mapped to the element $\sum_{i=1}^n x_i x^i$ in $\Ue(\g)$.
 \end{proof}
+
+
+\begin{rem}
+ Using Lemma \ref{lem: casimir in coordinates} it can be shown that $C_\beta$ is central in $\Ue(\g)$ using coordinates: Let $x \in \g$ and $a_{ij}, b_{ij} \in k$ such that $[x,x_i] = \sum_{j=1}^n a_{ij} x_j$ and $[x,x^i] = \sum_{j=1}^n b_{ij} x^j$ for all $i = 1, \dotsc, n$. Then for all $i,j = 1, \dotsc, n$
+ \begin{align*}
+  a_{ij}
+  &= \sum_{k=1}^n a_{ik} \beta(x_k, x^j)
+  = \beta\left( \sum_{k=1}^n a_{ik} x_k, x^j \right)
+  = \beta([x, x_i], x^j)
+  = -\beta([x_i, x], x^j) \\
+  &= -\beta(x_i, [x, x^j])
+  = -\beta\left( x_i, \sum_{k=1}^n b_{jk} x^k \right)
+  = -\sum_{k=1}^n b_{jk} \beta(x_i, x^k)
+  = -b_{ji}.
+ \end{align*}
+ It follows that
+ \begin{align*}
+  x C_\beta - C_\beta x
+  &= \sum_{i=1}^n x x_i x^i - \sum_{i=1}^n x_i x^i x
+  = \sum_{i=1}^n [x, x_i] x^i - \sum_{i=1}^n x_i [x^i, x] \\
+  &= \sum_{i,j=1}^n a_{ij} x_j x^i + \sum_{i,j=1}^n b_{ij} x_i x^j
+  = \sum_{i,j=1}^n a_{ij} x_j x^i - \sum_{i,j=1}^n a_{ij} x_j x^i
+  = 0.
+ \end{align*}
+\end{rem}
 
 
 
