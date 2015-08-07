@@ -398,6 +398,30 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 \end{expls}
 
 
+\begin{prop}\label{prop: associated graded algebra and zero divisors}
+ Let $A$ be a filtered $k$-algebra. If $\gr(A)$ is an integral domain then so is $A$.
+\end{prop}
+\begin{proof}
+ Suppose $A$ is no integral domain. Then there exist $a,b \in A$ with $a \neq 0$ and $b \neq 0$ but $ab = 0$. Then there exists a minimal $n \in \N$ with $a \in A_{(n)}$ and a minimal $b \in \N$ with $b \in A_{(m)}$. By the minimality of $n$ and $m$ it follows that $[a] \in \gr(A)_n$ and $[b] \in \gr(A)_m$ are nonzero residue classes with $[a] \cdot [b] = [ab] = 0$. Hence $\gr(A)$ is no integral domain.
+\end{proof}
+
+
+\begin{rem}
+ The converse of Proposition~\ref{prop: associated graded algebra and zero divisors} is not true, i.e.\ if $A$ is a filtered $k$-algebra which is an integral domain, then $\gr(A)$ is not necessarily an integral domain.
+ 
+ To see this let $A$ be any $k$-algebra with $k \subsetneq A$ and with filtration
+ \[
+  A_{(0)} \coloneqq k
+  \quad\text{and}\quad
+  A_{(n)} \coloneqq A
+  \quad\text{for every $n \geq 1$}.
+ \]
+ Then $\gr(A)_0 = k$, $\gr(A)_1 = A/k \neq 0$ and $\gr(A)_n = 0$ for every $n \geq 2$, hence $\gr(A)_1 \gr(A)_1 = 0$. So $\gr(A)$ is no integral domain, even if $A$ is.
+\end{rem}
+
+
+
+
 
 \subsubsection{The Poincar\'{e}-Birkhoff-Witt theorem (concrete version)}
 For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}$ where $(I, \leq)$ is a totally ordered index set. Before stating and proving the \emph{Poincar\'{e}-Birkhoff-Witt theorem} (PBW) we fix some notation which we will only use in this subsection.
@@ -650,7 +674,7 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
  The universal enveloping algebra $\Ue(\g)$ is an integral domain.
 \end{cor}
 \begin{proof}
- Suppose otherwise. Then there exist $x,y \in \Ue(\g)$ with $x \neq 0$ and $y \neq 0$ but $xy = 0$. Then there exists a minimal $n \in \N$ with $x \in \Ue(\g)_{(n)}$ and a minimal $m \in \N$ with $y \in \Ue(\g)_{(m)}$. By the minimality of $n$ and $m$ it follows that $[x] \in \gr(\Ue(\g))_n$ and $[y] \in \gr(\Ue(\g))_m$ are nonzero residue classes with $[x] \cdot [y] = [xy] = 0$. Hence $\gr(\Ue(\g))$ is no integral domain. But $\gr(\Ue(\g)) \cong S(\g)$ is an integral domain.
+ Because $\gr(\Ue(\g)) \cong S(\g)$ is in integral domain the statement follows from Proposition~\ref{prop: associated graded algebra and zero divisors}.
 \end{proof}
 
 
