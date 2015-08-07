@@ -2,6 +2,7 @@
 \usepackage{amssymb} % math stuff
 \usepackage{amsthm} % math stuff
 \usepackage{appendix} % for appendix
+\usepackage[backend=biber, style=alphabetic]{biblatex}
 \usepackage{enumitem} % for better enumerates
 \usepackage[colorlinks=true]{hyperref} % for links in pdf
 \usepackage{lastpage} % to be able to refer to the last page
@@ -18,6 +19,10 @@
   xelatex \tikzexternalcheckshellescape
   -halt-on-error -interaction=batchmode
   -jobname "\image" "\texsource"}}
+ 
+ 
+% the file containing the references for biblatex
+\bibliography{references.bib}
 
 
 % settings for scrlayer-scrpage
