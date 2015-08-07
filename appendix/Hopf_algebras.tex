@@ -26,6 +26,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 \begin{defi}\label{defi: algebras via diagrams}
  A $k$-algebra is a tupel $(A, m, u)$ consisting of a $k$-vector space $A$, linear maps $m \colon A \otimes A \to A$, called the \emph{multiplication} and a linear map $u \colon k \to A$, called the \emph{unit} such that the following two diagrams commute, where $s$ denotes the respective scalar multiplication.
  \begin{center}
+  \raisebox{-0.5\height}{
   \tikzsetnextfilename{associativity_of_algebras}
   \begin{tikzpicture}[node distance = 5em]
    \node (AAA) {$A \otimes A \otimes A$};
@@ -36,10 +37,11 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    \draw[->] (AAA) to node[left] {$\id_A \otimes\, m$} (AA2);
    \draw[->] (AA1) to node[right] {$m$} (A);
    \draw[->] (AA2) to node[below] {$m$} (A);
-  \end{tikzpicture}
-  \quad
+  \end{tikzpicture}}
+  \hspace{0.5cm}
+  \raisebox{-0.53\height}{
   \tikzsetnextfilename{unit_of_algebras}
-  \begin{tikzpicture}[node distance = 3em]
+  \begin{tikzpicture}[node distance = 2.5em]
    \node (middle) {$ $};
    \node[above of = middle] (AA) {$A \otimes A$};
    \node[left = 5em of middle] (kA) {$k \otimes A$};
@@ -50,7 +52,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    \draw[->] (AA) to node[right] {$m$} (A);
    \draw[->] (kA) to node[below left]  {$s$} (A);
    \draw[->] (Ak) to node[below right] {$s$} (A);
-  \end{tikzpicture}
+  \end{tikzpicture}}
  \end{center}
  The commutativity of the left diagram is the \emph{associativity aximion} and the commutativity of the right diagram is the \emph{unit axiom}. The $k$-algebra $(A, m, u)$ is called \emph{commutative} if the following diagram commutes:
  \begin{center}
