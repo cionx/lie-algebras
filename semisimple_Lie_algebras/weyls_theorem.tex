@@ -1,4 +1,40 @@
 \section{Theorem of Weyl}
 
 
-\subsection{Casimir operators}
+\begin{lem}
+ Let $\g$ be an $n$-dimensional semisimple Lie algebra and $\rho \colon \g \to \gl(V)$ a representation of $\g$.
+ \begin{enumerate}
+  \item
+   The map $\beta \colon \g \times \g \to k$ with $\beta(x,y) \coloneqq \tr(\rho(x)\rho(y))$ for all $x,y \in \g$ is an associative and symmetric bilinear form.
+  \item
+   If $\rho$ is a faithful representation then $\beta$ is non-degenerate.
+  \item
+   Suppose $\rho$ is faithful. Let $x_1, \dotsc, x_n$ ba a basis of $\g$ and $x^1, \dotsc, x^n$ the dual basis with respect to $\beta$. Then the map
+   \[
+    C_\beta^V \colon V \to V,
+    \quad
+    v \mapsto C_\beta \cdot v = \sum_{i=1}^n x_i.x^i.v = \sum_{i=1}^n \rho(x_i)\rho(x^i)(v)
+   \]
+   is a homomorphism of representations with $\tr(C_\beta^V) = \dim_k \g$.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   This was already remarked in Remark~\ref{rem: associative bilinear form of a representation}.
+  \item
+   Because $\rad \beta \subideal \g$ is and $\rho$ is an isomorphism onto its image it follows that $\rho(\rad \beta) \subideal \rho(\g)$ is an ideal with $\tr(xy) = 0$ for all $x,y \in \rho(\g)$. By Cartan’s criterion for linear Lie algebras (see Lemma~\ref{lem: Cartans criterion for linear Lie algebra}) the ideal $\rho(\rad \beta)$ is solvable. Because $\rho(\g)$ is semisimple it follows that $\rho(\rad \beta) = 0$ and hence $\rad \beta = 0$ because $\rho$ is faithful.
+  \item
+   That $C_\beta^V$ is a homomorphism of representations was follows from Corollary~\ref{cor: Casimir homomorphism of a representation} and notice that
+   \[
+    \tr(C_\beta^V)
+    = \tr\left( \sum_{i=1}^n \rho(x_i)\rho(x^i) \right)
+    = \sum_{i=1}^n \tr(\rho(x_i)\rho(x^i))
+    = \sum_{i=1}^n \beta(x_i, x^i)
+    = n
+    = \dim \g.
+    \qedhere
+   \]
+ \end{enumerate}
+\end{proof}
+
