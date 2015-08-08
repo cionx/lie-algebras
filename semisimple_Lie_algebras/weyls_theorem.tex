@@ -1,8 +1,8 @@
 \section{Theorem of Weyl}
 
 
-\begin{lem}
- Let $\g$ be an $n$-dimensional semisimple Lie algebra and $\rho \colon \g \to \gl(V)$ a representation of $\g$.
+\begin{lem}\label{lem: Casimirs endomorphism for Weyl}
+ Let $\g$ be an $n$-dimensional semisimple Lie algebra, $V$ a finite dimensional vector space and $\rho \colon \g \to \gl(V)$ a representation of $\g$.
  \begin{enumerate}
   \item
    The map $\beta \colon \g \times \g \to k$ with $\beta(x,y) \coloneqq \tr(\rho(x)\rho(y))$ for all $x,y \in \g$ is an associative and symmetric bilinear form.
@@ -37,4 +37,75 @@
    \]
  \end{enumerate}
 \end{proof}
+
+
+\begin{defi}\label{defi: casimir endomorphism of a faithful representation}
+ Let $V$ be a faithful representation of a finite dimensional semisimple Lie algebra $\g$ and $\beta \colon \g \times \g \to k$ the associative, symmetric and non-degenerate bilinear form defined by $\beta(x,y) = \tr(\rho(x)\rho(y))$ for all $x,y \in \g$. Then define
+ \[
+  C^V_\g \colon V \to V, \quad v \mapsto C_\beta \cdot v.
+ \]
+\end{defi}
+
+
+\begin{rem}
+ Notice for the situation of Definition~\ref{defi: casimir endomorphism of a faithful representation} that if $x_1, \dotsc, x_n$ is a basis of $\g$ and $x^1, \dotsc, x^n$ is the dual basis with respect to $\beta$ then $C^V_\g$ can also be expressed as
+ \[
+  C^V_\g = \sum_{i=1}^n \rho(x_i) \rho(x^i).
+ \]
+\end{rem}
+
+
+\begin{rem}
+ Definition~\ref{defi: casimir endomorphism of a faithful representation} was not given in the lecture, but helps to bake the following easier to read.
+\end{rem}
+
+
+\begin{lem}
+ Let $g$ be a finite dimensional semisimple $k$-Lie algebra and let $V$ be a finite dimensional representation of $\g$. Then $V = \g V \oplus V^\g$ for the subrepresentations
+ \[
+  \g V \coloneqq \{x.v \mid x \in \g, v \in V\}
+  \quad\text{and}\quad
+  V^\g \coloneqq \{v \in V \mid \text{$x.v = 0$ for every $x \in \g$}\}
+ \]
+\end{lem}
+\begin{proof}
+ If $V = U_1 \oplus \dotsb \oplus U_n$ is a decomposition into subrepresentations of $\g$ then $\g V = \g U_1 \oplus \dotsb \oplus \g U_n$ and $V^\g = U_1^\g \oplus \dotsb \oplus U_n^\g$. Hence it sufficies to show the statement for indecomposable representations. Hence suppose that $V$ is indecomposable. It can also be assumed that $V \neq 0$.
+ 
+ By replacing $\g$ with $\rho(\g)$ it can be assumed w.l.o.g.\ that $V$ is a faithful representation of $\g$. Notice that $\rho(\g)$ is also semisimple by Corollary~\ref{cor: ideals and quotients of semisimple again semisimple}.
+ 
+ Now let $C \coloneqq C^V_\g \colon V \to V$ be the endomorphism of $V$ defined as in Lemma~\ref{lem: Casimirs endomorphism for Weyl}. Because $C$ is a homomorphism of representations of $\g$ and $V$ is finite dimensional it follows that $V$ decomposes into the generalized eigenspaces of $C$. Because $V$ is indecomposable by assumption it follows that $V$ is the generalized eigenspace of $C$ with respect to some $\lambda \in k$ (here it is used that $V \neq 0$ by assumption). Notice that by Lemma~\ref{lem: Casimirs endomorphism for Weyl}
+ \[
+  \dim_k \g = \tr(C) = (\dim_k V) \cdot \lambda.
+ \]
+ 
+ If $\lambda = 0$ then it follows that $\g = 0$ (this can also be seen directly because $\g$ acts faithful by assumption). Then $V = V^\g$ and the statement holds.
+ 
+ Suppose otherwise that $\lambda \neq 0$. Then $\det C = \lambda^{\dim_k V} \neq 0$, hence $C$ is actully an automorphism of $V$, hence $C(V) = V$. As $C$ is given by multiplication with a Casimir element $C_\beta \in \Ue(\g)$ it follows that
+ \[
+  \g V
+  = \{x.v \mid x \in \g, v \in V\}
+  = \{x \cdot v \mid x \in \Ue(\g) \mid V\}
+  \supseteq \{ C_\beta \cdot v \mid v \in V\}
+  = C(V)
+  = V,
+ \]
+ hence $\g V = V$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
