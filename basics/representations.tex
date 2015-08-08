@@ -403,6 +403,26 @@
    Let $V$ and $W$ be representations of a Lie algebra $\g$ and $\varphi \colon V \to W$ a homomorphism of representations. Then $\ker \varphi \subseteq V$ and $\im \varphi \subseteq W$ are subrepresentations.
   \item
    The subrepresentations of the adjoint representation of $\g$ are precisely the ideals in $\g$.
+  \item
+   If $V$ is a representation of $\g$ then
+   \[
+    \g V \coloneqq \{x.v \mid x \in \g, v \in V\}
+    \quad\text{and}\quad
+    V^\g \coloneqq \{v \in V \mid \text{$x.v = 0$ for every $x \in \g$}
+   \]
+   are subrepresentations of $\g$. Notice that if $V$ and $W$ are two representations of $\g$ and $f \colon V \to W$ is a homomorphism of representations then $f(\g V) \subseteq \g W$ and $f(V^\g) \subseteq W^\g$. Hence the assignments $V \mapsto \g V$ and $V \mapsto V^\g$ define endofunctors of the category of representations of $\g$ where homomorphisms are send to the corresponding restrictions.
+  \item
+   Let $V$ be a representation of $\g$ and $f \colon V \to V$ a homomorphism of representations of $\g$. Then for any $\lambda \in k$ the eigenspace
+   \[
+    V_\lambda \coloneqq \{v \in V \mid f(v) = \lambda v\}
+   \]
+   and the generalized eigenspace
+   \[
+    V_{(\lambda)}
+    \coloneqq \bigcup_{n \in \N} \ker(f - \lambda \id_V)^n
+    = \{v \in V \mid \text{$(f - \lambda \id_V)^n(v) = 0$ for some $n \in \N$}\}
+   \]
+   are subrepresentations of $V$.
  \end{enumerate}
 \end{expls}
 
