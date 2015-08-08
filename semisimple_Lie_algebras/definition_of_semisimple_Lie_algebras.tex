@@ -6,9 +6,50 @@
 \end{defi}
 
 
+\begin{lem}
+ Let $\g$ be a semisimple Lie algebra. Then $[\g,\g] = \g$ and $Z(\g) = 0$.
+\end{lem}
+\begin{proof}
+ Let $I_1, \dotsc, I_n \subideal \g$ be simple ideals such that $\g = I_1 \oplus \dotsb \oplus I_n$. Then
+ \begin{gather*}
+  [\g,\g] = [I_1, I_1] \oplus \dotsb \oplus [I_n, I_n] = I_1 \oplus \dotsb \oplus I_n = \g
+ \shortintertext{as well as}
+  Z(\g) = Z(I_1) \oplus \dotsb \oplus Z(I_n) = 0 \oplus \dotsb \oplus 0 = 0.
+  \qedhere
+ \end{gather*}
+\end{proof}
+
+
+\begin{cor}\label{cor: decomposition of semisimple Lie algebra unique up to order}
+ Let $\g$ be a semisimple Lie algebra and $I_1, \dotsc, I_n \subideal \g$ simple ideals with $\g = I_1 \oplus \dotsb \oplus I_n$. Then the ideals $I_1, \dotsc, I_n$ are unique up to reordering.
+\end{cor}
+\begin{proof}
+ Let $J_1, \dotsc, J_m \subideal \g$ be simple ideals with $\g = J_1 \oplus \dotsm \oplus J_m$. Then
+ \[
+  \g
+  = [\g,\g]
+  = [I_1 \oplus \dotsb \oplus I_n, J_1 \oplus \dotsb \oplus J_m]
+  = \bigoplus_{i=1}^n \bigoplus_{j=1}^m [I_i, J_j].
+ \]
+ For every $i = 1, \dotsc, n$ and $j = 1, \dotsc, m$ the ideals $I_i$ and $J_j$ are simple, which is why
+ \[
+  [I_i, J_j] =
+  \begin{cases}
+   I_i & \text{if $I_i = J_j$}, \\
+     0 & \text{otherwise}.
+  \end{cases}
+ \]
+ It follows that for every $i = 1, \dotsc, n$ there exists some $1 \leq j \leq m$ with $I_i = J_j$, and similarly that for every $j = 1, \dotsc, m$ there exists some $1 \leq i \leq n$ with $J_j = I_i$. Hence $n = m$ and the statement follows.
+\end{proof}
+
+
+\begin{rem}
+ If $\g$ is a semisimple Lie algebra then we will often just talk about \emph{the} decomposition $\g = I_1 \oplus \dotsb \oplus I_n$ into simple ideals, as this decomposition is unique up to reordering of the summands by Corollary~\ref{cor: decomposition of semisimple Lie algebra unique up to order}.
+\end{rem}
+
 
 \begin{thrm}\label{thrm: characterisations of finite-dimensional semisimple Lie algebras}
- Let $\g$ be a finite dimensional Lie algebra. The following are equivalent:
+ For a finite dimensional Lie algebra $\g$ the following are equivalent:
  \begin{enumerate}[leftmargin=*]
   \item\label{enum: definition semisimple Lie algebra product of simple Lie algebras}
    $\g \cong \g_1 \times \dotsb \times \g_r$ for some $r \in \N$ and simple Lie algebras $\g_i$, $i = 1, \dotsc, r$.
@@ -49,6 +90,19 @@
 \end{proof}
 
 
+\begin{cor}
+ Let $\g$ be a semisimple Lie algebra and $\g = I_1 \oplus \dotsb \oplus I_n$ the de\-com\-po\-si\-tion into simple ideals. If $I \subseteq \g$ is any ideal, then $I = I_{i_1} \oplus \dotsb \oplus I_{i_m}$ for some indices $1 \leq i_1 < \dotsb < i_m \leq n$.
+\end{cor}
+\begin{proof}
+ The statement holds if $I = \g$ or $I = 0$, hence it can be assumed that $I$ is a non-trivial ideal of $\g$. From the proof of the implication (\ref{enum: definition semisimple Lie algebra killing form nondegenerate} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra sum of simple ideals}) it follows that there exists a decomposition $\g = J_1 \oplus \dotsb \oplus J_m$ into simple ideals such that $I = J_1 \oplus \dotsb \oplus J_\ell$ for some $1 \leq \ell \leq m$. As such a decomposition is unique up to reordering of the summands by Corollary~\ref{cor: decomposition of semisimple Lie algebra unique up to order} the statement follows.
+\end{proof}
+
+
+\begin{cor}
+ If $\g$ is a semisimple Lie algebra and $I \subideal \g$ any ideal then both $I$ and $\g/I$ are also semisimple.
+\end{cor}
+
+
 \begin{cor}\label{cor: semisimple Lie algebra identification with dual space}
  Let $\g$ be a finite-dimensional, semisimple Lie algebra. Then the map
  \[
@@ -79,6 +133,17 @@
  \]
  is a homomorphism of representations of $\g$. Because $\g$ is simple the adjoint representation of $\g$ is irreducible. By Schur’s Lemma $\alpha$ is given by multiplication with a scalar $\lambda \in k$. It follows that $\varphi = \lambda \psi$.
 \end{proof}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
