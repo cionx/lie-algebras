@@ -246,6 +246,54 @@ This basis satisfies the relations
 \end{expls}
 
 
+\begin{thrm}
+ Let $V$ be a finite dimensional representation of $\sll_2(k)$.
+ \begin{enumerate}[leftmargin=*]
+  \item
+   $V = \bigoplus_{d \geq 1} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ where $W^{d,j} \subseteq V$ is an irreducible $d$-dimensional subrepresentation for all $d \geq 1$ and $j = 1, \dotsc, \nu_d$.
+  \item
+   $V = \bigoplus_{i \in \Z} V_i$ with
+   \begin{equation}\label{eqn: eigenspace of a finite dimensional representation}
+    V_i = \bigoplus_{\substack{p \in \N \\ d = |i|+1+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
+    \quad \text{for every $i \in \Z$}
+   \end{equation}
+   and $\dim V_i = \sum_{p \in \N, d = |i|+1+2p} \nu_d$ for every $i \in \Z$.
+  \item 
+   The numbers $\nu_d$ for $d \geq 1$ are unique with $\nu_d = \dim V_{d-1} - \dim V_{d+1}$ for every $d \geq 1$.
+  \item
+   $\dim V_i = \dim V_{-i}$ for every $i \in \Z$.
+ \end{enumerate}
+\end{thrm}
+\begin{proof}
+ That $V$ decomposes into the direct sum of irreducible subrepresentations follows directly from Weyl’s theorem. From the classification of finite dimensional irreducible representations of $\sll_2(k)$ it follows that
+ \[
+  W^{d,j}
+  = W^{d,j}_{-d+1} \oplus W^{d,j}_{-d+3} \oplus \dotsb \oplus W^{d,j}_{d-3} \oplus W^{d,j}_{d-1}
+  = \bigoplus_{p=0}^{d-1} W^{d,j}_{-d+1+2p}
+ \]
+ for every $d \geq 1$ and $j = 1, \dotsc, \nu_d$. It follows that
+ \[
+  V
+  = \bigoplus_{d \geq 1} \bigoplus_{j=1}^{\nu_d} W^{d,j}
+  = \bigoplus_{d \geq 1} \bigoplus_{j=1}^{\nu_d} \bigoplus_{p=0}^{d-1} W^{d,j}_{-d+1+2p}.
+ \]
+ This shows that $V_i = \bigoplus_{i \in \Z} V_i$. Formula \eqref{eqn: eigenspace of a finite dimensional representation} follows from reordering the summands. It follows that
+ \[
+  \dim V_i
+  = \dim \bigoplus_{\substack{p \in \N \\ d = |i|+1+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
+  = \sum_{\substack{p \in \N \\ d = |i|+1+2p}} \sum_{j=1}^{\nu_d} \underbrace{\dim W^{d,j}_i}_{=1}
+  = \sum_{\substack{p \in \N \\ d = |i|+1+2p}} \nu_d.
+ \]
+ As a direct consequence it follows that $\dim V_i = \dim V_{-i}$ for every $i \in \Z$ and
+ \[
+  \dim V_{i-1} - \dim V_{i+1}
+  = \sum_{\substack{p \in \N \\ d = i+2p}} \nu_d - \sum_{\substack{p \in \N \\ d = i+2+2p}} \nu_d
+  = \nu_i
+  \quad\text{for every $i \geq 1$}.
+ \]
+ A
+\end{proof}
+
 
 
 
