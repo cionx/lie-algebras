@@ -52,23 +52,18 @@ This basis satisfies the relations
 
 
 \begin{thrm}
+ For every $n \geq 1$ there exists up to isomorphism a unique $n$-dimensional irreducible representation of $\sll_2(k)$. More explicitely:
  \begin{enumerate}[leftmargin=*]
   \item
-   For every $n \geq 1$ there exists a irreducible representation $V^{(n)}$ of $\sll_2(k)$ with $\dim_k V = n$.
+   For every $n \geq 1$ there exists an $n$-dimensional irreducible representation $V^{(n)}$ of $\sll_2(k)$.
   \item
    Let $V$ be an $n$-dimensional irreducible representation of $\sll_2(k)$ for some $n \geq 1$. Then
    \[
     V = V_{-n+1} \oplus V_{-n+3} \oplus \dotsb \oplus V_{n-3} \oplus V_{n-1}
    \]
-   and $V_i$ is one-dimensional for every $i = -n+1, -n+3, \dotsc, n-3, n-1$. The action of $e$ on $V$ is given by
-   \[
-    e.V_i = V_{i+2} \quad \text{for every $i = -n+1, -n+3, \dotsc, n-3$}
-   \]
-   and the action of $f$ on $V$ by
-   \[
-    f.V_i = V_{i-2} \quad \text{for every $i = -n+3, \dotsc, n-3, n-1$}.
-   \]
-   More explicitely there exists a basis $v_1, \dotsc, v_n$ of $V$ with $v_i \in V_{-n-1+2i}$ for every $i = 1, \dotsc, n$, with respect to which respect the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
+   and $V_i$ is one-dimensional for every $i = -n+1, -n+3, \dotsc, n-3, n-1$.
+   
+   More explicitely there exists a basis $v_1, \dotsc, v_n$ of $V$ with $v_i \in V_{-n-1+2i}$ for every $i = 1, \dotsc, n$, with respect to which the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
    \begin{center}
     \tikzsetnextfilename{irreducible_representation_of_sl2}
     \begin{tikzpicture}[node distance = 4.2em]
@@ -102,7 +97,20 @@ This basis satisfies the relations
      \draw[->, bend left, dashed] (v2) to node[below] {\footnotesize $n-1$} (v1);
     \end{tikzpicture}
    \end{center}
-   In particular $V$ is up to isomorphism the unique $n$-dimensional irreducible representation of $\sll_2(k)$.
+   In particular
+   \begin{gather*}
+    e.V_i =
+    \begin{cases}
+     V_{i+2} & \text{for $i = -n+1, -n+3, \dotsc, n-3$}, \\
+     0       & \text{otherwise},
+    \end{cases}
+   \shortintertext{and}
+    f.V_i =
+    \begin{cases}
+     V_{i-2} & \text{if $i = -n+3, \dotsc, n-3, n-1$}, \\
+     0       & \text{otherwise}.
+    \end{cases}
+   \end{gather*}
  \end{enumerate}
 \end{thrm}
 \begin{proof}
@@ -220,11 +228,10 @@ This basis satisfies the relations
    \[
     v_i \coloneqq \frac{w_{i-1}}{(i-1)!}
     \quad \text{for every $i = 1, \dotsc, n$}.
+    \qedhere
    \]
-  \qedhere
  \end{enumerate}
 \end{proof}
-
 
 
 
