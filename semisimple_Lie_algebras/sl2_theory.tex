@@ -410,6 +410,61 @@ This basis satisfies the relations
 \end{proof}
 
 
+\begin{expl}\label{expl: decomposition of the tensor product of 4 and 5}
+ For every $n \geq 1$ let $V^{(n)}$ be the $n$-dimensional irreducible representation of $V$ and abbreviate $V \coloneqq V^{(4)}$ and $W \coloneqq V^{(5)}$. Then
+ \begin{equation}\label{eqn: decomposition of 4 tensor 5}
+  V \otimes W \cong V^{(8)} \otimes V^{(6)} \otimes V^{(4)} \otimes V^{(2)}.
+ \end{equation}
+ To see this notice that for $i,j \in \Z$ with $v \in V_\lambda$ and $w \in W_\lambda$ it follows that
+ \[
+  h.(v \otimes w)
+  = (h.v) \otimes w + v \otimes (h.w)
+  = iv \otimes w + jv \otimes w
+  = (i+j) v \otimes w
+ \]
+ and therefore $V_i \otimes W_j \subseteq (V \otimes W)_{i+j}$. It follows that
+ \begin{align*}
+  (V \otimes W)_{-7}
+  &= V_{-3} \otimes W_{-4}, \\
+  (V \otimes W)_{-5}
+  &= (V_{-3} \otimes W_{-2}) \oplus (V_{-1} \oplus W_{-4}), \\
+  (V \otimes W)_{-3}
+  &= (V_{-3} \otimes W_0) \oplus (V_{-1} \otimes W_{-2}) \oplus (V_1 \otimes W_{-4}), \\
+  (V \otimes W)_{-1}
+  &= (V_{-3} \otimes W_2) \oplus (V_{-1} \otimes W_0) \oplus (V_1 \otimes W_{-2}) \oplus (V_3 \otimes W_{-4}), \\
+  (V \otimes W)_1
+  &= (V_{-3} \otimes W_4) \oplus (V_{-1} \otimes W_2) \oplus (V_1 \otimes W_0) \oplus (V_3 \otimes W_{-2}), \\
+  (V \otimes W)_3
+  &= (V_{-1} \otimes W_4) \oplus (V_1 \otimes W_2) \oplus (V_3 \otimes W_0) \\
+  (V \otimes W)_5
+  &= (V_1 \otimes W_4) \oplus (V_3 \otimes W_2) \\
+  (V \otimes W)_7
+  &= V_3 \otimes W_4.
+ \end{align*}
+ with each of the summands being one-dimensional. It follows that
+ \[
+  \begin{array}{crrrrrrrrc}
+   i \in \Z             & -7 & -5 & -3 & -1 & 1 & 3 & 5 & 7 & \text{otherwise} \\
+   \hline
+   \dim (V \otimes W)_i &  1 &  2 &  3 &  4 & 4 & 3 & 2 & 1 & 0
+  \end{array}
+ \]
+ Formula \eqref{eqn: decomposition of 4 tensor 5} follows from this by Theorem \ref{thrm: finite dimensional representations of sl2}.
+\end{expl}
+
+
+\begin{rem}
+ Example~\ref{expl: decomposition of the tensor product of 4 and 5} can be generalized to
+ \[
+  V^{(n)} \otimes V^{(m)}
+  \cong V^{(n+m-1)} \oplus V^{(n+m-3)} \oplus \dotsb \oplus V^{(n-m+3)} \oplus V^{(n-m+1)}
+ \]
+ where $n, m \geq 1$ with $n \geq m$.
+\end{rem}
+
+
+
+
 % TODO: Remark about point diagrams
 
 
