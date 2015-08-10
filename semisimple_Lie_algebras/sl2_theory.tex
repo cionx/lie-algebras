@@ -51,7 +51,7 @@ This basis satisfies the relations
 \end{expl}
 
 
-\begin{thrm}
+\begin{thrm}[Classification of finite dimensional irreducible representations of $\sll_2(k)$]
  For every $n \geq 1$ there exists up to isomorphism a unique $n$-dimensional irreducible representation of $\sll_2(k)$. More explicitely:
  \begin{enumerate}[leftmargin=*]
   \item
@@ -246,6 +246,121 @@ This basis satisfies the relations
 \end{expls}
 
 
+\begin{expl}
+ The map
+ \[
+  \phi \colon \sll_2(k) \to \sll_3(k), \quad
+  A \mapsto \begin{pmatrix} A & 0 \\ 0 & 0 \end{pmatrix}
+ \]
+ is a homomorphism of Lie algebras. Therefore $V \coloneqq \sll_3(k)$ can be made into a representation of $\sll_2(k)$ via
+ \[
+  \rho \colon \sll_2(k) \xlongrightarrow{\phi} \sll_3(k) \xlongrightarrow{\ad} \gl(\sll_3(k)) = \gl(V).
+ \]
+ Then $h$ acts on $V$ by $\ad(H)$ for
+ \[
+%   E \coloneqq
+%   \begin{pmatrix}
+%    0 & 1 & 0 \\
+%    0 & 0 & 0 \\
+%    0 & 0 & 0
+%   \end{pmatrix},
+%   \quad
+  H \coloneqq \phi(h) =
+  \begin{pmatrix}
+   1 &  0 & 0 \\
+   0 & -1 & 0 \\
+   0 &  0 & 0
+  \end{pmatrix},
+%   \quad
+%   F \coloneqq
+%   \begin{pmatrix}
+%    0 & 0 & 0 \\
+%    1 & 0 & 0 \\
+%    0 & 0 & 0
+%   \end{pmatrix},
+ \]
+
+ Notice that this representation is not irreducible because $\phi(\sll_2(k))$ is a non-trivial subrepresentation. However, by Weyl’s theorem $V$ decomposes into the direct sum of irreducible subrepresentations and it will be shown how to do so:
+ 
+ Let $e_{12}, e_{13}, e_{23}, e_{21}, e_{31}, e_{32}, h_1, h_2$ be the basis of $V$ with
+ \[
+  h_1 \coloneqq \diag(1, -1, 0) \quad\text{and}\quad h_2 \coloneqq \diag(0, 1, -1).
+ \]
+ Notice that
+ \[
+  [\diag(a_1, a_2, a_3), e_{ij}] = (a_i-a_j) e_{ij}
+  \quad\text{for all $a_1, a_2, a_3 \in k$ and $i,j = 1, \dotsc, 3$}
+ \]
+ It follows that
+ \[
+  e_{21} \in V_{-2}, \quad
+  e_{23}, e_{31} \in V_{-1}, \quad
+  h_1, h_2 \in V_0, \quad
+  e_{13}, e_{32} \in V_1, \quad
+  e_{12} \in V_2.
+ \]
+ So $V = \bigoplus_{i \in \Z} V_i$ with dimensions
+ \begin{equation}\label{eqn: dimensions of eigenspaces of sl3}
+  \dim V_i =
+  \begin{cases}
+   1 & \text{if $i = -2, 2$}, \\
+   2 & \text{if $i = -1, 0, 1$}, \\
+   0 & \text{otherwise}.
+  \end{cases}
+ \end{equation}
+ 
+ Suppose that $V = W^1 \oplus W^2$ for two four-dimensional irreducible subrepresentations $W^1$ and $W^2$. Then
+ \[
+  W^1 = W^1_{-3} \oplus W^1_{-1} \oplus W^1_1 \oplus W^1_3
+  \quad\text{and}\quad
+  W^2 = W^2_{-3} \oplus W^2_{-1} \oplus W^2_1 \oplus W^2_3.
+ \]
+ and it follows that
+ \[
+  V = \underbrace{W^1_{-3} \oplus W^2_{-3}}_{= V_{-3}} \oplus
+      \underbrace{W^1_{-1} \oplus W^2_{-1}}_{= V_{-1}} \oplus
+      \underbrace{W^1_1 \oplus W^2_1}_{= V_{1}}  \oplus
+      \underbrace{W^1_3 \oplus W^2_3}_{= V_{3}},
+ \]
+ contradicting \eqref{eqn: dimensions of eigenspaces of sl3}.
+ 
+ To emphasize the approach which will be taken suppose that there exists a decomposition $V = W^{1,1} \oplus W^{1,2} \oplus W^{1,3} \oplus W^{2,1} \oplus W^{3,1}$ into irreducible subrepresentations with $\dim W^{1,1} = \dim W^{1,2} = \dim W^{1,3} = 1$, $\dim W^{2,1} = 2$ and $\dim W^{3,1} = 3$. Then
+ \begin{align*}
+  V
+  &= W^{1,1} \oplus W^{1,2} \oplus W^{1,3} \oplus W^{2,1} \oplus W^{3,1} \\
+  &= \underbrace{W^{3,1}_{-2}}_{= V_{-2}} \oplus
+     \underbrace{W^{2,1}_{-1}}_{= V_{-1}} \oplus
+     \underbrace{W^{1,1}_0 \oplus W^{1,2}_0 \oplus W^{1,3}_0 \oplus W^{3,1}_0}_{= V_0} \oplus
+     \underbrace{W^{2,1}_1}_{= V_1} \oplus
+     \underbrace{W^{3,1}_1}_{= V_2},
+ \end{align*}
+ also contradicting \eqref{eqn: dimensions of eigenspaces of sl3}.
+ 
+ The above observations can easily be generalized: Let $V = \bigoplus_{d \geq 0} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ be a decomposition into irreducible subrepresentations with $W^{d,j}$ being $d$-dimensional. As in the previous examples it follows that $V_i = \bigoplus_{p \in \N, d=|i|+1+2p} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i$ for every $i \in \Z$ and therefore $\dim V_i = \sum_{p \in \N, d=|i|+1+2p} \nu_d$. Hence
+ \[
+  \nu_d \coloneqq \dim V_{d-1} - V_{d+1}
+  \quad\text{for every $d \geq 1$}.
+ \]
+ With this it follows from \eqref{eqn: dimensions of eigenspaces of sl3} that $\nu_1 = 1$, $\nu_2 = 2$ and $\nu_3 = 1$.
+ 
+ The three-dimensional irreducible subrepresentation is given by
+ \[
+  W^{3,1} \coloneqq \phi(\sll_2(k)) = \vspan_k(e_{12}, h_1, e_{21})
+ \]
+ The two two-dimensional irreducible subrepresentations $W^{2,1}$ and $W^{2,2}$ must satisfy
+ \[
+  W^{2,1} \oplus W^{2,2} = V_{-1} \oplus V_1 = \vspan_k(e_{23}, e_{31}, e_{13}, e_{32}).
+ \]
+ They then can be choosen as $W^{2,1} \coloneqq \vspan_k(e_{23}, e_{13})$ and $W^{2,2} \coloneqq \vspan_k(e_{31}, e_{32})$. That these are indeed subrepresentations follows from direct calculation. To find the one-dimensional irreducible subrepresentation notice that
+ \begin{gather*}
+  e.h_1 = -2e_{12}, \quad h.h_1 = 0, \quad f.h_1 = 2e_{21},
+ \shortintertext{and}
+  e.h_2 = e_{12}, \quad h.h_2 = 0, \quad f.h_2 = -e_{21}.
+ \end{gather*}
+ Hence $\sll_2(k)$ acts trivially on the one-dimensional linear subspace $W^{1,1} \coloneqq k (h_1 + 2h_2)$, which is why it is a subrepresentation.
+\end{expl}
+
+
 \begin{thrm}
  Let $V$ be a finite dimensional representation of $\sll_2(k)$.
  \begin{enumerate}[leftmargin=*]
@@ -290,8 +405,8 @@ This basis satisfies the relations
   = \sum_{\substack{p \in \N \\ d = i+2p}} \nu_d - \sum_{\substack{p \in \N \\ d = i+2+2p}} \nu_d
   = \nu_i
   \quad\text{for every $i \geq 1$}.
+ \qedhere
  \]
- A
 \end{proof}
 
 
