@@ -1,1 +1,72 @@
 \section{The abstract Jordan decomposition}
+In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys}.
+
+
+\begin{lem}\label{lem: generalized eigenspace decomposition for derivations}
+ Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, and $\delta \in \Der A$. For every $\lambda \in k$ let
+ \[
+  A_\lambda
+  \coloneqq \bigcup_{n \in \N} \ker(\delta-\lambda I)^n
+  = \{x \in A \mid \text{$(\delta-\lambda I)^m(x) = 0$ for some $m \in \N$}\}
+ \]
+ be the generalized eigenspace of $\delta$ with respect to $\lambda$. Then $A = \bigoplus_{\lambda \in k} A_\lambda$ and
+ \[
+  A_\lambda A_\mu \subseteq A_{\lambda + \mu} \quad \text{for all $\lambda, \mu \in k$}.
+ \]
+\end{lem}
+\begin{proof}
+ For this proof abbreviate $1 \coloneqq I$. That $A = \bigoplus_{\lambda \in k} A_\lambda$ is a standard fact from linear algebra. Let $x \in A_\lambda$ and $y \in A_\mu$. It needs to be shown that $xy \in A_{\lambda + \mu}$, i.e.\ $(\delta-(\lambda+\mu)I)^m(xy) = 0$ for some $m \in \N$. Because $(\delta-\lambda I)^{m_1}(x) = 0$ and $(\delta-\mu I)^{m_2}(y) = 0$ for some $m_1, m_2 \in \N$ this follows from the formula
+ \[
+  (\delta-(\lambda+\mu)I)^n(xy)
+  = \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
+  \quad\text{for every $n \in \N$},
+ \]
+ which can be shown by induction over $n \in \N$: For $n = 0$ the statement holds. Suppose it holds for some $n \in \N$. Then
+ \begin{align*}
+  &\, (\delta-(\lambda+\mu)I)^{n+1}(xy)
+  = (\delta-(\lambda+\mu)I)((\delta-(\lambda+\mu)I)^n(xy)) \\
+  =&\, (\delta-(\lambda+\mu)I)\left(
+       \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
+       \right) \\
+  =&\,  \sum_{i=0}^n \binom{n}{i} \delta\left( (\delta-\lambda I)^i(x) \right) (\delta-\mu I)^{n-i}(y)
+       +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) \delta\left( (\delta-\mu I)^{n-i}(y) \right) \\
+   &\, -\sum_{i=0}^n \binom{n}{i} \lambda(\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
+       -\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) \mu(\delta-\mu I)^{n-i}(y) \\
+  =&\,  \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^{i+1}(x) (\delta-\mu I)^{n-i}(y)
+       +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
+  =&\,  \sum_{i=1}^{n+1} \binom{n}{i-1} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
+       +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
+  =&\,  \sum_{i=1}^n \left(\binom{n}{i-1}+\binom{n}{i}\right) (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
+   &\, +(\delta-\mu I)^{n+1}(y) + (\delta-\lambda I)^{n+1}(x) \\
+  =&\,  \sum_{i=1}^n \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
+       +(\delta-\mu I)^{n+1}(y) + (\delta-\lambda I)^{n+1}(x) \\
+  =&\, \sum_{i=0}^{n+1} \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
+ \qedhere
+ \end{align*}
+\end{proof}
+
+
+\begin{rem}
+ Notice that the formula in the proof of Lemma~\ref{lem: generalized eigenspace decomposition for derivations} is just a generalization of the binomial theorem, which follows by setting $\delta = 0$.
+\end{rem}
+
+
+\begin{lem}
+ Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, e.g.\ a Lie algebra. Then $\Der(A)$ contains the semisimple and nilpotent parts (in $\End_k(A)$) of all its elements.
+\end{lem}
+\begin{proof}
+ Let $\delta \in \Der(A)$ and for every $\lambda \in k$ let $A_\lambda$ be the generalized eigenspace with respect to $\lambda$. To show that $\Der(A)$ contains the semisimple and nilpotent part of $\delta$ is sufficies to do so for the semisimple part, which will be denoted by $\sigma$. As seen in the proof of Theorem~\ref{thrm: concrete Jordan decomposition} (the concrete Jordan decomposition) $\sigma$ acts on $A_\lambda$ by multiplication with $\lambda$ for every $\lambda \in k$. If $x \in A_\lambda$ and $y \in A_\mu$ then $xy \in A_{\lambda + \mu}$ and thus
+ \[
+  \sigma(xy)
+  = (\lambda + \mu)(xy)
+  = (\lambda x)y + x(\mu y)
+  = \sigma(x)y + x\sigma(y).
+ \]
+ Because $A = \bigoplus_{\lambda \in k} A_\lambda$ it follows that $\sigma$ is a derivation of $A$.
+\end{proof}
+
+
+
+\begin{lem}
+ Let $\g$ be a finite dimensional semisimple Lie algebra. Then every derivation of $\g$ is inner.
+\end{lem}

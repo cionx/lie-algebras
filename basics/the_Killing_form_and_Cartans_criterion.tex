@@ -87,9 +87,12 @@
  is also an ideal in $\g$. In particular $\rad \beta = \g^\perp$ is an Ideal in $\g$.
 \end{lem}
 \begin{proof}
- For $z \in g$ and $y \in I^\perp$ it follows for every $x \in I$ that $[x,y] = 0$ and thus
+ For every $x \in \g$, $y \in I^{\perp}$ and $z \in I$ it follows that $[x,z] \in I$ and therefore
  \[
-  \beta(x,[y,z]) = \beta([x,y],z) = 0.
+  \beta([x,y],z)
+  = -\beta([y,x],z)
+  = -\beta(y,[x,z])
+  = 0.
   \qedhere
  \]
 \end{proof}
