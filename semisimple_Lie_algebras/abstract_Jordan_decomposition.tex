@@ -1,5 +1,5 @@
 \section{The abstract Jordan decomposition}
-In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys}.
+In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys} with some inspiration from the lecture.
 
 
 \begin{lem}\label{lem: generalized eigenspace decomposition for derivations}
@@ -51,7 +51,7 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{rem}
 
 
-\begin{lem}
+\begin{lem}\label{lem: derivations contain the ss and np part of all its elements}
  Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, e.g.\ a Lie algebra. Then $\Der(A)$ contains the semisimple and nilpotent parts (in $\End_k(A)$) of all its elements.
 \end{lem}
 \begin{proof}
@@ -66,7 +66,56 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
+\begin{lem}\label{lem: direct complement of semisimple ideals}
+ Let $\g$ be a finite dimensional Lie algebra and $I \subideal \g$ a semisimple ideal. Then there exists an ideal $J \subideal \g$ with $\g = I \oplus J$.
+\end{lem}
+\begin{proof}
+ Because $I \subideal \g$ is an ideal it follows that $\kappa_I = \kappa_\g|_{I \times I}$. Because $I$ is semisimple it also follows that $\kappa_I$ is non-degenerate. It follows for the linear map
+ \[
+  \varphi \colon \g \to I^*, \quad x \mapsto \kappa(x, \cdot)
+ \]
+ that $\varphi|_I \colon I \to I^*$ is an isomorphism. Hence $I \cap \ker \varphi = 0$ with
+ \[
+  \dim I = \dim I^* = \dim \g - \dim \ker \varphi.
+ \]
+ Let $J \coloneqq I^\perp$ be the orthogonal complement of $I$ with respect to the Killing form. From Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} it is known that $J$ is an ideal in $\g$. Because $J = \ker \varphi$ it follows from the previous observations that $I \cap J = 0$ and $\dim \g = \dim I + \dim J$ and thus $\g = I \oplus J$.
+\end{proof}
 
-\begin{lem}
+
+\begin{lem}\label{lem: every derivation of a semisimple Lie algebra is inner}
  Let $\g$ be a finite dimensional semisimple Lie algebra. Then every derivation of $\g$ is inner.
 \end{lem}
+\begin{proof}
+ As seen in Lemma~\ref{lem: inner derivations are in ideal} and its proof the inner derivations form an ideal $I \subideal \Der(\g)$ with $[\delta,\ad(x)] = \ad(\delta(x))$ for every $\delta \in \Der(\g)$ and $x \in \g$. By Lemma~\ref{lem: direct complement of semisimple ideals} there exists an ideal $J \subideal \Der(\g)$ with $\Der(\g) = I \oplus J$. Let $\delta \in J$. Then for any $x \in \g$
+ \[
+  \ad(\delta(x)) = [\delta, \ad(x)] \in J \cap I = 0,
+ \]
+ and thus $\ad(\delta(x)) = 0$. Because $\ad$ is injective it follows that $\delta(x) = 0$ for every $x \in \g$ and thus $\delta = 0$. Therefore $J = 0$ and thus $\Der(A) = I$.
+\end{proof}
+
+
+\begin{thrm}[Abstract Jordan decomposition] \label{thrm: abstract Jordan decomposition}
+ Let $\g$ be a finite dimensional semisimple Lie algebra. Then for any $x \in \g$ there exist unique elements $x_s, x_n \in \g$ such that $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(x_s) = \ad(x)_s$ and $\ad(x_n) = \ad(x)_n$.
+ 
+ Then $x = x_s + x_n$ and an arbitrary element of $\g$ commutes with $x$ if and only if it commutes both with $x_s$ and $x_n$. In particular $x$, $x_s$ and $x_n$ are pairwise commuting.
+\end{thrm}
+\begin{proof}
+ By Lemma~\ref{lem: every derivation of a semisimple Lie algebra is inner} the adjoint representation $\ad \colon \g \to \ad(\g) = \Der(\g)$ is an isomorphism of Lie algebras. By Lemma~\ref{lem: derivations contain the ss and np part of all its elements} $\Der(\g)$ contains the semisimple and nilpotent parts of all its elements. By setting $x_s \coloneq \ad^{-1}(\ad(x)_s)$ and $x_n \coloneqq \ad^{-1}(\ad(x)_n)$ the theorem follows from the properties of the concrete Jordan decomposition as stated in Theorem~\ref{thrm: concrete Jordan decomposition}.
+\end{proof}
+
+
+\begin{defi}
+ Let $\g$ be a finite dimensional semisimple Lie algebra and $x \in \g$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{semisimple part} and $x_n$ is the \emph{nilpotent part}.
+\end{defi}
+
+
+
+
+
+
+
+
+
+
+
+
