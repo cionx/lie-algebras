@@ -35,8 +35,74 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 
 
 \begin{defi}
- A \emph{Cartan subalgebra} (CSA) of $\g$ is a maximal toral subalgebra $\h \subseteq \g$.
+ A \emph{Cartan subalgebra} of $\g$ is a maximal toral subalgebra.
 \end{defi}
+
+
+\begin{expl}
+ The toral subalgebra $0 \subseteq \g$ is contained in a toral subalgebra (of $\g$) of maximal dimensional, which is then a Cartan subalgebra. Therefore $\g$ contains a C
+\end{expl}
+
+
+
+\begin{defi}
+ Let $\h$ be a Cartan subalgebra of $\g$. For any $\alpha \in \h^*$ let
+ \[
+  \g_\alpha \coloneqq \{y \in \g \mid \text{$[x,y] = \alpha(x)y$ for every $x \in \h$}\}
+ \]
+ be the \emph{root space} of $\g$ with respect to $\alpha$. Then $\Phi(\g, \h) \coloneqq \{\alpha \in \h^* \setminus \{0\} \mid \g_\alpha \neq 0\}$ is the set of \emph{roots} of $\g$ with respect to $\h$.
+\end{defi}
+
+
+\begin{rem}
+ Notice that $\g_0 = \{y \in \g \mid \text{$[x,y] = 0$ for every $x \in \h$}\} = Z_\g(\h)$.
+\end{rem}
+
+
+
+\begin{lem}
+ Let $\h$ be a Cartan subalgebra of $\g$ with roots $\Phi \coloneqq \Phi(\g, \h)$. Then $\g = Z_\g(\h) \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha$.
+\end{lem}
+\begin{proof}
+ Because $\h$ is abelian the same goes for $\ad_\g(\h) \subseteq \gl(V)$. Therefore $\ad_\g(\h)$ consists of semisimple pairwise commuting endomorphisms. Hence $\ad_\g(\h)$ is simultaneously diagonalizable, which is why
+ \[
+  \g
+  = \bigoplus_{\lambda \in \h^*} \g_\lambda
+  = \g_0 \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha
+  = Z_\g(\h) \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha.
+  \qedhere
+ \]
+\end{proof}
+
+
+% TODO: Beispiele hinzufügen
+
+
+\begin{lem}
+Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\alpha \neq -\beta$ then $\g_\alpha$ and $\g_\beta$ are orthogonal with respect to the Killing form.
+\end{lem}
+\begin{proof}
+ Because $\alpha \neq -\beta$ it follows that there exists $h \in \h$ with $(\alpha+\beta)(h) \neq 0$. For every $x \in \g_\alpha$ and $y \in \g_\beta$ it then follows that
+ \[
+  \alpha(h) \kappa(x,y)
+  = \kappa([h,x],y)
+  = -\kappa([x,h],y)
+  = -\kappa(x,[h,y])
+  = -\beta(h)\kappa(x,y)
+ \]
+ and therefore $(\alpha+\beta)(h)\kappa(x,y) = 0$. Because $(\alpha+\beta)(h) \neq 0$ it follows that $\kappa(x,y) = 0$ for every $x \in \g_\alpha$ and $y \in \g_\beta$.
+\end{proof}
+
+
+\begin{cor}
+ Let $\h \subseteq \g$ be a Cartan subalgebra. Then $\kappa_\g|_{Z_\g(\h)}$ is non-degenerate.
+\end{cor}
+\begin{proof}
+ Because $\g$ is semisimple $\kappa_\g$ is non-degenerate. Because $Z_\g(\h) = \g_0$ is orthogonal to $\g_\alpha$ for every $\alpha \in \Phi$ with $\alpha \neq 0$ the statement follows from $\g = Z_\g(\h) \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha$.
+\end{proof}
+
+
+
 
 
 
