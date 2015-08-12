@@ -2,7 +2,7 @@
 In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys} with some inspiration from the lecture.
 
 
-\begin{lem}
+\begin{lem}\label{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements}
  Let $\g \subseteq \gl(V)$ be a finite dimensional semisimple linear Lie algebra. Then $\g$ contains the semisimple and nilpotent parts of all its elements.
 \end{lem}
 \begin{proof}
@@ -131,9 +131,53 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
-\begin{defi}
+\begin{defi}\label{defi: definition of abstract ss and np}
  Let $\g$ be a finite dimensional semisimple Lie algebra and $x \in \g$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{abstract semisimple part} and $x_n$ is the \emph{abstract nilpotent part} of $x$.
 \end{defi}
+
+
+\begin{rem}
+ By Definition~\ref{defi: definition of abstract ss and np} an element of a finite dimensional semisimple Lie algebra is semisimple if and only if it is $\ad$-semisimple and nilpotent if and only if it is $\ad$-nilpotent.
+\end{rem}
+
+
+\begin{prop}\label{prop: abstract and concrete Jordan decomposition coincide}
+ Let $\g$ be a finite dimensional semisimple linear Lie algebra. Then the abstract and concrete Jordan decomposition coincide.
+\end{prop}
+\begin{proof}
+ Let $x \in \g$, $x = xc_s + x_n$ the abstract Jordan decomposition of $x$ and $x = y_s + y_n$ the concrete Jordan decomposition of $x$. From Lemma~\ref{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements} it follows that $y_s, y_n \in \g$ and by Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent} $\ad(x) = \ad(y_s) + \ad(y_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(y_s) = \ad(x)_s$ and $\ad(y_n) = \ad(x)_n$. Hence $y_s$ is the abstract semisimple part of $x$ and $y_n$ is the abstract nilpotent part of $x$.
+\end{proof}
+
+
+\begin{rem}
+ By Proposition~\ref{prop: abstract and concrete Jordan decomposition coincide} we need not to distinguish between the concrete and abstract Jordan decomposition when working with a finite dimensional semisimple linear Lie algebra, which is why we will stop doing so.
+\end{rem}
+
+
+% TODO: Examples all around the Jordan decomposition
+
+
+\begin{lem}\label{lem: functoriality of the Jordan decomposition for linear Lie algebras}
+ Let $\g$ be a finite dimensional semisimple Lie algbra, $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ and $x \in \g$. If $x = x_s + x_n$ is the Jordan decomposition of $x$ then $\rho(x) = \rho(x_s) + \rho(x_n)$ is the Jordan decomposition of $\rho(x)$ with $\rho(x_s) = \rho(x)_s$ and $\rho(x_n) = \rho(x)_n$.
+\end{lem}
+\begin{proof}
+ Let $x \in \g$ be semisimple (resp.\ nilpotent). Then $x$ is $\ad_\g$-semisimple (resp.\ $\ad_\g$-nilpotent). It follows that $\rho(x)$ is $\ad_{\rho(\g)}$-semisimple (resp.\ $\ad_{\rho(\g)}$-nilpotent) and therefore semisimple (resp.\ nilpotent).
+\end{proof}
+
+
+\begin{cor}[Functoriality of the Jordan decomposition] \label{cor: functoriality of the Jordan decomposition}
+ Let $\g_1$ and $\g_2$ be finite dimensional semisimple Lie algebras and $\phi \colon \g_1 \to \g_2$ a homomorphism of Lie algebras. Then $\phi$ preserves the Jordan decomposition, i.e.\ $\phi(x_s) = \phi(x)_s$ and $\phi(x_n) = \phi(x)_n$ for every $x \in \g_1$.
+\end{cor}
+\begin{proof}
+ By Lemma~\ref{lem: functoriality of the Jordan decomposition for linear Lie algebras} the homomorphism of Lie algebras $\ad_{\g_2} \!\circ\, \phi \colon \g_1 \to \gl(\g_2)$ preserves the Jordan decomposition. The homomorphism $\ad_{\g_2}^{-1} \colon \ad(\g_2) \to \g_2$ preserves the Jordan decomposition by the definition of the abstract Jordan decomposition. Hence $\phi = \ad_{\g_2}^{-1} \circ \ad_{\g_2}\! \circ\, \phi$ preserves the Jordan decomposition as well.
+\end{proof}
+
+
+
+
+
+
+
 
 
 
