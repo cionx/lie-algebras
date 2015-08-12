@@ -2,6 +2,30 @@
 In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys} with some inspiration from the lecture.
 
 
+\begin{lem}
+ Let $\g \subseteq \gl(V)$ be a finite dimensional semisimple linear Lie algebra. Then $\g$ contains the semisimple and nilpotent parts of all its elements.
+\end{lem}
+\begin{proof}
+ It sufficies to show the statement for $V \neq 0$ because otherwise $\g = \gl(V) = 0$.
+ 
+ Let $N \coloneqq N_{\gl(V)}(\g)$. This is a Lie subalgebra of $\gl(V)$ containing $\g$. Let $x \in \g$. Because $\ad(x)(\g) \subseteq \g$ it follows that $\ad(x_s)(\g) \subseteq \g$ and $\ad(x_n)(\g) \subseteq \g$ with the abbreviation $\ad = \ad_{\gl(V)}$. From Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent} it follows that $\ad(x)_s = \ad(x_s)$ and $\ad(x)_n = \ad(x_n)$ where $x = x_s + x_n$ is the concrete Jordan decomposition of $x$. Hence $x_s, x_n \in N$.
+ 
+ Notice that $\g \subsetneq N$ because $\id_V \in N$ but $\id_V \notin \g$ since $Z(\g) \neq 0$. The idea is to now shrink $N$ down to $\g$ by adding additional restraints while maintaining the property that the semisimle and nilpotent parts of all element of $\g$ are contained.
+ 
+ For any $\g$-subrepresentation $W \subseteq V$ let
+ \[
+  \g_W \coloneqq \{x \in \gl(V) \mid x(W) \subseteq W, \tr x|_W = 0\};
+ \]
+ notice that this is a Lie subalgebra of $\gl(V)$. Also notice that together with Corollary~\ref{cor: representation of semisimple Lie algebra are traceless} it follows that $\g \subseteq \g_W$ for every $\g$-subrepresentation $W \subseteq V$. Let
+ \[
+  \hat{\g} \coloneqq N \cap \bigcap \{\g_W \mid \text{$W \subseteq V$ is a $\g$-subrepresentation}\}.
+ \]
+ Notice that for any $\g$-subrepresentation $W \subseteq V$ and $x \in \g$ it follows from $x(W) \subseteq W$ that als $x_s(W) \subseteq W$ and $x_n(W) \subseteq W$. Because $x_n|_W$ is nilpotent it also follows that $\tr x_n|_W = 0$ and therefore also $\tr x_s|_W = \tr x|_W - \tr x_n|_W = 0$. Hence $x_s, x_n \in \g_W$.
+ 
+ Combining the above observations it follows that $\hat{\g}$ is a Lie subalgebra of $\gl(V)$ which contains $\g$ as an ideal and for which $x_s, x_n \in \hat{\g}$ for every $x \in \g$. By Lemma~\ref{lem: direct complement of semisimple ideals} there exists an ideal $I \subseteq \hat{\g}$ with $\hat{\g} = \g \oplus I$. Let $x \in I$ and $W \subseteq V$ be an irreducible subrepresentation. By construction of $\hat{\g}$ the action of $\g$ on $W$ extends to the natural action of $\hat{\g}$ on $W$. Because $[\g,I] = 0$ it follows that $x \in I$ is a homomorphisms of representations of $\g$. By Schur’s Lemma it follows that $x = \lambda \id_W$ for some $\lambda \in k$. Because $\lambda \dim W = \tr x|_W = 0$ this scalar has to be zero. Hence $x = 0$ and therefore $I = 0$. Thus $\hat{\g} = \g$.
+\end{proof}
+
+
 \begin{lem}\label{lem: generalized eigenspace decomposition for derivations}
  Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, and $\delta \in \Der A$. For every $\lambda \in k$ let
  \[
@@ -22,6 +46,8 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
   \quad\text{for every $n \in \N$},
  \]
  which can be shown by induction over $n \in \N$: For $n = 0$ the statement holds. Suppose it holds for some $n \in \N$. Then
+ \begingroup
+ \allowdisplaybreaks
  \begin{align*}
   &\, (\delta-(\lambda+\mu)I)^{n+1}(xy)
   = (\delta-(\lambda+\mu)I)((\delta-(\lambda+\mu)I)^n(xy)) \\
@@ -43,6 +69,7 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
   =&\, \sum_{i=0}^{n+1} \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
  \qedhere
  \end{align*}
+ \endgroup
 \end{proof}
 
 
@@ -105,8 +132,11 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 
 
 \begin{defi}
- Let $\g$ be a finite dimensional semisimple Lie algebra and $x \in \g$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{semisimple part} and $x_n$ is the \emph{nilpotent part}.
+ Let $\g$ be a finite dimensional semisimple Lie algebra and $x \in \g$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{abstract semisimple part} and $x_n$ is the \emph{abstract nilpotent part} of $x$.
 \end{defi}
+
+
+
 
 
 
