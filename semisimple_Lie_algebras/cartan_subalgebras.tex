@@ -2,6 +2,12 @@
 Throughout this section $\g$ denotes the finite dimensional semisimple Lie algebra.
 
 
+
+
+
+\subsection{Definition and root space decomposition}
+
+
 \begin{defi}
  A subalgebra $\h \subseteq \g$ is \emph{toral} if it consists of semisimple elements.
 \end{defi}
@@ -83,6 +89,21 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 
 
 \begin{lem}
+ Let $\h$ be a Cartan subalgebra of $\g$. Then $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha+\beta}$ for all $\alpha, \beta \in \h^*$.
+\end{lem}
+\begin{proof}
+ Let $x \in \g_\alpha$ and $y \in \g_\beta$. Then for every $h \in \h$
+ \[
+  [h,[x,y]]
+  = [[h,x],y] + [x,[h,y]]
+  = \alpha(h)[x,y] + \beta(h)[x,y]
+  = (\alpha+\beta)(h) [x,y].
+  \qedhere
+ \]
+\end{proof}
+
+
+\begin{lem}
 Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\alpha \neq -\beta$ then $\g_\alpha$ and $\g_\beta$ are orthogonal with respect to the Killing form.
 \end{lem}
 \begin{proof}
@@ -98,12 +119,55 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
 \end{proof}
 
 
-\begin{cor}
- Let $\h \subseteq \g$ be a Cartan subalgebra. Then $\kappa_\g|_{Z_\g(\h)}$ is non-degenerate.
+\begin{cor}\label{cor: restriction of killing form to centralizer is non-degenerate}
+ Let $\h \subseteq \g$ be a Cartan subalgebra. Then $\kappa_\g|_{Z_\g(\h) \times Z_\g(\h)}$ is non-degenerate.
 \end{cor}
 \begin{proof}
  Because $\g$ is semisimple $\kappa_\g$ is non-degenerate. Because $Z_\g(\h) = \g_0$ is orthogonal to $\g_\alpha$ for every $\alpha \in \Phi$ with $\alpha \neq 0$ the statement follows from $\g = Z_\g(\h) \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha$.
 \end{proof}
+
+
+% TODO: Add warning about restriction of Killing form
+
+
+\begin{prop}\label{prop: CSA are self-centralizing}
+ Let $\h$ be a Cartan subalgebra of $\g$. Then $Z_\g(\h) = \h$, i.e.\ $\h$ is self-centralizing.
+\end{prop}
+\begin{proof}
+ Throughout this proof abbreviate $\cl \coloneqq Z_\g(\h)$, $\ad \coloneqq \ad_\g$ and $\kappa \coloneqq \kappa_\g$.
+
+ \begin{claim*}\label{claim: technical and traceless}
+  Let $x \in \g$ be nilpotent and $y \in \g$ commuting with $x$. Then $\kappa(x,y) = 0$.
+ \end{claim*}
+ \begin{proof}
+  Because $x$ and $y$ commute so do $\ad(x)$ and $\ad(y)$. Because $\ad(x)$ is nilpotent it follows that $\ad(x)\ad(y)$ is also nilpotent. Therefore $\kappa(x,y) = \tr(\ad(x)\ad(y)) = 0$.
+ \end{proof}
+ 
+ Start by noticing that $\cl$ contains the semisimple and nilpotent parts of all its elements: If $x \in \cl$ then $y \in \g$ commutes with $x$ if and only if it commutes with both $y_s$ and $y_n$. Therefore $y \in \cl$ if and only if $y_s, y_n \in \cl$.
+ 
+ Let $s \in \cl$ be semisimple. Because $s$ is semisimple and commutes with $\h$ it then follows that $\h + ks$ is a Lie subalgebra of $\g$ consisting of semisimple elements. By the maximality of $\h$ it follows that $s \in \h$.
+ 
+ Let $x \in \cl$ and let $x = x_s + x_n$ be the Jordan decomposition of $x$. It was already shown above that $x_s \in \h$, so $\ad_\cl x_s = 0$. Hence $\ad_\cl x = \ad_\cl x_n = \ad_\g x_n|_\cl$ is nilpotent. By Engel’s Theorem $\cl$ is nilpotent.
+ 
+ Notice that $\kappa|_{\h \times \h}$ is non-degenerate. To see this let $x \in \h$ with $\kappa(x, \h) = 0$. It needs to be shown that $x = 0$, and for this it sufficies to show that $\kappa(x, \cl) = 0$ by Corollary~\ref{cor: restriction of killing form to centralizer is non-degenerate}. Because $\cl$ contains the semisimple and nilpotent parts of all its elements is sufffices to show that $\kappa(x,s) = \kappa(x,n) = 0$ for every semisimple $s \in \cl$ and nilpotent $n \in \cl$. It was already shown that $s \in \h$ so $\kappa(x,s) = 0$ by assumption. That $\kappa(x,n) = 0$ follows from the claim above.
+ 
+ It follows that $\h \cap [\cl,\cl] = 0$ because $[\h,\cl] = 0$ and thus $\kappa(\h, [\cl,\cl]) = \kappa([\h, \cl], \cl) = 0$. It further follows that $\cl$ is abelian. Otherwise $\cl$ is nilpotent with $[\cl, \cl] \neq 0$. Then $Z(\cl) \cap [\cl,\cl] \neq 0$ by Corollary~\ref{cor: ideal in nilpotent has nontrivial intersection with center}. Let $x \in Z(\cl) \cap [\cl,\cl]$ be non-zero. Notice that $x$ cannot be semisimple because $\h \cap [\cl,\cl] = 0$. So $x_n$ is nonzero and it was already shown that $x_n \in \cl$. Because $x \in Z(\cl)$ it follows that $x_n \in Z(\cl)$. From the claim above it follows that $\kappa(x_n, \cl) = 0$. Because $\kappa_{\cl \times \cl}$ is non-degenerate it follows that $x_n = 0$, contradicting that $x_n$ is non-zero.
+ 
+ Suppose now that $\h \subsetneq \cl$. Let $x \in \cl$ with $\h \neq 0$. Because $x_s, x_n \in \cl$ with $x_s \in \h$ it can be assumed w.l.o.g.\ that $x$ is nilpotent by replacing it with $x_n$. Then $\kappa(x_n, \cl) = 0$ by the above claim, contradicting $\kappa_{\cl \times \cl}$ being non-degenerate.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

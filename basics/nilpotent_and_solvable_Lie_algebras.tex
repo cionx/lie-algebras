@@ -264,6 +264,15 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 %TODO: Give a compromise using the abstract Jordan decomposition
 
 
+\begin{cor}\label{cor: ideal in nilpotent has nontrivial intersection with center}
+ Let $\g$ be a finite dimensional nilpotent $k$-Lie algebra. If $I \subideal \g$ is a non-zero ideal then $I \cap Z(\g) = 0$.
+\end{cor}
+\begin{proof}
+ $\g$ acts on itself via the adjoint representation and by Engel’s Theorem $\ad(x)$ is nilpotent for every $x \in \g$. Hence $\{\ad(x)|_I \mid x \in \g\} \subseteq \gl(I)$ is a Lie subalgebra consisting of nilpotent endomorphisms. By Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} there exists some non-zero $y \in I$ with $\ad(x)|_I(y) = 0$ for every $y \in \g$, i.e.\ $[\g, y] = 0$. Then $y \in Z(\g) \cap I$.
+\end{proof}
+
+
+
 
 
 \subsection{Lie’s theorem}
