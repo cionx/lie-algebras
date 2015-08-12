@@ -1,0 +1,42 @@
+\section{Cartan subalgebras}
+Throughout this section $\g$ denotes the finite dimensional semisimple Lie algebra.
+
+
+\begin{defi}
+ A subalgebra $\h \subseteq \g$ is \emph{toral} if it consists of semisimple elements.
+\end{defi}
+
+
+\begin{lem}
+ Let $\h \subseteq \g$ be a toral subalgebra. Then $\h$ is abelian.
+\end{lem}
+\begin{proof}
+ Let $x \in \h$. Because $x$ is $\ad_\g$-semisimple and $\h$ is $\ad_\g(x)$-invariant it follows that $\ad_\h(x) = \ad_\g(x)|_\h$ is also semisimple. It is enough to show that all eigenvalues of $\ad_\h(x)$ are zero.
+ 
+ Let $y \in \h$ be an eigenvector of $\ad_\h(x)$ with eigenvalue $\mu$ (in particular $y \neq 0$). In the same way as for $\ad_\h(x)$ it follows that $\ad_\h(y)$ is semisimple. Fer every $\lambda \in k$ let $\h_\lambda$ denote the eigenpsace of $\ad_\h(y)$ with respect to the eigenvalue $\lambda$.
+ 
+  On the one hand $[y,x] \in \h_0$ because
+ \[
+  \ad_\h(y)([y,x])
+  = [y,[y,x]]
+  = [y, -\mu y]
+  = 0.
+ \]
+ On the other hand
+ \[
+  [y,x]
+  = \ad_\h(y)(x)
+  \in \ad_\h(y)(\h)
+  = \ad_\h(y)\left( \bigoplus_{\lambda \in k} \h_\lambda \right)
+  = \bigoplus_{\lambda \neq 0} \h_\lambda.
+ \]
+ By the directness of the sum $\h = \bigoplus_{\lambda \in k} \h_\lambda$ it follows that $0 = [y,x] = -\mu y$. Because $y \neq 0$ it follows that $\mu = 0$.
+\end{proof}
+
+
+\begin{defi}
+ A \emph{Cartan subalgebra} (CSA) of $\g$ is a maximal toral subalgebra $\h \subseteq \g$.
+\end{defi}
+
+
+
