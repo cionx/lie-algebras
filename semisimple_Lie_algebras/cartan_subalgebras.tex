@@ -103,7 +103,7 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 \end{proof}
 
 
-\begin{lem}
+\begin{lem}\label{lem: root spaces orthogonal with respect to the Killing form}
 Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\alpha \neq -\beta$ then $\g_\alpha$ and $\g_\beta$ are orthogonal with respect to the Killing form.
 \end{lem}
 \begin{proof}
@@ -162,6 +162,14 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
 \end{cor}
 
 
+\begin{cor}\label{cor: g alpha and g -alpha pair non degenerate with the Killing form}
+ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha \in \Phi(\g,\h)$. Then $\kappa(\g_\alpha, \g_{-\alpha}) \neq 0$, i.e.\ there exists $x \in \g_\alpha$ and $y \in \g_{-\alpha}$ with $\kappa(x,y) \neq 0$.
+\end{cor}
+\begin{proof}
+ Because $\alpha \in \Phi(\g,\h)$ it follows that $\g_\alpha \neq 0$. Because with respect to the Killing form $\g_\alpha$ is orthogonal to $\g_\beta$ for $\beta \neq -\alpha$ and $\h = \g_0$ by Lemma~\ref{lem: root spaces orthogonal with respect to the Killing form} and $\kappa|_{\h \times \h}$ is non-degenerate is follows that $0 \neq \kappa(\g_\alpha, \g) = \kappa(\g_\alpha, \g_{-\alpha})$.
+\end{proof}
+
+
 \begin{rem}
  The proof of Proposition~\ref{prop: CSA are self-centralizing} is taken from \cite[\S 8.2]{Humphreys}.
 \end{rem}
@@ -178,7 +186,63 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
 \end{defi}
 
 
+\subsection{Properties of the root space decomposition}
+Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi \coloneqq \Phi(\g,\h)$ the associated roots.
 
+
+\begin{defi}
+ Becaus $\kappa|_{\h \times \h}$ is non-degenerate the map
+ \[
+  \h \to \h^*, \quad h \mapsto \kappa(h, \cdot)
+ \]
+ is an isomorphism of vector spaces. For every $\phi \in \h^*$ let $t_\phi \in \h$ be the unique element with $\kappa(t_\phi, \cdot) = \phi$.
+\end{defi}
+
+
+\begin{prop}
+ \begin{enumerate}[leftmargin=*]
+  \item 
+   $\Phi$ generates $\h^*$ as a vector space.
+  \item
+   If $\alpha \in \Phi$ then $-\alpha \in \Phi$.
+  \item
+   $[x,y] = \kappa(x,y) t_\alpha$ for every $\alpha \in \Phi$, $x \in \g_\alpha$ and $y \in \g_{-\alpha}$.
+  \item
+   Lef $\alpha \in \Phi$. Then $[\g_\alpha, \g_{-\alpha}]$ is one-dimensional and has $t_\alpha$ as basis.
+  \item
+   If $\alpha \in \Phi$ then $\alpha(t_\alpha) = \kappa(t_\alpha, t_\alpha) \neq 0$.
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ \begin{enumerate}[leftmargin=*]
+  \item
+   Suppose $\Phi$ does not generates $\h^*$ as a vector space. Then there exists some $\phi \in \h^*$ with $\phi \notin \vspan_k \Phi$. Then there exists some $y \in \h^{**}$ with $y|_{\vspan_k \Phi} = 0$ but $y(\phi) \neq 0$. By the natural isomorphism $\h \xrightarrow{\sim} \h^{**}, x \mapsto (\psi \mapsto \psi(x))$ there exists some $x \in \h$ with $y(\psi) = \psi(x)$ for every $\psi \in \h^*$. In particular $\alpha(x) = 0$ for every $\alpha \in \h^*$ but $\phi(x) \neq 0$ and thus $x \neq 0$. Using the root space decomposition $\g = \h \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha$ it follows that $x \in Z(\g)$. Because $Z(\g) = 0$ this contradicts $x$ being non-zero.
+   
+  \item
+  Let $\alpha \in \Phi$. Then $\kappa(\g_\alpha, \g_{-\alpha}) \neq 0$ by Corollary~\ref{cor: g alpha and g -alpha pair non degenerate with the Killing form}, from which it follows that $\g_{-\alpha} \neq 0$ and therefore $-\alpha \in \Phi$.
+   
+  \item
+   Let $h \in \h$. Then
+   \begin{align*}
+    \kappa(h, [x,y])
+    &= \kappa([h,x], y)
+    = \alpha(h) \kappa(x,y) \\
+    &= \kappa(t_\alpha, h) \kappa(x,y)
+    = \kappa(\kappa(x,y) t_\alpha, h)
+    = \kappa(h, \kappa(x,y) t_\alpha).
+   \end{align*}
+   Becasue $\kappa_{\h \times \h}$ is non-degenerate it follows that $[x,y] = \kappa(x,y) t_\alpha$.
+   
+  \item
+   Let $x \in \g_\alpha$ and $y \in \g_{-\alpha}$ with $\kappa(x,y) \neq 0$ (such elements exist by Corollary~\ref{cor: g alpha and g -alpha pair non degenerate with the Killing form}). Then $[x,y] = \kappa(x,y) t_\alpha \neq 0$ and therefore $[\g_\alpha, \g_{-\alpha}] = \kappa(\g_\alpha, \g_{-\alpha}) t_\alpha = k t_\alpha$.
+   
+  \item
+   Suppose that there exist some $\alpha \in \Phi$ with $\kappa(t_\alpha, t_\alpha) = 0$. Because $\alpha = \kappa(t_\alpha, \cdot)$ it follows that $\alpha(t_\alpha) = \kappa(t_\alpha, t_\alpha) = 0$. Let $x \in \g_\alpha$ and $y \in \g_{-\alpha}$ with $\kappa(x,y) \neq 0$. By rescaling it can be additionally assumed that $\kappa(x,y) = 1$ and thus $[x,y] = \kappa(x,y) t_\alpha = t_\alpha$. Then $L \coloneqq \vspan_k(x,t_\alpha,y)$ is a three-dimensional solvable Lie subalgebra of $\g$ because $[t_\alpha, x] = \alpha(t_\alpha)x = 0$ and $[t_\alpha, y] = -\alpha(t_\alpha)y = 0$.
+   
+   It follows that $\ad(L)$ is a three-dimensional solvable Lie subalgebra of $\gl(\g)$ and thus $[\ad(L), \ad(L)] = \ad([L,L]) = k \ad(t_\alpha)$ consists of nilpotent endomorphisms of $\g$. (To see this notice that by Lie’s theorem there exists a basis of $\g$ with respect to which $\ad(L)$ is represented by upper triangular matrices. Then with respect to this basis $[\ad(L), \ad(L)]$ is represented by strictly upper triangular matrices.) In particular $\ad(t_\alpha)$ is nilpotent. On the other hand $t_\alpha$ is semisimple (because $t_\alpha \in \h$ and $\h$ consists of semisimple elements by the definition of a toral subalgebra) and thus $\ad(t_\alpha)$ is semisimple. Because $\ad(t_\alpha)$ is both nilpotent is semisimple it follows that $\ad(t_\alpha) = 0$ and thus $t_\alpha = 0$, contradicting $\kappa(t_\alpha, \cdot) = \alpha \neq 0$.
+  \qedhere
+ \end{enumerate}
+\end{proof}
 
 
 
