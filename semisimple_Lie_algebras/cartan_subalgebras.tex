@@ -251,14 +251,31 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 
 
 \begin{rem}
- Let $\alpha \in \Phi$. The existence and uniqueness of $\alpha^\vee$ follows from the fact that $[\g_\alpha, \g_{-\alpha}]$ is one-dimensional with $\alpha([\g_\alpha, \g_{-\alpha}]) = k \alpha(t_\alpha) \neq 0$. Notice that $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$. Also notice that $\alpha^\vee = 2 t_\alpha / \kappa(t_\alpha, t_\alpha)$ because
+ Let $\alpha \in \Phi$. The existence and uniqueness of $\alpha^\vee$ follows from the fact that $[\g_\alpha, \g_{-\alpha}]$ is one-dimensional with $\alpha([\g_\alpha, \g_{-\alpha}]) = k \alpha(t_\alpha) \neq 0$. Notice that $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$ and that $(-\alpha)^\vee = -\alpha^\vee$. Also notice that $\alpha^\vee = 2 t_\alpha / \kappa(t_\alpha, t_\alpha)$ because
  \[
   \alpha\left( \frac{2 t_\alpha}{\kappa(t_\alpha, t_\alpha)} \right)
   = \frac{2\alpha(t_\alpha)}{\kappa(t_\alpha, t_\alpha)}
   = \frac{2\kappa(t_\alpha,t_\alpha)}{\kappa(t_\alpha, t_\alpha)}
   = 2.
- \] 
+ \]
 \end{rem}
+
+
+\begin{rem}\label{remark: construction of S alpha}
+ Let $\alpha \in \Phi$. Let $S^\alpha \coloneqq \g_\alpha \oplus k\alpha^\vee \oplus \g_{-\alpha}$. Because $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$ there exist $\hat{e} \in \g_\alpha$ and $\hat{f} \in \g_{-\alpha}$ with $[\hat{e},\hat{f}] = \alpha^\vee$. Because $\alpha^\vee \neq 0$ it follows that $\hat{e}, \hat{f} \neq 0$. Also notice that $[\alpha^\vee, \hat{e}] = \alpha(\alpha^\vee) \hat{e} = 2\hat{e}$ and similary $[\alpha^\vee, \hat{f}] = -2\hat{f}$. It follows that $S^\alpha$ is a Lie subalgebra of $\g$ and
+ \[
+  \phi \colon \sll_2(k) \to S, \quad
+  e \mapsto \hat{e}, \quad
+  h \mapsto \alpha^\vee, \quad
+  f \mapsto \hat{f}
+ \]
+ an isomorphism of Lie algebras. Therefore $\g$ becomes a representation of $\sll_2(k)$ via $x.y = [\phi(x), y]$ for every $x \in \sll_2(k)$ and $y \in \g$.
+\end{rem}
+
+
+\begin{defi}
+ Let $\alpha \in \Phi$. Then $S^\alpha \subseteq \g$ is the Lie subalgebra construtcted in Remark~\ref{remark: construction of S alpha}.
+\end{defi}
 
 
 \begin{prop}
@@ -271,18 +288,11 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
  \end{enumerate}
 \end{prop}
 \begin{proof}
- Let $S \coloneqq \g_\alpha \oplus k\alpha^\vee \oplus \g_{-\alpha}$. Because $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$ there exist $\hat{e} \in \g_\alpha$ and $\hat{f} \in \g_{-\alpha}$ with $[\hat{e},\hat{f}] = \alpha^\vee$. Because $\alpha^\vee \neq 0$ it follows that $\hat{e}, \hat{f} \neq 0$. Also notice that $[\alpha^\vee, \hat{e}] = \alpha(\alpha^\vee) \hat{e} = 2\hat{e}$ and similary $[\alpha^\vee, \hat{f}] = -2\hat{f}$. It follows that $S$ is a Lie subalgebra of $\g$ and
- \[
-  \phi \colon \sll_2(k) \to S, \quad
-  e \mapsto \hat{e}, \quad
-  h \mapsto \alpha^\vee, \quad
-  f \mapsto \hat{f}
- \]
- an isomorphism of Lie algebras. Therefore $\g$ becomes a representation of $\sll_2(k)$ via $x.y = [\phi(x), y]$ for every $x \in \sll_2(k)$ and $y \in \g$. Notice that
+ Let $S^\alpha$ acts on $\g$ as in Remark~\ref{remark: construction of S alpha}. Notice that
  \[
   L \coloneqq k \alpha^\vee \oplus \bigoplus_{\substack{c \in k \\ c\alpha \in \Phi}} \g_{c\alpha}
  \]
- is a subrepresentation.
+ is a subrepresentation of $S^\alpha$.
  
  By Weyl‘s theorem $L$ is completely reducible. Notice that $h.\alpha^\vee = [\alpha^\vee, \alpha^\vee] = 0$ and
  \[
@@ -291,19 +301,47 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
  \]
  Because all weights of $L$ are integral it follows that $2c \in \Z$ for every $c \in k$ with $c\alpha \in \Phi$ and thus $c \in \frac{1}{2}\Z$. From the classification of the finite dimensional representations of $\sll_2(k)$ it follows that $L$ is the direct sum of irreducible submodules, of which there are two kinds: Those with even weights and those with odd weights; the number of summands of the first kind is given by $\dim L_0$ and the number of summands of the second kind is given by $\dim L_1$.
  
- Now $\dim L_0 = \dim k\alpha^\vee = 1$, therefore a decomposition of $L$ into irreducible subrepresentations has exactly one summand with even weights. As $S \subseteq L$ is a subrepresentation with even even weights, namely $S_{-2} = k\hat{f}$, $S_0 = k\alpha^\vee$ and $S_2 = k\hat{e}$, we have found this summand. In particular $2\alpha$ is not a root, resulting in the following:
+ Now $\dim L_0 = \dim k\alpha^\vee = 1$, therefore a decomposition of $L$ into irreducible subrepresentations has exactly one summand with even weights. As $S \subseteq L$ is a subrepresentation with even even weights, namely $S^\alpha_{-2} = k\hat{f}$, $S^\alpha_0 = k\alpha^\vee$ and $S^\alpha_2 = k\hat{e}$, we have found this summand. In particular $2\alpha$ is not a root, resulting in the following:
  
  \begin{claim*}
   Let $\beta \in \Phi$ be a root. Then $2\beta$ is not it root, i.e.\ twice a root is never a root. Equivalently half a root is never a root.
  \end{claim*}
  
- From this claim it follows that $\alpha/2$ is not root, so $L_1 = \g_{\alpha/2} = 0$. Hence $L$ contains no summand with odd weights and therefore already $L = S$. As a direct consequence $\dim \g_\alpha = \dim L_2 = \dim S_2 = 1$ and $k\alpha \cap \Phi = \{c \in k \setminus \{0\} \mid L_{2c} \neq 0\} = \{1,-1\}$.
+ From this claim it follows that $\alpha/2$ is not root, so $L_1 = \g_{\alpha/2} = 0$. Hence $L$ contains no summand with odd weights and therefore already $L = S^\alpha$. As a direct consequence $\dim \g_\alpha = \dim L_2 = \dim S^\alpha_2 = 1$ and $k\alpha \cap \Phi = \{c \in k \setminus \{0\} \mid L_{2c} \neq 0\} = \{1,-1\}$.
 \end{proof}
 
 
+\begin{defi}
+ For every $\lambda \in \h^*$ and $h \in \h$ set $\pair{h, \lambda} \coloneqq \pair{\lambda, h} \coloneqq \lambda(h)$.
+\end{defi}
 
 
-
+\begin{prop}
+ Let $\alpha, \beta \in \Phi$. Then $\pair{\alpha, \beta^\vee} \in \Z$ and $\alpha - \pair{\alpha, \beta^\vee} \beta \in \Phi$.
+\end{prop}
+\begin{proof}
+ If $\alpha$ and $\beta$ are linearly dependent then $\beta = \pm \alpha$. Then $\beta^\vee = \pm \alpha^\vee$ and therefore $\pair{\alpha, \beta^\vee} = \pm \pair{\alpha, \alpha^\vee} = \pm 2 \in \Z$ and
+ \[
+ \alpha - \pair{\alpha, \beta^\vee} \beta
+ = \alpha - 2 \alpha
+ = -\alpha \in \Phi.
+ \]
+ 
+ Suppose that $\alpha$ and $\beta$ are linearly independent. Let $S^\beta$ act on $\g$ as in Remark~\ref{remark: construction of S alpha} and notice that $L \coloneqq \bigoplus_{i \in \Z} \g_{\alpha+i\beta}$ is a subrepresentation. For $x \in \g_{\alpha+i\beta}$ it follows that
+ \[
+  h.x = [\beta^\vee, x] = (\alpha+i\beta)(\beta^\vee)x = (\pair{\alpha, \beta^\vee}+2i)x,
+ \]
+ so $\g_{\alpha+i\beta} = L_{\pair{\alpha, \beta^\vee}+2i}$ for every $i \in \Z$. Because $L_{\pair{\alpha, \beta^\vee}} = \g_\alpha \neq 0$ it follows that $\pair{\alpha, \beta^\vee}$ is a weight of $L$ and therefore integral by $\sll_2$-theory. From $\sll_2$-theory it also follows that $-\pair{\alpha, \beta^\vee}$ is also a weight of $L$. Therefore there exists some $i \in \Z$ with $\pair{\alpha, \beta^\vee} + 2i = -\pair{\alpha, \beta^\vee}$, namely $i = -\pair{\alpha, \beta^\vee}$. Then
+ \[
+  \g_{\alpha - \pair{\alpha, \beta^\vee} \beta}
+  = \g_{\alpha + i\beta}
+  = L_{\pair{\alpha, \beta^\vee}+2i}
+  = L_{\pair{\alpha, \beta^\vee} -2\pair{\alpha, \beta^\vee}}
+  = L_{-\pair{\alpha, \beta^\vee}}
+  \neq 0,
+ \]
+ which shows that $\alpha - \pair{\alpha, \beta^\vee} \beta \in \Phi$.
+\end{proof}
 
 
 
