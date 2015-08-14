@@ -261,7 +261,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 \end{rem}
 
 
-\begin{rem}\label{remark: construction of S alpha}
+\begin{rem}\label{rem: construction of S alpha}
  Let $\alpha \in \Phi$. Let $S^\alpha \coloneqq \g_\alpha \oplus k\alpha^\vee \oplus \g_{-\alpha}$. Because $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$ there exist $\hat{e} \in \g_\alpha$ and $\hat{f} \in \g_{-\alpha}$ with $[\hat{e},\hat{f}] = \alpha^\vee$. Because $\alpha^\vee \neq 0$ it follows that $\hat{e}, \hat{f} \neq 0$. Also notice that $[\alpha^\vee, \hat{e}] = \alpha(\alpha^\vee) \hat{e} = 2\hat{e}$ and similary $[\alpha^\vee, \hat{f}] = -2\hat{f}$. It follows that $S^\alpha$ is a Lie subalgebra of $\g$ and
  \[
   \phi \colon \sll_2(k) \to S, \quad
@@ -274,7 +274,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 
 
 \begin{defi}
- Let $\alpha \in \Phi$. Then $S^\alpha \subseteq \g$ is the Lie subalgebra construtcted in Remark~\ref{remark: construction of S alpha}.
+ Let $\alpha \in \Phi$. Then $S^\alpha \subseteq \g$ is the Lie subalgebra construtcted in Remark~\ref{rem: construction of S alpha}.
 \end{defi}
 
 
@@ -288,7 +288,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
  \end{enumerate}
 \end{prop}
 \begin{proof}
- Let $S^\alpha$ acts on $\g$ as in Remark~\ref{remark: construction of S alpha}. Notice that
+ Let $S^\alpha$ acts on $\g$ as in Remark~\ref{rem: construction of S alpha}. Notice that
  \[
   L \coloneqq k \alpha^\vee \oplus \bigoplus_{\substack{c \in k \\ c\alpha \in \Phi}} \g_{c\alpha}
  \]
@@ -316,7 +316,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 \end{defi}
 
 
-\begin{prop}
+\begin{prop}\label{prop: integral and reflection properties of root pairing}
  Let $\alpha, \beta \in \Phi$. Then $\pair{\alpha, \beta^\vee} \in \Z$ and $\alpha - \pair{\alpha, \beta^\vee} \beta \in \Phi$.
 \end{prop}
 \begin{proof}
@@ -327,7 +327,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
  = -\alpha \in \Phi.
  \]
  
- Suppose that $\alpha$ and $\beta$ are linearly independent. Let $S^\beta$ act on $\g$ as in Remark~\ref{remark: construction of S alpha} and notice that $L \coloneqq \bigoplus_{i \in \Z} \g_{\alpha+i\beta}$ is a subrepresentation. For $x \in \g_{\alpha+i\beta}$ it follows that
+ Suppose that $\alpha$ and $\beta$ are linearly independent. Let $S^\beta$ act on $\g$ as in Remark~\ref{rem: construction of S alpha} and notice that $L \coloneqq \bigoplus_{i \in \Z} \g_{\alpha+i\beta}$ is a subrepresentation. For $x \in \g_{\alpha+i\beta}$ it follows that
  \[
   h.x = [\beta^\vee, x] = (\alpha+i\beta)(\beta^\vee)x = (\pair{\alpha, \beta^\vee}+2i)x,
  \]
@@ -342,6 +342,27 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
  \]
  which shows that $\alpha - \pair{\alpha, \beta^\vee} \beta \in \Phi$.
 \end{proof}
+
+
+\begin{cor}
+ Let $\alpha, \beta \in \Phi$. Then
+ \[
+  [\g_\alpha, \g_\beta] =
+  \begin{cases}
+   \g_{\alpha+\beta} & \text{if $\alpha+\beta \in \Phi$}, \\
+   0                 & \text{otherwise}.
+  \end{cases}
+ \]
+\end{cor}
+\begin{proof}
+ It is already known that $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha + \beta}$. If $\alpha+\beta \notin \Phi$ then $\g_{\alpha + \beta} = 0$ and thus $[\g_\alpha, \g_\beta] = 0$. Suppose now that $\alpha + \beta \in \Phi$. Then $\alpha$ and $\beta$ are linearly independent (because otherwise $\beta = \pm \alpha$ and therefore $\alpha+\beta \in \{-2\alpha, 0, 2\alpha\}$, none of which is a root). Let $\g^\alpha$ act on $\g$ as in Remark~\ref{rem: construction of S alpha} and consider the subrepresentation $L \coloneqq \bigoplus_{i \in \Z} \g_{\beta + i\alpha}$.
+ 
+ As seen in the proof of Proposition~\ref{prop: integral and reflection properties of root pairing} it follows that $\g_{\beta + i\alpha} = L_{\pair{\beta, \alpha^\vee}+2i}$ for every $i \in \Z$. In particular every nonzero weight space of $L$ is one-dimensional and all weights have the same parity. Hence $L$ is an irreducible representation of $\g^\alpha$.
+ 
+ Let $\hat{e} \in \g_\alpha \subseteq S^\alpha$ be the element corresponding to $e \in \sll_2(k)$ under the isomorphism $\sll_2(k) \cong S^\alpha$ which was used to construct the action of $\sll_2(k)$ on $\g$. Because $\beta, \alpha + \beta \in \Phi$ are both roots it follows that $L_{\pair{\beta, \alpha^\vee}} = \g_\beta$ and $L_{\pair{\beta, \alpha^\vee}+2} = \g_{\alpha+\beta}$ are both nonzero. Therefore it follows from $\sll_2$-theory that $e.L_{\pair{\beta, \alpha^\vee}} = L_{\pair{\beta, \alpha^\vee}+2}$. But this is the same as saying that $[\hat{e}, \g_\beta] = \g_{\alpha+\beta}$ and thus $[\g_\alpha, \g_\beta] = \g_{\alpha+\beta}$.
+\end{proof}
+
+
 
 
 
