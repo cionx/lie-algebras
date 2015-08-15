@@ -3,9 +3,9 @@ Recall that the standard basis $(e,h,f)$ of $\sll_2(k)$ is given by
 \[
  e = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad
  h = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \quad
- f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
+ f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
 \]
-This basis satisfies the relations
+and that this basis satisfies the relations
 \[
  [h,e] = 2e, \quad
  [h,f] = -2f, \quad
@@ -23,11 +23,12 @@ This basis satisfies the relations
 
 
 \begin{lem}\label{lem: e and f moving the eigenspaces}
- Let $V$ a representation of $\g$ and $\lambda \in k$. Then
+ If $V$ is a representation of $\g$ then
  \[
   e.V_\lambda \subseteq V_{\lambda+2}
   \quad\text{and}\quad
-  f.V_\lambda \subseteq V_{\lambda-2}.
+  f.V_\lambda \subseteq V_{\lambda-2}
+  \quad\text{for every $\lambda \in k$}.
  \]
 \end{lem}
 \begin{proof}
@@ -48,7 +49,12 @@ This basis satisfies the relations
 
 
 \begin{expl}\label{expl: natural representation of sl2}
- Let $e_1$, $e_2$ be the standard basis of $V \coloneqq k^2$, which is the natural representation of $\sll_2(k)$. Then $h.e_1 = e_1$ and $h.e_2 = -1$, so $V_1 = k e_1$ and $V_{-1} = k e_2$ with $V = V_{-1} \oplus V_1$. Then $e.V_{-1} = V_1$ and $f.V_1 = V_{-1}$.
+ Let $e_1$, $e_2$ be the standard basis of $V \coloneqq k^2$, which is the natural representation of $\sll_2(k)$. Then $h.e_1 = e_1$ and $h.e_2 = -e_2$, so $V_1 = k e_1$ and $V_{-1} = k e_2$ with $V = V_{-1} \oplus V_1$. That $e.V_{-1} = V_1$ and $f.V_1 = V_{-1}$ can then by seen by a glance at the following:
+ \[
+  e = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+  \quad\text{and}\quad
+  f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
+ \]
 \end{expl}
 
 
@@ -59,30 +65,30 @@ This basis satisfies the relations
 
 
 \begin{thrm}[Classification of finite dimensional irreducible representations of $\sll_2(k)$]
- For every $n \geq 1$ there exists up to isomorphism a unique $n$-dimensional irreducible representation of $\sll_2(k)$. More explicitely:
+ For every $n \in \N$ there exists up to isomorphism a unique ($n+1$)-dimensional irreducible representation of $\sll_2(k)$. More explicitely:
  \begin{enumerate}[leftmargin=*]
   \item
-   For every $n \geq 1$ there exists an $n$-dimensional irreducible representation $V^{(n)}$ of $\sll_2(k)$.
+   For every $n \in \N$ there exists an ($n+1$)-dimensional irreducible representation $V^{(n)}$ of $\sll_2(k)$.
   \item
-   Let $V$ be an $n$-dimensional irreducible representation of $\sll_2(k)$ for some $n \geq 1$. Then
+   Let $V$ be an ($n+1$)-dimensional irreducible representation of $\sll_2(k)$ for some $n \in \N$. Then
    \[
-    V = V_{-n+1} \oplus V_{-n+3} \oplus \dotsb \oplus V_{n-3} \oplus V_{n-1}
+    V = V_{-n} \oplus V_{-n+2} \oplus \dotsb \oplus V_{n-2} \oplus V_n
    \]
-   and $V_i$ is one-dimensional for every $i = -n+1, -n+3, \dotsc, n-3, n-1$. In particular all occuring weights are integral.
+   and $V_i$ is one-dimensional for every $i = -n, -n+2, \dotsc, n-2, n$. In particular all occuring weights are integral and the heighest weight is $n$.
    
-   More explicitely there exists a basis $v_1, \dotsc, v_n$ of $V$ with $v_i \in V_{-n-1+2i}$ for every $i = 1, \dotsc, n$, with respect to which the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
+   More explicitely there exists a basis $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ of $V$ with $v_i \in V_i$ for every $i = -n, -n+2, \dotsc, n-2, n$, with respect to which the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
    \begin{center}
     \tikzsetnextfilename{irreducible_representation_of_sl2}
     \begin{tikzpicture}[node distance = 4.2em]
      % the nodes
-     \node (v1) {$v_1$};
-     \node[right of = v1] (v2) {$v_2$};
-     \node[right of = v2] (v3) {$v_3$};
-     \node[right of = v3] (v4) {$v_4$};
+     \node (v1) {$v_{-n}$};
+     \node[right of = v1] (v2) {$v_{-n+2}$};
+     \node[right of = v2] (v3) {$v_{-n+4}$};
+     \node[right of = v3] (v4) {$v_{-n+6}$};
      \node[right of = v4] (dots) {$\dotso$};
-     \node[right of = dots] (vn-3) {$v_{n-3}$};
-     \node[right of = vn-3] (vn-2) {$v_{n-2}$};
-     \node[right of = vn-2] (vn-1) {$v_{n-1}$};
+     \node[right of = dots] (vn-3) {$v_{n-6}$};
+     \node[right of = vn-3] (vn-2) {$v_{n-4}$};
+     \node[right of = vn-2] (vn-1) {$v_{n-2}$};
      \node[right of = vn-1] (vn) {$v_n$};
      % the action of e
      \draw[->, bend left] (v1) to node[above] {\footnotesize $1$} (v2);
@@ -108,13 +114,13 @@ This basis satisfies the relations
    \begin{gather*}
     e.V_i =
     \begin{cases}
-     V_{i+2} & \text{for $i = -n+1, -n+3, \dotsc, n-3$}, \\
+     V_{i+2} & \text{for $i = -n, -n+2, \dotsc, n-2$}, \\
      0       & \text{otherwise},
     \end{cases}
    \shortintertext{and}
     f.V_i =
     \begin{cases}
-     V_{i-2} & \text{if $i = -n+3, \dotsc, n-3, n-1$}, \\
+     V_{i-2} & \text{if $i = -n, \dotsc, n-2, n$}, \\
      0       & \text{otherwise}.
     \end{cases}
    \end{gather*}
@@ -130,13 +136,13 @@ This basis satisfies the relations
     h \mapsto y\dd{y}-x\dd{x}, \quad
     f \mapsto x\dd{y}.
    \]
-   It was already shown in Examples~\ref{expls: representations of Lie algebras} that this defines a representation of $\sll_2(k)$. Let $V^{(n)} \subseteq V$ be the linear subspace consisting of the homogeneous polynomials of degree $n-1$, i.e.\
+   It was already shown in Examples~\ref{expls: representations of Lie algebras} that this defines a representation of $\sll_2(k)$. Let $V^{(n)} \subseteq V$ be the linear subspace consisting of the homogeneous polynomials of degree $n$, i.e.\
    \[
-    V^{(n)} = \vspan_k\left( x^{n-1}, x^{n-2} y, \dotsc, x y^{n-2}, y^{n-1} \right).
+    V^{(n)} = \vspan_k\left( x^n, x^{n-1} y, \dotsc, x y^{n-1}, y^n \right).
    \]
-   Then $V^{(n)}$ is an $n$-dimensional subrepresentation of $V$.
+   Then $V^{(n)}$ is an ($n+1$)-dimensional subrepresentation of $V$.
    
-   Let $U \subseteq V^{(n)}$ be a nonzero subrepresentation. If $p \in U$ is a nonzero polynomial then by applying $f$ often enough it follows that $x^{n-1} \in U$, from which it follows from applying $e$ often enough that $x^{n-i} y^{i-1} \in U$ for every $i = 1, \dotsc, n$. Hence $U = V$. So $V^{(n)}$ is an irreducible representation of $\sll_2(k)$.
+   Let $U \subseteq V^{(n)}$ be a nonzero subrepresentation. If $p \in U$ is a nonzero polynomial then by applying $f$ often enough it follows that $x^n \in U$, from which it follows from applying $e$ often enough that $x^{n-i} y^i \in U$ for every $i = 0, \dotsc, n$. Hence $U = V$. So $V^{(n)}$ is an irreducible representation of $\sll_2(k)$.
    
   \item
    Because $V \neq 0$ is finite dimensional and $k$ is algebraically closed there exists some $\lambda \in k$ with $V_\lambda \neq 0$. Because $v$ is finite dimensional $\lambda$ can be choosen such that $V_{\lambda-2} = 0$. Let $w \in V_\lambda$ with $w \neq 0$. Set
@@ -177,27 +183,25 @@ This basis satisfies the relations
        =  -(i+1)(\lambda+i) w_i.
       \qedhere
       \end{align*}
-
      \qedhere
     \end{enumerate}
    \end{proof}
    
    Because $w_i \in V_{\lambda+2i}$ for every $i \in \N$ with $w_0 = v \neq 0$ and $V$ is finite dimensional it follows that there exists a maximal $m \in \N$ such that $w_0, \dotsc, w_m$ are nonzero but $w^{m+1} = 0$. By the previous claim $\vspan_k(w_0, \dotsc, w_m)$ is a subrepresentation of $V$. Because $V$ is irreducible it follows that $V = \vspan_k(w_0, \dotsc, w_m)$. Because $w_0, \dotsc, w_m$ are linearly independent it follows that $w_0, \dotsc, w_m$ is a basis of $V$.
    
-   As $V$ is $n$-dimensional it follows that $m = n-1$. By the claim
+   As $V$ is ($n+1$)-dimensional it follows that $m = n$. By the claim
    \[
     0
-    = f.w_n
-    = f.w_{(n-1)+1}
-    = -n(\lambda+n-1).w_{n-1}
+    = f.w_{n+1}
+    = -n(\lambda+n).w_n
    \]
-   and therefore $\lambda = -n+1$. Because $w_i \in V_{\lambda + 2i} = V_{-n+1+2i}$ for every $i \in \N$ it follows that
+   and therefore $\lambda = -n$. Because $w_i \in V_{\lambda + 2i} = V_{-n+2i}$ for every $i \in \N$ it follows that
    \[
     V
-    = kw_0 \oplus \dotsb \oplus kw_{n-1}
-    = V_{-n+1} \oplus V_{-n+3} \oplus \dotsb \oplus V_{n-3} \oplus V_{n-1}
+    = kw_0 \oplus \dotsb \oplus kw_n
+    = V_{-n} \oplus V_{-n+2} \oplus \dotsb \oplus V_{n-2} \oplus V_n
    \]
-   with $V_i$ being one-dimensional for every $i = -n+1, -n+3, \dotsc, n-3, n-1$. From the definition of $w_0, \dotsc, w_{n-1}$ and the claim it follows that the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
+   with $V_i$ being one-dimensional for every $i = -n, -n+2, \dotsc, n-2, n$. From the definition of $w_0, \dotsc, w_n$ and the claim it follows that the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
    \begin{center}
     \tikzsetnextfilename{irreducible_representation_of_sl2_construction}
     \begin{tikzpicture}[node distance = 4.2em]
@@ -207,24 +211,24 @@ This basis satisfies the relations
      \node[right of = w1] (w2) {$w_2$};
      \node[right of = w2] (w3) {$w_3$};
      \node[right of = w3] (dots) {$\dotso$};
-     \node[right of = dots] (wn-4) {$w_{n-4}$};
-     \node[right of = wn-4] (wn-3) {$w_{n-3}$};
+     \node[right of = dots] (wn-3) {$w_{n-3}$};
      \node[right of = wn-3] (wn-2) {$w_{n-2}$};
      \node[right of = wn-2] (wn-1) {$w_{n-1}$};
+     \node[right of = wn-1] (wn) {$w_n$};
      % the action of e
      \draw[->, bend left] (w0) to node[above] {\footnotesize $1$} (w1);
      \draw[->, bend left] (w1) to node[above] {\footnotesize $1$} (w2);
      \draw[->, bend left] (w2) to node[above] {\footnotesize $1$} (w3);
      \draw[->, bend left] (w3) to (dots);
-     \draw[->, bend left] (dots) to (wn-4);
-     \draw[->, bend left] (wn-4) to node[above] {\footnotesize $1$} (wn-3);
+     \draw[->, bend left] (dots) to (wn-3);
      \draw[->, bend left] (wn-3) to node[above] {\footnotesize $1$} (wn-2);
      \draw[->, bend left] (wn-2) to node[above] {\footnotesize $1$} (wn-1);
+     \draw[->, bend left] (wn-1) to node[above] {\footnotesize $1$} (wn);
      % the action of f
-     \draw[->, bend left, dashed] (wn-1) to node[below] {\footnotesize $n-1$} (wn-2);
-     \draw[->, bend left, dashed] (wn-2) to node[below] {\footnotesize $(n-2)2$} (wn-3);
-     \draw[->, bend left, dashed] (wn-3) to node[below] {\footnotesize $(n-3)3$} (wn-4);
-     \draw[->, bend left, dashed] (wn-4) to (dots);
+     \draw[->, bend left, dashed] (wn) to node[below] {\footnotesize $n-1$} (wn-1);
+     \draw[->, bend left, dashed] (wn-1) to node[below] {\footnotesize $(n-2)2$} (wn-2);
+     \draw[->, bend left, dashed] (wn-2) to node[below] {\footnotesize $(n-3)3$} (wn-3);
+     \draw[->, bend left, dashed] (wn-3) to (dots);
      \draw[->, bend left, dashed] (dots) to (w3);
      \draw[->, bend left, dashed] (w3) to node[below] {\footnotesize $3(n-3)$} (w2);
      \draw[->, bend left, dashed] (w2) to node[below] {\footnotesize $2(n-2)$} (w1);
@@ -233,8 +237,8 @@ This basis satisfies the relations
    \end{center}
    The desired basis $v_1, \dotsc, v_n$ can now be defined as
    \[
-    v_i \coloneqq \frac{w_{i-1}}{(i-1)!}
-    \quad \text{for every $i = 1, \dotsc, n$}.
+    v_{-n+2i} \coloneqq \frac{w_i}{i!}
+    \quad \text{for every $i = 0, 1, \dotsc, n+1$}.
     \qedhere
    \]
  \end{enumerate}
@@ -302,7 +306,7 @@ This basis satisfies the relations
  Notice that
  \[
   [\diag(a_1, a_2, a_3), e_{ij}] = (a_i-a_j) e_{ij}
-  \quad\text{for all $a_1, a_2, a_3 \in k$ and $i,j = 1, \dotsc, 3$}
+  \quad\text{for all $a_1, a_2, a_3 \in k$ and $i,j = 1, \dotsc, 3$}.
  \]
  It follows that
  \[
@@ -337,40 +341,40 @@ This basis satisfies the relations
  \]
  contradicting \eqref{eqn: dimensions of eigenspaces of sl3}.
  
- To emphasize the approach which will be taken suppose that there exists a decomposition $V = W^{1,1} \oplus W^{1,2} \oplus W^{1,3} \oplus W^{2,1} \oplus W^{3,1}$ into irreducible subrepresentations with $\dim W^{1,1} = \dim W^{1,2} = \dim W^{1,3} = 1$, $\dim W^{2,1} = 2$ and $\dim W^{3,1} = 3$. Then
+ To emphasize the chosen approach suppose that there exists a decomposition $V = W^{0,1} \oplus W^{0,2} \oplus W^{0,3} \oplus W^{1,1} \oplus W^{2,1}$ into irreducible subrepresentations with $\dim W^{0,1} = \dim W^{0,2} = \dim W^{0,3} = 1$, $\dim W^{1,1} = 2$ and $\dim W^{1,1} = 3$. Then
  \begin{align*}
   V
-  &= W^{1,1} \oplus W^{1,2} \oplus W^{1,3} \oplus W^{2,1} \oplus W^{3,1} \\
-  &= \underbrace{W^{3,1}_{-2}}_{= V_{-2}} \oplus
-     \underbrace{W^{2,1}_{-1}}_{= V_{-1}} \oplus
-     \underbrace{W^{1,1}_0 \oplus W^{1,2}_0 \oplus W^{1,3}_0 \oplus W^{3,1}_0}_{= V_0} \oplus
-     \underbrace{W^{2,1}_1}_{= V_1} \oplus
-     \underbrace{W^{3,1}_1}_{= V_2},
+  &= W^{0,1} \oplus W^{0,2} \oplus W^{0,3} \oplus W^{1,1} \oplus W^{2,1} \\
+  &= \underbrace{W^{2,1}_{-2}}_{= V_{-2}} \oplus
+     \underbrace{W^{1,1}_{-1}}_{= V_{-1}} \oplus
+     \underbrace{W^{0,1}_0 \oplus W^{0,2}_0 \oplus W^{0,3}_0 \oplus W^{2,1}_0}_{= V_0} \oplus
+     \underbrace{W^{1,1}_1}_{= V_1} \oplus
+     \underbrace{W^{2,1}_1}_{= V_2},
  \end{align*}
  also contradicting \eqref{eqn: dimensions of eigenspaces of sl3}.
  
- The above observations can easily be generalized: Let $V = \bigoplus_{d \geq 0} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ be a decomposition into irreducible subrepresentations with $W^{d,j}$ being $d$-dimensional. As in the previous examples it follows that $V_i = \bigoplus_{p \in \N, d=|i|+1+2p} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i$ for every $i \in \Z$ and therefore $\dim V_i = \sum_{p \in \N, d=|i|+1+2p} \nu_d$. Hence
+ The above observations can easily be generalized: Let $V = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ be a decomposition into irreducible subrepresentations with $W^{d,j}$ being ($d+1$)-dimensional, i.e.\ having heighest weight $d$. As in the previous examples it follows that $V_i = \bigoplus_{p \in \N, d=|i|+2p} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i$ for every $i \in \Z$ and therefore $\dim V_i = \sum_{p \in \N, d=|i|+2p} \nu_d$. Hence
  \[
-  \nu_d \coloneqq \dim V_{d-1} - V_{d+1}
-  \quad\text{for every $d \geq 1$}.
+  \nu_d = \dim V_d - \dim V_{d+2}
+  \quad\text{for every $d \in \N$}.
  \]
- With this it follows from \eqref{eqn: dimensions of eigenspaces of sl3} that $\nu_1 = 1$, $\nu_2 = 2$ and $\nu_3 = 1$.
+ With this it follows from \eqref{eqn: dimensions of eigenspaces of sl3} that $\nu_0 = 1$, $\nu_1 = 2$ and $\nu_2 = 1$.
  
  The three-dimensional irreducible subrepresentation is given by
  \[
-  W^{3,1} \coloneqq \phi(\sll_2(k)) = \vspan_k(e_{12}, h_1, e_{21})
+  W^{2,1} \coloneqq \phi(\sll_2(k)) = \vspan_k(e_{12}, h_1, e_{21})
  \]
- The two two-dimensional irreducible subrepresentations $W^{2,1}$ and $W^{2,2}$ must satisfy
+ The two two-dimensional irreducible subrepresentations $W^{1,1}$ and $W^{1,2}$ must satisfy
  \[
-  W^{2,1} \oplus W^{2,2} = V_{-1} \oplus V_1 = \vspan_k(e_{23}, e_{31}, e_{13}, e_{32}).
+  W^{1,1} \oplus W^{1,2} = V_{-1} \oplus V_1 = \vspan_k(e_{23}, e_{31}, e_{13}, e_{32}).
  \]
- They then can be choosen as $W^{2,1} \coloneqq \vspan_k(e_{23}, e_{13})$ and $W^{2,2} \coloneqq \vspan_k(e_{31}, e_{32})$. That these are indeed subrepresentations follows from direct calculation. To find the one-dimensional irreducible subrepresentation notice that
+ They then can be choosen as $W^{1,1} \coloneqq \vspan_k(e_{23}, e_{13})$ and $W^{1,2} \coloneqq \vspan_k(e_{31}, e_{32})$. That these are indeed subrepresentations follows from direct calculation. To find the remaining one-dimensional irreducible subrepresentation notice that
  \begin{gather*}
   e.h_1 = -2e_{12}, \quad h.h_1 = 0, \quad f.h_1 = 2e_{21},
  \shortintertext{and}
   e.h_2 = e_{12}, \quad h.h_2 = 0, \quad f.h_2 = -e_{21}.
  \end{gather*}
- Hence $\sll_2(k)$ acts trivially on the one-dimensional linear subspace $W^{1,1} \coloneqq k (h_1 + 2h_2)$, which is why it is a subrepresentation.
+ Hence $\sll_2(k)$ acts trivially on the one-dimensional linear subspace $W^{0,1} \coloneqq k (h_1 + 2h_2)$, which is why it is a subrepresentation.
 \end{expl}
 
 
@@ -378,16 +382,16 @@ This basis satisfies the relations
  Let $V$ be a finite dimensional representation of $\sll_2(k)$.
  \begin{enumerate}[leftmargin=*]
   \item
-   $V = \bigoplus_{d \geq 1} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ where $W^{d,j} \subseteq V$ is an irreducible $d$-dimensional subrepresentation for all $d \geq 1$ and $j = 1, \dotsc, \nu_d$.
+   $V = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ where $W^{d,j} \subseteq V$ is an irreducible ($d+1$)-dimensional subrepresentation for all $d \in \N$ and $j = 1, \dotsc, \nu_d$.
   \item
    $V = \bigoplus_{i \in \Z} V_i$ with
    \begin{equation}\label{eqn: eigenspace of a finite dimensional representation}
-    V_i = \bigoplus_{\substack{p \in \N \\ d = |i|+1+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
+    V_i = \bigoplus_{\substack{p \in \N \\ d = |i|+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
     \quad \text{for every $i \in \Z$}
    \end{equation}
-   and $\dim V_i = \sum_{p \in \N, d = |i|+1+2p} \nu_d$ for every $i \in \Z$. In particular all occuring weights are integral.
+   and $\dim V_i = \sum_{p \in \N, d = |i|+2p} \nu_d$ for every $i \in \Z$. In particular all occuring weights are integral.
   \item 
-   The numbers $\nu_d$ for $d \geq 1$ are unique with $\nu_d = \dim V_{d-1} - \dim V_{d+1}$ for every $d \geq 1$.
+   The numbers $\nu_d$ for $d \in \N$ are unique with $\nu_d = \dim V_d - \dim V_{d+2}$ for every $d \in \N$.
   \item
    $\dim V_i = \dim V_{-i}$ for every $i \in \Z$.
  \end{enumerate}
@@ -396,37 +400,37 @@ This basis satisfies the relations
  That $V$ decomposes into the direct sum of irreducible subrepresentations follows directly from Weyl’s theorem. From the classification of finite dimensional irreducible representations of $\sll_2(k)$ it follows that
  \[
   W^{d,j}
-  = W^{d,j}_{-d+1} \oplus W^{d,j}_{-d+3} \oplus \dotsb \oplus W^{d,j}_{d-3} \oplus W^{d,j}_{d-1}
-  = \bigoplus_{p=0}^{d-1} W^{d,j}_{-d+1+2p}
+  = W^{d,j}_{-d} \oplus W^{d,j}_{-d+2} \oplus \dotsb \oplus W^{d,j}_{d-2} \oplus W^{d,j}_d
+  = \bigoplus_{p=0}^d W^{d,j}_{-d+2p}
  \]
- for every $d \geq 1$ and $j = 1, \dotsc, \nu_d$. It follows that
+ for every $d \in \N$ and $j = 1, \dotsc, \nu_d$. It follows that
  \[
   V
-  = \bigoplus_{d \geq 1} \bigoplus_{j=1}^{\nu_d} W^{d,j}
-  = \bigoplus_{d \geq 1} \bigoplus_{j=1}^{\nu_d} \bigoplus_{p=0}^{d-1} W^{d,j}_{-d+1+2p}.
+  = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} W^{d,j}
+  = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} \bigoplus_{p=0}^d W^{d,j}_{-d+2p}.
  \]
  This shows that $V_i = \bigoplus_{i \in \Z} V_i$. Formula \eqref{eqn: eigenspace of a finite dimensional representation} follows from reordering the summands. It follows that
  \[
   \dim V_i
-  = \dim \bigoplus_{\substack{p \in \N \\ d = |i|+1+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
-  = \sum_{\substack{p \in \N \\ d = |i|+1+2p}} \sum_{j=1}^{\nu_d} \underbrace{\dim W^{d,j}_i}_{=1}
-  = \sum_{\substack{p \in \N \\ d = |i|+1+2p}} \nu_d.
+  = \dim \bigoplus_{\substack{p \in \N \\ d = |i|+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
+  = \sum_{\substack{p \in \N \\ d = |i|+2p}} \sum_{j=1}^{\nu_d} \underbrace{\dim W^{d,j}_i}_{=1}
+  = \sum_{\substack{p \in \N \\ d = |i|+2p}} \nu_d.
  \]
  As a direct consequence it follows that $\dim V_i = \dim V_{-i}$ for every $i \in \Z$ and
  \[
-  \dim V_{i-1} - \dim V_{i+1}
-  = \sum_{\substack{p \in \N \\ d = i+2p}} \nu_d - \sum_{\substack{p \in \N \\ d = i+2+2p}} \nu_d
-  = \nu_i
-  \quad\text{for every $i \geq 1$}.
+  \dim V_d - \dim V_{d+2}
+  = \sum_{\substack{p \in \N \\ d' = i+2p}} \nu_{d'} - \sum_{\substack{p \in \N \\ d' = i+2+2p}} \nu_{d'}
+  = \nu_d
+  \quad\text{for every $d \in \N$}.
  \qedhere
  \]
 \end{proof}
 
 
 \begin{expl}\label{expl: decomposition of the tensor product of 4 and 5}
- For every $n \geq 1$ let $V^{(n)}$ be the $n$-dimensional irreducible representation of $V$ and abbreviate $V \coloneqq V^{(4)}$ and $W \coloneqq V^{(5)}$. Then
+ For every $n \geq 1$ let $V^{(n)}$ be the ($n+1$)-dimensional irreducible representation of $V$ and abbreviate $V \coloneqq V^{(3)}$ and $W \coloneqq V^{(4)}$. Then
  \begin{equation}\label{eqn: decomposition of 4 tensor 5}
-  V \otimes W \cong V^{(8)} \otimes V^{(6)} \otimes V^{(4)} \otimes V^{(2)}.
+  V \otimes W \cong V^{(7)} \otimes V^{(5)} \otimes V^{(3)} \otimes V^{(1)}.
  \end{equation}
  To see this notice that for $i,j \in \Z$ with $v \in V_\lambda$ and $w \in W_\lambda$ it follows that
  \[
@@ -470,9 +474,15 @@ This basis satisfies the relations
  Example~\ref{expl: decomposition of the tensor product of 4 and 5} can be generalized to
  \[
   V^{(n)} \otimes V^{(m)}
-  \cong V^{(n+m-1)} \oplus V^{(n+m-3)} \oplus \dotsb \oplus V^{(n-m+3)} \oplus V^{(n-m+1)}
+  \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(n-m+2)} \oplus V^{(n-m)}
  \]
- where $n, m \geq 1$ with $n \geq m$.
+ where $n, m \geq 1$ with $n \geq m$. Equivalently
+ \[
+  V^{(n)} \otimes V^{(m)}
+  \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(|n-m|)}
+  = \bigoplus_{p = 0}^{\min(n,m)} V^{(n+m-2p)}
+ \]
+ for all $n,m \in \N$.
 \end{rem}
 
 
