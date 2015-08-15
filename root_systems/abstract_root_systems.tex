@@ -1,1 +1,110 @@
 \section{Abstract root systems}
+For this section let $k$ be an arbitrary field with $\chara k = 0$.
+
+
+\begin{defi}\label{defi: notation of natural pairing}
+ Let $V$ be a $k$-vector space. For every $v \in V$ and $\lambda \in V^*$ set
+ \[
+  \pair{v, \lambda} \coloneqq \pair{\lambda, v} \coloneqq2 \lambda(v).
+ \]
+\end{defi}
+
+
+\begin{rem}\label{rem: natural pairing is nondegenerate}
+ Notice that the bilinear form $V^* \times V \to k, (\lambda,  v) \mapsto \pair{\lambda, v} = \lambda(v)$ is non-degenerate: If $v \in V$ with $\lambda(v) = 0$ for every $\lambda \in V^*$ then $v = 0$ and if $\lambda \in V^*$ with $\lambda(v) = 0$ for every $v \in V$ then $\lambda = 0$.
+\end{rem}
+
+
+\begin{rem}
+ Notice that the notation of Definition~\ref{defi: notation of natural pairing} is compatible with the natural monomorphism $\iota \colon V \to V^{**}, v \mapsto (\lambda \mapsto \lambda(v))$ in the sense that the following diagram commutes:
+
+ \begin{center}
+  \tikzsetnextfilename{natural_pairing_compatible_with_natural_homomorphism}
+  \begin{tikzpicture}[node distance = 4em]
+   \node (V) {$V^* \otimes V$};
+   \node[right = 8em of V] (k) {$k$};
+   \node[below = of V] (Vdd) {$V^* \otimes V^{**}$};
+   \draw[->] (V) to node[above] {$\lambda \otimes v \mapsto \pair{\lambda, v}$} (k);
+   \draw[->] (Vdd) to node[below right] {$\lambda \otimes \phi \mapsto \pair{\lambda, \phi}$} (k);
+   \draw[->] (V) to node[left] {${\id_V} \otimes \iota$} (Vdd);
+  \end{tikzpicture}
+ \end{center}
+ 
+ If $V$ is finite dimensional then $\iota$ is already an isomorphism and identifies $V$ with $V^{**}$. Then $\pair{\phi, v}$ can be understood as $\phi(v)$ or $\iota(v)(\phi)$ and the above shows that both are actually the same.
+\end{rem}
+
+
+\begin{defi}
+ Let $V$ be a finite dimensional $k$-vector space. A subset $R \subseteq V$ is called an \emph{(abstract) root system (in $V$)} if the following hold:
+ \begin{enumerate}
+  \item
+   $R$ is finite, $0 \notin R$ and $R$ generates $V$ as a $k$-vector space.
+  \item
+   For every $\alpha \in R$ exists some $\alpha^\vee \in V^*$ such that $\alpha^\vee(\alpha) = 2$ and $S_{\alpha, \alpha^\vee}(R) \subseteq R$ for the linear map
+   \[
+    S_{\alpha, \alpha^\vee} \colon V \to V, \quad
+    \lambda \mapsto \lambda - \pair{\lambda, \alpha^\vee}\alpha.
+   \]
+   \item
+    $\pair{\alpha, \beta^\vee} \in \Z$ for all $\alpha, \beta \in R$.
+ \end{enumerate}
+ The root system $R$ is \emph{reduced} if $k \alpha \cap R = \{-\alpha, \alpha\}$ for every $\alpha \in R$, i.e.\ if the only multiples of $\alpha$ which are also roots are $\alpha$ and $-\alpha$. The \emph{rank} of the root system $R$ is the dimension of $V$.
+\end{defi}
+
+
+\begin{rem}\label{rem: -alpha also in the root system}
+ Notice that if $V$ is a finite dimensional vector space and $R \subseteq V$ a root system with $\alpha \in R$ then also
+ \[
+  -\alpha = \alpha - 2 \alpha = \alpha - \pair{\alpha, \alpha^\vee} \alpha = S_{\alpha, \alpha^\vee}(\alpha) \in R.
+ \]
+\end{rem}
+
+
+\begin{lem}
+ Let $V$ be a finite dimensional $k$-vector space and $R \subseteq V$ a root system. Then the element $\alpha^\vee \in V$ with $\alpha^\vee(\alpha) = 2$ is unique.
+\end{lem}
+\begin{proof}
+ Let $\alpha^\vee, \tilde{\alpha}^\vee \in V^*$ with $\alpha^\vee(\alpha) = \tilde{\alpha}^\vee(\alpha) = 2$ and $s(R) \subseteq R$ as well as $t(R) \subseteq R$ for $s \coloneqq S_{\alpha, \alpha^\vee}$ and $t \coloneqq S_{\alpha, \tilde{\alpha}^\vee}$. Notice that $s(\alpha) = t(\alpha) = -\alpha$ as already seen in Remark~\ref{rem: -alpha also in the root system}.
+ 
+ By induction on $n$ it follows that
+ \begin{equation}\label{eqn: iterated composition of reflections}
+  (s \circ t)^n(x) =  x - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} \alpha
+  \quad \text{for every $x \in V$ and $n \geq 1$}.
+ \end{equation}
+ For $n = 1$ this holds because
+ \begin{align*}
+  s(t(x))
+  &= s(x - \pair{x, \tilde{\alpha}^\vee}\alpha)
+  = s(x) - \pair{x, \tilde{\alpha}^\vee} s(\alpha) \\
+  &= x - \pair{x, \alpha^\vee}\alpha + \pair{x, \tilde{\alpha}^\vee}\alpha
+  = x - \pair{x, \alpha^\vee - \tilde{\alpha}^\vee} \alpha.
+ \end{align*}
+ If the formula holds for some $n \geq 1$ then
+ \begin{align*}
+  (s \circ t)^{n+1}(x)
+  &= s(t(x - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} \alpha))
+  = s(t(x)) - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} s(t(\alpha)) \\
+  &= x - \pair{x, \alpha^\vee - \tilde{\alpha}^\vee} \alpha - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} s(t(\alpha)) \\
+  &= x - (n+1)\pair{x, \alpha^\vee - \tilde{\alpha}^\vee} \alpha.
+ \end{align*}
+ 
+ Because $s$ and $t$ are automorphisms of $V$ (as a $k$-vector space) the same goes for $s \circ t$. Because $(s \circ t)(R) = s(t(R)) \subseteq s(R) \subseteq R$ and $R$ is finite it follows that the restriction $(s \circ t)|_R$ is a permutation of $R$. Since $R$ is finite $(s \circ t)|_R$ has finite order, i.e.\ there exists some $n \geq 1$ with $(s \circ t)^n|_R = \id_R$. Because $R$ spans $V$ it already follows that $(s \circ t)^n = \id_V$. Together with \eqref{eqn: iterated composition of reflections} it follows that $\pair{x, \alpha^\vee - \tilde{\alpha}^\vee} = 0$ for every $x \in V$, so $\alpha^\vee - \tilde{\alpha}^\vee = 0$ as seen in Remark~\ref{rem: natural pairing is nondegenerate}.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
