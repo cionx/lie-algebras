@@ -547,6 +547,33 @@ and that this basis satisfies the relations
 We also give another proof, taken from \cite[\S 1.4]{Lectures_on_sl2_modules}.
 
 
+\begin{proof}
+ It can be assummed w.l.o.g.\ that $n \geq m$. The formula can then be shown by induction on $m$. As $\sll_2(k)$ acts trivially on the one-dimensional representation $V^{(0)} \cong \Cbb$ it follows that the map $V^{(n)} \to V^{(n)} \otimes V^{(0)}, v \mapsto v \otimes 1$ is an isomorphism representations. This shows the formula for $m = 0$.
+ 
+ To show the formula for $m = 1$ first notice the following:
+ \begin{claim*}
+  Let $V$ be a finite dimenisonal representation of $\sll_2(k)$. Suppose there exist a nonzero $v \in V$ with $h.v =  r v$ and $e.v = 0$. Then $V$ contains a subrepresentation which is isomorphic to $V^{(r)}$.
+ \end{claim*}
+ \begin{proof}
+  Let $V = \bigoplus_{d \in \N} \bigoplus_{j=0}^{\nu_d} V^{d,j}$ be a decomposition into irreducible subrepresentations with $V^{d,j}$ being $(d+1)$-dimensional for every $d \in \N$ and $j = 1, \dotsc, \nu_d$. Then $v \in V_r = \bigoplus_{p \in \N, d = r+2p} \bigoplus_{j=0}^{\nu_d} V^{d,j}_r$. Suppose that $V$ contains no submodule which is isomorphic to $V^{(r)}$. Then $\nu_r = 0$ and therefore $v \in \bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$. Because $e.V^{d,j}_r = v^{d,j}_{r+2}$ for every $d > r$ and $j = 1, \dotsc, \nu_d$ it follows that $e$ maps $\bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$ isomorphically into $\bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_{r+2}$. Because $e.v = 0$ it follows that $e = 0$, contradicting the assumption that $v$ is nonzero.
+ \end{proof}
+ 
+ Let $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ be a basis of $V^{(n)}$ with $v_i \in V_i$ for every $i$ and $e.v_{n-2} = v_n$ (notice that $n \geq m = 1$, so $v_{n-2}$ is well-defined). Similarly and $w_1, w_2$ a basis of $V^{(1)}$ with $w_j \in W_j$ for $j = 1,2$. Then $v_n \otimes w_1 \in V^{(n)} \otimes V^{(1)}$ with $h.(v_n \otimes w_1) = (n+1) v_n \otimes w_1$ and $e.(v_n \otimes w_1) = 0$. By the previous claim $V^{(n)} \otimes V^{(1)}$ contains a subrepresentation $W^1 \cong V^{(n+1)}$. Similarly $x \coloneqq v_{n-2} \otimes w_1 - v_n \otimes w_2 \in V^{(n)} \otimes V^{(1)}$ with $e.x = 0$ (here it is used that $e.v_{n-2} = v_n$) and $h.x = (n-1)x$. By the claim $V$ contains another subrepresentation $W^2 \cong V^{(n-1)}$. Because $W^1$ and $W^2$ are irreducible and not equal it follows that $W^1 \cap W^2 = 0$. Because
+ \[
+  \dim W^1 + \dim W^2 = 2n+2 = (\dim V^{(n)})(\dim V^{(1)}) = \dim (V^{(n)} \otimes V^{(1)})
+ \]
+ it follows that $V = W^1 \oplus W^2 \cong V^{(n+1)} \oplus V^{(n-1)}$. This shows the formula for $m = 1$.
+ 
+ Suppose that the 
+\end{proof}
+
+
+\begin{rem}
+ \cite{Lectures_on_sl2_modules} has a pretty cool cover and we advise the reader to check it out.
+\end{rem}
+
+
+
 
 
 % \begin{rem}
