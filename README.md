@@ -1,5 +1,5 @@
 # Representation-Theory-1-Skript
-A nice looking mix between the notes I took during the lecture, others took during the lecture and stuff I get from books.
+A nice looking mix between the notes I took during the lecture, tho ones others took during the lecture and stuff I get from books.
 
 An up-do-date compiled version can be found at  
 http://ci.aufenthaltsraum.cf/representation-theory-1-script  
