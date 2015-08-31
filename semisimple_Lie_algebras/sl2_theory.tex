@@ -552,19 +552,47 @@ We also give another proof, taken from \cite[\S 1.4]{Lectures_on_sl2_modules}.
  
  To show the formula for $m = 1$ first notice the following:
  \begin{claim*}
-  Let $V$ be a finite dimenisonal representation of $\sll_2(k)$. Suppose there exist a nonzero $v \in V$ with $h.v =  r v$ and $e.v = 0$. Then $V$ contains a subrepresentation which is isomorphic to $V^{(r)}$.
+  Let $V$ be a finite dimenisonal representation of $\sll_2(k)$. Suppose there exist a nonzero $v \in V$ with $h.v =  r v$ and $e.v = 0$ for $r \in \N$. Then $V$ contains a subrepresentation which is isomorphic to $V^{(r)}$.
  \end{claim*}
  \begin{proof}
-  Let $V = \bigoplus_{d \in \N} \bigoplus_{j=0}^{\nu_d} V^{d,j}$ be a decomposition into irreducible subrepresentations with $V^{d,j}$ being $(d+1)$-dimensional for every $d \in \N$ and $j = 1, \dotsc, \nu_d$. Then $v \in V_r = \bigoplus_{p \in \N, d = r+2p} \bigoplus_{j=0}^{\nu_d} V^{d,j}_r$. Suppose that $V$ contains no submodule which is isomorphic to $V^{(r)}$. Then $\nu_r = 0$ and therefore $v \in \bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$. Because $e.V^{d,j}_r = v^{d,j}_{r+2}$ for every $d > r$ and $j = 1, \dotsc, \nu_d$ it follows that $e$ maps $\bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$ isomorphically into $\bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_{r+2}$. Because $e.v = 0$ it follows that $e = 0$, contradicting the assumption that $v$ is nonzero.
+  Let $V = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} V^{d,j}$ be a decomposition into irreducible subrepresentations with $V^{d,j}$ having heighest weight $d$ for every $d \in \N$ and $j = 1, \dotsc, \nu_d$. Then $v \in V_r = \bigoplus_{p \in \N, d = r+2p} \bigoplus_{j=0}^{\nu_d} V^{d,j}_r$. Suppose that $V$ contains no submodule which is isomorphic to $V^{(r)}$. Then $\nu_r = 0$ and therefore $V_r = \bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$. Because $e.V^{d,j}_r = V^{d,j}_{r+2}$ for every $d > r$ and $j = 1, \dotsc, \nu_d$ it follows that $e$ maps $V_r = \bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$ isomorphically into $\bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_{r+2} \subseteq V_{r+2}$. Because $e.v = 0$ it follows that $e = 0$, contradicting the assumption that $v$ is nonzero.
  \end{proof}
  
- Let $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ be a basis of $V^{(n)}$ with $v_i \in V_i$ for every $i$ and $e.v_{n-2} = v_n$ (notice that $n \geq m = 1$, so $v_{n-2}$ is well-defined). Similarly and $w_1, w_2$ a basis of $V^{(1)}$ with $w_j \in W_j$ for $j = 1,2$. Then $v_n \otimes w_1 \in V^{(n)} \otimes V^{(1)}$ with $h.(v_n \otimes w_1) = (n+1) v_n \otimes w_1$ and $e.(v_n \otimes w_1) = 0$. By the previous claim $V^{(n)} \otimes V^{(1)}$ contains a subrepresentation $W^1 \cong V^{(n+1)}$. Similarly $x \coloneqq v_{n-2} \otimes w_1 - v_n \otimes w_2 \in V^{(n)} \otimes V^{(1)}$ with $e.x = 0$ (here it is used that $e.v_{n-2} = v_n$) and $h.x = (n-1)x$. By the claim $V$ contains another subrepresentation $W^2 \cong V^{(n-1)}$. Because $W^1$ and $W^2$ are irreducible and not equal it follows that $W^1 \cap W^2 = 0$. Because
+ Let $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ be a basis of $V^{(n)}$ with $v_i \in V_i$ for every $i$ and $e.v_{n-2} = v_n$ (notice that $n \geq m = 1$, so $v_{n-2}$ is well-defined). Similarly and $w_{-1}, w_1$ a basis of $V^{(1)}$ with $w_j \in W_j$ for $j = -1,1$. Then $v_n \otimes w_1 \in V^{(n)} \otimes V^{(1)}$ with $h.(v_n \otimes w_1) = (n+1) v_n \otimes w_1$ and $e.(v_n \otimes w_1) = 0$. By the previous claim $V^{(n)} \otimes V^{(1)}$ contains a subrepresentation $W^1 \cong V^{(n+1)}$. Similarly $x \coloneqq v_{n-2} \otimes w_1 - v_n \otimes w_2 \in V^{(n)} \otimes V^{(1)}$ with $e.x = 0$ (here it is used that $e.v_{n-2} = v_n$) and $h.x = (n-1)x$. By the claim $V$ contains another subrepresentation $W^2 \cong V^{(n-1)}$. Because $W^1$ and $W^2$ are irreducible and not equal it follows that $W^1 \cap W^2 = 0$. Because
  \[
-  \dim W^1 + \dim W^2 = 2n+2 = (\dim V^{(n)})(\dim V^{(1)}) = \dim (V^{(n)} \otimes V^{(1)})
+  \dim W^1 + \dim W^2 = 2n+2
+  = \left(\dim V^{(n)}\right) \cdot \left(\dim V^{(1)}\right)
+  = \dim\left( V^{(n)} \otimes V^{(1)} \right)
  \]
  it follows that $V = W^1 \oplus W^2 \cong V^{(n+1)} \oplus V^{(n-1)}$. This shows the formula for $m = 1$.
  
- Suppose that the 
+ Suppose that $m \geq 2$ and the statement holds for $0, 1, \dotsc, m-1$. Then on the one hand
+ \begin{align*}
+  V^{(n)} \otimes V^{(m-1)} \otimes V^{(1)}
+  &\cong V^{(n)} \otimes \left( V^{(m)} \oplus V^{(m-2)} \right)
+  \cong V^{(n)} \otimes V^{(m)} \oplus V^{(n)} \otimes V^{(m-2)} \\
+  &\cong V^{(n)} \otimes V^{(m)} \oplus \left( V^{(n+m-2)} \oplus V^{(n+m-4} \oplus \dotsb \otimes V^{(n-m+2)} \right)
+ \end{align*}
+ while on the other hand
+ \begin{align*}
+       &\, V^{(n)} \otimes V^{(m-1)} \otimes V^{(1)} \\
+  \cong&\, \left( V^{(n+m-1)} \oplus V^{(n+m-3)} \oplus \dotsb \oplus V^{n-m+1} \right) \otimes V^{(1)} \\
+  \cong&\, \left( V^{(n+m-1)} \otimes V^{(1)} \right)
+           \oplus \left( V^{(n+m-3)} \otimes V^{(1)} \right)
+           \oplus \dotsb
+           \oplus \left( V^{(n-m+1)} \otimes V^{(1)} \right) \\
+  \cong&\, \left( V^{(n+m)} \oplus V^{(n+m-2)} \right)
+           \oplus \left( V^{(n+m-2)} \oplus V^{(n+m-4)} \right)
+           \oplus \dotsb
+           \oplus \left( V^{(n-m+2)} \oplus V^{(n-m)} \right) \\
+  \cong&\, \left( V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(n-m)} \right) \\
+       &\,  \oplus \left( V^{(n+m-2)} \oplus V^{(n+m-4)} \oplus \dotsb \oplus V^{(n-m+2)} \right).
+ \end{align*}
+ By the uniqueness of the decomposition of $V^{(n)} \otimes V^{(m-1)} \otimes V^{(1)}$ into irreducible subrepresentations is follows that
+ \[
+  V^{(n)} \otimes V^{(m)} \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(n-m)},
+ \]
+ which finishes the proof.
 \end{proof}
 
 
