@@ -10,33 +10,43 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 \begin{defi}
  An \emph{universal enveloping algebra} of $\g$ is an $k$-algebra $\Ue(\g)$ together with a homomorphism of Lie algebras $\iota \colon \g \to \Ue(\g)$ such that for every $k$-Algebra $A$ and homomorphism of Lie algebras $\phi \colon \g \to A$ there exists a unique homomorphism of $k$-algebras $\Phi \colon \Ue(\g) \to A$ with $\phi = \Phi \circ \iota$, i.e.\ making the following diagram commute:
- \begin{center}
-  \tikzsetnextfilename{universal_property_of_universal_enveloping_algebra}
-  \begin{tikzpicture}[node distance = 5em]
-   \node (g) {$\g$};
-   \node[below of = g] (Ug) {$\Ue(\g)$};
-   \node[right = 5em of Ug] (A) {$A$};
-   \draw[->] (g) to node[left] {$\iota$} (Ug);
-   \draw[->] (g) to node[above right] {$\phi$} (A);
-   \draw[->, dashed] (Ug) to node[below] {$\Phi$} (A);
-  \end{tikzpicture}
- \end{center}
+  \[
+    \begin{tikzcd}
+      \g
+      \arrow{dr}[above right]{\phi}
+      \arrow{d}[left]{\iota}
+      &
+      {}
+      \\
+      \Ue(\g)
+      \arrow[dashed]{r}[below]{\Phi}
+      &
+      A
+    \end{tikzcd}
+  \]
 \end{defi}
 
 
 \begin{rem}
  As always with universal objects any two enveloping algebras of $\Ue(\g)_1$ with $\iota_1 \colon \g_1 \to \Ue(\g)_1$ and $\Ue(\g)_2$ with $\iota_2 \colon \g \to \Ue(\g)_2$ of $\g$ are isomorphic, and there exists a unique isomorphism $\varphi \colon \Ue(\g_1) \to \Ue(\g_2)$ with $\iota_2 = \varphi \colon \iota_1$, i.e.\ making the following diagram commute:
- \begin{center}
-  \tikzsetnextfilename{uniqueness_of_universal_enveloping_algebra}
-  \begin{tikzpicture}[node distance = 5em]
-   \node (g) {$\g$};
-   \node[below left of = g] (U1) {$\Ue(\g)_1$};
-   \node[below right of = g] (U2) {$\Ue(\g)_2$};
-   \draw[->] (g) to node[above left] {$\iota_1$} (U1);
-   \draw[->] (g) to node[above right] {$\iota_2$} (U2);
-   \draw[->] (U1) to node[below] {$\varphi$} (U2);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     {}
+     &
+     \g
+     \arrow{dl}[above left]{\iota_1}
+     \arrow{dr}[above right]{\iota_2}
+     &
+     {}
+     \\
+     \Ue(\g)_1
+     \arrow[dashed]{rr}[below]{\varphi}
+     &
+     {}
+     &
+     \Ue(\g)_2
+   \end{tikzcd}
+ \]
  Hence we will talk about \emph{the} universal enveloping algebra of $\g$.
 \end{rem}
 
@@ -74,19 +84,21 @@ The following hold for this section alone: We fix an arbitrary field $k$ and a L
 
 \begin{rem}
  Given any two $k$-Lie algebras $\g_1$ and $\g_2$ then any homomorphism of Lie algebras $\phi \colon \g_1 \to \g_2$ induces a homomorphism of $k$-algebras $\phi^* \colon \Ue(\g_1) \to \Ue(\g_2)$ via the following commutative diagram:
- \tikzsetnextfilename{functoriality_of_the_universal_enveloping_algebra}
- \begin{center}
-  \begin{tikzpicture}[node distance = 7em]
-   \node (g1) {$\g_1$};
-   \node[right of = g1] (g2) {$\g_2$};
-   \node[below = 3em of g1] (Ug1) {$\Ue(\g_1)$};
-   \node[below = 3em of g2] (Ug2) {$\Ue(\g_2)$};
-   \draw[->] (g1) to node[above] {$\varphi$} (g2);
-   \draw[->] (Ug1) to node[below] {$\varphi^*$} (Ug2);
-   \draw[->] (g1) to node[left] {$\iota_1$} (Ug1);
-   \draw[->] (g2) to node[right] {$\iota_2$} (Ug2);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     \g_1
+     \arrow{r}[above]{\phi}
+     \arrow{d}[left]{\iota_1}
+     &
+     \g_2
+     \arrow{d}[right]{\iota_2}
+     \\
+     \Ue(\g_1)
+     \arrow[dashed]{r}[below]{\phi^*}
+     &
+     \Ue(\g_2)
+   \end{tikzcd}
+ \]
  Hence the assignment $\g \mapsto \Ue(g)$ of a Lie algebra to its universal eveloping algebra can be extended to a (covariant) functor $\Ue \colon \cLie{k} \to \cAlg{k}$. It is by the universal property of the universal enveloping algebra left adjoint to the functor $\cAlg{k} \to \cLie{k}$ which assignes each $k$-algebra its Lie algebra.
 \end{rem}
 
@@ -686,33 +698,43 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
 
 \begin{defi}
  Let $X$ be a set. A \emph{free $k$-Lie algebra on $X$} is a Lie algebra $F(X)$ together with a map $\iota \colon X \to F(X)$ such that for every Lie algebra $\g$ and map $\phi \colon X \to \g$ there exists a unique homomorphism of Lie algebras $\Phi \colon F(X) \to \g$ with $\phi = \Phi \circ \iota$, i.e.\ making the following diagram commute:
- \tikzsetnextfilename{universal_property_of_the_free_Lie_algebra}
- \begin{center}
-  \begin{tikzpicture}[node distance = 5em]
-   \node (X) {$X$};
-   \node (FX)[below of = X] {$F(X)$};
-   \node (g)[right of = FX] {$\g$};
-   \draw[->] (X) to node[left] {$\iota$} (FX);
-   \draw[->] (X) to node[above right] {$\phi$} (g);
-   \draw[->] (FX) to node[below] {$\Phi$} (g);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     X
+     \arrow{dr}[above right]{\phi}
+     \arrow{d}[left]{\iota}
+     &
+     {}
+     \\
+     F(X)
+     \arrow[dashed]{r}[below]{\Phi}
+     &
+     \g
+   \end{tikzcd}
+ \]
 \end{defi}
 
 
 \begin{rem}
  As usual with free objects it follows that any two free Lie algebras over a set $X$ are unique up to unique isomorphism, i.e.\ if $F(X)_1$ with $\iota_1 \colon X \to F(X)_1$ and $F(X)_2$ with $\iota_2 \colon X \to F(X)_2$ are two free Lie algebras over $X$ then there exists a unique isomorphism of Lie algebras $\varphi \colon F(X)_1 \to F(X)_2$ making the following diagram commute:
- \tikzsetnextfilename{uniqueness_of_the_free_Lie_algebra}
- \begin{center}
-  \begin{tikzpicture}[node distance = 5em]
-   \node (X) {$X$};
-   \node[below left of = X] (FX1) {$F(X)_1$};
-   \node[below right of = X] (FX2) {$F(X)_2$};
-   \draw[->] (X) to node[above left] {$\iota_1$} (FX1);
-   \draw[->] (X) to node[above right] {$\iota_2$} (FX2);
-   \draw[->] (FX1) to node[below] {$\varphi$} (FX2);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     {}
+     &
+     X
+     \arrow{dl}[above left]{\iota_1}
+     \arrow{dr}[above right]{\iota_2}
+     &
+     {}
+     \\
+     F(X)_1
+     \arrow[dashed]{rr}[below]{\varphi}
+     &
+     {}
+     &
+     F(X)_2
+   \end{tikzcd}
+ \]
  We will therefore always talk about \emph{the} free $k$-Lie algebra over $X$.
 \end{rem}
 
@@ -726,19 +748,21 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
   F(X) = \bigcap \{\g \mid \text{$\g \subseteq A(X)$ is a Lie subalgebra with $X \subseteq \g$}\}.
  \]
  Let $\g$ be a $k$-Lie algebra and $\phi \colon X \to \g$ a map. By the universal property of the free $k$-algebra the map $\phi$ induces a homomorphism of $k$-algebras $\theta \colon A(X) \to \Ue(\g)$ making the following diagram commute, where the vertical maps are the canonical inclusions:
- \tikzsetnextfilename{construction_of_free_Lie_algebra}
- \begin{center}
-  \begin{tikzpicture}[node distance = 5em]
-   \node (X) {$X$};
-   \node[right of = X] (g) {$\g$};
-   \node[below of = X] (FX) {$F(X)$};
-   \node[below of = g] (Ug) {$\Ue(\g)$};
-   \draw[->] (X) to node[above] {$\phi$} (g);
-   \draw[->] (FX) to node[below] {$\theta$} (Ug);
-   \draw[->] (X) to (FX);
-   \draw[->] (g) to (Ug);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     X
+     \arrow{r}[above]{\phi}
+     \arrow{d}
+     &
+     \g
+     \arrow{d}
+     \\
+     F(X)
+     \arrow[dashed]{r}[above]{\theta}
+     &
+     \Ue(\g)
+   \end{tikzcd}
+ \]
  As $\theta(X) = \phi(X) \subseteq \g$ it follows that $X \subseteq \theta^{-1}(\g)$. Because $\theta^{-1}(\g)$ is a Lie subalgebra of $F(X)$ containing $X$ it follows that $\theta^{-1}(\g) = F(X)$ and therefore $\theta(F(X)) \subseteq \g$. Hence $\theta$ restricts to a map $\Phi \colon F(X) \to \g$. Because $\theta$ is a homomorphism of $k$-algebras it is in particular a homomorphism of Lie algebras and therefore the same goes for $\Phi$. This shows the existence.
  
  For the uniqueness notice that $F(X)$ is by definition generated by $X$ and hence any homomorphism of Lie algebras $\Psi \colon F(X) \to \g$ is uniquely determinad by the restriction $\Psi|_X$.
@@ -784,20 +808,26 @@ For this subsection we fix some $k$-Lie algebra $\g$ with basis $(x_i)_{i \in I}
 \end{lem}
 \begin{proof}
  It will be shown that $\Ue(F(X))$ together with the canonical inclusion $X \inc \Ue(F(X))$ satisfies universal property of the free $k$-algebras. Let $A$ be a $k$-algebra and $\phi \colon X \to A$ a map. Then $\phi$ induces a unique homomorphism of Lie algebras $\psi \colon F(X) \to A$ by the universal property of the free Lie algebra. Then $\psi$ induces a unique homomorphism of $k$-algebras $\Psi \colon \Ue(F(X)) \to A$ by the universal property of the universal enveloping algebra. Hence the following diagram commutes, where the vertical maps denote the canonical inclusions.
- \tikzsetnextfilename{universal_enveloping_algebra_of_the_free_Lie_algebra}
- \begin{center}
-  \begin{tikzpicture}[node distance = 4em]
-   \node (X) {$X$};
-   \node[below of = X] (FX) {$F(X)$};
-   \node[below of = FX] (UFX) {$\Ue(F(X)$};
-   \node[right = 5em of FX] (A) {$A$};
-   \draw[->] (X) to (FX);
-   \draw[->] (FX) to (UFX);
-   \draw[->] (X) to node[above] {$\phi$} (A);
-   \draw[->] (FX) to node[above left] {$\psi$} (A);
-   \draw[->] (UFX) to node[below] {$\Psi$} (A);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     X
+     \arrow{dr}[above right]{\phi}
+     \arrow{d}
+     &
+     {}
+     \\
+     F(X)
+     \arrow{r}[above]{\phi}
+     \arrow{d}
+     &
+     A
+     \\
+     \Ue(F(X))
+     \arrow{ur}[below right]{\Psi}
+     &
+     {}
+   \end{tikzcd}
+ \]
  Leaving out the middle part of the diagram shows the existence. The uniqueness of $\Psi$ follows from the uniqueness of $\psi$.
 \end{proof}
 

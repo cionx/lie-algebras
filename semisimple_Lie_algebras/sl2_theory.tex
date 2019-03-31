@@ -77,39 +77,43 @@ and that this basis satisfies the relations
    and $V_i$ is one-dimensional for every $i = -n, -n+2, \dotsc, n-2, n$. In particular all occuring weights are integral and the heighest weight is $n$.
    
    More explicitely there exists a basis $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ of $V$ with $v_i \in V_i$ for every $i = -n, -n+2, \dotsc, n-2, n$, with respect to which the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
-   \begin{center}
-    \tikzsetnextfilename{irreducible_representation_of_sl2}
-    \begin{tikzpicture}[node distance = 4.2em]
-     % the nodes
-     \node (v1) {$v_{-n}$};
-     \node[right of = v1] (v2) {$v_{-n+2}$};
-     \node[right of = v2] (v3) {$v_{-n+4}$};
-     \node[right of = v3] (v4) {$v_{-n+6}$};
-     \node[right of = v4] (dots) {$\dotso$};
-     \node[right of = dots] (vn-3) {$v_{n-6}$};
-     \node[right of = vn-3] (vn-2) {$v_{n-4}$};
-     \node[right of = vn-2] (vn-1) {$v_{n-2}$};
-     \node[right of = vn-1] (vn) {$v_n$};
-     % the action of e
-     \draw[->, bend left] (v1) to node[above] {\footnotesize $1$} (v2);
-     \draw[->, bend left] (v2) to node[above] {\footnotesize $2$} (v3);
-     \draw[->, bend left] (v3) to node[above] {\footnotesize $3$} (v4);
-     \draw[->, bend left] (v4) to (dots);
-     \draw[->, bend left] (dots) to (vn-3);
-     \draw[->, bend left] (vn-3) to node[above] {\footnotesize $n-3$} (vn-2);
-     \draw[->, bend left] (vn-2) to node[above] {\footnotesize $n-2$} (vn-1);
-     \draw[->, bend left] (vn-1) to node[above] {\footnotesize $n-1$} (vn);
-     % the action of f
-     \draw[->, bend left, dashed] (vn) to node[below] {\footnotesize $1$} (vn-1);
-     \draw[->, bend left, dashed] (vn-1) to node[below] {\footnotesize $2$} (vn-2);
-     \draw[->, bend left, dashed] (vn-2) to node[below] {\footnotesize $3$} (vn-3);
-     \draw[->, bend left, dashed] (vn-3) to (dots);
-     \draw[->, bend left, dashed] (dots) to (v4);
-     \draw[->, bend left, dashed] (v4) to node[below] {\footnotesize $n-3$} (v3);
-     \draw[->, bend left, dashed] (v3) to node[below] {\footnotesize $n-2$} (v2);
-     \draw[->, bend left, dashed] (v2) to node[below] {\footnotesize $n-1$} (v1);
-    \end{tikzpicture}
-   \end{center}
+   \[
+    \begin{tikzcd}
+       v_{-n}
+       \arrow[bend left]{r}[above]{1}
+       &
+       v_{-n+2}
+       \arrow[bend left]{r}[above]{2}
+       \arrow[bend left, dashed]{l}[below]{n-1}
+       &
+       v_{-n+4}
+       \arrow[bend left]{r}[above]{3}
+       \arrow[bend left, dashed]{l}[below]{n-2}
+       &
+       v_{-n+6}
+       \arrow[bend left]{r}
+       \arrow[bend left, dashed]{l}[below]{n-3}
+       &
+       \dots
+       \arrow[bend left]{r}
+       \arrow[bend left, dashed]{l}
+       &
+       v_{n-6}
+       \arrow[bend left]{r}[above]{n-3}
+       \arrow[bend left, dashed]{l}
+       &
+       v_{n-4}
+       \arrow[bend left]{r}[above]{n-2}
+       \arrow[bend left, dashed]{l}[below]{3}
+       &
+       v_{n-2}
+       \arrow[bend left]{r}[above]{n-1}
+       \arrow[bend left, dashed]{l}[below]{2}
+       &
+       v_n
+       \arrow[bend left, dashed]{l}[below]{1}
+     \end{tikzcd}
+   \]
    In particular
    \begin{gather*}
     e.V_i =
@@ -202,39 +206,43 @@ and that this basis satisfies the relations
     = V_{-n} \oplus V_{-n+2} \oplus \dotsb \oplus V_{n-2} \oplus V_n
    \]
    with $V_i$ being one-dimensional for every $i = -n, -n+2, \dotsc, n-2, n$. From the definition of $w_0, \dotsc, w_n$ and the claim it follows that the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
-   \begin{center}
-    \tikzsetnextfilename{irreducible_representation_of_sl2_construction}
-    \begin{tikzpicture}[node distance = 4.2em]
-     % the nodes
-     \node (w0) {$w_0$};
-     \node[right of = w0] (w1) {$w_1$};
-     \node[right of = w1] (w2) {$w_2$};
-     \node[right of = w2] (w3) {$w_3$};
-     \node[right of = w3] (dots) {$\dotso$};
-     \node[right of = dots] (wn-3) {$w_{n-3}$};
-     \node[right of = wn-3] (wn-2) {$w_{n-2}$};
-     \node[right of = wn-2] (wn-1) {$w_{n-1}$};
-     \node[right of = wn-1] (wn) {$w_n$};
-     % the action of e
-     \draw[->, bend left] (w0) to node[above] {\footnotesize $1$} (w1);
-     \draw[->, bend left] (w1) to node[above] {\footnotesize $1$} (w2);
-     \draw[->, bend left] (w2) to node[above] {\footnotesize $1$} (w3);
-     \draw[->, bend left] (w3) to (dots);
-     \draw[->, bend left] (dots) to (wn-3);
-     \draw[->, bend left] (wn-3) to node[above] {\footnotesize $1$} (wn-2);
-     \draw[->, bend left] (wn-2) to node[above] {\footnotesize $1$} (wn-1);
-     \draw[->, bend left] (wn-1) to node[above] {\footnotesize $1$} (wn);
-     % the action of f
-     \draw[->, bend left, dashed] (wn) to node[below] {\footnotesize $n-1$} (wn-1);
-     \draw[->, bend left, dashed] (wn-1) to node[below] {\footnotesize $(n-2)2$} (wn-2);
-     \draw[->, bend left, dashed] (wn-2) to node[below] {\footnotesize $(n-3)3$} (wn-3);
-     \draw[->, bend left, dashed] (wn-3) to (dots);
-     \draw[->, bend left, dashed] (dots) to (w3);
-     \draw[->, bend left, dashed] (w3) to node[below] {\footnotesize $3(n-3)$} (w2);
-     \draw[->, bend left, dashed] (w2) to node[below] {\footnotesize $2(n-2)$} (w1);
-     \draw[->, bend left, dashed] (w1) to node[below] {\footnotesize $n-1$} (w0);
-    \end{tikzpicture}
-   \end{center}
+   \[
+      \begin{tikzcd}
+        w_0
+        \arrow[bend left]{r}[above]{1}
+        &
+        w_1
+        \arrow[bend left]{r}[above]{1}
+        \arrow[bend left, dashed]{l}[below]{n-1}
+        &
+        w_2
+        \arrow[bend left]{r}[above]{1}
+        \arrow[bend left, dashed]{l}[below]{2(n-2)}
+        &
+        w_3
+        \arrow[bend left]{r}
+        \arrow[bend left, dashed]{l}[below]{3(n-3)}
+        &
+        \dots
+        \arrow[bend left]{r}
+        \arrow[bend left, dashed]{l}
+        &
+        w_{n-3}
+        \arrow[bend left]{r}[above]{1}
+        \arrow[bend left, dashed]{l}
+        &
+        w_{n-2}
+        \arrow[bend left]{r}[above]{1}
+        \arrow[bend left, dashed]{l}[below]{(n-3)3}
+        &
+        w_{n-1}
+        \arrow[bend left]{r}[above]{1}
+        \arrow[bend left, dashed]{l}[below]{(n-2)2}
+        &
+        w_n
+        \arrow[bend left, dashed]{l}[below]{n-1}
+     \end{tikzcd}
+   \]
    The desired basis $v_1, \dotsc, v_n$ can now be defined as
    \[
     v_{-n+2i} \coloneqq \frac{w_i}{i!}

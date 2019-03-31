@@ -13,14 +13,8 @@
 \usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
 \usepackage[autooneside,headsepline]{scrlayer-scrpage} %for headers
 \usepackage{stmaryrd} % for mapsfrom
-\usepackage{tikz} % for diagrams
+\usepackage{tikz-cd} % for diagrams
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
-\usetikzlibrary{external} % storing tikz figures externially to reduce build time
-\tikzexternalize[prefix=tikz/]
-\tikzset{external/system call={%
-  xelatex \tikzexternalcheckshellescape
-  -halt-on-error -interaction=batchmode
-  -jobname "\image" "\texsource"}}
  
  
 % the file containing the references for biblatex

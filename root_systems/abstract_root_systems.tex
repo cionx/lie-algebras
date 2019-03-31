@@ -17,18 +17,20 @@ For this section let $k$ be an arbitrary field with $\chara k = 0$.
 
 \begin{rem}
  Notice that the notation of Definition~\ref{defi: notation of natural pairing} is compatible with the natural monomorphism $\iota \colon V \to V^{**}, v \mapsto (\lambda \mapsto \lambda(v))$ in the sense that the following diagram commutes:
-
- \begin{center}
-  \tikzsetnextfilename{natural_pairing_compatible_with_natural_homomorphism}
-  \begin{tikzpicture}[node distance = 4em]
-   \node (V) {$V^* \otimes V$};
-   \node[right = 8em of V] (k) {$k$};
-   \node[below = of V] (Vdd) {$V^* \otimes V^{**}$};
-   \draw[->] (V) to node[above] {$\lambda \otimes v \mapsto \pair{\lambda, v}$} (k);
-   \draw[->] (Vdd) to node[below right] {$\lambda \otimes \phi \mapsto \pair{\lambda, \phi}$} (k);
-   \draw[->] (V) to node[left] {${\id_V} \otimes \iota$} (Vdd);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     V^* \otimes V
+     \arrow{r}[above]{\lambda \otimes v \mapsto \pair{\lambda, v}}
+     \arrow{d}[left]{\id_V \otimes \iota}
+     &
+     k
+     \\
+     V^* \otimes V^{**}
+     \arrow{ur}[below]{\lambda \otimes \phi \mapsto \pair{\lambda, \phi}}
+     &
+     {}
+   \end{tikzcd}
+ \]
  
  If $V$ is finite dimensional then $\iota$ is already an isomorphism and identifies $V$ with $V^{**}$. Then $\pair{\phi, v}$ can be understood as $\phi(v)$ or $\iota(v)(\phi)$ and the above shows that both are actually the same.
 \end{rem}

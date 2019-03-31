@@ -388,17 +388,21 @@
    $\im f \subseteq \g_2$ is a Lie subalgebra.
   \item
    If $I \subideal \g_1$ is an ideal with $\ker f \subseteq I$ then there exists a unique homomorphism of Lie algebras $\tilde{f} \colon \g_1/I \to \g_2$ with $f = \tilde{f} \circ \pi$ where $\pi \colon \g_1 \to \g_1/I$ is the canonical projection.
-   \tikzsetnextfilename{universal_property_of_quotient_of_lie_algebras}
-   \begin{center}
-    \begin{tikzpicture}[node distance = 2cm]
-     \node (g1) {$\g_1$};
-     \node (gI) [below of = g1] {$\g_1/I$};
-     \node (g2) [right of = gI] {$\g_2$};
-     \draw[->] (g1) to node[above right] {$f$} (g2);
-     \draw[->] (g1) to node[left] {$\pi$} (gI);
-     \draw[->] (gI) to node[below] {$\exists! \tilde{f}$} (g2);
-    \end{tikzpicture}
-   \end{center}
+   \[
+     \begin{tikzcd}
+       \g_1
+       \arrow{dr}[above right]{f}
+       \arrow{d}[left]{d}
+       &
+       {}
+       \\
+       \g_1/I
+       \arrow[dashed]{r}[below]{\exists! f}
+       &
+       \g_2
+     \end{tikzcd}
+   \]
+
   \item
    If $I, J \subideal \g$ are subideals with $I \subseteq J$ then $J/I \subideal \g/I$ and the natural isomorphism of vector spaces
    \[
@@ -419,17 +423,24 @@
 
 \begin{rem}
  For a Lie algebra $\g$ the ideal $[\g,\g]$ is the minimal ideal inside $\g$ such that $\g/[\g,\g]$ is abelian. Furthermore given any abelian Lie algebra $\h$ any homomorphism of Lie algebras $\g \to \h$ factorizes through a unique homomorphism of Lie algebras $\g/[\g,\g] \to \h$.
- \begin{center}
-  \tikzsetnextfilename{universal_property_of_abelization}
-  \begin{tikzpicture}[node distance = 2cm]
-   \node (gab) {$\g/[\g,\g]$};
-   \node (g) [above left of = gab] {$\g$};
-   \node (h) [above right of = gab] {$\h$};
-   \draw[->] (g) to (h);
-   \draw[->] (g) to (gab);
-   \draw[->] (gab) to node[below right] {$\exists!$} (h);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     \g
+     \arrow{rr}
+     \arrow{dr}
+     &
+     {}
+     &
+     \h
+     \\
+     {}
+     &
+     \g / [\g,\g]
+     \arrow[dashed]{ur}[below right]{\exists!}
+     &
+     {}
+   \end{tikzcd}
+ \]
 \end{rem}
 
 

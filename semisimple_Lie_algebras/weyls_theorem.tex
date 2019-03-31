@@ -108,19 +108,21 @@
   0 \to \g \Hom_k(U, U) \to \Hom_k(U,U) \xrightarrow{\pi_U} \Hom_k(U,U)^\g \to 0.
  \]
  The restriction map $\rho \colon \Hom_k(V,U) \to \Hom_k(U,U), f \mapsto f|_{U} = f \circ \iota$ is surjective, where $\iota \colon U \inc V$ denotes the canonical inclusion (notice that it a map between the $k$-linear maps). It is a homomorphism of representations of $\g$, hence induces a map $\bar{\rho} \colon \Hom_k(V,U)^\g \to \Hom_k(U,U)^\g$ by restriction. The maps so far fit in the following commutative diagram:
- \begin{center}
-  \tikzsetnextfilename{proof_of_weyls_theorem}
-  \begin{tikzpicture}[node distance = 5em]
-   \node (kVU) {$\Hom_k(V,U)$};
-   \node[right = 5em of kVU] (kUU) {$\Hom_k(U,U)$};
-   \node[below of = kVU] (gVU) {$\Hom_k(V,U)^\g$};
-   \node[below of = kUU] (gUU) {$\Hom_k(U,U)^\g$};
-   \draw[->] (kVU) to node[above] {$\rho$} (kUU);
-   \draw[->] (gVU) to node[below] {$\bar{\rho}$} (gUU);
-   \draw[->] (kVU) to node[left] {$\pi_V$} (gVU);
-   \draw[->] (kUU) to node[right] {$\pi_U$} (gUU);
-  \end{tikzpicture}
- \end{center}
+ \[
+   \begin{tikzcd}
+     \Hom_k(V,U)
+     \arrow{r}[above]{\rho}
+     \arrow{d}[left]{\pi_V}
+     &
+     \Hom_k(U,U)
+     \arrow{d}[right]{\pi_U}
+     \\
+     \Hom_k(V,U)^\g
+     \arrow{r}[above]{\tilde{\rho}}
+     &
+     \Hom_k(U,U)^\g
+   \end{tikzcd}
+ \]
  Because $\pi_U$ and $\rho$ are surjective it follows that $\bar{\rho}$ is also surjective. Thus there exists some $\pi \in \Hom_k(V,U)^\g$ with $\id_U = \bar{\rho}(\pi) = \pi \circ \iota$.
  
  Notice that $\Hom_k(V,U)^\g = \Hom_\g(V,U)$ and $\Hom_k(U,U)^\g = \Hom_\g(U,U)$ as already seen in Remark~\ref{rem: homomorphisms of representations as invariants}. Hence $\id_U = \pi \circ \iota$ is a statement about homomorphism of representations of $\g$, i.e.\ homomorphisms of $\Ue(\g)$-modules. It follows that $\pi$ is a retraction in the category of $\Ue(\g)$-modules, which is why $V = U \oplus \ker \pi$ with $\ker \pi \subseteq V$ being a subrepresentation of $\g$.
