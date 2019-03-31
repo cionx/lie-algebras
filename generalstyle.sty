@@ -38,7 +38,7 @@
 
 
 
-%%%%% CONFIGURATION
+%%%%% CONFIGURATION & STYLE
   
 % the file containing the references for biblatex
 \bibliography{references.bib}
@@ -78,6 +78,7 @@
 \newcounter{everything}[section]  % to be used for all kind of math enviroments
 
 % theorem-like enviroments
+\theoremstyle{definition}
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{theorem}[everything]{Theorem}
@@ -86,7 +87,6 @@
 \newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
 
 % text-like enviroments
-\theoremstyle{definition}
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Example}
 \newtheorem{examples}[everything]{Examples}
@@ -107,10 +107,8 @@
 \setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
 \setlist[itemize, 3]{leftmargin=*}
 
-
-
-
-%%%%% MATH STUFF
+% text shortcuts
+\newcommand{\defemph}{\emph}
 
 % text shortcuts involving nobreakdash
 \newcommand{\algebra}[1]{#1\nobreakdash-algebra}
@@ -119,6 +117,11 @@
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
+
+
+
+
+%%%%% MATH STUFF
 
 % numbers and fields
 \newcommand{\N}{\mathbb{N}}
@@ -154,7 +157,7 @@
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Mat}{M}
-\DeclareMathOperator{\normallie}{Z}
+\DeclareMathOperator{\normallie}{N}
 \DeclareMathOperator{\rad}{rad}
 \newcommand{\Ue}{\mathop{\mathcal{U}}}
 \DeclareMathOperator{\vspan}{span}

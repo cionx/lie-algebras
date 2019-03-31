@@ -17,12 +17,12 @@
     \to
     \glie
   \]
-  is called a \emph{Lie~bracket}\index{Lie!bracket} if it satisfies the following two conditions:
+  is called a \defemph{Lie~bracket}\index{Lie!bracket} if it satisfies the following two conditions:
   \begin{enumerate}
     \item
-    $[-, -]$ is \emph{alternating}\index{alternating}, i.e.~$[x,x] = 0$ for every~$x \in \glie$.
+    $[-, -]$ is \defemph{alternating}\index{alternating}, i.e.~$[x,x] = 0$ for every~$x \in \glie$.
     \item
-    $[-, -]$ satisfies the \emph{Jacobi identity}\index{Jacobi identity}
+    $[-, -]$ satisfies the \defemph{Jacobi identity}\index{Jacobi identity}
     \[
       [x,[y,z]] + [y,[z,x]] + [z,[x,y]]
       =
@@ -30,7 +30,7 @@
     \]
     for all~$x,y,z \in \glie$.
   \end{enumerate}
-  A~{\vectorspace{$\kf$}}~$\glie$ together with a Lie~bracket~$[-,-]$ is called a~\emph{\liealgebra{$\kf$}}\index{Lie!algebra}.
+  A~{\vectorspace{$\kf$}}~$\glie$ together with a Lie~bracket~$[-,-]$ is called a~\defemph{\liealgebra{$\kf$}}\index{Lie!algebra}.
 \end{definition}
 
 
@@ -75,7 +75,7 @@
         ={}&  0
     \end{align*}
     for all~$a, b, c \in A$.
-    The element~$[a,b]$ is the \emph{commutator}\index{commutator} of~$a$ and~$b$.
+    The element~$[a,b]$ is the \defemph{commutator}\index{commutator} of~$a$ and~$b$.
    
     The following two are important examples of this construction:
     \begin{enumerate}
@@ -87,7 +87,7 @@
           AB - BA
         \]
         for all~$A, B \in \Mat_n(\kf)$.
-        This Lie~algebra is called the \emph{general linear Lie~algebra}\index{general linear Lie algebra} and is denoted by~\gls*{general lie matrix}.
+        This Lie~algebra is called the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} and is denoted by~\gls*{general lie matrix}.
       \item
         More generally for any~{\vectorspace{$\kf$}} the~{\algebra{$\kf$}}~$\End_k(V)$ becomes a Lie~algebra via
         \[
@@ -96,7 +96,7 @@
           \phi_1 \circ \phi_2 - \phi_2 \circ \phi_1
         \]
         for all~$\phi_1, \phi_2 \in \End_k$.
-        This Lie~algebra is called the \emph{general linear Lie~algebra of~$V$}\index{general linear Lie algebra} and is denoted by~\gls*{general lie endomorphism}.
+        This Lie~algebra is called the \defemph{general linear Lie~algebra of~$V$}\index{general linear Lie algebra} and is denoted by~\gls*{general lie endomorphism}.
     \end{enumerate}
   \end{enumerate}
 \end{examples}
@@ -135,9 +135,9 @@
   Let~$\glie$ be a~{\liealgebra{$\kf$}}.
   \begin{enumerate}
     \item
-      A \emph{Lie~subalgebra}\index{Lie!subalgebra} of~$\glie$ is a~{\linear{$\kf$}} subspace~$\hlie \subseteq \glie$ such that~$[x,y] \in \hlie$ for all~$x, y \in \hlie$.
+      A \defemph{Lie~subalgebra}\index{Lie!subalgebra} of~$\glie$ is a~{\linear{$\kf$}} subspace~$\hlie \subseteq \glie$ such that~$[x,y] \in \hlie$ for all~$x, y \in \hlie$.
     \item
-      A \emph{Lie~ideal}\index{Lie!ideal}, or simply~\emph{ideal} in~$\glie$ is a~{\linear{$\kf$}} subspace~$I \subseteq \glie$ such that~$[x,y] \in I$ for all~$x \in \glie$ and~$y \in I$.
+      A \defemph{Lie~ideal}\index{Lie!ideal}, or simply~\emph{ideal} in~$\glie$ is a~{\linear{$\kf$}} subspace~$I \subseteq \glie$ such that~$[x,y] \in I$ for all~$x \in \glie$ and~$y \in I$.
       That~$I$ is an ideal in~$\glie$ is denoted by~$I \mathrel{\gls*{lie ideal}} \glie$.
   \end{enumerate}
 \end{definition}
@@ -161,7 +161,7 @@
 
 \begin{definition}
   Let~$\glie$ be a Lie~algebra.
-  The \emph{center}\index{center} of~$\glie$ is
+  The \defemph{center}\index{center} of~$\glie$ is
   \[
     \gls*{center}
     \defined
@@ -187,281 +187,297 @@
       y \in Y
     \}
   \]
-  is the \emph{commutator}\index{commutator} of~$X$ and~$Y$.
+  is the \defemph{commutator}\index{commutator} of~$X$ and~$Y$.
 \end{definition}
-% 
-% 
-% \begin{definition}
-%   A Lie~algebra~$\glie$ is \emph{abelian} if~$[x,y] = 0$ for all~$x, y \in \glie$.
-% \end{definition}
-% 
-% 
-% \begin{remark}
-%   Note that a Lie~algebra~$\glie$ is abelian if and only if~$\centerlie(\glie) = 0$, if and only if~$[\glie, \glie] = 0$.
-% \end{remark}
-% 
-% 
-% \begin{example}
-%   A~{\algebra{$\kf$}}~$A$ is commutative if and only if it is abelian as a Lie~algebra.
-% \end{example}
-% 
-% 
-% \begin{lemma}
-%   Let~$\glie$ be a Lie~algebra over some field~$\kf$.
-%   \begin{enumerate}
-%     \item
-%     If~$I_\lambda$,~$\lambda \in \Lambda$ is a collection of ideals~$I_\lambda \subideal \glie$ then their intersection~$\bigcap_{\lambda \in \Lambda} I_\lambda$ and their sum~$\sum_{\lambda \in \Lambda} I_\lambda$ are again ideals in~$\glie$.
-%     \item
-%     If $I$ and~$J$ are ideals in~$\glie$ then their commutator~$[I,J]$ is again an ideal in~$\glie$.
-%   \end{enumerate}
-% \end{lemma}
-% 
-% 
-% \begin{proof}
-%   \leavevmode
-%   \begin{enumerate}
-%     \item
-%       This follows from direct calculation.
-%     \item
-%       As~$[I,J]$ is spanned by the elements~$[y,z]$ with~$y \in I$ and~$z \in J$ it sufficies to show that~$[x,[y,z]] \in [I,J]$ for all~$x \in \glie$,~$y \in I$ and~$z \in J$.
-%       This follows from $I, J \subideal \glie$ and the Jacobi identity, because
-%       \[
-%         [x,[y,z]]
-%         =
-%         [[x,y], z] + [y, [x,z]]
-%         \subseteq
-%         [I, z] + [y, I]
-%         \subseteq
-%         [I, J] + [J, I]
-%         =
-%         [I,J] \,.
-%       \]
-%       Here we used that~$[J,I] = [I,J]$ by the antisymmetry of the Lie bracket~$[-,-]$.
-%    \qedhere
-%  \end{enumerate}
-% \end{proof}
-% 
-% 
-% \begin{definition}
-%   A Lie~algebra $\glie$ is~\emph{linear} if~$\glie$ is a Lie subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$, or a Lie subalgebra of~$\gllie_n(\kf)$ for some~$n$.
-% \end{definition}
-% 
-% 
-% \begin{examples}[Linear Lie~Algebras]
-%   \leavevmode
-%   \begin{enumerate}
-%   \item
-%     Let $\glie = \gllie_n(\kf)$.
-%     Then
-%     \[
-%       \sllie_n(\kf)
-%       \defined
-%       \{
-%         A \in \glie
-%       \suchthat
-%         \tr A = 0
-%       \}
-%     \]
-%     is an ideal in~$\glie$, namely
-%     \[
-%       \sllie_n(\kf)
-%       =
-%       [\glie,\glie]  \,.
-%       \]
-%       
-%     Indeed, we have for all~$A, B \in \glie$ that~$\tr(AB) = \tr(BA)$ and hence
-%     \[
-%         \tr( [A,B] )
-%       = \tr(AB-BA)
-%       = \tr(AB) - \tr(BA)
-%       = \tr(AB) - \tr(AB)
-%       = 0  \,.
-%     \]
-%     This shows that~$[\glie, \glie] \subseteq \sllie_n(\kf)$.
-%     Observe on the other hand that~$\sllie_n(\kf)$ has a basis given by the matrices $E_{ij}$ with $1 \leq i \neq j \leq n$ and $E_{11} - E_{ii}$ with $i = 2, \dotsc, n$.
-%     Each of these matrices is given as a commutator, namely
-%     \[
-%         E_{ij}
-%         =
-%         E_{ij} E_{jj} - \underbrace{ E_{jj} E_{ij} }_{=0}
-%         =
-%         [E_{ij}, E_{jj}]
-%     \]
-%     for $1 \leq i \neq j \leq n$ and
-%     \[
-%       E_{11} - E_{ii}
-%       =
-%       E_{1i} E_{i1} - E_{i1} E_{1i}
-%       =
-%       [E_{1i}, E_{i1}]
-%     \]
-%     for $i = 2, \dotsc, n$.
-%     Therefore $\sllie_n(\kf) \subseteq [\glie,\glie]$.
-%     
-%     The Lie~algebra~$\sllie_n(\kf)$ is the \emph{special Lie~algebra}.
-%     
-%     If~$V$ is any finite dimensional~{\vectorspace{$\kf$}} then
-%     \[
-%       \sllie(V)
-%       \defined
-%       [\gllie(V), \gllie(V)]
-%       =
-%       \{
-%         f \in \gllie(V)
-%       \suchthat
-%         \tr(f) = 0
-%       \}
-%     \]
-%     is the \emph{special Lie~algebra} of~$V$.
-%    
-%   \item
-%     The upper triangular matrices
-%     \[
-%       \tlie_n(\kf)
-%       \defined
-%       \left\{
-%         \begin{pmatrix}
-%             a_{11}
-%           & \cdots
-%           & \cdots
-%           & a_{1n}
-%           \\
-%             0
-%           & \ddots
-%           & {}
-%           & \vdots
-%           \\
-%             \vdots
-%           & \ddots
-%           & \ddots
-%           & \vdots
-%           \\
-%             0
-%           & \cdots
-%           & 0
-%           & a_{nn}
-%         \end{pmatrix}
-%       \suchthat*
-%         \text{$a_{ij} \in \kf$ for all~$1 \leq i \leq j \leq n$}
-%       \right\}
-%     \]
-%     form a Lie~subalgebra of $\gllie_n(\kf)$.
-%     This holds because the upper triangular matrices form a~{\subalgebra{$\kf$}} of~$\Mat_n(\kf)$, and are hence closed under the commutator~$[A,B] = AB - BA$.
-%    
-%   \item
-%     The strictly upper triangular matrices
-%     \[
-%       \nlie_n(\kf)
-%       \defined
-%       \left\{
-%         \begin{pmatrix}
-%             0
-%           & a_{12}
-%           & \cdots
-%           & a_{1n}
-%           \\
-%             \vdots
-%           & \ddots
-%           & \ddots
-%           & \vdots
-%           \\
-%             \vdots
-%           & {}
-%           & \ddots
-%           & a_{n-1,n}
-%           \\
-%             0
-%           & \cdots
-%           & \cdots
-%           & 0
-%         \end{pmatrix}
-%       \suchthat*
-%         \text{$a_{ij} \in \kf$ for all~$1 \leq i < j \leq n$}
-%       \right\}
-%     \]
-%     form a Lie~subalgebra of~$\tlie_n(\kf)$ and therefore also of $\gllie_n(\kf)$.
-%     It is even an ideal in $\tlie_n(\kf)$, namely $\nlie_n(\kf) = [\tlie_n(\kf), \tlie_n(\kf)]$:
-%    
-%     For any two matrices~$A, B \in \tlie_n(\kf)$ their products~$AB$ and~$BA$ are again upper triangular and both products have the same diagonal entries.
-%     The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix.
-%     Hence~$[\tlie_n(\kf), \tlie_n(\kf)] \subseteq \nlie_n(\kf)$.
-%     We know on the other hand that~$\nlie_n(\kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$, and each of those matrices can be written as a commutator
-%     \[
-%       E_{ij}
-%       =
-%       E_{ii} E_{ij} - \underbrace{ E_{ij} E_{ii} }{= 0}
-%     \]
-%     with~$E_{ii}, E_{ij} \in \tlie_n(\kf)$.
-%     Therefore~$\nlie_n(\kf) \subseteq \tlie_n(\kf)$.
-%   \end{enumerate}
-% \end{examples}
-% 
-% 
-% \begin{definition}
-%   If~$\glie$ is a Lie~algebra and~$U \subseteq \glie$ any linear subspace then
-%   \[
-%     \normallie_\glie(U)
-%     \defined
-%     \{
-%       x \in \glie
-%     \suchthat
-%       \text{$[x,y] \in \glie$ for every~$y \in U$}
-%     \}
-%   \]
-%   is the \emph{normalizer} of~$U$ in~$\glie$, and
-%   \[
-%     \centerlie_\glie(U)
-%     \defined
-%     \{
-%       x \in \glie
-%     \suchthat
-%       \text{$[x,y] = 0$ for every $y \in U$}
-%     \}
-%   \]
-%   is the \emph{centralizer} of~$U$ in~$\glie$.
-%   For a single element~$x \in \glie$ the centralizer of~$x$ in~$\glie$ is
-%   \[
-%     \centerlie_\glie(x)
-%     \defined
-%     \{
-%       y \in \glie
-%     \suchthat
-%       [x,y] = 0
-%     \} \,.
-%   \]
-% \end{definition}
-% 
-% 
-% \begin{lemma}
-%  Let $\glie$ be a Lie~algebra and $U \subseteq \glie$ a linear subspace. Then $\normallie_\glie(U)$ and $\centerlie_\glie(U)$ are Lie subalgebras of $\glie$.
-%  $\centerlie_\glie(x)$ is a Lie subalgebra of $\glie$ for every $x \in \glie$.
-% \end{lemma}
-% 
-% 
-% \begin{proof}
-%  If $x,y \in \normallie_\glie(U)$ then by the Jacobi identity it follows for every $z \in U$ that
-%  \[
-%   [[x,y],z]
-%   =
-%   -[z,[x,y]]
-%   =
-%   -[[z,x],y]-[x,[z,y]]
-%   =
-%   \in \hlie
-%  \]
-%  and therefore $[x,y] \in \normallie_\glie(U)$. In the same way it follows for all $x,y \in \glie$ and $z \in U$ that
-%  \[
-%   [[x,y],z]
-%   = -[[z,x],y]-[x,[z,y]]
-%   = 0
-%  \]
-%  and therefore $[x,y] \in Z_\glie(U)$. For every $x \in \glie$ the span $kx \subseteq \glie$ is a linear subspace with $Z_\glie(x) = Z_\glie(kx)$, which is why $Z_\glie(x)$ is a Lie subalgebra of $\glie$.
-% \end{proof}
-% 
-% 
-% \begin{remark}
-%  Let $\glie$ be a Lie~algebra and $L \subseteq \glie$ a linear subspace. Then $L$ is a Lie subalgebra if and only if $L \subseteq \normallie_\glie(L)$. Then $L$ is not only contained in $\normallie_\glie(L)$ but $\normallie_\glie(L)$ is the maximal subalgebra of $\glie$ which contains $L$ as an ideal. In particular $L$ is an ideal in $\glie$ if and only if $\normallie_\glie(L) = \glie$.
-% \end{remark}
+
+
+\begin{definition}
+  A Lie~algebra~$\glie$ is \defemph{abelian}\index{abelian} if~$[x,y] = 0$ for all~$x, y \in \glie$.
+\end{definition}
+
+
+\begin{remark}
+  Note that a Lie~algebra~$\glie$ is abelian if and only if~$\centerlie(\glie) = 0$, if and only if~$[\glie, \glie] = 0$.
+\end{remark}
+
+
+\begin{example}
+  A~{\algebra{$\kf$}}~$A$ is commutative if and only if it is abelian as a Lie~algebra.
+\end{example}
+
+
+\begin{lemma}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+    If~$I_\lambda$,~$\lambda \in \Lambda$ is a collection of ideals of~$\glie$ then their intersection~$\bigcap_{\lambda \in \Lambda} I_\lambda$ and their sum~$\sum_{\lambda \in \Lambda} I_\lambda$ are again ideals in~$\glie$.
+    \item
+    If~$I$ and~$J$ are ideals in~$\glie$ then their commutator~$[I,J]$ is again an ideal in~$\glie$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This follows from direct calculation.
+    \item
+      As the commutator~$[I,J]$ is spanned by the elements~$[y,z]$ with~$y \in I$ and~$z \in J$ it sufficies to show that~$[x,[y,z]] \in [I,J]$ for all~$x \in \glie$,~$y \in I$ and~$z \in J$.
+      This follows from~$I, J \ideal \glie$ and the Jacobi identity because
+      \[
+        [x,[y,z]]
+        =
+        [[x,y], z] + [y, [x,z]]
+        \subseteq
+        [I, z] + [y, J]
+        \subseteq
+        [I, J] + [J, I]
+        =
+        [I,J] \,.
+      \]
+      Here we use that~$[J,I] = -[I,J] = [I,J]$ by the antisymmetry of the Lie bracket~$[-,-]$.
+   \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+  A Lie~algebra~$\glie$ is~\emph{linear}\index{linear} if~$\glie$ is a Lie~subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$, or a Lie~subalgebra of~$\gllie_n(\kf)$ for some~$n$.
+\end{definition}
+
+
+% TODO: Fix this window.
+\begin{examples}[Linear Lie~Algebras]
+  \leavevmode
+  \begin{enumerate}
+  \item
+    Let $\glie \defined \gllie_n(\kf)$.
+    Then
+    \[
+      \gls*{special lie matrix}
+      \defined
+      \{
+        A \in \glie
+      \suchthat
+        \tr A = 0
+      \}
+    \]
+    is an ideal in~$\glie$, namely
+    \[
+      \sllie_n(\kf)
+      =
+      [\glie,\glie]  \,.
+    \]
+      
+    Indeed, we have for all~$A, B \in \glie$ that~$\tr(AB) = \tr(BA)$ and hence
+    \[
+        \tr( [A,B] )
+      = \tr(AB-BA)
+      = \tr(AB) - \tr(BA)
+      = \tr(AB) - \tr(AB)
+      = 0  \,.
+    \]
+    This shows that~$[\glie, \glie] \subseteq \sllie_n(\kf)$.
+    Observe on the other hand that~$\sllie_n(\kf)$ has a basis given by the matrices $E_{ij}$ with $1 \leq i \neq j \leq n$ together with the matrices $E_{11} - E_{ii}$ with $i = 2, \dotsc, n$.
+    Each of these matrices is given as a commutator, namely
+    \[
+        E_{ij}
+        =
+        E_{ij} E_{jj} - \underbrace{ E_{jj} E_{ij} }_{=0}
+        =
+        [E_{ij}, E_{jj}]
+    \]
+    for $1 \leq i \neq j \leq n$ and
+    \[
+      E_{11} - E_{ii}
+      =
+      E_{1i} E_{i1} - E_{i1} E_{1i}
+      =
+      [E_{1i}, E_{i1}]
+    \]
+    for $i = 2, \dotsc, n$.
+    Therefore $\sllie_n(\kf) \subseteq [\glie, \glie]$.
+    
+    The Lie~algebra~$\sllie_n(\kf)$ is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra}.
+    
+    If~$V$ is any finite dimensional~{\vectorspace{$\kf$}} then
+    \[
+      \gls*{special lie endomorphism}
+      \defined
+      [\gllie(V), \gllie(V)]
+      =
+      \{
+        f \in \gllie(V)
+      \suchthat
+        \tr(f) = 0
+      \}
+    \]
+    is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra} of~$V$.
+   
+  \item
+    The upper triangular matrices\index{upper triangular matrices}\index{triangular matrices!upper}
+    \[
+      \gls*{triangular lie matrix}
+      \defined
+      \left\{
+        \begin{pmatrix}
+            a_{11}
+          & \cdots
+          & \cdots
+          & a_{1n}
+          \\
+            0
+          & \ddots
+          & {}
+          & \vdots
+          \\
+            \vdots
+          & \ddots
+          & \ddots
+          & \vdots
+          \\
+            0
+          & \cdots
+          & 0
+          & a_{nn}
+        \end{pmatrix}
+      \suchthat*
+        \text{$a_{ij} \in \kf$ for all~$1 \leq i \leq j \leq n$}
+      \right\}
+    \]
+    form a Lie~subalgebra of~$\gllie_n(\kf)$.
+    This holds because the space of upper triangular matrices is a~{\subalgebra{$\kf$}} of~$\Mat_n(\kf)$, and are hence closed under the commutator~$[A,B] = AB - BA$.
+   
+  \item
+    The strictly upper triangular matrices\index{stricly upper triangular matrices}\index{triangular matrices!strictly upper}
+    \[
+      \gls*{strictly triangular lie matrix}
+      \defined
+      \left\{
+        \begin{pmatrix}
+            0
+          & a_{12}
+          & \cdots
+          & a_{1n}
+          \\
+            \vdots
+          & \ddots
+          & \ddots
+          & \vdots
+          \\
+            \vdots
+          & {}
+          & \ddots
+          & a_{n-1,n}
+          \\
+            0
+          & \cdots
+          & \cdots
+          & 0
+        \end{pmatrix}
+      \suchthat*
+        \text{$a_{ij} \in \kf$ for all~$1 \leq i < j \leq n$}
+      \right\}
+    \]
+    form a Lie~subalgebra of~$\tlie_n(\kf)$ and therefore also of~$\gllie_n(\kf)$.
+    The space~$\nlie_n(\kf)$ is even an ideal in~$\tlie_n(\kf)$, namely~$\nlie_n(\kf) = [\tlie_n(\kf), \tlie_n(\kf)]$:
+   
+    For any two matrices~$A, B \in \tlie_n(\kf)$ their products~$AB$ and~$BA$ are again upper triangular and both products have the same diagonal entries.
+    The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix.
+    Hence~$[\tlie_n(\kf), \tlie_n(\kf)] \subseteq \nlie_n(\kf)$.
+    We know on the other hand that~$\nlie_n(\kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$, and each of those matrices can be written as a commutator
+    \[
+      E_{ij}
+      =
+      E_{ii} E_{ij} - \underbrace{ E_{ij} E_{ii} }_{= 0}
+    \]
+    with~$E_{ii}, E_{ij} \in \tlie_n(\kf)$.
+    Therefore~$\nlie_n(\kf) \subseteq \tlie_n(\kf)$.
+  \end{enumerate}
+\end{examples}
+
+
+\begin{definition}
+  If~$\glie$ is a Lie~algebra and~$U \subseteq \glie$ any linear subspace then
+  \[
+    \gls*{normalizer}
+    \defined
+    \{
+      x \in \glie
+    \suchthat
+      \text{$[x,y] \in \glie$ for every~$y \in U$}
+    \}
+  \]
+  is the \defemph{normalizer}\index{normalizer} of~$U$ in~$\glie$, and
+  \[
+    \gls*{centralizer of space}
+    \defined
+    \{
+      x \in \glie
+    \suchthat
+      \text{$[x,y] = 0$ for every $y \in U$}
+    \}
+  \]
+  is the \defemph{centralizer}\index{centralizer} of~$U$ in~$\glie$.
+  For a single element~$x \in \glie$ the \defemph{centralizer}\index{centralizer} of~$x$ in~$\glie$ is
+  \[
+    \gls*{centralizer of element}
+    \defined
+    \{
+      y \in \glie
+    \suchthat
+      [x,y] = 0
+    \} \,.
+  \]
+\end{definition}
+
+
+\begin{lemma}
+ Let~$\glie$ be a Lie~algebra and~$U \subseteq \glie$ a linear subspace.
+ Then both the normalizer~$\normallie_\glie(U)$ and the centralizer~$\centerlie_\glie(U)$ are Lie~subalgebras of~$\glie$.
+ If~$x \in \glie$ is any element then the centralizer~$\centerlie_\glie(x)$ is a Lie~subalgebra of~$\glie$.
+\end{lemma}
+
+
+\begin{proof}
+ If~$x, y \in \normallie_\glie(U)$ then it follows for every $z \in U$ from the Jacobi~identity that
+ \[
+  [[x,y], z]
+  =
+  - [z, [x,y]]
+  =
+  - [[z,x], y] - [x, [z,y]
+  \in
+  - [U, y] - [x, U]
+  \subseteq
+  - U - U
+  =
+  U
+ \]
+ and therefore~$[x,y] \in \normallie_\glie(U)$.
+ In the same way it follows for all~$x, y \in \glie$ and~$z \in U$ that
+ \[
+  [[x,y], z]
+  =
+  - [[z,x], y] - [x, [z,y]]
+  =
+  - [0, y] - [x, 0]
+  =
+  0
+ \]
+ and therefore~$[x,y] \in Z_\glie(U)$.
+ For any~$x \in \glie$ the span~$\kf x$ is a linear subspace of~$\glie$ with $\centerlie_\glie(x) = \centerlie_\glie(\kf x)$.
+ Hence~$\centerlie_\glie(x)$ is a Lie~subalgebra of $\glie$, as shown above.
+\end{proof}
+
+
+\begin{remark}
+ Let~$\glie$ be a Lie~algebra and~$L \subseteq \glie$ a linear subspace.
+ Then~$L$ is a Lie~subalgebra of~$\glie$ if and only if~$L \subseteq \normallie_\glie(L)$.
+ Then~$L$ is not only contained in~$\normallie_\glie(L)$ but~$\normallie_\glie(L)$ is the maximal Lie~subalgebra of~$\glie$ that contains~$L$ as an ideal.
+ As a special case of this, we find that~$L$ is an ideal in~$\glie$ if and only if~$\normallie_\glie(L) = \glie$.
+\end{remark}
 % 
 % 
 % 
