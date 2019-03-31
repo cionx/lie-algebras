@@ -8,14 +8,14 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 \subsection{Definition and root space decomposition}
 
 
-\begin{defi}
+\begin{definition}
  A subalgebra $\h \subseteq \g$ is \emph{toral} if it consists of semisimple elements.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}
+\begin{lemma}
  Let $\h \subseteq \g$ be a toral subalgebra. Then $\h$ is abelian.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $x \in \h$. Because $x$ is $\ad_\g$-semisimple and $\h$ is $\ad_\g(x)$-invariant it follows that $\ad_\h(x) = \ad_\g(x)|_\h$ is also semisimple. It is enough to show that all eigenvalues of $\ad_\h(x)$ are zero.
  
@@ -40,39 +40,39 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  A \emph{Cartan subalgebra} of $\g$ is a maximal toral subalgebra.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  The toral subalgebra $0 \subseteq \g$ is contained in a toral subalgebra (of $\g$) of maximal dimensional, which is then a Cartan subalgebra. Therefore $\g$ contains a Cartan subalgebra.
  
  Also notice that if $\g \neq 0$ then any Cartan subalgebra of $\g$ is non-zero. Too see this first notice thet $\g$ then contains a non-zero semisimple element $x \in \g$, because otherwise $\g$ would be nilpotent by Engel’s Theorem. Then the one-dimensional linear subspace $kx$ is a toral subalgebra properly containing $0$.
-\end{rem}
+\end{remark}
 
 
 % TODO: Remark about usual definition.
 
 
-\begin{defi}
+\begin{definition}
  Let $\h$ be a Cartan subalgebra of $\g$. For any $\alpha \in \h^*$ let
  \[
   \g_\alpha \coloneqq \{y \in \g \mid \text{$[x,y] = \alpha(x)y$ for every $x \in \h$}\}
  \]
  be the \emph{root space} of $\g$ with respect to $\alpha$. Then $\Phi(\g, \h) \coloneqq \{\alpha \in \h^* \setminus \{0\} \mid \g_\alpha \neq 0\}$ is the set of \emph{roots} of $\g$ with respect to $\h$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Notice that $\g_0 = \{y \in \g \mid \text{$[x,y] = 0$ for every $x \in \h$}\} = Z_\g(\h)$.
-\end{rem}
+\end{remark}
 
 
 
-\begin{lem}
+\begin{lemma}
  Let $\h$ be a Cartan subalgebra of $\g$ with roots $\Phi \coloneqq \Phi(\g, \h)$. Then $\g = Z_\g(\h) \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Because $\h$ is abelian the same goes for $\ad_\g(\h) \subseteq \gl(V)$. Therefore $\ad_\g(\h)$ consists of semisimple pairwise commuting endomorphisms. Hence $\ad_\g(\h)$ is simultaneously diagonalizable, which is why
  \[
@@ -88,9 +88,9 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 % TODO: Beispiele hinzufügen
 
 
-\begin{lem}
+\begin{lemma}
  Let $\h$ be a Cartan subalgebra of $\g$. Then $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha+\beta}$ for all $\alpha, \beta \in \h^*$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $x \in \g_\alpha$ and $y \in \g_\beta$. Then for every $h \in \h$
  \[
@@ -103,9 +103,9 @@ Throughout this section $\g$ denotes the finite dimensional semisimple Lie algeb
 \end{proof}
 
 
-\begin{lem}\label{lem: root spaces orthogonal with respect to the Killing form}
+\begin{lemma}\label{lem: root spaces orthogonal with respect to the Killing form}
 Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\alpha \neq -\beta$ then $\g_\alpha$ and $\g_\beta$ are orthogonal with respect to the Killing form.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Because $\alpha \neq -\beta$ it follows that there exists $h \in \h$ with $(\alpha+\beta)(h) \neq 0$. For every $x \in \g_\alpha$ and $y \in \g_\beta$ it then follows that
  \[
@@ -119,9 +119,9 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
 \end{proof}
 
 
-\begin{cor}\label{cor: restriction of killing form to centralizer is non-degenerate}
+\begin{corollary}\label{cor: restriction of killing form to centralizer is non-degenerate}
  Let $\h \subseteq \g$ be a Cartan subalgebra. Then $\kappa_\g|_{Z_\g(\h) \times Z_\g(\h)}$ is non-degenerate.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Because $\g$ is semisimple $\kappa_\g$ is non-degenerate. Because $Z_\g(\h) = \g_0$ is orthogonal to $\g_\alpha$ for every $\alpha \in \Phi$ with $\alpha \neq 0$ the statement follows from $\g = Z_\g(\h) \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha$.
 \end{proof}
@@ -130,9 +130,9 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
 % TODO: Add warning about restriction of Killing form
 
 
-\begin{prop}\label{prop: CSA are self-centralizing}
+\begin{proposition}\label{prop: CSA are self-centralizing}
  Let $\h$ be a Cartan subalgebra of $\g$. Then $Z_\g(\h) = \h$, i.e.\ $\h$ is self-centralizing.
-\end{prop}
+\end{proposition}
 \begin{proof}
  Throughout this proof abbreviate $\cl \coloneqq Z_\g(\h)$, $\ad \coloneqq \ad_\g$ and $\kappa \coloneqq \kappa_\g$.
 
@@ -157,25 +157,25 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\h \subseteq \g$ be a Cartan subalgebra. Then the restriction $\kappa_\g|_{\h \times \h}$ is non-degenerate and $\g = \h \oplus \bigoplus_{\alpha \in \Phi(\g,\h)} \g_\alpha$.
-\end{cor}
+\end{corollary}
 
 
-\begin{cor}\label{cor: g alpha and g -alpha pair non degenerate with the Killing form}
+\begin{corollary}\label{cor: g alpha and g -alpha pair non degenerate with the Killing form}
  Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha \in \Phi(\g,\h)$. Then $\kappa(\g_\alpha, \g_{-\alpha}) \neq 0$, i.e.\ there exists $x \in \g_\alpha$ and $y \in \g_{-\alpha}$ with $\kappa(x,y) \neq 0$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Because $\alpha \in \Phi(\g,\h)$ it follows that $\g_\alpha \neq 0$. Because with respect to the Killing form $\g_\alpha$ is orthogonal to $\g_\beta$ for $\beta \neq -\alpha$ and $\h = \g_0$ by Lemma~\ref{lem: root spaces orthogonal with respect to the Killing form} and $\kappa|_{\h \times \h}$ is non-degenerate is follows that $0 \neq \kappa(\g_\alpha, \g) = \kappa(\g_\alpha, \g_{-\alpha})$.
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  The proof of Proposition~\ref{prop: CSA are self-centralizing} is taken from \cite[\S 8.2]{Humphreys}.
-\end{rem}
+\end{remark}
 
 
-\begin{defi}
+\begin{definition}
  Let $\h \subseteq \g$ be a Cartan subalgebra. Then the decomposition
  \[
   \g = \h \oplus \bigoplus_{\alpha \in \Phi} \g_\alpha
@@ -183,23 +183,23 @@ Let $\h \subseteq \g$ be a Cartan subalgebra and $\alpha, \beta \in \h^*$. If $\
   \Phi \coloneqq \Phi(\g,\h)
  \]
  is the \emph{root space decomposition} of $\g$ with respect to $\h$.
-\end{defi}
+\end{definition}
 
 
 \subsection{Properties of the root space decomposition}
 Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi \coloneqq \Phi(\g,\h)$ the associated roots.
 
 
-\begin{defi}
+\begin{definition}
  Becaus $\kappa|_{\h \times \h}$ is non-degenerate the map
  \[
   \h \to \h^*, \quad h \mapsto \kappa(h, \cdot)
  \]
  is an isomorphism of vector spaces. For every $\phi \in \h^*$ let $t_\phi \in \h$ be the unique element with $\kappa(t_\phi, \cdot) = \phi$.
-\end{defi}
+\end{definition}
 
 
-\begin{prop}
+\begin{proposition}
  \begin{enumerate}[leftmargin=*]
   \item 
    $\Phi$ generates $\h^*$ as a vector space.
@@ -212,7 +212,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
   \item
    If $\alpha \in \Phi$ then $\alpha(t_\alpha) = \kappa(t_\alpha, t_\alpha) \neq 0$.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -245,12 +245,12 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  Let $\alpha \in \Phi$ be a root. Then the associated \emph{coroot} is the unique element $\alpha^\vee \in [\g_\alpha, \g_{-\alpha}]$ with $\alpha(\alpha^\vee) = 2$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Let $\alpha \in \Phi$. The existence and uniqueness of $\alpha^\vee$ follows from the fact that $[\g_\alpha, \g_{-\alpha}]$ is one-dimensional with $\alpha([\g_\alpha, \g_{-\alpha}]) = k \alpha(t_\alpha) \neq 0$. Notice that $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$ and that $(-\alpha)^\vee = -\alpha^\vee$. Also notice that $\alpha^\vee = 2 t_\alpha / \kappa(t_\alpha, t_\alpha)$ because
  \[
   \alpha\left( \frac{2 t_\alpha}{\kappa(t_\alpha, t_\alpha)} \right)
@@ -258,10 +258,10 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
   = \frac{2\kappa(t_\alpha,t_\alpha)}{\kappa(t_\alpha, t_\alpha)}
   = 2.
  \]
-\end{rem}
+\end{remark}
 
 
-\begin{rem}\label{rem: construction of S alpha}
+\begin{remark}\label{rem: construction of S alpha}
  Let $\alpha \in \Phi$. Let $S^\alpha \coloneqq \g_\alpha \oplus k\alpha^\vee \oplus \g_{-\alpha}$. Because $[\g_\alpha, \g_{-\alpha}] = k\alpha^\vee$ there exist $\hat{e} \in \g_\alpha$ and $\hat{f} \in \g_{-\alpha}$ with $[\hat{e},\hat{f}] = \alpha^\vee$. Because $\alpha^\vee \neq 0$ it follows that $\hat{e}, \hat{f} \neq 0$. Also notice that $[\alpha^\vee, \hat{e}] = \alpha(\alpha^\vee) \hat{e} = 2\hat{e}$ and similary $[\alpha^\vee, \hat{f}] = -2\hat{f}$. It follows that $S^\alpha$ is a Lie subalgebra of $\g$ and
  \[
   \phi \colon \sll_2(k) \to S, \quad
@@ -270,15 +270,15 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
   f \mapsto \hat{f}
  \]
  an isomorphism of Lie algebras. Therefore $\g$ becomes a representation of $\sll_2(k)$ via $x.y = [\phi(x), y]$ for every $x \in \sll_2(k)$ and $y \in \g$.
-\end{rem}
+\end{remark}
 
 
-\begin{defi}
+\begin{definition}
  Let $\alpha \in \Phi$. Then $S^\alpha \subseteq \g$ is the Lie subalgebra construtcted in Remark~\ref{rem: construction of S alpha}.
-\end{defi}
+\end{definition}
 
 
-\begin{prop}
+\begin{proposition}
  Let $\alpha \in \Phi$ be a root.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -286,7 +286,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
   \item
    The only multiples of $\alpha$ which are roots are $\alpha$ and $-\alpha$, i.e.\ $k\alpha \cap \Phi = \{\alpha, -\alpha\}$.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 \begin{proof}
  Let $S^\alpha$ acts on $\g$ as in Remark~\ref{rem: construction of S alpha}. Notice that
  \[
@@ -311,14 +311,14 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  For every $\lambda \in \h^*$ and $h \in \h$ set $\pair{h, \lambda} \coloneqq \pair{\lambda, h} \coloneqq \lambda(h)$.
-\end{defi}
+\end{definition}
 
 
-\begin{prop}\label{prop: integral and reflection properties of root pairing}
+\begin{proposition}\label{prop: integral and reflection properties of root pairing}
  Let $\alpha, \beta \in \Phi$. Then $\pair{\alpha, \beta^\vee} \in \Z$ and $\alpha - \pair{\alpha, \beta^\vee} \beta \in \Phi$.
-\end{prop}
+\end{proposition}
 \begin{proof}
  If $\alpha$ and $\beta$ are linearly dependent then $\beta = \pm \alpha$. Then $\beta^\vee = \pm \alpha^\vee$ and therefore $\pair{\alpha, \beta^\vee} = \pm \pair{\alpha, \alpha^\vee} = \pm 2 \in \Z$ and
  \[
@@ -344,7 +344,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\alpha, \beta \in \Phi$. Then
  \[
   [\g_\alpha, \g_\beta] =
@@ -353,7 +353,7 @@ Troughout this subsection let $\h \subseteq \g$ be a Cartan subalgebra and $\Phi
    0                 & \text{otherwise}.
   \end{cases}
  \]
-\end{cor}
+\end{corollary}
 \begin{proof}
  It is already known that $[\g_\alpha, \g_\beta] \subseteq \g_{\alpha + \beta}$. If $\alpha+\beta \notin \Phi$ then $\g_{\alpha + \beta} = 0$ and thus $[\g_\alpha, \g_\beta] = 0$. Suppose now that $\alpha + \beta \in \Phi$. Then $\alpha$ and $\beta$ are linearly independent (because otherwise $\beta = \pm \alpha$ and therefore $\alpha+\beta \in \{-2\alpha, 0, 2\alpha\}$, none of which is a root). Let $\g^\alpha$ act on $\g$ as in Remark~\ref{rem: construction of S alpha} and consider the subrepresentation $L \coloneqq \bigoplus_{i \in \Z} \g_{\beta + i\alpha}$.
  

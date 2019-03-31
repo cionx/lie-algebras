@@ -13,16 +13,16 @@ and that this basis satisfies the relations
 \]
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be a representation of $\sll_2(k)$. For any $\lambda \in k$ let
  \[
   V_\lambda \coloneqq \{v \in V \mid h.v = \lambda v\}
  \]
  be the \emph{weight space} of $V$ with respect to $\lambda$. An element $\lambda \in k$ is called a \emph{weight} of $V$ if $V_\lambda \neq 0$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: e and f moving the eigenspaces}
+\begin{lemma}\label{lem: e and f moving the eigenspaces}
  If $V$ is a representation of $\g$ then
  \[
   e.V_\lambda \subseteq V_{\lambda+2}
@@ -30,7 +30,7 @@ and that this basis satisfies the relations
   f.V_\lambda \subseteq V_{\lambda-2}
   \quad\text{for every $\lambda \in k$}.
  \]
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $v \in V_\lambda$. Then
  \begin{gather*}
@@ -48,14 +48,14 @@ and that this basis satisfies the relations
 \end{proof}
 
 
-\begin{expl}\label{expl: natural representation of sl2}
+\begin{example}\label{expl: natural representation of sl2}
  Let $e_1$, $e_2$ be the standard basis of $V \coloneqq k^2$, which is the natural representation of $\sll_2(k)$. Then $h.e_1 = e_1$ and $h.e_2 = -e_2$, so $V_1 = k e_1$ and $V_{-1} = k e_2$ with $V = V_{-1} \oplus V_1$. That $e.V_{-1} = V_1$ and $f.V_1 = V_{-1}$ can then by seen by a glance at the following:
  \[
   e = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
   \quad\text{and}\quad
   f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
  \]
-\end{expl}
+\end{example}
 
 
 
@@ -64,7 +64,7 @@ and that this basis satisfies the relations
 \subsection{Finite dimensional irreducible representations}
 
 
-\begin{thrm}[Classification of finite dimensional irreducible representations of $\sll_2(k)$]
+\begin{theorem}[Classification of finite dimensional irreducible representations of $\sll_2(k)$]
  For every $n \in \N$ there exists up to isomorphism a unique $(n+1)$-dimensional irreducible representation of $\sll_2(k)$. More explicitely:
  \begin{enumerate}[leftmargin=*]
   \item
@@ -129,7 +129,7 @@ and that this basis satisfies the relations
     \end{cases}
    \end{gather*}
  \end{enumerate}
-\end{thrm}
+\end{theorem}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -253,7 +253,7 @@ and that this basis satisfies the relations
 \end{proof}
 
 
-\begin{expls}
+\begin{examples}
  \begin{enumerate}[leftmargin=*]
   \item
    The one-dimensional irreducible representation of $\sll_2(k)$ can be realized by $\sll_2(k)$ acting trivially on $k$ (or any one-dimensional vector space for that matter.)
@@ -262,7 +262,7 @@ and that this basis satisfies the relations
   \item
    Let $V = \sll_2(k)$ be the adjoint representation of $\sll_2(k)$. Because $\sll_2(k)$ is simple it follows that $V$ is irreducible and $V = V_{-2} \oplus V_0 \oplus V_2$ with $V_{-2} = k f$, $V_0 = k h$ and $V_2 = k e$.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
 
@@ -271,7 +271,7 @@ and that this basis satisfies the relations
 \subsection{Arbitrary finite dimensional representations}
 
 
-\begin{expl}
+\begin{example}
  The map
  \[
   \phi \colon \sll_2(k) \to \sll_3(k), \quad
@@ -383,10 +383,10 @@ and that this basis satisfies the relations
   e.h_2 = e_{12}, \quad h.h_2 = 0, \quad f.h_2 = -e_{21}.
  \end{gather*}
  Hence $\sll_2(k)$ acts trivially on the one-dimensional linear subspace $W^{0,1} \coloneqq k (h_1 + 2h_2)$, which is why it is a subrepresentation.
-\end{expl}
+\end{example}
 
 
-\begin{thrm}\label{thrm: finite dimensional representations of sl2}
+\begin{theorem}\label{thrm: finite dimensional representations of sl2}
  Let $V$ be a finite dimensional representation of $\sll_2(k)$.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -403,7 +403,7 @@ and that this basis satisfies the relations
   \item
    $\dim V_i = \dim V_{-i}$ for every $i \in \Z$.
  \end{enumerate}
-\end{thrm}
+\end{theorem}
 \begin{proof}
  That $V$ decomposes into the direct sum of irreducible subrepresentations follows directly from Weyl’s theorem. From the classification of finite dimensional irreducible representations of $\sll_2(k)$ it follows that
  \[
@@ -441,7 +441,7 @@ and that this basis satisfies the relations
 \subsection{The Clebsch--Gordan decomposition}
 
 
-\begin{expl}\label{expl: decomposition of the tensor product of 4 and 5}
+\begin{example}\label{expl: decomposition of the tensor product of 4 and 5}
  For every $n \in \N$ let $V^{(n)}$ be the $(n+1)$-dimensional irreducible representation of $V$ and abbreviate $V \coloneqq V^{(3)}$ and $W \coloneqq V^{(4)}$. Then
  \begin{equation}\label{eqn: decomposition of 4 tensor 5}
   V \otimes W \cong V^{(7)} \otimes V^{(5)} \otimes V^{(3)} \otimes V^{(1)}.
@@ -481,16 +481,16 @@ and that this basis satisfies the relations
   \end{array}
  \]
  Formula \eqref{eqn: decomposition of 4 tensor 5} follows from this by Theorem \ref{thrm: finite dimensional representations of sl2}.
-\end{expl}
+\end{example}
 
 
-\begin{prop}
+\begin{proposition}
  For all $n \in \N$ let $V^{(n)}$ denote the $(n+1)$-dimensional irreducible representation of $\sll_2(k)$. Then
  \[
   V^{(n)} \otimes V^{(m)} \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(|n-m|)}
   \quad\text{for all $n,m \in \N$}.
  \]
-\end{prop}
+\end{proposition}
 \begin{proof}
  It can be assummed w.l.o.g.\ that $n \geq m$. Abbreviate $V \coloneqq V^{(n)}$ and $W \coloneqq W^{(m)}$. Then $V = \bigoplus_{p=0}^n V_{-n+2p}$ and $W = \bigoplus_{q=0}^m W_{-m+2q}$ and therefore
  \[
@@ -604,9 +604,9 @@ We also give another proof, taken from \cite[\S 1.4]{Lectures_on_sl2_modules}.
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  \cite{Lectures_on_sl2_modules} has a pretty cool cover and we advise the reader to check it out.
-\end{rem}
+\end{remark}
 
 
 % TODO: Why it is named after Clebsch and Gordan and its origin in invariant theory.

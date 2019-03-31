@@ -7,20 +7,20 @@
 \subsection{Definition, examples and properties}
 
 
-\begin{defi}
+\begin{definition}
  Let $A$ be an associative $k$-algebra. An element $a \in A$ is called \emph{nilpotent} if $a^n = 0$ for some $n \geq 1$. Given a Lie algebra $\g$ an element $x \in \g$ is called \emph{$\ad$-nilpotent} if $\ad(x) \in \End_k(\g)$ is nilpotent.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: nilpotent implies ad-nilpotent}
+\begin{lemma}\label{lem: nilpotent implies ad-nilpotent}
  If $A$ is an associative $k$-algebra and $x \in A$ nilpotent then $x$ is also $\ad$-nilpotent.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $\lambda_x \colon A \to A, a \mapsto xa$ and $\rho_x \colon A \to A, a \mapsto ax$. Because $x$ is nilpotent both $\lambda_x$ and $\rho_x$ are nilpotent. Because $A$ is associative $\lambda_x$ and $\rho_x$ commute. Hence $\ad(x) = \lambda_x - \rho_x$ is the sum of two commuting, nilpotent endomorphisms, and therefore also nilpotent.
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  Let $g$ be a Lie algebra. Define $\g^0 \coloneqq \g$ and $\g^{i+1} \coloneqq [\g,\g^i]$ for all $i \in \N$. Then
  \[
   \g = \g^0 \supseteq \g^1 \supseteq \g^2 \supseteq \dots
@@ -30,10 +30,10 @@
   \g^{(0)} \supseteq \g^{(1)} \supseteq \g^{(2)} \supseteq \dots
  \]
  is called the \emph{derived series} of $\g$. $\g$ is called \emph{nilpotent} if $\g^i = 0$ for some $i$ and \emph{solvable} if $g^{(i)} = 0$ for some $i$.
-\end{defi}
+\end{definition}
 
 
-\begin{expls}
+\begin{examples}
  \begin{enumerate}[leftmargin=*]
   \item
    Every nilpotent Lie algebra $\g$ is also solvable because $\g^{(i)} \subseteq \g^i$ for every $i \in \N$.
@@ -56,10 +56,10 @@
    \]
    This defines a nilpotent Lie algebra.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{prop}\label{prop: properties of solvable and nilpotent}
+\begin{proposition}\label{prop: properties of solvable and nilpotent}
  Let $\g$ be a Lie algebra.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -75,7 +75,7 @@
   \item
    If $I \subideal \g$ then $I^i$ and $I^{(i)}$ are ideals inside $\g$ for all $i \geq 0$.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -118,9 +118,9 @@
 \end{proof}
 
 
-\begin{cor}\label{cor: solvable via ses}
+\begin{corollary}\label{cor: solvable via ses}
  If $I \subideal \g$ is an ideal inside a Lie algebra $\g$ then $\g$ is solvable if and only if both $I$ and $\g/I$ are solvable.
-\end{cor}
+\end{corollary}
 \begin{proof}
  If $\g$ is solvable then $I$ and $\g/I$ are also solvable by Proposition~\ref{prop: properties of solvable and nilpotent}. Suppose that on the other hand both $I$ and $\g/I$ are solvable. Then there exists $i_1, i_2 \in \N$ with $(\g/I)^{(i_1)} = 0$ and $I^{i_2} = 0$. Let $\pi \colon \g \to \g/I, x \mapsto x + I$ be the canical projection. Because
  \[
@@ -134,14 +134,14 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  The analogeous statement about nilpotency does not necessarily hold. Take for example the two-dimensional non-abelian Lie algebra $\g$, which has a basis $x,y$ with $[x,y] = x$. Then the one-dimensional linear subspace $I \coloneqq kx$ is an abelian ideal in $\g$ and in particular nilpotent. The quotient $\g/I$ is one-dimensional and therefore also nilpotent. But $\g$ itself is not nilpotent.
-\end{rem}
+\end{remark}
 
 
-\begin{cor}\label{cor: sum of solvable ideals is solvable}
+\begin{corollary}\label{cor: sum of solvable ideals is solvable}
  Let $\g$ be a Lie algebra and $I, J \subideal \g$ two solvable ideal. Then $I + J$ is also solvable.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Because $J$ is solvable the same goes for $J/(I \cap J)$. Hence in the short exact sequence
  \[
@@ -151,14 +151,14 @@
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a finite dimenisonal Lie algebra. It follows from Corollary~\ref{cor: sum of solvable ideals is solvable} that $\g$ contains a unique maximal solvable ideal. This ideal is called the \emph{radical} of $\g$ and is denoted by $\rad \g$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  If $\g$ is a Lie algebra and $I, J \subideal \g$ two nilpotent ideals, then it can be shown that the ideal $I + J$ is also a nilpotent. It follows that every finite dimensional Lie algebra $\g$ has a unique maxmial nilpotent ideal, which is then called the \emph{nilradical} of $\g$.
-\end{rem}
+\end{remark}
 
 
 
@@ -175,9 +175,9 @@ From now on \emph{all} fields over which we work will be assumed to be algebraic
 If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpotent endomorphism then $0$ is the only eigenvalue of $x$ (and occurs with multiplicity $n$) (here it is used that $k$ is algebraically closed). Hence there exists an eigenvector $v \in V$, $v \neq 0$ with $x(v) = 0$. The following proposition generalizes this observations for linear Lie algebras consisting of nilpotent endomorphisms.
 
 
-\begin{prop}\label{prop: common eigenvector for nilpotent Lie algebras}
+\begin{proposition}\label{prop: common eigenvector for nilpotent Lie algebras}
  Let $V \neq 0$ be a finite dimensional vector space and $\g \subseteq \gl(V)$ a Lie subalgebra such that every $x \in \g$ in nilpotent. Then there exists $v \in V$ with $v \neq 0$ and $x(v) = 0$ for every $x \in \g$, i.e.\ $v$ is a common eigenvector of all $x \in \g$ (all of which are nilpotent and thus have $0$ as their only eigenvalue).
-\end{prop}
+\end{proposition}
 \begin{proof}
  The statement can be then shown by induction over $\dim \g$. For $\dim \g = 0$ the statement follows from $\g = 0$ and for $\dim \g = 1$ the statement follows as previously discussed from $\g = k x$ with $x$ being a nilpotent endomorphism of $V$.
  
@@ -203,7 +203,7 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 \end{proof}
 
 
-\begin{prop}\label{prop: stuff for Engels theorem}
+\begin{proposition}\label{prop: stuff for Engels theorem}
  Let $V$ be a finite dimensional vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a Lie subalgebra. Then the following are equivalent:
  \begin{enumerate}
   \item\label{enum: engels g consists of nilpotent endomorphisms}
@@ -217,7 +217,7 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
   \item\label{enum: engels represented by strictly upper triangular matrices}
    There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an strictly upper triangular matrix.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 \begin{proof}
  The implication \ref{enum: engels g consists of nilpotent endomorphisms} $\Rightarrow$ \ref{enum: engels there exists a complete flag shifted by g} can be shown by induction over $\dim V$. For $\dim V = 1$ set $V_0 \coloneqq 0$ and $V_1 \coloneqq V$. By assumption every $x \in \g$ acts nilpotent on $V$, so $x(V) = 0$ because $V$ is one-dimensional. Thus $V = V_1 \supsetneq V_0 = 0$ is a complete flag for $V$ satisfying the condititons.
    
@@ -246,9 +246,9 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 \end{proof}
 
 
-\begin{thrm}[Engel]
+\begin{theorem}[Engel]
  Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is nilpotent if and only if all its elements are $\ad$-nilpotent.
-\end{thrm}
+\end{theorem}
 \begin{proof}
  If $\g$ is nilpotent then there exists some $i \in \N$ with $\g^i = 0$, from which is follows from $\ad(x)^i(y) \in \g^i$ for every $x,y \in \g$ that $\ad(x)^i = 0$ for every $x \in \g$, hence every $x \in \g$ is $\ad$-nilpotent.
  
@@ -256,17 +256,17 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  It is not true that every nilpotent Lie-subalgebra $\g \subseteq \gl(V)$ with $V$ being a finite dimensional vector space is represented by upper triangular matrices with respect to some basis of $V$. For example the onedimensional subalgebra $k \id_V \subseteq \gl(V)$ is abelian and hence nilpotent, but with respect to every basis of $V$ represented by $kI \subseteq \gl_n(k)$.
-\end{rem}
+\end{remark}
 
 
 %TODO: Give a compromise using the abstract Jordan decomposition
 
 
-\begin{cor}\label{cor: ideal in nilpotent has nontrivial intersection with center}
+\begin{corollary}\label{cor: ideal in nilpotent has nontrivial intersection with center}
  Let $\g$ be a finite dimensional nilpotent $k$-Lie algebra. If $I \subideal \g$ is a non-zero ideal then $I \cap Z(\g) = 0$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  $\g$ acts on itself via the adjoint representation and by Engel’s Theorem $\ad(x)$ is nilpotent for every $x \in \g$. Hence $\{\ad(x)|_I \mid x \in \g\} \subseteq \gl(I)$ is a Lie subalgebra consisting of nilpotent endomorphisms. By Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} there exists some non-zero $y \in I$ with $\ad(x)|_I(y) = 0$ for every $y \in \g$, i.e.\ $[\g, y] = 0$. Then $y \in Z(\g) \cap I$.
 \end{proof}
@@ -281,18 +281,18 @@ If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpo
 From now on we will not only require \emph{every} field $k$ we work with to be algebraically closed, but also to be of characteristic $0$. Unless otherwise stated this holds up to the last page (page \pageref{LastPage}) of this text. In particular all Lie algebras and vector spaces will be assumed to have such a field as their ground field, even if not explicitely stated.
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be a representation of a Lie algebra $\g$. For $\lambda \in \g^*$ the linear subspace
  \[
   V_\lambda \coloneqq \{v \in V \mid \text{$x.v = \lambda x$ for every $x \in \g$}\}
  \]
  is called the \emph{$\g$-weight space} of $V$ with respect to $\lambda$. An element $\lambda \in \g^*$ is called a \emph{weight} of $V$ of $V_\lambda \neq 0$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}[Invariance Lemma]
+\begin{lemma}[Invariance Lemma]
  Let $V$ be a finite dimensional representation of a Lie algebra $\g$ and $I \subideal \g$ an ideal. Then $V$ is also a representation of $I$ by restriction of the action of $\g$ on $V$ to $I$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with respect to $\lambda$. Then $V_\lambda$ is already a subrepresentation of $\g$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  For $v \in V$ and $x_1, \dotsc, x_n \in \g$ we will write
  \[
@@ -341,9 +341,9 @@ From now on we will not only require \emph{every} field $k$ we work with to be a
 As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} we have the following result about solvable linear Lie algebras.
 
 
-\begin{thrm}[Lie]\label{thrm: Lie’s theorem}
+\begin{theorem}[Lie]\label{thrm: Lie’s theorem}
  Let $V \neq 0$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a solvable Lie subalgebra. Then there exists a common eigenvector for $\g$, i.e.\ some $v \in V$, $v \neq 0$ with $x(v) \in k v$ for every $x \in \g$.
-\end{thrm}
+\end{theorem}
 \begin{proof}
  The statement can be shown by induction over $\dim \g$. If $\dim \g = 0$ then $\g = 0$ and any $v \in V$ with $v \neq 0$ does the job. If $\dim \g = 1$ then $\g = k x$ for some $x \in \gl(V)$ with $x \neq 0$. Then any eigenvector of $x$ does the job (since $k$ is assumed to be algebraically closed and $V \neq 0$ such an eigenvector does exist).
  
@@ -369,12 +369,12 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  The proof for Lie’s theorem given in the lecture is basically a less structured version of the one in \cite[\S 4.1]{Humphreys}, from where we took the idea of breaking down the proof into four steps to emphasize the similarities with the proof of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} (which we found very useful for understanding the structure of the previous proof).
-\end{rem}
+\end{remark}
 
 
-\begin{prop}\label{prop: common eigenvector for solvable Lie algebras}
+\begin{proposition}\label{prop: common eigenvector for solvable Lie algebras}
  Let $V \neq 0$ be a finite dimensional $k$-vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a Lie subalgebra. Then the following are equivalent:
  \begin{enumerate}[leftmargin=*]
   \item
@@ -388,12 +388,12 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
   \item
    There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an upper triangular matrix. In particular $\g$ is isomorphic to a Lie-subalgebra of $\tl_n(k)$ for $n = \dim V$.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 
 
-\begin{cor}
+\begin{corollary}
  A finite-dimensional $k$-Lie algebra $\g$ is solvable if and only if $[\g,\g]$ is nilpotent.
-\end{cor}
+\end{corollary}
 \begin{proof}
  If $[\g,\g]$ is nilpotent then $[\g,\g]^{(i)} = 0$ for some $i \in \N$. Hence $\g^{(i+1)} = [\g,\g]^{(i)} = 0$, so $\g$ is solvable.
  
@@ -401,22 +401,22 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
 \end{proof}
 
 
-\begin{cor}\label{cor: irreducible representations of solvable Lie algebras are onedimenisonal}
+\begin{corollary}\label{cor: irreducible representations of solvable Lie algebras are onedimenisonal}
  Every irreducible representation of a solvable Lie algebra $\g$ over $k$ is onedimensional.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Let $\rho \colon \g \to \gl(V)$ be an irreducible representation of $\g$, and therefore in particular $V \neq 0$. Then $\im \rho \subseteq \gl(V)$ is also solvable and by Lie’s theorem there exists a common eigenvector $v \in V$, $v \neq 0$ for $\im \rho$. Because $x.v = \rho(x)(v) \in kv$ for every $x \in \g$ it follows that the onedimensional linear subspace $kv \subseteq V$ is a nonzero subrepresentation of $V$. Because $V$ is irreducible it follows that $V = kv$.
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} is actually equivalent to Lie’s theorem: If $\g \subseteq \gl(V)$ is a Lie subalgebra with then $V$ is a representation of $\g$ via $x.v = x(v)$ for every $x \in \g$ and $v \in V$. If $V \neq 0$ is finite dimensional then $V$ contains an irreducible subrepresentation $U$ of $\g$ (simply take some nonzero subrepresentation of minimal dimension.) If $\g$ additionally is solvable then by Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} the irreducible subrepresentation $U$ is onedimensional, hence of the form $U = kv$ for some $v \in V$ with $v \neq 0$. From the definition of the action of $\g$ on $V$ it follows that $v$ is common eigenvector of $\g$.
  
  As a consequence of this Lie’s theorem as formulated in Theorem~\ref{thrm: Lie’s theorem} was called ``Lie’s theorem -- concrete form'' in the lecture while Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} was stated as ``Lie’s theorem -- abstract version''.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} does not hold for general fields $k$, even if algebraically closed. To see this let $k$ be an algebraically closed field with $\chara k = 2$ and $\g \coloneqq \sll_2(k)$. Then $\g$ has a basis $(e,h,f)$ where
  \begin{gather*}
   e = \vect{0 & 1 \\ 0 & 0}, \quad
@@ -433,4 +433,4 @@ As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent L
   \quad \text{for every $\vect{x \\ y} \in V$}.
  \]
  It follows that if $U \subseteq V$ is a nonzero subrepresentation then $U$ contains either $e_1$ or $e_2$, and therefore also the other one. Hence $U = V$, which shows that $V$ is an irreducible representation of $\g$. 
-\end{rem}
+\end{remark}

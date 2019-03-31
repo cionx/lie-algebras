@@ -7,15 +7,15 @@
 \subsection{Associative bilinear forms and the Killing form}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra over an arbitrary field $k$. A bilinear form $\beta \colon \g \times \g \to k$ is called \emph{associative} if
  \[
   \beta(x,[y,z]) = \beta([x,y],z) \quad \text{for all $x,y,z \in \g$}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  As $\g$ acts on itself by the adjoint representation it also acts on $(\g \otimes_k \g)^*$ as described in Proposition \ref{prop: new representations from old ones}, i.e.\ for every $\beta \in (\g \otimes_k \g)^*$ and all $x,y,z \in \g$
  \begin{align*}
   (y.\beta)(x \otimes z)
@@ -30,10 +30,10 @@
   y.\beta = 0 \quad \text{for every $y \in \g$}.
  \]
  Because of this associative bilinear forms on $\g$ are also called \emph{invariant}.
-\end{rem}
+\end{remark}
 
 
-\begin{lem}\label{lem: associative bilinear form induces homomorphism of representations}
+\begin{lemma}\label{lem: associative bilinear form induces homomorphism of representations}
  Let $\g$ be a Lie algebra and $\beta \colon \g \to \g^*$ a bilinear form. Then $\beta$ is associative if and only if the maps
  \[
   \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x, \cdot)
@@ -41,7 +41,7 @@
   \psi \colon \g \to \g^*, \quad x \mapsto \beta(\cdot, x)
  \]
  are homomorphisms of representations of $\g$ (where $\g$ acts on itself by the adjoint representation and therefore on $\g^*$ as described in Proposition~\ref{prop: new representations from old ones}). 
-\end{lem}
+\end{lemma}
 \begin{proof}
  For all $x,y,z \in \g$ the equalities
  \begin{gather*}
@@ -59,7 +59,7 @@
 \end{proof}
 
 
-\begin{cor}\label{cor: associative non-degenerate bilinear forms induce isomorphism to the dual}
+\begin{corollary}\label{cor: associative non-degenerate bilinear forms induce isomorphism to the dual}
  If $\g$ is a finite-dimensional Lie algebra and $\beta \colon \g \times \g \to k$ an associative and non-degenerate bilinear form then
  \[
   \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x,\cdot)
@@ -67,25 +67,25 @@
   \psi \colon \g \to \g^*, \quad x \mapsto \beta(\cdot,x)
  \]
  are isomorphisms of representations.
-\end{cor}
+\end{corollary}
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be a vector space and $\beta \colon \g \times \g \to k$ a symmetric bilinear form. Then
  \[
   \rad \beta \coloneqq \{x \in V \mid \text{$\beta(x,y) = 0$ for every $y \in V$}\}
  \]
  is the \emph{radical} of $\beta$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: orthogonal complement of an ideal is again an ideal}
+\begin{lemma}\label{lem: orthogonal complement of an ideal is again an ideal}
  Let $\g$ be a Lie algebra over an arbitrary field $k$ and \mbox{$\beta \colon \g \times \g \to k$} a symmetric and associative bilinear form. For any ideal $I \subideal \g$ the orthogonal complement
  \[
   I^\perp \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in I$}\}
  \]
  is also an ideal in $\g$. In particular $\rad \beta = \g^\perp$ is an Ideal in $\g$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  For every $x \in \g$, $y \in I^{\perp}$ and $z \in I$ it follows that $[x,z] \in I$ and therefore
  \[
@@ -98,12 +98,12 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  The proof of Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) The main example of an associative bilinear form will be the Killing form, which is symmetric, so this assumption will pose no problems to us.
-\end{rem}
+\end{remark}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a finite dimensional Lie algebra over an arbitrary field $k$. The \emph{Killing form} of $\g$ is the bilinear form
  \[
   \kappa \colon \g \times \g \to k
@@ -111,12 +111,12 @@
   \kappa(x,y) = \tr(\ad(x) \ad(y))
   \quad\text{for all $x,y \in \g$}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: killing form is associative and symmetric}
+\begin{lemma}\label{lem: killing form is associative and symmetric}
  The Killing form $\kappa$ of an finite dimensional Lie algebra $\g$ over an arbitrary field $k$ is associative and symmetric.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Recall from linear algebra that for any finite dimensional $k$-vector space $V$ and all endomorphisms $f_1, \dotsc, f_n \in \End_k(V)$
  \[
@@ -143,7 +143,7 @@
 \end{proof}
 
 
-\begin{expl}\label{expl: Killing form of gl_n}
+\begin{example}\label{expl: Killing form of gl_n}
  Let $\g \coloneqq \gl_n(k)$ for some arbitrary field $k$. Then
  \[
   \kappa(x,y) = 2n\tr(xy) - 2(\tr x)(\tr y) \eqqcolon \beta(x,y).
@@ -199,21 +199,21 @@
   = 2n \tr(e_{ij} e_{kl}) - 2(\tr e_{ij})(\tr e_{kl}) \\
   &= \beta(e_{ij}, e_{kl}).
  \end{align*}
-\end{expl}
+\end{example}
 
 
-\begin{rem}\label{rem: associative bilinear form of a representation}
+\begin{remark}\label{rem: associative bilinear form of a representation}
  If $\g$ is a Lie algebra and $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ then the corresponding trace form $\phi_\rho$ is defined as
  \[
   \phi_\rho(x,y) \coloneqq \tr(\rho(x) \rho(y)) \quad \text{for all $x,y \in \g$}.
  \]
  Replacing $\ad$ with $\rho$ in the proof of Lemma~\ref{lem: killing form is associative and symmetric} shows that $\phi_\rho$ is an associative and symmetric bilinear form on $\g$. The Killing form $\kappa$ of $\g$ is then just the special case $\kappa = \phi_{\ad}$.
-\end{rem}
+\end{remark}
 
 
-\begin{lem}\label{lem: restriction of the Killing form to an ideal}
+\begin{lemma}\label{lem: restriction of the Killing form to an ideal}
  Let $\g$ be a finite-dimensional Lie algebra over an arbitrary field $k$. Then for any ideal $I \subseteq \g$ the Killing form $\kappa_I$ is given by restriction of the Killing form $\kappa_\g$ to $I$, i.e.\ $\kappa_I = \kappa_\g|_{I \times I}$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $x, y \in I$. Then $I$ is $\ad_\g(x)$-invariant. Let $(x_1, \dotsc, x_r)$ be a basis of $I$ and $(x_1, \dotsc, x_r, x_{r+1}, \dotsc, x_s)$ one of $\g$. With respect to the basis $(x_1, \dotsc, x_r)$ of $I$ the endomorphism $\ad_I(x)$ is represented by a matrix $A_x \in \Mat_r(k)$ and $\ad_I(y)$ is represented by a matrix $A_y \in \Mat_r(k)$. As $I \subideal \g$ is in ideal it follows that $\im \ad_\g(x) \subseteq \g$ and $\im \ad_\g(y) \subseteq \g$, which is why with respect to the basis $(x_1, \dotsc, x_s)$ the endomorphism $\ad_\g(x)$ and $\ad_\g(y)$ are represented by a matrices
  \[
@@ -238,7 +238,7 @@
 % TODO: Lemma does not hold for the restriction to subalgebras
 
 
-\begin{expl}
+\begin{example}
  Let $\g \coloneqq \sll_n(k) = [\gl_n(k), \gl_n(k)]$. As seen in example~\ref{expl: Killing form of gl_n} the Killing form of $\gl_n(k)$ is given by
  \[
   \kappa_{\gl_n(k)}(x,y) = 2n \tr(xy) - 2(\tr x)(\tr y)
@@ -249,15 +249,15 @@
   \kappa_{\sll_n(k)}(x,y) = 2n \tr(xy) \quad \text{for all $x,y \in \sll_n(k)$}.
  \]
  In particular the Killing form of $\sll_n(k)$ is just a multiple of the trace form.
-\end{expl}
+\end{example}
 
 
-\begin{lem}\label{lem: orthogonal ideals with respect to the killing form}
+\begin{lemma}\label{lem: orthogonal ideals with respect to the killing form}
  Let $\g$ be a Lie algebra and $I_1, I_2 \subideal \g$ ideals with $\g = I_1 \oplus I_2$. Then $I_1 \perp I_2$ with respect to the Killing form $\kappa$ of $\g$. In particular it follows that for all $x,y \in \g$ with $x = x_1 + x_2$ and $y = y_1 + y_2$ with respect to $\g = I_1 \oplus I_2$
  \[
   \kappa(x,y) = \kappa_{I_1}(x_1, y_1) + \kappa_{I_2}(x_2, y_2)
  \]
-\end{lem}
+\end{lemma}
 \begin{proof}
  Because $[I_1, I_2] \subseteq I_1 \cap I_2 = 0$ it follows that for every $z_1 \in I_1$ and $z_2 \in I_2$
  \[
@@ -280,17 +280,17 @@
 \subsection{The concrete Jordan decomposition}
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be an $n$-dimensional $k$-vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(y)$). Then $x$ (resp.\ $y$) is called \emph{semisimple} if it is diagonalizable.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  An endomorphism $x \in \End_k(V)$ as above is semisimple if and only if every $x$-invariant subspace of $V$ has a direct summand which is also $x$-invariant. (This depends on $k$ being algebraically closed.)
-\end{rem}
+\end{remark}
 
 
-\begin{thrm}\label{thrm: concrete Jordan decomposition}
+\begin{theorem}\label{thrm: concrete Jordan decomposition}
  Let $V$ be a finite dimensional $k$-vector space and $x \in \End_k(V)$.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -308,7 +308,7 @@
   \item
    If $A \subseteq B \subseteq V$ are linear subspaces with $x(B) \subseteq A$ then also $x_s(B) \subseteq A$ and $x_n(B) \subseteq A$.
  \end{enumerate}
-\end{thrm}
+\end{theorem}
 \begin{proof}
  Let $\chi(T)$ be the characteristic polynomial of $x$ with $\chi(T) = \prod_{i=1}^n (T-\lambda_i)^{m_i}$ where $\lambda_i \neq \lambda_j$ for $i \neq j$. By the chinese reminder theorem the map
  \begin{equation}\label{eqn: use of chinese reminder theorem}
@@ -359,22 +359,22 @@
 \end{proof}
 
 
-\begin{rem}\label{rem: concrete Jordan decomposition for matrices}
+\begin{remark}\label{rem: concrete Jordan decomposition for matrices}
  An analogeous statement of Theorem~\ref{thrm: concrete Jordan decomposition} can be shown for $\Mat_n(k)$ instead of $\End_k(V)$. More precisely: Every matrix $x \in \Mat_n(k)$ can be uniquely decomposed into $x = x_s + x_n$ such that $x_s$ is semisimple, $x_n$ is nilpotent and $x_s$ and $x_n$ commute. Both $x_s$ and $x_n$ are polynomials without constant term in $x$, so any matrix in $\Mat_n(k)$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$. If $A \subseteq B \subseteq k^n$ are linear subspaces such that $B$ is carried into $A$ by left multiplication with $x$, then the same goes for $x_s$ and $x_n$.
-\end{rem}
+\end{remark}
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be an $n$-dimensional vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(k)$). Then the decomposition $x = x_s + x_n$ from Theorem~\ref{thrm: concrete Jordan decomposition} (resp.\ the decomposition $y = y_s + y_n$ from Remark~\ref{rem: concrete Jordan decomposition for matrices}) is called the \emph{concrete Jordandecomposition} of $x$ (resp.\ $y$). The element $x_s$ (resp.\ $y_s$) is called the \emph{(concrete) semisimple part} of $x$ (resp.\ $y$) and the element $x_n$ (resp.\ $y_n$) is called the \emph{(concrete) nilpotent part} of $x$ (resp.\ $y$).
-\end{defi}
+\end{definition}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a finite dimensional Lie algebra. Then $x \in \g$ is called \emph{$\ad$-semisimple} if $\ad(x)$ is a semisimple endomorphism of $\g$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: ss and nilpotent implies ad-ss and ad-nilpotent}
+\begin{lemma}\label{lem: ss and nilpotent implies ad-ss and ad-nilpotent}
  Let $\g \subseteq \gl(V)$ be a Lie subalgebra for some finite dimensional vector space $V$ (resp.\ $\g \subseteq \gl_n(k)$) and $x \in \g$.
  \begin{enumerate}
   \item
@@ -382,7 +382,7 @@
   \item
    If $x$ is nilpotent then $x$ is also $\ad$-nilpotent.
  \end{enumerate}
-\end{lem}
+\end{lemma}
 \begin{proof}
  We only show the case $\g \subseteq \gl(V)$, the proof for the case $\g \subseteq \gl_n(k)$ being essentially the same.
  \begin{enumerate}[leftmargin=*]
@@ -415,9 +415,9 @@
 \end{proof}
 
 
-\begin{cor}\label{cor: concrete Jordan decomposition compatible with adjoint representation}
+\begin{corollary}\label{cor: concrete Jordan decomposition compatible with adjoint representation}
  Let $\g \subseteq \gl(V)$ be a Lie subalgebra for a finite dimensional vector space $V$ (resp.\ $\g = \gl_n(k)$). If $x \in \g$ has the Jordan decomposition $x = x_s + x_n$ then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the Jordan decomposition of $\ad(x)$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  As $x_s$ is semisimple the same goes for $\ad(x_s)$ and as $x_n$ is nilpotent the same goes for $\ad(x_n)$, each following from Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent}. As $x_s$ and $x_n$ commute so do $\ad(x_n)$ and $\ad(x_s)$ because $\ad$ is a homomorphism of Lie algebras.
 \end{proof}
@@ -429,13 +429,13 @@
 \subsection{Cartan’s Criterion}
 
 
-\begin{lem}\label{lem: Cartan's criterion technical lemma}
+\begin{lemma}\label{lem: Cartan's criterion technical lemma}
  Let $V$ be a finite dimensional $k$-vector space. Let $A \subseteq B \subseteq \gl(V)$ be linear subspaces and let
  \[
   T \coloneqq \{z \in \gl(V) \mid \ad(z)(B) \subseteq A\}.
  \]
  If $x \in T$ and $\tr(xz) = 0$ for every $z \in T$ then $x$ is nilpotent.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then the concrete Jordan decomposition of $\ad(x)$ is given by $\ad(x) = \ad(x_s) + \ad(x_n)$ by Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem~\ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
  
@@ -477,16 +477,16 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  The proof of Lemma~\ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the proof given in \cite[\S 4.3]{Humphreys}.
  
  In the lecture a proof was given for the special case $k = \Cbb$. But since I have some trouble understanding the details it is not included here (yet).
-\end{rem}
+\end{remark}
 
 
-\begin{lem}[Cartan’s criterion for $\gl(V)$] \label{lem: Cartans criterion for linear Lie algebra}
+\begin{lemma}[Cartan’s criterion for $\gl(V)$] \label{lem: Cartans criterion for linear Lie algebra}
  Let $V$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a Lie subalgebra. Then $\g$ is solvable if and only if $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Suppose that $\g$ is solvable. Then by Lie’s theorem there exists a basis of $V$ with respect to which $\g$ is represented by upper triangular matrices. Then $[\g,\g]$ is represented by strictly upper triangular matrices, which is why $xy$ is also represented by a stricly upper triangular matrix for every $x \in \g$ and $y \in [\g,\g]$. Hence $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
  
@@ -507,12 +507,12 @@
 \end{proof}
 
 
-\begin{thrm}[Cartan’s criterion for solvability]
+\begin{theorem}[Cartan’s criterion for solvability]
  Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is solvable if and only if
  \[
   \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
  \]
-\end{thrm}
+\end{theorem}
 \begin{proof}
  Because $Z(\g)$ is a solvable ideal in $\g$ it follows that $\g$ is solvable if and only if $\g/Z(\g) \cong \ad \g \subseteq \gl(\g)$ is solvable. By Cartan’s criterion for $\gl(\g)$ this is the case if and only if
  \[
@@ -526,9 +526,9 @@
 \end{proof}
 
 
-\begin{cor}\label{cor: rad kappa is a solvable ideal}
+\begin{corollary}\label{cor: rad kappa is a solvable ideal}
  Let $\g$ be a finite dimensional Lie algebra and $\kappa$ the Killing form of $\g$. Then $\rad \kappa$ is a solvable ideal of $\g$. In particular $\rad \kappa \subseteq \rad \g$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} already showed that $\rad \kappa$ is an ideal in $\g$. From Lemma~\ref{lem: restriction of the Killing form to an ideal} and the definition of $\rad \kappa$ it follows that 
  \[

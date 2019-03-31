@@ -8,48 +8,48 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 \section{Classic version}
 
 
-\begin{defi}
+\begin{definition}
  Let $M$ be a module over a ring $R$. Then $M$ is called \emph{simple} or \emph{irreducible} if $M$ contains precisely two sumbodules. Equivalently $M$ in nonzero and its only submodules are the \emph{trivial} ones, namely $0$ and $M$ itself.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}[Schur] \label{lem: Schur general part about skew field}
+\begin{lemma}[Schur] \label{lem: Schur general part about skew field}
  Let $R$ be a ring and $M$ a simple module over $R$. Then any endomorphism of modules $f \colon M \to M$ is either zero or an isomorphism. In particular $\End_R(M)$ is a skew field.
-\end{lem}
+\end{lemma}
 \begin{proof}
  As $M$ is nonzero $f$ cannot be zero and an isomorphism at the same time. If $f \neq 0$ then $\ker f$ is a proper submodule of $M$ and $\im f$ is a nonzero submodule of $M$, so $\ker f = 0$ and $\im f = M$ because $M$ is simple.
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $M$ be an $A$-module over a $k$-algebra $A$. Then $\End_A(M)$ is a division algebra over $k$.
-\end{cor}
+\end{corollary}
 
 
-\begin{lem}\label{lem: algebraic elements over algebraically closed fields}
+\begin{lemma}\label{lem: algebraic elements over algebraically closed fields}
  Let $D$ be a division algebra over an algebraically closed field $k$. If $x \in D$ is algebraic over $k$ then already $x \in k$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $P \in k[T]$ be nonzero with $P(x) = 0$. W.l.o.g.\ $P$ can assumed to be monic. Because $k$ is algebraically closed there exist $\alpha_1, \dotsc, \alpha_r \in k$ with $P = \prod_{i=1}^r (x-\alpha_i)$. Because $0 = P(x) = c \prod_{i=1}^n (x-\alpha_i)$ and $D$ is a skew field it follows that $x = \alpha_i$ for some $i$ and therefore $x \in k$.
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $k$ be an algebraically closed field and $L$ a finite-dimensional division algebra over $k$. Then $L = k$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Let $x \in L$. Because $L$ is finite-dimenisonal over $k$ there exists some $n \geq 1$ such that $1, x, x^2, \dotsc, x^n$ are linearly dependent over $k$. Therefore there exist some $a_0, a_1, \dotsc, a_n \in k$ such that $a_0 + a_1 x + \dotsb + a_n x^n = 0$ is a non-trivial linear combination. Then $P = \sum_{i=0}^n a_i T^i \in k[T]$ is nonzero with $P(x) = 0$, so $x$ is algebraic over $k$. From Lemma~\ref{lem: algebraic elements over algebraically closed fields} it follows that $x \in k$.
 \end{proof}
 
 
-\begin{cor}[Schur, classic Version] \label{cor: classic Schur}
+\begin{corollary}[Schur, classic Version] \label{cor: classic Schur}
  Let $k$ be an algebraically closed field and $M$ a simple $A$-module for a $k$-algebra $A$. If $M$ is finite-dimensional over $k$ then $\End_A(M) = k$, i.e.\ every module endomorphism of $M$ is given by multiplication with a scalar.
-\end{cor}
+\end{corollary}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\g$ be a Lie algebra over an algebraically closed field $k$ and $V$ a irreducible and finite-dimensional representation of $\g$. Then $\End_\g(V) = k$, i.e.\ every endomorpism of $V$ as a representation of $\g$ is given by an multiplication with some scalar.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$ and apply Corollary~\ref{cor: classic Schur}.
 \end{proof}
@@ -61,22 +61,22 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 \section{Generalization by Dixmier}
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be a vector space over a field $k$. An endomorphism $\varphi \in \End_k(V)$ is called \emph{algebraic} over $k$ there exists some nonzero polynomial $P \in k[T]$ mit $P(\varphi) = 0$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: algebraic endomorphisms over algebraically closed fields}
+\begin{lemma}\label{lem: algebraic endomorphisms over algebraically closed fields}
  Let $k$ be an algebraically closed field, $V$ a vector space over $k$ and $D \subseteq \End_k(V)$ a division algebra over $k$. If $\varphi \in D$ is algebraic over $k$ then $\varphi = \alpha \id_V$ for some $\alpha \in k$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  This follows directly from Lemma~\ref{lem: algebraic elements over algebraically closed fields}.
 \end{proof}
 
 
-\begin{cor}\label{cor: Schur generally needs only algebraic endomorphisms}
+\begin{corollary}\label{cor: Schur generally needs only algebraic endomorphisms}
  Let $k$ be an algebraically closed field, $A$ a $k$-algebra and $M$ a simple $A$-module. If $\varphi \in \End_A(M)$ is algebraic then $\varphi = \alpha \id_M$ for some $\alpha \in k$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  This follows directly from Lemma~\ref{lem: algebraic endomorphisms over algebraically closed fields} because $\End_A(M) \subseteq \End_k(M)$ is a division algebra over $k$ by Lemma~\ref{lem: Schur general part about skew field}.
 \end{proof}
@@ -85,9 +85,9 @@ Unless otherwise noted $k$ always is some arbitrary field. Whenever we talk abou
 The following Proposition traces back to \cite{Dixmier}. (At least this is what I found on the web --- I could not find the original article, nor would I be able to read it (as it was apparently written in French)).
 
 
-\begin{prop}[Dixmier]\label{prop: Dixmier}
+\begin{proposition}[Dixmier]\label{prop: Dixmier}
  Let $M$ be a simple $A$-module for a $k$-algebra $A$, such that $\dim_k M > \card k$. Then every $\varphi \in \End_A(M)$ is algebraic over $k$.
-\end{prop}
+\end{proposition}
 \begin{proof}
  Suppose that there exists some $\varphi \in \End_A(M)$ which is not algebraic over $k$. Then the kernel of the map
  \[
@@ -113,30 +113,30 @@ The following Proposition traces back to \cite{Dixmier}. (At least this is what 
 \end{proof}
 
 
-\begin{cor}\label{cor: Dixmier algebraically closed}
+\begin{corollary}\label{cor: Dixmier algebraically closed}
  Let $k$ be an algebraically closed field, $A$ a $k$-algebra and $M$ a simple $A$-module. If $\card k > \dim_k M$ then $\End_A(M) = k$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  This is a combination of Corollary \ref{cor: Schur generally needs only algebraic endomorphisms} and Proposition \ref{prop: Dixmier}.
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\g$ be a Lie algebra over an algebraically closed field $k$ and $V$ an irreducible representation of $\g$ with $\card k > \dim_k V$. Then $\End_\g(V) = k$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$ and apply Corollary \ref{cor: Dixmier algebraically closed}.
 \end{proof}
 
 
-\begin{expl}
+\begin{example}
  Let $\g$ be complex Lie algebra and $V$ an irreducible representation of $\g$ of countable dimension. Then $\End_\g(V) = \Cbb$.
-\end{expl}
+\end{example}
 
 
-\begin{rem}
+\begin{remark}
  The requirement that $\card k > \dim_k M$ in Corollary \ref{cor: Dixmier algebraically closed} can not be dropped without adding some other restraints. To see this take $k \coloneqq \overline{\Q}$ as well as $A = M = \overline{\Q}(T)$. Then $\dim_k M = \card k$ and $\End_A(M) = \End_{\overline{\Q}(T)}(\overline{\Q}(T)) = \overline{\Q}(T)$.
-\end{rem}
+\end{remark}
 
 
 
@@ -148,14 +148,14 @@ The following Proposition traces back to \cite{Dixmier}. (At least this is what 
 The following Proposition is due to \cite{Quillen}.
 
 
-\begin{prop}[Quillen] \label{prop: Quillen}
+\begin{proposition}[Quillen] \label{prop: Quillen}
  Let $k$ be a field and $A$ a filtered $k$-algebra, such that $\gr A$ is finitely generated and commutative as a $k$-algebra. If $M$ is a simple $A$-module then every $\varphi \in \End_A(M)$ is algebraic over $k$.
-\end{prop}
+\end{proposition}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\g$ be finite-dimensional Lie algebra over an algebraically closed field $k$ and $V$ as irreducible representation of $\g$. Then $\End_\g(V) = k$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Take $V$ as a simple module over the universal enveloping algebra $\Ue(\g)$. If $x_1, \dotsc, x_n$ is a $k$-basis of $\g$ then by the abstract version of the PBW theorem
  \[

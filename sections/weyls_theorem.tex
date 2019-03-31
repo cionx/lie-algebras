@@ -1,7 +1,7 @@
 \section{Weyl’s Theorem on complete reducibility}
 
 
-\begin{lem}\label{lem: Casimirs endomorphism for Weyl}
+\begin{lemma}\label{lem: Casimirs endomorphism for Weyl}
  Let $\g$ be an $n$-dimensional semisimple Lie algebra, $V$ a finite dimensional vector space and $\rho \colon \g \to \gl(V)$ a representation of $\g$.
  \begin{enumerate}
   \item
@@ -17,7 +17,7 @@
    \]
    is a homomorphism of representations with $\tr(C_\beta^V) = \dim_k \g$.
  \end{enumerate}
-\end{lem}
+\end{lemma}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -39,35 +39,35 @@
 \end{proof}
 
 
-\begin{defi}\label{defi: casimir endomorphism of a faithful representation}
+\begin{definition}\label{defi: casimir endomorphism of a faithful representation}
  Let $V$ be a faithful representation of a finite dimensional semisimple Lie algebra $\g$ and $\beta \colon \g \times \g \to k$ the associative, symmetric and non-degenerate bilinear form defined by $\beta(x,y) = \tr(\rho(x)\rho(y))$ for all $x,y \in \g$. Then define
  \[
   C^V_\g \colon V \to V, \quad v \mapsto C_\beta \cdot v.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Notice for the situation of Definition~\ref{defi: casimir endomorphism of a faithful representation} that if $x_1, \dotsc, x_n$ is a basis of $\g$ and $x^1, \dotsc, x^n$ is the dual basis with respect to $\beta$ then $C^V_\g$ can also be expressed as
  \[
   C^V_\g = \sum_{i=1}^n \rho(x_i) \rho(x^i).
  \]
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Definition~\ref{defi: casimir endomorphism of a faithful representation} was not given in the lecture, but helps to bake the following easier to read.
-\end{rem}
+\end{remark}
 
 
-\begin{lem}\label{lem: decomposition of representations of semisimple Lie algebras}
+\begin{lemma}\label{lem: decomposition of representations of semisimple Lie algebras}
  Let $g$ be a finite dimensional semisimple $k$-Lie algebra and let $V$ be a finite dimensional representation of $\g$. Then $V = \g V \oplus V^\g$ for the subrepresentations
  \[
   \g V \coloneqq \{x.v \mid x \in \g, v \in V\}
   \quad\text{and}\quad
   V^\g \coloneqq \{v \in V \mid \text{$x.v = 0$ for every $x \in \g$}\}
  \]
-\end{lem}
+\end{lemma}
 \begin{proof}
  If $V = U_1 \oplus \dotsb \oplus U_n$ is a decomposition into subrepresentations of $\g$ then $\g V = \g U_1 \oplus \dotsb \oplus \g U_n$ and $V^\g = U_1^\g \oplus \dotsb \oplus U_n^\g$. Hence it sufficies to show the statement for indecomposable representations. Hence suppose that $V$ is indecomposable. It can also be assumed that $V \neq 0$.
  
@@ -93,9 +93,9 @@
 \end{proof}
 
 
-\begin{thrm}[Weyl]
+\begin{theorem}[Weyl]
  Let $V$ be finite dimensional representation of a finite dimensional semisimple Lie algebra $\g$. Then $V$ is completely reducible.
-\end{thrm}
+\end{theorem}
 \begin{proof}
  It sufficies to show that any subrepresentation $U \subseteq V$ has a direct complement which is again a subrepresentation, i.e.\ that there exists a subrepresentation $W \subseteq V$ with $V = U \oplus W$.
  
@@ -129,7 +129,7 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  As a representation $V$ of a Lie algebra $\g$ is completely reducible if and only if it is semisimple as an $\Ue(\g)$-module one has the usual equivalent definitions of complete reducibility, i.e.\ the following are equivalent:
  \begin{enumerate}
   \item
@@ -139,10 +139,10 @@
   \item
    Every submodule $U \subseteq V$ has a direct summand which is also a subreprentation.
  \end{enumerate}
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Weyl’s theorem does not necessarily hold for infine dimensional representations. To see this take $k[X]$ as a representation of $\sll_2(k)$ via
  \[
   \sll_2(k) \to \gl(k[X]), \quad
@@ -153,7 +153,7 @@
  which was already shown in Examples~\ref{expls: representations of Lie algebras} to define a representation of $\sll_2(k)$. Notice that $k \subseteq k[X]$ is a subrepresentation. If $U \subseteq k[X]$ is a subrepresentation and $P \in U$ a polynomial of degree $n$ then by applying $e$ it turns out that $U$ contains of polynomial of degree $d$ for every $d \leq n$, which is why $U$ contains $1, X, \dotsc, X^n$ (here it is used that $\chara k = 0$). Moreover, if $X \in U$ then by applying $f$ it turns out that $X^d \in U$ for every $d \geq 1$. Hence if $U$ contains a non constant polynomial then already $X^d \in U$ for every $d \in \N$ and therefore $U = k[X]$.
  
  So $0,$ $k$ and $k[X]$ are the only subrepresentations of $k[X]$. in particular $k[X]$ is not completely reducible.
-\end{rem}
+\end{remark}
 
 
 

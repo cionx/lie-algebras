@@ -2,9 +2,9 @@
 In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys} with some inspiration from the lecture.
 
 
-\begin{lem}\label{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements}
+\begin{lemma}\label{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements}
  Let $\g \subseteq \gl(V)$ be a finite dimensional semisimple linear Lie algebra. Then $\g$ contains the semisimple and nilpotent parts of all its elements.
-\end{lem}
+\end{lemma}
 \begin{proof}
  It sufficies to show the statement for $V \neq 0$ because otherwise $\g = \gl(V) = 0$.
  
@@ -26,7 +26,7 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
-\begin{lem}\label{lem: generalized eigenspace decomposition for derivations}
+\begin{lemma}\label{lem: generalized eigenspace decomposition for derivations}
  Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, and $\delta \in \Der A$. For every $\lambda \in k$ let
  \[
   A_\lambda
@@ -37,7 +37,7 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
  \[
   A_\lambda A_\mu \subseteq A_{\lambda + \mu} \quad \text{for all $\lambda, \mu \in k$}.
  \]
-\end{lem}
+\end{lemma}
 \begin{proof}
  For this proof abbreviate $1 \coloneqq I$. That $A = \bigoplus_{\lambda \in k} A_\lambda$ is a standard fact from linear algebra. Let $x \in A_\lambda$ and $y \in A_\mu$. It needs to be shown that $xy \in A_{\lambda + \mu}$, i.e.\ $(\delta-(\lambda+\mu)I)^m(xy) = 0$ for some $m \in \N$. Because $(\delta-\lambda I)^{m_1}(x) = 0$ and $(\delta-\mu I)^{m_2}(y) = 0$ for some $m_1, m_2 \in \N$ this follows from the formula
  \[
@@ -73,14 +73,14 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  Notice that the formula in the proof of Lemma~\ref{lem: generalized eigenspace decomposition for derivations} is just a generalization of the binomial theorem, which follows by setting $\delta = 0$.
-\end{rem}
+\end{remark}
 
 
-\begin{lem}\label{lem: derivations contain the ss and np part of all its elements}
+\begin{lemma}\label{lem: derivations contain the ss and np part of all its elements}
  Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, e.g.\ a Lie algebra. Then $\Der(A)$ contains the semisimple and nilpotent parts (in $\End_k(A)$) of all its elements.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $\delta \in \Der(A)$ and for every $\lambda \in k$ let $A_\lambda$ be the generalized eigenspace with respect to $\lambda$. To show that $\Der(A)$ contains the semisimple and nilpotent part of $\delta$ is sufficies to do so for the semisimple part, which will be denoted by $\sigma$. As seen in the proof of Theorem~\ref{thrm: concrete Jordan decomposition} (the concrete Jordan decomposition) $\sigma$ acts on $A_\lambda$ by multiplication with $\lambda$ for every $\lambda \in k$. If $x \in A_\lambda$ and $y \in A_\mu$ then $xy \in A_{\lambda + \mu}$ and thus
  \[
@@ -93,9 +93,9 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
-\begin{lem}\label{lem: direct complement of semisimple ideals}
+\begin{lemma}\label{lem: direct complement of semisimple ideals}
  Let $\g$ be a finite dimensional Lie algebra and $I \subideal \g$ a semisimple ideal. Then there exists an ideal $J \subideal \g$ with $\g = I \oplus J$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Because $I \subideal \g$ is an ideal it follows that $\kappa_I = \kappa_\g|_{I \times I}$. Because $I$ is semisimple it also follows that $\kappa_I$ is non-degenerate. It follows for the linear map
  \[
@@ -109,9 +109,9 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
-\begin{lem}\label{lem: every derivation of a semisimple Lie algebra is inner}
+\begin{lemma}\label{lem: every derivation of a semisimple Lie algebra is inner}
  Let $\g$ be a finite dimensional semisimple Lie algebra. Then every derivation of $\g$ is inner.
-\end{lem}
+\end{lemma}
 \begin{proof}
  As seen in Lemma~\ref{lem: inner derivations are in ideal} and its proof the inner derivations form an ideal $I \subideal \Der(\g)$ with $[\delta,\ad(x)] = \ad(\delta(x))$ for every $\delta \in \Der(\g)$ and $x \in \g$. By Lemma~\ref{lem: direct complement of semisimple ideals} there exists an ideal $J \subideal \Der(\g)$ with $\Der(\g) = I \oplus J$. Let $\delta \in J$. Then for any $x \in \g$
  \[
@@ -121,53 +121,53 @@ In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete J
 \end{proof}
 
 
-\begin{thrm}[Abstract Jordan decomposition] \label{thrm: abstract Jordan decomposition}
+\begin{theorem}[Abstract Jordan decomposition] \label{thrm: abstract Jordan decomposition}
  Let $\g$ be a finite dimensional semisimple Lie algebra. Then for any $x \in \g$ there exist unique elements $x_s, x_n \in \g$ such that $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(x_s) = \ad(x)_s$ and $\ad(x_n) = \ad(x)_n$.
  
  Then $x = x_s + x_n$ and an arbitrary element of $\g$ commutes with $x$ if and only if it commutes both with $x_s$ and $x_n$. In particular $x$, $x_s$ and $x_n$ are pairwise commuting.
-\end{thrm}
+\end{theorem}
 \begin{proof}
  By Lemma~\ref{lem: every derivation of a semisimple Lie algebra is inner} the adjoint representation $\ad \colon \g \to \ad(\g) = \Der(\g)$ is an isomorphism of Lie algebras. By Lemma~\ref{lem: derivations contain the ss and np part of all its elements} $\Der(\g)$ contains the semisimple and nilpotent parts of all its elements. By setting $x_s \coloneq \ad^{-1}(\ad(x)_s)$ and $x_n \coloneqq \ad^{-1}(\ad(x)_n)$ the theorem follows from the properties of the concrete Jordan decomposition as stated in Theorem~\ref{thrm: concrete Jordan decomposition}.
 \end{proof}
 
 
-\begin{defi}\label{defi: definition of abstract ss and np}
+\begin{definition}\label{defi: definition of abstract ss and np}
  Let $\g$ be a finite dimensional semisimple Lie algebra and $x \in \g$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{abstract semisimple part} and $x_n$ is the \emph{abstract nilpotent part} of $x$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  By Definition~\ref{defi: definition of abstract ss and np} an element of a finite dimensional semisimple Lie algebra is semisimple if and only if it is $\ad$-semisimple and nilpotent if and only if it is $\ad$-nilpotent.
-\end{rem}
+\end{remark}
 
 
-\begin{prop}\label{prop: abstract and concrete Jordan decomposition coincide}
+\begin{proposition}\label{prop: abstract and concrete Jordan decomposition coincide}
  Let $\g$ be a finite dimensional semisimple linear Lie algebra. Then the abstract and concrete Jordan decomposition coincide.
-\end{prop}
+\end{proposition}
 \begin{proof}
  Let $x \in \g$, $x = xc_s + x_n$ the abstract Jordan decomposition of $x$ and $x = y_s + y_n$ the concrete Jordan decomposition of $x$. From Lemma~\ref{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements} it follows that $y_s, y_n \in \g$ and by Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent} $\ad(x) = \ad(y_s) + \ad(y_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(y_s) = \ad(x)_s$ and $\ad(y_n) = \ad(x)_n$. Hence $y_s$ is the abstract semisimple part of $x$ and $y_n$ is the abstract nilpotent part of $x$.
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  By Proposition~\ref{prop: abstract and concrete Jordan decomposition coincide} we need not to distinguish between the concrete and abstract Jordan decomposition when working with a finite dimensional semisimple linear Lie algebra, which is why we will stop doing so.
-\end{rem}
+\end{remark}
 
 
 % TODO: Examples all around the Jordan decomposition
 
 
-\begin{lem}\label{lem: functoriality of the Jordan decomposition for linear Lie algebras}
+\begin{lemma}\label{lem: functoriality of the Jordan decomposition for linear Lie algebras}
  Let $\g$ be a finite dimensional semisimple Lie algbra, $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ and $x \in \g$. If $x = x_s + x_n$ is the Jordan decomposition of $x$ then $\rho(x) = \rho(x_s) + \rho(x_n)$ is the Jordan decomposition of $\rho(x)$ with $\rho(x_s) = \rho(x)_s$ and $\rho(x_n) = \rho(x)_n$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $x \in \g$ be semisimple (resp.\ nilpotent). Then $x$ is $\ad_\g$-semisimple (resp.\ $\ad_\g$-nilpotent). It follows that $\rho(x)$ is $\ad_{\rho(\g)}$-semisimple (resp.\ $\ad_{\rho(\g)}$-nilpotent) and therefore semisimple (resp.\ nilpotent).
 \end{proof}
 
 
-\begin{cor}[Functoriality of the Jordan decomposition] \label{cor: functoriality of the Jordan decomposition}
+\begin{corollary}[Functoriality of the Jordan decomposition] \label{cor: functoriality of the Jordan decomposition}
  Let $\g_1$ and $\g_2$ be finite dimensional semisimple Lie algebras and $\phi \colon \g_1 \to \g_2$ a homomorphism of Lie algebras. Then $\phi$ preserves the Jordan decomposition, i.e.\ $\phi(x_s) = \phi(x)_s$ and $\phi(x_n) = \phi(x)_n$ for every $x \in \g_1$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  By Lemma~\ref{lem: functoriality of the Jordan decomposition for linear Lie algebras} the homomorphism of Lie algebras $\ad_{\g_2} \!\circ\, \phi \colon \g_1 \to \gl(\g_2)$ preserves the Jordan decomposition. The homomorphism $\ad_{\g_2}^{-1} \colon \ad(\g_2) \to \g_2$ preserves the Jordan decomposition by the definition of the abstract Jordan decomposition. Hence $\phi = \ad_{\g_2}^{-1} \circ \ad_{\g_2}\! \circ\, \phi$ preserves the Jordan decomposition as well.
 \end{proof}

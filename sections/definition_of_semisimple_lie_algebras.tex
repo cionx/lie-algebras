@@ -1,14 +1,14 @@
 \section{Definition and basic properties}
 
 
-\begin{defi}
+\begin{definition}
  A Lie algebra $\g$ is called \emph{semisimple} if it is the sum of finitely many simple ideals, i.e.\ if there exists ideals $I_1, \dotsc, I_n \subideal \g$ which are simple (as Lie algebras) such that $\g = I_1 \oplus \dotsb \oplus I_n$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}
+\begin{lemma}
  Let $\g$ be a semisimple Lie algebra. Then $[\g,\g] = \g$ and $Z(\g) = 0$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $I_1, \dotsc, I_n \subideal \g$ be simple ideals such that $\g = I_1 \oplus \dotsb \oplus I_n$. Then
  \begin{gather*}
@@ -20,17 +20,17 @@
 \end{proof}
 
 
-\begin{cor}\label{cor: representation of semisimple Lie algebra are traceless}
+\begin{corollary}\label{cor: representation of semisimple Lie algebra are traceless}
  Let $\g$ be a semisimple Lie algebra and $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$. Then $\rho(\g) \subseteq \sll(V)$, i.e.\ $\tr(\rho(x)) = 0$ for every $x \in \g$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Notice that $\rho(\g) = \rho([\g,\g]) = [\rho(\g), \rho(\g)] \subseteq [\gl(V), \gl(V)] = \sll(V)$.
 \end{proof}
 
 
-\begin{cor}\label{cor: decomposition of semisimple Lie algebra unique up to order}
+\begin{corollary}\label{cor: decomposition of semisimple Lie algebra unique up to order}
  Let $\g$ be a semisimple Lie algebra and $I_1, \dotsc, I_n \subideal \g$ simple ideals with $\g = I_1 \oplus \dotsb \oplus I_n$. Then the ideals $I_1, \dotsc, I_n$ are unique up to reordering.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Let $J_1, \dotsc, J_m \subideal \g$ be simple ideals with $\g = J_1 \oplus \dotsm \oplus J_m$. Then
  \[
@@ -51,12 +51,12 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  If $\g$ is a semisimple Lie algebra then we will often just talk about \emph{the} decomposition $\g = I_1 \oplus \dotsb \oplus I_n$ into simple ideals, as this decomposition is unique up to reordering of the summands by Corollary~\ref{cor: decomposition of semisimple Lie algebra unique up to order}.
-\end{rem}
+\end{remark}
 
 
-\begin{thrm}\label{thrm: characterisations of finite-dimensional semisimple Lie algebras}
+\begin{theorem}\label{thrm: characterisations of finite-dimensional semisimple Lie algebras}
  For a finite dimensional Lie algebra $\g$ the following are equivalent:
  \begin{enumerate}[leftmargin=*]
   \item\label{enum: definition semisimple Lie algebra product of simple Lie algebras}
@@ -70,7 +70,7 @@
   \item\label{enum: definition semisimple Lie algebra no nonzero abelian ideals}
    $\g$ has no nonzero abelian ideals.
  \end{enumerate}
-\end{thrm}
+\end{theorem}
 \begin{proof}
  (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra killing form nondegenerate}) This directly follows from the fact that $\rad \kappa$ is a solvable ideal in $\g$.
  
@@ -98,37 +98,37 @@
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\g$ be a semisimple Lie algebra and $\g = I_1 \oplus \dotsb \oplus I_n$ the de\-com\-po\-si\-tion into simple ideals. If $I \subseteq \g$ is any ideal, then $I = I_{i_1} \oplus \dotsb \oplus I_{i_m}$ for some indices $1 \leq i_1 < \dotsb < i_m \leq n$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  The statement holds if $I = \g$ or $I = 0$, hence it can be assumed that $I$ is a non-trivial ideal of $\g$. From the proof of the implication (\ref{enum: definition semisimple Lie algebra killing form nondegenerate} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra sum of simple ideals}) it follows that there exists a decomposition $\g = J_1 \oplus \dotsb \oplus J_m$ into simple ideals such that $I = J_1 \oplus \dotsb \oplus J_\ell$ for some $1 \leq \ell \leq m$. As such a decomposition is unique up to reordering of the summands by Corollary~\ref{cor: decomposition of semisimple Lie algebra unique up to order} the statement follows.
 \end{proof}
 
 
-\begin{cor}\label{cor: ideals and quotients of semisimple again semisimple}
+\begin{corollary}\label{cor: ideals and quotients of semisimple again semisimple}
  If $\g$ is a semisimple Lie algebra and $I \subideal \g$ any ideal then both $I$ and $\g/I$ are also semisimple.
-\end{cor}
+\end{corollary}
 
 
 % TODO: Subalgebras not necessarily also semisimple
 
 
-\begin{cor}\label{cor: semisimple Lie algebra identification with dual space}
+\begin{corollary}\label{cor: semisimple Lie algebra identification with dual space}
  Let $\g$ be a finite-dimensional, semisimple Lie algebra. Then the map
  \[
   \g \to \g^*, \quad x \mapsto \kappa(x,\cdot)
  \]
  is an isomorphism of representations of $\g$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  The statement follows from Corollary \ref{cor: associative non-degenerate bilinear forms induce isomorphism to the dual} because $\kappa$ is non-degenerate.
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\g$ be a finite dimensional simple Lie algebra and $\beta \colon \g \times \g \to k$ an associative bilinear form. Then $\beta$ is a scalar multiple of the killing form $\kappa \colon \g \times \g \to k$.
-\end{cor}
+\end{corollary}
 \begin{proof}
  Because $\beta$ is associative the map
  \[

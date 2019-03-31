@@ -2,20 +2,20 @@
 For this section let $k$ be an arbitrary field with $\chara k = 0$.
 
 
-\begin{defi}\label{defi: notation of natural pairing}
+\begin{definition}\label{defi: notation of natural pairing}
  Let $V$ be a $k$-vector space. For every $v \in V$ and $\lambda \in V^*$ set
  \[
   \pair{v, \lambda} \coloneqq \pair{\lambda, v} \coloneqq2 \lambda(v).
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{rem}\label{rem: natural pairing is nondegenerate}
+\begin{remark}\label{rem: natural pairing is nondegenerate}
  Notice that the bilinear form $V^* \times V \to k, (\lambda,  v) \mapsto \pair{\lambda, v} = \lambda(v)$ is non-degenerate: If $v \in V$ with $\lambda(v) = 0$ for every $\lambda \in V^*$ then $v = 0$ and if $\lambda \in V^*$ with $\lambda(v) = 0$ for every $v \in V$ then $\lambda = 0$.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Notice that the notation of Definition~\ref{defi: notation of natural pairing} is compatible with the natural monomorphism $\iota \colon V \to V^{**}, v \mapsto (\lambda \mapsto \lambda(v))$ in the sense that the following diagram commutes:
  \[
    \begin{tikzcd}
@@ -33,10 +33,10 @@ For this section let $k$ be an arbitrary field with $\chara k = 0$.
  \]
  
  If $V$ is finite dimensional then $\iota$ is already an isomorphism and identifies $V$ with $V^{**}$. Then $\pair{\phi, v}$ can be understood as $\phi(v)$ or $\iota(v)(\phi)$ and the above shows that both are actually the same.
-\end{rem}
+\end{remark}
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ be a finite dimensional $k$-vector space. A subset $R \subseteq V$ is called an \emph{(abstract) root system (in $V$)} if the following hold:
  \begin{enumerate}
   \item
@@ -51,20 +51,20 @@ For this section let $k$ be an arbitrary field with $\chara k = 0$.
     $\pair{\alpha, \beta^\vee} \in \Z$ for all $\alpha, \beta \in R$.
  \end{enumerate}
  The root system $R$ is \emph{reduced} if $k \alpha \cap R = \{-\alpha, \alpha\}$ for every $\alpha \in R$, i.e.\ if the only multiples of $\alpha$ which are also roots are $\alpha$ and $-\alpha$. The \emph{rank} of the root system $R$ is the dimension of $V$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}\label{rem: -alpha also in the root system}
+\begin{remark}\label{rem: -alpha also in the root system}
  Notice that if $V$ is a finite dimensional vector space and $R \subseteq V$ a root system with $\alpha \in R$ then also
  \[
   -\alpha = \alpha - 2 \alpha = \alpha - \pair{\alpha, \alpha^\vee} \alpha = S_{\alpha, \alpha^\vee}(\alpha) \in R.
  \]
-\end{rem}
+\end{remark}
 
 
-\begin{lem}
+\begin{lemma}
  Let $V$ be a finite dimensional $k$-vector space and $R \subseteq V$ a root system. Then the element $\alpha^\vee \in V$ with $\alpha^\vee(\alpha) = 2$ is unique.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $\alpha^\vee, \tilde{\alpha}^\vee \in V^*$ with $\alpha^\vee(\alpha) = \tilde{\alpha}^\vee(\alpha) = 2$ and $s(R) \subseteq R$ as well as $t(R) \subseteq R$ for $s \coloneqq S_{\alpha, \alpha^\vee}$ and $t \coloneqq S_{\alpha, \tilde{\alpha}^\vee}$. Notice that $s(\alpha) = t(\alpha) = -\alpha$ as already seen in Remark~\ref{rem: -alpha also in the root system}.
  

@@ -7,12 +7,12 @@
 \subsection{Definition and examples}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a $k$-Lie algebra. A \emph{representation} of $\g$ is a $k$-vector space $V$ together with a homomorphism of Lie algebras $\rho \colon \g \to \gl(V)$. This representation is called \emph{faithful} if $\rho$ is injective. The \emph{dimension} of this representation is the dimension of $V$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Equivalently a representation of $\g$ is a $k$-vector space $V$ together with a $k$-bilinear map $\g \times V \to V, (x,v) \mapsto x.v$ such that
  \begin{equation}\label{eqn: representation via action}
   x.(y.v) - y.(x.v) = [x,y].v \quad \text{for all $x,y \in \g$ and $v \in V$}.
@@ -30,23 +30,23 @@
  Both constructions are inverse to each other.
 
  We will not distinguish between these two concepts and choose whichever is more useful in the given situation.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  If $(x_i)_{i \in I}$ is a basis of a Lie algebra $\g$ then for $\rho \colon \g \to \gl(V)$ to be a homomorphism of Lie algebras it is enough to check that $\rho([x_i,x_j])= [\rho(x_i), \rho(x_j)]$ for all $i,j \in I$. Therefore it also sufficies to check \eqref{eqn: representation via action} for basis elements, i.e.\ that
  \[
   x_i.(x_j.v) - x_j.(x_i.v) = [x_i, x_j].v \quad \text{for all $i,j \in I$ and $v \in V$}.
  \]
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Ado’s theorem is equivalent to every finite dimenisonal Lie algebra having a faithful representation.
-\end{rem}
+\end{remark}
 
 
-\begin{expls}\label{expls: representations of Lie algebras}
+\begin{examples}\label{expls: representations of Lie algebras}
  \begin{enumerate}[leftmargin=*]
   \item 
    If $\g \subseteq \gl(V)$ is a Lie subalgebra then $V$ is a representation of $\g$ via the inclusion $\g \inc \gl(V)$. This corresponds to the action
@@ -145,24 +145,24 @@
   \item
    The map $\ad \colon \g \to \gl(\g), x \mapsto \ad(x)$ is a homomorphism of Lie algebras and hence a representation of $\g$.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra. Then
  \[
   \ad \colon \g \to \gl(\g), \quad x \mapsto [x,\cdot]
  \]
  is called the \emph{adjoint representation} of $\g$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Together with Lemma~\ref{lem: Lie algebras act adjoint by derivations} it follows that every Lie algebras $\g$ acts on itself by derivations of itself via the adjoint representation. This is where much of the structure of Lie algebras comes from and why the Jacobi identity is of interest (I guess).
-\end{rem}
+\end{remark}
 
 
-\begin{prop}[New representations from old ones]\label{prop: new representations from old ones}
+\begin{proposition}[New representations from old ones]\label{prop: new representations from old ones}
  Let $\g$ be a Lie algebra over an arbitrary field $k$.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -193,7 +193,7 @@
     (x.\varphi)(v) = -\varphi(x.v) \quad \text{for every $x \in \g$, $\varphi \in V^*$ and $v \in V$}.
    \]
  \end{enumerate}
-\end{prop}
+\end{proposition}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -260,7 +260,7 @@
 \subsection{Homomorphisms of representations}
 
 
-\begin{defi}
+\begin{definition}
  Let $V$ und $W$ be representations of a $k$-Lie algebra $\g$. A $k$-linear map $f \colon V \to W$ is called a \emph{homomorphism of representations} if
  \[
   f(x.v) = x.f(v) \quad \text{for every $x \in \g$ and $v \in V$}.
@@ -270,10 +270,10 @@
   f \circ \rho_V(x) = \rho_W(x) \circ f \quad \text{for every $x \in X$}.
  \]
  The linear subspace of $\Hom_k(V,W)$ consisting of the homomorphisms of representations is denoted by $\Hom_\g(V,W)$, and for $V = W$ by $\End_\g(V) \coloneqq \Hom_\g(V,V)$. 
-\end{defi}
+\end{definition}
 
 
-\begin{expls}
+\begin{examples}
  Let $\g$ be a Lie algebra over a field $k$.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -281,33 +281,33 @@
   \item
    If $V_1$, $V_2$ and $V_3$ are representations of $\g$ and $f \colon V_1 \to V_2$ and $g \colon V_2 \to V_3$ are homomorphisms of representations then the composition $g \circ f \colon V_1 \to V_3$ is also a homomorphism of representations.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{rem}
+\begin{remark}
  For a Lie algebra $\g$ over a field $k$ the representations of $\g$ together with the homomorphisms of representations between them form a category.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  If $f \colon V \to W$ is an isomorphism of representations of a Lie algebra $\g$ then the $k$-linear map $f^{-1} \colon W \to V$ is also a homomorphism of representations (and therefore an isomorphism of representations) because
  \[
   f^{-1}(x.v) = f^{-1}(x.f(f^{-1}(v))) = f^{-1}(f(x.f^{-1}(v))) = x.f^{-1}(v)
  \]
  for every $x \in \g$ and $v \in V$. It also follows for every $x \in \g$ from $f \rho_V(x) = \rho_W(x) f$ that $\rho_V(x) f^{-1} = f^{-1} \rho_W(x)$.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}\label{rem: homomorphisms of representations as invariants}
+\begin{remark}\label{rem: homomorphisms of representations as invariants}
  Given two representations $V$ and $W$ of a Lie algebra $\g$ a linear map $f \colon V \to W$ is a homomorphism of representations if and only if
  \[
   x.f(v) - f(x.v) = 0 \quad \text{for every $x \in \g$ and $v \in V$},
  \]
  which is equivalent to $x.f = 0$ for every $x \in \g$ with respect to the induced action of $\g$ on $\Hom_k(V,W)$. Hence the homomorphisms of representations are precisely the ``invariant'' linear maps under the action of $\g$.
-\end{rem}
+\end{remark}
 
 
-\begin{prop}\label{prop: list of homomorphism of representations}
+\begin{proposition}\label{prop: list of homomorphism of representations}
  Let $\g$ be a Lie algebra.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -357,7 +357,7 @@
    \]
    is also a homomorphism of representations.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -385,14 +385,14 @@
 \subsection{Subrepresentations and irreducible representations}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra and $\rho \colon \g \to \gl(V)$ a representation of $\g$. A \emph{subrepresentation} of $V$ is a linear subpace $U \subseteq V$ such that $x.u \in U$ for every $x \in \g$ and $u \in U$. Equivalently $U$ is $\rho(x)$ invariant for every $x \in \g$.
  
  If $(U_i)_{i \in I}$ is a collection of subrepresentations of $\g$ then $V$ is called the \emph{direct sum} of the $U_i$ if $V = \bigoplus_{i \in I} U_i$ as vector spaces.
-\end{defi}
+\end{definition}
 
 
-\begin{expls}
+\begin{examples}
  Let $\g$ be a Lie algebra.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -424,34 +424,34 @@
    \]
    are subrepresentations of $V$.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{defi}
+\begin{definition}
  A representation $V$ of a Lie algebra $\g$ is called \emph{irreducible} or \emph{simple} if it has precisely two subrepresentations. Equivalently $V$ is nonzero and has only the trivial subrepresentations.
  
  The representation $V$ is called \emph{decomposable} if there exist non-trivial subrepresentations $U_1, U_2 \subseteq V$ with $V = U_1 \oplus U_2$. Otherwise $V$ is called \emph{indecomposable}.
  
  The representation $V$ is called \emph{completely decomposible} or \emph{semisimple} if there exists a decomposition $V = \bigoplus_{i \in I} U_i$ into irreducible subrepresentations $U_i \subseteq V$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  By definition every irreducible representation is also indecomposable. The converse does not hold. Irreducible representations are precisely the ones which are both indecomposable and completely reducible.
-\end{rem}
+\end{remark}
 
 
-\begin{expl}
+\begin{example}
  \begin{enumerate}[leftmargin=*]
   \item
    Every one-dimensional representation is irreducible.
   \item
    The adjoint representation of a Lie algebra $\g$ is irreducible if and only if $\g \neq 0$ and $\g$ has no ideals besides $0$ and $\g$ itself. So $\g$ is either the onedimensional abelian Lie algebra or a simple Lie algebra.   
  \end{enumerate}
-\end{expl}
+\end{example}
 
 
-\begin{lem}[Schur]
+\begin{lemma}[Schur]
  Let $\g$ be a Lie algebra over a field $k$.
  \begin{enumerate}
   \item
@@ -459,7 +459,7 @@
   \item
    If $k$ is algebraically closed and $V$ a finite-dimensional irreducible representation of $\g$ then every $\varphi \in \End_\g(V)$ is given by multiplication with some $\lambda \in k$. In particular $\End_\g(V) \cong k$ as rings.
  \end{enumerate}
-\end{lem}
+\end{lemma}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item

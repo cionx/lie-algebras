@@ -14,16 +14,16 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 \subsection{\texorpdfstring{$k$}{k}-algebras}
 
 
-\begin{defi}
+\begin{definition}
  For any $k$-vector spaces $A$ and $B$ let
  \[
   \tau_{A,B} \colon A \otimes B \to B \otimes A, \quad a \otimes b \mapsto b \otimes a.
  \]
  For any vector space $A$ abbreviate $\tau_A \coloneqq \tau_{A,A}$.
-\end{defi}
+\end{definition}
 
 
-\begin{defi}\label{defi: algebras via diagrams}
+\begin{definition}\label{defi: algebras via diagrams}
  A $k$-algebra is a tupel $(A, m, u)$ consisting of a $k$-vector space $A$, linear maps $m \colon A \otimes A \to A$, called the \emph{multiplication} and a linear map $u \colon k \to A$, called the \emph{unit} such that the following two diagrams commute, where $s$ denotes the respective scalar multiplication.
  \begin{center}
   \raisebox{-0.5\height}{
@@ -66,24 +66,24 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    \draw[->] (AA2) to node[below right] {$m$} (A);
   \end{tikzpicture}
  \end{center}
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  We will often just refer to a $k$-algebra $(A,m,u)$ by $A$ without explicitely mentioning $m$ and $u$. If necessary we will then refer to the multiplication by $m_A$ and the unit by $u_A$.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Definition \ref{defi: algebras via diagrams} is equivalent to the usual definition of a $k$-algebra, namely a $k$-vector space $A$ together with a bilinear map $\hat{m} \colon A \times A \to A, (a,b) \mapsto a \cdot b$ which is associative in the sense that $(a \cdot b) \cdot c = a \cdot (b \cdot c)$ for all $a,b,c \in A$, and such that a unit $1 \in A$ exists, i.e.\ an element for which $1 \cdot a = a \cdot 1 = a$ for every $a \in A$.
  
  Given a $k$-algebra in the usual sense the multiplication $\hat{m}$ corresponds to a linear map $m \colon A \otimes A \to A, a \otimes b \mapsto a \cdot b$, and that $m$ satisfies the associativity axiom is equivalent to $\hat{m}$ being associative. That a linear map $u \colon k \to A$ satisfies the unit axiom is equivalent to $u(1)$ being a unit in $A$. That $(A,\hat{m})$ is commutative is then also equivalent to $(A,m,u)$ being commutative.
  
  We will use both definitions, depending on which is more useful in a given situation, and switch between them if necessary.
-\end{rem}
+\end{remark}
 
 
-\begin{expl}
+\begin{example}
  Let $G$ be any group. Then the \emph{group algebra} $k[G]$ is defined by the underlying vector space being $kG$, the free vector space with basis $G$, and the multiplication which arises from extending the multiplication of $G$ linearly, i.e.
  \[
   \left( \sum_{g \in G} \lambda_g g \right) \cdot \left( \sum_{h \in G} \mu_h h \right)
@@ -91,10 +91,10 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
   = \sum_{g \in G} \left( \sum_{h \in G} \lambda_{gh^{-1}} \mu_h \right) g.
  \]
  The associativity of the multiplication can be checked by direct calculation. The unit of the group algebra $k[G]$ is given by the identity of the group $e \in G \subseteq k[G]$. The group algebra $k[G]$ is commutative if and only if $G$ is.
-\end{expl}
+\end{example}
 
 
-\begin{expl}
+\begin{example}
  Let $A$ and $B$ be $k$-algebras. Then $A \otimes B$ carries the structure of a $k$-algebra via
  \[
   (a_1 \otimes b_1) \cdot (a_2 \otimes b_2)
@@ -119,11 +119,11 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
   \xrightarrow{u_A \otimes\, u_B}
   A \otimes B
  \]
-\end{expl}
+\end{example}
 
 
 
-\begin{defi}
+\begin{definition}
  Let $A$ and $B$ be $k$-algebras. A linear map $f \colon A \to B$ is a \emph{homomorphism of $k$-algebras} if the following two diagrams commute:
  \begin{center}
   \raisebox{-\height}{
@@ -150,7 +150,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    \draw[->] (k) to node[below right] {$u_B$} (B);
   \end{tikzpicture}}
  \end{center}
-\end{defi}
+\end{definition}
 
 
 
@@ -159,7 +159,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
 \subsection{\texorpdfstring{$k$}{k}-coalgebras}
 
 
-\begin{defi}
+\begin{definition}
  A $k$-coalgebra is a tupel $(C,\Delta,\varepsilon)$ consisting of a $k$-vector space $C$, a linear map $\Delta \colon C \to C \otimes C$, called the \emph{comultiplication} and a linear map $\varepsilon \colon C \to k$, called the \emph{counit}, such that the following two diagrams commute:
  \begin{center}
   \tikzsetnextfilename{coassociativity_of_coalgebras}
@@ -200,10 +200,10 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    \draw[->] (C) to node[above right] {$\Delta$} (CC2);
   \end{tikzpicture}
  \end{center}
-\end{defi}
+\end{definition}
 
 
-\begin{expls}
+\begin{examples}
  \begin{enumerate}[leftmargin=*]
   \item
    Let $C$ be a $k$-vector space and $(x_i)_{i \in I}$ a basis of $V$. Then $V$ carries the structure of a $k$-coalgebra via the comultiplication $\Delta \colon C \to C \otimes C$ defined by
@@ -234,10 +234,10 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
   \item
    At a special case of the above example it follows that for any group $G$ the group algebra $k[G]$ also carries the structure of a $k$-coalgebra via the comultiplication $\Delta \colon k[G] \to k[G] \otimes k[G], g \mapsto g \otimes g$ and counit $\varepsilon \colon k[G] \to k, \sum_{g \in G} \lambda_g g \mapsto \sum_{g \in G} \lambda_g$.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{expl}
+\begin{example}
  If $C$ and $D$ are $k$-coalgebras then $C \otimes D$ is a also a $k$-coalgebra via the comultiplication
  \[
   \Delta_{C \otimes D} \colon
@@ -256,10 +256,10 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
   \xlongrightarrow{\lambda \otimes \mu \mapsto \lambda \mu}
   k.
  \]
-\end{expl}
+\end{example}
 
 
-\begin{defi}
+\begin{definition}
  Let $C$ and $D$ be $k$-coalgebras. A linear map $f \colon C \to D$ is a homomorphism of $k$-coalgebras if the following diagrams commute:
  \begin{center}
   \raisebox{-\height}{
@@ -286,7 +286,7 @@ Most of the definitions and diagrams in this chapter are taken from \cite{Brown}
    \draw[->] (D) to node[below right] {$\varepsilon_D$} (k);
   \end{tikzpicture}}
  \end{center}
-\end{defi}
+\end{definition}
 
 
 

@@ -7,7 +7,7 @@
 \subsection{Definition and examples of Lie algebras}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a vector space over some field $k$. A $k$-bilinear map
  \[
   [\cdot, \cdot] \colon \g \times \g \to \g
@@ -25,27 +25,27 @@
    \]
  \end{enumerate}
  A $k$-vector space $\g$ together with the Lie-bracket $[\cdot,\cdot]$ is called a \emph{$k$-Lie algebra}.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Any Lie bracket $[\cdot, \cdot]$ is antisymmetric, i.e.\ $[y,x] = -[x,y]$ for all $x,y \in \g$, because
  \[
   0 = [x+y, x+y] = [x,x] + [x,y] + [y,x] + [y,y] = [x,y] + [y,x].
  \]
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  Using the antisymmetry of the Lie bracket the Jacobi identity can be rewritten as
  \[
   [x,[y,z]] = [[x,y],z] + [y,[x,z]] \quad \text{for all $x,y,z \in \g$}.
  \]
-\end{rem}
+\end{remark}
 
 
 
-\begin{expls}
+\begin{examples}
  \begin{enumerate}[leftmargin=*]
   \item
    Any vector space $V$ becomes a Lie algebra via
@@ -84,10 +84,10 @@
      This is called the \emph{general linear Lie algebra for $V$} and is denoted by $\gl(V)$.
    \end{enumerate}
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a $k$-Lie algebra. A \emph{Lie subalgebra} of a $\g$ is a $k$-linear subspace $\h \subseteq \g$ such that
  \[
   [x,y] \in \h \quad \text{for all $x,y \in \h$}.
@@ -97,42 +97,42 @@
   [x,y] \in I \quad \text{for all $x \in \g$ and $y \in I$}.
  \]
  That $I$ is an ideal in $\g$ is denoted by $I \subideal \g$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  It is not necessary to distinguish between left ideals or right ideals in a Lie algebra because the Lie bracket is antisymmetric.
-\end{rem}
+\end{remark}
 
 
-\begin{rem}
+\begin{remark}
  For a Lie algebra $\g$ and a subalgebra $\h \subseteq \g$ it follows that $\h$ becomes a Lie algebra by restricting the Lie bracket of $\g$ to $\h$. Every ideal inside $\g$ is also a subalgebra of $\g$.
-\end{rem}
+\end{remark}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra. The \emph{center} of $\g$ is
  \[
   Z(\g) \coloneqq \{x \in \g \mid \text{$[x,y] = 0$ for every $y \in \g$}\}
  \]
  $\g$ is called \emph{abelian} if $Z(\g) = 0$, i.e.\ if $[x,y] = 0$ for all $x,y \in \g$.
-\end{defi}
+\end{definition}
 
 
-\begin{defi}
+\begin{definition}
  For a Lie-algebra $\g$ over some field $k$ and subsets $X, Y \subseteq \g$ let
  \[
   [X,Y] \coloneqq \vspan_k \{[x,y] \mid x \in X, y \in Y\}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  Notice that $\g$ is abelian if and only if $[\g,\g] = 0$. Also notice that $[\g,\g]$ and $Z(\g)$ are ideals inside $\g$.
-\end{rem}
+\end{remark}
 
 
-\begin{lem}
+\begin{lemma}
  Let $\g$ be a Lie algebra over some field $k$.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -140,7 +140,7 @@
   \item
    If $I, J \subideal \g$ then also $[I,J] \subideal \g$.
  \end{enumerate}
-\end{lem}
+\end{lemma}
 \begin{proof}
  \begin{enumerate}[leftmargin=*]
   \item
@@ -157,12 +157,12 @@
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  A Lie algebra $\g$ is called \emph{linear} if $\g$ is a Lie subalgebra of $\gl(V)$ for some finite dimensional vector space $V$.
-\end{defi}
+\end{definition}
 
 
-\begin{expl}
+\begin{example}
  \begin{enumerate}[leftmargin=*]
   \item
    Let $\g = \gl_n(k)$. Then
@@ -217,10 +217,10 @@
    \]
    are a Lie subalgebra of $\tl_n(k)$ and therefore also of $\gl_n(k)$. It is even an ideal in $\tl_n(k)$ because $\n_n(k) = [\tl_n(k), \tl_n(k)]$.
  \end{enumerate}
-\end{expl}
+\end{example}
 
 
-\begin{defi}
+\begin{definition}
  If $\g$ is a Lie algebra and $U \subseteq \g$ a linear subspace then
  \[
   N_\g(U) \coloneqq \{x \in \g \mid \text{$[x,y] \in \g$ for every $y \in U$}\}
@@ -233,12 +233,12 @@
  \[
   Z_\g(x) \coloneqq \{y \in \g \mid [x,y] = 0\}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{lem}
+\begin{lemma}
  Let $\g$ be a Lie algebra and $U \subseteq \g$ a linear subspace. Then $N_\g(U)$ and $Z_\g(U)$ are Lie subalgebras of $\g$. $Z_\g(x)$ is a Lie subalgebra of $\g$ for every $x \in \g$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  If $x,y \in N_\g(U)$ then by the Jacobi identity it follows for every $z \in U$ that
  \[
@@ -257,9 +257,9 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  Let $\g$ be a Lie algebra and $L \subseteq \g$ a linear subspace. Then $L$ is a Lie subalgebra if and only if $L \subseteq N_\g(L)$. Then $L$ is not only contained in $N_\g(L)$ but $N_\g(L)$ is the maximal subalgebra of $\g$ which contains $L$ as an ideal. In particular $L$ is an ideal in $\g$ if and only if $N_\g(L) = \g$.
-\end{rem}
+\end{remark}
 
 
 
@@ -272,15 +272,15 @@
 \subsection{Homomorphisms of Lie algebras}
 
 
-\begin{defi}
+\begin{definition}
  Given Lie algebras $\g_1$ and $\g_2$ over the same field $k$ a \emph{homomorphism of Lie algebras} $\g_1 \to \g_2$ is a $k$-linear map $f \colon \g_1 \to \g_2$ such that
  \[
   f([x,y]) =[f(x),f(y)] \quad \text{for all $x,y \in \g_1$}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{expls}\label{expls: homomorphisms of Lie algebras}
+\begin{examples}\label{expls: homomorphisms of Lie algebras}
  \begin{enumerate}[leftmargin=*]
   \item
    For any Lie algebra $\g$ the identity $\id_\g \colon \g \to \g$ is a Lie algebra homomorphism.
@@ -328,17 +328,17 @@
    
    Hence there is a bijection between Lie algebra homomorphisms $\sll_2(k) \to \g$ and triples as above. Such triples will play an important part later on.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g_1, \g_2$ be Lie algebras over the same field $k$. A homomorphism of Lie algebras $f \colon \g_1 \to \g_2$ is called an \emph{isomorphism of $k$-Lie algebras} if $f$ is bijective.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}
+\begin{lemma}
  If $f \colon \g_1 \to \g_2$ is an isomorphism of $k$-Lie algebras, then the $k$-linear map $f^{-1} \colon \g_2 \to \g_1$ is also a homomorphism of Lie-algebras and therefore also an isomorphism.
-\end{lem}
+\end{lemma}
 \begin{proof}
  For all $x,y \in \g_2$
  \begin{align*}
@@ -351,12 +351,12 @@
 \end{proof}
 
 
-\begin{rem}
+\begin{remark}
  It follows that Lie algebras over the same field $k$ together with homomorphisms of Lie algebras and their usual composition form a category, which will be denoted by $\cLie{k}$. An \emph{isomorphism of $k$-Lie algebras} is the same as an isomorphism in $\cLie{k}$.
-\end{rem}
+\end{remark}
 
 
-\begin{expl}[Classification of one- and two-dimensional Lie algebras]
+\begin{example}[Classification of one- and two-dimensional Lie algebras]
  Let $k$ be any field.
  
  As every linear map between abelian Lie algebras is already a homomorphism of Lie algebras it follows that there exists up to isomorphism exactly one $n$-dimensional abelian Lie algebra over $k$ for every $n \in \N$.
@@ -376,10 +376,10 @@
   [x,y] = [e_{12}, e_{22}] = e_{12} e_{22} - e_{22} e_{12} = e_{12} = x.
  \end{gather*}
  Hence there are up to isomorphism exactly two two-dimensional Lie algebras over $k$.
-\end{expl}
+\end{example}
 
 
-\begin{prop}[Homomorphism theorem]
+\begin{proposition}[Homomorphism theorem]
  Let $\g_1$ and $\g_2$ be Lie algebras and $f \colon \g_1 \to \g_2$ a homomorphism of Lie algebras.
  \begin{enumerate}[leftmargin=*]
   \item
@@ -418,10 +418,10 @@
    \end{gather*}
    is already a natural isomorphism of Lie algebras.
  \end{enumerate}
-\end{prop}
+\end{proposition}
 
 
-\begin{rem}
+\begin{remark}
  For a Lie algebra $\g$ the ideal $[\g,\g]$ is the minimal ideal inside $\g$ such that $\g/[\g,\g]$ is abelian. Furthermore given any abelian Lie algebra $\h$ any homomorphism of Lie algebras $\g \to \h$ factorizes through a unique homomorphism of Lie algebras $\g/[\g,\g] \to \h$.
  \[
    \begin{tikzcd}
@@ -441,7 +441,7 @@
      {}
    \end{tikzcd}
  \]
-\end{rem}
+\end{remark}
 
 
 
@@ -449,7 +449,7 @@
 \subsection{New Lie algebras from old ones}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g_1$ and $\g_2$ be Lie algebras over the same field $k$. Then the \emph{product} of $\g_1$ and $\g_2$ is defined as the $k$-vector space $\g_1 \times \g_2$ together with the Lie bracket
  \[
   [(x_1, y_1), (x_2, y_2)]
@@ -457,18 +457,18 @@
   \quad
   \text{for all $(x_1, y_1), (x_2, y_2) \in \g_1 \times \g_2$}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra and $I \subideal \g$. Then the induced Lie algebra structure on the quotient vector space $\g/I$ is given by
  \[
   [x+I, y+I] = [x,y] + I \quad \text{for all $x,y \in \g$}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  The Lie algebra structure on the quotient $\g/I$ is well-defined: If $x,y, x',y' \in \g$ with $x+I = x'+I$ and $y+I = y'+I$ then $x-x' \in I$ and $y-y' \in I$ and thus
  \begin{align*}
   [x,y] + I
@@ -477,10 +477,10 @@
   = [x', y'] + I.
  \end{align*}
  The additional properties of a Lie bracket follows from the Lie bracket of $\g$ safisfying them.
-\end{rem}
+\end{remark}
 
 
-\begin{lem}
+\begin{lemma}
  \begin{enumerate}[leftmargin=*]
   \item
    If $\g_1$ and $\g_2$ are Lie algebras then the canonical projections
@@ -492,11 +492,11 @@
   \item
    If $\g$ is a Lie algebra and $I \subideal \g$ then the canonical projection $\pi \colon \g \to \g/I, x \mapsto [x]$ is a homomorphism of Lie algebras.
  \end{enumerate}
-\end{lem}
+\end{lemma}
 
 
 
-\begin{lem}\label{lem: quasi extension of scalars for Lie algebras}
+\begin{lemma}\label{lem: quasi extension of scalars for Lie algebras}
 Let $\g$ be a Lie algebra over $k$ and $A$ an associative, commutative $k$-algebra. Then $A \otimes_k \g$ is a Lie algebra over $k$ via
 \[
  [a \otimes x, b \otimes y] = (ab) \otimes [x,y]
@@ -509,10 +509,10 @@ Similarly $\g \otimes_k A$ carries the structure of a Lie algebra over $k$ via
  \quad
  \text{for all $x,y \in \g$ and $a,b \in A$}.
 \]
-\end{lem}
+\end{lemma}
 
 
-\begin{expl}
+\begin{example}
  If $L/k$ is a field extension and $\g$ a Lie algebra over $k$, then $L \otimes_k \g$ is a Lie algebra over $k$ via
  \[
   [\lambda \otimes x, \mu \otimes y] = (\lambda \mu) \otimes [x,y]
@@ -526,16 +526,16 @@ Similarly $\g \otimes_k A$ carries the structure of a Lie algebra over $k$ via
   \text{for alle $\lambda, \mu \in k$ and $x \in \g$},
  \]
  and the Lie bracket is not only $k$-bilinear, but also $L$-bilinear. Hence the structure of a $k$-Lie algebra on $L \otimes_k \g$ can be extended to the structure of a Lie algebra over $L$. (Notice that the Jacobi-Identity is independent of the ground field.)
-\end{expl}
+\end{example}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra and $A = k[t,t^{-1}]$ be the algebra of Laurent polynomials over $k$. Then
  \[
   \Loop(\g) \coloneqq \g \otimes_k A
  \]
  with the Lie bracket as in Lemma~\ref{lem: quasi extension of scalars for Lie algebras} is called the \emph{loop (Lie) algebra} of $\g$.
-\end{defi}
+\end{definition}
 
 
 Another example for constructing new Lie algebras out of old ones are \emph{central extensions}: Let $\g$ be any $k$-Lie algebra.
@@ -564,7 +564,7 @@ Then $\tilde{\g}$ becomes a Lie algebra via
 Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $x \in \g$.
 
 
-\begin{expl}
+\begin{example}
  Let $\g = \gl_n(k)$. We define a symmetric bilinear form on $\g$ via
  \[
   (A,B)_{\tr} = \tr(AB) \quad \text{for all $A,B \in \g$}.
@@ -613,7 +613,7 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
   &=
   -\kappa(y \otimes t^j, x \otimes t^i).
  \end{align*}
-\end{expl}
+\end{example}
 
 
 
@@ -622,7 +622,7 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
 \subsection{Derivations}
 
 
-\begin{defi}
+\begin{definition}
  Let $A$ be a $k$-algebra (not necessarily unitary of even associative). A \emph{derivation of $A$} is a $k$-linear map $d \colon A \to A$ such that
  \[
   d(ab) = d(a)b + ad(b) \quad \text{for all $a,b \in A$}.
@@ -631,26 +631,26 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
  \[
   \Der(A) \coloneqq \{d \colon A \to A \mid \text{$d$ is a derivation of $A$} \}.
  \]
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  $\Der(A)$ is a $k$-linear subspace of $\End_k(A)$.
-\end{rem}
+\end{remark}
 
 
-\begin{expl}
+\begin{example}
   Let $A$ be a $k$-algebra. It follows from direct calculation that for all $d, d' \in \Der(A)$ the commutator $[d,d'] = d \circ d' - d' \circ d$ is again a derivation $\Der(A)$. Hence $\Der(A)$ is a Lie subalgebra of $\gl(A)$.
-\end{expl}
+\end{example}
 
 
-\begin{lem}\label{lem: Lie algebras act adjoint by derivations}
+\begin{lemma}\label{lem: Lie algebras act adjoint by derivations}
  Let $\g$ be a Lie algebra. Then for any $x \in \g$ the map
  \[
   \ad(x) \colon \g \to \g, \quad y \mapsto [x,y]
  \]
  is a derivation of $\g$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  By the Jacobi identity
  \begin{align*}
@@ -663,14 +663,14 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
 \end{proof}
 
 
-\begin{defi}
+\begin{definition}
  Let $\g$ be a Lie algebra. A derivation of $\g$ is called \emph{inner} if it is of the form $\ad(x)$ for some $x \in \g$.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}\label{lem: inner derivations are in ideal}
+\begin{lemma}\label{lem: inner derivations are in ideal}
  If $\g$ is a Lie algebra then the inner derivations form an ideal inside of $\Der(\g)$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Let $I \coloneqq \im \ad \subseteq \Der(\g)$ be the linear subspace of inner derivations. For any $\delta \in \Der$ and $x \in \g$ it follows that for any $y \in \g$
  \begin{align*}
@@ -691,22 +691,22 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
 \subsection{Simple Lie algebras}
 
 
-\begin{defi}
+\begin{definition}
  A Lie algebra $\g$ is \emph{simple} if $0$ and $\g$ are the only ideals inside $\g$ and $\g$ is not abelian.
-\end{defi}
+\end{definition}
 
 
-\begin{lem}
+\begin{lemma}
  Let $\g$ be a simple Lie algebra. Then $[\g,\g] = \g$ and $Z(\g)=0$.
-\end{lem}
+\end{lemma}
 \begin{proof}
  Because $\g$ is simple it is not abelian. Therefore $[\g,\g] \neq 0$ and $Z(\g) \neq \g$. Since $[\g,\g]$ and $Z(\g)$ are ideals inside $\g$ it follows that $[\g,\g] = \g$ and $Z(\g) = 0$. By the homomorphism theorem $\g$ is isomorphic to its image $\ad \g$ and hence to a linear Lie algebra.
 \end{proof}
 
 
-\begin{cor}
+\begin{corollary}
  Let $\g$ be simple. Then the homomorphism $\ad \colon \g \to \gl(\g), x \mapsto \ad(x)$ is injective. In particular $\g$ can be realized as a linear Lie algebra.
-\end{cor}
+\end{corollary}
 \begin{proof}
  As part of Examples~\ref{expls: homomorphisms of Lie algebras} has already been shown that $\ad$ is a homomorphism of Lie algebras. That it is injective follows directly from $\ker \ad = Z(\g) = 0$.
 \end{proof}
@@ -715,12 +715,12 @@ Note that $c$ is central in $\tilde{\g}$ in the sense that $[x,c] = 0$ for all $
 It can be shown that every finite dimensional Lie algebra can be realized as a linear Lie algebra. This will not be proven in this lecture and is by far not trivial.
 
 
-\begin{thrm}[Ado]
+\begin{theorem}[Ado]
  Every finite dimensional Lie algebra $\g$ is isomorphic to a linear Lie algebra.
-\end{thrm}
+\end{theorem}
 
 
-\begin{expls}
+\begin{examples}
  \begin{enumerate}[leftmargin=*]
   \item
    Since $[\gl_n(k),\gl_n(k)] = \sll_n(k) \neq \gl_n(k)$ we find that $\gl_n(k)$ is not simple.
@@ -743,10 +743,10 @@ It can be shown that every finite dimensional Lie algebra can be realized as a l
    \]
    Since $\gamma = 0$ or $\gamma \neq 0$ we find that $e \in I$.
  \end{enumerate}
-\end{expls}
+\end{examples}
 
 
-\begin{defi}
+\begin{definition}
  Let $k$ be any field. The basis
  \[
   e = \begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}, \quad
@@ -754,9 +754,9 @@ It can be shown that every finite dimensional Lie algebra can be realized as a l
   f = \vect{0 & 0 \\ 1 & 0}.
  \]
  of $\sll_2(k)$ is called the \emph{standard basis} of $\sll_2(k)$.
-\end{defi}
+\end{definition}
 
 
-\begin{rem}
+\begin{remark}
  If $\chara k = 0$ then $\sll_n(k)$ is simple for all $n \geq 2$.
-\end{rem}
+\end{remark}
