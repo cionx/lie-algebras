@@ -7,9 +7,13 @@
 
 % using EB Garamond as the mainfont, with ebgaramond-maths for maths
 % (don’t confuse ebgaramond-maths with garamond-math)
-\usepackage[cmbraces]{newtxmath}
+\usepackage[cmintegrals,cmbraces]{newtxmath}
 \usepackage{ebgaramond-maths}
 \setmainfont{EB Garamond}
+% import the partial symbol from newtxmath
+\DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
+\SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
+\re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
 
 % undefine openbox from nextxmath, as amsmath defines it again
 \let\openbox\undefined
@@ -120,6 +124,7 @@
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
 \newcommand{\onedimensional}{one\nobreakdash-dimensional}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\twococycle}{$2$\nobreakdash-cocycle}
 \newcommand{\twodimensional}{two\nobreakdash-dimensional}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
 \newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
@@ -130,13 +135,14 @@
 %%%%% MATH STUFF
 
 % numbers and fields
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Cbb}{\mathbb{Cbb}}
-\newcommand{\F}{\mathbb{F}}
+\newcommand{\Natural}{\mathbb{N}}
+\newcommand{\Integer}{\mathbb{Z}}
+\newcommand{\Rational}{\mathbb{Q}}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\Complex}{\mathbb{Cbb}}
+\newcommand{\Field}{\mathbb{F}}
 \newcommand{\kf}{\mathbf{k}}
+\newcommand{\Lf}{\mathbf{L}}
 
 % lie algebras
 \newcommand{\clie}{\mathfrak{c}}
@@ -173,11 +179,12 @@
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\can}{can}
 \DeclareMathOperator{\card}{card}
-\DeclareMathOperator{\chara}{char}
+\DeclareMathOperator{\ringchar}{char}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\flt}{flt}
 \DeclareMathOperator{\gr}{gr}
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\tr}{tr}
 
 % relations and operators
