@@ -4,6 +4,8 @@ language: generic
 before_install:
 # update the system
 - sudo apt-get -qq update
+# install EB Garamond fonts
+- sudo apt-get -qq install fonts-ebgaramond
 # install the newest version of texlive
 - git clone https://github.com/cryptofuture/install-tl-ubuntu.git
 - cd install-tl-ubuntu
