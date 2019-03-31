@@ -1,6 +1,7 @@
 \documentclass[a4paper, 10pt, oneside, openany,  bibliography=totocnumbered]{scrbook}
 
-\usepackage{mystyle}
+\usepackage{generalstyle}
+
 
 
 % informations for the titlepage
@@ -23,6 +24,8 @@
   Please send comments and corrections at \texttt{\href{mailto:stelzner@uni-bonn.de}{stelzner@uni-bonn.de}.}
 }
 
+
+
 \begin{document}
 
 \frontmatter
@@ -31,21 +34,19 @@
 \tableofcontents
 
 \mainmatter
-% TODO: Notations
+% TODO: notations
 \include{sections/basics}
 \include{sections/slightly_advanced_basics}
 \include{sections/semisimple_Lie_algebras}
 \include{sections/root_systems}
 
-\appendix
-\addappheadtotoc
-\appendixpage
+\appendix % still part of mainmatter
 \include{sections/appendix}
 
 \backmatter
 \printbibliography
 
-% TODO: Index
+% TODO: index
 
 
 \end{document}

@@ -1,36 +1,40 @@
-\usepackage{gitinfo2}
-\usepackage{fontspec}
-\usepackage{amsmath} % mash stuff
-\usepackage{amssymb} % math stuff
-\usepackage{amsthm} % math stuff
-\usepackage{appendix} % for appendix
-\usepackage{arydshln} % for dashed lines in arrays
-\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} %for bibliography
+%%%%% PACKAGES
+
+\usepackage{gitinfo2} % including git information on the title page
+\usepackage{fontspec} % font stuff (needed?)
+\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} % bibliography
+
+\usepackage{appendix} % the appendix
 \usepackage{enumitem} % for better enumerates
-\usepackage{extarrows}
-\usepackage[colorlinks=true]{hyperref} % for links in pdf
 \usepackage{lastpage} % to be able to refer to the last page
-\usepackage{mathtools} % math stuff
-\usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
-\usepackage[automark, headsepline, autooneside=false]{scrlayer-scrpage}  %for headers
-\usepackage{stmaryrd} % for mapsfrom
-\usepackage{tikz-cd} % for diagrams
+\usepackage[automark, headsepline, autooneside=false]{scrlayer-scrpage}  % header design
+
+\usepackage{mathtools, amssymb, amsthm} % general math stuff
+\usepackage{arydshln}   % allowing dashed lines in arrays
+\usepackage{extarrows}  % \xlongequal
+\usepackage{stmaryrd}   % \mapsfrom
+\usepackage{tikz-cd} % commutative diagrams
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
- 
- 
+
+\usepackage[colorlinks=true]{hyperref} % hyperlinks
+\usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing; load after hyperref!
+
+
+
+
+
+%%%%% CONFIGURATION
+  
 % the file containing the references for biblatex
 \bibliography{references.bib}
-
 
 % fonts for titlepage
 \setkomafont{publishers}{\normalsize}
  
-
-% settings for scrlayer-scrpage
+% header design with scrlayer-scrpage
 \ihead{\leftmark}
 \chead{}
 \ohead{\rightmark}
-
 
 % colours for hyperref
 \hypersetup{
@@ -40,13 +44,10 @@
     urlcolor={blue!80!black}
 }
 
-
 % definition of new counters and changes of already existing ones
-\newcounter{everything}[section] % to be used for all kind of math enviroments
-\setcounter{secnumdepth}{3} % leads to numbering of subsubsections
+\newcounter{everything}[section]  % to be used for all kind of math enviroments
 
-
-% proposition-like enviroments
+% theorem-like enviroments
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{theorem}[everything]{Theorem}
@@ -54,20 +55,23 @@
 \newtheorem*{claim*}{Claim} % unnumbered version
 \newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
 
-
-% more text-like enviroments
+% text-like enviroments
 \theoremstyle{definition}
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Example}
 \newtheorem{examples}[everything]{Examples}
 \newtheorem{remark}[everything]{Remark}
 
-
-% the style of counters
+% printing of counter numbers
 \renewcommand{\theeverything}{\thesection.\arabic{everything}}
 \renewcommand{\theequation}{\arabic{equation}}
 \renewcommand{\theclaim}{\arabic{claim}}
 
+
+
+
+
+%%%%% MATH STUFF
 
 % numbers and fields
 \newcommand{\N}{\mathbb{N}}
@@ -77,8 +81,7 @@
 \newcommand{\Cbb}{\mathbb{Cbb}}
 \newcommand{\F}{\mathbb{F}}
 
-
-% lie algebras and the universal enveloping algebra
+% lie algebras
 \newcommand{\cl}{\mathfrak{c}}
 \newcommand{\g}{\mathfrak{g}}
 \newcommand{\h}{\mathfrak{h}}
@@ -87,8 +90,6 @@
 \newcommand{\tl}{\mathfrak{t}}
 \newcommand{\n}{\mathfrak{n}}
 \newcommand{\Loop}{\mathcal{L}}
-\newcommand{\Ue}{\mathcal{U}}
-
 
 % categories
 \newcommand{\catname}[1]{\mathbf{#1}}
@@ -97,8 +98,7 @@
 \newcommand{\cGrad}[1]{\ensuremath{#1\text{-}\catname{Grad}}}
 \newcommand{\cLie}[1]{\ensuremath{#1\text{-}\catname{Lie}}}
 
-
-% macros for spaces
+% spaces and sets
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
@@ -106,10 +106,10 @@
 \DeclareMathOperator{\Mat}{M}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\rad}{rad}
+\newcommand{\Ue}{\mathop{\mathcal{U}}}
 \DeclareMathOperator{\vspan}{span}
 
-
-% macros for functions
+% functions
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\can}{can}
 \DeclareMathOperator{\card}{card}
@@ -120,15 +120,17 @@
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\tr}{tr}
 
-
-% shortcuts for frequently used stuff and laziness
-\newcommand{\mc}[1]{\mathcal{#1}}
+% relations and operators
+\newcommand{\dotcup}{\mathrel{\mathaccent\cdot\cup}}
 \newcommand{\inc}{\hookrightarrow}
 \newcommand{\subideal}{\trianglelefteq}
 
+% delimiters
+\DeclarePairedDelimiter{\pair}{\langle}{\rangle}
 
-% stuff taking arguments and strange things
-\newcommand{\dotcup}{\ensuremath{\mathrel{\mathaccent\cdot\cup}}}
-\newcommand{\dd}[1]{\ensuremath{\frac{\text{d}}{\text{d}#1}}}
-\newcommand{\vect}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
-\newcommand{\pair}[1]{\ensuremath{\left\langle #1\right\rangle}}
+% decorations
+\newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+
+% shortcuts
+\newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
