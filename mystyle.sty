@@ -5,14 +5,14 @@
 \usepackage{amsthm} % math stuff
 \usepackage{appendix} % for appendix
 \usepackage{arydshln} % for dashed lines in arrays
-\usepackage[backend=biber,style=alphabetic, dateabbrev=false, urldate=long]{biblatex} %for bibliography
+\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} %for bibliography
 \usepackage{enumitem} % for better enumerates
 \usepackage{extarrows}
 \usepackage[colorlinks=true]{hyperref} % for links in pdf
 \usepackage{lastpage} % to be able to refer to the last page
 \usepackage{mathtools} % math stuff
 \usepackage{ellipsis} % right ellipsis when using \dots, include after xltxtra
-\usepackage[autooneside,headsepline]{scrlayer-scrpage} %for headers
+\usepackage[automark, headsepline, autooneside=false]{scrlayer-scrpage}  %for headers
 \usepackage{stmaryrd} % for mapsfrom
 \usepackage{tikz-cd} % for diagrams
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
@@ -27,14 +27,9 @@
  
 
 % settings for scrlayer-scrpage
-\pagestyle{scrheadings}
-\clearscrheadfoot
-\lehead{\leftmark}
-\rehead{\rightmark}
-\lohead{\leftmark}
-\rohead{\rightmark}
-\cefoot[\pagemark]{\pagemark}
-\cofoot[\pagemark]{\pagemark}
+\ihead{\leftmark}
+\chead{}
+\ohead{\rightmark}
 
 
 % definition of new counters and changes of already existing ones
