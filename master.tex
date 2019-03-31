@@ -1,12 +1,27 @@
-\documentclass[a4paper,10pt,twoside=semi,openany]{scrbook}
-%\documentclass[a4paper,10pt]{scrartcl}
+\documentclass[a4paper, 10pt, oneside, openany,  bibliography=totocnumbered]{scrbook}
 
 \usepackage{mystyle}
 
+
+% informations for the titlepage
+\subject{Lecture Notes for}
 \title{Representation Theory I}
-\subtitle{A short collection of basics fun facts about \\ Lie algebras and their representations}
+\subtitle{An Introduction To Lie~Algebras and Their~Representaitons}
+\date{
+  Summer Semester 2015\footnote{
+    Last Changes: \texttt{\gitAuthorIsoDate}
+    \hfill
+    Commit: \texttt{\gitAbbrevHash}
+  }
+  \\
+  University of Bonn
+}
 \author{Jendrik Stelzner}
-\date{\today}
+\publishers{
+  Available at \texttt{\url{https://github.com/cionx/representation-theory-1-notes-ss-15}.}
+  \\
+  Please send comments and corrections at \texttt{\href{mailto:stelzner@uni-bonn.de}{stelzner@uni-bonn.de}.}
+}
 
 \begin{document}
 
@@ -29,6 +44,8 @@
 
 \backmatter
 \printbibliography
+
+% TODO: Index
 
 
 \end{document}
