@@ -1,23 +1,38 @@
 %%%%% PACKAGES
 
-\usepackage{gitinfo2} % including git information on the title page
-\usepackage{fontspec} % font stuff (needed?)
 \usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} % bibliography
+\usepackage{fontspec} % font stuff (needed?)
+\usepackage{gitinfo2} % including git information on the title page
+\usepackage[original]{imakeidx} % for the index, load before hyperref
 
-\usepackage{appendix} % the appendix
-\usepackage{enumitem} % for better enumerates
-\usepackage{lastpage} % to be able to refer to the last page
+% using EB Garamond as the mainfont, with ebgaramond-maths for maths
+% (don’t confuse ebgaramond-maths with garamond-math)
+\usepackage[cmbraces]{newtxmath}
+\usepackage{ebgaramond-maths}
+\setmainfont{EB Garamond}
+
+% undefine openbox from nextxmath, as amsmath defines it again
+\let\openbox\undefined
+
+\usepackage{appendix}   % the appendix
+\usepackage{csquotes}
+\usepackage{enumitem}   % for better enumerates
+\usepackage{lastpage}   % to be able to refer to the last page
+\usepackage{microtype}  % microtypography
 \usepackage[automark, headsepline, autooneside=false]{scrlayer-scrpage}  % header design
 
 \usepackage{mathtools, amssymb, amsthm} % general math stuff
-\usepackage{arydshln}   % allowing dashed lines in arrays
+% \usepackage{arydshln}   % allowing dashed lines in arrays
 \usepackage{extarrows}  % \xlongequal
-\usepackage{stmaryrd}   % \mapsfrom
+% \usepackage{stmaryrd}   % \mapsfrom
 \usepackage{tikz-cd} % commutative diagrams
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
 
 \usepackage[colorlinks=true]{hyperref} % hyperlinks
-\usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing; load after hyperref!
+
+% the following are to be loaded after hyperref
+\usepackage[symbols, sort=use, style=long3col]{glossaries-extra} % list of symbols
+\usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing
 
 
 
@@ -27,6 +42,17 @@
   
 % the file containing the references for biblatex
 \bibliography{references.bib}
+
+% index and glossary
+\makeindex
+\makenoidxglossaries
+
+% big penalties to prevent thingsk
+\binoppenalty=\maxdimen         % breaking of binary operators
+\relpenalty=\maxdimen           % breaking of relation symbols
+\widowpenalty=\maxdimen         % widows
+\displaywidowpenalty=\maxdimen  % orphans
+
 
 % fonts for titlepage
 \setkomafont{publishers}{\normalsize}
@@ -64,6 +90,7 @@
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Example}
 \newtheorem{examples}[everything]{Examples}
+\newtheorem{recall}[everything]{Recall}
 \newtheorem{remark}[everything]{Remark}
 
 % printing of counter numbers
@@ -71,11 +98,27 @@
 \renewcommand{\theequation}{\arabic{equation}}
 \renewcommand{\theclaim}{\arabic{claim}}
 
+% style of enumerating lists
+\setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
+\setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
+\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
+\setlist[description, 2]{leftmargin=\labelwidth, font=\normalfont}
+\setlist[itemize, 1]{leftmargin=*}
+\setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
+\setlist[itemize, 3]{leftmargin=*}
 
 
 
 
 %%%%% MATH STUFF
+
+% text shortcuts involving nobreakdash
+\newcommand{\algebra}[1]{#1\nobreakdash-algebra}
+\newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
+\newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
+\newcommand{\linear}[1]{#1\nobreakdash-linear}
+\newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
 
 % numbers and fields
 \newcommand{\N}{\mathbb{N}}
@@ -84,16 +127,17 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Cbb}{\mathbb{Cbb}}
 \newcommand{\F}{\mathbb{F}}
+\newcommand{\kf}{\mathbf{k}}
 
 % lie algebras
-\newcommand{\cl}{\mathfrak{c}}
-\newcommand{\g}{\mathfrak{g}}
-\newcommand{\h}{\mathfrak{h}}
-\newcommand{\gl}{\mathfrak{gl}}
-\newcommand{\sll}{\mathfrak{sl}}
-\newcommand{\tl}{\mathfrak{t}}
-\newcommand{\n}{\mathfrak{n}}
-\newcommand{\Loop}{\mathcal{L}}
+\newcommand{\clie}{\mathfrak{c}}
+\newcommand{\glie}{\mathfrak{g}}
+\newcommand{\hlie}{\mathfrak{h}}
+\newcommand{\gllie}{\mathfrak{gl}}
+\newcommand{\sllie}{\mathfrak{sl}}
+\newcommand{\tlie}{\mathfrak{t}}
+\newcommand{\nlie}{\mathfrak{n}}
+\newcommand{\looplie}{\mathcal{L}}
 
 % categories
 \newcommand{\catname}[1]{\mathbf{#1}}
@@ -104,11 +148,13 @@
 
 % spaces and sets
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Mat}{M}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Mat}{M}
+\DeclareMathOperator{\normallie}{Z}
 \DeclareMathOperator{\rad}{rad}
 \newcommand{\Ue}{\mathop{\mathcal{U}}}
 \DeclareMathOperator{\vspan}{span}
@@ -125,12 +171,19 @@
 \DeclareMathOperator{\tr}{tr}
 
 % relations and operators
+\newcommand{\defined}{\coloneqq}
 \newcommand{\dotcup}{\mathrel{\mathaccent\cdot\cup}}
 \newcommand{\inc}{\hookrightarrow}
-\newcommand{\subideal}{\trianglelefteq}
+\newcommand{\ideal}{\trianglelefteq}
+\newcommand{\tensor}{\otimes}
 
 % delimiters
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
+\NewDocumentCommand{\suchthat}{s}{
+  \IfBooleanTF{#1}
+    {\,\middle|\,}
+    {\mathrel{|}}       
+}
 
 % decorations
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
@@ -138,3 +191,13 @@
 % shortcuts
 \newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
 \newcommand{\mc}[1]{\mathcal{#1}}
+
+
+
+
+
+%%%%% GLOSSARY LIST
+% glossary uses macros defined above
+% input at the very end
+
+\input{glossarylist}

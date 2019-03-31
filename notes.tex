@@ -1,4 +1,4 @@
-\documentclass[a4paper, 10pt, oneside, openany,  bibliography=totocnumbered]{scrbook}
+\documentclass[a4paper, 10pt, oneside, openany,  bibliography=totocnumbered, headings=standardclasses]{scrbook}
 
 \usepackage{generalstyle}
 
@@ -36,17 +36,17 @@
 \mainmatter
 % TODO: notations
 \include{sections/basics}
-\include{sections/slightly_advanced_basics}
-\include{sections/semisimple_Lie_algebras}
-\include{sections/root_systems}
+% \include{sections/slightly_advanced_basics}
+% \include{sections/semisimple_Lie_algebras}
+% \include{sections/root_systems}
 
 \appendix % still part of mainmatter
-\include{sections/appendix}
+% \include{sections/appendix}
 
 \backmatter
+\printnoidxglossary[type=symbols, title={List of Symbols}]
+\printindex
 \printbibliography
-
-% TODO: index
 
 
 \end{document}
