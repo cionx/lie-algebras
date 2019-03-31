@@ -18,8 +18,8 @@
 \usepackage{csquotes}
 \usepackage{enumitem}   % for better enumerates
 \usepackage{lastpage}   % to be able to refer to the last page
-\usepackage{microtype}  % microtypography
 \usepackage{luatexbase} % fix for microtype, see https://tex.stackexchange.com/questions/476740/
+\usepackage{microtype}  % microtypography
 \usepackage[automark, headsepline, autooneside=false]{scrlayer-scrpage}  % header design
 
 \usepackage{mathtools, amssymb, amsthm} % general math stuff
@@ -113,11 +113,16 @@
 
 % text shortcuts involving nobreakdash
 \newcommand{\algebra}[1]{#1\nobreakdash-algebra}
+\newcommand{\algebras}[1]{#1\nobreakdash-algebras}
 \newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
 \newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
+\newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
+\newcommand{\onedimensional}{one\nobreakdash-dimensional}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\twodimensional}{two\nobreakdash-dimensional}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
+\newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
 
 
 
@@ -137,6 +142,7 @@
 \newcommand{\clie}{\mathfrak{c}}
 \newcommand{\glie}{\mathfrak{g}}
 \newcommand{\hlie}{\mathfrak{h}}
+\newcommand{\klie}{\mathfrak{k}}
 \newcommand{\gllie}{\mathfrak{gl}}
 \newcommand{\sllie}{\mathfrak{sl}}
 \newcommand{\tlie}{\mathfrak{t}}
@@ -177,7 +183,7 @@
 % relations and operators
 \newcommand{\defined}{\coloneqq}
 \newcommand{\dotcup}{\mathrel{\mathaccent\cdot\cup}}
-\newcommand{\inc}{\hookrightarrow}
+\newcommand{\inclusion}{\hookrightarrow}
 \newcommand{\ideal}{\trianglelefteq}
 \newcommand{\tensor}{\otimes}
 
