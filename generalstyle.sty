@@ -79,6 +79,9 @@
     urlcolor={blue!80!black}
 }
 
+% changing the tikzcdarrow tips to fit the math font
+% \tikzcdset{arrow style=math font}
+
 % definition of new counters and changes of already existing ones
 \newcounter{everything}[section]  % to be used for all kind of math enviroments
 
@@ -119,6 +122,7 @@
 \newcommand{\algebra}[1]{#1\nobreakdash-algebra}
 \newcommand{\algebras}[1]{#1\nobreakdash-algebras}
 \newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
+\newcommand{\invariant}[1]{#1\nobreakdash-invariant}
 \newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
 \newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
@@ -207,6 +211,7 @@
 
 % shortcuts
 \newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
+\newcommand{\longto}{\longrightarrow}
 \newcommand{\mc}[1]{\mathcal{#1}}
 
 
@@ -218,3 +223,7 @@
 % input at the very end
 
 \input{glossarylist}
+
+
+
+
