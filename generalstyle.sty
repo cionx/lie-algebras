@@ -19,7 +19,7 @@
 \let\openbox\undefined
 
 \usepackage{appendix}   % the appendix
-\usepackage{csquotes}
+\usepackage{csquotes}   % automagically the right quotation marks
 \usepackage{enumitem}   % for better enumerates
 \usepackage{lastpage}   % to be able to refer to the last page
 \usepackage{luatexbase} % fix for microtype, see https://tex.stackexchange.com/questions/476740/
@@ -87,24 +87,25 @@
 
 % theorem-like enviroments
 \theoremstyle{definition}
-\newtheorem{proposition}[everything]{Proposition}
-\newtheorem{lemma}[everything]{Lemma}
-\newtheorem{theorem}[everything]{Theorem}
-\newtheorem{corollary}[everything]{Corollary}
-\newtheorem*{claim*}{Claim} % unnumbered version
 \newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
-
-% text-like enviroments
+\newtheorem*{claim*}{Claim} % unnumbered version
+\newtheorem{convention}[everything]{Convention}
+\newtheorem{corollary}[everything]{Corollary}
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Example}
 \newtheorem{examples}[everything]{Examples}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
 \newtheorem{recall}[everything]{Recall}
 \newtheorem{remark}[everything]{Remark}
+\newtheorem{theorem}[everything]{Theorem}
 
 % printing of counter numbers
 \renewcommand{\theeverything}{\thesection.\arabic{everything}}
 \renewcommand{\theequation}{\arabic{equation}}
 \renewcommand{\theclaim}{\arabic{claim}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
 % style of enumerating lists
 \setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
@@ -119,19 +120,25 @@
 \newcommand{\defemph}{\emph}
 
 % text shortcuts involving nobreakdash
+\newcommand{\adnilpotent}{$\ad$\nobreakdash-nilpotent}
 \newcommand{\algebra}[1]{#1\nobreakdash-algebra}
 \newcommand{\algebras}[1]{#1\nobreakdash-algebras}
 \newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
+\newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
 \newcommand{\invariant}[1]{#1\nobreakdash-invariant}
 \newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
 \newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
 \newcommand{\onedimensional}{one\nobreakdash-dimensional}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
+\newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentations}
 \newcommand{\twococycle}{$2$\nobreakdash-cocycle}
 \newcommand{\twodimensional}{two\nobreakdash-dimensional}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
 \newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
+\newcommand{\weightspace}[1]{#1\nobreakdash-weight space}
+\newcommand{\weightvector}[1]{#1\nobreakdash-weight vector}
 
 
 
@@ -200,6 +207,11 @@
 
 % delimiters
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
+\NewDocumentCommand{\restrict}{smmO{}}{
+  \IfBooleanTF{#1}
+    {\left. {#2} \middle|_{#3}^{#4} \right.}
+    {{#2} |_{#3}^{#4}}
+}
 \NewDocumentCommand{\suchthat}{s}{
   \IfBooleanTF{#1}
     {\,\middle|\,}
@@ -207,6 +219,7 @@
 }
 
 % decorations
+\newcommand{\induced}{\overline}
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
 
 % shortcuts

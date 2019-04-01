@@ -1,436 +1,934 @@
-\section{Nilpotent and solvable Lie algebras}
+\section{Nilpotent and Solvable Lie~Algebras}
 
 
 
 
 
-\subsection{Definition, examples and properties}
+\subsection{Definition, Examples and Properties}
 
 
 \begin{definition}
- Let $A$ be an associative $k$-algebra. An element $a \in A$ is called \emph{nilpotent} if $a^n = 0$ for some $n \geq 1$. Given a Lie algebra $\g$ an element $x \in \g$ is called \emph{$\ad$-nilpotent} if $\ad(x) \in \End_k(\g)$ is nilpotent.
+  Let~$A$ be an associative~{\algebra{$\kf$}}.
+  An element~$a \in A$ is \defemph{nilpotent}\index{nilpotent} if~$a^n = 0$ for some~$n \geq 1$.
+  Given a Lie~algebra~$\glie$ an element~$x \in \glie$ is called \defemph{\adnilpotent} if the endomorphism~$\ad(x) \in \End_{\kf}(\glie)$ is nilpotent.
 \end{definition}
 
 
-\begin{lemma}\label{lem: nilpotent implies ad-nilpotent}
- If $A$ is an associative $k$-algebra and $x \in A$ nilpotent then $x$ is also $\ad$-nilpotent.
+\begin{lemma}
+  \label{nilpotent implies ad-nilpotent}
+  If~$A$ is an associative~{\algebra{$\kf$}} and~$x \in A$ is nilpotent then~$x$ is also {\adnilpotent}.
 \end{lemma}
+
 \begin{proof}
- Let $\lambda_x \colon A \to A, a \mapsto xa$ and $\rho_x \colon A \to A, a \mapsto ax$. Because $x$ is nilpotent both $\lambda_x$ and $\rho_x$ are nilpotent. Because $A$ is associative $\lambda_x$ and $\rho_x$ commute. Hence $\ad(x) = \lambda_x - \rho_x$ is the sum of two commuting, nilpotent endomorphisms, and therefore also nilpotent.
+  Let~$\lambda_x \colon A \to A$,~$a \mapsto xa$ denote the left multiplication by~$x$ and~$\rho_x \colon A \to A$,~$a \mapsto ax$ the right multiplication by~$x$.
+  Because~$x$ is nilpotent both~$\lambda_x$ and~$\rho_x$ are nilpotent.
+  The endomorphisms~$\lambda_x$ and~$\rho_x$ commute because~$A$ is associative.
+  Hence~$\ad(x) = \lambda_x - \rho_x$ is the sum (or rather difference) of two commuting nilpotent endomorphisms, and therefore again nilpotent.
 \end{proof}
 
 
 \begin{definition}
- Let $g$ be a Lie algebra. Define $\g^0 \coloneqq \g$ and $\g^{i+1} \coloneqq [\g,\g^i]$ for all $i \in \N$. Then
- \[
-  \g = \g^0 \supseteq \g^1 \supseteq \g^2 \supseteq \dots
- \]
- is called the \emph{central series} of $\g$. Also define $\g^{(0)} \coloneqq \g$ and $\g^{(i+1)} \coloneqq [\g^{(i)},\g^{(i)}]$ for all $i \in \N$. Then
- \[
-  \g^{(0)} \supseteq \g^{(1)} \supseteq \g^{(2)} \supseteq \dots
- \]
- is called the \emph{derived series} of $\g$. $\g$ is called \emph{nilpotent} if $\g^i = 0$ for some $i$ and \emph{solvable} if $g^{(i)} = 0$ for some $i$.
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      Let~$\glie^0 \defined \glie$ and inductively~$\glie^{i+1} \defined [\glie, \gls*{central series}]$ for every~$i \geq 0$.
+      The decreasing sequence
+      \[
+        \glie
+        =
+        \glie^0
+        \supseteq
+        \glie^1
+        \supseteq
+        \glie^2
+        \supseteq
+        \glie^3
+        \supseteq
+        \dotsb
+      \]
+      is the \defemph{central series}\index{central series}\index{series!central} of~$\glie$.
+      The Lie~algebra~$\glie$ is \defemph{nilpotent}\index{nilpotent!Lie algebra}\index{Lie algebra!nilpotent} if~$\glie^n = 0$ for~$n$ sufficiently large.
+    \item
+      Let~$\glie^{(0)} \defined \glie$ and~$\glie^{(i+1)} \defined [\glie^{(i)}, \gls*{derived series}]$ for every~$i \geq 0$.
+      The decreasing sequence
+      \[
+        \glie
+        =
+        \glie^{(0)}
+        \supseteq
+        \glie^{(1)}
+        \supseteq
+        \glie^{(2)}
+        \supseteq
+        \glie^{(3)}
+        \supseteq
+        \dotsb
+      \]
+      is the \defemph{derived series}\index{derived series}\index{series!derived} of~$\glie$.
+      The Lie~algebra~$\glie$ is \defemph{solvable}\index{solvable}\index{Lie algebra!solvable} if~$\glie^{(n)} = 0$ for~$n$ sufficiently large.
+  \end{enumerate}
 \end{definition}
+
+
+\begin{remark}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      Both the central series~$(\glie^i)_{i \geq 0}$ and the derived series~$(\glie^{(i)})_{i \geq 0}$ consist of ideals of~$\glie$.
+    \item
+      If~$\glie$ is nilpotent then it is also solvable because~$\glie^{(i)} \subseteq \glie^i$ for every~$i \geq 0$.
+    \item
+      Our indexing convention is choosen so that~$\glie^{(i+j)} = (\glie^{(i)})^{(j)}$ for all~$i, j \geq 0$.
+    \item
+      It follows that~$\glie$ is solvable if and only if~$\glie^{(i)}$ is solvable for some~$i \geq 0$, if and only if~$\glie^{(i)}$ is solvable for every~$i \geq 0$.
+  \end{enumerate}
+\end{remark}
 
 
 \begin{examples}
- \begin{enumerate}[leftmargin=*]
-  \item
-   Every nilpotent Lie algebra $\g$ is also solvable because $\g^{(i)} \subseteq \g^i$ for every $i \in \N$.
-  \item
-   The upper triangular matrices $\tl_n(k)$ are solvable. But they are not nilpotent.
-  \item
-   The strictly upper triangular matrices $\n_n(k)$ not only solvable but also nilpotent.
-  \item
-   If $n \geq 2$ then $\sll_2(\Cbb)$ is simple and therefore $[\sll_n(\Cbb),\sll_n(\Cbb)] = \sll_n(\Cbb)$. Since $[\gl_n(\Cbb),\gl_n(\Cbb)] = \sll_n(\Cbb)$ it follows that $\gl_n(\Cbb)$ is not solvable.
-  \item
-   If $\g$ is abelian then $\g$ is nilpotent and therefore also solvable.
-  \item
-   Every one-dimensional Lie algebra is abelian and therefore nilpotent and also solvable. The same goes for the two-dimensional abelian Lie algebra. The two-di\-men\-si\-o\-nal non-abelian Lie algebra $\g$ has a basis $x$,$y$ with $[x,y] = x$. Therefore $\g$ is solvable but not nilpotent.
-  \item
-   A \emph{Heisenberg Lie algebra} consists of a real vector space with basis $P_1, \dotsc, P_n$, $Q_1, \dotsc, Q_n$, $C$ together with the Lie bracket satisfying the following conditions:
-   \[
-    [P_i, P_j] = [Q_i, Q_j] = [P_i, C] = [Q_i, C] = 0
-    \quad \text{and} \quad
-    [P_i, Q_j] = \delta_{ij} C.
-   \]
-   This defines a nilpotent Lie algebra.
- \end{enumerate}
+  \label{examples for solvable and nilpotent}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The Lie~algebra of upper triangular matrices~$\tlie_n(\kf)$ is solvable but not nilpotent.
+    \item
+      The Lie~algebra of strictly upper triangular matrices~$\nlie_n(\kf)$ is nilpotent, and hence also solvable.
+    \item
+      If~$n \geq 2$ then the special linear Lie~algebra~$\sllie_2(\Complex)$ is simple, and hence~$[\sllie_n(\Complex), \sllie_n(\Complex)] = \sllie_n(\Complex)$.
+      Thus~$\sllie_n(\Complex)$ is neither solvable nor nilpotent.
+    \item
+      The general linear Lie~algebra~$\gllie_n(\Complex)$ is not solvable because
+      \[
+        \gllie_n(\Complex)^{(1)}
+        =
+        [\gllie_n(\Complex), \gllie_n(\Complex)]
+        =
+        \sllie_n(\Complex)
+      \]
+      is not solvable.
+    \item
+      If~$\glie$ is abelian then~$\glie$ is nilpotent (with~$\glie^1 = 0$) and therefore also solvable.
+    \item
+      Every {\onedimensional} Lie~algebra is abelian, thus nilpotent and hence solvable.
+      The same goes for the {\twodimensional} abelian Lie~algebra.
+      The {\twodimensional} non-abelian Lie~algebra~$\glie$ admits a basis~$x$,~$y$ with~$[x,y] = x$.
+      Then~$\glie^i = 0$ for every~$i \geq 2$ but~$\glie^{(i)} = \kf x$ for every~$i \geq 1$.
+      The Lie~algebra~$\glie$ is thus solvable but not nilpotent.
+    \item
+      A \defemph{Heisenberg Lie~algebra}\index{Heisenberg Lie algebra}\index{Lie algebra!Heisenberg} consists of a real vector space with basis~$P_1, \dotsc, P_n, Q_1, \dotsc, Q_n, C$ together with the Lie~bracket satisfying the relations
+      \begin{itemize}
+        \item
+          $[P_i, P_j] = [Q_i, Q_j] = 0$ whenever~$i \neq j$,
+        \item
+          $[P_i, C] = [Q_i, C] = 0$ for all~$i = 1, \dotsc, n$,
+        \item
+          $[P_i, Q_j] = \delta_{ij} C$ for all~$i,j = 1, \dotsc, n$.
+      \end{itemize}
+      This defines a nilpotent Lie~algebra.
+  \end{enumerate}
 \end{examples}
 
 
-\begin{proposition}\label{prop: properties of solvable and nilpotent}
- Let $\g$ be a Lie algebra.
- \begin{enumerate}[leftmargin=*]
-  \item
-   If $\h$ is a Lie algebra and $f \colon \g \to \h$ a Lie algebras homomorphism then $f(\g)^i = f(\g^i)$ and $f(\g)^{(i)} = f(\g^{(i)})$ for all $i \geq 0$.
-  \item
-   If $\g$ is nilpotent (resp.\ solvable) then any Lie subalgebra $\h \subseteq \g$ and any quotient of $\g$ (by an ideal $I$) is nilpotent (resp.\ nilpotent).
-  \item
-   If $I \subideal \g$ with $I \subseteq Z(\g)$ and $\g/I$ is nilpotent then $\g$ is nilpotent.
-  \item
-   If $\g \neq 0$ is nilpotent then $Z(\g) \neq 0$.
-  \item
-   If $\g$ is nilpotent and $x \in \g$ then $x$ is $\ad$-nilpotent.
-  \item
-   If $I \subideal \g$ then $I^i$ and $I^{(i)}$ are ideals inside $\g$ for all $i \geq 0$.
- \end{enumerate}
+\begin{proposition}[Properites of solvability]
+  \label{properties of solvable and nilpotent}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      If~$\hlie$ is another Lie~algebra and~$f \colon \glie \to \hlie$ is a homomorphism of Lie~algebras then
+      \[
+        f(\glie)^{(i)}
+        =
+        f(\glie^{(i)})
+      \]
+      for every~$i \geq 0$.
+    \item
+      If the Lie~algebra~$\glie$ is solvable then any Lie~subalgebra~$\hlie$ of~$\glie$ is again solvable.
+    \item
+      If~$\glie$ is solvable and~$I$ is an ideal in~$\glie$ then the quotient Lie~algebra~$\glie/I$ is again solvable.
+    \item
+      If~$I$ is an ideal in~$\glie$ such that both~$I$ and~$\glie/I$ is solvable then~$\glie$ is solvable.
+  \end{enumerate}
 \end{proposition}
+
+
 \begin{proof}
- \begin{enumerate}[leftmargin=*]
-  \item
-   It suficies to show that for any two subsets $X, Y \subseteq \g$
-   \[
-    f([X,Y])= [f(X),f(Y)]
-   \]
-   the statement then follows inductively. It holds because $f$ is a Lie algebra homomorphism and therefore
-   \begin{align*}
-    f([X,Y])
-    &= f(\vspan_k \{[x, y] \mid x \in X, y \in Y\}) \\
-    &= \vspan_k \{f([x, y]) \mid x \in X, y \in Y\} \\
-    &= \vspan_k \{[f(x),f(y)] \mid x \in X, y \in Y\} \\
-    &= \vspan_k \{[x',y'] \mid x' \in f(X), y' \in f(Y)\} \\
-    &= [f(X),f(Y)].
-   \end{align*}
-  \item
-   The statement about subalgebras follows from $\h^i \subseteq \g^i$ and $\h^{(i)} \subseteq \g^{(i)}$ for all $i \in \N$. The statement about quotient follow by using the canonical projection $\pi \colon \g \to \g/I$. Because $\pi$ is a Lie algebra homomorphism it follows that
-   \[
-    (\g/I)^i = \pi(\g)^i = \pi(\g^i) = 0
-   \]
-   for $i$ big enough. For solvable $\g$ the corresponding statements follow in the same way.
-  \item
-   Let $\pi \colon \g \to \g/I$ be the canonical projection. Because $\g/I$ is nilpotent there exists some $i \geq 0$ with $(\g/I)^i = 0$ and therefore
-   \[
-    0 = (\g/I)^i = \pi(\g)^i = \pi(\g^i).
-   \]
-   Thus $\g^i \subseteq I \subseteq Z(G)$ and hence $\g^{i+1} = 0$.
-  \item
-   Let $i \in \N$ be minimal with $\g^i \neq 0$ but $\g^{i+1} = 0$. Then $\g^i \subseteq Z(\g)$ and thus $Z(\g) \neq 0$.
-  \item
-   Since $\g$ is nilpotent there exists some $i \in \N$ with $\g^i = 0$. Then
-   \[
-    (\ad(x))^i(\g) \subseteq \g^i = 0,
-   \]
-   so $(\ad(x))^i = 0$.
-  \item
-   This follows inductively by using that $[I,J]$ is an ideal inside $\g$ for any $I,J \subideal \g$.
- \end{enumerate}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This can be shown by induction because~$f([X,Y]) = [f(X), f(Y)]$ for any two subsets~$X, Y \subseteq \glie$.
+    \item
+      The inclusion~$\hlie \to \glie$ is a Lie algebra homomorphism hence~$\hlie^{(i)} \subseteq \glie^{(i)}$ for every~$i \geq 0$.
+      It thus follows from~$\glie^{(n)} = 0$ for~$n$ sufficiently large that also~$\hlie^{(n)} = 0$.
+    \item
+      The canonical projection~$\pi \colon \glie \to \glie/I$ is a Lie algebra homomorphism, and hence
+      \[
+        (\glie/I)^{(i)}
+        =
+        \pi(\glie)^{(i)}
+        =
+        \pi(\glie^{(i)})
+      \]
+      for every~$i \geq 0$.
+      It thus follows from~$\glie^{(n)} = 0$ for~$n$ sufficietly large that also~$(\glie/I)^{(n)} = 0$.
+    \item
+      It follows from the solvability from~$\glie/I$ that~$(\glie/I)^{(n)} = 0$ for~$n$ sufficiently large.
+      This means that
+      \[
+        0
+        =
+        (\glie/I)^{(n)}
+        =
+        \pi(\glie)^{(n)}
+        =
+        \pi(\glie^{(n)})  \,,
+      \]
+      so that~$\glie^{(n)} \subseteq I$.
+      It follows from the solvability of~$I$ that~$I^{(m)} = 0$ for~$m$ sufficiently large.
+      Then
+      \[
+        \glie^{(n+m)}
+        =
+        (\glie^{(n)})^{(m)}
+        \subseteq
+        I^{(m)}
+        =
+        0
+      \]
+      and hence~$\glie^{(n+m)} = 0$.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
-\begin{corollary}\label{cor: solvable via ses}
- If $I \subideal \g$ is an ideal inside a Lie algebra $\g$ then $\g$ is solvable if and only if both $I$ and $\g/I$ are solvable.
+\begin{proposition}[Properties of nilpotence]
+  \label{properties of nilpotence}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      If~$\hlie$ is another Lie~algebra and~$f \colon \glie \to \hlie$ is a homomorphism of Lie~algebras then
+      \[
+        f(\glie)^i
+        =
+        f(\glie^i)
+      \]
+      for every~$i \geq 0$.
+    \item
+      If the Lie~algebra~$\glie$ is nilpotent then any Lie~subalgebra~$\hlie$ of~$\glie$ is again nilpotent.
+    \item
+      If~$\glie$ is nilpotent and~$I$ is an ideal in~$\glie$ then the quotient Lie~algebra~$\glie/I$ is again nilpotent.
+    \item
+      If~$I$ is an ideal in~$\glie$ such that~$I$ is contained in the center~$\centerlie(\glie)$ and such that~$\glie/I$ is nilpotent then~$\glie$ is nilpotent.
+    \item
+      If~$\glie$ is nonzero and nilpotent then~$\centerlie(\glie)$ is nonzero.
+    \item
+      If~$\glie$ is nilpotent then every~$x \in \glie$ is~{\adnilpotent}.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This can be shown inductively because~$f([X,Y]) = [f(X), f(Y)]$ for any two subsets~$X, Y \subseteq \glie$.
+    \item
+      The inclusion~$\hlie \to \glie$ is a homomorphism of Lie~algebras, hence~$\hlie^i \subseteq \glie^i$ for all~$i \geq 0$.
+      It thus follows for~$n$ sufficiently large from~$\glie^i = 0$ that also~$\hlie^i = 0$.
+    \item
+      The canonical projection~$\pi \colon \glie \to \glie/I$ is a homorphism of Lie~algebras, hence
+      \[
+        (\glie/I)^i
+        =
+        \pi(\glie)^i
+        =
+        \pi(\glie^i)
+      \]
+      for every~$i \geq 0$.
+      It thus follows for~$n$ sufficiently large from~$\glie^n = 0$ that also~$(\glie/I)^n = 0$.
+    \item
+      For~$n$ sufficiently large we have that~$(\glie/I)^n = 0$ and hence
+      \[
+        0
+        =
+        (\glie/I)^n
+        =
+        \pi(\glie)^n
+        =
+        \pi(\glie^n)  \,.
+      \]
+      This means that~$\glie^n \subseteq I \subseteq \centerlie(\glie)$.
+      Then
+      \[
+        \glie^{n+1}
+        =
+        [\glie, \glie^n]
+        \subseteq
+        [\glie, \centerlie(\glie)]
+        =
+        0
+      \]
+      and hence~$\glie^{n+1} = 0$.
+    \item
+      Let~$n \geq 0$ be minimal with~$\glie^n = 0$.
+      That~$\glie$ is nonzero means that~$n \geq 1$.
+      Then~$\glie^{n-1} \neq 0$, but also
+      \[
+        [\glie, \glie^{n-1}]
+        =
+        \glie^n
+        =
+        0
+      \]
+      and hence~$\glie^{n-1} \subseteq \centerlie(\glie)$.
+      It follows that~$\centerlie(\glie) \neq 0$.
+    \item
+      Let~$x \in \glie$.
+      We find by induction that
+      \[
+        \ad(x)^n(\glie)
+        \subseteq
+        \glie^n
+      \]
+      for all~$n \geq 0$.
+      It hence follows for~$n$ sufficiently large from~$\glie^n = 0$ that~$\ad(x)^n = 0$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{corollary}
+  \label{solvable via ses}
+  If~$I$ is an ideal in a Lie~algebra~$\glie$ then~$\glie$ is solvable if and only if both~$I$ and~$\glie/I$ are solvable
+  Hence in a short exact sequence
+  \[
+    0
+    \to
+    I
+    \to
+    \glie
+    \to
+    \glie/I
+    \to
+    0
+  \]
+  the middle term is solvable if and only if the two outer terms are solvable.
+  \qed
 \end{corollary}
-\begin{proof}
- If $\g$ is solvable then $I$ and $\g/I$ are also solvable by Proposition~\ref{prop: properties of solvable and nilpotent}. Suppose that on the other hand both $I$ and $\g/I$ are solvable. Then there exists $i_1, i_2 \in \N$ with $(\g/I)^{(i_1)} = 0$ and $I^{i_2} = 0$. Let $\pi \colon \g \to \g/I, x \mapsto x + I$ be the canical projection. Because
- \[
-  0 = (\g/I)^{(i_1)} = \pi(\g)^{(i_1)} = \pi(\g^{(i_1)})
- \]
- it follows that $\g^{(i_1}) \subseteq \ker \pi = I$. Thus
- \[
-  \g^{(i_1 + i_2)} = (\g^{(i_1)})^{i_2} \subseteq I^{i_2} = 0,
- \]
- which shows that $\g$ is solvable.
-\end{proof}
 
 
 \begin{remark}
- The analogeous statement about nilpotency does not necessarily hold. Take for example the two-dimensional non-abelian Lie algebra $\g$, which has a basis $x,y$ with $[x,y] = x$. Then the one-dimensional linear subspace $I \coloneqq kx$ is an abelian ideal in $\g$ and in particular nilpotent. The quotient $\g/I$ is one-dimensional and therefore also nilpotent. But $\g$ itself is not nilpotent.
+  The analogeous statement about nilpotency does not necessarily hold.
+  Take for example the {\twodimensional} non-abelian Lie~algebra~$\glie$, that has a basis~$x$,~$y$ with~$[x,y] = x$.
+  Then the {\onedimensional} linear subspace~$I \defined kx$ is an abelian ideal in~$\glie$ and in particular nilpotent.
+  The quotient~$\glie/I$ is one-dimensional and therefore also nilpotent.
+  But~$\glie$ itself is not nilpotent as seen in \cref{examples for solvable and nilpotent}.
 \end{remark}
 
 
-\begin{corollary}\label{cor: sum of solvable ideals is solvable}
- Let $\g$ be a Lie algebra and $I, J \subideal \g$ two solvable ideal. Then $I + J$ is also solvable.
+\begin{corollary}
+  \label{sum of solvable ideals is solvable}
+  Let~$\glie$ be a Lie~algebra and let~$I$ and~$J$ be two solvable ideals in~$\glie$.
+  Then their sum~$I + J$ is again solvable.
 \end{corollary}
+
+
 \begin{proof}
- Because $J$ is solvable the same goes for $J/(I \cap J)$. Hence in the short exact sequence
- \[
-  0 \to I \to I+J \to (I+J)/I \to 0
- \]
- both $I$ and $(I+J)/I \cong J/(I \cap J)$ are solvable. Hence $I+J$ is solvable by Corollary~\ref{cor: solvable via ses}.
+  We consider the short exact sequence
+  \[
+    0
+    \to
+    I
+    \to
+    I+J
+    \to
+    (I+J)/I
+    \to
+    0 \,.
+  \]
+  The terms~$I$ and~$(I+J)/I \cong J/(I \cap J)$ are both solvable (the second one because~$J$ is solvable) and hence the middle term~$I+J$ is solvable.
 \end{proof}
 
 
 \begin{definition}
- Let $\g$ be a finite dimenisonal Lie algebra. It follows from Corollary~\ref{cor: sum of solvable ideals is solvable} that $\g$ contains a unique maximal solvable ideal. This ideal is called the \emph{radical} of $\g$ and is denoted by $\rad \g$.
+ Let~$\glie$ be a finite dimenisonal Lie~algebra.
+ It follows from \cref{sum of solvable ideals is solvable} that~$\glie$ contains a unique maximal solvable ideal. This ideal is called the \defemph{radical}\index{radical} of~$\glie$ and is denoted by~\gls*{radical}.
 \end{definition}
 
 
 \begin{remark}
- If $\g$ is a Lie algebra and $I, J \subideal \g$ two nilpotent ideals, then it can be shown that the ideal $I + J$ is also a nilpotent. It follows that every finite dimensional Lie algebra $\g$ has a unique maxmial nilpotent ideal, which is then called the \emph{nilradical} of $\g$.
+  If~$\glie$ is a Lie~algebra and~$I$ and~$J$ are two nilpotent ideals in~$\glie$ then it can be shown that their sum~$I+J$ is again nilpotent.
+  It follows that every finite dimensional Lie~algebra~$\glie$ admits a unique maxmial nilpotent ideal, that is then called the \defemph{nilradical}\index{nilradical} of~$\glie$.
 \end{remark}
 
 
 
 
 
+\subsection{Engel’s Theorem}
 
 
-\subsection{Engel’s theorem}
+\begin{remark}
+  If~$V$ is an~{\dimensional{$n$}} vector space over~$\kf$ and~$x \colon V \to V$ a nilpotent endomorphism then~$0$ is the only eigenvalue of~$x$ (and occurs with algebraic multiplicity~$n$).
+  Hence there exists an eigenvector~$v \in V$ (which entails that~$v \neq 0$) with~$x(v) = 0$.
+  The following proposition generalizes this observations to linear Lie~algebras consisting of nilpotent endomorphisms.
+\end{remark}
 
 
-From now on \emph{all} fields over which we work will be assumed to be algebraically closed, unless otherwise specified.
-
-
-If $V$ is an $n$-dimensional vector space over $k$ and $x \in \End_k(V)$ a nilpotent endomorphism then $0$ is the only eigenvalue of $x$ (and occurs with multiplicity $n$) (here it is used that $k$ is algebraically closed). Hence there exists an eigenvector $v \in V$, $v \neq 0$ with $x(v) = 0$. The following proposition generalizes this observations for linear Lie algebras consisting of nilpotent endomorphisms.
-
-
-\begin{proposition}\label{prop: common eigenvector for nilpotent Lie algebras}
- Let $V \neq 0$ be a finite dimensional vector space and $\g \subseteq \gl(V)$ a Lie subalgebra such that every $x \in \g$ in nilpotent. Then there exists $v \in V$ with $v \neq 0$ and $x(v) = 0$ for every $x \in \g$, i.e.\ $v$ is a common eigenvector of all $x \in \g$ (all of which are nilpotent and thus have $0$ as their only eigenvalue).
+\begin{proposition}
+  \label{common eigenvector for nilpotent Lie algebras}
+  Let~$V$ be a nonzero finite dimensional vector space and let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ consisting of nilpotent endomorphisms.
+  Then there exists some nonzero~$v \in V$ with~$x(v) = 0$ for every~$x \in \glie$, i.e.~$v$ is a common eigenvector for all~$x \in \glie$ (all of which are nilpotent and thus have~$0$ as their only eigenvalue).
 \end{proposition}
+
+
 \begin{proof}
- The statement can be then shown by induction over $\dim \g$. For $\dim \g = 0$ the statement follows from $\g = 0$ and for $\dim \g = 1$ the statement follows as previously discussed from $\g = k x$ with $x$ being a nilpotent endomorphism of $V$.
- 
- So let $\dim \g \geq 2$ and suppose that the statement holds for all smaller dimensions. Let $I \subseteq \g$ be a maximal proper Lie subalgebra (such a subalgebra exists because it is precisely one of maximal dimension strictly smaller than $n$). Any $x \in \g$ with $x \neq 0$ spans a one-dimensional subalgebra $k x$ of $\g$; because $\dim \g \geq 2$ it is a proper one. This show that $I \neq 0$. It turns out that $I$ is already in ideal in $\g$:
- 
- By assumption $\g$ consists of nilpotent endomorphisms and therefore of $\ad$-nilpotent elemenents. In particular every $x \in I$ acts nilpotent on $\g$ via $\ad(x)$ with $I$ being an $\ad(x)$-invariant linear subspace. Therefore every $x \in I$ acts on the quotient vector space $\g/I$ by an induced nilpotent endomorphism
- \[
-  \overline{\ad}(x) \colon \g/I \to \g/I, \quad y + I \mapsto \ad(x)(y) + I = [x,y] + I.
- \]
- As the map $\overline{\ad} \colon I \to \gl(\g/I)$ is an homomorphism of Lie algebras (because $\ad$ is) the image $\{\overline{\ad}(x) \mid x \in I\} \subseteq \gl(\g/I)$ is an Lie subalgebra, consisting of nilpotent endomorphisms. From $I \neq 0$ it follows that $\dim \g/I < \dim \g$, so by induction assumption there exists some $y \in \g$ with $\overline{\ad}(x)(y+I) = 0$ for every $x \in I$ and $y+I \neq 0+I$. Hence $[x,y] \in I$ for every $x \in I$ but $y \neq I$. Hence $y \in N_\g(I)$ with $y \neq I$, so $I$ is properly contained in its normalizer. As $I$ is a maximal proper subalgebra of $\g$ it follows that $N_\g(I) = \g$, so $I$ is an ideal. It is even one of codimension $1$:
- 
- If $I$ had not codimension $1$ then $\dim \g/I > 1$. Then $\g/I$ contains a one-dimensional proper subalgebra $L$ (as seen above), and the preimage $\pi^{-1}(J)$ under the canonical projection $\pi \colon \g \to \g/I$ is then a proper subalgebra of $\g$ properly containing $I$, which contradicts the maximality of $I$. Hence $I$ has codimension $1$.
- 
- As $I \subseteq \g$ has codimension $1$ there exists some $y \in \g$ with $g = I \oplus ky$ (as vector spaces). Because $\dim I < \dim \g$ it follows from the induction assumption that
- \[
-  U \coloneqq \{v \in V \mid \text{$x(v) = 0$ for every $x \in I$}\} = \bigcap_{x \in I} \ker x
- \]
- is a nonzero linear subspace of $V$. It sufficies to show that $U$ is $y$-invariant: Then there exists some eigenvector $u \in U$ of $y$ for which necessarily $y(u) = 0$. If $u\in U$ then $[x,y] \in I$ for every $x \in I$ because $I \subideal \g$ and therefore
- \[
-  x(y(u)) = [x,y](u) - y(x(u)) = 0 - y(0) = 0.
- \]
- Hence $y(u) \in U$, so $U$ is $y$-invariant.
+  We show the statement by induction over the dimension of~$\glie$.
+  If~$\dim \glie = 0$ then~$\glie = 0$ and we may choose any nonzero~$v \in V$.
+  If~$\dim \glie = 1$ then~$\glie = \kf x$ for any nonzero~$x \in \glie$ and we may choose any nonzero~$v \in \ker x$ (which exists because~$x$ is a nilpotent endomorphism of~$V$).
+  Let now~$\dim \glie \geq 2$ and suppose that the \lcnamecref{common eigenvector for nilpotent Lie algebras} holds for all strictly smaller dimensions.
+  
+  We now proceed in two steps:
+  In the first step we show that the \lcnamecref{common eigenvector for nilpotent Lie algebras} holds if~$\glie$ admits a nonzero proper ideal~$I$.
+  We do so by applying the induction hypothesis to~$I$ and~$\glie/I$ (or rather~$\glie'$, a further quotient of~$\glie/I$).
+  In the second step we show that~$\glie$ does indeed admit such an ideal.
+  We do so by showing that every maximal proper Lie~subalgebra~$I$ of~$\glie$ is already an ideal, which we do by showing that~$\normallie_\glie(I) = \glie$ because~$I$ acts nilpotent on the quotient vector space~$\glie/I$.
+  
+  If~$\hlie$ is a proper Lie~subalgebra of~$\glie$ then the linear subspace
+  \[
+    W_\hlie
+    \defined
+    \{
+      v \in V
+    \suchthat
+      \text{$x.v = 0$ for every~$x \in \hlie$}
+    \}
+  \]
+  is by induction hypothesis nonzero.
+  We observe that if~$I$ is an ideal in~$\glie$ then~$W_I$ is already a {\subrepresentation{$\glie$}} of~$V$:
+  Indeed, we have for all~$x \in \glie$ and~$w \in W_I$ that
+  \[
+    z.(x.w)
+    =
+    x.(z.w) - [x,z].w
+  \]
+  for every~$z \in I$, with~$z.w = 0$ and~$[x,z].w = 0$ because~$z, [x,z] \in I$.
+  
+  Suppose now that~$\glie$ admits a nonzero proper ideal~$I$.
+  Seen we find that~$W \defined W_I$ is a nonzero {\subrepresentation{$\glie$}} of~$V$.
+  We hence get a homomorphism of Lie~algebras
+  \[
+    f
+    \colon
+    \glie
+    \to
+    \gllie(W) \,,
+    \quad
+    x
+    \mapsto
+    \restrict{x}{W} \,.
+  \]
+  The image~$\glie' \defined \im f = f(\glie)$ is a Lie~subalgebra of~$\gllie(W)$ that again consists of nilpotent endomorphisms.
+  But the nonzero ideal~$I$ is contained in the kernel of~$f$, hence~$\glie'$ has strictly smaller dimension than~$\glie$.
+  We hence find by induction hypothesis that there exists some nonzero~$w \in W$ with~$y.w = 0$ for every~$y \in \glie'$.
+  By definition of~$\glie'$ this means that~$x.w = 0$ for every~$x \in \glie$, so we may choose~$v = w$.
+  
+  It remains to show that~$\glie$ admits a nonzero proper ideal.
+  Let~$I$ be a proper Lie~subalgebra of~$\glie$ of maximal dimension.
+  Then~$I$ is nonzero, because~$\glie$ contains nonzero proper Lie~subalgebras (e.g.~$\kf x$ with~$x \in \glie$, where we use that~$\dim \glie \geq 2$), and maximal among all Lie~subalgebras of~$\glie$ with respect to inclusion.
+  We claim that~$I$ is already an ideal in~$\glie$, which is then the desired nonzero proper ideal.
+  
+  Indeed, for every~$x \in I$ the adjoint action~$\ad(x) = [x,-]$ maps~$I$ into itself, and hence descends to an endomorphism~$\induced{x} \colon \glie/I \to \glie/I$.
+  We hence get a homomorphism of Lie~algebras
+  \[
+    g
+    \colon
+    I
+    \to
+    \gllie(\glie/I)  \,,
+    \quad
+    z
+    \mapsto
+    \induced{z} \,.
+  \]
+  The image of~$g$ is a Lie subalgebra of~$\gllie(\glie/I)$ of dimension strictly smaller than~$\glie$.
+  So by induction hypothesis there exists some nonzero~$y \in \glie/I$ with~$\induced{z}.y = 0$ for every~$x \in I$.
+  If~$x \in \glie$ is a representation of~$y$ then this means that~$x \notin I$ (as~$y$ is nonzero) but~$[z,x] = z.x \in I$ for every~$z \in I$ (because~$\induced{z}.y = 0$ for every~$z \in I$.
+  Hence~$x$ is contained in the normalizer~$\normallie_\glie(I)$, but not contained in~$I$.
+  This shows that~$I$ is properly contained in its normalizer.
+  This normalizer is again a Lie~subalgebra of~$\glie$, and hence it follows from the maximality of~$\glie$ (among all proper Lie~subalgebras of~$\glie$) that~$\normallie_\glie(I) = \glie$.
+  This means that~$I$ is an ideal in~$\glie$.
 \end{proof}
 
 
-\begin{proposition}\label{prop: stuff for Engels theorem}
- Let $V$ be a finite dimensional vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a Lie subalgebra. Then the following are equivalent:
- \begin{enumerate}
-  \item\label{enum: engels g consists of nilpotent endomorphisms}
-   $\g$ consists of nilpotent endomorphisms.
-  \item\label{enum: engels there exists a complete flag shifted by g}
-   There exists a complete flag of $V$
-   \[
-    V = V_n \supsetneq V_{n-1} \supsetneq V_{n-2} \supsetneq \dotsb \supsetneq V_1 \supsetneq V_0 = 0,
-   \]
-   with $x(V_i) \subseteq V_{i-1}$ for every $i = 1, \dotsc, n$.
-  \item\label{enum: engels represented by strictly upper triangular matrices}
-   There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an strictly upper triangular matrix.
- \end{enumerate}
+\begin{proposition}
+  \label{characterizations of linear lie algebras consisting of nilpotent endomorphisms}
+  Let~$V$ be a vector space of finite dimension~$n \defined \dim V$ and let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$.
+  Then the following conditions on~$\glie$ are equivalent:
+  \begin{enumerate}
+    \item
+      \label{engels g consists of nilpotent endomorphisms}
+      The Lie~algebra~$\glie$ consists of nilpotent endomorphisms.
+    \item
+      \label{engels there exists a complete flag shifted by g}
+      There exists a complete flag of~$V$,
+      \[
+        V
+        =
+        V_n
+        \supsetneq
+        V_{n-1}
+        \supsetneq
+        V_{n-2}
+        \supsetneq
+        \dotsb
+        \supsetneq
+        V_1
+        \supsetneq
+        V_0
+        =
+        0 \,,
+      \]
+      with~$x(V_i) \subseteq V_{i-1}$ for all~$x \in \glie$ and every~$i = 1, \dotsc, n$.
+    \item
+      \label{engels represented by strictly upper triangular matrices}
+      There exists a basis of~$V$ with respect to which every~$x \in \glie$ is represented by an strictly upper triangular matrix.
+  \end{enumerate}
 \end{proposition}
+
+
 \begin{proof}
- The implication \ref{enum: engels g consists of nilpotent endomorphisms} $\Rightarrow$ \ref{enum: engels there exists a complete flag shifted by g} can be shown by induction over $\dim V$. For $\dim V = 1$ set $V_0 \coloneqq 0$ and $V_1 \coloneqq V$. By assumption every $x \in \g$ acts nilpotent on $V$, so $x(V) = 0$ because $V$ is one-dimensional. Thus $V = V_1 \supsetneq V_0 = 0$ is a complete flag for $V$ satisfying the condititons.
-   
- Now let $\dim V = n \geq 2$ and suppose the statement holds for all smaller dimensions. Let $v \in V$, $v \neq 0$ with $x(v) = 0$ for every $x \in \g$ and $W \coloneqq V / kv$. Every $x \in \g$ induces an endomorphism
- \[
-  \overline{x} \colon W \to W, \quad v + kv \mapsto x(v) + kv.
- \]
- By induction assumption exists a complete flag
- \[
-  W = W_{n-1} \supsetneq W_{n-2} \supsetneq W_{n-3} \supsetneq \dotsb \supsetneq W_1 \supsetneq W_0 = 0
- \]
- with $\overline{x}(W_i) \subseteq W_{i-1}$ for every $x \in \g$ and $i = 1, \dotsc, n-1$. By setting $V_i \coloneqq \pi^{-1}(W_{i-1})$ for every $i = 1, \dotsc, n$ and $V_0 = 0$ it follows that
- \[
-  V = V_n \supsetneq V_{n-1} \supsetneq V_{n-2} \supsetneq \dotsb \supsetneq V_1 \supsetneq V_0 = 0,
- \]
- is a complete flag of $V$. On the one hand $x(V_1) = x(kv) = 0 = V_0$ for every $x \in \g$ and on the other hand
- \[
-  \pi(x(V_i))
-  = \overline{x}(\pi(V_i))
-  = \overline{x}(W_{i-1})
-  \subseteq W_{i-2}
- \]
- and therefore $x(V_i) \subseteq \pi^{-1}(W_{i-2}) = V_{i-1}$ for every $i = 2, \dotsc, n$.
- 
- The implications \ref{enum: engels there exists a complete flag shifted by g} $\Rightarrow$ \ref{enum: engels represented by strictly upper triangular matrices} and \ref{enum: engels represented by strictly upper triangular matrices} $\Rightarrow$ \ref{enum: engels g consists of nilpotent endomorphisms} are basic facts from linear algebra.
+  \leavevmode
+  \begin{description}
+    \item[\ref*{engels g consists of nilpotent endomorphisms}~$\implies$~\ref*{engels there exists a complete flag shifted by g}]
+      This implication can be shown by induction over~$n = \dim V$.
+      For~$n = 1$ let~$V_0 \defined 0$ and~$V_1 \defined V$.
+      By assumption every~$x \in \glie$ acts nilpotent on~$V$, so~$x(V) = 0$ because~$V$ is {\onedimensional}.
+      Thus
+      \[
+        V
+        = 
+        V_1
+        \supsetneq
+        V_0
+        =
+        0
+      \]
+      is a complete flag for~$V$ satisfying the condititons.
+    
+      Let now~$n \geq 2$ and suppose the statement holds for all smaller dimensions.
+      Let~$v \in V$ be nonzero with~$x(v) = 0$ for every~$x \in \glie$.
+      For~$W \defined V / \kf v$ every~$x \in \glie$ induces an endomorphism
+      \[
+        \induced{x}
+        \colon
+        W
+        \to W \,,
+        \quad
+        v + \kf v
+        \mapsto
+        x(v) + \kf v \,.
+      \]
+      By induction assumption there exists a complete flag
+      \[
+        W
+        =
+        W_{n-1}
+        \supsetneq
+        W_{n-2}
+        \supsetneq
+        W_{n-3}
+        \supsetneq
+        \dotsb
+        \supsetneq
+        W_1
+        \supsetneq
+        W_0
+        =
+        0
+      \]
+      with~$\induced{x}(W_i) \subseteq W_{i-1}$ for every~$x \in \glie$ and~$i = 1, \dotsc, n-1$.
+      By setting~$V_i \defined \pi^{-1}(W_{i-1})$ for every~$i = 1, \dotsc, n$ together with~$V_0 \defined 0$ it follows that
+      \[
+        V
+        =
+        V_n
+        \supsetneq
+        V_{n-1}
+        \supsetneq
+        V_{n-2}
+        \supsetneq
+        \dotsb
+        \supsetneq 
+        V_1
+        \supsetneq
+        V_0
+        =
+        0
+      \]
+      is a complete flag of~$V$.
+      On the one hand~$x(V_1) = x(\kf v) = 0 = V_0$ for every~$x \in \glie$ and on the other hand
+      \[
+        \pi(x(V_i))
+        =
+        \overline{x}(\pi(V_i))
+        =
+        \overline{x}(W_{i-1})
+        \subseteq
+        W_{i-2} \,,
+      \]
+      and therefore~$x(V_i) \subseteq \pi^{-1}(W_{i-2}) = V_{i-1}$ for every~$i = 2, \dotsc, n$.
+    \item[\ref*{engels there exists a complete flag shifted by g}~$\implies$~\ref*{engels represented by strictly upper triangular matrices}]
+      This is linear algebra
+    \item[\ref*{engels represented by strictly upper triangular matrices}~$\implies$~\ref*{engels g consists of nilpotent endomorphisms}]
+      This is again linear algebra.
+    \qedhere
+  \end{description}
 \end{proof}
 
 
 \begin{theorem}[Engel]
- Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is nilpotent if and only if all its elements are $\ad$-nilpotent.
+  \index{Engel’s theorem}
+  A finite dimensional Lie~algebra~$\glie$ is nilpotent if and only if all its elements are~{\adnilpotent}.
 \end{theorem}
+
+
 \begin{proof}
- If $\g$ is nilpotent then there exists some $i \in \N$ with $\g^i = 0$, from which is follows from $\ad(x)^i(y) \in \g^i$ for every $x,y \in \g$ that $\ad(x)^i = 0$ for every $x \in \g$, hence every $x \in \g$ is $\ad$-nilpotent.
+  If~$\glie$ is nilpotent then every~$x \in \glie$ is~{\adnilpotent} by \cref{properties of nilpotence}.
  
- On the other hand suppose that $\g$ consists of $\ad$-nilpotent elemenents. If $\g = Z(\g)$ then $\g$ is abelian and hence nilpotent, so it sufficies to show the statement under the additional assumption that $Z(\g) \subsetneq \g$. Because $\g/Z(\g) \cong \ad \g$ is a Lie subalgebra of $\gl(\g)$ consisting of nilpotent Elemenents it follows from Proposition~\ref{prop: stuff for Engels theorem} that $\g/Z(\g)$ is isomorphic to a Lie subalgebra of $\n_n(k)$ for $n = \dim \g/Z(\g) \geq 1$. Because $\n_n(k)$ is nilpotent the same goes for $\g/Z(\g)$ as seen in Proposition~\ref{prop: properties of solvable and nilpotent}.
+  Suppose on the other hand that~$\glie$ consists of~{\adnilpotent} elemenents.
+  Then~$\glie' \defined \ad(\glie)$ is a Lie subalgebra of~$\gllie(\glie)$ consisting of nilpotent endomorphisms.
+  The Lie~algebra~$\glie'$ can therefore, with respect to a suitable basis of~$\glie$, be represented by upper triangular matrices by \cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms}
+  This showws that~$\glie'$ is isomorphic to a Lie~subalgebra of some~$\nlie_n(\kf)$ (for~$n = \dim \glie$) and hence nilpotent.
+  
+  This shows that~$\glie/\centerlie(\glie) \cong \ad(\glie)$ is nilpotent.
+  It follows that~$\glie$ is nilpotent by \cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms}.
 \end{proof}
 
 
 \begin{remark}
- It is not true that every nilpotent Lie-subalgebra $\g \subseteq \gl(V)$ with $V$ being a finite dimensional vector space is represented by upper triangular matrices with respect to some basis of $V$. For example the onedimensional subalgebra $k \id_V \subseteq \gl(V)$ is abelian and hence nilpotent, but with respect to every basis of $V$ represented by $kI \subseteq \gl_n(k)$.
+  It is not true that every nilpotent Lie~subalgebra~$\glie$ of~$\gllie(V)$, where~$V$ is a finite dimensional vector space, can be represented by strictly upper triangular matrices with respect to some suitable basis of~$V$.
+  An example for this is the {\onedimensional} Lie~subalgebra~$\glie \defined \kf {\id_V}$ of~$\gllie(V)$.
+  This Lie algebra is abelian and hence nilpotent, but is with respect to every basis of~$V$ represented by the scalar matrices~$\kf I$.
 \end{remark}
 
 
-%TODO: Give a compromise using the abstract Jordan decomposition
-
-
-\begin{corollary}\label{cor: ideal in nilpotent has nontrivial intersection with center}
- Let $\g$ be a finite dimensional nilpotent $k$-Lie algebra. If $I \subideal \g$ is a non-zero ideal then $I \cap Z(\g) = 0$.
+\begin{corollary}
+  \label{ideals in nilpotent does intersection center}
+  If~$I$ is a nonzero ideal in a finite dimensional nilpotent Lie~algebra then~$I \cap \centerlie(\glie) \neq 0$.
 \end{corollary}
+
+
 \begin{proof}
- $\g$ acts on itself via the adjoint representation and by Engel’s Theorem $\ad(x)$ is nilpotent for every $x \in \g$. Hence $\{\ad(x)|_I \mid x \in \g\} \subseteq \gl(I)$ is a Lie subalgebra consisting of nilpotent endomorphisms. By Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} there exists some non-zero $y \in I$ with $\ad(x)|_I(y) = 0$ for every $y \in \g$, i.e.\ $[\g, y] = 0$. Then $y \in Z(\g) \cap I$.
+  The Lie~algebra~$\glie$ acts on itself via the adjoint representation and~$\ad(x)$ is nilpotent for every~$x \in \glie$ by Engel’s theorem.
+  The ideal~$I$ is a subrepresentation of~$\glie$ and the restriction~$\restrict{\ad(x)}{I}$ is again nilpotent for every~$x \in \glie$.
+  The image of the resulting Lie~algebra homomorphism
+  \[
+    \glie
+    \to
+    \gllie(I) \,,
+    \quad
+    x
+    \mapsto
+    \restrict{\ad(x)}{I}
+  \]
+  does therefore consists of nilpotent endomorphisms.
+  By \cref{common eigenvector for nilpotent Lie algebras} there exists some non-zero~$y \in I$ with~$\restrict{\ad(x)}{I}(y) = 0$ for every~$y \in \glie$, i.e.~$[\glie, y] = 0$.
+  Then~$y \in \centerlie(\glie) \cap I$.
 \end{proof}
 
 
 
 
 
-\subsection{Lie’s theorem}
+\subsection{Lie’s Theorem}
 
 
-From now on we will not only require \emph{every} field $k$ we work with to be algebraically closed, but also to be of characteristic $0$. Unless otherwise stated this holds up to the last page (page \pageref{LastPage}) of this text. In particular all Lie algebras and vector spaces will be assumed to have such a field as their ground field, even if not explicitely stated.
+\begin{convention}
+  From now on \emph{all} occuring fields are required to be algebraically closed and of characteristic~$0$, unless otherwise specified.
+  This convention holds for the rest of these notes.
+  In particular all occuring Lie~algebras and vector spaces will have such a field as their ground field, even if not explicitely stated.
+\end{convention}
 
 
 \begin{definition}
- Let $V$ be a representation of a Lie algebra $\g$. For $\lambda \in \g^*$ the linear subspace
- \[
-  V_\lambda \coloneqq \{v \in V \mid \text{$x.v = \lambda x$ for every $x \in \g$}\}
- \]
- is called the \emph{$\g$-weight space} of $V$ with respect to $\lambda$. An element $\lambda \in \g^*$ is called a \emph{weight} of $V$ of $V_\lambda \neq 0$.
+  Let~$V$ be a representation of a Lie~algebra~$\glie$.
+  For every linear functional~$\lambda \in \glie^*$ the linear subspace~$\gls*{weight space}$ of~$V$ given by
+  \[
+    V_\lambda
+    \defined
+    \{
+      v \in V
+    \suchthat
+      \text{$x.v = \lambda(x) v$ for every~$x \in \glie$}
+    \}
+  \]
+  is the \defemph{weight space}\index{weight!space} of~$V$ with respect to~$\lambda$.
+  An element~$\lambda \in \glie^*$ with~$V_\lambda \neq 0$ is a \defemph{weight}\index{weight} of~$V$.
 \end{definition}
 
 
-\begin{lemma}[Invariance Lemma]
- Let $V$ be a finite dimensional representation of a Lie algebra $\g$ and $I \subideal \g$ an ideal. Then $V$ is also a representation of $I$ by restriction of the action of $\g$ on $V$ to $I$. For $\lambda \in I^*$ let $V_\lambda$ be the $I$-weight space of $V$ with respect to $\lambda$. Then $V_\lambda$ is already a subrepresentation of $\g$.
+\begin{lemma}[Invariance lemma]
+  Let~$V$ be a finite dimensional representation of a Lie~algebra~$\glie$ and let~$I$ be an ideal in~$\glie$.
+  Then~$V$ is also a representation of~$I$ by restricting the action of~$\glie$ to~$I$.
+  For~$\lambda \in I^*$ let~$V_\lambda$ be the~{\weightspace{$I$}} of~$V$ with respect to~$\lambda$.
+  Then~$V_\lambda$ is already a~{\subrepresentation{$\glie$}} of~$V$.
 \end{lemma}
+
+
 \begin{proof}
- For $v \in V$ and $x_1, \dotsc, x_n \in \g$ we will write
- \[
-  x_1 \dotsm x_n v \coloneqq x_1.(\dotsc.(x_n.v)).
- \]
- The case $V_\lambda = 0$ is welll understood, so for the rest of this proof we fix some $\lambda \in I^*$ with $V_\lambda \neq 0$.
- 
- That $V_\lambda$ is a subrepresentation of $\g$ means that $yv \in V_\lambda$ for every $y \in \g$ and $v \in V_\lambda$, which is equivalent to $xyv = \lambda(x)yv$ for every $x \in I$, $y \in \g$ and $v \in V_\lambda$. Because
- \[
-  xyv = [x,y]v + yxv = \lambda([x,y])v + \lambda(x)yv \quad \text{for every $x \in I$, $y \in \g$ and $v \in V_\lambda$}
- \]
- this is equivalent to $\lambda([x,y]) = 0$ for every $x \in I$ and $y \in \g$.
- 
- Until further notice we fix some $y \in \g$ and $v \in V_\lambda$ with $v \neq 0$. As $V$ is finite dimensional there exists some maximal $n \geq 1$ such that $v$, $yv$, \dots, $y^n v$ are linearly independent. Let
- \[
-  W_i \coloneqq \vspan_k(v, yv, \dotsc, y^i v) \quad \text{for every $i = 0, \dotsc, n$}.
- \]
- Because $v$, $yv$, \dots, $y^n v$, $y^{n+1} v$ are linearly dependent it follows that $W_n$ is invariant under the action of $y$.
- 
- \begin{claim*}
-  The linear subspace $W_i$ is for every $i = 0, \dotsc, n$ a subrepresentation of $I$. With respect to the basis $w$, $yw$, \dots, $y^i w$ of $W_i$ the action of $x \in I$ is represented by an upper triangular matrix where every diagonal entry is $\lambda(x)$.
- \end{claim*}
- \begin{proof}
-  The claim can be proven by induction over $i$. As $W_0 = kv$ with $xv = \lambda(x)v$ for every $x \in I$ the claim holds for $i = 0$. Suppose that $i < n$ and that the claim holds for $W_0$, \dots, $W_i$. If $x \in I$ then also $[x,y] \in I$ and therefore
+  For~$v \in V$ and~$x_1, \dotsc, x_n \in \glie$ we will write
   \[
-   x y^{i+1} v
-   = \underbrace{[x,y] y^i v}_{\mathclap{\substack{\in W_i \\ \text{by induction}}}} + y x y^i v
-   \equiv y x y^i v
-   \mod W_i.
+    x_1 \dotsm x_n v
+    \defined
+    x_1.(x_2.( \dotsc x_{n-1}.(x_n.v) \dotsc )) \,.
   \]
-  By induction it is not only $x y^i v \in W_i$ but also $x y^i v + W_{i-1} = \lambda(x) y^i v + W_{i-1}$. Therefore
+  The case~$V_\lambda = 0$ is welll understood, so for the rest of this proof we fix some~$\lambda \in I^*$ with~$V_\lambda \neq 0$.
+ 
+  That~$V_\lambda$ is a {\subrepresentation{$\glie$}} of~$V$ means that~$yv \in V_\lambda$ for all~$y \in \glie$ and~$v \in V_\lambda$, which  means that~$xyv = \lambda(x)yv$ for all~$x \in I$,~$y \in \glie$ and~$v \in V_\lambda$.
+  We see that
   \[
-   y x y^i v \equiv \lambda(x) y^{i+1} v \mod W_i.
+    xyv
+    =
+    [x,y]v + yxv
+    =
+    \lambda([x,y])v + \lambda(x)yv
   \]
-  This shows the claim for $W_{i+1}$.
+  for all~$x \in I$,~$y \in \glie$ and~$v \in V_\lambda$.
+  We hence need to show that~$\lambda([x,y]) = 0$ for all~$x \in I$ and~$y \in \glie$.
+ 
+  Until further notice we fix some~$y \in \glie$ and some nonzero~$v \in V_\lambda$.
+  As~$V$ is finite dimensional there exists some maximal~$n \geq 1$ such that the vectors~$v, yv, \dotsc, y^n v$ are linearly independent.
+  Let
+  \[
+    W_i
+    \defined
+    \vspan_k(v, yv, \dotsc, y^i v)
+  \]
+  for every~$i = 0, \dotsc, n$.
+  The linear space~$W_n$ is invariant under the action of~$y$ because the vector~$y^{n+1} v$ is linearly dependent on the vectors~$v, \dotsc, y^n v$.
+ 
+  \begin{claim*}
+    The linear subspaces~$W_1, \dotsc, W_n$ are~{\subrepresentations{$I$}} of~$V$.
+    With respect to the basis~$w, y w, \dotsc, y^i w$ of~$W_i$ the action of any~$x \in I$ is represented by an upper triangular matrix whose every diagonal entry is~$\lambda(x)$.
+  \end{claim*}
+
+ \begin{proof}[Proof of the claim]
+    We prove the claim by induction over~$i$.
+    The claim holds for~$i = 0$ since~$W_0 = \kf v$ is spanned by the vector~$v$ which is a~{\weightvector{$\lambda$}} for the action of~$I$.
+    Suppose now that~$i < n$ and that the claim holds for the linear subspaces~$W_0, \dotsc, W_i$.
+    If~$x \in I$ then also~$[x,y] \in I$ and therefore
+    \[
+      x y^{i+1} v
+      =
+      \underbrace{[x,y] y^i v}_{\mathclap{\substack{\in W_i \\ \text{by induction}}}} + y x y^i v
+      \equiv
+      y x y^i v
+      \mod
+      W_i \,.
+    \]
+    We find by the induction hypothesis that~$x y^i v \in W_i$ because~$W_i$ is a subrepresentation, and also that this vector is of the form
+    \[
+      x y^i v
+      \equiv
+      \lambda(x) y^i v
+      \mod
+      W_{i-1} \,.
+    \]
+    It follows that
+    \[
+      y x y^i v
+      \equiv
+      \lambda(x) y^{i+1} v
+      \mod W_i  \,,
+    \]
+    because~$y W_{i-1} \subseteq W_i$.
+    This shows the claim for~$W_{i+1}$.
  \end{proof}
- 
- Let $x \in I$. As $[x,y] \in I$ it follows from the previous claim that the $(n+1)$-dimensional linear subspace $W_n$ is invariant under the action of $[x,y]$, which is given by an endomorphism $\phi_{[x,y]} \in \End_k(W_n)$, and that $\phi_{[x,y]}$ is represented by an upper triangular matrix for which all diagonal entries are $\lambda([x,y])$. It follows that in particular
- \begin{equation}\label{eqn: invariance lemma zero trace}
-  \tr \phi_{[x,y]} = (n+1) \lambda([x,y])
- \end{equation}
- On the other hand $W_n$ is invariant under the action of both $x$ (by the claim) and $y$, which act by endomorphisms $\phi_x, \phi_y \in \End_k(V)$. As $V$ is a representation of the Lie algebra $\g$ it follows that $\phi_{[x,y]} = [\phi_x, \phi_y]$ and thus $\tr \phi_{[x,y]} = 0$. Together with \eqref{eqn: invariance lemma zero trace} it follows that $\lambda([x,y]) = 0$.
+  
+  Let~$x \in I$.
+  It follows from the above claim that the~{\dimensional{$(n+1)$}} linear subspace~$W_n$ is invariant under the action of~$[x,y]$ because~$[x,y] \in I$.
+  This action is given by an endomorphism~$\phi_{[x,y]} \in W_n \to W_n$, that is represented with respect to some suitable basis of~$W_n$ by an upper triangular matrix whose every diagonal entry is~$\lambda([x,y])$.
+  It follows that in particular
+  \begin{equation}
+    \label{invariance lemma zero trace}
+    \tr \phi_{[x,y]}
+    =
+    (n+1) \lambda([x,y])  \,.
+  \end{equation}
+  On the other hand the linear subspace~$W_n$ is invariant under the action of both~$x$ (by the claim because~$x \in I$) and under the action of~$y$ (as seen above before the claim).
+  These two elements act by endomorphisms~$\phi_x$ and~$\phi_y$ on~$W_n$.
+  Because~$V$ is a representation of the Lie~algebra~$\glie$ it follows that~$\phi_{[x,y]} = [\phi_x, \phi_y]$ and thus~$\tr \phi_{[x,y]} = 0$.
+  Together with \eqref{invariance lemma zero trace} it follows that~$\lambda([x,y]) = 0$.
 \end{proof}
 
 
-As a generalization of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} we have the following result about solvable linear Lie algebras.
-
-
-\begin{theorem}[Lie]\label{thrm: Lie’s theorem}
- Let $V \neq 0$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a solvable Lie subalgebra. Then there exists a common eigenvector for $\g$, i.e.\ some $v \in V$, $v \neq 0$ with $x(v) \in k v$ for every $x \in \g$.
+\begin{theorem}[Lie]
+  \index{Lie’s theorem}
+  Let~$\glie$ be a solvable Lie~subalgebra of~$\gllie(V)$ for some nonzero finite dimensional~{\vectorspace{$\kf$}}. Then there exists a common eigenvector for~$\glie$, i.e.\ some nonzero~$v \in V$ with~$x(v) \in \kf v$ for every~$x \in \glie$.
 \end{theorem}
+
+
 \begin{proof}
- The statement can be shown by induction over $\dim \g$. If $\dim \g = 0$ then $\g = 0$ and any $v \in V$ with $v \neq 0$ does the job. If $\dim \g = 1$ then $\g = k x$ for some $x \in \gl(V)$ with $x \neq 0$. Then any eigenvector of $x$ does the job (since $k$ is assumed to be algebraically closed and $V \neq 0$ such an eigenvector does exist).
+  We show the statement by induction over the dimension~$n$ of~$\glie$.
+  If~$n = 0$ then~$\glie = 0$ and any nonzero~$v \in V$ does the job.
+  If~$n = 1$ then~$\glie = \kf x$ for some nonzero~$x \in \gllie(V)$.
+  Then any eigenvector of~$x$ does the job (and such an eigenvector exists because the field~$\kf$ is assumed to be algebraically closed and~$V \neq 0$).
  
- Suppose that $\dim \g = n \geq 2$ and the statement holds for every smaller dimension. Similarly to the proof of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} we will split this proof into four consecutive parts:
- \begin{enumerate}
-  \item
-   Finding an ideal $I \subideal \g$ of codimension $1$.
-  \item
-   Finding common eigenvectors for $I$ by induction.
-  \item
-   Showing that $\g$ stabilizes as nonzero subspace $U \subseteq V$ of such eigenvectors.
-  \item
-   Writing $\g = I \oplus k y$ (as vector spaces) and finding an eigenvector of $y$ in $U$.
- \end{enumerate}
+  Suppose that~$n \geq 2$ and that the statement holds for every smaller dimension.
+  Similarly to the proof of \cref{common eigenvector for nilpotent Lie algebras} we will split the proof into four consecutive parts:
+  \begin{itemize}
+    \item
+      Finding an ideal~$I$ in~$\glie$ of codimension~$1$.
+    \item
+      Finding a common eigenvectors for~$I$ by induction hypothesis.
+    \item
+      Showing that~$\glie$ stabilizes as nonzero subspace~$U \subseteq V$ of such eigenvectors.
+    \item
+      Writing~$\glie = I \oplus \kf y$ (as vector spaces) and finding an eigenvector of~$y$ in~$U$.
+  \end{itemize}
+
+  For the first step we note that~$[\glie,\glie]$ in~$\glie$ because~$\glie$ is nonzero and solvable.
+  Hence~$\glie/[\glie,\glie]$ is a nonzero abelian Lie~algebra.
+  Any linear subspace~$J \subseteq \glie/[\glie,\glie]$ of codimension~$1$ is then an ideal in~$\glie/[\glie,\glie]$.
+  Hence the preimage~$I = \pi^{-1}(J)$ under the canonical projection~$\glie \to \glie/[\glie,\glie]$ is an ideal in~$\glie$ of codimension~$1$.
  
- For the first step notice that $\g$ is nonzero but solvable, so $[\g,\g] \subideal \g$ is a proper ideal. Hence $\g/[\g,\g]$ is nonzero abelian Lie algebra. Therefore there exists a linear subspace $J \subseteq \g/[\g,\g]$ of codimension $1$ and $J$ is an ideal in $\g/[\g,\g]$. Hence the preimage $I = \pi^{-1}(J)$ for the canonical projection $\g \to \g/[\g,\g], x \mapsto x + [\g,\g]$ is an ideal in $\g$ of codimension $1$.
+  For the second step we note~$I$ is solvable because it is a Lie~subalgebra of~$\glie$.
+  So by induction hypothesis there exists a common eigenvector for~$I$.
+  Hence there exists some~$\lambda \in I^*$ with~$U \defined V_\lambda \neq 0$, where~$V_\lambda$ denotes the~{\weightspace{$I$}} with respect to~$\lambda$.
+  
+  For the third step we apply the invariance lemma to see that~$U$ is a~{\subrepresentation{$\glie$}} of~$V$.
  
- For the second step notice that because $\g$ is solvable the same goes for $I$. So by induction hypothesis there exists a common eigenvector for $I$. Hence there exists some $\lambda \in I^*$ with $U \coloneqq V_\lambda \neq 0$, where we view $V$ as a representation of $\g$ via $x.v = x(v)$ for every $x \in \g$ and $v \in V$.
- 
- The third step follows directly from the invariance lemma.
- 
- For the fourth step let $y \in \g$ with $\g = I \oplus k y$ (as vector spaces). Since $\g$ stabilizes $U$ this holds in particular for $y$. As $U \neq 0$ it follows that there exists some eigenvector of $y$ inside of $U$, which is then a common eigenvector for $\g$.
-\end{proof}
+  For the fourth step we may write~$\glie = I \oplus \kf y$ for some~$y \in \glie$ because~$I$ has codimension~$1$.
+  Then~$y$ stabilizs~$U$ and hence admits an eigenvector~$v \in U$, as~$\kf$ is algebraically closed.
+  This vector~$v$ is then a common eigenvector for~$\glie$.
+\end{proof} 
 
 
 \begin{remark}
- The proof for Lie’s theorem given in the lecture is basically a less structured version of the one in \cite[\S 4.1]{Humphreys}, from where we took the idea of breaking down the proof into four steps to emphasize the similarities with the proof of Proposition~\ref{prop: common eigenvector for nilpotent Lie algebras} (which we found very useful for understanding the structure of the previous proof).
+ The idea of organizing the proof into four steps is taken from~\cite[\S 4.1]{Humphreys}.
+ This organizational structure also serves to emphasize the similarities with the proof of Proposition~\ref{common eigenvector for nilpotent Lie algebras}.
 \end{remark}
 
 
-\begin{proposition}\label{prop: common eigenvector for solvable Lie algebras}
- Let $V \neq 0$ be a finite dimensional $k$-vector space with $n = \dim V$ and $\g \subseteq \gl(V)$ a Lie subalgebra. Then the following are equivalent:
- \begin{enumerate}[leftmargin=*]
-  \item
-   $\g$ is solvable.
-  \item
-   $\g$ stabilizes some complete flag of $V$, i.e.\ there exists a complete flag
-   \[
-    V = V_n \supsetneq V_{n-1} \supsetneq V_{n-2} \supsetneq \dotsb \supsetneq V_1 \supsetneq V_0 = 0,
-   \]
-   with $x(V_i) \subseteq V_i$ for every $x \in \g$ and $i = 0, \dotsc, n$.
-  \item
-   There exists a basis of $V$ with respect to which every $x \in \g$ is represented by an upper triangular matrix. In particular $\g$ is isomorphic to a Lie-subalgebra of $\tl_n(k)$ for $n = \dim V$.
- \end{enumerate}
+\begin{proposition}
+  \label{common eigenvector for solvable Lie algebras}
+  Let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ where~$V$ is a finite dimensional~{\vectorspace{$\kf$}}.
+  Then the following conditions on~$\glie$ are equivalent:
+  \begin{enumerate}
+    \item
+      $\glie$ is solvable.
+    \item
+      $\glie$ stabilizes some complete flag of~$V$, i.e.\ there exists a complete flag
+      \[
+        V
+        =
+        V_n
+        \supsetneq
+        V_{n-1}
+        \supsetneq
+        V_{n-2}
+        \supsetneq
+        \dotsb
+        \supsetneq
+        V_1
+        \supsetneq
+        V_0
+        =
+        0 \,,
+      \]
+      with~$x(V_i) \subseteq V_i$ for every~$x \in \glie$ and~$i = 0, \dotsc, n$.
+    \item
+      There exists a basis of~$V$ with respect to which every~$x \in \glie$ is represented by an upper triangular matrix.
+      In particular,~$\glie$ is isomorphic to a Lie~subalgebra of~$\tlie_n(k)$ for~$n = \dim V$.
+    \qed
+  \end{enumerate}
 \end{proposition}
 
 
 \begin{corollary}
- A finite-dimensional $k$-Lie algebra $\g$ is solvable if and only if $[\g,\g]$ is nilpotent.
+  A finite dimensional Lie~algebra~$\glie$ is solvable if and only if~$[\glie, \glie]$ is nilpotent.
 \end{corollary}
+
+
 \begin{proof}
- If $[\g,\g]$ is nilpotent then $[\g,\g]^{(i)} = 0$ for some $i \in \N$. Hence $\g^{(i+1)} = [\g,\g]^{(i)} = 0$, so $\g$ is solvable.
+  If~$[\glie, \glie] = \glie^{(1)}$ is nilpotent then it is solvable, and hence~$\glie$ is solvable.
  
- Suppose that $\g$ is solvable. Then $\ad \g \cong \g/Z(\g)$ is a solvable subalgebra von $\gl(\g)$. By Lie’s theorem there exists a basis of $\g$ with respect to which $\ad x$ is represented by an upper triangular matrix for each $x \in \g$. As $\ad$ is an homomorphism of Lie algebras it follows that with respect to this basis $\ad(x)$ is represented by a strictly upper triangular matrix for every $x \in [\g,\g]$. Hence every $x \in [\g,\g]$ is $\ad$-nilpotent, and therefore also $\ad_{[\g,\g]}$-nilpotent. By Engel’s theorem $[\g,\g]$ is nilpotent.
+  Suppose on the other hand that the Lie~algebra~$\glie$ is solvable.
+  Then~$\ad(\glie) \cong \glie/\centerlie(\glie)$ is a solvable Lie~subalgebra of~$\gllie(\glie)$.
+  By Lie’s~theorem there exists a basis of~$\glie$ with respect to which~$\ad(x)$ is represented by an upper triangular matrix for every~$x \in \glie$.
+  Hence every~$x \in [\glie, \glie]$ is represented by a strictly upper triangular matrix with respect to this basis because~$\ad$ is a homomorphism of Lie~algebras and~$[\tlie_n(\kf), \tlie_n(\kf)] = \nlie_n(\kf)$.
+  Hence every~$x \in [\glie, \glie]$ is {\adnilpotent} (and thus also~$\ad_{[\glie,\glie]}$\nobreakdash-nilpotent).
+  The Lie algebra~$[\glie, \glie]$ is hence nilpotent by Engel’s~theorem.
 \end{proof}
 
 
-\begin{corollary}\label{cor: irreducible representations of solvable Lie algebras are onedimenisonal}
- Every irreducible representation of a solvable Lie algebra $\g$ over $k$ is onedimensional.
+\begin{corollary}
+  \label{irreducible representations of solvable lie algebras are onedimenisonal}
+  Every irreducible representation of a solvable Lie~algebra is {\onedimensional}.
 \end{corollary}
+
+
 \begin{proof}
- Let $\rho \colon \g \to \gl(V)$ be an irreducible representation of $\g$, and therefore in particular $V \neq 0$. Then $\im \rho \subseteq \gl(V)$ is also solvable and by Lie’s theorem there exists a common eigenvector $v \in V$, $v \neq 0$ for $\im \rho$. Because $x.v = \rho(x)(v) \in kv$ for every $x \in \g$ it follows that the onedimensional linear subspace $kv \subseteq V$ is a nonzero subrepresentation of $V$. Because $V$ is irreducible it follows that $V = kv$.
+  Let~$\rho \colon \glie \to \glie(V)$ be an irreducible representation of~$\glie$.
+  Then~$V \neq 0$ and~$\glie' \defined \im \rho$ is a solvable Lie~subalgebra of~$\gllie(V)$.
+  There exists a common eigenvector~$v$ for~$\glie'$ by Lie’s theorem.
+  Then~$\kf v$ is a nonzero subrepresentation of~$V$ and it follows that~$V = \kf v$ because~$V$ is irreducible.
 \end{proof}
 
 
 \begin{remark}
- Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} is actually equivalent to Lie’s theorem: If $\g \subseteq \gl(V)$ is a Lie subalgebra with then $V$ is a representation of $\g$ via $x.v = x(v)$ for every $x \in \g$ and $v \in V$. If $V \neq 0$ is finite dimensional then $V$ contains an irreducible subrepresentation $U$ of $\g$ (simply take some nonzero subrepresentation of minimal dimension.) If $\g$ additionally is solvable then by Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} the irreducible subrepresentation $U$ is onedimensional, hence of the form $U = kv$ for some $v \in V$ with $v \neq 0$. From the definition of the action of $\g$ on $V$ it follows that $v$ is common eigenvector of $\g$.
- 
- As a consequence of this Lie’s theorem as formulated in Theorem~\ref{thrm: Lie’s theorem} was called ``Lie’s theorem -- concrete form'' in the lecture while Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} was stated as ``Lie’s theorem -- abstract version''.
+ \Cref{irreducible representations of solvable lie algebras are onedimenisonal} is actually equivalent to Lie’s~theorem:
+ If~$\glie$ is a Lie~subalgebra of~$\gllie(V)$ then~$V$ becomes a representation of~$\glie$ via~$x.v = x(v)$ for all~$x \in \glie$ and~$v \in V$. 
+ If the vector space~$V$ is nonzero and finite dimensional then~$V$ contains an irreducible subrepresentation~$U$ for the above action of~$\glie$, as one can take any nonzero subrepresentation of minimal dimension.
+ If the Lie algebra~$\glie$ is solvable then by \cref{irreducible representations of solvable lie algebras are onedimenisonal} the irreducible subrepresentation~$U$ is {\onedimensional}, and thus of the form~$U = \kf v$ for some nonzero~$v \in V$.
+ From the definition of the action of~$\glie$ on~$V$ it follows that this vector~$v$ is common eigenvector for~$\glie$.
 \end{remark}
 
 
 \begin{remark}
- Corollary~\ref{cor: irreducible representations of solvable Lie algebras are onedimenisonal} does not hold for general fields $k$, even if algebraically closed. To see this let $k$ be an algebraically closed field with $\chara k = 2$ and $\g \coloneqq \sll_2(k)$. Then $\g$ has a basis $(e,h,f)$ where
- \begin{gather*}
-  e = \vect{0 & 1 \\ 0 & 0}, \quad
-  h = \vect{1 & 0 \\ 0 & -1} = \vect{1 & 0 \\ 0 & 1}, \quad
-  f = \vect{0 & 0 \\ 1 & 0}
- \shortintertext{with}
-  [h,e] = [h,f] = 0 \quad\text{and}\quad [e,f] = h.
- \end{gather*}
- Hence $\g$ is solvable. Let $V \coloneqq k^2$ be the natural representation of $\g$, i.e.\ $\g$ acts on $V$ by $x.v = x(v)$ for every $x \in \g$ and $v \in V$. Then
- \[
-  e.\vect{x \\ y} =  \vect{y \\ 0}
-  \quad \text{and} \quad
-  f.\vect{x \\ y} = \vect{0 \\ x}
-  \quad \text{for every $\vect{x \\ y} \in V$}.
- \]
- It follows that if $U \subseteq V$ is a nonzero subrepresentation then $U$ contains either $e_1$ or $e_2$, and therefore also the other one. Hence $U = V$, which shows that $V$ is an irreducible representation of $\g$. 
+  \Cref{irreducible representations of solvable lie algebras are onedimenisonal} does not hold for general fields~$\kf$, even if algebraically closed.
+  To see this let~$\kf$ be an algebraically closed field with~$\ringchar \kf = 2$ and let~$\glie \defined \sllie_2(\kf)$.
+  Recall that the standard basis of~$\glie$ is given by the matrices
+  \begin{gather*}
+    e
+    =
+    \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix} \,,
+    \qquad
+    h
+    =
+    \begin{pmatrix*}[r]
+      1 &  0  \\
+      0 & -1
+    \end{pmatrix*},
+    \qquad
+    f
+    =
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix}
+  \shortintertext{with}
+    [h,e] = 0 \,,
+    \qquad
+    [h,f] = 0 \,,
+    \qquad
+    [e,f] = h \,.
+  \end{gather*}
+  We find that the Lie algebra~$\glie$ is nilpotent (with~$\glie^2 = 0$) and in particular also solvable.
+  Let~$V \defined \kf^2$ be the natural representation of~$\glie$, i.e.~$\glie$ acts on~$V$ by~$x.v = x(v)$ for all~$x \in \glie$ and~$v \in V$.
+  Then
+  \[
+    e.\vect{x \\ y}
+    =
+    \vect{y \\ 0}
+    \qquad\text{and}\qquad
+    f.\vect{x \\ y}
+    =
+    \vect{0 \\ x} \,.
+  \]
+  It follows that if~$U \subseteq V$ is a nonzero subrepresentation then~$U$ contains one of the standard basis vectors~$e_1$,~$e_2$ of~$V$, and then also the other one.
+  Hence~$U = V$, which shows that~$V$ is an irreducible representation of~$\glie$.
+  But~$V$ is not {\onedimensional}.
 \end{remark}
