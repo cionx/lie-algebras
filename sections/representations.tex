@@ -1,6 +1,16 @@
 \section{Representations of Lie~algebras}
 
 
+% TODO: Quotient representations
+
+
+% TODO: Correspondence theorems for Lie algebras, and for representations
+
+
+% TODO: Irreps of f.d. Lie algebras need not be f.d. (example: Heisenberg)
+%       Can have arbitrary dimension (exmaple: sl2)
+
+
 
 
 
@@ -76,7 +86,7 @@
 \begin{examples}
   \label{examples for representations}
   \leavevmode
-  \begin{enumerate}[leftmargin=*]
+  \begin{enumerate}
     \item 
       If~$\glie$ is a Lie~subalgebra of some~$\gllie(V)$ then~$V$ is a representation of~$\glie$ via the inclusion~$\glie \inclusion \gllie(V)$.
       This representation corresponds to the action of~$\glie$ on~$V$ given by
@@ -258,9 +268,10 @@
 \end{remark}
 
 
-\begin{proposition}[New representations from old ones]\label{prop: new representations from old ones}
+\begin{proposition}[New representations from old ones]
+  \label{new representations from old ones}
   Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$.
-  \begin{enumerate}[leftmargin=*]
+  \begin{enumerate}
     \item
       If~$(V_i)_{i \in I}$ is a collection of representations of~$\glie$ then the direct sum~$\prod_{i \in I} V_i$ is again a representation of~$\glie$ via
       \[
@@ -561,7 +572,21 @@
 \begin{proposition}
   \label{list of homomorphism of representations}
   Let~$\glie$ be a Lie algebra.
- \begin{enumerate}[leftmargin=*]
+ \begin{enumerate}
+    \item
+      For every homomorphism of representations~$f \colon V \to W$ the dual linear map
+      \[
+        f^*
+        \colon
+        W^*
+        \to
+        V^* \,,
+        \quad
+        \phi
+        \mapsto
+        f \circ \phi
+      \]
+      is again a homomorphism of representations.
     \item
       For any two representations~$V$ and~$W$ of~$\glie$ the natural linear map
       \[
@@ -745,14 +770,29 @@
       The representation~$V$ is \defemph{indecomposable}\index{indecomposable representation}\index{representation!indecomposable} if there does not exists a decomposition~$V = U_1 \oplus U_2$ into subrepresentations~$U_1$ and~$U_2$ apart from~$V = V \oplus 0$ and~$V = 0 \oplus V$.
       Otherwise~$V$ is \defemph{decomposable}\index{decomposable representation}\index{representation!decomposable}
     \item
-      The representation~$V$ is~\defemph{completely reducible}\index{completely reducible representation}\index{representation!completely reducible} or~\defemph{semisimple}\index{semisimple representation}\index{representation!semisimple} if it has a decomposition~$V = \bigoplus_{i \in I} U_i$ into irreducible subrepresentations~$U_i$.
+      The representation~$V$ is~\defemph{completely reducible}\index{completely reducible representation}\index{representation!completely reducible} or~\defemph{semisimple}\index{semisimple!representation}\index{representation!semisimple} if it has a decomposition~$V = \bigoplus_{i \in I} U_i$ into irreducible subrepresentations~$U_i$.
   \end{enumerate}
 \end{definition}
 
 
 \begin{remark}
-  Every irreducible representation indecomposable, but the converse does not hold.
-  A representation is irreducible if and only if it is both indecomposable and completely reducible.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Every irreducible representation indecomposable, but the converse does not hold.
+    \item
+      A representation is irreducible if and only if it is both indecomposable and completely reducible.
+    \item
+      For any representation~$V$ the following conditions are equivalent:
+      \begin{equivalenceslist}
+        \item
+          $V$ is semisimple, i.e.~$V$ admits a decomposition~$V = \bigoplus_{i \in I} U_i$ into irreducible subrepresentations~$U_i$.
+        \item
+          $V$ can be written as a (not necessarily direct) sum~$V = \sum_{i \in I} U_i$ for irreducible subrepresentations~$U_i$.
+        \item
+          Every subrepresentation~$U$ of~$V$ admits a direct complement, i.e.\ there exists a subrepresentation~$W$ of~$V$ with~$V = U \oplus W$.
+      \end{equivalenceslist}
+  \end{enumerate}
 \end{remark}
 
 

@@ -747,6 +747,7 @@
     \item
       \label{engels represented by strictly upper triangular matrices}
       There exists a basis of~$V$ with respect to which every~$x \in \glie$ is represented by a strictly upper triangular matrix.
+      In particular,~$\glie$ is isomorphic to a Lie~subalgebra of~$\nlie_n(\kf)$ for~$n = \dim(V)$.
   \end{equivalenceslist}
 \end{proposition}
 
@@ -774,6 +775,17 @@
 \end{proof}
 
 
+\begin{corollary}
+  \label{linear lie algebras consisting of nilpotent endomorphisms are nilpotent}
+  If a Lie~subalgebra~$\glie$ of~$\gllie(V)$ for some finite dimensional vector space~$V$ consists of nilpotent endomorphisms then~$\glie$ is nilpotent.
+\end{corollary}
+
+
+\begin{proof}
+  It follows from \cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms} that~$\glie$ is for~$n = \dim V$ isomorphic to a Lie~subalgebra of the nilpotent Lie~algebra~$\nlie_n(\kf)$.
+\end{proof}
+
+
 \begin{theorem}[Engel]
   \index{Engel’s theorem}
   A finite dimensional Lie~algebra~$\glie$ is nilpotent if and only if all its elements are~{\adnilpotent}.
@@ -794,9 +806,15 @@
 
 
 \begin{remark}
+  Engel’s theorem gives an alternative proof of \cref{linear lie algebras consisting of nilpotent endomorphisms are nilpotent}:
+  Every element of~$\glie$ is~{\adnilpotent} by \cref{nilpotent implies ad-nilpotent} and~$\glie$ is therefore nilpotent by Engel’s theorem.
+\end{remark}
+
+
+\begin{remark}
   It is not true that every nilpotent Lie~subalgebra~$\glie$ of~$\gllie(V)$, where~$V$ is a finite dimensional vector space, can be represented by strictly upper triangular matrices with respect to some suitable basis of~$V$.
-  An example for this is the {\onedimensional} Lie~subalgebra~$\glie \defined \kf {\id_V}$ of~$\gllie(V)$.
-  This Lie algebra is abelian and hence nilpotent, but is with respect to every basis of~$V$ represented by the scalar matrices~$\kf I$.
+  The Lie~algebra~$\glie$ does not even have to contain any nonzery nilpotent endomorphisms.
+  An example for this is the {\onedimensional} Lie~subalgebra~$\glie \defined \kf \, {\id_V}$ of~$\gllie(V)$.
 \end{remark}
 
 
@@ -1057,6 +1075,7 @@
 
 
 \begin{corollary}
+  \label{solvable iff derived is nilpotent}
   A finite dimensional Lie~algebra~$\glie$ is solvable if and only if~$[\glie, \glie]$ is nilpotent.
 \end{corollary}
 

@@ -1,237 +1,845 @@
-\section{The Killing form and Cartan’s criterion}
+\section{The Killing Form and Cartan’s Criterion}
 
 
 
 
 
-\subsection{Associative bilinear forms and the Killing form}
+\subsection{Associative Bilinear Forms}
 
 
 \begin{definition}
- Let $\g$ be a Lie algebra over an arbitrary field $k$. A bilinear form $\beta \colon \g \times \g \to k$ is called \emph{associative} if
- \[
-  \beta(x,[y,z]) = \beta([x,y],z) \quad \text{for all $x,y,z \in \g$}.
- \]
+  \label{associative bilinear form}
+  Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$.
+  A bilinear form~$\beta \colon \glie \times \glie \to \kf$ is \defemph{associative}\index{associative bilinear form} if
+  \[
+    \beta(x,[y,z])
+    =
+    \beta([x,y],z)
+  \]
+  for all~$x, y, z \in \glie$.
 \end{definition}
 
 
 \begin{remark}
- As $\g$ acts on itself by the adjoint representation it also acts on $(\g \otimes_k \g)^*$ as described in Proposition \ref{prop: new representations from old ones}, i.e.\ for every $\beta \in (\g \otimes_k \g)^*$ and all $x,y,z \in \g$
- \begin{align*}
-  (y.\beta)(x \otimes z)
-  &= -\beta(y.(x \otimes z))
-  = -\beta((y.x) \otimes z + x \otimes (y.z)) \\
-  &= -\beta([y,x] \otimes z) -\beta(x \otimes [y,z])
-  = \beta([x,y] \otimes z) - \beta(x \otimes [y,z]).
- \end{align*}
- 
- Identifying $(\g \otimes_k \g)^*$ with the bilinear forms on $\g$ via the universal property of the tensor product it follows that a bilinear form $\beta \colon \g \times \g \to k$ is associative if and only if
- \[
-  y.\beta = 0 \quad \text{for every $y \in \g$}.
- \]
- Because of this associative bilinear forms on $\g$ are also called \emph{invariant}.
+  Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$.
+  Then the actions of~$\glie$ on~$V$ and~$W$ induces an action of~$\glie$ on~$(V \tensor W)^*$ as described in \cref{new representations from old ones}:
+  We have for all~$x \in \glie$,~$\phi \in (V \tensor W)^*$ and simple tensors~$v \tensor w \in V \tensor W$ that
+  \begin{align*}
+    (x.\phi)(v \tensor w)
+    &=
+    - \phi(x.(v \tensor w))
+    \\
+    &=
+    - \phi((x.v) \tensor w + v \tensor (x.w))
+    \\
+    &=
+    - \phi((x.v) \tensor w) - \phi(v \tensor (x.w)) \,.
+  \end{align*}
+  
+  The vector space~$(V \tensor W)^*$ can be defined with~$\gls*{bilinear forms}$, the space of bilinear forms~$V \times W \to \kf$\index{bilinear forms} via the universal property of the tensor product.
+  For any~$\phi \in (V \tensor W)^*$ the corresponding bilinear form~$\beta \in \BF(V,W)$ is given by
+  \[
+    \beta(v,w)
+    =
+    \phi(v \tensor w)
+  \]
+  for all~$v \in V$ and~$w \in W$.
+  It follows that~$\BF(V,W)$ becomes a representation of~$\glie$ via
+  \[
+    (x.\beta)(v,w)
+    =
+    - \beta(x.v,w) - \beta(v,x.w)
+  \]
+  for all~$x \in \glie$,~$\beta \in \BF(V,W)$ and~$v \in V$,~$w \in W$.
+  
+  A special case occurs when both~$V$ and~$W$ are the adjoint representation.
+  Then~$V = W = \glie$ and~$x.y = [x,y]$ for all~$x, y \in \glie$.
+  Then the action of~$\glie$ on~$\BF(\glie,\glie)$ is given by
+  \begin{align*}
+    (y.\beta)(x,z)
+    &=
+    - \beta(y.x, z) - \beta(x, y.z)
+    \\
+    &=
+    - \beta([y,x], z) - \beta(x, [y,z])
+    \\
+    &=
+    \beta([x,y], z) - \beta(x, [y,z])
+  \end{align*}
+  for all~$y \in \glie$,~$\beta \in \BF(\glie, \glie)$ and~$x, z \in \glie$.
+  
+  We see that a bilinear form~$\beta \colon \glie \times \glie \to \kf$ is associative if and only if it is invariant under the action of~$\glie$ on~$\BF(\glie, \glie)$ (i.e.~$y.\beta = 0$ for every~$y \in \glie$).
+  Because of this observation, associative bilinear forms on~$\glie$ are also called \defemph{invariant \textup(bilinear forms\textup)}\index{invariant!bilinear form}.
 \end{remark}
 
 
-\begin{lemma}\label{lem: associative bilinear form induces homomorphism of representations}
- Let $\g$ be a Lie algebra and $\beta \colon \g \to \g^*$ a bilinear form. Then $\beta$ is associative if and only if the maps
- \[
-  \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x, \cdot)
-  \quad\text{and}\quad
-  \psi \colon \g \to \g^*, \quad x \mapsto \beta(\cdot, x)
- \]
- are homomorphisms of representations of $\g$ (where $\g$ acts on itself by the adjoint representation and therefore on $\g^*$ as described in Proposition~\ref{prop: new representations from old ones}). 
+\begin{lemma}
+  \label{bilinear forms and hom identification}
+  Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$.
+  Then the natural isomorphims of vector spaces
+% TODO: Align these
+  \[
+    \Phi_1
+    \colon
+    \BF(V,W)
+    \to
+    \Hom_\kf(V, W^*) \,,
+    \quad
+    \beta
+    \mapsto
+    (
+      v
+      \mapsto
+      \beta(v,-)
+    )
+  \]
+  and
+  \[
+    \Phi_2
+    \colon
+    \BF(V,W)
+    \to
+    \Hom_\kf(W, V^*) \,,
+    \quad
+    \beta
+    \mapsto
+    (
+      w
+      \mapsto
+      \beta(-,w)
+    )
+  \]
+  are already isomorphisms of representations.
 \end{lemma}
+
+
 \begin{proof}
- For all $x,y,z \in \g$ the equalities
- \begin{gather*}
-  (x.\varphi(y))(z)
-  = -\varphi(y)(x.z)
-  = -\beta(y,x.z)
-  = -\beta(y,[x,z])
- \shortintertext{and}
-  \varphi(x.y)(z)
-  = \beta(x.y,z)
-  = \beta([x,y],z)
-  = -\beta([y,x],z)
- \end{gather*}
- hold. Hence the associativity of $\beta$ is equivalent to the equality $x.\varphi(y) = \varphi(x.y)$ holding for all $x,y \in \g$. It can be shown similarly that the associativity of $\beta$ is equivalent to $\psi$ being a homomorphism of representations.
+  We have for all~$x \in \glie$,~$\beta \in \BF(V,W)$ and~$v \in V$,~$w \in W$ that
+  \begin{align*}
+    \Phi_1(x.\beta)(v)(w)
+    &=
+    ((x.\beta)(v,-))(w)
+    \\
+    &=
+    (x.\beta)(v,w)
+    \\
+    &=
+    - \beta(x.v, w) - \beta(v, x.w)
+  \shortintertext{as well as}
+    (x.\Phi_1(\beta))(v)(w)
+    &=
+    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
+    \\
+    &=
+    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
+    \\
+    &=
+    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
+    \\
+    &=
+    (x.\beta(v,-))(w) - \beta(x.v, w)
+    \\
+    &=
+    - \beta(v,-)(x.w) - \beta(x.v, w)
+    \\
+    &=
+    - \beta(v, x.w) - \beta(x.v, w) \,.
+  \end{align*}
+  This shows that~$\Phi_1$ is a homomorprhism, and hence isomorphism, of representations.
+  For~$\Phi_2$ a similar caculation can be done.%
+  \footnote{The author hasn’t actually done this but hopes that no sign problems occur.}
 \end{proof}
 
 
-\begin{corollary}\label{cor: associative non-degenerate bilinear forms induce isomorphism to the dual}
- If $\g$ is a finite-dimensional Lie algebra and $\beta \colon \g \times \g \to k$ an associative and non-degenerate bilinear form then
- \[
-  \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x,\cdot)
-  \quad\text{and}\quad
-  \psi \colon \g \to \g^*, \quad x \mapsto \beta(\cdot,x)
- \]
- are isomorphisms of representations.
+\begin{corollary}
+  \label{invariant bilinear form induces homomorphism of representations}
+  Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$.
+  Let~$\beta \colon V \times W \to \kf$ be a bilinear form with associated linear maps
+  \begin{alignat*}{3}
+    \phi_1
+    \colon
+    V
+    \to
+    W^* \,,
+    \quad
+    v
+    \mapsto
+    \beta(v, -) \,,
+  \shortintertext{and}
+    \phi_2
+    \colon
+    W
+    \to
+    V^* \,,
+    \quad
+    w
+    \mapsto
+    \beta(-, w) \,.
+  \end{alignat*}
+  Then the following conditions on~$\beta$ are equivalent:
+  \begin{equivalenceslist}
+    \item
+      \label{beta invariant}
+      $\beta$ is invariant.
+    \item
+      \label{phi1 a homomorphism}
+      $\phi_1$ is a homomorphism of representations.
+    \item
+      \label{phi2 a homomorphism}
+      $\phi_2$ is a homomorphism of representations.
+  \end{equivalenceslist}
+\end{corollary}
+
+
+\begin{proof}
+  The isomorphisms of representations~$\Phi_1$ from \cref{bilinear forms and hom identification} restrict to vector space isomorphisms between the invariants~$\BF(V, W)^\glie$ and~$\Hom_\kf(V,W)^\glie$.
+  We know from \cref{homomorphisms of representations as invariants} that~$\Hom_\kf(V,W)^\glie = \Hom_\glie(V,W)$, whence the equivalence of~\ref*{beta invariant} and~\ref*{phi1 a homomorphism}.
+  The equivalence of~\ref*{beta invariant} and~\ref*{phi2 a homomorphism} can be seen in the same way.
+\end{proof}
+
+
+\begin{corollary}
+  \label{associative bilinear form induces homomorphism of representations}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$\beta \colon \glie \times \glie \to \kf$ be a bilinear form with associated linear maps
+  \begin{alignat*}{3}
+    \phi_1
+    \colon
+    \glie
+    \to
+    \glie^* \,,
+    \quad
+    x
+    \mapsto
+    \beta(x, -) \,,
+  \shortintertext{and}
+    \phi_2
+    \colon
+    \glie
+    \to
+    \glie^* \,,
+    \quad
+    y
+    \mapsto
+    \beta(-, y) \,.
+  \end{alignat*}
+  Then the following conditions on~$\beta$ are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $\beta$ is associative.
+    \item
+      $\phi_1$ is a homomorphism of representations.
+    \item
+      $\phi_2$ is a homomorphism of representations.
+  \end{equivalenceslist}
+\end{corollary}
+
+
+\begin{proof}
+  Apply \cref{invariant bilinear form induces homomorphism of representations} with~$V$ and~$W$ the adjoint representation of~$\glie$.
+\end{proof}
+
+
+\begin{recall}
+  Given two vector spaces~$V$ and~$W$ a bilinear form~$\beta \colon V \times W \to \kf$ is \defemph{non-degenerate}\index{non-degenerate bilinear form} if
+  \begin{equivalenceslist}
+    \item
+      \label{nondegenerate in the left}
+      for every nonzero~$v \in V$ there exists some~$w \in W$ with~$\beta(v,w) \neq 0$ and
+    \item
+      \label{nondegenerate in the right}
+      for every nonzero~$w \in W$ there exists some~$v \in V$ with~$\beta(v,w) \neq 0$.
+  \end{equivalenceslist}
+  If more generally condition~\ref*{nondegenerate in the left} is satisfied then~$\beta$ is \defemph{non-degenerate in the left argument} and if condition~\ref*{nondegenerate in the right} is satisfied then~$\beta$ is \defemph{non-degenerate in the right argument}.
+  The bilinear form~$\beta$ is therefore non-degenerate if and only if it is both non-degenerate in the left argument and non-degenerate in the right argument.
+  
+  If~$\phi_1 \colon V \to W^*$ and~$\phi_2 \colon W \to V^*$ are the linear maps associated to~$\beta$ then the conditions~\ref*{nondegenerate in the left} and~\ref*{nondegenerate in the right} may be rewritten, stating that
+  \begin{equivalenceslist}[label = \roman*')]
+    \item
+      the linear map~$\phi_1 \colon V \to W^*$ is injective,
+    \item
+      the linear map~$\phi_2 \colon W \to V^*$ is injective.
+  \end{equivalenceslist}
+  
+  Suppose now that both~$V$ and~$W$ are finite dimensional.
+  For~$\beta$ to be non-degenerate in the left argument we need that~$\dim V \leq \dim W^* = \dim W$ because we need~$\phi_1$ to be injective.
+  For~$\beta$ to be non-degenerate in the right argument we similarly need that~$\dim W \leq \dim V$.
+  Hence for~$\beta$ to even have a chance at being non-degenerate we need that~$\dim V = \dim W$.%
+  \footnote{
+  This conclusion does not hold for infinite dimensional vector spaces:
+  If~$V$ is any infinite dimensional then the evaluation map~$\beta \colon V \times V^* \to \kf$ given by~$\beta(v,\alpha) = \alpha(v)$ is a non-degenerate bilinear form.
+  The linear map~$\phi_1 \colon V \to V^{**}$ is the canonical inclusion and the linear map~$\phi_2 \colon V^* \to V^*$ is just the identity, both of which are injective.
+  But the dual space~$V^*$ has a strictly larger dimension than~$V$ itself.}
+  
+  So suppose now that both~$V$ and~$W$ have the same finite dimension~$n$.
+  Then for basis~$v_1, \dotsc, v_n$ of~$V$ and a basis~$w_1, \dotsc, w_n$ of~$W$ we can represent the bilinear form~$\beta$ by a square matrix~$A \in \Mat_n(\kf)$ that is given by
+  \[
+    A_{ij}
+    \defined
+    \beta(v_i, w_j)
+  \]
+  for all~$i,j = 1, \dotsc, n$.
+  Then with respect to the basis~$v_1, \dotsc, v_n$ of~$V$ and the (dual) basis~$w_1^*, \dotsc, w_n^*$ of~$W$ the linear map~$\phi_1 \colon V \to W^*$ is represented by the matrix~$A^T$;
+  with respect to the basis~$w_1, \dotsc, w_n$ of~$W$ and the (dual) basis~$v_1^*, \dotsc, v_n^*$ of~$V^*$ the linear map~$\phi_2 \colon W \to V^*$ is given by the matrix~$A$.
+  We therefore find that
+  \begin{align*}
+        {}& \text{$\beta$ is non-degenerate in the left argument} \\
+    \iff{}& \text{$\phi_1$ is injective}  \\
+    \iff{}& \text{$A^T$ is injective} \\
+    \iff{}& \text{$A^T$ is invertible}
+  \end{align*}
+  and similarly that
+  \begin{align*}
+        {}& \text{$\beta$ is non-degenerate in the right argument} \\
+    \iff{}& \text{$\phi_2$ is injective}  \\
+    \iff{}& \text{$A$ is injective} \\
+    \iff{}& \text{$A$ is invertible}  \,.
+  \end{align*}
+  But~$A$ is invertible if and only its transpose~$A^T$ is invertible.
+  
+  By using these observations, and that~$\dim V = \dim W = \dim V^* = \dim W^*$ we see that all of the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      The bilinear form~$\beta$ is non-degenerate.
+    \item
+      The bilinear form~$\beta$ is non-degenerate in the left argument.
+    \item
+      The bilinear form~$\beta$ is non-degenerate in the right argument.
+    \item
+      The linear map~$\phi_1$ is injective.
+    \item
+      The linear map~$\phi_1$ is bijective.
+    \item
+      The linear map~$\phi_2$ is injective.
+    \item
+      The linear map~$\phi_2$ is bijective.
+    \item
+      The matrix~$A$ is invertible.
+  \end{equivalenceslist}
+\end{recall}
+
+
+\begin{corollary}
+  \label{associative non-degenerate bilinear forms induce isomorphism to the dual}
+  If~$\glie$ is a finite dimensional Lie~algebra and~$\beta \colon \glie \times \glie \to \kf$ is a bilinear form then for the associated bilinear maps
+% TODO: Fix alignment.
+  \begin{gather*}
+    \phi_1
+    \colon
+    \glie
+    \to
+    \glie^*,
+    \quad
+    x
+    \mapsto
+    \beta(x,-)
+  \shortintertext{and}
+    \phi_2
+    \colon
+    \glie
+    \to
+    \glie^*,
+    \quad
+    y
+    \mapsto
+    \beta(-,y)
+  \end{gather*}
+  The following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $\beta$ is associative and non-degenerate.
+    \item
+      $\phi_1$ is an isomorphism of representations.
+    \item
+      $\phi_2$ is an isomorphism of representations.
+    \qed
+  \end{equivalenceslist}
 \end{corollary}
 
 
 \begin{definition}
- Let $V$ be a vector space and $\beta \colon \g \times \g \to k$ a symmetric bilinear form. Then
+ Let~$V$ be a vector space and let~$\beta \colon V \times V \to \kf$ be a symmetric bilinear form.
+ Then
  \[
-  \rad \beta \coloneqq \{x \in V \mid \text{$\beta(x,y) = 0$ for every $y \in V$}\}
+  \gls*{radical bilinear}
+  \defined
+  \{
+    x \in V
+  \suchthat
+    \text{$\beta(x,y) = 0$ for every~$y \in V$}
+  \}
  \]
- is the \emph{radical} of $\beta$.
+ is the~\defemph{radical}\index{radical!of a bilinear form} of~$\beta$.
 \end{definition}
 
 
-\begin{lemma}\label{lem: orthogonal complement of an ideal is again an ideal}
- Let $\g$ be a Lie algebra over an arbitrary field $k$ and \mbox{$\beta \colon \g \times \g \to k$} a symmetric and associative bilinear form. For any ideal $I \subideal \g$ the orthogonal complement
- \[
-  I^\perp \coloneqq \{y \in \g \mid \text{$\beta(x,y) = 0$ for every $x \in I$}\}
- \]
- is also an ideal in $\g$. In particular $\rad \beta = \g^\perp$ is an Ideal in $\g$.
+\begin{lemma}
+  \label{orthogonal complement of an ideal is again an ideal}
+  Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$ and~$\beta \colon \glie \times \glie \to \kf$ an associative symmetric bilinear form.
+  Then for any ideal~$I$ in~$\glie$ the orthogonal complement
+  \[
+    I^\perp
+    \defined
+    \{
+      x \in \glie
+    \suchthat
+      \text{$\beta(x,y) = 0$ for every $y \in I$}
+    \}
+  \]
+  is again an ideal in~$\glie$.
 \end{lemma}
+
+
 \begin{proof}
- For every $x \in \g$, $y \in I^{\perp}$ and $z \in I$ it follows that $[x,z] \in I$ and therefore
- \[
-  \beta([x,y],z)
-  = -\beta([y,x],z)
-  = -\beta(y,[x,z])
-  = 0.
-  \qedhere
- \]
+  The associated linear map~$\phi \colon \glie \to \glie^*$ given by~$\phi(x) = \beta(x,-)$ is a homomorphism of representations because~$\beta$ is associative.
+  The inclusion~$I \to \glie$ is a homomorphism of representions, and so its dual map
+  \[
+    \glie^*
+    \to
+    I^* \,,
+    \quad
+    \alpha
+    \mapsto
+    \restrict{\alpha}{I}
+  \]
+  is again a homomorphism of representations.
+  It follows that the composition
+  \[
+    \psi
+    \colon
+    \glie
+    \to
+    I^* \,,
+    \quad
+    x
+    \mapsto
+    \restrict{\beta(x,-)}{I}
+  \]
+  is homomorphism of representations.
+  Hence~$I^\perp = \ker \psi$ is a subrepresentation of~$\glie$, i.e.\ an ideal in~$\glie$.
+\end{proof}
+
+
+\begin{corollary}
+  \label{radical of bilinear form is an ideal}
+  If~$\beta$ is an associative symmetric bilinear form on a Lie~algebra~$\glie$ then its radical~$\rad \beta$ is an ideal in~$\glie$.
+\end{corollary}
+
+
+\begin{proof}
+  Apply \cref{orthogonal complement of an ideal is again an ideal} to~$I = \glie$.
 \end{proof}
 
 
 \begin{remark}
- The proof of Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} did not use that $\beta$ is symmetric. This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right.) The main example of an associative bilinear form will be the Killing form, which is symmetric, so this assumption will pose no problems to us.
+ The proof of \ref{orthogonal complement of an ideal is again an ideal} did not use that~$\beta$ is symmetric.
+ This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right).
+ The main example of an associative bilinear form will be the Killing~form, which is symmetric, so this assumption will pose no problems to us.
 \end{remark}
 
 
-\begin{definition}
- Let $\g$ be a finite dimensional Lie algebra over an arbitrary field $k$. The \emph{Killing form} of $\g$ is the bilinear form
- \[
-  \kappa \colon \g \times \g \to k
-  \quad\text{with}\quad
-  \kappa(x,y) = \tr(\ad(x) \ad(y))
-  \quad\text{for all $x,y \in \g$}.
- \]
-\end{definition}
 
 
-\begin{lemma}\label{lem: killing form is associative and symmetric}
- The Killing form $\kappa$ of an finite dimensional Lie algebra $\g$ over an arbitrary field $k$ is associative and symmetric.
-\end{lemma}
-\begin{proof}
- Recall from linear algebra that for any finite dimensional $k$-vector space $V$ and all endomorphisms $f_1, \dotsc, f_n \in \End_k(V)$
- \[
-  \tr(f_1 \dotsm f_n) = \tr(f_2 \dotsm f_n f_1).
- \]
- For all $x,y \in \g$ it follows that
- \[
-  \kappa(x,y) = \tr(\ad(x) \ad(y)) = \tr(\ad(y) \ad(x)) = \kappa(y,x),
- \]
- so $\kappa$ is symmetric. For all $x,y,z$ it follows that
- \begin{align*}
-  \kappa(x,[y,z])
-  &= \tr(\ad(x) \ad([y,z]))
-  = \tr(\ad(x) [\ad(y), \ad(z)]) \\
-  &= \tr(\ad(x) (\ad(y) \ad(z) - \ad(z) \ad(y))) \\
-  &= \tr(\ad(x) \ad(y) \ad(z)) - \tr(\ad(x) \ad(z) \ad(y)) \\
-  &= \tr(\ad(x) \ad(y) \ad(z)) - \tr(\ad(y) \ad(x) \ad(z)) \\
-  &= \tr((\ad(x) \ad(y)- \ad(y) \ad(x)) \ad(z)) \\
-  &= \tr([\ad(x), \ad(y)] \ad(z))
-  = \tr(\ad([x,y]) \ad(z))
-  = \kappa([x,y],z).
- \qedhere
- \end{align*}
-\end{proof}
+
+\subsection{The Killing~Form}
 
 
-\begin{example}\label{expl: Killing form of gl_n}
- Let $\g \coloneqq \gl_n(k)$ for some arbitrary field $k$. Then
- \[
-  \kappa(x,y) = 2n\tr(xy) - 2(\tr x)(\tr y) \eqqcolon \beta(x,y).
-  \quad \text{for all $x,y \in \g$}.
- \]
- To see this let $(e_{ij})_{i,j=1,\dotsc,n}$ be the standard basis of $\gl_n(k)$, i.e.\ the $(i,j)$-th entry of $e_{ij}$ is $1$, all other entries are $0$ (hence $e_{ij} e_k = \delta_{jk} e_i$ for every $j = 1, \dotsc, n$ where $(e_1, \dotsc, e_n)$ is the standard basis of $k^n$). In particular
- \begin{equation}\label{eqn: product of elementary matrices}
-  e_{ij} e_{kl} = \delta_{jk} e_{il} \quad \text{for all $i,j,k,l = 1, \dotsc, n$}.
- \end{equation}
+\begin{recall}
+  \label{symmetric property of trace}
+  Let~$V$ be a finite dimensional~{\vectorspace{$\kf$}}.
+  Then
+  \[
+    \tr(f g)
+    =
+    \tr(g f)
+  \]
+  for any two endomorphisms~$f, g \in \End_\kf(V)$.
+  It follows by induction that
+  \[
+    \tr(f_1 f_2 \dotsm f_n)
+    =
+    \tr(f_2 \dotsm f_n f_1)
+  \]
+  for all endomorphisms~$f_1, f_2, \dotsc, f_n \in \End_\kf(V)$.
+\end{recall}
 
- To show that $\kappa = \beta$ is sufficies to show that
- \[
-  \kappa(e_{ij}, e_{kl}) = \beta(e_{ij}, e_{kl})
-  \quad \text{for all $i,j,k,l = 1, \dotsc, n$},
- \]
- as both $\kappa$ and $\beta$ are bilinear forms on $\g$. For all $k,l,g,h = 1, \dotsc, n$ it follows from \eqref{eqn: product of elementary matrices} that
- \[
-  \ad(e_{kl})(e_{gh})
-  = [e_{kl}, e_{gh}]
-  = e_{kl} e_{gh} - e_{gh} e_{kl}
-  = \delta_{lg} e_{kh} - \delta_{kh} e_{gl}.
- \]
- It follows that for all $i,j,k,l,g,h = 1, \dotsc, n$
- \begin{align*}
-  \ad(e_{ij})\ad(e_{kl})(e_{gh})
-  &= \ad(e_{ij})(\delta_{lg} e_{kh} - \delta_{kh} e_{gl})
-  = \delta_{lg} \ad(e_{ij})(e_{kh}) - \delta_{kh} \ad(e_{ij})(e_{gl}) \\
-  &= \delta_{lg}(\delta_{jk} e_{ih} - \delta_{ih} e_{kj}) - \delta_{kh}(\delta_{jg} e_{il} - \delta_{il} e_{gj}) \\
-  &= \delta_{jk}\delta_{lg} e_{ih} - \delta_{ih} \delta_{lg} e_{kj} - \delta_{jg} \delta_{kh} e_{il} + \delta_{il} \delta_{kh} e_{gj}
- \end{align*}
- and the coefficient of $e_{gh}$ in this expression is
- \[
-  a_{gh}
-  = \delta_{jk} \delta_{lg} \delta_{ig}
-    + \delta_{il} \delta_{kh} \delta_{jh}
-    - \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
-    - \delta_{jg} \delta_{kh} \delta_{ig} \delta_{hl}.
- \]
- It follows that for all $i,j,k,l = 1, \dotsc, n$
- \begin{align*}
-  \kappa(e_{ij}, e_{kl})
-  &= \sum_{g,h=1}^n ( \delta_{jk} \delta_{lg} \delta_{ig}
-     + \delta_{il} \delta_{kh} \delta_{jh}
-     - \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
-     - \delta_{jg} \delta_{kh}\delta_{ig} \delta_{hl} ) \\
-  &= \sum_{g,h=1}^n \delta_{jk} \delta_{lg} \delta_{ig}
-     + \sum_{g,h=1}^n \delta_{il} \delta_{kh} \delta_{jh}
-     - \sum_{g,h=1}^n \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
-     - \sum_{g,h=1}^n\delta_{jg} \delta_{kh}\delta_{ig} \delta_{hl} \\
-  &= n \delta_{jk} \delta_{il} + n \delta_{il} \delta_{jk} - \delta_{ij} \delta_{kl} - \delta_{ij} \delta_{kl}
-  = 2n \delta_{il} \delta_{jk} - 2 \delta_{ij} \delta_{kl} \\
-  &= 2n \delta_{jk} (\tr e_{il})  - 2 (\tr e_{ij})(\tr e_{kl})
-  = 2n \tr(e_{ij} e_{kl}) - 2(\tr e_{ij})(\tr e_{kl}) \\
-  &= \beta(e_{ij}, e_{kl}).
- \end{align*}
+
+\begin{warning}
+  If~$V$ is a finite dimensional~{\vectorspace{$\kf$}} with~$\dim V \geq 2$ then it \emph{does not} hold that
+  \[
+    \tr(f_1 \dotsm f_n)
+    =
+    \tr(f_{\sigma(1)} \dotsm f_{\sigma(n)})
+  \]
+  for all endomorphisms~$f_1, \dotsc, f_n \in \End_\kf(V)$ and every permuation~$\sigma \in S_n$.
+  This can be seen by considering the matrices~$A_1, A_2, A_3 \in \Mat_2(\kf)$ given by
+  \[
+    A_1
+    \defined
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 0
+    \end{pmatrix} \,,
+    \qquad
+    A_2
+    \defined
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix} \,,
+    \qquad
+    A_3
+    \defined
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix} \,.
+  \]
+  For these matrices
+  \[
+    \tr(A_1 A_2 A_3)
+    =
+    1
+    \quad\text{but}\quad
+    \tr(A_1 A_3 A_2)
+    =
+    0 \,.
+  \]
+\end{warning}
+
+
+\begin{recall}
+  \label{recalling the trace form}
+  For any finite dimensional~{\vectorspace{$\kf$}}~$V$ the endomorphism vector space~$\End_\kf(V)$ admits a bilinear form~$(-,-)_{\tr}$ given by
+  \[
+    (f,g)_{\tr}
+    \defined
+    \tr(fg) \,,
+  \]
+  the so called~\defemph{trace form}\index{trace form} on~$\End_\kf(V)$.
+  The trace form is symmetric by \cref{symmetric property of trace}, and it non degenerate:
+  If with respect to a basis~$v_1, \dotsc, v_n$ of~$V$ the endomorphisms~$f, g \in \End_\kf(V)$ are represented by matrices~$A, B \in \Mat_n(\kf)$ then
+  \[
+    (f,g)_{\tr}
+    =
+    \tr(fg)
+    =
+    \tr(AB)
+    =
+    \sum_{i=1}^n (AB)_{ii}
+    =
+    \sum_{i,j=1}^n
+    A_{ij} B_{ji} \,.
+  \]
+  If~$f \neq 0$ then~$A \neq 0$ and hence~$A_{ij} \neq 0$ for some indices~$i$,~$j$.
+  For the endomorphism~$g$ with~$B = E_{ji}$ we then find that
+  \[
+    (f,g)_{\tr}
+    =
+    A_{ij}
+    \neq
+    0 \,.
+  \]
+  The trace form is also associative in the sense that
+  \begin{equation}
+    \label{associativity of the trace form wrt multiplication}
+    (fg, h)_{\tr}
+    =
+    \tr(fgh)
+    =
+    (f, gh)_{\tr}
+  \end{equation}
+  for all~$f, g, h \in \End_\kf(V)$.
+\end{recall}
+
+
+\begin{example}
+  \label{trace form is symmetric and associative}
+  If~$V$ is a finite dimensional vector space then the trace form~$(-,-)_{\tr}$ on~$\gllie(V)$ is associative (in the sense of \cref{associative bilinear form}):
+  By using that the trace form is symmetric and associative in the sense of~\eqref{associativity of the trace form wrt multiplication} we find that
+  \begin{equation}
+    \label{associativity of the trace form wrt bracket}
+    \begin{aligned}
+      ([f,g],h)_{\tr}
+      &=
+      (fg - gf, h)_{\tr}
+      \\
+      &=
+      (fg, h)_{\tr} - (gf,h)_{\tr}
+      \\
+      &=
+      (fg, h)_{\tr} - (h, gf)_{\tr}
+      \\
+      &=
+      (f, gh)_{\tr} - (hg, f)_{\tr}
+      \\
+      &=
+      (f, gh)_{\tr} - (f, hg)_{\tr}
+      \\
+      &=
+      (f, gh - hg)_{\tr}
+      \\
+      &=
+      (f, [g,h])_{\tr}
+    \end{aligned}
+  \end{equation}
+  for all~$f, g, h \in \gllie(V)$.
+  Hence~$(-,-)_{\tr}$ is an associative symmetric bilinear form on~$\gllie(V)$.
 \end{example}
 
 
-\begin{remark}\label{rem: associative bilinear form of a representation}
- If $\g$ is a Lie algebra and $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ then the corresponding trace form $\phi_\rho$ is defined as
- \[
-  \phi_\rho(x,y) \coloneqq \tr(\rho(x) \rho(y)) \quad \text{for all $x,y \in \g$}.
- \]
- Replacing $\ad$ with $\rho$ in the proof of Lemma~\ref{lem: killing form is associative and symmetric} shows that $\phi_\rho$ is an associative and symmetric bilinear form on $\g$. The Killing form $\kappa$ of $\g$ is then just the special case $\kappa = \phi_{\ad}$.
+\begin{remark}
+  Suppose more generally that~$A$ is a~{\algebra{$\kf$}} that is not necessarily associative nor unital.
+  Then a bilinear form~$\beta \colon A \times A \to \kf$ is \defemph{associative}\index{associative bilinear form} if
+  \[
+    \beta(ab, c)
+    =
+    \beta(a, bc)
+  \]
+  for all~$a, b , c \in A$.
+  If~$A$ is an associative algebra and~$\beta$ is an associative symmetric bilinear form on~$A$ then the calculation~\eqref{associativity of the trace form wrt bracket} shows that~$\beta$ is also associative with respect to the Lie bracket on~$A$, i.e.\ associative in the sense of \cref{associative bilinear form}.
 \end{remark}
 
 
-\begin{lemma}\label{lem: restriction of the Killing form to an ideal}
- Let $\g$ be a finite-dimensional Lie algebra over an arbitrary field $k$. Then for any ideal $I \subseteq \g$ the Killing form $\kappa_I$ is given by restriction of the Killing form $\kappa_\g$ to $I$, i.e.\ $\kappa_I = \kappa_\g|_{I \times I}$.
+\begin{lemma}
+  \label{pullback of associative bilinear form}
+  Let~$f \colon \glie \to \hlie$ be a homorphism of Lie algebras.
+  If~$\beta$ is an associative bilinear form on~$\hlie$ then the pullback
+  \[
+    \alpha(x,y)
+    \defined
+    \beta(f(x), f(y))
+  \]
+  is an associative bilinear form on~$\glie$.
+  If~$\beta$ is symmetric then so is~$\alpha$.
+  \qed
 \end{lemma}
+
+
+\begin{definition}[Killing form]
+  \label{killing form}
+  Let~$\glie$ be a finite dimensional Lie~algebra over an arbitrary field~$\kf$.
+  The \defemph{Killing~form}~$\gls*{killing form}$\index{Killing form} of~$\glie$ is the pullback of the trace form of~$\gllie(V)$ along the Lie~algebra homomorphism~$\ad \colon \glie \to \gllie(V)$.
+  More explicitely,
+  \[
+    \kappa(x,y)
+    =
+    \tr(\ad(x) \ad(y))
+  \]
+  for all~$x, y \in \glie$.
+\end{definition}
+
+
+\begin{lemma}
+  \label{killing form is associative and symmetric}
+  Let~$\glie$ be a finite dimensional Lie algebra over an arbitrary field~$\kf$.
+  The Killing form of~$\glie$ is associative and symmetric.
+\end{lemma}
+
+
 \begin{proof}
- Let $x, y \in I$. Then $I$ is $\ad_\g(x)$-invariant. Let $(x_1, \dotsc, x_r)$ be a basis of $I$ and $(x_1, \dotsc, x_r, x_{r+1}, \dotsc, x_s)$ one of $\g$. With respect to the basis $(x_1, \dotsc, x_r)$ of $I$ the endomorphism $\ad_I(x)$ is represented by a matrix $A_x \in \Mat_r(k)$ and $\ad_I(y)$ is represented by a matrix $A_y \in \Mat_r(k)$. As $I \subideal \g$ is in ideal it follows that $\im \ad_\g(x) \subseteq \g$ and $\im \ad_\g(y) \subseteq \g$, which is why with respect to the basis $(x_1, \dotsc, x_s)$ the endomorphism $\ad_\g(x)$ and $\ad_\g(y)$ are represented by a matrices
- \[
-  C_x = \begin{pmatrix} A_x & B_x \\ 0 & 0 \end{pmatrix} \in \Mat_s(k)
-  \quad\text{and}\quad
-  C_y = \begin{pmatrix} A_y & B_y \\ 0 & 0 \end{pmatrix} \in \Mat_s(k)
- \]
- for some matrices $B_x, B_y \in \Mat_{s-r,r}(k)$. Hence
- \begin{align*}
-  \kappa_\g(x,y)
-  &= \tr(\ad_\g(x) \ad_\g(y))
-  = \tr\left( \begin{pmatrix} A_x & B_x \\ 0 & 0 \end{pmatrix} \begin{pmatrix} A_y & B_y \\ 0 & 0 \end{pmatrix} \right) \\
-  &= \tr \begin{pmatrix} A_x A_y & A_x B_y \\ 0 & 0 \end{pmatrix}
-  = \tr(A_x A_y)
-  = \tr(\ad_I(x) \ad_I(y))
-  = \kappa_I(x,y).
- \qedhere
- \end{align*}
+  This follows by \cref{pullback of associative bilinear form} from \cref{trace form is symmetric and associative}.
+\end{proof}
+
+
+\begin{remark}
+  \label{associative bilinear form of a representation}
+  If~$(V,\rho)$ is any finite dimensional representation of a Lie algebra~$\glie$ then pulling back the trace form on~$\gllie(V)$ via the Lie~algebra homomorphism~$\rho \colon \glie \to \gllie(V)$ results in an associative symmetric bilinear form~$\beta_\rho$ on~$\glie$, given by
+  \[
+    \beta_\rho(x,y)
+    \defined
+    \tr(\rho(x) \rho(y))
+  \]
+  for all~$x, y \in \glie$.
+  The Killing~form~$\kappa$ of~$\glie$ is the special case~$\kappa = \beta_{\ad}$.
+\end{remark}
+
+
+\begin{example}
+  \label{killing form of gl_n}
+  Let~$\glie \defined \glie_n(\kf)$ for some arbitrary~field $\kf$.
+  Then
+  \[
+    \kappa(x,y)
+    =
+    2n\tr(xy) - 2\tr(x)\tr(y)
+    \defines
+    \beta(x,y)
+  \]
+  for all~$x, y \in \glie$.
+  
+  To see this let~$E_{ij}$ with~$i,j = 1, \dotsc, n$ be the standard basis of~$\gllie_n(\kf)$.
+  Then
+  \begin{equation}
+    \label{product of elementary matrices}
+    E_{ij} E_{kl}
+    =
+    \delta_{jk} E_{il}
+  \end{equation}
+  for all~$i,j,k,l = 1, \dotsc, n$.
+  To show that~$\kappa = \beta$ is sufficies to show that
+  \[
+    \kappa(E_{ij}, E_{kl})
+    =
+    \beta(E_{ij}, E_{kl})
+  \]
+  for all~$i,j,k,l = 1, \dotsc, n$ as both~$\kappa$ and~$\beta$ are bilinear.
+  
+  For all~$k,l,g,h = 1, \dotsc, n$ it follows from the relation~\eqref{product of elementary matrices} that
+  \[
+    \ad(E_{kl})(E_{gh})
+    =
+    [E_{kl}, E_{gh}]
+    =
+    E_{kl} E_{gh} - E_{gh} E_{kl}
+    =
+    \delta_{lg} E_{kh} - \delta_{kh} E_{gl} \,.
+  \]
+  It follows for all~$i,j,k,l,g,h = 1, \dotsc, n$ that
+  \begin{align*}
+    \ad(E_{ij})\ad(E_{kl})(E_{gh})
+    &=
+    \ad(E_{ij})(\delta_{lg} E_{kh}
+    - \delta_{kh} E_{gl})
+    \\
+    &=
+    \delta_{lg} \ad(E_{ij})(E_{kh})
+    - \delta_{kh} \ad(E_{ij})(E_{gl})
+    \\
+    &=
+      \delta_{lg}(\delta_{jk} E_{ih}
+    - \delta_{ih} E_{kj})
+    - \delta_{kh}(\delta_{jg} E_{il}
+    - \delta_{il} E_{gj})
+    \\
+    &=
+      \delta_{jk} \delta_{lg} E_{ih}
+    - \delta_{ih} \delta_{lg} E_{kj}
+    - \delta_{jg} \delta_{kh} E_{il}
+    + \delta_{il} \delta_{kh} E_{gj}
+  \end{align*}
+  and the coefficient of~$E_{gh}$ in this expression is
+  \[
+    a_{gh}
+    =
+      \delta_{jk} \delta_{lg} \delta_{ig}
+    + \delta_{il} \delta_{kh} \delta_{jh}
+    - \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
+    - \delta_{jg} \delta_{kh} \delta_{ig} \delta_{hl} \,.
+  \]
+  It follows for all~$i,j,k,l = 1, \dotsc, n$ that
+  \begin{align*}
+    \kappa(E_{ij}, E_{kl})
+    &=
+    \sum_{g,h=1}^n a_{gh}
+    \\
+    &=
+    \sum_{g,h=1}^n
+    (
+        \delta_{jk} \delta_{lg} \delta_{ig}
+      + \delta_{il} \delta_{kh} \delta_{jh}
+      - \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
+      - \delta_{jg} \delta_{kh} \delta_{ig} \delta_{hl}
+    )
+    \\
+    &=
+      \sum_{g,h=1}^n \delta_{jk} \delta_{lg} \delta_{ig}
+    + \sum_{g,h=1}^n \delta_{il} \delta_{kh} \delta_{jh}
+    - \sum_{g,h=1}^n \delta_{ih} \delta_{lg} \delta_{kg} \delta_{jh}
+    - \sum_{g,h=1}^n \delta_{jg} \delta_{kh} \delta_{ig} \delta_{hl}
+    \\
+    &=
+      n \delta_{jk} \delta_{il}
+    + n \delta_{il} \delta_{jk}
+    - \delta_{ij} \delta_{kl}
+    - \delta_{ij} \delta_{kl}
+    \\
+    &=
+      2 n \delta_{il} \delta_{jk}
+    - 2 \delta_{ij} \delta_{kl}
+    \\
+    &=
+    2n \delta_{jk} \tr(E_{il})  - 2 \tr(E_{ij}) \tr(E_{kl})
+    \\
+    &=
+    2n \tr(E_{ij} E_{kl}) - 2 \tr(E_{ij}) \tr(E_{kl})
+    \\
+    &=
+    \beta(E_{ij}, E_{kl})  \,.
+  \end{align*}
+\end{example}
+
+
+\begin{lemma}
+  \label{restriction of the killing form to an ideal}
+  Let~$\glie$ be a finite-dimensional Lie~algebra over an arbitrary field~$\kf$.
+  If~$I$ is an ideal in~$\glie$ then the Killing~form~$\kappa_I$ of~$I$ is given by restriction of the Killing~form~$\kappa_\glie$ of~$\glie$ to~$I$, i.e.~$\kappa_I = \restrict{\kappa_\glie}{I \times I}$.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$x, y \in I$.
+  Let~$(x_1, \dotsc, x_n)$ be a basis of~$I$ and extend it to basis~$(x_1, \dotsc, x_n, x_{n+1}, \dotsc, x_m)$ of~$\glie$.
+  With respect to the basis~$(x_1, \dotsc, x_n)$ of~$I$ the endomorphism~$\ad_I(x)$ is represented by a matrix~$A_x \in \Mat_n(\kf)$ and the endomorphism~$\ad_I(y)$ is represented by a matrix~$A_y \in \Mat_n(\kf)$.
+  
+  The images of the endomorphisms~$\ad_\glie(x)$ and~$\ad_\glie(y)$ are contained in~$I$ because~$I$ is an ideal in~$\glie$.
+  With respect to the basis~$(x_1, \dotsc, x_m)$ of~$\glie$ the endomorphisms $\ad_\glie(x)$ and $\ad_\glie(y)$ are therefore represented by matrices of the form
+  \[
+    C_x
+    =
+    \begin{pmatrix}
+      A_x & B_x \\
+      0   & 0
+    \end{pmatrix}
+    \in
+    \Mat_m(\kf)
+    \qquad\text{and}\qquad
+    C_y
+    =
+    \begin{pmatrix}
+      A_y & B_y \\
+      0   & 0
+    \end{pmatrix}
+    \in
+    \Mat_m(\kf)
+  \]
+  for some matrices~$B_x, B_y \in \Mat_{n,m-n}(\kf)$.
+  (Here we used that the endomorphisms~$\ad_I(x)$ and~$\ad_I(y)$ of~$I$ are the restrictions of the endorphisms~$\ad_\glie(x)$ and~$\ad_\glie(y)$ of~$\glie$ to~$I$.)
+  From these explicit matrix descriptions we find that
+  \begin{align*}
+    \kappa_\glie(x,y)
+    &=
+    \tr(\ad_\glie(x) \ad_\glie(y))
+    \\
+    &=
+    \tr\left(
+      \begin{pmatrix}
+        A_x & B_x \\
+        0   & 0
+      \end{pmatrix}
+      \begin{pmatrix}
+        A_y & B_y \\
+        0   & 0
+      \end{pmatrix}
+    \right)
+    \\
+    &=
+    \tr
+    \begin{pmatrix}
+      A_x A_y & A_x B_y \\
+      0       & 0
+    \end{pmatrix}
+    \\
+    &=
+    \tr(A_x A_y)
+    \\
+    &=
+    \tr(\ad_I(x) \ad_I(y))
+    \\
+    &=
+    \kappa_I(x,y) \,,
+  \end{align*}
+  as desired.
 \end{proof}
 
 
@@ -239,187 +847,398 @@
 
 
 \begin{example}
- Let $\g \coloneqq \sll_n(k) = [\gl_n(k), \gl_n(k)]$. As seen in example~\ref{expl: Killing form of gl_n} the Killing form of $\gl_n(k)$ is given by
- \[
-  \kappa_{\gl_n(k)}(x,y) = 2n \tr(xy) - 2(\tr x)(\tr y)
-  \quad \text{for all $x,y \in \gl_n(k)$}.
- \]
- Because $\sll_n(k) \subideal \gl_n(k)$ it follows from Lemma~\ref{lem: restriction of the Killing form to an ideal} that the Killing form of $\sll_n(k)$ is given by
- \[
-  \kappa_{\sll_n(k)}(x,y) = 2n \tr(xy) \quad \text{for all $x,y \in \sll_n(k)$}.
- \]
- In particular the Killing form of $\sll_n(k)$ is just a multiple of the trace form.
+  We have seen in \cref{killing form of gl_n} that the Killing~form of~$\gllie_n(\kf)$ is given by
+  \[
+    \kappa_{\gllie_n(\kf)}(x,y)
+    =
+    2n \tr(xy) - 2\tr(x)\tr(y)
+  \]
+  for all~$x, y \in \gllie_n(\kf)$.
+  It follows that the Killing~form of~$\sllie_n(\kf) = [\gllie_n(\kf), \gllie_n(\kf)]$ is given by
+  \[
+    \kappa_{\sllie_n(\kf)}(x,y)
+    =
+    2n \tr(xy)
+  \]
+  for all~$x, y \in \sllie_n(\kf)$ (recall that~$\sllie_n(\kf) = \{x \in \gllie_n(\kf) \suchthat \tr(x) = 0\}$.
+  We observe that the Killing~form of~$\sllie_n(\kf)$ is a scalar multiple of the trace form.
 \end{example}
 
 
-\begin{lemma}\label{lem: orthogonal ideals with respect to the killing form}
- Let $\g$ be a Lie algebra and $I_1, I_2 \subideal \g$ ideals with $\g = I_1 \oplus I_2$. Then $I_1 \perp I_2$ with respect to the Killing form $\kappa$ of $\g$. In particular it follows that for all $x,y \in \g$ with $x = x_1 + x_2$ and $y = y_1 + y_2$ with respect to $\g = I_1 \oplus I_2$
- \[
-  \kappa(x,y) = \kappa_{I_1}(x_1, y_1) + \kappa_{I_2}(x_2, y_2)
- \]
+\begin{lemma}
+  \label{orthogonal ideals with respect to the killing form}
+  Let~$\glie$ be a finite dimensional Lie~algebra and suppose that~$\glie = I \oplus J$ for two ideals~$I$ and~$J$.
+  \begin{enumerate}
+    \item
+      The ideals~$I$ and~$J$ are mutually orthogonal with respect to the Killing form of~$\glie$.
+    \item
+      If~$x,y \in \glie$ are given by~$x = x_1 + x_2$ and~$y = y_1 + y_2$ with respect to the decomposition~$\glie = I \oplus J$ then
+      \[
+        \kappa_\glie(x,y)
+        =
+        \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,.
+      \]
+  \end{enumerate}
 \end{lemma}
+
+
 \begin{proof}
- Because $[I_1, I_2] \subseteq I_1 \cap I_2 = 0$ it follows that for every $z_1 \in I_1$ and $z_2 \in I_2$
- \[
-  (\ad(z_1)\ad(z_2))(\g) = \ad(z_1)(\ad(z_2)(\g)) \subseteq \ad(z_1)(I_2) = 0.
- \]
- Therefore $\ad(z_1)\ad(z_2) = 0$ and in particular $\kappa(z_1,z_2) = \tr(\ad(z_1)\ad(z_2)) = 0$. From Lemma \ref{lem: restriction of the Killing form to an ideal} it further follows that
- \begin{align*}
-  \kappa(x,y)
-  &= \kappa(x_1, y_1) + \kappa(x_1, y_2) + \kappa(x_2, y_1) + \kappa(x_2, y_2) \\
-  &= \kappa(x_1, y_1) + \kappa(x_2, y_2)
-  = \kappa_{I_1}(x_1, y_1) + \kappa_{I_2}(x_2, y_2).
-  \qedhere
- \end{align*}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have for all~$x \in I$ and~$y \in J$ that~$\ad(x) \ad(y) = 0$ because
+      \[
+        \ad(x)\ad(y)(\glie)
+        =
+        [x,[y,\glie]]
+        \subseteq
+        [I,[J,\glie]]
+        \subseteq
+        [I,J]
+        \subseteq
+        I \cap J
+        =
+        0 \,.
+      \]
+      Is follows that
+      \[
+        \kappa(x,y)
+        =
+        \tr(\ad(x)\ad(y))
+        =
+        \tr(0)
+        =
+        0 \,.
+      \]
+    \item
+      We know from \cref{restriction of the killing form to an ideal} that~$\kappa(x_1, y_1) = \kappa_I(x_1, y_1)$ and~$\kappa(x_2, y_2) = \kappa_J(x_2, y_2)$.
+      Therefore
+      \begin{align*}
+        \kappa(x,y)
+        &=
+        \kappa(x_1 + x_2, y_1 + y_2)
+        \\
+        &=
+          \kappa(x_1, y_1)
+        + \underbrace{\kappa(x_1, y_2)}_{=0}
+        + \underbrace{\kappa(x_2, y_1)}_{=0}
+        + \kappa(x_2, y_2)
+        \\
+        &=
+        \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,,
+      \end{align*}
+      as desired.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
 
 
 
-\subsection{The concrete Jordan decomposition}
+\subsection{Concrete Jordan Decomposition}
 
 
 \begin{definition}
- Let $V$ be an $n$-dimensional $k$-vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(y)$). Then $x$ (resp.\ $y$) is called \emph{semisimple} if it is diagonalizable.
+  An endomorphism of a finite dimensional vector space (resp.\ a square matrix) is \defemph{semisimple}\index{semisimple!endomorphism}\index{semisimple!matrix} if it is diagonalizable.
 \end{definition}
 
 
 \begin{remark}
- An endomorphism $x \in \End_k(V)$ as above is semisimple if and only if every $x$-invariant subspace of $V$ has a direct summand which is also $x$-invariant. (This depends on $k$ being algebraically closed.)
+  An endomorphism~$x$ of a finite dimensional~{\vectorspace{$\kf$}}~$V$ is semisimple if and only if every~{\invariant{$x$}} subspace of~$V$ admits a direct complement that is again~{\invariant{$x$}}.
+  (Every diagonalizable endomorphism has this property;
+  the converse depends on~$\kf$ being algebraically closed.)
 \end{remark}
 
 
-\begin{theorem}\label{thrm: concrete Jordan decomposition}
- Let $V$ be a finite dimensional $k$-vector space and $x \in \End_k(V)$.
- \begin{enumerate}[leftmargin=*]
-  \item
-   There exist unique $x_s, x_n \in \End_k(V)$ satisfying the following properties:
-   \begin{enumerate}
+\begin{theorem}[Concrete Jordan decomposition]
+\label{concrete jordan decomposition}
+  Let~$x$ be an endomorphism of a finite dimensional~{\vectorspace{$\kf$}}~$V$.
+  \begin{enumerate}
     \item
-     $x = x_s + x_n$.
+      \label{existence and uniqueness of concrete jcd}
+      There exist unique endomorphisms~$x_s$ and~$x_n$ of~$V$ such that
+      \begin{enumerate}
+        \item
+          $x = x_s + x_n$,
+        \item
+          $x_s$ is semisimple and~$x_n$ is nilpotent,
+        \item
+          $x_s$ and~$x_n$ commute.
+      \end{enumerate}
     \item
-     $x_s$ is semisimple and $x_n$ is nilpotent.
+      \label{concrete jcd are polynomial}
+      The endomorphisms~$x_s$ and~$x_n$ can be expressed as polynomials in~$x$ without constant term, i.e.\ there exist polynomials~$P,Q \in \kf[T]$ with~$P(0) = Q(0) = 0$ such that~$x_s = P(x)$ and~$x_n = Q(x)$.
     \item
-     $x_s$ and $x_n$ commute.
-   \end{enumerate}
-  \item
-   $x_s$ and $x_n$ are Polynomials in $x$ without constant term, i.e.\ there exist polynomials $P,Q \in k[T]$ such that $P(0) = Q(0) = 0$ and $x_s = P(x)$ and $x_n = P(x)$. In particular an endomorphism of $V$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$.
-  \item
-   If $A \subseteq B \subseteq V$ are linear subspaces with $x(B) \subseteq A$ then also $x_s(B) \subseteq A$ and $x_n(B) \subseteq A$.
- \end{enumerate}
+      \label{commuting via concrete jcd}
+      Any endomorphism of~$V$ commutes with~$x$ if and only if it commutes with both~$x_s$ and~$x_n$.
+    \item
+      \label{concrete jcd compatible with mapping of subspaces}
+      If~$U \subseteq W$ are linear subspaces of~$V$ with~$x(W) \subseteq U$ then also~$x_s(W) \subseteq U$ and~$x_n(W) \subseteq U$.
+  \end{enumerate}
 \end{theorem}
+
+
 \begin{proof}
- Let $\chi(T)$ be the characteristic polynomial of $x$ with $\chi(T) = \prod_{i=1}^n (T-\lambda_i)^{m_i}$ where $\lambda_i \neq \lambda_j$ for $i \neq j$. By the chinese reminder theorem the map
- \begin{equation}\label{eqn: use of chinese reminder theorem}
-  \begin{aligned}
-   k[T]/(\chi) &\longrightarrow \prod_{i=1}^n k[T]/((T-\lambda_i)^{m_i}),\\
-   F + (\chi) &\longmapsto (F+((T-\lambda_1)^{m_1}), \dotsc, F+(((T-\lambda_n)^{m_n}))
-  \end{aligned}
- \end{equation}
- is surjective. Thus there exists some polynomial $P \in k[T]$ with
- \begin{equation}\label{eqn: congruences of P}
-  P(T) \equiv \lambda_i \mod (T-\lambda_i)^{m_i} \quad \text{for ever $i = 1, \dotsc, n$}.
- \end{equation}
- 
- We can also assume that $P(0) = 0$. If $\lambda_i = 0$ for some $i$ then this follows directly from \eqref{eqn: congruences of P}. Otherwise the polynomials $(T-\lambda_1)^{m_1}$, \dots, $(T-\lambda_n)^{m_n}$, $T$ are pairwise coprime, so by replacing $\chi(T)$ with $\tilde{\chi}(T) \coloneqq \chi(T) T$ in \eqref{eqn: use of chinese reminder theorem} results in a polynomial $\tilde{P}$ which does not only satisfy \eqref{eqn: congruences of P} (with $P$ replaced by $\tilde{P}$) but also $\tilde{P} \bmod T = 0$.
- 
- Now let $Q(T) \coloneqq T - P(T)$ as well as $x_s \coloneqq P(x)$ and $x_n \coloneqq Q(x)$. Then $x = x_s + x_n$ and $x_s$ and $x_n$ commute, as both are polynomials in $x$. For every $i = 1, \dotsc, n$ let
- \[
-  V_i \coloneqq \ker (x-\lambda_i)^{m_i}
- \]
- be the generalized eigenspace of $x$ with respect to the eigenvalue $\lambda_i$. Is is known from linear algebra that $V = \bigoplus_{i=1}^n V_i$.
- 
- It follows from \eqref{eqn: use of chinese reminder theorem} that for every $i = 1, \dotsc, n$ there exists some polynomial \mbox{$P_i \in k[T]$} with
- \[
-  P(T) = \lambda_i + P_i(T) (T-\lambda_i)^{m_i},
- \]
- from which follows for every $v \in V_i$ that
- \[
-  x_s(v)
-  = (\lambda_i \id_V + P_i(x)(x-\lambda_i)^{m_i})(v)
-  = \lambda_i v + P_i(x)(\underbrace{(x-\lambda_i)^{m_i}(v)}_{=0})
-  = \lambda_i v.
- \]
- Hence $V_i$ is $x_s$-invariant with $x_s|_{V_i} = \lambda_i \id_{V_i}$ for every $i = 1, \dotsc, n$. As $V = \bigoplus_{i=1}^n V_i$ this shows that $x_s$ is semisimple and $V_i$ is precisely the eigenspace of $x_s$ to the eigenvalue $\lambda_i$.
- 
- To see that $x_s$ is nilpotent notice that for every $i = 1, \dotsc, n$ and $v \in V_i$
- \[
-  x_n(v) = x(v) - x_s(v) = x(v) - \lambda_i (v) = (x - \lambda_i \id_V)(v).
- \]
- Hence $V_i$ is $x_n$-invariant with $x_n|_{V_i} = x - \lambda_i \id_{V_i}$ for every $i = 1, \dotsc, n$. By definition of $V_i$ it follows that $x_n|_{V_i}$ is nilpotent for every $i = 1, \dotsc, n$. Because $V = \bigoplus_{i=1}^n V_i$ it follows that $x_n$ is nilpotent.
- 
- This shows the existence of the claimed decomposition. For the uniqueness let $y_s, y_n \in \End_k(V)$ be any two endomorphisms with $x = y_s + y_n$ where $y_s$ is semisimple, $y_n$ is nilpotent and $y_s$ and $y_n$ commute. As $y_s$ and $y_n$ commute it follows that each of them commutes with $x = y_s + y_n$. Because $x_s$ and $x_n$ are polynomials in $x$ it follows from this that $y_s$ and $y_n$ both commute with $x_s$ and $x_n$. Hence $x_s$, $x_n$, $y_s$ and $y_n$ are pairwise commuting. In particular $x_s$ and $y_s$ are simultaneously diagonalizable which is why $x_s - y_s$ is also semisimple. As $x_n$ and $y_n$ commute and are both nilpotent it also follows that $y_n - x_n$ is nilpotent. But from $x_s + x_n = x = y_s + y_n$ it follows that
- \[
-  \underbrace{x_s - y_s}_{\text{semisimple}} = \underbrace{y_n - x_n}_{\text{nilpotent}}.
- \]
- Hence $x_s - y_s = y_n - x_n = 0$.
- 
- All other statements of the theorem directly follow from the construction of $x_s$ and $x_n$ and the fact that they are polynomials without constant term in $x$.
+  Let~$\chi(T)$ be the characteristic polynomial of~$x$, given by
+  \[
+    \chi(T)
+    =
+    \prod_{i=1}^n (T-\lambda_i)^{m_i} \,,
+  \]
+  where~$\lambda_1, \dotsc, \lambda_n \in \kf$ are the pairwise different eigenvalues of~$x$.
+  By the chinese remainder theorem there exists some polynomial~$P \in \kf[T]$ with
+  \begin{equation}
+  \label{congruences of P}
+    P(T)
+    \equiv
+    \lambda_i
+    \mod
+    (T-\lambda_i)^{m_i}
+  \end{equation}
+  for every~$i = 1, \dotsc, n$.
+  
+  We may also assume that the polynomial~$P(T)$ has no constant term.
+  If~$\lambda_i = 0$ for some~$i$ then this is entailed in~\eqref{congruences of P}.
+  Otherwise we may replace the characteristic polynomial~$\chi(T)$ by the polynomial~$\chi(T) T$ before applying the chinese remainder theorem to ensure that, in addition to the conditions~\eqref{congruences of P}, also
+  \[
+    P(T)
+    \equiv
+    0
+    \mod
+    T \,.
+  \]
+  This means precisely that~$P(T)$ has no constant term.
+  
+  Let~$Q(T) \defined T - P(T)$.
+  We construct the desired endomorphism~$x_s$ and~$x_n$ as
+  \[
+    x_s
+    \defined
+    P(x)
+    \quad\text{and}\quad
+    x_n
+    \defined
+    Q(x)  \,.
+  \]
+  Then~$x = x_s + x_n$ by choice of~$Q$, and the endomorphisms~$x_s$ and~$x_n$ commute because they are both polynomials in~$x$.
+  
+  To show that~$x_s$ is semisimple and~$x_n$ is nilpotent we use the generalized eigenspace decomposition
+  \begin{gather*}
+    V
+    =
+    \bigoplus_{i=1}^n V_i
+  \shortintertext{where}
+    V_i
+    \defined
+    \ker (x - \lambda_i \id_V)^{m_i}
+  \end{gather*}
+  is the generalized eigenspace of~$x$ with respect to the eigenvalue~$\lambda_i$.
+  
+  It follows from~\eqref{congruences of P} that the polynomial~$P(T)$ can for every~$i = 1, \dotsc, n$ be expressed as
+  \[
+    P(T)
+    =
+    \lambda_i + R(T) (T - \lambda_i)^{m_i}
+  \]
+  for some polynomial~$R(T) \in \kf[T]$.
+  We plug in the endomorphism~$x$ to find that
+  \[
+    x_s
+    =
+    P(x)
+    =
+    \lambda_i \id_V + R(x) (x - \lambda_i \id_V)^{m_i}  \,.
+  \]
+  The endomorphism~$(x - \lambda_i \id_V)^{m_i}$ vanishes on the generalized eigenspace~$V_i$, hence we find that the endomorphisms~$x_s$ and~$\lambda_i \id_V$ act the same on this generalized eigenspace.
+  The generalized eigenspace decomposition~$V = \bigoplus_{i=1}^n V_i$ is therefore a decomposition of~$V$ into eigenspaces with respect to~$x_s$.
+  This shows that~$x_s$ is indecomposable.
+  
+  To show that~$x_n$ is nilpotent we show that~$x_n$ acts nilpotently on each subspace~$V_i$.
+  For this we observe that
+  \[
+    Q(T)
+    =
+    T - P(T)
+    =
+    T - \lambda_i - R(T) (T - \lambda_i)^{m_i}
+    =
+    (T - \lambda_i) - R(T) (T - \lambda_i)^{m_i}
+  \]
+  and hence
+  \[
+    x_n
+    =
+    Q(x)
+    =
+    (x - \lambda_i \id_V) - R(x) (x - \lambda_i \id_V)^{m_i}  \,.
+  \]
+  We find as before that the endomorphisms~$x_n$ and~$x - \lambda_i \id_V$ act in the same way on the subspace~$V_i$.
+  The endomorphism~$x - \lambda_i \id_V$ is nilpotent on the subspace~$V_i$ (by choice of~$V_i$), hence~$x_n$ is nilpotent on the subspace~$V_i$.
+  As this holds for every~$i = 1, \dotsc, n$ we find altogether that~$x_n$ is nilpotent.
+  
+  We have now shown the existence for part~\ref*{existence and uniqueness of concrete jcd} and the existence of the polynomials~$P$ and~$Q$ for part~\ref*{concrete jcd are polynomial} (for the constructed decomposition).
+  Part~\ref*{commuting via concrete jcd} follows from the equality~$x = x_s + x_n$ and part~\ref*{concrete jcd are polynomial}
+  Part~\ref*{concrete jcd compatible with mapping of subspaces} follows from part~\ref*{concrete jcd are polynomial} because inductively~$x^i(W) \subseteq U$ for every~$i \geq 1$.
+  
+  It remains to show that every other decomposition~$x = y_s + y_n$ coincides with the constructed one.
+  The parts~$y_s$ and~$y_n$ commute with~$x = y_s + y_n$ because~$y_s$ and~$y_n$ commute.
+  It follows from part~\ref*{concrete jcd are polynomial} (for the given decomposition) that both~$y_s$ and~$y_n$ commute with both~$x_s$ and~$x_n$.
+  We find in particular that the endomorphisms~$x_s$ and~$y_s$ as well as~$x_n$ and~$y_n$ commute.
+  It follows that the differences~$x_s - y_s$ is again semisimple\footnote{Because~$x_s$ and~$y_s$ commute and are both diagonalizable, and are thus simultaneously diagonalizable.} and that the difference~$y_n - x_n$ is nilpotent.
+  As
+  \[
+    x_s + x_n
+    =
+    x
+    =
+    y_s + y_n
+  \]
+  we have that
+  \[
+    x_s - y_s
+    =
+    y_n - x_n \,.
+  \]
+  This last endomorphism is both semisimple and nilpotent and hence the zero endomorphism, i.e.
+  \[
+    x_s - y_s
+    =
+    y_n - x_n
+    =
+    0 \,.
+  \]
+  This shows that~$x_s = y_s$ and~$x_n = y_n$.
 \end{proof}
 
 
-\begin{remark}\label{rem: concrete Jordan decomposition for matrices}
- An analogeous statement of Theorem~\ref{thrm: concrete Jordan decomposition} can be shown for $\Mat_n(k)$ instead of $\End_k(V)$. More precisely: Every matrix $x \in \Mat_n(k)$ can be uniquely decomposed into $x = x_s + x_n$ such that $x_s$ is semisimple, $x_n$ is nilpotent and $x_s$ and $x_n$ commute. Both $x_s$ and $x_n$ are polynomials without constant term in $x$, so any matrix in $\Mat_n(k)$ commutes with $x$ if and only if it commutes with $x_s$ and $x_n$. If $A \subseteq B \subseteq k^n$ are linear subspaces such that $B$ is carried into $A$ by left multiplication with $x$, then the same goes for $x_s$ and $x_n$.
-\end{remark}
-
-
-\begin{definition}
- Let $V$ be an $n$-dimensional vector space and $x \in \End_k(V)$ (resp.\ $y \in \Mat_n(k)$). Then the decomposition $x = x_s + x_n$ from Theorem~\ref{thrm: concrete Jordan decomposition} (resp.\ the decomposition $y = y_s + y_n$ from Remark~\ref{rem: concrete Jordan decomposition for matrices}) is called the \emph{concrete Jordandecomposition} of $x$ (resp.\ $y$). The element $x_s$ (resp.\ $y_s$) is called the \emph{(concrete) semisimple part} of $x$ (resp.\ $y$) and the element $x_n$ (resp.\ $y_n$) is called the \emph{(concrete) nilpotent part} of $x$ (resp.\ $y$).
-\end{definition}
-
-
-\begin{definition}
- Let $\g$ be a finite dimensional Lie algebra. Then $x \in \g$ is called \emph{$\ad$-semisimple} if $\ad(x)$ is a semisimple endomorphism of $\g$.
-\end{definition}
-
-
-\begin{lemma}\label{lem: ss and nilpotent implies ad-ss and ad-nilpotent}
- Let $\g \subseteq \gl(V)$ be a Lie subalgebra for some finite dimensional vector space $V$ (resp.\ $\g \subseteq \gl_n(k)$) and $x \in \g$.
- \begin{enumerate}
-  \item
-   If $x$ is semisimple then $x$ is also $\ad$-semisimple.
-  \item
-   If $x$ is nilpotent then $x$ is also $\ad$-nilpotent.
- \end{enumerate}
-\end{lemma}
-\begin{proof}
- We only show the case $\g \subseteq \gl(V)$, the proof for the case $\g \subseteq \gl_n(k)$ being essentially the same.
- \begin{enumerate}[leftmargin=*]
-  \item
-   Let $e_1$, \dots, $e_n$ be a basis of $\g$ consisting of eigenvectors of $x$, where $e_i$ belongs to the eigenvalue $\lambda_i \in k$. Then for all \mbox{$i,j = 1, \dotsc, n$} let $E_{ij} \in \End_k(\g)$ be defined by
-   \[
-    E_{ij}(e_k) = \delta_{jk} e_i \quad \text{for every $k = 1, \dotsc, n$}.
-   \]
-   Then $(E_{ij})_{i,j=1,\dotsc,n}$ is a basis of $\End_k(\g)$. For all $i,j,k = 1, \dotsc, n$ it follows that
-   \begin{align*}
-    [x,E_{ij}](e_k)
-    &= (x E_{ij} - E_{ij} x)(e_k)
-    = x(E_{ij}(e_k)) - E_{ij}(x(e_k)) \\
-    &= \delta_{jk} x(e_i) - \lambda_k E_{ij}(e_k)
-    = \delta_{jk} \lambda_i e_i - \delta_{jk} \lambda_k e_i \\
-    &= (\lambda_i - \lambda_j) \delta_{jk} e_i
-    = (\lambda_i - \lambda_j) E_{ij} e_k.
-   \end{align*}
-   It follows that
-   \[
-    \ad_{\gl(V)}(x)(E_{ij}) = [x,E_{ij}] = (\lambda_i - \lambda_j) E_{ij}
-    \quad \text{for all $i,j = 1, \dotsc, n$},
-   \]
-   so $\ad_{\gl(V)}$ is semisimple and therefore also the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$.
-   
-  \item
-   In Lemma~\ref{lem: nilpotent implies ad-nilpotent} it was already shown that $\ad_{\gl(V)}(x)$ is nilpotent. From this it follows that the restriction $\ad_\g(x) = \ad_{\gl(V)}(x)|_{\g}$ is also nilpotent.
-  \qedhere
- \end{enumerate}
-\end{proof}
-
-
-\begin{corollary}\label{cor: concrete Jordan decomposition compatible with adjoint representation}
- Let $\g \subseteq \gl(V)$ be a Lie subalgebra for a finite dimensional vector space $V$ (resp.\ $\g = \gl_n(k)$). If $x \in \g$ has the Jordan decomposition $x = x_s + x_n$ then $\ad(x) = \ad(x_s) + \ad(x_n)$ is the Jordan decomposition of $\ad(x)$.
+\begin{corollary}[Concrete Jordan decomposition for matrices]
+  \label{concrete jordan decomposition for matrices}
+  Let~$x \in \Mat_n(\kf)$.
+  \begin{enumerate}
+    \item
+      There exist unique matrices~$x_s, x_n \in \Mat_n(\kf)$ such that
+      \begin{enumerate}
+        \item
+          $x = x_s + x_n$,
+        \item
+          $x_s$ is semisimple and~$x_n$ is nilpotent,
+        \item
+          $x_s$ and~$x_n$ commute.
+      \end{enumerate}
+    \item
+      The matrices~$x_s$ and~$x_n$ can be expressed as polynomials in~$x$ without constant term, i.e.\ there exist polynomials~$P,Q \in \kf[T]$ with~$P(0) = Q(0) = 0$ such that~$x_s = P(x)$ and~$x_n = Q(x)$.
+    \item
+      Any matrix~$y \in \Mat_n(\kf)$ commutes with~$x$ if and only if it commutes with both~$x_s$ and~$x_n$.
+    \item
+      If~$U \subseteq W$ are linear subspaces of~$\kf^n$ with~$x W \subseteq U$ then also~$x_s W \subseteq U$ and~$x_n W \subseteq U$.
+    \qed
+  \end{enumerate}
 \end{corollary}
+
+
+\begin{definition}
+  Let~$x$ be an endomorphism of a finite dimensional vector space~$V$ (resp.\ a square matrix~$x \in \Mat_n(\kf)$).
+  Then the decomposition~$x = x_s + x_n$ from \cref{concrete jordan decomposition} (resp.\ \cref{concrete jordan decomposition for matrices}) is the \defemph{\textup(concrete\textup) Jordan decomposition}\index{concrete Jordan decomposition}\index{Jordan decomposition!concrete} of~$x$.
+  The element~\gls*{semisimple part} is the \defemph{\textup(concrete\textup) semisimple part}\index{semisimple!part} of~$x$ and the element~\gls*{nilpotent part} is the \defemph{\textup(concrete\textup) nilpotent part}\index{nilpotent!part} of~$x$.
+\end{definition}
+
+
+\begin{example}
+  \label{computation of jd via jnf}
+  Let~$x$ be an endomorphism of a finite dimensional vector space and let~$v_1, \dotsc, v_n$ be a basis of~$V$ with respect to which~$x$ is in Jordan normal form~$J \in \Mat_n(\kf)$.
+  Then
+  \[
+    J
+    =
+    D + N
+  \]
+  for a diagonal matrix~$D$ and strictly upper triangular (and hence nilpotent) matrix~$N$, and the two matrices~$D$ and~$N$ commute.
+  We find that~$D$ is the semisimple part of~$J$ and that~$N$ is the nilpotent part of~$J$.
+  With respect to the choosen basis of~$V$ the semisimple part of~$x$ is now given by~$D$, and the nilpotent part of~$x$ is given by~$N$.
+  
+  This shows that in coordinates the concrete Jordan decomposition of an endomorphism~$x$ corresponds to the decomposition of its Jordan normal form~$J$ into a diagonal part~$D$ and a strictly upper triangular part~$N$.
+\end{example}
+
+
+\begin{warning}
+  Every upper triangular matrix~$x$ can be written as the sum of a diagonal matrix~$D$ and strictly upper triangular matrix~$N$ in a unique way.
+  But decomposition will in general not coincide with the Jordan decomposition of~$x$.
+  Indeed, this holds if and only if~$D$ and~$N$ commute.
+\end{warning}
+
+
+\begin{definition}
+  An element~$x \in \glie$ of a finite dimensional Lie~algebra~$\glie$ is~\defemph{\adsemisimple} if the endomorphism~$\ad(x)$ of~$\glie$ is semisimple.
+\end{definition}
+
+
+\begin{lemma}
+  \label{ss and nilpotent implies ad-ss and ad-nilpotent}
+  Let~$\glie$ be a Lie subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$, or let~$\glie$ be a subalgebra of~$\gllie_n(\kf)$ for some~$n \geq 0$.
+  \begin{enumerate}
+    \item
+      If~$x \in \glie$ is semisimple then~$x$ is also~$\ad$-semisimple.
+      
+      Suppose more specifically that~$\glie$ is a a subalgebra of~$\gllie(V)$.
+      Let~$v_1, \dotsc, v_n$ be a basis of~$V$ consisting of eigenvectors of~$x$ with corresponding eigenvalues~$\lambda_1, \dotsc, \lambda_n \in \kf$, and let~$E_{ij}$ with~$i,j = 1, \dotsc, n$ be the associated basis of~$\gllie(V)$ given by~$E_{ij}(v_k) = \delta_{jk} v_i$ for all~$i,j,k = 1, \dotsc, n$.
+      Then~$E_{ij}$ is an eigenvector of~$\ad_{\gllie(V)}$ with eigenvalues~$\lambda_i - \lambda_j$.
+    \item
+      If~$x \in \glie$ is nilpotent then~$x$ is also~$\ad$-nilpotent.
+  \end{enumerate}
+\end{lemma}
+
+
 \begin{proof}
- As $x_s$ is semisimple the same goes for $\ad(x_s)$ and as $x_n$ is nilpotent the same goes for $\ad(x_n)$, each following from Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent}. As $x_s$ and $x_n$ commute so do $\ad(x_n)$ and $\ad(x_s)$ because $\ad$ is a homomorphism of Lie algebras.
+  It sufficies to consider~$\glie \subseteq \gllie(V)$.
+  \begin{enumerate}[leftmargin=*]
+    \item
+      We have for all~$i,j,k = 1, \dotsc, n$ that
+      \begin{align*}
+        [x,E_{ij}](e_k)
+        &=
+        (x E_{ij} - E_{ij} x)(e_k)
+        \\
+        &=
+        x E_{ij}(e_k) - E_{ij} x(e_k)
+        \\
+        &=
+        \delta_{jk} x(e_i) - \lambda_k E_{ij}(e_k)
+        \\
+        &=
+        \delta_{jk} \lambda_i e_i - \delta_{jk} \lambda_k e_i
+        \\
+        &=
+        (\lambda_i - \lambda_k) \delta_{jk} e_i
+        \\
+        &=
+        (\lambda_i - \lambda_j) \delta_{jk} e_i
+        \\
+        &=
+        (\lambda_i - \lambda_j) E_{ij} e_k  \,.
+      \end{align*}
+      This calculation shows that~$E_{ij}$ is indeed an eigenvector for~$\ad(x) = [x,-]$ with eigenvalue~$\lambda_i - \lambda_j$.
+      This shows that~$\ad_{\gllie(V)}(x)$ is semisimple.
+      The restriction~$\restrict{\ad_\gllie(V)(x)}{\glie} = \ad_\glie(x)$ is therefore again semisimple.
+    \item
+      It was shown in \cref{nilpotent implies ad-nilpotent} that~$\ad_{\gllie(V)}(x)$ is nilpotent.
+      The restrition~$\ad_\glie(x) = \restrict{\ad_{\gllie(V)}(x)}{\glie}$ is again nilpotent.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{corollary}
+  \label{concrete jordan decomposition compatible with adjoint representation}
+  Let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ for some finite dimensional vector space $V$, or a Lie~subalgebra of~$\gllie_n(\kf)$ for some~$n \geq 0$.
+  If~$x \in \glie$ has the Jordan decomposition~$x = x_s + x_n$ then~$\ad(x) = \ad(x_s) + \ad(x_n)$ is the Jordan decomposition of~$\ad(x)$.
+\end{corollary}
+
+
+\begin{proof}
+  It follows from \cref{ss and nilpotent implies ad-ss and ad-nilpotent} that~$\ad(x_s)$ is semisimple and~$\ad(x_n)$ is nilpotent.
+  The endomorphisms~$\ad(x_s)$ and~$\ad(x_n)$ commute because~$x_s$ and~$x_n$ commute and~$\ad$ is a homomorphism of Lie~algebras.
+  The decomposition~$\ad(x) = \ad(x_s) + \ad(x_n)$ therefore satisfy the defining properties of the Jordan decomposition for~$\ad(x)$.
 \end{proof}
 
 
@@ -429,110 +1248,257 @@
 \subsection{Cartan’s Criterion}
 
 
-\begin{lemma}\label{lem: Cartan's criterion technical lemma}
- Let $V$ be a finite dimensional $k$-vector space. Let $A \subseteq B \subseteq \gl(V)$ be linear subspaces and let
- \[
-  T \coloneqq \{z \in \gl(V) \mid \ad(z)(B) \subseteq A\}.
- \]
- If $x \in T$ and $\tr(xz) = 0$ for every $z \in T$ then $x$ is nilpotent.
+\begin{lemma}
+  \label{cartans criterion technical lemma}
+  Let~$A \subseteq B$ be linear subspaces of the Lie~algebra~$\gllie(V)$, where~$V$ is some finite dimensional vector space, and let
+  \[
+    T
+    \defined
+    \{
+      z \in \gllie(V)
+    \suchthat
+      \ad(z)(B) \subseteq A
+    \}  \,.
+  \]
+  If~$x \in T$ with~$\tr(xz) = 0$ for every~$z \in T$ then~$x$ is nilpotent.
 \end{lemma}
+% 
 \begin{proof}
- Let $x = x_s + x_n$ be the concrete Jordan decompositon of $x$. Then the concrete Jordan decomposition of $\ad(x)$ is given by $\ad(x) = \ad(x_s) + \ad(x_n)$ by Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation}. As $\ad(x)(B) \subseteq A$ it follows from the properties of the concrete Jordan decomposition (see Theorem~\ref{thrm: concrete Jordan decomposition}) that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$. Hence $x_s \in T$.
- 
- Let $(v_1, \dotsc, v_n)$ be an ordered basis of $V$ with respect to which $x$ is in Jordan normal form. Then with respect to this basis $x_s$ is diagonal and $x_n$ is strictly upper triangular. Let $\lambda_i \in k$ with $x_s(v_i) = \lambda_i v_i$ for every $i = 1, \dotsc, n$ and set
- \[
-  E \coloneqq \vspan_\Q(\lambda_1, \dotsc, \lambda_n) \subseteq k.
- \]
- To show that $x$ is nilpotent it sufficies to show that $x_s = 0$, which is equivalent to $\lambda_i = 0$ for every $i = 1, \dotsc, n$. As this is the same as $E = 0$ it is enough to show that $f = 0$ for every $\Q$-linear map $f \colon E \to \Q$. For the rest of the proof we fix such an $f$. Let $z \colon V \to V$ be defined by
- \[
-  z(v_i) \coloneqq f(\lambda_i) v_i \quad \text{for every $i = 1, \dotsc, n$}.
- \]
- 
- \begin{claim*}
-  $z \in T$.
- \end{claim*}
- \begin{proof}
-  For all $i,j = 1, \dotsc, n$ let $e_{ij} \in \gl(V)$ with
-  \[
-   e_{ij}(v_k) = \delta_{jk} v_i \quad \text{for every $k = 1, \dotsc, n$}.
-  \]
-  Then $(e_{ij})_{i,j = 1, \dotsc, n}$ is a $k$-basis of $\gl(V)$. As already seen in the proof of Corollary~\ref{cor: concrete Jordan decomposition compatible with adjoint representation} this is a basis of eigenvectors of $\ad(x_s)$ where $e_{ij}$ is an eigenvector of $\ad(x_s)$ with respect to the eigenvalue $\lambda_i - \lambda_j$. Because $(v_1, \dotsc, v_n)$ is also a basis of $V$ consisting of eigenvalues of $z$, where $v_i$ belongs to the eigenvalue $f(\lambda_i)$, it follows in the same way, that $e_{ij}$ is an eigenvector of $\ad(z)$ with respect to the eigenvalue
-  \[
-   \mu_{ij} \coloneqq f(\lambda_i) - f(\lambda_j) = f(\lambda_i - \lambda_j)
-  \]
-  for all $i,j = 1, \dotsc, n$. In particular it follows that if $e_{ij}$ and $e_{i'j'}$ have the same eigenvalue with respect to $\ad(x_s)$, i.e.\ if $\lambda_i - \lambda_j = \lambda_{i'} - \lambda_{j'}$ then the same goes holds with respect to $\ad(z)$. Hence if $y \in \gl(V)$ is an eigenvector of $\ad(x_s)$ with respect to the eigenvalue $\lambda$ then $y$ is an eigenvector of $\ad(z)$ with respect to the eigenvalue $f(y)$.
+  Let $x = x_s + x_n$ be the concrete Jordan decomposition of $x$.
+  We need to show that~$x_s = 0$.
   
-  As $\ad(x)(B) \subseteq A \subseteq B$ there exists a decomposition $B = A \oplus N$ into linear subspaces with $A$ being $\ad(x)$-invariant and thus decomposing into $\ad(x)$-eigenspaces and $N \subseteq \ker \ad(x)$. Then by the previous observations it follows that $A$ also decomposes into $\ad(z)$-eigenspaces and that $\ad(z)(N) = 0$. Hence $\ad(z)(B) \subseteq A$ and thus $z \in T$.
- \end{proof}
- 
- Now \mbox{$\tr(x z) = \tr(x_s z) + \tr(x_n z)$}. As $x_s$ and $z$ are both diagonal with respect to the basis $(v_1, \dotsc, v_n)$ it follows that $\tr(x_s z) = \sum_{i=1}^n f(\lambda_i) \lambda_i$, and as $x_n z$ is also stricly upper triangular it also follows that $\tr(x_n z) = 0$. Together with $z \in T$ this results in
- \[
-  0 = \tr(xz) = \sum_{i=1}^n f(\lambda_i) \lambda_i
- \]
- Because $f(\lambda_i) \in \Q$ and $\lambda_i \in E$ for every $i = 1, \dotsc, n$ applying $f$ to this equation results in
- \[
-  0 = \sum_{i=1}^n f(\lambda_i)^2.
- \]
- It follows that $f(\lambda_i) = 0$ for every $i = 1, \dotsc, n$ and thus $f = 0$.
+  The concrete Jordan decomposition of~$\ad(x)$ is given by~$\ad(x) = \ad(x_s) + \ad(x_n)$ by \cref{concrete jordan decomposition compatible with adjoint representation}.
+  It follows from~$\ad(x)(B) \subseteq A$ and \cref{concrete jordan decomposition} that also $\ad(x_s)(B) = \ad(x)_s(B) \subseteq A$.
+  Hence also~$x_s \in T$.
+  
+  Let~$v_1, \dotsc, v_n$ be a basis of~$V$ with respect to which~$x_s$ is given by a diagonal matrix and~$x_n$ is given by a strictly upper triangular matrix (e.g.\ a basis such that~$x$ is in Jordan normal form, see \cref{computation of jd via jnf}).
+  This is in particular a basis consisting of eigenvectors for~$x_s$ with corresponding eigenvalues~$\lambda_1, \dotsc, \lambda_n \in \kf$.
+  We say that an endomorphism~$y \in \gllie(V)$ is \defemph{diagonal} if~$v_1, \dotsc, v_n$ are eigenvectors of~$y$, i.e.\ if~$y$ is represented by a diagonal matrix with respect to this basis.
+  We write~$y = (\mu_1, \dotsc, \mu_n)$ to mean that~$y$ is the diagonal endomorphism with~$y(v_i) = \mu_i$.
+  (We encourage the reader
+  We observe that if~$y = (\mu_1, \dotsc, \mu_n)$ is a diagonal endomorphism contained in~$T$ then
+  \[
+    0
+    =
+    \tr(xy)
+    =
+    \tr((x_s + x_n)y)
+    =
+    \tr(x_s y) + \underbrace{\tr(x_n y)}_{=0}
+    =
+    \tr(x_s y)
+    =
+    \lambda_1 \mu_1 + \dotsb + \lambda_n \mu_n  \,.
+  \]
+  We used that~$\tr(x_n y) = 0$ because~$x_n$ is represented by a strictly upper triangular matrix with respect to the basis~$v_1, \dotsc, v_n$, and the same then also goes for~$x_n y$.
+  We also used that~$x_s y$ is again diagonal with~$x_s y = (\lambda_1, \dotsc, \lambda_n)(\mu_1, \dotsc, \mu_n) = (\lambda_1 \mu_1, \dotsc, \lambda_n \mu_n)$.
+  
+  Note that in the case of~$\kf = \Real$ or even~$\kf = \Rational$ we could choose~$y = x_s$ to find that
+  \begin{equation}
+    \label{sum of squares is zero}
+    0
+    =
+    \sum_{i=1}^n \lambda_i^2
+  \end{equation}
+  Then~$\lambda_1 = \dotsb = \lambda_n = 0$ and hence~$x_s = 0$.
+  But in our general field~$\kf$ the choice~$y = x_s$ will not suffice, because it does not follow from~$\sum_{i=1}^n \lambda_i^2 = 0$ that already~$\lambda_i = 0$ for all (or even any)~$i$.
+  
+  Instead we will show that~$T$ contains sufficiently many diagonal endomorphisms~$y$ such that it follows from~$\tr(x_s y) = 0$ (for all such~$y$) that already~$x_s = 0$.
+  The main problem will be to ensure that the needed diagonal endomorphisms~$y$ are contained in~$T$.
+  We will do so by constructing~$y$ in such a way that~$\ad(y)$ is a polynomial without constant term in~$\ad(x_s)$.
+  It then follows from~$\ad(x_s)(B) \subseteq A$ that also~$\ad(y)(B) \subseteq A$ and hence~$y \in T$.
+  We will now establish two conditions that are necessary and sufficient to ensure the existence of such a polynomial~$p$.
+  
+  Let~$E_{ij}$ with~$i,j = 1, \dotsc, n$ be the basis of~$\gllie(V)$ induced by the basis~$v_1, \dotsc, v_n$ of~$V$, i.e.\ we have that~$E_{ij}(v_k) = \delta_{jk} v_i$ for all~$i,j,k = 1, \dotsc, n$.
+  We have seen in \cref{ss and nilpotent implies ad-ss and ad-nilpotent} that~$E_{ij}$ is an eigenvector for~$\ad(x_s)$ with eigenvalue~$\lambda_i - \lambda_j$.
+  If more generally~$y = (\mu_1, \dotsc, \mu_n)$ is any diagonal endomorphism then we see that~$E_{ij}$ is an eigenvector for~$\ad(y)$ with eigenvalue~$\mu_i - \mu_j$.
+  We find that~$\ad(y) = p(\ad(x))$ for some polynomial~$p \in \kf[t]$ if and only if
+  \[
+    p(\lambda_i - \lambda_j)
+    =
+    \mu_i - \mu_j
+  \]
+  for all~$i, j = 1, \dotsc, n$.
+  Recall that there exists for all pairwise different inputs~$a_1, \dotsc, a_n \in \kf$ and all desired outputs~$b_1, \dotsc, b_n \in \kf$ some polynomial~$p \in \kf[t]$ with~$p(a_i) = b_i$ for every~$i = 1, \dotsc, n$.
+  The existence of~$p$ is hence equivalent to the condition
+  \begin{equation}
+    \label{difference condition}
+    \lambda_i - \lambda_j
+    =
+    \lambda_k - \lambda_l
+    \implies
+    \mu_i - \mu_j
+    =
+    \mu_k - \mu_l
+  \end{equation}
+  holding for all~$i,j,k,l = 1, \dotsc, n$.
+  But we also want~$p$ to have no constant term, i.e.\ that~$p(0) = 0$.
+  This means that
+  \[
+    \lambda_i - \lambda_j = 0
+    \implies
+    \mu_i - \mu_j = 0
+  \]
+  has to hold for all~$i, j = 1, \dotsc, n$, i.e.\ that
+  \begin{equation}
+    \label{function condition}
+    \lambda_i = \lambda_j
+    \implies
+    \mu_i = \mu_j
+  \end{equation}
+  for all~$i, j = 1, \dotsc, n$.
+  
+  Condition~\eqref{function condition} means precisely that~$\mu_i$ is a function in~$\lambda_i$ in the sense that there exists a function~$f \colon \{\lambda_1, \dotsc, \lambda_n\} \to \kf$ with~$\mu_i = f(\lambda_i)$ for every~$i = 1, \dotsc, n$.
+  To ensure condition~\eqref{difference condition} we want this function~$f$ be be \enquote{additive}.
+  For this to make sense let~$E$ be the additive subgroup of~$\kf$ generated by~$\lambda_1, \dotsc, \lambda_n$.
+  Then for every additive function~$f \colon E \to \kf$ we get a diagonal endomorphism
+  \[
+    y_f
+    \defined
+    (f(\lambda_1), \dotsc, f(\lambda_n))  \,.
+  \]
+  We have seen that the construction of~$y_f$ ensures condition~\eqref{function condition}.
+  Condition~\eqref{difference condition} holds by the additivity of~$f$ because
+  \[
+    \lambda_i - \lambda_j
+    =
+    \lambda_k - \lambda_l
+    \implies
+    f(\lambda_i - \lambda_j)
+    =
+    f(\lambda_k - \lambda_l)
+    \implies
+    f(\lambda_i) - f(\lambda_j)
+    =
+    f(\lambda_k) - f(\lambda_l)
+  \]
+  
+  We have altogether figured out that any additive function~$f \colon E \to \kf$ results in a diagonal endomorphism~$y_f$ such that~$\ad(y_f)$ can be written as a polynomial without constant coefficient in~$\ad(x)$, so that~$y_f$ is again contained in~$T$, and thus
+  \[
+    0
+    =
+    \lambda_1 f(\lambda_1) + \dotsb + \lambda_n f(\lambda_n)  \,.
+  \]
+  
+  We now return to our trick from~\eqref{sum of squares is zero}:
+  If we restrict our attention to additive functions~$f \colon E \to \Integer$ then the term~$\sum_{i=1}^n \lambda_i f(\lambda_i)$ is again contained in~$E$, and it hence it makes sense to apply~$f$ to it.
+  It then follows that
+  \[
+    0
+    =
+    \sum_{i=1}^n f(\lambda_i)^2 \,.
+  \]
+  The field~$\kf$ contains~$\Integer$ is a subring because~$\ringchar \kf = 0$, hence this is already an identity in~$\Integer$.%
+  \footnote{For~$\ringchar \kf = p > 0$ this would only be an identity modulo~$p$.}
+  We can therefore conclude that already~$f(\lambda_i) = 0$ for all~$i$ and hence that~$f = 0$ since~$E$ is generated by the~$\lambda_i$.
+  We now observe that~$E \cong \Integer^m$ for some~$m \leq n$ since~$\ringchar \kf = 0$ (this follows for example from the classification of finiteley generated abelian groups because~$E$ is torsion-free since~$(\kf,+)$ is torsion-free).
+  But we have shown that every additive function~$E \to \Integer$ is already zero.
+  Hence~$E = 0$ and therefore~$\lambda_1 = \dotsb = \lambda_n = 0$.
 \end{proof}
 
 
 \begin{remark}
- The proof of Lemma~\ref{lem: Cartan's criterion technical lemma} was not actually given in the lecture itself and proving it was an exercise on the third exercise sheet. The proof given above is the one I came up with based on some hints given on the exercise sheet. At some point it will proberly be merged with the proof given in \cite[\S 4.3]{Humphreys}.
- 
- In the lecture a proof was given for the special case $k = \Cbb$. But since I have some trouble understanding the details it is not included here (yet).
+  One can also take~$E$ to be the rational span of~$\lambda_1, \dotsc, \lambda_n$ in~$\kf$, which makes sense because~$\Rational$ is the prime field of~$\kf$.
+  One then considers for~$f$ not only additive functions~$E \to \Integer$ but all~{\linear{$\Rational$}} functions~$E \to \Rational$, i.e.\ elements of the dual space~$E^*$.
+  The above argumentation then shows that~$E^* = 0$ and hence~$E = 0$.
 \end{remark}
 
 
-\begin{lemma}[Cartan’s criterion for $\gl(V)$] \label{lem: Cartans criterion for linear Lie algebra}
- Let $V$ be a finite dimensional $k$-vector space and $\g \subseteq \gl(V)$ a Lie subalgebra. Then $\g$ is solvable if and only if $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
+\begin{lemma}[Cartan’s criterion for~$\gllie(V)$]
+  \label{cartans criterion for linear lie algebra}
+  Let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$.
+  Then~$\glie$ is solvable if and only if~$\tr(xy) = 0$ for every~$x \in \glie$ and~$y \in [\glie, \glie]$.
 \end{lemma}
+
+
 \begin{proof}
- Suppose that $\g$ is solvable. Then by Lie’s theorem there exists a basis of $V$ with respect to which $\g$ is represented by upper triangular matrices. Then $[\g,\g]$ is represented by strictly upper triangular matrices, which is why $xy$ is also represented by a stricly upper triangular matrix for every $x \in \g$ and $y \in [\g,\g]$. Hence $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$.
- 
- Now suppose that $\tr(xy) = 0$ for every $x \in \g$ and $y \in [\g,\g]$. Set $A \coloneqq [\g,\g]$, $B \coloneqq \g$ and
- \[
-  T \coloneqq \{x \in \gl(V) \mid \ad(x)(B) \subseteq A\}.
- \]
- Let $x \in [\g,\g] \subseteq T$ and $z \in T$. Then $[z,\g] = [z,B] \subseteq A = [\g,\g]$. Writing $x$ as $x = \sum_{i=1}^n [a_i, b_i]$ with $a_i, b_i \in \g$ for every $i = 1, \dotsc, n$ it follows that
- \begin{align*}
-  \tr(xz)
-  &= \sum_{i=1}^n \tr([a_i, b_i] z)
-  = \sum_{i=1}^n \kappa_{\gl(V)}([a_i, b_i], z) \\
-  &= \sum_{i=1}^n \kappa_{\gl(V)}(a_i, [b_i, z])
-  = \sum_{i=1}^n \tr(a_i \underbrace{[b_i, z]}_{\in [\g,\g]})
-  = 0,
- \end{align*}
- where the last step uses the asumption. It follows from Lemma~\ref{lem: Cartan's criterion technical lemma} that $x$ is nilpotent. Because $[\g,\g]$ consists of nilpotent elements there exists a basis of $V$ with respect to which $[\g,\g]$ is represented by stricly upper triangular matrices. Hence $[\g,\g]$ is nilpotent und $\g$ therefore solvable.
+  Suppose that $\glie$ is solvable.
+  Then by Lie’s theorem there exists a basis of~$V$ with respect to which every~$x \in \glie$ is represented by an upper triangular matrix.
+  Then every~$y \in [\glie,\glie]$ is represented by a strictly upper triangular matrix with respect to this basis.
+  The product~$xy$ is then also represented by a stricly upper triangular matrix. 
+  Hence~$\tr(xy) = 0$.
+  
+  Suppose that~$\tr(xy) = 0$ for every~$x \in \glie$ and~$y \in [\glie, \glie]$.
+  To show that~$\glie$ is solvable we invoke \cref{solvable iff derived is nilpotent} and show that every~$x \in [\glie, \glie]$ is nilpotent.
+  For this we will use \cref{cartans criterion technical lemma} with~$A \defined [\glie, \glie]$,~$B \defined \glie$ and
+  \[
+    T
+    \defined
+    \{
+      x
+      \in
+      \gllie(V)
+    \suchthat
+      \ad(x)(B)
+      \subseteq
+      A
+    \} \,.
+  \]
+  Observe that~$T$ contains~$\glie$ because~$\glie$ is a Lie~subalgebra of~$\gllie(V)$.
+  
+  It now sufficies to show that~$\tr(xz) = 0$ for all~$x \in [\glie, \glie]$ and~$z \in T$.
+  We can then apply \cref{cartans criterion technical lemma} to see that every~$x \in [\glie, \glie]$ is nilpotent.
+  It then follows from \cref{linear lie algebras consisting of nilpotent endomorphisms are nilpotent} that~$[\glie, \glie]$ is nilpotent.
+  
+  It sufficies to consider the case~$x = [a,b]$.
+  Then
+  \[
+    \tr(x z)
+    =
+    \tr([a,b] z)
+    =
+    ([a,b], z)_{\tr}
+    =
+    (a, [b,z])_{\tr}
+    =
+    \tr(a [b,z])
+    =
+    0
+  \]
+  as desired.
+  We used the associativity of the trace form~$(-,-)_{\tr}$ to shorten the calculation, and for the last equality the assumption that~$\tr(xy) = 0$ for all~$x \in \glie$ and~$y \in [\glie, \glie]$.
 \end{proof}
 
 
 \begin{theorem}[Cartan’s criterion for solvability]
- Let $\g$ be a finite dimensional Lie algebra. Then $\g$ is solvable if and only if
- \[
-  \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
- \]
+  A finite dimensional Lie~algebra~$\glie$ is solvable if and only if~$\kappa(x,y) = 0$ for all~$x \in \glie$ and~$y \in [\glie, \glie]$.
 \end{theorem}
+
+
 \begin{proof}
- Because $Z(\g)$ is a solvable ideal in $\g$ it follows that $\g$ is solvable if and only if $\g/Z(\g) \cong \ad \g \subseteq \gl(\g)$ is solvable. By Cartan’s criterion for $\gl(\g)$ this is the case if and only if
- \[
-  \tr(xy) = 0 \quad \text{for every $x \in \ad \g$ and $y \in [\ad(\g), \ad(\g)]$}.
- \]
- Because $[\ad(\g), \ad(\g)] = \ad([\g,\g])$ and $\tr(\ad(x)\ad(y)) = \kappa(x,y)$ for all $x,y \in \g$ this is equivalent to
- \[
-  \kappa(x,y) = 0 \quad \text{for every $x \in \g$ and $y \in [\g,\g]$}.
-  \qedhere
- \]
+  The Lie algebra~$\glie$ is solvable if and only if~$\glie' \defined \ad(\glie) = \glie/\centerlie(\glie)$ is solvable.
+  By Cartan’s criterion for~$\gllie(\glie)$ this is the case if and only if~$\tr(x' y') = 0$ for all~$x' \in \glie'$ and~$y' \in [\glie', \glie']$.
+  This is equivalent to~$\kappa(xy) = 0$ for all~$x, y \in [\glie, \glie]$ because~$[\glie', \glie'] = [\ad(\glie), \ad(\glie)] = \ad([\glie, \glie])$.
 \end{proof}
 
 
-\begin{corollary}\label{cor: rad kappa is a solvable ideal}
- Let $\g$ be a finite dimensional Lie algebra and $\kappa$ the Killing form of $\g$. Then $\rad \kappa$ is a solvable ideal of $\g$. In particular $\rad \kappa \subseteq \rad \g$.
+\begin{corollary}
+  \label{rad kappa is a solvable ideal}
+  Let~$\glie$ be a finite dimensional Lie~algebra with Killing~form~$\kappa$.
+  Then~$\rad \kappa$ is a solvable ideal in~$\glie$
 \end{corollary}
+
+
 \begin{proof}
- Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} already showed that $\rad \kappa$ is an ideal in $\g$. From Lemma~\ref{lem: restriction of the Killing form to an ideal} and the definition of $\rad \kappa$ it follows that 
- \[
-  \kappa_{\rad \g}(x,y) = \kappa(x,y) = 0 \quad \text{for all $x,y \in \rad \kappa$}.
- \]
- Hence by Cartan’s criterion $\rad \kappa$ is solvable.
+  \Cref{radical of bilinear form is an ideal} shows that~$\rad \kappa$ is an ideal in~$\glie$.
+  It follows from \cref{restriction of the killing form to an ideal} that
+  \[
+    \kappa_{\rad \glie}(x,y)
+    =
+    \kappa(x,y)
+    =
+    0
+  \]
+  for all~$x, y \in \rad \kappa$.
+  Hence~$\rad \kappa$ is solvable by Cartan’s criterion.
 \end{proof}
+
+
+\begin{corollary}
+  If~$\glie$ is a finite dimensional Lie~algebra with Killing form~$\kappa$ then~$\rad \kappa \subseteq \rad \glie$.
+  \qed
+\end{corollary}
+
+
+
+
