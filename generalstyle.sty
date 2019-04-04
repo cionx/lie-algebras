@@ -7,13 +7,15 @@
 
 % using EB Garamond as the mainfont, with ebgaramond-maths for maths
 % (don’t confuse ebgaramond-maths with garamond-math)
+% set EB Garamond after including ebgaramand-maths
 \usepackage[cmintegrals,cmbraces]{newtxmath}
 \usepackage{ebgaramond-maths}
-\setmainfont{EB Garamond}
+\setmainfont[RawFeature={+calt}]{EB Garamond} % add Numbers=Lining for non-old numbers
 % import the partial symbol from newtxmath
 \DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
 \SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
 \re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
+% TODO: take greek letters from another font
 
 % undefine openbox from nextxmath, as amsmath defines it again
 \let\openbox\undefined
@@ -82,6 +84,10 @@
 % changing the tikzcdarrow tips to fit the math font
 % \tikzcdset{arrow style=math font}
 
+% different kinds of lists
+\newlist{equivalenceslist}{enumerate}{2}
+\setlist[equivalenceslist,1]{label=\roman*)}
+
 % definition of new counters and changes of already existing ones
 \newcounter{everything}[section]  % to be used for all kind of math enviroments
 
@@ -99,6 +105,7 @@
 \newtheorem{recall}[everything]{Recall}
 \newtheorem{remark}[everything]{Remark}
 \newtheorem{theorem}[everything]{Theorem}
+\newtheorem{warning}[everything]{Warning}
 
 % printing of counter numbers
 \renewcommand{\theeverything}{\thesection.\arabic{everything}}
@@ -120,23 +127,27 @@
 \newcommand{\defemph}{\emph}
 
 % text shortcuts involving nobreakdash
-\newcommand{\adnilpotent}{$\ad$\nobreakdash-nilpotent}
-\newcommand{\algebra}[1]{#1\nobreakdash-algebra}
-\newcommand{\algebras}[1]{#1\nobreakdash-algebras}
-\newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
-\newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
-\newcommand{\invariant}[1]{#1\nobreakdash-invariant}
-\newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
-\newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
-\newcommand{\linear}[1]{#1\nobreakdash-linear}
-\newcommand{\onedimensional}{one\nobreakdash-dimensional}
-\newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
-\newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
-\newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentations}
-\newcommand{\twococycle}{$2$\nobreakdash-cocycle}
-\newcommand{\twodimensional}{two\nobreakdash-dimensional}
-\newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
-\newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
+\newcommand{\adnilpotent}{$\ad$\nobreakdash-nil\-po\-tent}
+\newcommand{\adsemisimple}{$\ad$\nobreakdash-semi\-sim\-ple}
+\newcommand{\algebra}[1]{#1\nobreakdash-al\-ge\-bra}
+\newcommand{\algebras}[1]{#1\nobreakdash-al\-ge\-bras}
+\newcommand{\bilinear}[1]{#1\nobreakdash-bi\-lin\-ear}
+\newcommand{\dimensional}[1]{#1\nobreakdash-di\-men\-sion\-al}
+\newcommand{\howmanyth}[1]{#1\nobreakdash-th}
+\newcommand{\invariance}[1]{#1\nobreakdash-in\-vari\-ance}
+\newcommand{\invariant}[1]{#1\nobreakdash-in\-vari\-ant}
+\newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~al\-ge\-bra}
+\newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~al\-ge\-bras}
+\newcommand{\linear}[1]{#1\nobreakdash-lin\-ear}
+\newcommand{\many}[1]{#1\nobreakdash-many}
+\newcommand{\onedimensional}{one\nobreakdash-di\-men\-sion\-al}
+\newcommand{\subalgebra}[1]{#1\nobreakdash-sub\-al\-ge\-bra}
+\newcommand{\subrepresentation}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
+\newcommand{\subrepresentations}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
+\newcommand{\twococycle}{$2$\nobreakdash-co\-cy\-cle}
+\newcommand{\twodimensional}{two\nobreakdash-di\-men\-sion\-al}
+\newcommand{\vectorspace}[1]{#1\nobreakdash-vec\-tor space}
+\newcommand{\vectorspaces}[1]{#1\nobreakdash-vec\-tor spaces}
 \newcommand{\weightspace}[1]{#1\nobreakdash-weight space}
 \newcommand{\weightvector}[1]{#1\nobreakdash-weight vector}
 
@@ -175,6 +186,7 @@
 
 % spaces and sets
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\BF}{BF}
 \DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
@@ -200,6 +212,7 @@
 
 % relations and operators
 \newcommand{\defined}{\coloneqq}
+\newcommand{\defines}{\eqqcolon}
 \newcommand{\dotcup}{\mathrel{\mathaccent\cdot\cup}}
 \newcommand{\inclusion}{\hookrightarrow}
 \newcommand{\ideal}{\trianglelefteq}
