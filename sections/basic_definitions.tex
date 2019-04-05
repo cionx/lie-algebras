@@ -65,7 +65,7 @@
     \item
       Any vector space~$\glie$ becomes a Lie~algebra via~$[x,y] = 0$ for all~$x,y \in \glie$.
     \item
-      Any \emph{associative}~{\algebra{$\kf$}}~$A$ becomes a~{\liealgebra{$k$}} via~$[a,b] \defined ab - ba$ for all~$a, b \in A$.
+      Any \emph{associative}~{\algebra{$\kf$}}~$A$ becomes a~{\liealgebra{$\kf$}} via~$[a,b] \defined ab - ba$ for all~$a, b \in A$.
       Then~$[-, -]$ is alternating and it follows from the associativity of the multiplication of~$A$ that
       \begin{align*}
          {}&  [a,[b,c]] + [b,[c,a]] + [c,[a,b]] \\
@@ -812,7 +812,7 @@
           [\ad(x), \ad(y)](z) \,.
       \end{align*}
     \item
-    If~$A$ and~$B$ are associative~{\algebras{$\kf$}} then any homomorphism of~{\algebras{$k$}}~$f \colon A \to B$ is also a homomorphism of Lie~algebras because
+    If~$A$ and~$B$ are associative~{\algebras{$\kf$}} then any homomorphism of~{\algebras{$\kf$}}~$f \colon A \to B$ is also a homomorphism of Lie~algebras because
     \[
       f([a,b])
       =
@@ -991,7 +991,7 @@
     \item
       The image~$\im f$ is a Lie~subalgebra of~$\hlie$.
     \item
-      If~$I \ideal \glie$ is any ideal with~$\ker f \subseteq I$ then there exists a unique homomorphism of Lie~algebras~$\tilde{f} \colon \glie/I \to \hlie$ with~$f = \tilde{f} \circ \pi$ where~$\pi \colon \glie \to \hlie/I$ is the canonical projection.
+      If~$I$ is any ideal in~$\glie$ with~$\ker f \subseteq I$ then there exists a unique homomorphism of Lie~algebras~$\tilde{f} \colon \glie/I \to \hlie$ with~$f = \tilde{f} \circ \pi$ where~$\pi \colon \glie \to \hlie/I$ is the canonical projection.
       \[
         \begin{tikzcd}
           \glie
@@ -1007,7 +1007,7 @@
         \end{tikzcd}
       \]
     \item
-      If~$I, J \ideal \glie$ are two ideals with~$I \subseteq J$ then~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
+      If~$I$ and~$J$ are two ideals in~$\glie$ are two ideals with~$I \subseteq J$ then~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
       \[
         (\glie/I) / (J/I)
         \to
@@ -1019,7 +1019,7 @@
       \]
       is already a natural isomorphism of Lie~algebras.
     \item
-      If~$I, J \ideal \glie$ are any two ideals then the natural isomorphism of vector spaces
+      For any two ideals~$I$ and~$J$ in~$\glie$ the natural isomorphism of vector spaces
       \begin{gather*}
         (I + J)/J
         \to

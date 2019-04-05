@@ -117,7 +117,7 @@
       This representation is the the \defemph{natural representation}\index{natural representation}\index{representation!natural} of~$\glie$.
     \item
       Let~$\glie \defined \sllie_2(\kf)$ for any field~$\kf$.
-      Then the polynomial ring~$\kf[x,y]$ becomes a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(k[x,y])$ given by
+      Then the polynomial ring~$\kf[x,y]$ becomes a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(\kf[x,y])$ given by
       \[
         \rho(e) = y \dd{x} \,,
         \qquad
@@ -125,7 +125,7 @@
         \qquad
         \rho(f) = x \dd{y}  \,.
       \]
-      Here we denote by~$x$ and~$y$ not only the variables of~$k[x,y]$ but also the multiplication with these variables, and~$(e,h,f)$ denotes the standard basis of~$\sllie_2(\kf)$.
+      Here we denote by~$x$ and~$y$ not only the variables of~$\kf[x,y]$ but also the multiplication with these variables, and~$(e,h,f)$ denotes the standard basis of~$\sllie_2(\kf)$.
       To see that this is a homomorphism of Lie~algebra note that
       \begin{align*}
         e.(x^n y^m)
@@ -185,7 +185,7 @@
       for all~$n, m \geq 0$.
     \item
       Let~$\glie \defined \sllie_2(\kf)$ for any field~$\kf$.
-      Then the polynomial ring in one variable~$k[x]$ is a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(k[x])$ given by
+      Then the polynomial ring in one variable~$\kf[x]$ is a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(k[x])$ given by
       \[
         \rho(e)
         =
@@ -199,7 +199,7 @@
         =
         -\dd{x} \,.
       \]
-      The~$\glie$ acts on~$k[x]$ via
+      The~$\glie$ acts on~$\kf[x]$ via
       \[
         e.x^n = n x^{n-1} \,,
         \qquad
@@ -296,7 +296,7 @@
         (x.v) \tensor w + v \tensor (x.w)
       \]
       for all~$x \in \glie$,~$v \in V$ and~$w \in W$.
-      More generally, if~$V_1, \dotsc V_n$ are representations of~$\glie$ then their tensor product~o$V_1 \tensor \dotsb \tensor V_n$ is again a representation of~$\glie$ via
+      More generally, if~$V_1, \dotsc V_n$ are representations of~$\glie$ then their tensor product~$V_1 \tensor \dotsb \tensor V_n$ is again a representation of~$\glie$ via
       \[
         x.(v_1 \tensor \dotsb \tensor v_n)
         = \sum_{i=1}^n
@@ -732,7 +732,7 @@
       If~$V$ is any representation of~$\glie$ then the linear subspace of invariants~$V^\glie$ is a (trivial) subrepresentation.
     \item
       Let~$f \colon V \to V$ be an endomorphism of a representation~$V$ of~$\glie$.
-      Then for any scalar~$\lambda \in k$ both the eigenspace
+      Then for any scalar~$\lambda \in \kf$ both the eigenspace
       \[
         V_\lambda
         \defined
