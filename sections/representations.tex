@@ -1,4 +1,4 @@
-\section{Representations of Lie~algebras}
+\section{Representations of Lie~Algebras}
 
 
 % TODO: Quotient representations
@@ -108,7 +108,7 @@
       \[
         \glie
         \to
-        \gllie(k^n) \,,
+        \gllie(\kf^n) \,,
         \quad
         x
         \mapsto
@@ -264,16 +264,22 @@
 
 \begin{remark}
   It follows together with \cref{lie algebras act adjoint by derivations} that every Lie~algebras~$\glie$ acts on itself by derivations of itself via the adjoint representation.
-  This is where much of the structure of Lie~algebras comes from and why the Jacobi identity is of interest (I guess).
+  The author suspects that this is where much of the structure of Lie~algebras comes from and why the Jacobi identity is of interest.
 \end{remark}
 
 
-\begin{proposition}[New representations from old ones]
+
+
+
+\subsection{New Representations from Old Ones}
+
+
+\begin{proposition}
   \label{new representations from old ones}
   Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$.
   \begin{enumerate}
     \item
-      If~$(V_i)_{i \in I}$ is a collection of representations of~$\glie$ then the direct sum~$\prod_{i \in I} V_i$ is again a representation of~$\glie$ via
+      If~$(V_i)_{i \in I}$ is a collection of representations of~$\glie$ then the product~$\prod_{i \in I} V_i$ is again a representation of~$\glie$ via
       \[
         x.(v_i)_{i \in I}
         =
@@ -422,6 +428,77 @@
 
 
 \begin{definition}
+  Let~$V$ be a representation of a Lie~algebra~$\glie$.
+  A \defemph{subrepresentation} of~$V$ is a linear subpace~$U$ of~$V$ such that~$x.u \in U$ for all~$x \in \glie$ and~$u \in U$.
+\end{definition}
+
+
+\begin{remark}
+  If~$(V, \rho)$ is a representation of a Lie~algebra~$\glie$ then a linear subspace~$U \subseteq V$ is a subrepresentation if and only if~$U$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, in the sense that~$\rho(x)(U) \subseteq U$.
+\end{remark}
+
+
+\begin{examples}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      If~$V$ is any representation of~$\glie$ then the linear subspaces~$0$ and~$V$ itself are subrepresentations.%
+    \footnote{These two subrepresentations are often called the \defemph{trivial} ones.
+      We will abstain from doing so, as we have already defined the notion of a trivial representation in \cref{trivial representations}.}
+    \item
+      If~$V$ is a representation of~$\glie$ and~$U_i$ with~$i \in I$ a collection of subrepresentations~$U_i$ of~$V$ then~$\sum_{i \in I} U_i$ is again a subrepresentation of~$V$.
+    \item
+      If~$(V_i)_{i \in I}$ is any collection of representations of~$\glie$ then the direct sum~$\bigoplus_{i \in I} V_i$ is a subrepresentation of the product~$\prod_{i \in I} V_i$.
+    \item
+      The subrepresentations of the adjoint representation~$\ad \colon \glie \to \gllie(\glie)$ are precisely the ideals in~$\glie$.
+    \item
+      If~$V$ is any representation of~$\glie$ then the linear subspace
+      \[
+        \glie V
+        \defined
+        \vspan_\kf
+        \{
+          x.v
+          \suchthat
+          x \in \glie,
+          v \in V
+        \}
+      \]
+      is a subrepresentation of~$\glie$.
+    \item
+      If~$V$ is any representation of~$\glie$ then the linear subspace of invariants~$V^{\glie}$ is a (trivial) subrepresentation.
+    \item
+      Let~$f \colon V \to V$ be an endomorphism of a representation~$V$ of~$\glie$.
+      Then for any scalar~$\lambda \in \kf$ both the eigenspace
+      \[
+        V_\lambda
+        \defined
+        \{
+          v \in V
+        \suchthat
+          f(v)
+          =
+          \lambda v
+        \}
+      \]
+      and the generalized eigenspace
+      \[
+        V_{(\lambda)}
+        \defined
+        \bigcup_{n \geq 0} \ker(f - \lambda \id_V)^n
+        =
+        \{
+          v \in V
+        \suchthat
+        \text{$(f - \lambda \id_V)^n(v) = 0$ for some~$n \geq 0$}
+        \}
+      \]
+      are subrepresentations of~$V$.
+  \end{enumerate}
+\end{examples}
+
+
+\begin{definition}
   \label{trivial representations}
   Let~$V$ be a representation of a Lie~algebra~$\glie$.
   \begin{enumerate}
@@ -447,14 +524,15 @@
 
 
 \begin{lemma}
-  The space of invariants~$V^\glie$ is a~{\linear{$\kf$}} subspace of~$V$, for every representation~$V$ of~$\glie$.
+  The space of invariants~$V^{\glie}$ is for every representation~$V$ of~$\glie$ the maximal invariant subrepresentation of~$V$.
+  \qed
 \end{lemma}
 
 
 \begin{example}
   The invariants of the adjoint representation (of~$\glie$ on itself) are given by
   \begin{align*}
-    \glie^\glie
+    \glie^{\glie}
     &=
     \{
       y \in \glie
@@ -486,7 +564,6 @@
 
 
 \subsection{Homomorphisms of Representations}
-
 
 \begin{definition}
   Let~$V$ und~$W$ be two representations of a~{\liealgebra{$\kf$}}~$\glie$.
@@ -529,7 +606,7 @@
       commutes for every~$x \in \glie$.
     \item
       If~$f, g \colon V \to W$ are homomorphisms of representations then~$f + g$ is again a homomorphism of representations, and~$\lambda f$ is for every~$\lambda \in \kf$ again a homomorphism of representations.
-      Hence~$\Hom_\glie(V,W)$ is a~{\linear{$\kf$}} subspace of~$\Hom_\kf(V,W)$.
+      Hence~$\Hom_{\glie}(V,W)$ is a~{\linear{$\kf$}} subspace of~$\Hom_\kf(V,W)$.
     \item
       If~$f \colon V \to W$ is an isomorphism of representations then its inverse~$f^{-1} \colon W \to V$ is not only a linear map but again a homomorphism (and thus isomorphism) of representations.
       Indeed, we find that
@@ -553,6 +630,13 @@
 \end{remark}
 
 
+\begin{lemma}
+  Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$ let~$f \colon V \to W$ be a homomorphism of representations.
+  Then the kernel of~$f$ is a subrepresentation of~$V$ while the image of~$f$ is a subrepresentation~$W$.
+  \qed
+\end{lemma}
+
+
 \begin{remark}
   \label{homomorphisms of representations as invariants}
   Given two representations~$V$ and~$W$ of a Lie~algebra~$\glie$ a linear map~$f \colon V \to W$ is a homomorphism of representations if and only if it is invariant under the induced action of~$\glie$ on~$\Hom(V,W)$:
@@ -565,7 +649,7 @@
     \iff{}& \text{$x.f = 0$ for every~$x \in \glie$}  \\
     \iff{}& \text{$f$ is invariant} \,.
   \end{align*}
-  Hence~$\Hom_\glie(V,W) = \Hom_\kf(V,W)^\glie$.
+  Hence~$\Hom_{\glie}(V,W) = \Hom_\kf(V,W)^{\glie}$.
 \end{remark}
 
 
@@ -672,20 +756,15 @@
         f(v_1) \tensor \dotsb \tensor f(v_n)
       \end{align*}
       is already a homomorphism of representations.
+    \qed
   \end{enumerate}
 \end{proposition}
 
 
-\begin{proof}
-  Direct computaton.
-% TODO: Do these computations.
-\end{proof} 
 
 
 
-
-
-\subsection{Subrepresentations and Irreducible Representations}
+\subsection{Irreducible and Semisimple Representations}
 
 
 \begin{definition}
@@ -693,11 +772,10 @@
   A \defemph{subrepresentation} of~$V$ is a linear subpace~$U$ of~$V$ such that~$x.u \in U$ for all~$x \in \glie$ and~$u \in U$.
 \end{definition}
 
+
 \begin{remark}
   If~$(V, \rho)$ is a representation of a Lie~algebra~$\glie$ then a linear subspace~$U \subseteq V$ is a subrepresentation if and only if~$U$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, in the sense that~$\rho(x)(U) \subseteq U$.
 \end{remark}
-
-
 
 
 \begin{examples}
@@ -729,7 +807,7 @@
       \]
       is a subrepresentation of~$\glie$.
     \item
-      If~$V$ is any representation of~$\glie$ then the linear subspace of invariants~$V^\glie$ is a (trivial) subrepresentation.
+      If~$V$ is any representation of~$\glie$ then the linear subspace of invariants~$V^{\glie}$ is a (trivial) subrepresentation.
     \item
       Let~$f \colon V \to V$ be an endomorphism of a representation~$V$ of~$\glie$.
       Then for any scalar~$\lambda \in \kf$ both the eigenspace
@@ -819,10 +897,10 @@
     \item
       If both~$V$ and~$W$ are irreducible then either~$f$ is bijective or~$f = 0$, but not both.
     \item
-      If~$V$ is irreducible then the endomorphism algebra~$\End_\glie(V)$ is a skew field over~$\kf$.
+      If~$V$ is irreducible then the endomorphism algebra~$\End_{\glie}(V)$ is a skew field over~$\kf$.
     \item
-      If~$\kf$ is algebraically closed and~$V$ a finite dimensional and irreducible then every endomorphism~$f \in \End_\glie(V)$ is given by multiplication with some scalar~$\lambda \in \kf$.
-      In particular~$\End_\glie(V) = \kf$.
+      If the field~$\kf$ is algebraically closed and~$V$ finite dimensional and irreducible then every endomorphism~$f \in \End_{\glie}(V)$ is given by multiplication with some scalar~$\lambda \in \kf$.
+      In particular~$\End_{\glie}(V) = \kf$.
   \end{enumerate}
 \end{lemma}
 
@@ -838,7 +916,7 @@
       This is a combination of the previous two statements.
     \item
       This is a reformulation of the previous statement;
-      note that~$\End_\glie(V) \neq 0$ because~$\id_V \neq 0$.
+      note that~$\End_{\glie}(V) \neq 0$ because~$\id_V \neq 0$.
     \item
       The endomorphism~$f$ admits an eigenvalue~$\lambda \in \kf$ because~$\kf$ is algebraically closed.
       The endomorphism~$f - \lambda \id_V$ is non-injective and hence~$f - \lambda \id_V = 0$ as seen above.
