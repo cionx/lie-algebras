@@ -192,8 +192,8 @@
 
 
 \begin{proof}
-  The isomorphisms of representations~$\Phi_1$ from \cref{bilinear forms and hom identification} restrict to vector space isomorphisms between the invariants~$\BF(V, W)^\glie$ and~$\Hom_\kf(V,W)^\glie$.
-  We know from \cref{homomorphisms of representations as invariants} that~$\Hom_\kf(V,W)^\glie = \Hom_\glie(V,W)$, whence the equivalence of~\ref*{beta invariant} and~\ref*{phi1 a homomorphism}.
+  The isomorphisms of representations~$\Phi_1$ from \cref{bilinear forms and hom identification} restrict to vector space isomorphisms between the invariants~$\BF(V, W)^{\glie}$ and~$\Hom_\kf(V,W)^{\glie}$.
+  We know from \cref{homomorphisms of representations as invariants} that~$\Hom_\kf(V,W)^{\glie} = \Hom_{\glie}(V,W)$, whence the equivalence of~\ref*{beta invariant} and~\ref*{phi1 a homomorphism}.
   The equivalence of~\ref*{beta invariant} and~\ref*{phi2 a homomorphism} can be seen in the same way.
 \end{proof}
 
@@ -773,7 +773,7 @@
 \begin{lemma}
   \label{restriction of the killing form to an ideal}
   Let~$\glie$ be a finite-dimensional Lie~algebra over an arbitrary field~$\kf$.
-  If~$I$ is an ideal in~$\glie$ then the Killing~form~$\kappa_I$ of~$I$ is given by restriction of the Killing~form~$\kappa_\glie$ of~$\glie$ to~$I$, i.e.~$\kappa_I = \restrict{\kappa_\glie}{I \times I}$.
+  If~$I$ is an ideal in~$\glie$ then the Killing~form~$\kappa_I$ of~$I$ is given by restriction of the Killing~form~$\kappa_{\glie}$ of~$\glie$ to~$I$, i.e.~$\kappa_I = \restrict{\kappa_{\glie}}{I \times I}$.
 \end{lemma}
 
 
@@ -782,8 +782,8 @@
   Let~$(x_1, \dotsc, x_n)$ be a basis of~$I$ and extend it to basis~$(x_1, \dotsc, x_n, x_{n+1}, \dotsc, x_m)$ of~$\glie$.
   With respect to the basis~$(x_1, \dotsc, x_n)$ of~$I$ the endomorphism~$\ad_I(x)$ is represented by a matrix~$A_x \in \Mat_n(\kf)$ and the endomorphism~$\ad_I(y)$ is represented by a matrix~$A_y \in \Mat_n(\kf)$.
   
-  The images of the endomorphisms~$\ad_\glie(x)$ and~$\ad_\glie(y)$ are contained in~$I$ because~$I$ is an ideal in~$\glie$.
-  With respect to the basis~$(x_1, \dotsc, x_m)$ of~$\glie$ the endomorphisms $\ad_\glie(x)$ and $\ad_\glie(y)$ are therefore represented by matrices of the form
+  The images of the endomorphisms~$\ad_{\glie}(x)$ and~$\ad_{\glie}(y)$ are contained in~$I$ because~$I$ is an ideal in~$\glie$.
+  With respect to the basis~$(x_1, \dotsc, x_m)$ of~$\glie$ the endomorphisms $\ad_{\glie}(x)$ and $\ad_{\glie}(y)$ are therefore represented by matrices of the form
   \[
     C_x
     =
@@ -804,12 +804,12 @@
     \Mat_m(\kf)
   \]
   for some matrices~$B_x, B_y \in \Mat_{n,m-n}(\kf)$.
-  (Here we used that the endomorphisms~$\ad_I(x)$ and~$\ad_I(y)$ of~$I$ are the restrictions of the endorphisms~$\ad_\glie(x)$ and~$\ad_\glie(y)$ of~$\glie$ to~$I$.)
+  (Here we used that the endomorphisms~$\ad_I(x)$ and~$\ad_I(y)$ of~$I$ are the restrictions of the endorphisms~$\ad_{\glie}(x)$ and~$\ad_{\glie}(y)$ of~$\glie$ to~$I$.)
   From these explicit matrix descriptions we find that
   \begin{align*}
-    \kappa_\glie(x,y)
+    \kappa_{\glie}(x,y)
     &=
-    \tr(\ad_\glie(x) \ad_\glie(y))
+    \tr(\ad_{\glie}(x) \ad_{\glie}(y))
     \\
     &=
     \tr\left(
@@ -874,7 +874,7 @@
     \item
       If~$x,y \in \glie$ are given by~$x = x_1 + x_2$ and~$y = y_1 + y_2$ with respect to the decomposition~$\glie = I \oplus J$ then
       \[
-        \kappa_\glie(x,y)
+        \kappa_{\glie}(x,y)
         =
         \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,.
       \]
@@ -1219,10 +1219,10 @@
       \end{align*}
       This calculation shows that~$E_{ij}$ is indeed an eigenvector for~$\ad(x) = [x,-]$ with eigenvalue~$\lambda_i - \lambda_j$.
       This shows that~$\ad_{\gllie(V)}(x)$ is semisimple.
-      The restriction~$\restrict{\ad_\gllie(V)(x)}{\glie} = \ad_\glie(x)$ is therefore again semisimple.
+      The restriction~$\restrict{\ad_{\gllie}(V)(x)}{\glie} = \ad_{\glie}(x)$ is therefore again semisimple.
     \item
       It was shown in \cref{nilpotent implies ad-nilpotent} that~$\ad_{\gllie(V)}(x)$ is nilpotent.
-      The restrition~$\ad_\glie(x) = \restrict{\ad_{\gllie(V)}(x)}{\glie}$ is again nilpotent.
+      The restrition~$\ad_{\glie}(x) = \restrict{\ad_{\gllie(V)}(x)}{\glie}$ is again nilpotent.
     \qedhere
   \end{enumerate}
 \end{proof}

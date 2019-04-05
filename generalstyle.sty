@@ -1,24 +1,23 @@
 %%%%% PACKAGES
 
+
 \usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} % bibliography
-\usepackage{fontspec} % font stuff (needed?)
 \usepackage{gitinfo2} % including git information on the title page
 \usepackage[original]{imakeidx} % for the index, load before hyperref
 
-% using EB Garamond as the mainfont, with ebgaramond-maths for maths
-% (don’t confuse ebgaramond-maths with garamond-math)
-% set EB Garamond after including ebgaramand-maths
-\usepackage[cmintegrals,cmbraces]{newtxmath}
-\usepackage{ebgaramond-maths}
-\setmainfont[RawFeature={+calt}]{EB Garamond} % add Numbers=Lining for non-old numbers
-% import the partial symbol from newtxmath
-\DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
-\SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
-\re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
-% TODO: take greek letters from another font
-
-% undefine openbox from nextxmath, as amsmath defines it again
-\let\openbox\undefined
+% % OLD FONT CONFIGURATION:
+% % using EB Garamond as the mainfont, with ebgaramond-maths for maths
+% % (don’t confuse ebgaramond-maths with garamond-math)
+% % set EB Garamond after including ebgaramand-maths
+% \usepackage[cmintegrals,cmbraces]{newtxmath}
+% \usepackage{ebgaramond-maths}
+% \setmainfont[RawFeature={+calt}]{EB Garamond} % add Numbers=Lining for non-old numbers
+% % import the partial symbol from newtxmath
+% \DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
+% \SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
+% \re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
+% \let\openbox\undefined
+% % TODO: take greek letters from another font
 
 \usepackage{appendix}   % the appendix
 \usepackage{csquotes}   % automagically the right quotation marks
@@ -34,11 +33,27 @@
 \usepackage{tikz-cd} % commutative diagrams
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
 
-\usepackage[colorlinks=true]{hyperref} % hyperlinks
+\usepackage[colorlinks=true]{hyperref} % hyperlinks, load after (nearly) everything
 
 % the following are to be loaded after hyperref
 \usepackage[symbols, sort=use, style=long3col]{glossaries-extra} % list of symbols
 \usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing
+
+
+
+
+
+%%% FONTS
+\usepackage[silent]{fontspec}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % has to be loaded after mathtools and amssymb
+\setmainfont[RawFeature={+calt}]{EB Garamond}
+\setmathfont{TeX Gyre Termes Math}
+\setmathfont[range=\mathup/{num,latin,Latin},Numbers=Lining]{EBGaramond12-Regular}
+\setmathfont[range=\mathit/{latin,Latin}]{EBGaramond12-Italic}
+\setmathfont[range=\mathit/{greek,Greek},Scale=MatchUppercase]{TeX Gyre Pagella Math}
+\setmathfont[range=\mathbb,Scale=MatchUppercase]{TeX Gyre Schola Math}
+\setmathfont[range=\mathcal,Scale=MatchUppercase]{Latin Modern Math}
+\setmathfont[range=\mathfrak,Scale=MatchUppercase]{Asana Math}
 
 
 
@@ -160,7 +175,7 @@
 \newcommand{\Integer}{\mathbb{Z}}
 \newcommand{\Rational}{\mathbb{Q}}
 \newcommand{\Real}{\mathbb{R}}
-\newcommand{\Complex}{\mathbb{Cbb}}
+\newcommand{\Complex}{\mathbb{C}}
 \newcommand{\Field}{\mathbb{F}}
 \newcommand{\kf}{\mathbf{k}}
 \newcommand{\Lf}{\mathbf{L}}

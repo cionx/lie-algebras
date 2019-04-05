@@ -185,7 +185,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      This can be shown by induction because~$f([X,Y]) = [f(X), f(Y)]$ for any two subsets~$X, Y \subseteq \glie$.
+      This can be shown by induction because~$f([X,Y]) = [f(X), f(Y)]$ for all subsets~$X, Y \subseteq \glie$.
     \item
       The inclusion~$\hlie \inclusion \glie$ is a Lie algebra homomorphism, hence~$\hlie^{(i)} \subseteq \glie^{(i)}$ for every~$i \geq 0$.
       It thus follows from~$\glie^{(n)} = 0$ for~$n$ sufficiently large that also~$\hlie^{(n)} = 0$.
@@ -547,11 +547,11 @@
   In the first step we show that the \lcnamecref{common eigenvector for nilpotent Lie algebras} holds if~$\glie$ admits a nonzero proper ideal~$I$.
   We do so by applying the induction hypothesis to~$I$ and~$\glie/I$ (or rather~$\glie'$, a further quotient of~$\glie/I$).
   In the second step we show that~$\glie$ does indeed admit such an ideal.
-  We do so by showing that every maximal proper Lie~subalgebra~$I$ of~$\glie$ is already an ideal, which we do by showing that~$\normallie_\glie(I) = \glie$ because~$I$ acts nilpotent on the quotient vector space~$\glie/I$.
+  We do so by showing that every maximal proper Lie~subalgebra~$I$ of~$\glie$ is already an ideal, which we do by showing that~$\normallie_{\glie}(I) = \glie$ because~$I$ acts nilpotent on the quotient vector space~$\glie/I$.
   
   If~$\hlie$ is a proper Lie~subalgebra of~$\glie$ then the linear subspace
   \[
-    W_\hlie
+    W_{\hlie}
     \defined
     \{
       v \in V
@@ -609,9 +609,9 @@
   The image of~$g$ is a Lie subalgebra of~$\gllie(\glie/I)$ of dimension strictly smaller than~$\glie$.
   So by induction hypothesis there exists some nonzero~$y \in \glie/I$ with~$\induced{z}.y = 0$ for every~$x \in I$.
   If~$x \in \glie$ is a representation of~$y$ then this means that~$x \notin I$ (as~$y$ is nonzero) but~$[z,x] = z.x \in I$ for every~$z \in I$ (because~$\induced{z}.y = 0$ for every~$z \in I$.
-  Hence~$x$ is contained in the normalizer~$\normallie_\glie(I)$, but not contained in~$I$.
+  Hence~$x$ is contained in the normalizer~$\normallie_{\glie}(I)$, but not contained in~$I$.
   This shows that~$I$ is properly contained in its normalizer.
-  This normalizer is again a Lie~subalgebra of~$\glie$, and hence it follows from the maximality of~$\glie$ (among all proper Lie~subalgebras of~$\glie$) that~$\normallie_\glie(I) = \glie$.
+  This normalizer is again a Lie~subalgebra of~$\glie$, and hence it follows from the maximality of~$\glie$ (among all proper Lie~subalgebras of~$\glie$) that~$\normallie_{\glie}(I) = \glie$.
   This means that~$I$ is an ideal in~$\glie$.
 \end{proof}
 
@@ -1037,7 +1037,7 @@
       $\glie$ is solvable.
     \item
       \label{stabilizes a complete flag}
-      $\glie$ stabilizes some complete flag of~$V$, i.e.\ there exists a complete flag~$(V_i)_{i=0}^n$ of~$V$~with~$x(V_i) \subseteq V_i$ for all~$x \in \glie$ and~$i = 0, \dotsc, n$.
+      $\glie$ stabilizes some complete flag of~$V$, i.e.\ there exists a complete flag~$(V_i)_{i=0}^n$ with~$x(V_i) \subseteq V_i$ for all~$x \in \glie$ and~$i = 0, \dotsc, n$.
     \item
       \label{is triangularizable}
       There exists a basis of~$V$ with respect to which every~$x \in \glie$ is represented by an upper triangular matrix.

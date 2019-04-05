@@ -1,10 +1,10 @@
-\section{Basic Definitions}
+\section{Lie Algebras}
 
 
 
 
 
-\subsection{Definition and Examples of Lie~Algebras}
+\subsection{Definition and Examples}
 
 
 \begin{definition}
@@ -478,13 +478,13 @@
 
 \begin{lemma}
  Let~$\glie$ be a Lie~algebra and~$U \subseteq \glie$ a linear subspace.
- Then both the normalizer~$\normallie_\glie(U)$ and the centralizer~$\centerlie_\glie(U)$ are Lie~subalgebras of~$\glie$.
- If~$x \in \glie$ is any element then the centralizer~$\centerlie_\glie(x)$ is a Lie~subalgebra of~$\glie$.
+ Then both the normalizer~$\normallie_{\glie}(U)$ and the centralizer~$\centerlie_{\glie}(U)$ are Lie~subalgebras of~$\glie$.
+ If~$x \in \glie$ is any element then the centralizer~$\centerlie_{\glie}(x)$ is a Lie~subalgebra of~$\glie$.
 \end{lemma}
 
 
 \begin{proof}
- If~$x, y \in \normallie_\glie(U)$ then it follows for every~$z \in U$ from the Jacobi~identity that
+ If~$x, y \in \normallie_{\glie}(U)$ then it follows for every~$z \in U$ from the Jacobi~identity that
  \[
   [[x,y], z]
   =
@@ -498,7 +498,7 @@
   =
   U
  \]
- and therefore~$[x,y] \in \normallie_\glie(U)$.
+ and therefore~$[x,y] \in \normallie_{\glie}(U)$.
  In the same way it follows for all~$x, y \in \glie$ and~$z \in U$ that
  \[
   [[x,y], z]
@@ -509,17 +509,18 @@
   =
   0
  \]
- and therefore~$[x,y] \in Z_\glie(U)$.
- For any~$x \in \glie$ the span~$\kf x$ is a linear subspace of~$\glie$ with~$\centerlie_\glie(x) = \centerlie_\glie(\kf x)$.
- Hence~$\centerlie_\glie(x)$ is a Lie~subalgebra of~$\glie$, as shown above.
+ and therefore~$[x,y] \in \centerlie_{\glie}(U)$.
+ 
+ The span~$\kf x$ of any~$x \in \glie$ is a linear subspace of~$\glie$ with~$\centerlie_{\glie}(x) = \centerlie_{\glie}(\kf x)$.
+ Hence~$\centerlie_{\glie}(x)$ is a Lie~subalgebra of~$\glie$, as shown above.
 \end{proof}
 
 
 \begin{remark}
  Let~$\glie$ be a Lie~algebra and~$L \subseteq \glie$ a linear subspace.
- Then~$L$ is a Lie~subalgebra of~$\glie$ if and only if~$L \subseteq \normallie_\glie(L)$.
- Then~$L$ is not only contained in~$\normallie_\glie(L)$ but~$\normallie_\glie(L)$ is the maximal Lie~subalgebra of~$\glie$ that contains~$L$ as an ideal.
- As a special case of this, we find that~$L$ is an ideal in~$\glie$ if and only if~$\normallie_\glie(L) = \glie$.
+ Then~$L$ is a Lie~subalgebra of~$\glie$ if and only if~$L \subseteq \normallie_{\glie}(L)$.
+ Then~$L$ is not only contained in~$\normallie_{\glie}(L)$ but~$\normallie_{\glie}(L)$ is the maximal Lie~subalgebra of~$\glie$ that contains~$L$ as an ideal.
+ As a special case of this, we find that~$L$ is an ideal in~$\glie$ if and only if~$\normallie_{\glie}(L) = \glie$.
 \end{remark}
 
 
@@ -767,7 +768,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      For any Lie~algebra~$\glie$ the identity~$\id_\glie \colon \glie \to \glie$ is a Lie~algebra homomorphism.
+      For any Lie~algebra~$\glie$ the identity~$\id_{\glie} \colon \glie \to \glie$ is a Lie~algebra homomorphism.
     \item
       Given Lie~algebras~$\glie$,~$\hlie$ and~$\klie$ and Lie~algebra homomorphisms~$f \colon \glie \to \hlie$ and~$g \colon \hlie \to \klie$ the composition~$g \circ f \colon \glie \to \klie$ is again a homomorphism of Lie~algebras.
     \item
@@ -1255,7 +1256,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      The Lie~algebra~$\gllie_n(\kf)$ is never simple because~$[\gllie_n(\kf), \gllie_n(\kf)] = \sllie_n(\kf) \neq \gllie_n(\kf)$ for~$n \geq 1$, and~$\gllie_n(k) = 0$ for~$n = 0$.
+      The Lie~algebra~$\gllie_n(\kf)$ is never simple because~$[\gllie_n(\kf), \gllie_n(\kf)] = \sllie_n(\kf) \neq \gllie_n(\kf)$ for~$n \geq 1$, and~$\gllie_n(\kf) = 0$ for~$n = 0$.
     \item
       The Lie~algebra~$\glie \defined \sllie_2(\kf)$ is simple if and only if~$\ringchar \kf \neq 2$:
       
@@ -1308,7 +1309,7 @@
       with~$[e,x] \in I$ and~$[e,[e,x]] \in I$.
       
       It follows that the ideal~$I$ contains the basis vector~$e$:
-      If~$\gamma \neq 0$ then~$e \in I$ because~$[e,[e,x]] = -2 \gamma e$;
+      If~$\gamma \neq 0$ then~$e \in I$ since~$[e,[e,x]] = -2 \gamma e$;
       if~$\gamma = 0$ but~$\beta \neq 0$ then~$e \in I$ because~$[e,x] = -2 \beta e$;
       and if~$\beta = \gamma = 0$ then it follows from~$x \neq 0$ that~$\alpha \neq 0$ and hence~$e \in I$ because~$x = \alpha e$.
       
@@ -1334,7 +1335,7 @@
     \begin{pmatrix*}[r]
       1 &  0  \\
       0 & -1
-    \end{pmatrix*}  \,,,
+    \end{pmatrix*}  \,,
     \qquad
     \gls*{standard basis f}
     =
