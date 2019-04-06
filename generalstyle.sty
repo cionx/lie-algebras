@@ -50,7 +50,7 @@
 \setmathfont{TeX Gyre Termes Math}
 \setmathfont[range=\mathup/{num,latin,Latin},Numbers=Lining]{EBGaramond12-Regular}
 \setmathfont[range=\mathit/{latin,Latin}]{EBGaramond12-Italic}
-\setmathfont[range=\mathit/{greek,Greek},Scale=MatchUppercase]{TeX Gyre Pagella Math}
+\setmathfont[range=\mathit/{greek,Greek},Scale=MatchLowercase]{TeX Gyre Pagella Math}
 \setmathfont[range=\mathbb,Scale=MatchUppercase]{TeX Gyre Schola Math}
 \setmathfont[range=\mathcal,Scale=MatchUppercase]{Latin Modern Math}
 \setmathfont[range=\mathfrak,Scale=MatchUppercase]{Asana Math}
@@ -155,6 +155,9 @@
 \newcommand{\linear}[1]{#1\nobreakdash-lin\-ear}
 \newcommand{\many}[1]{#1\nobreakdash-many}
 \newcommand{\onedimensional}{one\nobreakdash-di\-men\-sion\-al}
+\newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
+\newcommand{\representation}[1]{#1\nobreakdash-rep\-re\-sen\-ta\-tion}
+\newcommand{\representations}[1]{#1\nobreakdash-rep\-re\-sen\-ta\-tions}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-sub\-al\-ge\-bra}
 \newcommand{\subrepresentation}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
 \newcommand{\subrepresentations}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
@@ -246,6 +249,7 @@
 }
 
 % decorations
+\newcommand{\class}{\overline}
 \newcommand{\induced}{\overline}
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
 

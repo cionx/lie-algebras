@@ -1,6 +1,9 @@
 \section{Lie Algebras}
 
 
+% TODO: Change symbol for derivations to delta.
+
+
 
 
 
@@ -556,7 +559,7 @@
 
 
 \begin{definition}
-  The Lie algebra~$\gls*{quotient lie algebra}$ from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient} of~$\glie$ by~$I$.
+  The Lie algebra~$\gls*{quotient lie algebra}$ from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient! Lie algebra}\index{Lie algebra!quotient} of~$\glie$ by~$I$.
 \end{definition}
 
 
@@ -680,7 +683,7 @@
     \tr(AB)
   \]
   for all~$A, B \in \glie$.
-  We can use~$(-,-)_{\tr}$ to define on the Loop~algebra~$\looplie(\glie)$ a~{\bilinear{$k[t,t^{-1}]$}} form~$(-,-)$ via
+  We can use~$(-,-)_{\tr}$ to define on the Loop~algebra~$\looplie(\glie)$ a~{\bilinear{$\kf[t,t^{-1}]$}} form~$(-,-)$ via
   \[
     \looplie(\glie) \times \looplie(\glie)
     \to
@@ -985,6 +988,7 @@
 
 
 \begin{proposition}[Homomorphism theorem]
+  \index{homomorphism theorem!for Lie algebras}
   Let~$\glie$ and~$\hlie$ be Lie~algebras and let~$f \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
   \begin{enumerate}
     \item
@@ -1007,36 +1011,60 @@
           {}
         \end{tikzcd}
       \]
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{corollary}[Isomorphism theorems]
+  \index{isomorphism theorems!for Lie algebras}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
     \item
-      If~$I$ and~$J$ are two ideals in~$\glie$ are two ideals with~$I \subseteq J$ then~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
+      Any homomorphism of Lie~algebras~$f \colon \glie \to \hlie$ induces a well-defined isomorphism of Lie~algebras
+      \[
+        \induced{f}
+        \colon
+        \glie/{\ker f}
+        \to
+        \im(f)  \,,
+        \quad
+        \class{x}
+        \mapsto
+        \class{f(x)}  \,.
+      \]
+    \item
+      If~$I$ and~$J$ are two ideals in~$\glie$ with~$I \subseteq J$ then~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
       \[
         (\glie/I) / (J/I)
         \to
         \glie/I \,,
         \quad
-        (x+I) + (J/I)
+        \class{x}
         \mapsto
-        x+I
+        \class{x}
       \]
       is already a natural isomorphism of Lie~algebras.
     \item
-      For any two ideals~$I$ and~$J$ in~$\glie$ the natural isomorphism of vector spaces
+      Let~$\hlie$ is a Lie~subalgebra of~$\glie$ and let~$I$ is an ideal in~$\glie$.
+      Then~$\hlie + I$ is a Lie~subalgebra of~$\glie$ that contains~$I$, and~$\hlie \cap I$ is an ideal in~$\hlie$.
+      The natural isomorphism of vector spaces
       \begin{gather*}
-        (I + J)/J
+        (\hlie + I)/I
         \to
-        I/(I \cap J)  \,,
+        \hlie/(\hlie \cap I)  \,,
         \quad
-        (x+J)+I
+        \class{x}
         \mapsto
-        x + (I \cap J)
+        \class{x}
       \end{gather*}
       is already a natural isomorphism of Lie~algebras.
+    \qed
   \end{enumerate}
-\end{proposition}
+\end{corollary}
 
 
 \begin{corollary}
-  The center~$\centerlie(\glie)$ of a Lie~algebra~$\glie$ is an ideal in~$\glie$.
+  The center~$\centerlie(\glie)$ of a Lie~algebra~$\glie$ is an ideal in~$\glie$ with~$\glie/\centerlie(\glie) \cong \ad(\glie)$, which is a Lie~subalgebra~$\gllie(\gllie)$.
 \end{corollary}
 
 
@@ -1080,6 +1108,60 @@
   for any two subsets~$X, Y \subseteq \glie$.
   \qed
 \end{lemma}
+
+
+\begin{lemma}
+  Let~$f \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
+  \begin{enumerate}
+    \item
+      If~$\klie$ is a Lie~subalgebra of~$\hlie$ then the preimage~$f^{-1}(\klie)$ is a Lie~subalgebra of~$\glie$.
+    \item
+      If~$\klie$ is a Lie~subalgebra of~$\glie$ then the image~$f(\klie)$ is a Lie~subalgebra of~$\hlie$.
+    \item
+      If~$I$ is an ideal in~$\hlie$ then the preimage~$f^{-1}(I)$ is an ideal in~$\glie$.
+    \qed
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{theorem}[Correspondence theorem]
+  Let~$I$ be an ideal in a Lie~algebra~$\glie$ and let~$\pi \colon \glie \to \hlie$ denote the canonical projection.
+  \begin{enumerate}
+    \item
+      If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains~$I$ then quotient~$\hlie/I$ is a Lie subalgebra of of~$\glie/I$.
+      This construction induces a {\onetoone} correspondence
+      \begin{align*}
+        \{ \text{Lie~subalgebras~$\hlie$ of~$\glie$ containing~$I$} \}
+        &\longleftrightarrow
+        \{ \text{Lie~subalgebras~$\klie$ of~$\glie/I$} \} \,,
+        \\
+        \hlie
+        &\longmapsto
+        \hlie/I \,,
+        \\
+        \pi^{-1}(\klie)
+        &\longmapsfrom
+        \klie \,.
+      \end{align*}
+      This correspondence restricts to a {\onetoone} correspondence
+      \begin{align*}
+        \{ \text{Lie~ideals~$J$ in~$\glie$} \}
+        &\longleftrightarrow
+        \{ \text{Lie~ideals~$K$ in~$\glie/I$} \} \,,
+        \\
+        J
+        &\longmapsto
+        J/I \,,
+        \\
+        \pi^{-1}(K)
+        &\longmapsfrom
+        K \,.
+      \end{align*}
+      If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
+      \qed
+  \end{enumerate}
+\end{theorem}
+
 
 
 
