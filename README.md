@@ -7,12 +7,14 @@ A compiled version of the current status can be found [here][2].
 
 For those who want to compile these notes themselves:
 
-- The `EB Garamond` font is used as the main font.
-  A combination of  the packages `ebgaramond-maths` and `newtxmath` is used for the math font.
+- The `EB Garamond` font is used as the main font and main math font.
+  The rest of the math fonts are chosen from `TeX Gyre` fonts as well as `Latin Modern` and `Asana`.
 - Compiling is intented to be done using `lualatex`.
 - The bibliography is using `biblatex` with the `biber` backend.
 - The `gitinfo2` package is used to display the date and hash of the last commit.
+  It requires some setting up, as done in the travis file `.travis.yml`.
 - The included `make` file is intented for remote building via [travis.ci][3].
+  It is not meant for efficiency but for running often enough.
 
 For comments and corrections please contact me at `stelzner (at) uni-bonn.de`.
 
