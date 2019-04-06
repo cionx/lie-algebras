@@ -3,6 +3,7 @@
 
 % TODO: Change symbol for derivations to delta.
 
+% TODO: Semidirect products of Lie algebras.
 
 
 
@@ -996,7 +997,7 @@
     \item
       The image~$\im f$ is a Lie~subalgebra of~$\hlie$.
     \item
-      If~$I$ is any ideal in~$\glie$ with~$\ker f \subseteq I$ then there exists a unique homomorphism of Lie~algebras~$\tilde{f} \colon \glie/I \to \hlie$ with~$f = \tilde{f} \circ \pi$ where~$\pi \colon \glie \to \hlie/I$ is the canonical projection.
+      If~$I$ is any ideal in~$\glie$ with~$\ker f \subseteq I$ then there exists a unique homomorphism of Lie~algebras~$\induced{f} \colon \glie/I \to \hlie$ that makes the triangular diagram
       \[
         \begin{tikzcd}
           \glie
@@ -1011,6 +1012,8 @@
           {}
         \end{tikzcd}
       \]
+      commute.
+      It holds that~$\ker \induced{f} = {\ker f}/I$ and~$\im \induced{f} = \im f$.
   \end{enumerate}
 \end{proposition}
 
@@ -1049,9 +1052,9 @@
       Then~$\hlie + I$ is a Lie~subalgebra of~$\glie$ that contains~$I$, and~$\hlie \cap I$ is an ideal in~$\hlie$.
       The natural isomorphism of vector spaces
       \begin{gather*}
-        (\hlie + I)/I
+        \hlie/(\hlie \cap I)
         \to
-        \hlie/(\hlie \cap I)  \,,
+        (\hlie + I)/I \,,
         \quad
         \class{x}
         \mapsto
@@ -1124,43 +1127,41 @@
 \end{lemma}
 
 
-\begin{theorem}[Correspondence theorem]
+\begin{proposition}[Correspondence theorem]
+  \label{correspondence theorem!for Lie algebras}
   Let~$I$ be an ideal in a Lie~algebra~$\glie$ and let~$\pi \colon \glie \to \hlie$ denote the canonical projection.
-  \begin{enumerate}
-    \item
-      If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains~$I$ then quotient~$\hlie/I$ is a Lie subalgebra of of~$\glie/I$.
-      This construction induces a {\onetoone} correspondence
-      \begin{align*}
-        \{ \text{Lie~subalgebras~$\hlie$ of~$\glie$ containing~$I$} \}
-        &\longleftrightarrow
-        \{ \text{Lie~subalgebras~$\klie$ of~$\glie/I$} \} \,,
-        \\
-        \hlie
-        &\longmapsto
-        \hlie/I \,,
-        \\
-        \pi^{-1}(\klie)
-        &\longmapsfrom
-        \klie \,.
-      \end{align*}
-      This correspondence restricts to a {\onetoone} correspondence
-      \begin{align*}
-        \{ \text{Lie~ideals~$J$ in~$\glie$} \}
-        &\longleftrightarrow
-        \{ \text{Lie~ideals~$K$ in~$\glie/I$} \} \,,
-        \\
-        J
-        &\longmapsto
-        J/I \,,
-        \\
-        \pi^{-1}(K)
-        &\longmapsfrom
-        K \,.
-      \end{align*}
-      If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
-      \qed
-  \end{enumerate}
-\end{theorem}
+  If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains~$I$ then quotient~$\hlie/I$ is a Lie subalgebra of of~$\glie/I$.
+  This construction induces a {\onetoone} correspondence
+  \begin{align*}
+    \{ \text{Lie~subalgebras~$\hlie$ of~$\glie$ containing~$I$} \}
+    &\longleftrightarrow
+    \{ \text{Lie~subalgebras~$\klie$ of~$\glie/I$} \} \,,
+    \\
+    \hlie
+    &\longmapsto
+    \hlie/I \,,
+    \\
+    \pi^{-1}(\klie)
+    &\longmapsfrom
+    \klie \,.
+  \end{align*}
+  This correspondence restricts to a {\onetoone} correspondence
+  \begin{align*}
+    \{ \text{Lie~ideals~$J$ in~$\glie$} \}
+    &\longleftrightarrow
+    \{ \text{Lie~ideals~$K$ in~$\glie/I$} \} \,,
+    \\
+    J
+    &\longmapsto
+    J/I \,,
+    \\
+    \pi^{-1}(K)
+    &\longmapsfrom
+    K \,.
+  \end{align*}
+  If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
+  \qed
+\end{proposition}
 
 
 
@@ -1171,11 +1172,11 @@
 
 \begin{definition}
   Let~$A$ be a~{\algebra{$\kf$}} that is not necessarily unitary of even associative.
-  A \defemph{derivation of~$A$}\index{derivation} is a {\linear{$\kf$}} map~$d \colon A \to A$ such that
+  A \defemph{derivation of~$A$}\index{derivation} is a~{\linear{$\kf$}} map~$\delta \colon A \to A$ such that
   \[
-    d(ab)
+    \delta(ab)
     =
-    d(a)b + ad(b)
+    \delta(a) b + a \delta(b)
   \]
   for all~$a, b \in A$.
   We set
@@ -1183,13 +1184,13 @@
     \gls*{derivations}
     \defined
     \{
-      d
+      \delta
       \colon
       A
       \to
       A
     \suchthat
-      \text{$d$ is a derivation of~$A$}
+      \text{$\delta$ is a derivation of~$A$}
     \}  \,.
   \]
 \end{definition}
@@ -1202,7 +1203,7 @@
 
 \begin{example}
   Let~$A$ be a~{\algebra{$\kf$}} (as above).
-  It follows from direct calculation that for all derivations~$d, d' \in \Der(A)$ their commutator~$[d,d'] = d \circ d' - d' \circ d$ is again a derivation.
+  It follows from direct calculation that for all derivations~$\delta, \delta' \in \Der(A)$ their commutator~$[\delta, \delta'] = \delta \circ \delta' - \delta' \circ \delta$ is again a derivation.
   Hence~$\Der(A)$ is a Lie~subalgebra of~$\gllie(A)$.
 \end{example}
 

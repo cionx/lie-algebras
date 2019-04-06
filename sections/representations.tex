@@ -1,12 +1,6 @@
 \section{Representations of Lie~Algebras}
 
 
-% TODO: Quotient representations
-
-
-% TODO: Correspondence theorems for Lie algebras, and for representations
-
-
 % TODO: Irreps of f.d. Lie algebras need not be f.d. (example: Heisenberg)
 %       Can have arbitrary dimension (exmaple: sl2)
 
@@ -560,10 +554,70 @@
 \end{example}
 
 
+\begin{example}[Quotient representations]
+  \label{quotient representation}
+  Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
+  Then the quotient vector space~$V/U$ inherits from~$V$ the structure of a~{\representation{$\glie$}} via
+  \[
+    x.\class{v}
+    =
+    \class{x.v}
+  \]
+  for all~$x \in \glie$ and~$v \in V$.
+  Indeed, we have for all~$x, y \in \glie$ and~$\class{v} \in V$ that
+  \[
+    [x,y].\class{v}
+    =
+    \class{[x,y].v}
+    =
+    \class{x.(y.v) - y.(x.v)}
+    =
+    \class{x.(y.v)} - \class{y.(x.v)}
+    =
+    x.(y.\class{v}) - y.(x.\class{v}) \,.
+  \]
+  
+  Alternatively let~$\rho \colon \glie \to \gllie(V)$ be the Lie~algebra homomorphism corresponding to the action of~$\glie$ on~$V$.
+  Then the linear subspace~$U$ of~$V$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, and hence the endomorphism~$\rho(x)$ induces an endomorphism
+  \[
+    \induced{\rho(x)}
+    \colon
+    V/U
+    \to
+    V/U \,,
+    \quad
+    \class{v}
+    \mapsto
+    \class{\rho(x)(v)}
+  \]
+  for every~$x \in \glie$.
+  The resulting map~$\induced{\rho} \colon \glie \to \gllie(V/U)$ given by~$\induced{\rho}(x) = \induced{\rho(x)}$  is a homomorphism of Lie~algebras because
+  \[
+    \induced{\rho}([x,y])
+    =
+    \induced{\rho([x,y])}
+    =
+    \induced{[\rho(x), \rho(y)]}
+    =
+    [\induced{\rho(x)}, \induced{\rho(y)}]
+    =
+    [\induced{\rho}(x), \induced{\rho}(y)]
+  \]
+  for all~$x, y \in \glie$.
+\end{example}
+
+
+\begin{definition}
+  Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
+  The representation~\gls*{quotient representation} from \cref{quotient representation} is the \defemph{quotient representation}\index{quotient!representations}\index{representation!quotient} of~$V$ by~$U$.
+\end{definition}
+
+
 
 
 
 \subsection{Homomorphisms of Representations}
+
 
 \begin{definition}
   Let~$V$ und~$W$ be two representations of a~{\liealgebra{$\kf$}}~$\glie$.
@@ -608,7 +662,7 @@
       If~$f, g \colon V \to W$ are homomorphisms of representations then~$f + g$ is again a homomorphism of representations, and~$\lambda f$ is for every~$\lambda \in \kf$ again a homomorphism of representations.
       Hence~$\Hom_{\glie}(V,W)$ is a~{\linear{$\kf$}} subspace of~$\Hom_\kf(V,W)$.
     \item
-      If~$f \colon V \to W$ is an isomorphism of representations then its inverse~$f^{-1} \colon W \to V$ is not only a linear map but again a homomorphism (and thus isomorphism) of representations.
+      If~$f \colon V \to W$ is an isomorphism of representations then its inverse~$f^{-1} \colon W \to V$ is again a homomorphism (and thus isomorphism) of representations.
       Indeed, we find that
       \[
         f^{-1}(x.v)
@@ -761,82 +815,103 @@
 \end{proposition}
 
 
+\begin{proposition}[Homomorphism theorem]
+  \label{homomorphism theorem!for representations}
+  Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
+  Let~$W$ be another representation of~$\glie$.
+  For every homomorphism of representations~$f \colon V \to W$ with~$U \subseteq \ker f$ there exists a unique homomorphism of representations~$\induced{f} \colon V/U \to W$ that makes the triangular diagram
+  \[
+    \begin{tikzcd}
+      V
+      \arrow{r}[above]{f}
+      \arrow{d}[left]{\pi}
+      &
+      W
+      \\
+      V/U
+      \arrow[dashed]{ur}[below right]{\induced{f}}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  commute.
+  It holds that~$\ker \induced{f} = {\ker f}/I$ and~$\im \induced{f} = \im f$.
+\end{proposition}
+
+
+\begin{corollary}[Isomorphism theorems]
+  \index{isomorphism theorems!for representations}
+  Let~$V$ be a representation of a Lie~algebra~$\glie$.
+  \begin{enumerate}
+    \item
+      If~$W$ is another representation of~$\glie$ and~$f \colon V \to W$ is any homomorphism of representations then~$f$ induces a unique well-defined isomorphism of representations
+      \[
+        \induced{f}
+        \colon
+        V/{\ker f}
+        \to
+        \im f \,,
+        \quad
+        \class{v}
+        \mapsto
+        f(v)  \,.
+      \]
+    \item
+      If~$U$ and~$W$ are subrepresentations of~$V$ with~$U \subseteq W$ then~$W/U$ is a subrepresentation of~$V/U$ and the natural isomorphism of vector spaces
+      \[
+        (V/U) / (W/U)
+        \to
+        V/W \,,
+        \quad
+        \class{v}
+        \mapsto
+        \class{v}
+      \]
+      is already an isomorphism of representations.
+    \item
+      If~$U$ and~$W$ are subrepresentations of~$V$ then~$W$ is a subrepresentation of~$U+W$ and~$U \cap W$ is a subrepresentation of~$U$, and the natural isomorphism of vector spaces
+      \[
+        U/(U \cap W)
+        \to
+        (U + W)/W  \,,
+        \quad
+        \class{u}
+        \mapsto
+        \class{u}
+      \]
+      is already an isomorphism of representations.
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proposition}[Correspondence theorem]
+  \label{correspondence theorem!for representations}
+  Let~$V$ be a represenation of a Lie~algebra~$\glie$ and let~$U \subseteq V$ be a subrepresentation.
+  Let~$\pi \colon V \to V/U$ the canonical projection.
+  
+  If~$W$ is a subrepresentation of~$V$ that contains~$U$ then the quotient~$W/U$ is a subrepresentation of~$V/U$.
+  This construction results in a {\onetoone} correspondence
+  \begin{align*}
+    \{ \text{subrepresentations~$W \subseteq V$ containing~$U$} \}
+    &\longleftrightarrow
+    \{ \text{subrepresentations of~$V/U$} \}  \,,
+    \\
+    W
+    &\longmapsto
+    W/U \,,
+    \\
+    \pi^{-1}(W')
+    &\longmapsfrom
+    W'  \,.
+  \end{align*}
+  If~$W$ is a subrepresentation of~$V$ containing~$U$ then it holds for the associated subrepresentation~$W/U$ of~$V/U$ that~$(V/U)/(W/U) \cong V/W$.
+\end{proposition}
+
+
 
 
 
 \subsection{Irreducible and Semisimple Representations}
-
-
-\begin{definition}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$.
-  A \defemph{subrepresentation} of~$V$ is a linear subpace~$U$ of~$V$ such that~$x.u \in U$ for all~$x \in \glie$ and~$u \in U$.
-\end{definition}
-
-
-\begin{remark}
-  If~$(V, \rho)$ is a representation of a Lie~algebra~$\glie$ then a linear subspace~$U \subseteq V$ is a subrepresentation if and only if~$U$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, in the sense that~$\rho(x)(U) \subseteq U$.
-\end{remark}
-
-
-\begin{examples}
-  Let~$\glie$ be a Lie~algebra.
-  \begin{enumerate}
-    \item
-      If~$V$ is any representation of~$\glie$ then the linear subspaces~$0$ and~$V$ itself are subrepresentations.%
-    \footnote{These two subrepresentations are often called the \defemph{trivial} ones.
-      We will abstain from doing so, as we have already defined the notion of a trivial representation in \cref{trivial representations}.}
-    \item
-      If~$V$ is a representation of~$\glie$ and~$U_i$ with~$i \in I$ a collection of subrepresentations~$U_i$ of~$V$ then~$\sum_{i \in I} U_i$ is again a subrepresentation of~$V$.
-    \item
-      Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$ let~$\varphi \colon V \to W$ be a homomorphism of representations.
-      Then the kernel~$\ker f$ is a subrepresentation of~$V$ while the image~$\im \varphi$ is a subrepresentation~$W$.
-    \item
-      The subrepresentations of the adjoint representation~$\ad \colon \glie \to \gllie(\glie)$ are precisely the ideals in~$\glie$.
-    \item
-      If~$V$ is any representation of~$\glie$ then the linear subspace
-      \[
-        \glie V
-        \defined
-        \vspan_\kf
-        \{
-          x.v
-          \suchthat
-          x \in \glie,
-          v \in V
-        \}
-      \]
-      is a subrepresentation of~$\glie$.
-    \item
-      If~$V$ is any representation of~$\glie$ then the linear subspace of invariants~$V^{\glie}$ is a (trivial) subrepresentation.
-    \item
-      Let~$f \colon V \to V$ be an endomorphism of a representation~$V$ of~$\glie$.
-      Then for any scalar~$\lambda \in \kf$ both the eigenspace
-      \[
-        V_\lambda
-        \defined
-        \{
-          v \in V
-        \suchthat
-          f(v)
-          =
-          \lambda v
-        \}
-      \]
-      and the generalized eigenspace
-      \[
-        V_{(\lambda)}
-        \defined
-        \bigcup_{n \geq 0} \ker(f - \lambda \id_V)^n
-        =
-        \{
-          v \in V
-        \suchthat
-        \text{$(f - \lambda \id_V)^n(v) = 0$ for some~$n \geq 0$}
-        \}
-      \]
-      are subrepresentations of~$V$.
-  \end{enumerate}
-\end{examples}
 
 
 \begin{definition}
