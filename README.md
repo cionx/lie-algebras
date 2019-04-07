@@ -3,6 +3,7 @@ Notes for _Representation Theory I_, SS 15
 =================
 
 This repository contains my personal notes for the lecture course _Representation Theory I_ that was held the University of Bonn in the summer semester of 2015 by Prof. Dr. Catharina Stroppel.
+These notes are incomplete and are currently being reworked.
 A compiled version of the current status can be found [here][2].
 
 For those who want to compile these notes themselves:
