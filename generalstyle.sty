@@ -98,10 +98,6 @@
 % changing the tikzcdarrow tips to fit the math font
 % \tikzcdset{arrow style=math font}
 
-% different kinds of lists
-\newlist{equivalenceslist}{enumerate}{2}
-\setlist[equivalenceslist,1]{label=\roman*)}
-
 % definition of new counters and changes of already existing ones
 \newcounter{everything}[section]  % to be used for all kind of math enviroments
 
@@ -131,16 +127,22 @@
 % style of enumerating lists
 \setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
 \setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
-\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont}
-\setlist[description, 2]{leftmargin=\labelwidth, font=\normalfont}
+\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont\itshape}
+\setlist[description, 2]{leftmargin=\labelwidth}
 \setlist[itemize, 1]{leftmargin=*}
 \setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
 \setlist[itemize, 3]{leftmargin=*}
 
+% different kinds of lists
+\newlist{equivalenceslist}{enumerate}{2}
+\setlist[equivalenceslist,1]{label=\roman*)}
+\newlist{implicationlist}{description}{1}
+\setlist[implicationlist,1]{leftmargin=\labelwidth, font=\normalfont}
+
 % text shortcuts
 \newcommand{\defemph}{\emph}
 
-% text shortcuts involving nobreakdash
+% text shortcuts, mostly involving nobreakdash
 \newcommand{\adnilpotent}{$\ad$\nobreakdash-nil\-po\-tent}
 \newcommand{\adsemisimple}{$\ad$\nobreakdash-semi\-sim\-ple}
 \newcommand{\algebra}[1]{#1\nobreakdash-al\-ge\-bra}
@@ -154,6 +156,8 @@
 \newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~al\-ge\-bras}
 \newcommand{\linear}[1]{#1\nobreakdash-lin\-ear}
 \newcommand{\many}[1]{#1\nobreakdash-many}
+\newcommand{\module}[1]{#1\nobreakdash-module}
+\newcommand{\modules}[1]{#1\nobreakdash-modules}
 \newcommand{\onedimensional}{one\nobreakdash-di\-men\-sion\-al}
 \newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
 \newcommand{\representation}[1]{#1\nobreakdash-rep\-re\-sen\-ta\-tion}
@@ -163,12 +167,14 @@
 \newcommand{\subrepresentations}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
 \newcommand{\twococycle}{$2$\nobreakdash-co\-cy\-cle}
 \newcommand{\twodimensional}{two\nobreakdash-di\-men\-sion\-al}
+\newcommand{\ua}{universal enveloping algebra}
+\newcommand{\uas}{universal enveloping algebras}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vec\-tor space}
 \newcommand{\vectorspaces}[1]{#1\nobreakdash-vec\-tor spaces}
 \newcommand{\weightspace}[1]{#1\nobreakdash-weight space}
 \newcommand{\weightvector}[1]{#1\nobreakdash-weight vector}
 
-
+\newcommand{\kspan}{{\vspan}{}_\kf} % I will go to hell for this
 
 
 %%%%% MATH STUFF
@@ -195,11 +201,17 @@
 \newcommand{\looplie}{\mathcal{L}}
 
 % categories
+\newcommand{\catC}{\mathcal{C}}
 \newcommand{\catname}[1]{\mathbf{#1}}
-\newcommand{\cAlg}[1]{\ensuremath{#1\text{-}\catname{Alg}}}
-\newcommand{\cFilt}[1]{\ensuremath{#1\text{-}\catname{Filt}}}
-\newcommand{\cGrad}[1]{\ensuremath{#1\text{-}\catname{Grad}}}
-\newcommand{\cLie}[1]{\ensuremath{#1\text{-}\catname{Lie}}}
+\newcommand{\cAlg}[1]{#1\text{-}\catname{Alg}}
+\newcommand{\cCAlg}[1]{#1\text{-}\catname{CAlg}}
+\newcommand{\cFilt}[1]{#1\text{-}\catname{Filt}}
+\newcommand{\cGrad}[1]{#1\text{-}\catname{Grad}}
+\newcommand{\cLie}[1]{#1\text{-}\catname{Lie}}
+\newcommand{\cMod}[1]{#1\text{-}\catname{Mod}}
+\newcommand{\cRep}[1]{#1\text{-}\catname{Rep}}
+\newcommand{\cSet}{\catname{Set}}
+\newcommand{\cVect}[1]{#1\text{-}\catname{Vect}}
 
 % spaces and sets
 \DeclareMathOperator{\Aut}{Aut}
@@ -207,12 +219,15 @@
 \DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
+\newcommand{\Exterior}{\bigwedge}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Mat}{M}
 \DeclareMathOperator{\normallie}{N}
 \DeclareMathOperator{\rad}{rad}
-\newcommand{\Ue}{\mathop{\mathcal{U}}}
+\DeclareMathOperator{\Symm}{S}
+\DeclareMathOperator{\Tensor}{T}
+\DeclareMathOperator{\Univ}{U}
 \DeclareMathOperator{\vspan}{span}
 
 % functions
@@ -235,6 +250,10 @@
 \newcommand{\ideal}{\trianglelefteq}
 \newcommand{\tensor}{\otimes}
 
+% arrows
+\newcommand{\longonetoone}{\longleftrightarrow}
+\newcommand{\longto}{\longrightarrow}
+
 % delimiters
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
 \NewDocumentCommand{\restrict}{smmO{}}{
@@ -250,12 +269,12 @@
 
 % decorations
 \newcommand{\class}{\overline}
+\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \newcommand{\induced}{\overline}
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
 
 % shortcuts
 \newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
-\newcommand{\longto}{\longrightarrow}
 \newcommand{\mc}[1]{\mathcal{#1}}
 
 

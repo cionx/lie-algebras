@@ -894,6 +894,106 @@
 \end{lemma}
 
 
+\begin{example}
+  \label{homomorphism out of a product}
+  Let~$\glie$ and~$\hlie$ be two Lie~algebras.
+  
+  The inclusions~$i \colon \glie \to \glie \times \hlie$ and~$j \colon \hlie \to \glie \times \hlie$ are injective Lie~algebra homomorphisms.
+  We can therefore regard~$\glie$ and~$\hlie$ as Lie~subalgebras of~$\glie \times \hlie$.
+  Note that~$\glie$ and~$\hlie$ commute with each other in~$\glie \times \hlie$ because
+  \[
+    [i(x), j(y)]
+    =
+    [(x,0), (0,y)]
+    =
+    ( [x,0], [0,y] )
+    =
+    0
+  \]
+  for all~$x \in \glie$ and~$y \in \hlie$.
+
+  The product~$\glie \times \hlie$ is under the above identification the direct sum of~$\glie$ and~$\hlie$ as vector spaces.
+  We therefore find that for any other~{\vectorspace{$\kf$}}~$V$ there is a {\onetoone} correspondence
+  \begin{align*}
+    \{ \text{{\linear{$\kf$}} maps~$f \colon \glie \times \hlie \to V$} \}
+    &\longonetoone
+    \{
+      (\phi, \psi)
+    \suchthat
+      \text{{\linear{$\kf$}} maps~$\phi \colon \glie \to V$ and~$\psi \colon \hlie \to V$}
+    \} \,,
+    \\
+    f
+    &\longmapsto
+    (f \circ i, f \circ j)  \,,
+    \\
+    \biggl( (g,h) \mapsto \phi(g) + \psi(h) \biggr)
+    &\longmapsfrom
+    (\psi, \psi)  \,.
+  \end{align*}
+  Here may think about the compositions~$f \circ $ and~$f \circ j$ as the restrictions of~$f$ to~$\glie$ and~$\hlie$.
+  
+  If~$\klie$ is another Lie~algebra then we see that for any Lie~algebra homomorphism~$f \colon \glie \times \hlie \to \klie$ the corresponding restrictions~$\phi = f \circ i$ and~$\psi = f \circ j$ are again Lie~algebra homomorphisms (because~$i$ and~$j$ are Lie~algebra homomorphisms).
+  These two restrictions have the properties that their images in~$\klie$ commute with each other, because~$\glie$ and~$\hlie$ commute with each other in~$\glie \times \hlie$.
+  More explicitely,
+  \[
+    [\phi(x), \psi(y)]
+    =
+    [f(i(x)), f(j(x))]
+    =
+    f( [i(x), j(x)] )
+    =
+    f( 0 )
+    =
+    0 \,.
+  \]
+  
+  If on the other hand~$\phi \colon \glie \to \klie$ and~$\psi \colon \glie \to \klie$ are two Lie~algebra homomorphisms whose images commute with each other then the resulting linear map~$f \colon \glie \times \hlie \to \klie$ given by~$f((x,y)) = \phi(x) + \psi(y)$ is again a Lie~algebra homomorphism because
+  \begin{align*}
+    {}&
+    [ f((x_1, y_1)), f((x_2, y_2)) ]
+    \\
+    ={}&
+    [ \phi(x_1) + \psi(y_1), \phi(x_2) + \psi(y_2) ]
+    \\
+    ={}&
+      \underbrace{ [ \phi(x_1), \phi(x_2) ] }_{= \phi([x_1, x_2])}
+    + \underbrace{ [ \phi(x_1), \psi(y_2) ] }_{= 0}
+    + \underbrace{ [ \psi(y_1), \phi(x_2) ] }_{= 0}
+    + \underbrace{ [ \psi(y_1), \psi(y_2) ] }_{= \psi([y_1, y_2])}
+    \\
+    ={}&
+    \phi( [x_1, x_2] ) + \psi( [y_1, y_2] )
+    \\
+    ={}&
+    f( ([x_1, x_2], [y_1, y_2]) )
+    \\
+    ={}&
+    f( [(x_1, y_1), (x_2, y_2)] )
+  \end{align*}
+  for all~$(x_1, y_1), (x_2, y_2) \in \glie \times \hlie$.
+  It follows that the previous {\onetoone} correspondce restricts to a {\onetoone} correspondence
+  \begin{align*}
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        Lie~algebra homomorphisms \\
+        $f \colon \glie \times \hlie \to \klie$
+      \end{tabular}
+    \right\}
+    &\longonetoone
+    \left\{
+      (\phi, \psi)
+    \suchthat*
+      \begin{tabular}{@{}c@{}}
+        Lie~algebra homomorphisms \\
+        $\phi \colon \glie \to \klie$ and~$\psi \colon \hlie \to \klie$ \\
+        whose images commute with each other
+      \end{tabular}
+    \right\}
+  \end{align*}
+\end{example}
+
+
 \begin{definition}
  Let~$\glie, \hlie$ be Lie~algebras over the same field~$\kf$.
  A homomorphism of Lie~algebras~$f \colon \glie \to \hlie$ is an~\defemph{isomorphism of Lie~algebras}\index{isomorphism!of Lie algebras} if~$f$~is bijective.
