@@ -1,0 +1,878 @@
+\subsection{Extension}
+
+
+\begin{definition}
+  A \defemph{short exact sequence of Lie~algebras}\index{short exact sequence!of Lie algebras} is a short exact sequence
+  \begin{equation}
+    \label{general extension}
+    0 
+    \to
+    I
+    \xlongto{f}
+    \glie
+    \xlongto{g}
+    \hlie
+    \to
+    0
+  \end{equation}
+  of vector spaces such that~$I$,~$\glie$ and~$\hlie$ are Lie algebras and both~$f$ and~$g$ are Lie algebra homomorphisms.
+  The short exact sequence~\eqref{general extension} is then an~\defemph{extension}\index{extension} of~$\hlie$ by~$I$.
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      By abuse of notation we often say that \enquote{$\glie$ is an extension of~$\hlie$ by~$I$} to mean that there exists such an extension with~$\glie$ as its middle term.
+    \item
+      If~$0 \to I \xto{f} \glie \xto{g} \hlie \to 0$ is a short exact sequence of Lie~algebras then the image of~$I$ is the kernel of~$g$ and hence an ideal in~$\glie$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  If~$I$ is any ideal in a Lie~algebra~$\glie$ then
+  \[
+    0
+    \to
+    I
+    \xlongto{i}
+    \glie
+    \xlongto{p}
+    \glie/I
+    \to
+    0
+  \]
+  is a short exact sequence of Lie~algebras where~$i$ is the inclusion~$x \to x$ and~$p$ is the canonical projection~$x \mapsto \class{x}$.
+\end{example}
+
+
+\begin{definition}
+  \label{equivalence of extensions}
+  Let~$I$ and~$\hlie$ be two Lie~algebras.
+  Two extensions
+  \[
+    0 
+    \to
+    I
+    \xlongto{f}
+    \glie
+    \xlongto{g}
+    \hlie
+    \to
+    0
+    \quad\text{and}\quad
+    0 
+    \to
+    I
+    \xlongto{f'}
+    \glie'
+    \xlongto{g'}
+    \hlie
+    \to
+    0
+  \]
+  of~$\hlie$ by~$I$ are \defemph{equivalent}\index{equivalent extensions} if there exists an isomorphism of Lie~algebras~$\varphi \colon \glie \to \glie'$ that makes the following diagram commute:
+  \[
+    \begin{tikzcd}
+      0
+      \arrow{r}
+      &
+      I
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      \glie
+      \arrow{r}
+      \arrow[dashed]{d}[right]{\varphi}
+      &
+      \hlie
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      0
+      \\
+      0
+      \arrow{r}
+      &
+      I
+      \arrow{r}
+      &
+      \glie'
+      \arrow{r}
+      &
+      \hlie
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+\end{definition}
+
+
+\begin{lemma}
+  Let~$I$ and~$\hlie$ be two Lie~algebras.
+  Equivalences of extensions is an equivalence relation on the class of extensions of~$\hlie$ by~$I$.
+\end{lemma}
+
+
+\begin{remark}
+  It follows from the five lemma that in \cref{equivalence of extensions} we do not have to require the homomorphism~$\varphi$ to be an isomorphism --- this automatically follows from the commutativity of the given diagram.
+\end{remark}
+
+
+\begin{remark}
+  \label{general approach to extensions}
+  Let~$I$ and~$\hlie$ be Lie~algebras.
+  One general approach to understanding (certain equivalence classes of) extensions of~$\hlie$ by~$I$ is the following:
+  
+  Any such extension
+  \begin{equation}
+  \label{original extension}
+    0
+    \to
+    I
+    \xlongto{f}
+    \glie
+    \xlongto{g}
+    \hlie
+    \to
+    0
+  \end{equation}
+  is in particular a short exact sequece of vector spaces, and splits as such.
+  In other words, there exists an isomorphism of vector spaces~$\varphi \colon \glie \to \hlie \oplus I$ that makes the diagram
+  \[
+    \begin{tikzcd}[column sep = large]
+      0
+      \arrow{r}
+      &
+      I
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      \glie
+      \arrow{r}
+      \arrow[dashed]{d}[right]{\varphi}
+      &
+      \hlie
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      0
+      \\
+      0
+      \arrow{r}
+      &
+      I
+      \arrow{r}[above]{\iota}
+      &
+      \hlie \oplus I
+      \arrow{r}[above]{\pi}
+      &
+      \hlie
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  commute.
+  Here we denote~$\iota \colon I \to \hlie \oplus I$ the canonical inclusion~$c \mapsto (0,c)$ and by~$\pi \colon \hlie \oplus I \to \hlie$ the canonical projection~$(x,c) \mapsto x$.
+  It follows that the original extension~\eqref{original extension} is equivalent to an extension whose middle term is~$\hlie \oplus I$.
+  Up to equivalence we can therefore assume that the extension of interest is of the form
+  \[
+    0
+    \to
+    I
+    \xlongto{\iota}
+    \hlie \oplus I
+    \xlongto{\pi}
+    \hlie
+    \to
+    0 \,.
+  \]
+
+  Suppose now that we are given such an extension.
+  We have for the Lie~bracket on~$\hlie \oplus I$ that
+  \begin{align*}
+    {}&
+    [(x, c), (y,d)]
+    \\
+    ={}&
+      [(x,0), (y,0)]
+    + [(x,0), (0,d)]
+    + [(0,c), (y,0)]
+    + [(0,c), (0,d)]
+    \\
+    ={}&
+      [(x,0), (y,0)]
+    + [(x,0), (0,d)]
+    - [(y,0), (0,c)]
+    + [(0,c), (0,d)]
+  \end{align*}
+  for all~$(x,c), (y,d) \in \hlie \oplus I$.
+  We have that
+  \[
+    \pi( [(x,0), (y,0)] )
+    =
+    [ \pi( (x,0) ), \pi( (y,0) ) ]
+    =
+    [x, y]
+  \]
+  because~$\pi$ is a homorphism of Lie~algebras.
+  The commutator~$[(x,0), (y,0)]$ is therefore of the form
+  \[
+    [(x,0), (y,0)]
+    =
+    ( [x,y], \kappa(x,y) )
+  \]
+  for some function
+  \[
+    \kappa
+    \colon
+    \hlie \times \hlie
+    \to
+    I \,.
+  \]
+  It follows from the bilinearity of the Lie~bracket~$[-,-]$ on~$\hlie \oplus I$ that the map~$\kappa$ is again bilinear.
+  The commutators~$[(x,0), (0,c)]$ and~$[(y,0), (0,d)]$ are again contained in~$0 \oplus I$ because this is an ideal in~$\hlie \oplus I$ (since it is the kernel of~$\pi$).
+  It follows that there exists a unique linear map
+  \[
+    \theta
+    \colon
+    \hlie
+    \to
+    \gllie(I)
+  \]
+  with
+  \[
+    [(z,0), (0,e)]
+    =
+    [0, \theta(z)(e)]
+  \]
+  for all~$z \in \hlie$ and~$e \in I$.
+  We have seen in \cref{lie algebras act adjoint by derivations} that the action of~$[(z,0), -] = \ad_{\hlie \oplus I}((z,0))$ on~$\hlie \oplus I$ is by derivations.
+  It follows that~$\theta$ is actually a linear map
+  \[
+    \theta
+    \colon
+    \hlie
+    \to
+    \Der(I) \,.
+  \]
+  We now have that
+  \[
+    [(x,0), (0,d)]
+    =
+    [0, \theta(x)(d)]
+    \quad\text{and}\quad
+    [(y,0), (0,e)]
+    =
+    [0, \theta(y)(e)] \,.
+  \]
+  The last remaining commutator~$[(0,c), (0,d)]$ can be computed by observing that
+  \[
+    [(0,c), (0,d)]
+    =
+    [\iota(c), \iota(d)]
+    =
+    \iota([c,d])
+    =
+    (0, [c,d])
+  \]
+  because the inclusion~$\iota \colon I \to \hlie \oplus I$ is a homomorphism of Lie~algebras.
+  We find altogether that the Lie bracket on~$\hlie \oplus I$ can be expressed with help of the maps~$\kappa$ and~$\theta$ as
+  \begin{align*}
+    {}&
+    [ (x,c), (y,d) ]
+    \\
+    ={}&
+      ( [x,y], \kappa(x,y) )
+    + ( 0, \theta(x)(d) )
+    - ( 0, \theta(y)(c) )
+    + ( 0, [c,d] )
+    \\
+    ={}&
+    ( [x,y], \kappa(x,y) + \theta(x)(d) - \theta(y)(c) + [c,d] ) \,.
+  \end{align*}
+  The Lie~algebra structure of the extension~$\hlie \oplus I$ is therefore uniquely determined by the two maps~$\kappa \colon \hlie \times \hlie \to I$ and~$\theta \colon \hlie \to \Der(I)$.
+
+  Suppose now that we are not yet given a Lie~bracket on~$\hlie \oplus I$ but instead a bilinear map~$\kappa \colon \hlie \times \hlie \to I$ and a linear map~$\theta \colon \hlie \to \Der(I)$.
+  Then we can conversely define a bilinear bracket~$[-,-]$ on~$\hlie \oplus I$ via the above formula
+  \[
+    [ (x,c), (y,d) ]
+    \defined
+    ( [x,y], \kappa(x,y) + \theta(x)(d) - \theta(y)(c) + [c,d] )  \,.
+  \]
+  (Note that this formula involves three brackets:
+  The one on~$\hlie \oplus I$ that is being defined, and the ones on~$\hlie$ and~$I$ that are used on the right hand side.)
+  If this is a Lie bracket on~$\hlie \oplus I$ then this makes~$\hlie \oplus I$ into an extension of~$\hlie$ of~$I$, as both the inclusion~$\iota \colon I \to \hlie \oplus I$ and the projection~$\pi \colon \hlie \oplus I \to \hlie$ are then Lie~algebra homomorphisms.
+  But of course not any choice of~$\kappa$ and~$\theta$ does define a Lie~bracket on~$\hlie \oplus I$ via the above formula:
+  We need that~$[-,-]$ is alternating and that~$[-,-]$ satisfies the Jacobi identity.
+  
+  For the first condition we calculate that
+  \[
+    [(x,c), (x,c)]
+    =
+    ( [x,x], \kappa(x,x) + \theta(x)(c) - \theta(x)(c) + [c,c] )
+    =
+    (0, \kappa(x,x))
+  \]
+  for all~$(x, c) \in \hlie \oplus I$.
+  This shows that~$[-,-]$ is alternating if and only if~$\kappa$ is alternating.
+  We can similarly express that~$[-,-]$ satisfies the Jacobi identity in terms of both~$\kappa$ and~$\theta$.
+  But we will not do this here, as the resulting terms become rather ugly.
+  We will instead do this missing calculation for some special cases.
+\end{remark}
+
+
+\begin{warning}
+  If we are given an extension~$0 \to I \to \glie \to \hlie \to 0$ then we may identify~$\glie$ with the direct sum~$\glie \oplus I$ as vector spaces and then describe the Lie~bracket of~$\glie$ in terms of a bilinear map~$\kappa \colon \hlie \times \hlie \to I$ and a linear map~$\theta \colon \hlie \to \Der(I)$.
+  But these maps depend not only on the Lie~bracket of~$\glie$ but also on the choosen identification of~$\glie$ with~$\hlie \oplus I$!
+\end{warning}
+
+
+
+\subsubsection{Central Extensions}
+
+
+\begin{definition}
+  An extension~$0 \to I \to \glie \to \hlie \to 0$ of Lie~algebras is \emph{central}\index{central extension}\index{extension!central} if the image of~$I$ is contained in the center of~$\glie$.
+\end{definition}
+
+
+\begin{example}[Central extensions]
+  In the notation of \cref{general approach to extensions} we find that an extension
+  \[
+    0
+    \to
+    I
+    \xlongto{\iota}
+    \hlie \oplus I
+    \xlongto{\pi}
+    \hlie
+    \to
+    0
+  \]
+  is central if and only~$[(x,c), (0,d)] = 0$ for all~$(x,c), (0,d) \in \hlie \oplus I$.
+  This means precisely that~$\theta = 0$ and also~$[c,d] = 0$ for all~$c, d \in I$.
+  Hence the Lie bracket on~$\hlie \oplus I$ is given by
+  \begin{equation}
+    \label{central extension formula}
+    [ (x,c), (y,d) ]
+    =
+    ( [x,y], \kappa(x,y) )
+  \end{equation}
+  for all~$(x,c), (y,d) \in \hlie \oplus I$.
+  
+  Given any bilinear form~$\kappa \colon \hlie \times \hlie \to I$ we have already seen that \eqref{central extension formula} defines a bilinear bracket on~$\hlie \oplus I$ that is alternating if and only if~$\kappa$ is alternating.
+  We find for the Jacobi identity that
+  \[
+    [ (x,c), [ (y,d), (z,e) ] ]
+    =
+    [ (x,c), ([y,z], \kappa(y,z)) ]
+    =
+    ( [x,[y,z]], \kappa(x, [y,z]) )
+  \]
+  for all~$(x,c), (y,d), (z,e) \in \hlie \oplus I$ and therefore
+  \begin{align*}
+    {}&
+      [(x,c), [(y,d), (z,e)]]
+    + [(y,d), [(z,e), (x,c)]]
+    + [(z,e), [(x,c), (y,d)]]
+    \\
+    ={}&
+    (
+      [x,[y,z]] + [y,[z,x]] + [z,[x,y]],
+      \kappa(x, [y,z]) + \kappa(y, [z,x]) + \kappa(z, [x,y])
+    )
+    \\
+    ={}&
+    ( 0, \kappa(x, [y,z]) + \kappa(y, [z,x]) + \kappa(z, [x,y]) ) \,.
+  \end{align*}
+  We hence find that the bracket~$[-,-]$ on~$\hlie \oplus I$ satisfies the Jacobi identity if and only if the bilinear map~$\kappa$ satisfies the similar looking identity
+  \[
+    \kappa(x, [y,z]) + \kappa(y, [z,x]) + \kappa(z, [x,y])
+    =
+    0 \,.
+  \]
+  This condition is the \defemph{{\twococycle} condition}\index{$2$-cocycle condition}, and a bilinear map~$\kappa \colon \hlie \to \hlie \to I$ that is both alternating is satisfies the {\twococycle} condition is a {\twococycle}.
+  
+  We have overall constructed for all Lie~algebras~$\hlie$ and~$I$ a {\onetoone} correspondence between
+  \begin{itemize}
+    \item
+      Lie~brackets~$[-,-]$ on~$\hlie \oplus I$ that makes the standard short exact sequence~$0 \to I \to \hlie \oplus I \to \hlie \to 0$ into a central extension of~$\hlie$ by~$I$ and
+    \item
+      {\twococycles}~$\kappa \colon \hlie \times \hlie \to I$,
+  \end{itemize}
+  and this correspondence is given by~$[(x,c), (y,d)] = ([x,y], \kappa(x,y))$.
+\end{example}
+
+
+
+\subsubsection{Split Extensions and Semidirect Products}
+
+
+\begin{definition}
+  A short exact sequence
+  \[
+    0
+    \to
+    I
+    \xlongto{f}
+    \glie
+    \xlongto{g}
+    \hlie
+    \to
+    0
+  \]
+  \defemph{splits}\index{extension!split} if there exists a Lie~algebra homomorphism~$s \colon \hlie \to \glie$ with~$g \circ s = \id_{\hlie}$.
+  The homomorphism~$s$ is then a \defemph{split} for the short exact sequence.
+  
+  A \emph{split extension} is an extension that splits.%
+  \footnote{This is meant to be funny.}
+\end{definition}
+
+
+\begin{example}[Split extensions]
+  Let
+  \[
+    0
+    \to
+    I
+    \xlongto{f}
+    \glie
+    \xlongto{g}
+    \hlie
+    \to
+    0
+  \]
+  be any split extension of~$\hlie$ by~$I$, and let~$s \colon \hlie \to \glie$ be a split.
+  Then there exists a (unique) homomorphism of vector spaces~$\varphi \colon \glie \to \hlie \oplus I$ that makes the resulting diagram
+  \[
+    \begin{tikzcd}[column sep = large]
+      0
+      \arrow{r}
+      &
+      I
+      \arrow{r}[above]{f}
+      \arrow[equal]{d}
+      &
+      \glie
+      \arrow{r}[above]{g}
+      \arrow[dashed]{d}[right]{\varphi}
+      &
+      \hlie
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      0
+      \\
+      0
+      \arrow{r}
+      &
+      I
+      \arrow{r}[above]{\iota}
+      &
+      \hlie \oplus I
+      \arrow{r}[above]{\pi}
+      &
+      \hlie
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  commute and such that the square diagram
+  \[
+    \begin{tikzcd}
+      \glie
+      \arrow[dashed]{d}[left]{\varphi}
+      &
+      \hlie
+      \arrow{l}[above]{s}
+      \arrow[equal]{d}
+      \\
+      \hlie \oplus I
+      &
+      \hlie
+      \arrow{l}{\sigma}
+    \end{tikzcd}
+  \]
+  commutes.
+  Hence we may again assume that~$\glie = \hlie \oplus I$, that~$f$ is the canonical inclusion~$\iota \colon I \to \hlie \oplus I$, that~$g$ is the canonical projection~$\pi \colon \hlie \oplus I \to \hlie$ that~$s$ is the canonical inclusion~$\sigma \colon \hlie \to \hlie \oplus I$.
+  
+  We can now use the notations from \cref{general approach to extensions} to express the Lie bracket~$[-,-]$ of~$\hlie \oplus I$ via the bilinear form~$\kappa \colon \hlie \times \hlie \to I$ and the linear map~$\theta \colon \hlie \to \Der(I)$.
+  
+  The bilinear map~$\kappa$ is defined by the equality
+  \[
+    [(x,0), (y,0)]
+    =
+    ([x,y], \kappa(x,y))
+  \]
+  for all~$x, y \in \hlie$.
+  The linear subspace~$\hlie \oplus 0$ of~$\hlie \oplus I$ is the image of the Lie~algebra homomorphism~$\sigma \colon \hlie \to \hlie \oplus I$ and hence a Lie~subalgebra of~$\hlie \oplus I$.
+  We therefore find that the commutator~$[(x,0), (y,0)]$ is again contained in~$\hlie \oplus 0$ for all~$x, y \in \hlie$.
+  This means that~$\kappa = 0$.
+  
+  The linear map~$\theta \colon \hlie \to I$ is given by taking for~$x \in \hlie$ the restriction of the endomorphism~$\ad_{\hlie \oplus I}((x,0))$ to the ideal~$0 \oplus I$ and then identifying~$0 \oplus I$ with~$I$ to get~$\theta(x) \in \Der(I)$.
+  This assignment may be written as the composition
+  \[
+    \theta
+    \colon
+    \hlie
+    \xlongto{\sigma}
+    \hlie \oplus I
+    \xlongto{ \restrict{\ad(-)}{0 \oplus I} }
+    \Der(0 \oplus I)
+    \to
+    \Der(I) \,.
+  \]
+  Each of the intermediate maps is a Lie~algebra homomorphism, so~$\theta$ is again a homomorphism.
+  
+  It remains to examine what further conditions such a homomorphism~$\theta$ needs to satisfy for the bracket~$[-,-]$ on~$\hlie \oplus I$ to satisfy the Jacobi identity.
+  We claim that there are none.
+  
+  Indeed, we need to check that under the given constraints~($\kappa = 0$ and~$\theta$ is a homomorphism of Lie~algebras~$\hlie \to \Der(I)$) we already have the Jacobi identity
+  \[
+      [\alpha, [\beta, \gamma]]
+    + [\beta, [\gamma, \alpha]]
+    + [\gamma, [\alpha, \beta]]
+    =
+    0
+  \]
+  for all~$\alpha, \beta, \gamma \in \hlie \oplus I$.
+  For this we use a trick taken from \cite{semidirect_jacobi}:
+  Let us denote the left hand side of this equation by~$J(\alpha, \beta, \gamma)$.
+  It follows from the bilinearity of~$[-,-]$ that~$J$ is trilinear.
+  It also follows from~$[-,-]$ being alternating and thus skew-symmetric that~$J$ is again skew-symmetric.
+  It therefore sufficies to check the condition~$J(\alpha, \beta, \gamma) = 0$ for the following four cases:
+  \begin{itemize}
+    \item
+      If~$\alpha = (x,0)$,~$\beta = (y,0)$ and~$\gamma = (z,0)$ with~$x, y, z \in \hlie$ then
+      \[
+        [\alpha, [\beta, \gamma]]
+        =
+        [(x,0), [(y,0), (z,0)]]
+        =
+        [(x,0), ([y,z], 0)]
+        =
+        ([x,[y,z]], 0)
+      \]
+      and therefore
+      \begin{align*}
+        J(\alpha, \beta, \gamma)
+        &=
+          ([x,[y,z]], 0)
+        + ([y,[z,x]], 0)
+        + ([z,[x,y]], 0)
+        \\
+        &=
+        ([x,[y,z]] + [y,[z,x]] + [z,[x,y]], 0)  \,.
+      \end{align*}
+      Hence~$J(\alpha, \beta, \gamma) = 0$ precisely because the Lie~bracket of~$\hlie$ satisfies the Jacobi identity.
+    \item
+      If~$\alpha = (x,0)$,~$\beta = (y,0)$ and~$\gamma = (0,c)$ with~$x, y \in \hlie$ and~$c \in I$ then
+      \[
+        [\alpha, [\beta, \gamma]]
+        =
+        [(x,0), [(y,0), (0,c)]]
+        =
+        [(x,0), [(0, \theta(y)(c)]]
+        =
+        ( 0, \theta(x)(\theta(y)(c)) )
+      \]
+      and similarly
+      \[
+        [\gamma, [\alpha, \beta]]
+        =
+        [(0,c), [(x,0), (y,0)]]
+        =
+        [(0,c), ([x,y], 0)]
+        =
+        ( 0, -\theta([x,y])(c) ) \,.
+      \]
+      It also follows that
+      \[
+        [\beta, [\gamma, \alpha]]
+        =
+        [(y,0), [(0,c), (x,0)]]
+        =
+        -[(y,0), [(x,0), (0,c)]]
+        =
+        ( 0, -\theta(y)(\theta(x)(c)) )
+      \]
+      and therefore
+      \begin{align*}
+        J(\alpha, \beta, \gamma)
+        &=
+          [(x,0), [(y,0), (0,c)]]
+        + [(y,0), [(0,c), (x,0)]]
+        + [(0,c), [(x,0), (y,0)]]
+        \\
+        &=
+        ( 0, \theta(x)(\theta(y)(c)) - \theta([x,y])(c) - \theta(y)(\theta(x)(c)) ) \,.
+      \end{align*}
+      We hence find for this case that~$J(\alpha, \beta, \gamma) = 0$ precisely because~$\theta$ is a Lie~algebra homomorphism.
+    \item
+      If~$\alpha = (x,0)$,~$\beta = (0,c)$ and~$\gamma = (0,d)$ with~$x \in \hlie$ and~$c, d \in I$ then
+      \[
+        [\alpha, [\beta, \gamma]]
+        =
+        [(x,0), [(0,c), (0,d)]]
+        =
+        [(x,0), (0,[c,d])]
+        =
+        ( 0, \theta(x)([c,d]) )
+      \]
+      and similarly
+      \[
+        [\beta, [\gamma, \alpha]]
+        =
+        [(0,c), [(0,d), (x,0)]]
+        =
+        [(0,c), (0, -\theta(x)(d)]
+        =
+        ( 0, -[c,\theta(x)(d)] ) \,.
+      \]
+      It also follows that
+      \begin{align*}
+        [\gamma, [\alpha, \beta]]
+        =
+        [(0,d), [(x,0), (0,c)]]
+        =
+        - [(0,d), [(0,c), (x,0)]]
+        &=
+        ( 0, [d,\theta(x)(c)] )
+        \\
+        &=
+        ( 0, -[\theta(x)(c), d] ) \,.
+      \end{align*}
+      It follows in combination that
+      \begin{align*}
+        J(\alpha, \beta, \gamma)
+        &=
+          [(x,0), [(0,c), (0,d)]]
+        + [(0,c), [(0,d), (0,x)]]
+        + [(0,d), [(x,0), (0,c)]]
+        \\
+        &=
+        ( 0, \theta(x)([c,d]) - [c, \theta(x)(d)] - [\theta(x)(c), d] )
+      \end{align*}
+      which shows that~$J(\alpha, \beta, \gamma) = 0$ precisely because~$\theta(x)$ is a derivation of~$I$.
+    \item
+      If~$\alpha = (0,c)$,~$\beta = (0,d)$ and~$\gamma = (0,e)$ with~$c, d, e \in I$ then
+      \[
+        [\alpha, [\beta, \gamma]]
+        =
+        [(0,c), [(0,d), (0,e)]]
+        =
+        [(0,c), (0, [d,e])]
+        =
+        ( 0, [c,[d,e]] )
+      \]
+      and therefore
+      \begin{align*}
+        J(\alpha, \beta, \gamma)
+        &=
+          [(0,c), [(0,d), (0,e)]]
+        + [(0,d), [(0,e), (0,c)]]
+        + [(0,e), [(0,c), (0,d)]]
+        \\
+        &=
+        ( 0, [c,[d,e]] + [d,[e,c]] + [e,[c,d]] )
+      \end{align*}
+      Which shows that~$J(\alpha, \beta, \gamma) = 0$ precisely because the Lie~bracket of~$I$ satisfies the Jacobi~identity.
+  \end{itemize}
+  
+  We have now overall constructed for all Lie~algebras~$\hlie$ and~$I$ a {\onetoone} correspondence between
+  \begin{itemize}
+    \item
+      Lie~brackets~$[-,-]$ on~$\hlie \oplus I$ that makes the standard short exact sequence~$0 \to I \to \hlie \oplus I \to \hlie \to 0$ into a split extension of~$\hlie$ by~$I$ and
+    \item
+      Lie~algebra homomorphisms~$\theta \colon \hlie \to \Der(I)$,
+  \end{itemize}
+  and this correspondence is given by~$[(x,c), (y,d)] = ([x,y], \theta(x)(d) - \theta(y)(c) + [c,d])$.
+\end{example}
+
+
+\begin{definition}
+  Let~$\hlie$ and~$I$ be two Lie~algebras and let~$\theta \colon \hlie \to \Der(I)$ be a homomorphism of Lie~algebras.
+  The \defemph{semidirect product}~\gls*{semidirect product} of~$\hlie$ by~$I$ over~$\theta$ is the Lie~algebra~$\glie$ that is given by
+  \begin{itemize}
+    \item
+      the underlying vector space~$\glie \defined \hlie \oplus I$ together with
+    \item
+      the Lie bracket~$[-,-]$ given by
+      \[
+        [(x,c), (y,d)]
+        =
+        ([x,y], \theta(x)(d) - \theta(y)(c) + [c,d])
+      \]
+      for all~$(x,c), (y,d) \in \glie$.
+  \end{itemize}
+\end{definition}
+
+
+\begin{remark}
+  Let~$\hlie$ and~$I$ be Lie~algebras and let~$\theta \colon \hlie \to \Der(I)$ be a Lie~algebra homomorphism.
+  \begin{enumerate}
+    \item
+      It follows from the above discussion that~$\hlie \ltimes_\theta I$ is indeed a Lie algebra and that
+      \[
+        0
+        \to
+        I
+        \xlongto{\iota}
+        \hlie \ltimes_\theta I
+        \xlongto{\pi}
+        \hlie
+        \to
+        0
+      \]
+      is a split extension of~$\hlie$ by~$I$, where~$\iota(x) = (0,y)$ and~$\pi(x,y) = x$.
+      Moreover, a split~$\sigma \colon \hlie \to \hlie \ltimes_\theta I$ of this extension is given by~$\sigma(x) = (x,0)$.
+    \item
+      We have also seen that whenever a Lie algebra~$\glie$ is a split extension of~$\hlie$ by~$I$ then~$\glie$ is already (equivalent to) a semidirect product of~$\hlie$ by~$I$ (over some suitable homomorphism of Lie~algebras~$\theta \colon \hlie \to \Der(I)$).
+  \end{enumerate}
+  The notions of split extensions and semidirect products are hence equivalent.
+\end{remark}
+
+
+\begin{remark}[Internal semidirect products]
+  Given a Lie~algebra~$\glie$ we may ask ourselves if~$\glie$ can be decomposed as a semidirect product~$\glie \cong \hlie \ltimes_\theta I$;
+  and if so, how~$I$ and~$\glie$ look like from the point of view of~$\glie$.
+  
+  We observe first that the semidirect product~$\glie = \hlie \ltimes_\theta I$ (where~$\theta \colon \hlie \to \Der(I)$ is some Lie~algebra homomorphism) contains the Lie~subalgebra~$\hlie' = \{ (x,0) \suchthat x \in \hlie \}$ and the ideal~$I' \defined \{ (0,c) \suchthat c \in I \}$.
+  We have that~$\hlie' \cong \hlie$ and~$I' \cong I$ as Lie~algebras, and~$\glie = \hlie' \oplus I'$ as vector spaces.
+  The homomorpism~$\theta \colon \hlie \to \Der(I)$ can be described by considering for~$x \in \hlie$ the corresponding element~$(x,0) \in \hlie'$, restricting the endomorphism~$\ad_{\glie}((x,0)) \in \Der(\glie)$ to an endomorphism~$\restrict{ \ad_{\glie}((x,0)) }{I'} \in \Der(I')$ and then using the isomorphism~$I' \cong I$ to arrive at~$\theta(x) \in \Der(I)$.
+  
+  Suppose on the other hand that~$\glie$ is any Lie~algebra and that~$\glie = \hlie \oplus I$ for some Lie~subalgebra~$\hlie$ of~$\glie$ and some ideal~$I$ of~$\glie$.
+  Then~$\theta \colon \hlie \to \Der(I)$ given by~$x \mapsto \restrict{\ad_{\glie}(x)}{I}$ is a well-defined Lie algebra homomorphism, and we have that
+  \begin{align*}
+    [x + c, y + d]
+    &=
+    [x,y] + [x,d] + [c,y] + [c,d]
+    \\
+    &=
+    [x,y] + [x,d] - [y,c] + [c,d]
+    \\
+    &=
+    \underbrace{ [x,y] }_{\in \hlie} + \underbrace{ \theta(x)(d) - \theta(y)(c) + [c,d] }_{\in I}
+  \end{align*}
+  for all~$x, y \in \hlie$ and~$c, d \in I$.
+  This shows that the vector space isomorphism
+  \[
+    \varphi
+    \colon
+    \hlie \oplus I
+    \to
+    \glie \,,
+    \quad
+    (x,c)
+    \mapsto
+    x + c
+  \]
+  is already an isomorphism of Lie algebras~$\varphi \colon \hlie \ltimes_\theta I \to \glie$.
+\end{remark}
+
+
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra, let~$\hlie$ be a Lie~subalgebra of~$\glie$ and let~$I$ be an ideal in~$\glie$.
+  Then~$\glie$ is the \defemph{internal semidirect product}\index{internal semidirect product} of~$\hlie$ by~$I$ if~$\glie = \hlie \oplus I$.
+  This is then denoted by~$\glie = \gls*{internal semidirect product}$.
+\end{definition}
+
+
+\begin{remark}
+  The notion of an internal semidirect product does not depend on the additional information of a Lie~algebra homomorphism~$\theta \colon \hlie \to \Der(I)$.
+  Instead this information is encoded in the Lie~algebra structure of~$\glie$, and related to the expected homomorphism~$\theta$ by~$\theta(x) = \restrict{\ad_{\glie}(x)}{I}$.
+\end{remark}
+
+
+\begin{example}
+  The Lie algebra~$\glie = \tlie_n(\kf)$ can be written as a direct sum~$\tlie_n(\kf) = \dlie_n(\kf) \oplus \nlie_n(\kf)$ with~$\dlie_n(\kf)$ a Lie~subalgebra of~$\tlie_n(\kf)$ and~$\nlie_n(\kf)$ an ideal in~$\tlie_n(\kf)$.
+  Hence
+  \[
+    \tlie_n(\kf)
+    =
+    \dlie_n(\kf) \ltimes \nlie_n(\kf) \,.
+  \]
+\end{example}
+
+
+\begin{example}[Trivial extensions]
+  \label{trivial extension is semidirect}
+  For any two Lie~algebras~$I$ and~$\hlie$ the zero map~$\theta \colon \hlie \to \Der(I)$ is a homomorphism of Lie algebras.
+  The resulting semidirect product~$\hlie \ltimes_\theta I$ is precisely the usual product~$\hlie \times I$.
+  The corresponding split extension
+  \[
+    0
+    \to
+    I
+    \xlongto{\iota}
+    \hlie \times I
+    \xlongto{\pi}
+    \hlie
+    \to
+    0
+  \]
+  is given by canonical inclusion~$\iota(c) = (0,c)$ and the canonical projection~$\pi(x,y) = x$.
+  This extension is the \emph{trivial extension}\index{trivial extension} of~$\hlie$ by~$I$.
+  More generally any extension that is equivalent to the trivial extension is called \defemph{trivial}.
+\end{example}
+
+
+% \begin{remark}
+%   \label{when semidirect is direct}
+%   The converse to the above observation also holds:
+%   Let~$I$ and~$\hlie$ be Lie~algebras and let~$\theta \colon \hlie \to \Der(I)$ be a homomorphism of Lie~algebras such that the resulting semidirect product~$\hlie \ltimes_\theta I$ is trivial.
+%   Then already~$\theta = 0$.
+%   
+%   Indeed, if the extension
+%   \[
+%     0
+%     \to
+%     I
+%     \xlongto{\iota}
+%     \hlie \times I
+%     \xlongto{\pi}
+%     \hlie
+%     \to
+%     0
+%   \]
+%   is trivial
+% 
+% \end{remark}
+
+
+\begin{warning}
+  Let
+  \[
+    0
+    \to
+    I
+    \xlongto{f}
+    \glie
+    \xlongto{g}
+    \hlie
+    \to
+    0
+  \]
+  be an extension of Lie~algebras.
+  The observant reader may have noticed that we have so far only considered splits~$s \colon \hlie \to \glie$, but not splits~$t \colon \glie \to I$.
+  There is a good reason for this:
+  
+  Suppose that such a split exists, i.e.\ there exists a Lie~algebra homomorphism~$t \colon \glie \to I$ with~$t f = \id_I$.
+  Then~$J \defined \ker t$ is an ideal in~$\glie$.
+  If~$I'$ denotes the image of~$I$ in~$\glie$ then it follows that~$\glie = I' \oplus J$, the homomorphism~$f$ restricts to an isomorphism~$I \to I'$ and the homomorphism~$g$ restricts to an isomorphism~$J \to \hlie$.
+  This means that the given extension is equivalent to the trivial extension, and hence trivial itself.
+  
+  We see on the other hand that the trivial extension admits both kinds of split, and thus the same holds for every extension that is trivial.
+  
+  This means altogether that an extension~$0 \to I \to \glie \to \hlie \to 0$ admits a split~$\glie \to I$ (of Lie~algebras) if and only if the extension is already trivial.
+\end{warning}
+
+
+
+

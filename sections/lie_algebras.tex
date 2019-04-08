@@ -193,6 +193,12 @@
 \end{definition}
 
 
+\begin{lemma}
+  For any Lie~algebra~$\glie$ its center~$\centerlie(\glie)$ is an ideal in~$\glie$.
+  \qed
+\end{lemma}
+
+
 \begin{definition}
   A Lie~algebra~$\glie$ is \defemph{abelian}\index{abelian} if~$[x,y] = 0$ for all~$x, y \in \glie$.
 \end{definition}
@@ -253,149 +259,175 @@
 \begin{examples}[Linear Lie~algebras]
   \leavevmode
   \begin{enumerate}
-  \item
-    Let~$\glie \defined \gllie_n(\kf)$.
-    Then
-    \[
-      \gls*{special lie matrix}
-      \defined
-      \{
-        A \in \glie
-      \suchthat
-        \tr A = 0
-      \}
-    \]
-    is an ideal in~$\glie$, namely
-    \[
-      \sllie_n(\kf)
-      =
-      [\glie,\glie]  \,.
-    \]
+    \item
+      Let~$\glie \defined \gllie_n(\kf)$.
+      Then
+      \[
+        \gls*{special lie matrix}
+        \defined
+        \{
+          A \in \glie
+        \suchthat
+          \tr A = 0
+        \}
+      \]
+      is an ideal in~$\glie$, namely
+      \[
+        \sllie_n(\kf)
+        =
+        [\glie,\glie]  \,.
+      \]
+        
+      Indeed, we have for all~$A, B \in \glie$ that~$\tr(AB) = \tr(BA)$ and hence
+      \[
+          \tr( [A,B] )
+        = \tr(AB-BA)
+        = \tr(AB) - \tr(BA)
+        = \tr(AB) - \tr(AB)
+        = 0  \,.
+      \]
+      This shows that~$[\glie, \glie] \subseteq \sllie_n(\kf)$.
+      Observe on the other hand that~$\sllie_n(\kf)$ has a basis given by the matrices~$E_{ij}$ with~$1 \leq i \neq j \leq n$ together with the matrices~$E_{11} - E_{ii}$ with~$i = 2, \dotsc, n$.
+      Each of these matrices is given as a commutator, namely
+      \[
+          E_{ij}
+          =
+          E_{ij} E_{jj} - \underbrace{ E_{jj} E_{ij} }_{=0}
+          =
+          [E_{ij}, E_{jj}]
+      \]
+      for~$1 \leq i \neq j \leq n$ and
+      \[
+        E_{11} - E_{ii}
+        =
+        E_{1i} E_{i1} - E_{i1} E_{1i}
+        =
+        [E_{1i}, E_{i1}]
+      \]
+      for~$i = 2, \dotsc, n$.
+      Therefore~$\sllie_n(\kf) \subseteq [\glie, \glie]$.
       
-    Indeed, we have for all~$A, B \in \glie$ that~$\tr(AB) = \tr(BA)$ and hence
-    \[
-        \tr( [A,B] )
-      = \tr(AB-BA)
-      = \tr(AB) - \tr(BA)
-      = \tr(AB) - \tr(AB)
-      = 0  \,.
-    \]
-    This shows that~$[\glie, \glie] \subseteq \sllie_n(\kf)$.
-    Observe on the other hand that~$\sllie_n(\kf)$ has a basis given by the matrices~$E_{ij}$ with~$1 \leq i \neq j \leq n$ together with the matrices~$E_{11} - E_{ii}$ with~$i = 2, \dotsc, n$.
-    Each of these matrices is given as a commutator, namely
-    \[
+      The Lie~algebra~$\sllie_n(\kf)$ is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra}.
+      
+      If~$V$ is any finite dimensional~{\vectorspace{$\kf$}} then
+      \[
+        \gls*{special lie endomorphism}
+        \defined
+        [\gllie(V), \gllie(V)]
+        =
+        \{
+          f \in \gllie(V)
+        \suchthat
+          \tr(f) = 0
+        \}
+      \]
+      is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra} of~$V$.
+   
+    \item
+      The upper triangular matrices\index{upper triangular matrices}\index{triangular matrices!upper}
+      \[
+        \gls*{triangular lie matrix}
+        \defined
+        \left\{
+          \begin{pmatrix}
+              a_{11}
+            & \cdots
+            & \cdots
+            & a_{1n}
+            \\
+              {}
+            & \ddots
+            & {}
+            & \vdots
+            \\
+              {}
+            & {}
+            & \ddots
+            & \vdots
+            \\
+              {}
+            & {}
+            & {}
+            & a_{nn}
+          \end{pmatrix}
+        \suchthat*
+          \text{$a_{ij} \in \kf$ for all~$1 \leq i \leq j \leq n$}
+        \right\}
+      \]
+      form a Lie~subalgebra of~$\gllie_n(\kf)$.
+      This holds because the space of upper triangular matrices is a~{\subalgebra{$\kf$}} of~$\Mat_n(\kf)$, and are hence closed under the commutator~$[A,B] = AB - BA$.
+   
+    \item
+      The strictly upper triangular matrices\index{stricly upper triangular matrices}\index{triangular matrices!strictly upper}
+      \[
+        \gls*{strictly triangular lie matrix}
+        \defined
+        \left\{
+          \begin{pmatrix}
+              0
+            & a_{12}
+            & \cdots
+            & a_{1n}
+            \\
+              {}
+            & \ddots
+            & \ddots
+            & \vdots
+            \\
+              {}
+            & {}
+            & \ddots
+            & a_{n-1,n}
+            \\
+              {}
+            & {}
+            & {}
+            & 0
+          \end{pmatrix}
+        \suchthat*
+          \text{$a_{ij} \in \kf$ for all~$1 \leq i < j \leq n$}
+        \right\}
+      \]
+      form a Lie~subalgebra of~$\tlie_n(\kf)$ and therefore also of~$\gllie_n(\kf)$.
+      The space~$\nlie_n(\kf)$ is even an ideal in~$\tlie_n(\kf)$, namely~$\nlie_n(\kf) = [\tlie_n(\kf), \tlie_n(\kf)]$:
+    
+      For any two matrices~$A, B \in \tlie_n(\kf)$ their products~$AB$ and~$BA$ are again upper triangular and both products have the same diagonal entries.
+      The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix.
+      Hence~$[\tlie_n(\kf), \tlie_n(\kf)] \subseteq \nlie_n(\kf)$.
+      We know on the other hand that~$\nlie_n(\kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$, and each of those matrices can be written as a commutator
+      \[
         E_{ij}
         =
-        E_{ij} E_{jj} - \underbrace{ E_{jj} E_{ij} }_{=0}
+        E_{ii} E_{ij} - \underbrace{ E_{ij} E_{ii} }_{= 0}
+      \]
+      with~$E_{ii}, E_{ij} \in \tlie_n(\kf)$.
+      Therefore~$\nlie_n(\kf) \subseteq \tlie_n(\kf)$.
+      
+    \item
+      The diagonal matrices
+      \[
+        \dlie_n(\kf)
         =
-        [E_{ij}, E_{jj}]
-    \]
-    for~$1 \leq i \neq j \leq n$ and
-    \[
-      E_{11} - E_{ii}
-      =
-      E_{1i} E_{i1} - E_{i1} E_{1i}
-      =
-      [E_{1i}, E_{i1}]
-    \]
-    for~$i = 2, \dotsc, n$.
-    Therefore~$\sllie_n(\kf) \subseteq [\glie, \glie]$.
-    
-    The Lie~algebra~$\sllie_n(\kf)$ is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra}.
-    
-    If~$V$ is any finite dimensional~{\vectorspace{$\kf$}} then
-    \[
-      \gls*{special lie endomorphism}
-      \defined
-      [\gllie(V), \gllie(V)]
-      =
-      \{
-        f \in \gllie(V)
-      \suchthat
-        \tr(f) = 0
-      \}
-    \]
-    is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra} of~$V$.
-   
-  \item
-    The upper triangular matrices\index{upper triangular matrices}\index{triangular matrices!upper}
-    \[
-      \gls*{triangular lie matrix}
-      \defined
-      \left\{
-        \begin{pmatrix}
-            a_{11}
-          & \cdots
-          & \cdots
-          & a_{1n}
-          \\
-            0
-          & \ddots
-          & {}
-          & \vdots
-          \\
-            \vdots
-          & \ddots
-          & \ddots
-          & \vdots
-          \\
-            0
-          & \cdots
-          & 0
-          & a_{nn}
-        \end{pmatrix}
-      \suchthat*
-        \text{$a_{ij} \in \kf$ for all~$1 \leq i \leq j \leq n$}
-      \right\}
-    \]
-    form a Lie~subalgebra of~$\gllie_n(\kf)$.
-    This holds because the space of upper triangular matrices is a~{\subalgebra{$\kf$}} of~$\Mat_n(\kf)$, and are hence closed under the commutator~$[A,B] = AB - BA$.
-   
-  \item
-    The strictly upper triangular matrices\index{stricly upper triangular matrices}\index{triangular matrices!strictly upper}
-    \[
-      \gls*{strictly triangular lie matrix}
-      \defined
-      \left\{
-        \begin{pmatrix}
-            0
-          & a_{12}
-          & \cdots
-          & a_{1n}
-          \\
-            \vdots
-          & \ddots
-          & \ddots
-          & \vdots
-          \\
-            \vdots
-          & {}
-          & \ddots
-          & a_{n-1,n}
-          \\
-            0
-          & \cdots
-          & \cdots
-          & 0
-        \end{pmatrix}
-      \suchthat*
-        \text{$a_{ij} \in \kf$ for all~$1 \leq i < j \leq n$}
-      \right\}
-    \]
-    form a Lie~subalgebra of~$\tlie_n(\kf)$ and therefore also of~$\gllie_n(\kf)$.
-    The space~$\nlie_n(\kf)$ is even an ideal in~$\tlie_n(\kf)$, namely~$\nlie_n(\kf) = [\tlie_n(\kf), \tlie_n(\kf)]$:
-   
-    For any two matrices~$A, B \in \tlie_n(\kf)$ their products~$AB$ and~$BA$ are again upper triangular and both products have the same diagonal entries.
-    The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix.
-    Hence~$[\tlie_n(\kf), \tlie_n(\kf)] \subseteq \nlie_n(\kf)$.
-    We know on the other hand that~$\nlie_n(\kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$, and each of those matrices can be written as a commutator
-    \[
-      E_{ij}
-      =
-      E_{ii} E_{ij} - \underbrace{ E_{ij} E_{ii} }_{= 0}
-    \]
-    with~$E_{ii}, E_{ij} \in \tlie_n(\kf)$.
-    Therefore~$\nlie_n(\kf) \subseteq \tlie_n(\kf)$.
+        \left\{
+          \begin{pmatrix}
+              d_1
+            & {}
+            & {}
+            \\
+              {}
+            & \ddots
+            & {}
+            \\
+              {}
+            & {}
+            & d_n
+          \end{pmatrix}
+        \suchthat*
+          d_1, \dotsc, d_n \in \kf
+        \right\}
+      \]
+      form an~{\dimensional{$n$}} abelian Lie~subalgebra of~$\gllie_n(\kf)$.
+      A basis of~$\dlie_n(\kf)$ is given by the matrices~$E_{ii}$ with~$i = 1, \dotsc, n$.
   \end{enumerate}
 \end{examples}
 
@@ -1026,6 +1058,44 @@
 \end{remark}
 
 
+\begin{example}
+  If~$I$ and~$J$ are two Lie~algebra over the same field~$\kf$ then their product~$I \times J$ contains the linear subspaces~$I' \defined I \times 0$ and~$J' \defined 0 \times J$ as ideals.
+  These ideals are isomorphic to~$I$ and~$J$ as Lie~algebras via the isomorphisms
+  \begin{align*}
+    I
+    \to
+    I'  \,,
+    \quad
+    x
+    \mapsto
+    (x,0) \,,
+  \\
+    J
+    \to
+    J'  \,,
+    \quad
+    y
+    \mapsto
+    (0,y) \,.
+  \end{align*}
+  
+  Let on the other hand~$\glie$ be a Lie~algebra and let~$I$ and~$J$ be two ideals in~$\glie$ such that~$\glie = I \oplus J$ as vector spaces.
+  It then follows for all~$x \in I$ and~$y \in J$ that~$[x,y] \in I$ because~$x \in I$ but also~$[x,y] \in J$ because~$y \in J$.
+  Hence~$[x,y] \in I \cap J = 0$.
+  The vector space isomorphism
+  \[
+    I \times J
+    \to
+    \glie \,,
+    \quad
+    (x,y)
+    \mapsto
+    x+y
+  \]
+  is therefore an isomorphism of Lie~algebras.
+\end{example}
+
+
 \begin{example}[Classification of one- and two-dimensional Lie~algebras]
   Let~$\kf$ be any field.
   
@@ -1165,13 +1235,19 @@
 
 
 \begin{corollary}
-  The center~$\centerlie(\glie)$ of a Lie~algebra~$\glie$ is an ideal in~$\glie$ with~$\glie/\centerlie(\glie) \cong \ad(\glie)$, which is a Lie~subalgebra~$\gllie(\gllie)$.
+  It holds for any Lie~algebra~$\glie$ that~$\glie/{\centerlie(\glie)} \cong \ad(\glie)$, which is a Lie~subalgebra~$\gllie(\gllie)$.
 \end{corollary}
 
 
 \begin{proof}
   The center~$\centerlie(\glie)$ is precisely the kernel of the Lie~algebra homomorphism~$\ad \colon \glie \to \gllie(\glie)$.
 \end{proof}
+
+
+\begin{remark}
+  The Lie~subalgebra~$\ad(\glie)$ of~$\gllie(\glie)$ is the canonical way of associating to a Lie~algebra~$\glie$ a linear Lie~algebra.
+  We will see later on that questions about~$\glie$ can sometimes be reduced to~$\ad(\glie)$, to which we can then apply linear algebra.
+\end{remark}
 
 
 \begin{remark}
@@ -1385,8 +1461,6 @@
   That the image~$\ad(\glie)$ is a~{\linear{$\kf$}} subspace of~$\Der(A)$ follows from the linearity of the map~$\ad$.
   That~$\ad(\glie)$ is already an ideal in~$\Der(A)$ follows from \cref{commutator of any derivation and inner derivation}.
 \end{proof}
-
-
 
 
 
