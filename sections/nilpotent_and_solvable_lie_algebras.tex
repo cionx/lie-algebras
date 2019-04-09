@@ -414,15 +414,18 @@
     I^n + J^n \,.
   \]
   To see this we write
-  \begin{align*}
-    (I + J)^{2n}
-    &=
-    [I+J, [I+J, [\dotsc, [I+J, I+J] \dotsc] ] ]
-    \\
-    &=
-    \sum_{K_i \in \{I, J\}}
-    [K_1, [K_2, [\dotsc, [K_{2n}, K_{2n+1}] \dotsc] ] ] \,.
-  \end{align*}
+  \begin{equation}
+    \label{power of sum}
+    \begin{aligned}
+      (I + J)^{2n}
+      &=
+      [I+J, [I+J, [\dotsc, [I+J, I+J] \dotsc] ] ]
+      \\
+      &=
+      \sum_{K_i \in \{I, J\}}
+      [K_1, [K_2, [\dotsc, [K_{2n}, K_{2n+1}] \dotsc] ] ] \,.
+    \end{aligned}
+  \end{equation}
   In each summand~$[K_1, [K_2, [\dotsc, [K_{2n}, K_{2n+1}] \dotsc] ] ]$ at least~{\many{$(n+1)$}} ideals~$K_i$ are equal to the same ideal~$K \in \{I, J\}$ (the choice of which depends on the summand), say
   \[
     K_{i_1}
@@ -434,7 +437,7 @@
     K
   \]
   with~$1_1 < i_2 < \dotsb < i_{n+1}$.
-  We have that~$[L_1, L_2] \subseteq L_1, L_2$ for all ideals~$L_1, L_2 \subseteq \glie$, so we may leave out all terms~$K_i$ with~$K_i \neq K$ to get
+  We have that~$[L_1, L_2] \subseteq L_1, L_2$ for all ideals~$L_1, L_2 \subseteq \glie$, so we may leave out all terms~$K_i$ with~$i \notin \{i_1, \dotsc, i_{n+1}\}$ to get
   \begin{align*}
     {}&
     [K_1, [K_2, [\dotsc, [K_{2n}, K_{2n+1}] \dotsc] ] ]
@@ -451,7 +454,7 @@
     \in{}&
     \{I^n, J^n\}  \,.
   \end{align*}
-  This holds for every summand, so overall~$(I + J)^{2n} \subseteq I^n + J^n$ .
+  This holds for every summand in~\eqref{power of sum}, so overall~$(I + J)^{2n} \subseteq I^n + J^n$ .
   If the ideals~$I$ and~$J$ are both nilpotent then~$I^n = J^n = 0$ for~$n$ sufficiently large, and hence~$(I + J)^{2n} = 0$.
 %   WARNING: The following uses the wrong convention.
 %   \begin{enumerate}
@@ -809,7 +812,7 @@
   According to \cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms} there exists a basis of~$V$ with respect to which every~$x \in \glie'$ is given by a strictly upper triangular matrix.
   This shows that~$\glie'$ is isomorphic to a Lie~subalgebra of some~$\nlie_n(\kf)$ (for~$n = \dim \glie$) and hence nilpotent.
   
-  This shows that~$\glie/\centerlie(\glie) \cong \glie'$ is nilpotent.
+  This shows that~$\glie/{\centerlie(\glie)} \cong \glie'$ is nilpotent.
   It follows by \cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms} that~$\glie$ is nilpotent.
 \end{proof}
 
@@ -850,6 +853,200 @@
   By \cref{common eigenvector for nilpotent Lie algebras} there exists some non-zero~$y \in I$ with~$\restrict{\ad(x)}{I}(y) = 0$ for every~$y \in \glie$, i.e.~$[\glie, y] = 0$.
   Then~$y \in \centerlie(\glie) \cap I$.
 \end{proof}
+
+
+\begin{remark}
+  We have in this section introduces various notions of nilpotence for Lie~algebras and their elements.
+  Before we move on the solvable Lie~algebras we will give a short overview our results.
+  For this we pose the following question:
+  \begin{center}
+    What does it mean for a Lie~algebra to be nilpotent?
+  \end{center}
+  We have in this section seen four possible answers to this question.
+  
+  If~$\glie$ is an abstract Lie~algebra (i.e.\ any vector space with a Lie~bracket satisfying certain axioms) then we have introduced two notions of nilpotence for~$\glie$:
+  \begin{equivalenceslist}[label=N\arabic*)]
+    \item
+      The Lie~algebra~$\glie$ is nilpotent, in the sense that~$\glie^n = 0$ for~$n$ sufficiently large.
+    \item
+      Every element~$x \in \glie$ is {\adnilpotent}, in the sense that the endomorphism~$\ad(x)$ of~$\glie$ is nilpotent for every~$x \in \glie$.
+  \end{equivalenceslist}
+  The first definition can be thought of as a global definition of nilpotence, whereas the second definition is a local one.
+  The global notion states that for~$n$ sufficently large the compositions~$\ad(x_1) \dotsm \ad(x_n)$ vanish for all~$x_1, \dotsc, x_n \in \glie$.
+  The local notion states that for every~$x \in \glie$ there exists some~$n$, possibly depending on~$x$, such that~$\ad(x)^n = 0$.
+  The global notion is therefore stonger (but not necessarily strictly stronger) than the local one.
+  Engel’s theorem asserts that for a finite dimensional Lie~algebra these two concepts of nilpotence actually coincide.
+  So there is actually only one notion of abstract nilpotence for finite dimensional Lie~algebras.
+  
+  If~$\glie$ is a linear Lie~algebra, say a Lie~subalgebra of~$\gllie(V)$ with~$V$ some finite dimensional vector space, then we have two additional concepts of nilpotence:
+  \begin{equivalenceslist}[label=N\arabic*), start=3]
+    \item
+      Every~$x \in \glie$ is nilpotent as an endomorphism of~$V$.
+    \item
+      There exists a basis of~$V$ with respect to which every~$x \in \glie$ is given by a strictly upper triangular matrix.
+  \end{equivalenceslist}
+  Observe that the two notions do not depend on the Lie bracket of~$\glie$;
+  but they depend on the multiplication in~$\End_\kf(V)$, which in turn determines the commutator of~$\glie$.
+  The first of these two notions can again be thought of as a local one, and the second notion as a global one.
+  Indeed, we know from linear algebra that an endomorphism~$x$ of~$V$ is nilpotent if and only if there exists a basis of~$V$ with respect to which~$x$ is given by a strictly upper triangular matrix.
+  The global notion therefore implies the local one.
+  \Cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms} shows that the converse is also true, so that these two concrete notions of nilpotence are actually equivalent.
+  (This equivalence depends on the fact that~$\glie$ is not just any collection of endomorphisms, but a Lie~subalgebra of~$\gllie(V)$).
+  So there is actually only one notion of concrete nilpotence.%
+  \footnote{Recall that in these notes linear Lie~algebras are Lie~subalgebras of~$\gllie(V)$ for some \emph{finite dimensional} vector space~$V$.
+  If one drops this finite dimensionality requirement then the statement no longer holds.}
+  
+  For such a linear Lie~algebra~$\glie$ we also need to compare the abstract notion of nilpotence to the concrete notion of nilpotence.
+  This is done by \cref{nilpotent implies ad-nilpotent} which states that (local) concrete nilpotence implies (local) abstract nilpotence.
+  The converse however is not true, as can be seen from the example~$\glie = \kf {\id_V}$.
+  We can summarize our findings as follows:
+  \[
+    \begin{tikzcd}[column sep = 7em, row sep = huge]
+      \begin{tabular}{c}
+        abstract global nilpotence: \\
+        $\glie^n = 0$
+      \end{tabular}
+      \arrow[Leftrightarrow]{r}[above]{\text{Engel’s theorem}}
+      &
+      \begin{tabular}{c}
+        abstract local nilpotence:  \\
+        every~$\ad(x)$ nilpotent
+      \end{tabular}
+      \\
+      \begin{tabular}{c}
+        concrete global nilpotence: \\
+        given by~$\nlie_n(\kf)$
+      \end{tabular}
+      \arrow[Rightarrow]{u}[left]{\text{$\nlie_n(\kf)$ is nilpotent}\;}
+      \arrow[Leftrightarrow]{r}[above]{\text{\cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms}}}
+      &
+      \begin{tabular}{c}
+        concrete local nilpotence: \\
+        every~$x$ nilpotent
+      \end{tabular}
+      \arrow[Rightarrow]{u}[right]{\;\text{\cref{nilpotent implies ad-nilpotent}}}
+    \end{tikzcd}
+  \]
+  Note that \cref{linear lie algebras consisting of nilpotent endomorphisms are nilpotent} can be found in this diagram as the composition of the equivalence on the bottom and the implication on the left.
+  
+  We also need to consider that to any finite dimensional abstract Lie~algebra~$\glie$ we can associate a linear Lie~algebra, namely~$\glie' \defined \im \ad = \ad(\glie)$.
+  That~$\glie$ consists of {\adnilpotent} elements means precisely that~$\glie'$ consists of nilpotent endomorphisms.
+  This may be summarized as follows:
+  \[
+    \begin{tikzcd}
+      \text{concrete nilpotence for~$\glie'$}
+      \\
+      \text{abstract nilpotence for~$\glie$}
+      \arrow[Leftrightarrow]{u}
+    \end{tikzcd}
+  \]
+  The hard part of the proof of Engel’s theorem can be summarized by the following equivalences and implications:
+  \[
+    \begin{tikzcd}[column sep = 7em, row sep = large]
+      \begin{tabular}{c}
+        concrete local nilpotence \\
+        for~$\glie'$
+      \end{tabular}
+      \arrow[Leftrightarrow]{r}[above]{\text{\cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms}}}
+      &
+      \begin{tabular}{c}
+        concrete global nilpotence  \\
+        for~$\glie'$
+      \end{tabular}
+      \arrow[Rightarrow]{d}[right]{\;\text{$\nlie_n(\kf)$ is nilpotent}}
+      \\
+      {}
+      &
+      \begin{tabular}{c}
+        abstract global nilpotence  \\
+        for~$\glie'$
+      \end{tabular}
+      \arrow[Leftrightarrow]{d}[right]{\;\text{$\glie$ nilpotent iff~$\glie'$ nilpotent}}
+      \\
+      \begin{tabular}{c}
+        abstract local nilpotence \\
+        for~$\glie$
+      \end{tabular}
+      \arrow[Leftrightarrow]{uu}
+      \arrow[Rightarrow, dashed]{r}[above]{\text{Engel’s  theorem}}
+      &
+      \begin{tabular}{c}
+        abstract global nilpotence \\
+        for~$\glie$
+      \end{tabular}
+    \end{tikzcd}
+  \]
+  
+  If~$\glie$ is already a linear Lie~algebra itself then we now have the following relations between the notions of nilpotence for~$\glie$ and~$\glie'$.
+  \[
+    \begin{tikzcd}[column sep = 7em, row sep = huge]
+      \begin{tabular}{c}
+        concrete global nilpotence  \\
+        for~$\glie'$
+      \end{tabular}
+      \arrow[Leftrightarrow]{r}[above]{\text{\cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms}}}
+      &
+      \begin{tabular}{c}
+        concrete local nilpotence \\
+        for~$\glie'$
+      \end{tabular}
+    \\
+      \begin{tabular}{c}
+        abstract global nilpotence \\
+        for~$\glie$
+      \end{tabular}
+      \arrow[Leftrightarrow, dashed]{u}
+      \arrow[Leftrightarrow]{r}[above]{\text{Engel’s theorem}}
+      &
+      \begin{tabular}{c}
+        abstract local nilpotence \\
+        for~$\glie$
+      \end{tabular}
+      \arrow[Leftrightarrow]{u}
+      \\
+      \begin{tabular}{c}
+        concrete global nilpotence  \\
+        for~$\glie$
+      \end{tabular}
+      \arrow[Rightarrow]{u}[left]{\text{$\nlie_n(\kf)$ is nilpotent}\;}
+      \arrow[Leftrightarrow]{r}[above]{\text{\cref{characterizations of linear lie algebras consisting of nilpotent endomorphisms}}}
+      &
+      \begin{tabular}{c}
+        concrete local nilpotence \\
+        for~$\glie$
+      \end{tabular}
+      \arrow[Rightarrow]{u}[right]{\;\text{\cref{nilpotent implies ad-nilpotent}}}
+    \end{tikzcd}
+  \]
+  The Lie~algebra~$\glie'$ is again a linear Lie~algebra just as~$\glie$ itself.
+  Therefore one could be attempted to continue to diagram, by taking the same diagram for~$\glie'$ (then involving~$\glie''$) and pasting it together with the abvove one for~$\glie'$.
+  
+  But we can observe that if~$\glie$ is any finite dimensional Lie~algebra then for~$\glie'$ the notions of concrete nilpotence and abstract nilpotence are already equivalent.
+  Indeed, the missing implication follows from
+  \begin{align*}
+    {}&
+    \text{$\glie'$ is abstract nilpotent}
+    \\
+    \implies{}&
+    \text{$\glie$ is abstract nilpotent}
+    \\
+    \implies{}&
+    \text{$\glie'$ is concrete nilpotent}
+  \end{align*}
+  Hence for linear Lie~algebras of the form~$\glie'$ the notions of concrete and abstract nilpotence coincide.
+  
+  We may further summarize our findings as follows:
+  \begin{itemize}
+    \item
+      Gobal nilpotence and local nilpotence are equivalent.
+    \item
+      Concrete nilpotence implies abstract nilpotence.
+    \item
+      Abstract nilpotence for~$\glie$ is equivalent to concrete nilpotence for~$\glie'$.
+    \item
+      For~$\glie'$ both concrete and abstract nilpotence are equivalent.
+  \end{itemize}
+\end{remark}
 
 
 
