@@ -83,9 +83,11 @@
 \chead{}
 \ohead{\rightmark}
 
+% more space for page numbers in the toc, default is 1.55
+\renewcommand{\@pnumwidth}{2em}
+
 % dont number subsubsections
 \setcounter{secnumdepth}{1}
-
 
 % colours for hyperref
 \hypersetup{
@@ -105,11 +107,13 @@
 \theoremstyle{definition}
 \newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
 \newtheorem*{claim*}{Claim} % unnumbered version
+\newtheorem{construction}[everything]{Construction}
 \newtheorem{convention}[everything]{Convention}
 \newtheorem{corollary}[everything]{Corollary}
 \newtheorem{definition}[everything]{Definition}
 \newtheorem{example}[everything]{Example}
 \newtheorem{examples}[everything]{Examples}
+\newtheorem{fluff}[everything]{}
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{proposition}[everything]{Proposition}
 \newtheorem{recall}[everything]{Recall}
@@ -130,8 +134,7 @@
 \setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont\itshape}
 \setlist[description, 2]{leftmargin=\labelwidth}
 \setlist[itemize, 1]{leftmargin=*}
-\setlist[itemize, 2]{leftmargin=*, label={\textopenbullet}}
-\setlist[itemize, 3]{leftmargin=*}
+\setlist[itemize, 2]{leftmargin=*,label={\textopenbullet}}
 
 % different kinds of lists
 \newlist{equivalenceslist}{enumerate}{2}
@@ -143,39 +146,42 @@
 \newcommand{\defemph}{\emph}
 
 % text shortcuts, mostly involving nobreakdash
-\newcommand{\adnilpotent}{$\ad$\nobreakdash-nil\-po\-tent}
-\newcommand{\adsemisimple}{$\ad$\nobreakdash-semi\-sim\-ple}
-\newcommand{\algebra}[1]{#1\nobreakdash-al\-ge\-bra}
-\newcommand{\algebras}[1]{#1\nobreakdash-al\-ge\-bras}
-\newcommand{\bilinear}[1]{#1\nobreakdash-bi\-lin\-ear}
-\newcommand{\dimensional}[1]{#1\nobreakdash-di\-men\-sion\-al}
+\newcommand{\adnilpotent}{$\ad$\nobreakdash-nilpotent}
+\newcommand{\adsemisimple}{$\ad$\nobreakdash-semisimple}
+\newcommand{\algebra}[1]{#1\nobreakdash-algebra}
+\newcommand{\algebras}[1]{#1\nobreakdash-algebras}
+\newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
+\newcommand{\derivation}[1]{#1\nobreakdash-derivation}
+\newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
+\newcommand{\fold}[1]{#1\nobreakdash-fold}
+\newcommand{\graded}[1]{#1\nobreakdash-graded}
+\newcommand{\grading}[1]{#1\nobreakdash-grading}
+\newcommand{\gradings}[1]{#1\nobreakdash-gradings}
 \newcommand{\howmanyth}[1]{#1\nobreakdash-th}
-\newcommand{\invariance}[1]{#1\nobreakdash-in\-vari\-ance}
-\newcommand{\invariant}[1]{#1\nobreakdash-in\-vari\-ant}
-\newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~al\-ge\-bra}
-\newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~al\-ge\-bras}
-\newcommand{\linear}[1]{#1\nobreakdash-lin\-ear}
+\newcommand{\invariance}[1]{#1\nobreakdash-invariance}
+\newcommand{\invariant}[1]{#1\nobreakdash-invariant}
+\newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
+\newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
+\newcommand{\linear}[1]{#1\nobreakdash-linear}
 \newcommand{\many}[1]{#1\nobreakdash-many}
 \newcommand{\module}[1]{#1\nobreakdash-module}
 \newcommand{\modules}[1]{#1\nobreakdash-modules}
-\newcommand{\onedimensional}{one\nobreakdash-di\-men\-sion\-al}
+\newcommand{\onedimensional}{one\nobreakdash-dimensional}
 \newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
-\newcommand{\representation}[1]{#1\nobreakdash-rep\-re\-sen\-ta\-tion}
-\newcommand{\representations}[1]{#1\nobreakdash-rep\-re\-sen\-ta\-tions}
-\newcommand{\subalgebra}[1]{#1\nobreakdash-sub\-al\-ge\-bra}
-\newcommand{\subrepresentation}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
-\newcommand{\subrepresentations}[1]{#1\nobreakdash-sub\-rep\-re\-sen\-ta\-tion}
-\newcommand{\twococycle}{$2$\nobreakdash-co\-cy\-cle}
-\newcommand{\twococycles}{$2$\nobreakdash-co\-cy\-cles}
-\newcommand{\twodimensional}{two\nobreakdash-di\-men\-sion\-al}
+\newcommand{\representation}[1]{#1\nobreakdash-representation}
+\newcommand{\representations}[1]{#1\nobreakdash-representations}
+\newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
+\newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentation}
+\newcommand{\twococycle}{$2$\nobreakdash-cocycle}
+\newcommand{\twococycles}{$2$\nobreakdash-cocycles}
+\newcommand{\twodimensional}{two\nobreakdash-dimensional}
 \newcommand{\ua}{universal enveloping algebra}
 \newcommand{\uas}{universal enveloping algebras}
-\newcommand{\vectorspace}[1]{#1\nobreakdash-vec\-tor space}
-\newcommand{\vectorspaces}[1]{#1\nobreakdash-vec\-tor spaces}
+\newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
+\newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
 \newcommand{\weightspace}[1]{#1\nobreakdash-weight space}
 \newcommand{\weightvector}[1]{#1\nobreakdash-weight vector}
-
-\newcommand{\kspan}{{\vspan}{}_\kf} % I will go to hell for this
 
 
 %%%%% MATH STUFF
@@ -207,15 +213,17 @@
 \newcommand{\catname}[1]{\mathbf{#1}}
 \newcommand{\cAlg}[1]{#1\text{-}\catname{Alg}}
 \newcommand{\cCAlg}[1]{#1\text{-}\catname{CAlg}}
-\newcommand{\cFilt}[1]{#1\text{-}\catname{Filt}}
-\newcommand{\cGrad}[1]{#1\text{-}\catname{Grad}}
+\newcommand{\cfAlg}[1]{#1\text{-}\catname{fAlg}}
+\newcommand{\cgAlg}[1]{#1\text{-}\catname{gAlg}}
 \newcommand{\cLie}[1]{#1\text{-}\catname{Lie}}
 \newcommand{\cMod}[1]{#1\text{-}\catname{Mod}}
+\newcommand{\cMon}{\catname{Mon}}
 \newcommand{\cRep}[1]{#1\text{-}\catname{Rep}}
 \newcommand{\cSet}{\catname{Set}}
 \newcommand{\cVect}[1]{#1\text{-}\catname{Vect}}
 
 % spaces and sets
+\newcommand{\Aff}{\mathbb{A}}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\BF}{BF}
 \DeclareMathOperator{\centerlie}{Z}
@@ -230,7 +238,6 @@
 \DeclareMathOperator{\Symm}{S}
 \DeclareMathOperator{\Tensor}{T}
 \DeclareMathOperator{\Univ}{U}
-\DeclareMathOperator{\vspan}{span}
 
 % functions
 \DeclareMathOperator{\ad}{ad}
@@ -238,8 +245,9 @@
 \DeclareMathOperator{\card}{card}
 \DeclareMathOperator{\ringchar}{char}
 \DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\flt}{flt}
-\DeclareMathOperator{\gr}{gr}
+\NewDocumentCommand{\gr}{O{}}{
+  {\operatorname{gr}}{}_{#1}  % hell again
+}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\tr}{tr}

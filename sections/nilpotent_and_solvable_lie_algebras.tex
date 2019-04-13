@@ -145,21 +145,7 @@
       Then~$\glie^{(i)} = 0$ for every~$i \geq 2$ but~$\glie^i = \kf x$ for every~$i \geq 1$.
       The Lie~algebra~$\glie$ is thus solvable but not nilpotent.
     \item
-      The \defemph{Heisenberg Lie~algebra}\index{Heisenberg Lie algebra}\index{Lie algebra!Heisenberg} consists of a real vector space with basis~$P_1, \dotsc, P_n, Q_1, \dotsc, Q_n, C$ together with the Lie~bracket satisfying the relations
-      \begin{itemize}
-        \item
-          $[P_i, P_j] = 0$ and~$[Q_i, Q_j] = 0$ for all~$i, j = 1, \dotsc, n$,
-        \item
-          $[P_i, C] = [Q_i, C] = 0$ for all~$i = 1, \dotsc, n$,
-        \item
-          $[P_i, Q_j] = \delta_{ij} C$ for all~$i,j = 1, \dotsc, n$.
-      \end{itemize}
-      This defines a nilpotent Lie~algebra.
-      
-      As a faithful representation of the Heisenberg Lie~algebra (and thus a realization of the Heisenberg Lie~algebra via endomorphisms) we can consider the polynomial ring~$V = \Real[x_1, \dotsc, x_n]$.
-      Let~$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c \in \gllie(V)$ so that~$p_i = \partial_i$ is the~{\howmanyth{$i$}} partial derivate,~$q_i = \partial_i$ is the multiplication with~$x_i$ and~$c = \id_V$.
-      These endomorphisms are linearly independent and satisfy the desired relations.
-      It follows that~$\hlie = \vspan_\kf(p_1, \dotsc, p_n, q_1, \dotsc, q_n, c)$ is a Lie subalgebra of~$\gllie(V)$ that is isomorphic to the Heisenberg Lie~algebra.
+      The Heisenberg Lie~algebra~$\glie$ from \cref{examples for lie algebras} is nilpotent with~$\glie^1 = \kf C$ and~$\glie^2 = 0$.
   \end{enumerate}
 \end{examples}
 
@@ -662,7 +648,7 @@
       \end{equivalenceslist}
       The flag~$(V_i)_{i=0}^m$ is \defemph{complete}\index{complete flag}\index{flag!complete} if it satisfies these equivalent properties.
       
-      Every basis~$v_1, \dotsc, v_n$ of~$V$ brings with it an \defemph{associated complete flag}~$(V_i)_{i=0}^n$\index{associated flag} of~$V$ that is given by~$V_i = \vspan_\kf(v_1, \dotsc, v_i)$ for every~$i = 0, \dotsc, n$.
+      Every basis~$v_1, \dotsc, v_n$ of~$V$ brings with it an \defemph{associated complete flag}~$(V_i)_{i=0}^n$\index{associated flag} of~$V$ that is given by~$V_i = \gen{v_1, \dotsc, v_i}_{\kf}$ for every~$i = 0, \dotsc, n$.
       It follows by extending bases that every complete flag of~$V$ is associated to some basis of~$V$.
       
     \item
@@ -773,7 +759,7 @@
       Every~$x \in \glie$ acts nilpotently on~$V$ and hence also on every quotient of~$V$.
       We can therefore apply Engel’s theorem to the image of the associated Lie~algebra homomorphism~$\rho \colon \glie \to \gllie(W)$.
       It follows that for every nonzero~$W \in \mathcal{V}$ there exists some nonzero~$x \in W$ with~$x.w = 0$ for every~$x \in \glie$;
-      then~$\vspan_\kf(v)$ is a {\onedimensional} subrepresentation of~$W$.
+      then~$\gen{v}_{\kf}$ is a {\onedimensional} subrepresentation of~$W$.
       
       This show that we can apply \cref{triangularization lemma} ot~$\mathcal{V}$.
       There hence exists a basis of~$V$ with respect to which the action of every~$x \in \glie$ is given by an upper triangular matrix.
@@ -1116,7 +1102,7 @@
   \[
     W_i
     \defined
-    \vspan_k(v, yv, \dotsc, y^i v)
+    \gen{v, yv, \dotsc, y^i v}_{\kf}
   \]
   for every~$i = 0, \dotsc, n$.
   The linear space~$W_n$ is invariant under the action of~$y$ because the vector~$y^{n+1} v$ is linearly dependent on the vectors~$v, \dotsc, y^n v$.
@@ -1225,7 +1211,7 @@
 
 
 \begin{remark}
-  Observe that for a Lie~subalgebra~$\glie$ of some~$\gllie(V)$, where~$V$ is some vector space, a vector~$v \in V$ is a common eigenvector for~$\glie$ if and only if the the subspace~$\vspan_\kf(v)$ is a {\onedimensional}~{\subrepresentation{$\glie$}} of~$V$.
+  Observe that for a Lie~subalgebra~$\glie$ of some~$\gllie(V)$, where~$V$ is some vector space, a vector~$v \in V$ is a common eigenvector for~$\glie$ if and only if the the subspace~$\gen{v}_{\kf}$ is a {\onedimensional}~{\subrepresentation{$\glie$}} of~$V$.
 \end{remark}
 
 
@@ -1256,7 +1242,7 @@
       Let~$\mathcal{V}$ be the class of all quotient representations of~$V$.
       For every~$W \in \mathcal{V}$ the image of the Lie~algebra homomorphism~$\rho_W \colon\glie \to \gllie(W)$,~$x \mapsto \restrict{x}{W}$ is again solvable.
       It therefore follows from Lie’s theorem that there exists for every nonzero~$W \in \mathcal{V}$ some nonzero~$w \in W$ such that~$w$ is a common eigenvector vor~$\rho_W(\glie)$;
-      then~$\vspan_\kf(v)$ is a {\onedimensional} subrepresentation of~$W$.
+      then~$\gen{v}_{\kf}$ is a {\onedimensional} subrepresentation of~$W$.
       
       This shows that we can apply \cref{triangularization lemma} to get the desired result.
     \item[\ref*{is triangularizable}~$\implies$~\ref*{is solvable}]

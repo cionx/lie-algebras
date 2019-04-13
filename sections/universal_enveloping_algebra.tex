@@ -19,6 +19,96 @@
 \section{Tensor Algebra and Symmetric Algebra}
 
 
+% \begin{example}[Monoid algebra]
+%   In the following all monoids will be written multiplicaitvely unless otherwise mentioned.
+%   The neutral element of a monoid~$M$ will be denoted by~$1$ or~$1_M$.
+%   Given two monoids~$M$ and~$N$ a map~$f \colon M \to N$ is a homomorphism of monids if~$f(m \cdot m') = f(m) \cdot f(m')$ for all~$m, m' \in M$ and~$f(1_M) = 1_N$.
+%   If~$M$ is any monoid then the identity~$\id_M$ is a homomorphism and if~$f \colon M \to N$ and~$g \colon N \to P$ are composable homomorphisms of monoids then their composition~$g \circ f \colon M \to P$ is again a homomorphism of monoids.
+%   The resulting category of monoids is denoted by~$\cMon$.
+%   
+%   \begin{description}
+%     \item[Construction:]
+%       If~$M$ is a monoid then the monoid algebra~\gls*{monoid algebra} is the (free) vector space with basis~$M$ together with the unique bilinear extension~$\kf[M] \times \kf[M] \to \kf[M]$ of the multiplication~$M \times M \to M$ as its multiplication.
+%   
+%       This means that the elements of~$\kf[M]$ are formal {\linear{$\kf$}} combinations~$\sum_{m \in M} a_m m$ with~$a_m = 0$ for all but finitely many~$m \in M$.
+%       The multiplication of two such elements is given by
+%       \[
+%         \left(
+%           \sum_{m \in M} a_m m
+%         \right)
+%         \left(
+%           \sum_{n \in M} b_n n
+%         \right)
+%         =
+%         \sum_{m, n \in M} (a_m b_n) m n  \,.
+%       \]
+%       We identify every element~$m \in M$ with the corresponding element~$1 \cdot m \in \kf[M]$.
+%       The product~$m \cdot n$ of two elements~$m, n \in M$ in~$\kf[M]$ is then the same as their product in~$M$.
+%       The associativity of the multiplication of~$\kf[M]$ follows from the associativity of the multiplication of~$M$, and the neutral element of~$M$ is given by the multiplicative neutral element for~$\kf[M]$.
+%       
+%     \item[Universal Property:]
+%       If~$A$ is any~{\algebra{$\kf$}} then~$(A, \cdot)$ is a multiplicative monoid, which we will denote by~$A^-$.
+%       If~$M$ is any monoid and~$f \colon M \to A^-$ is a monoid hommorphism then~$f$ extends uniquely to an algebra homomorphism~$F \colon \kf[M] \to A$.
+%       The algebra homomorphism~$F$ is given on elements by
+%       \[
+%         F\left( \sum_{m \in M} a_m m \right)
+%         =
+%         \sum_{m \in M} a_m f(m) \,.
+%       \]
+%       On the other hand every algebra homomorphism~$\kf[M] \to A$ restricts to a monoid homomorphism~$M \to A^-$.
+%       This construction results in a {\onetoone} correspondence
+%       \[
+%         \{
+%           \text{monoid homomorphisms~$M \to A^-$}
+%         \}
+%         \longonetoone
+%         \{
+%           \text{algebra homomorphisms~$\kf[M] \to A$}
+%         \}  \,.
+%       \]
+%     
+%     \item[Uniqueness:]
+%       The monoid algebra~$\kf[M]$ together with the inclusion~$i \colon M \to \kf[M]$ is uniquely determined by its universal property up to isomorphism:
+%   \end{description}
+% \end{example}
+
+
+% \begin{recall}[Free algebra]
+%   Let~$I$ be any set.
+%   The \defemph{noncommutative polynomial algebra}~$\kf\gen{X_i \suchthat i \in I}$\index{noncommutative polynomial algebra} has as a basis the set of all monomials
+%   \[
+%     X_{i_1} \dotsm X_{i_n}
+%     \qquad
+%     \text{with~$i_1, \dotsc, i_n$}
+%   \]
+%   and the multiplication is on these basis elements given by
+%   \[
+%     X_{i_1} \dotsm X_{i_n}
+%     \cdot
+%     X_{j_1} \dotsm X_{j_m}
+%     =
+%     X_{i_1} \dotsm X_{i_n} X_{j_1} \dotsm X_{j_m} \,.
+%   \]
+%   In contrast to the usual (commutative) polynomial algebra~$\kf[X_i \suchthat i \in I]$ the variables~$X_i$ are not required to commute with each other.
+%   
+%   We can alternatively construct~$\kf\gen{X_i \suchthat i \in I}$ as the monomial algebra of the free monoid on~$I$:
+%   Let~$M$ be the set of all words in~$I$, i.e.\ the set of all finite sequences
+%   \[
+%     (i_1, \dotsc, i_n)
+%     \qquad
+%     \text{with~$i_1, \dotsc, i_n \in I$}  \,.
+%   \]
+%   Then~$M$ is a monoid with respect to concatenation of words given by
+%   \[
+%     (i_1, \dotsc, i_n) (j_1, \dotsc, j_m)
+%     =
+%     (i_1, \dotsc, i_n, j_1, \dotsc, j_m)
+%   \]
+%   for all words~$(i_1, \dotsc, i_n), (j_1, \dotsc, j_m) \in M$.
+%   The neutral element of~$M$ is given by the empty word~$()$.
+% \end{recall}
+
+
 \begin{recall}[Tensor algebra]
   Let~$V$ be a vector space.
   \begin{description}
@@ -115,7 +205,7 @@
           If we continue to combine elements of this form with algebra operations then we do not gain any new elements, since by the axioms of an algebra they must already be of the above form.
           
           But in an arbitrary~{\algebra{$\kf$}} it may happen that some of these expressions are equal even though this does not follow pureley from the axioms of a~{\algebra{$\kf$}}.
-          Consider for example the polynomial ring~$A = \kf[x, y]$ and the linear subspace~$V = \kspan(x, y)$.
+          Consider for example the polynomial ring~$A = \kf[x, y]$ and the linear subspace~$V = \gen{x, y}_{\kf}$.
           It follows from the axioms of a~{\algebra{$\kf$}} that the expressions~$x (x+y)$ and~$x^2 + xy$ are the same, but it does not follow just from the axioms that~$xy = yx$, even though this holds in~$A$.
           There are hence certain additional \emph{relations} between the elements~$x$ and~$y$ of~$V$ in the ambient {\algebra{$\kf$}}~$A$.
           
@@ -126,7 +216,7 @@
           
           The tensor algebra~$\Tensor(V)$ is in this way the \enquote{freest} way of expanding~$V$ into a~{\algebra{$\kf$}}.
         \item(Formal)
-          Let~$\iota \colon V \to \Tensor(V)$ be the inclusion, which is a~{\linear{$\kf$}} map.
+          Let~$\iota \colon V \to \Tensor(V)$ be the inclusion map, which is~{\linear{$\kf$}}.
           Then if~$A$ is any other~{\algebra{$\kf$}} and~$f \colon V \to A$ any~{\linear{$\kf$}} map (which one can think of as somewhat of an inclusion, albeit not injective), then~$f$ extends uniquely to an algebra homomorphism~$f^+ \colon \Tensor(V) \to A$, i.e.\ there exists a unique algebra homomorphism~$f^+ \colon \Tensor(V) \to A$ that makes the triangular diagram
           \[
             \begin{tikzcd}
@@ -174,7 +264,7 @@
       
     \item[Uniqueness]
       The above universal property determines the tensor algebra~$\Tensor(V)$ together with the inclusion~$i \colon V \to \Tensor(V)$ uniquely up to unique isomorphism, in the following sense:
-      Let~$A$ be another~{\algebra{$\kf$}} and~$j \colon V \to T$ a~{\linear{$\kf$}} map such that for every~{\algebra{$\kf$}}~$A$ and every~{\linear{$\kf$}}~$f \colon V \to A$ there exists a unique algebra homomorphism~$F \colon T \to A$ that makes the triangular diagram
+      Let~$A$ be another~{\algebra{$\kf$}} and let~$j \colon V \to T$ be a~{\linear{$\kf$}} map such that for every~{\algebra{$\kf$}}~$A$ and every~{\linear{$\kf$}} map~$f \colon V \to A$ there exists a unique algebra homomorphism~$F \colon T \to A$ that makes the triangular diagram
       \[
         \begin{tikzcd}
           V
@@ -306,7 +396,7 @@
       \begin{itemize}
         \item
           It holds that~$(\id_V)_* = \id_{\Tensor(V)}$.
-          Indeed, it follows from the commutativity of the square 
+          Indeed, the commutativity of the square 
           \[
             \begin{tikzcd}[column sep = large]
               V
@@ -322,7 +412,7 @@
               \Tensor(V)
             \end{tikzcd}
           \]
-          that the identity~$\id_{\Tensor(V)}$ satifies the defining property of the induced algebra homomorphism~$(\id_V)_*$.
+          shows that the identity~$\id_{\Tensor(V)}$ satifies the defining property of the induced algebra homomorphism~$(\id_V)_*$.
         \item
           It holds for all linear maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(g \circ f)_* = g_* \circ f_*$.
           Indeed, it follows from the commutativity of the diagram
@@ -422,6 +512,85 @@
 \end{recall}
 
 
+\begin{recall}[Symmetric power]
+  Let~$V$ be a vector space and let~$d \geq 0$.
+  The~{\howmanyth{$d$}} \defemph{symmetric power}\index{symmetric!power}~$\Symm^d(V)$ is the quotient vector space of the tensor power~$\Symm^d(V)$ by the~{\linear{$\kf$}} subspace~$U_d$ that is generated by all all differences
+  \[
+      v_1 \tensor \dotsb \tensor v_d
+    - v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)}
+  \]
+  where~$v_1 \tensor \dotsb \tensor v_d \in V^{\tensor d}$ is a simple tensor and~$\sigma \in S_n$ is a permuation.
+  Hence
+  \begin{align*}
+    \Symm^d(V)
+    &=
+    V^{\tensor d} / U_d
+    \\
+    &=
+    V^{\tensor d}
+    /
+    \gen{
+        v_1 \tensor \dotsb \tensor v_d
+      - v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)} 
+    \suchthat
+      v_1, \dotsc, v_n \in V,
+      \sigma \in S_n
+    }_{\kf} \,.
+  \end{align*}
+  Observe that~$\Symm^0(V) = V^{\tensor 0} = \kf$ because~$U_0 = 0$.
+  For~$v_1, \dotsc, v_n \in V$ we denote the residue class of the simple tensor~$v_1 \tensor \dotsb \tensor v_d$ in~$\Symm^d(V)$ by~$v_1 \dotsm v_d$, and call this a \defemph{symmetric simple tensor}\index{symmetric!simple tensor}.
+  
+  We have by construction of~$\Symm^d(V)$ that
+  \[
+    v_1 \dotsm v_d
+    =
+    v_{\sigma(1)} \dotsm v_{\sigma(d)}
+  \]
+  for all simple symmetric tensors~$v_1 \dotsm v_n \in \Symm^d(V)$ and permutations~$\sigma \in S_d$, and for~$d \geq 1$ the symmetric power~$\Symm^d(V)$ is universal with this property in the following sense:
+  The map
+  \[
+    V^{\times d}
+    \to
+    \Symm^d(V)  \,,
+    \quad
+    (v_1, \dotsc, v_d)
+    \mapsto
+    v_1 \dotsm v_d
+  \]
+  is symmetric and multilinear, and if~$f \colon V^{\times d} \to W$ is any other symmetric multilinear map into any vector space~$W$ then there exists a unique linear map~$g \colon \Symm^d(V) \to W$ that makes the triangular diagram
+  \[
+    \begin{tikzcd}
+      V^{\times d}
+      \arrow{d}
+      \arrow{dr}[above right]{f}
+      &
+      {}
+      \\
+      \Symm^d(V)
+      \arrow[dashed]{r}[below]{g}
+      &
+      W
+    \end{tikzcd}
+  \]
+  commute.
+  A linear map~$\Symm^d(V) \to W$ is in this sense the same as a symmetric bilinear map~$V^{\times d} \to W$.
+  
+  If~$(v_i)_{i \in I}$ is a basis of~$V$ such that~$(I, \leq)$ is a linearly ordered set then the ordered monomials
+  \[
+    v_{i_1} \dotsm v_{i_d}
+    \qquad
+    \text{with~$i_1 \leq \dotsb \leq i_d$}
+  \]
+  form a basis of the symmetric power~$\Symm^d(V)$.
+  If~$V$ is of finite dimension~$n$ then it follows that
+  \[
+    \dim \Symm^d(V)
+    =
+    \binom{n+d-1}{d}  \,.
+  \]
+\end{recall}
+
+
 \begin{recall}[Symmetric algebra]
   Let~$V$ be a vector space.
   Just as the tensor algebra~$\Tensor(V)$ is the free~{\algebra{$\kf$}} on~$V$ and can be constructed by using the tensor powers~$V^{\tensor d}$ we can use the symmetric powers~$\Symm^d(V)$ to construct the \defemph{symmetric algebra}\index{symmetric algebra}~\gls*{symmetric algebra}.
@@ -439,21 +608,23 @@
       for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^p(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$.
       By identifying~$\Symm^0(V)$ with the ground field~$\kf$ this makes~$\Symm(V)$ into an associative~{\algebra{$\kf$}}.
       This is already a commutative~{\algebra{$\kf$}} because
-      \[
+      \begin{align*}
         (v_1 \dotsm v_p) \cdot (v_{p+1} \dotsm v_{p+q})
-        =
+        &=
         v_1 \dotsm v_p v_{p+1} \dotsm v_{p+q}
-        =
+        \\
+        &=
         v_{p+1} \dotsm v_{p+q} v_1 \dotsm v_p
-        =
+        \\
+        &=
         (v_{p+1} \dotsm v_{p+q}) \cdot (v_1 \dotsm v_p)
-      \]
+      \end{align*}
       for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^p(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$. 
       We can identify~$V = \Symm^1(V)$ with the corresponding direct summand of~$\Symm(V)$, and more generally every symmetric power~$\Symm^d(V)$ with the corresponding direct summand of~$\Symm(V)$.
       The algebra~$\Symm(V)$ thus consists of linear combinations of simple symmetric tensors.
       
     \item[Universal property:]
-      The symmetric algebra~$\Symm(V)$ can be thought of as the \enquote{free commutative~{\algebra{$\kf$}}}:
+      The symmetric algebra~$\Symm(V)$ is the \enquote{free commutative~{\algebra{$\kf$}}} on the vector space~$V$ in the following sense:
       If~$i \colon V \to \Symm(V)$ is the inclusion then there exists for every~{\algebra{$\kf$}}~$A$ and every linear map~$f \colon V \to A$ a unique algebra homomorphism~$f^+ \colon \Symm(V) \to A$ that makes the triangular diagram
       \[
         \begin{tikzcd}
@@ -466,7 +637,7 @@
           \Symm(V)
           \arrow{ur}[below right]{f^+}
           &
-          A
+          {}
         \end{tikzcd}
       \]
       commute.
@@ -563,7 +734,13 @@
         \text{where~$i_1 \leq \dotsb \leq i_d$} \,.
       \]
       It follows that the symmetric algebra~$\Symm(V)$ has as a basis all simple symmetric tensors~$v_{i_1} \dotsm v_{i_d}$ with~$d \geq 0$ and~$i_1, \dotsc, i_d \in I$ with~$i_1 \leq \dotsb \leq i_d$.
-      We see that the symmetric algebra~$\Symm(V)$ is isomorphic to the commutative polynomial ring~$k[X_i \suchthat i \in I]$, which is the free commutative~{\algebra{$\kf$}} on the generators~$i \in I$
+      This basis may also be written as
+      \[
+        v_{i_1}^{\nu_1} \dotsm v_{i_r}^{\nu_r}
+      \]
+      with~$r \geq 0$,~$i_1, \dotsc, i_r \in I$ such that~$i_1 < \dotsb < i_r$ and~$\nu_1, \dotsc, \nu_r \geq 0$ (which is connected to the above description via~$d = \nu_1 + \dotsb + \nu_r$).
+      
+      We see from this description that the symmetric algebra~$\Symm(V)$ is isomorphic to the commutative polynomial ring~$\kf[X_i \suchthat i \in I]$, which is the free commutative~{\algebra{$\kf$}} on the generators~$i \in I$
       This can again be explained by considering the commutative diagram of forgetful functors
       \[
         \begin{tikzcd}
@@ -740,7 +917,7 @@
           commutes up to natural isomorphism.
           The adjoint~$C$ of the forgetful functor~$\cCAlg{\kf} \to \cAlg{\kf}$ is given by quotiening out the commutator ideal, and hence~$\Symm(V) \cong \Tensor(V)/I$ as before.
         \item
-          The above argumentation can also be formulized by observing that for every commutative~{\algebra{$\kf$}}~$A$ there exist natural bijections
+          The above argumentation be also expressed by observing that for every commutative~{\algebra{$\kf$}}~$A$ there exist natural bijections
           \begin{align*}
             {}&
             \{ \text{algebra homomorphisms~$\Symm(V) \to A$} \}
@@ -761,7 +938,7 @@
 \end{recall}
 
 
-\begin{remark}
+\begin{remark}  % TODO: Fix glossary and bigwedge
   One can similarly construct the \emph{exterior algebra}~$\gls*{exterior algebra} = \bigoplus_{d \geq 0} \Exterior^d(V)$ of a vector space~$V$ by replacing the use of the tensor powers~$V^{\tensor d}$ or symmetric powers~$\Symm^d(V)$ by the exterior powers~$\Exterior^d(V)$.
   For any other~{\algebra{$\kf$}}~$A$ an algebra homomorphism~$F \colon \Exterior(V) \to A$ is then the same as a~{\linear{$\kf$}}~$f \colon V \to A$ with~$f(v)^2 = 0$ for every~$v \in V$.
 % TODO: Do we have to worry about char(k) = 2?
@@ -769,7 +946,7 @@
   
   
   If~$V$ is finite dimensional then the exterior algebra~$\Exterior(V)$ is again finite dimensional, namely with~$\dim \Exterior(V) = 2^{\dim V}$.
-  This is different to both the tensor algebra~$\Tensor(V)$ and symmetric algebra~$\Symm(V)$ which are infinite dimensional whenever~$V \neq 0$.
+  This is different to both the tensor algebra~$\Tensor(V)$ and symmetric algebra~$\Symm(V)$, which are infinite dimensional whenever~$V \neq 0$.
 \end{remark}
 
 
@@ -777,7 +954,7 @@
 
 
 
-\section{Definition and Construction}
+\section{Definition and Construction of the UEA}
 
 
 \begin{definition}
@@ -966,7 +1143,7 @@
   Let~$\glie$,~$\hlie$ and~$\klie$ be Lie~algebras.
   \begin{enumerate}
     \item
-      Any homomorphism of Lie~algebras~$\phi \colon \glie \to \hlie$ induces a unique homomorphism of~\algebras{$\kf$}~$\phi^* \colon \Univ(\glie) \to \Univ(\hlie)$ that makes the following square diagram commute:
+      For every homomorphism of Lie~algebras~$\phi \colon \glie \to \hlie$ there exists a unique induced homomorphism of~\algebras{$\kf$}~$\phi^* \colon \Univ(\glie) \to \Univ(\hlie)$ that makes the following square diagram commute:
       \[
         \begin{tikzcd}[column sep = large]
           \glie
@@ -1753,9 +1930,7 @@
 \end{example}
 
 
-% TODO: UE of product
-
-% 
+% WRONG PLACE
 % 
 % \begin{corollary}
 %  The homomorphism $\iota \colon \glie \to \Univ(\glie)$ is injective. As a \algebra{$\kf$} $\Univ(\glie)$ is generated by $\iota(\g)$.
@@ -1767,241 +1942,1374 @@
 % \end{remark}
 % 
 % 
-% % TODO: Requires Hopf algebra structure
-% % \begin{lemma}
-% %  Let $\g_1$ and $\g_2$ be $k$-Lie algebras. Then $\Univ(\g_1 \times \g_2)$ and $\Univ(\g_1) \tensor \Univ(\g_2)$ are naturally isomorphic.
-% % \end{lemma}
 % 
 % 
-% 
-% 
-% 
-% \section{Poincar\'{e}--Birkhoff--Witt}
-% 
-% 
-% 
-% \subsection{Graded \algebras{$\kf$}}
-% 
-% 
-% \begin{definition}\label{defi: graded algebras}
-%  A \emph{grading}, also called \emph{gradation}, of a \algebra{$\kf$} $A$ is a direct sum decomposition $A = \bigoplus_{i \in \N} A_i$ into linear subspaces such that
-%  \[
-%   A_i A_j \subseteq A_{i+j} \quad \text{for all $i,j \in \N$}.
-%  \]
-%  A \emph{graded \algebra{$\kf$}} is a \algebra{$\kf$} $A$ together with a grading $A = \bigoplus_{n \in \N} A_n$.
-% \end{definition}
-% 
+
+
+
+
+
+\section{Poincar\'{e}--Birkhoff--Witt}
+
+
+
+
+
+\subsection{Graded \texorpdfstring{$\kf$}{k}-Algebras}
+
+
+\begin{definition}
+  \label{graded algebras}
+  A \defemph{grading}\index{grading!of an algebra} or \defemph{gradation} of a~\algebra{$\kf$}~$A$ is a direct sum decomposition
+  \[
+    A
+    =
+    \bigoplus_{i \geq 0} A_i
+  \]
+  into linear subspaces~$A_i$ such that
+  \[
+    A_i A_j
+    \subseteq
+    A_{i+j}
+  \]
+  for all~$i, j \geq 0$.
+  A \defemph{graded~\algebra{$\kf$}}\index{graded!algebra} is a~\algebra{$\kf$}~$A$ together with a grading~$A = \bigoplus_{i \geq 0} A_i$.
+\end{definition}
+
+
+\begin{remark}
+  We will often just say that~$A$ is a graded algebra without mentioning the grading.
+\end{remark}
+
+
+\begin{remark}
+  Given any abelian semigroup~$(S, +)$ an~\defemph{\grading{$S$}}\index{grading} of a~\algebra{$\kf$}~$A$ is a decomposition
+  \[
+    A
+    =
+    \bigoplus_{s \in S} A_s
+  \]
+  into linear subspaces such that
+  \[
+    A_s A_t
+    \subseteq
+    A_{s + t}
+  \]
+  for all~$s,t \in S$.
+  An~{\graded{$S$}}~\algebra{$\kf$} is a~\algebra{$\kf$}~$A$ together with an~\grading{$S$}~$A = \bigoplus_{s \in S} A_s$.
+  A graded~\algebra{$\kf$} in the sense of \cref{graded algebras} is then the special case of an~{\graded{$\Natural$}}~\algebra{$\kf$}.
+  We will restrict our attention to~{\gradings{$\Natural$}} and refer to \cite[II.{\S}11, III.{\S}3]{bourbaki_algebra} for more general gradings.
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ be a graded~{\algebra{$\kf$}} with grading~$A = \bigoplus_{i \geq 0} A_i$.
+  \begin{enumerate}
+    \item
+      An element~$x \in A$ is \defemph{homogeneous}\index{homogeneous!element} of \defemph{degree}~$i$\index{homogeneous!degree}\index{degree!homogeneous} if~$x \in A_i$.
+    \item
+      If the decomposition of~$x \in A$ with respect to the grading~$A = \bigoplus_{i \geq 0} A_i$ is given by~$x = \sum_{i \geq 0} x_i$ then the summands~$x_i$ are the~\defemph{homogeneous components}\index{homogeneous!component} of~$x$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+  If~$A$ is a graded~\algebra{$\kf$} then~$1_A$ is homogeneous of degree~$0$.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$1 = \sum_{i \geq 0} e_i$ with respect to the grading~$A = \bigoplus_{i \geq 0} A_i$.
+  Then for any~$j \geq 0$ and~$a \in A_j$ we have that
+  \[
+    a
+    =
+    1 \cdot a
+    =
+    \left( \sum_{i \geq 0} e_i \right) \cdot a
+    =
+    \sum_{i \geq 0} \underbrace{ e_i a }_{\in A_{i+j}}  \,,
+  \]
+  and it follows from the directness of the decomposition~$A = \bigoplus_{i \geq 0} A_i$ that already~$a = e_0 a$.
+  It follows that~$e_0 a = a$ for every~$a \in A$, so that already~$1 = e_0$.
+\end{proof}
+
+
+\begin{corollary}
+  If~$A$ is a graded~\algebra{$\kf$} then~$A_0$ is a~{\subalgebra{$\kf$}} of~$A$.
+  \qed
+\end{corollary}
+
+
+
+\begin{examples}
+  \label{examples of graded algebras}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Any~\algebra{$\kf$}~$A$ becomes a graded~\algebra{$\kf$} by setting~$A_0 \defined A$ and~$A_i \defined 0$ for every~$i \geq 1$.
+    \item
+      The polynomial ring~$A = \kf[x_i \suchthat i \in I]$ is a graded~\algebra{$\kf$} by setting
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 + \dotsb + p_n = d
+        }_{\kf}
+      \]
+      for every~$d \geq 0$.
+      Then~$A_d$ consists of the homogeneous polynomials of degree~$d$, and the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ are homogeneous of degree~$p_1 + \dotsb + p_n$.
+      
+      We can more generally put the variable~$x_i$ is any degree~$d_i$:
+      Given any family~$(d_i)_{i \in I}$ of natural numbers~$d_i \geq 0$ we can define a grading on~$A$ via
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 d_1 + \dotsb + p_n d_n = d
+        }_\kf
+      \]
+      for every~$d \geq 0$.
+      Then the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ are homogeneous of degree~$p_1 d_1 + \dotsb + p_n d_n$.
+    \item
+      Similarly the free~{\algebra{$\kf$}}~$A \defined \kf\gen{x_i \suchthat i \in I}$ can be graded via
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 + \dotsb + p_n = d
+        }_{\kf}
+      \]
+      for every~$d \geq 0$, and for any family~$(d_i)_{i \in I}$ of natural numbers $d_i \geq 0$ via
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 d_1 + \dotsb + p_n d_n = d
+        }_{\kf} \,.
+      \]
+      This grading makes the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ homogeneous of degree~$p_1 d_1 + \dotsb + d_n p_n$.
+    \item
+      The tensor algebra~$\Tensor(V)$ of a vector space~$V$ has a canonical grading with~$\Tensor(V)_d = V^{\tensor d}$ for all~$d \geq 0$.
+      Similarly both the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ have canonical gradings given by~$\Symm(V)_d = \Symm^d(V)$ and~$\Exterior(V)_d = \Exterior^d(V)$ for all~$d \geq 0$.
+    \item
+      Let~$(M, \cdot)$ be a monoid and let~$M = \coprod_{i \geq 0} M_i$ be a grading of~$M$, i.e.\ a decomposition into subsets with~$M_i \cdot M_j \subseteq M_{i+j}$ for all~$i, j \geq 0$.
+      Then the monoid algebra~$\kf[M]$ inhericts a grading via
+      \[
+        \kf[M]_i
+        \defined
+        \gen{ M_i }_{\kf}
+      \]
+      for every~$i \geq 0$.
+      As special cases of this construction we get the following examples:
+      \begin{itemize}
+        \item
+          If~$I$ is any index set then for~$M = \Natural^{\oplus I}$ a grading~$M = \coprod_{d \geq 0} M_d$ is given by the subsets
+          \[
+            M_d
+            \defined
+            \left\{
+              (p_i)_{i \in I} \in M
+            \suchthat*
+              \sum_{i \in I} p_i = d
+            \right\}
+          \]
+          with~$d \geq 0$.
+          Then~$\kf[M]$ with the induced grading is the commutative polynomial algebra~$\kf[x_i \suchthat i \in I]$.
+        \item
+          If~$I$ is any index set then let~$\Sigma \defined \{x_i \suchthat i \in I\}$ be an alphabet with letters~$x_i$ and let~$M = \Sigma^*$ be the monoid of words in the alphabet~$\Sigma$ together with concatenation of words as rule of composition.
+          Then~$\kf[M] = \kf\gen{X_i \suchthat i \in I}$ and the grading of~$\kf[M]$ (where every variable~$x_i$ is in degree~$1$) comes from the grading of~$M$ given by
+          \[
+            M_d
+            \defined
+            \{
+              w \in M
+            \suchthat
+              \text{$w$ is a word in~$\Sigma$ of length~$d$}
+            \}  \,.
+          \]
+      \end{itemize}
+  \end{enumerate}
+\end{examples}
+
+
+\begin{remark}
+  \label{external description of graded algebras}
+  The grading of the tensor algebra~$\Tensor(V)$, symmetric algebra~$\Symm(V)$ and exterior algebra~$\Exterior(V)$ are basically built into the construction of these algebras.
+  This way of constructing graded~{\algebras{$\kf$}} can be generalized as follows:
+  
+  Suppose that we are given a sequence of vector spaces~$A_i$ with~$i \geq 0$ and bilinear maps
+  \[
+    \mu_{i,j}
+    \colon
+    A_i \times A_j
+    \to
+    A_{i+j} \,,
+    \quad
+    (x,y)
+    \mapsto
+    xy
+  \]
+  for all~$i, j \geq 0$ such that
+  \begin{itemize}
+    \item
+      the~$\mu_{i, j}$ are relatively associative in the sense that
+      \[
+        x(yz)
+        =
+        (xy)z
+      \]
+      for all~$i, j, k \geq 0$ and~$x \in A_i$,~$y \in A_j$ and~$z \in A_k$ and
+    \item
+      there exists an element~$1 \in A_0$ with
+      \[
+        1 x
+        =
+        x
+        =
+        x 1
+      \]
+      for all~$i \geq 0$ and every~$x \in A_i$.
+  \end{itemize}
+  For the direct sum~$A \defined \bigoplus_{i \geq 0} A_i$ we can then fit together the multiplications~$\mu_{i,j}$ to a single multiplication~$\mu \colon A \times A \to A$ that is given on elements~$x, y \in A$ with~$x = (x_i)_{i \geq 0}$ and~$y = (y_i)_{i \geq 0}$ by
+  \[
+    x y
+    =
+    \left( \sum_{j=0}^i x_j y_{i-j} \right)_{j \geq 0}  \,.
+  \]
+  The bilinearity of~$\mu$ follows from the bilinearities of the~$\mu_{i,j}$, it follows from the relative associativity of the multiplications~$\mu_{i,j}$ that the multiplication~$\mu$ is associative, and~$1 \in A_0$ is multiplicative neutral for~$\mu$.
+  
+  This construction gives an external description of graded~{\algebras{$\kf$}}, in constrast to the previous internal description.
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ and~$B$ be two graded~\algebras{$\kf$}.
+  \begin{enumerate}
+    \item
+      A \defemph{homomorphism of graded~{\algebras{$\kf$}}}~$f \colon A \to B$\index{homomorphism!of graded $\kf$-algebras} is a homomorphism of~{\algebras{$\kf$}} such that~$f(A_i) \subseteq B_i$ for all~$i \geq 0$.
+    \item
+      If~$f \colon A \to B$ is a homomorphism of graded~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction of~$f$ to a linear map~$A_i \to B_i$ is denoted by~$f_i$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A$,~$B$ and~$C$ be graded~{\algebra{$\kf$}}.
+      \begin{enumerate}
+        \item
+          The identity~$\id_A \colon A \to A$ is a homomorphism of graded~{\algebras{$\kf$}}.
+        \item
+          If~$f \colon A \to B$ and~$g \colon B \to C$ are homomorphisms of graded~{\algebras{$\kf$}} then their composition~$g \circ f \colon A \to C$ is again a homomorphism of graded~{\algebras{$\kf$}}.
+      \end{enumerate}
+      Hence the graded~\algebras{$\kf$} together with the homomorphisms of graded~\algebras{$\kf$} between them form a category, which we will denote by~\gls*{graded algebras}.
+    \item
+      For a homomorphism of graded~{\algebras{$\kf$}}~$f \colon A \to B$ the following conditions are equivalent:
+      \begin{equivalenceslist}
+        \item
+          $f$ is an isomorphism of graded~{\algebras{$\kf$}}, i.e.\ there exists an inverse homomorphism of graded~{\algebras{$\kf$}}~$g \colon B \to A$ with~$fg = \id_B$ and~$gf = \id_A$.
+        \item
+          $f$ is bijective.
+        \item
+          For every~$i \geq 0$ the restriction~$f_i \colon A_i \to B_i$ is bijective.
+      \end{equivalenceslist}
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For any vector space~$V$ the two maps
+      \begin{alignat*}{2}
+        \Tensor(V)
+        &\to
+        \Symm(V) \,,
+        &
+        \quad
+        x_1 \tensor \dotsb \tensor x_n
+        &\mapsto
+        x_1 \dotsm x_n
+      \shortintertext{and}
+        \Tensor(V)
+        &\to
+        \Exterior(V) \,,
+        &
+        \quad
+        x_1 \tensor \dotsb \tensor x_n
+        &\mapsto
+        x_1 \wedge \dotsb \wedge x_n
+      \end{alignat*}
+      are homomorphisms of graded~\algebras{$\kf$}.
+    \item
+      If~$V$ is a finite dimensional vector space with basis~$x_1, \dotsc, x_n$ then the resulting isomorphism of~\algebras{$\kf$}
+      \[
+        \kf[X_1, \dotsc, X_n]
+        \to
+        \Symm(V) \,,
+        \quad
+        X_i
+        \mapsto
+        x_i
+      \]
+      is already an isomorphism of graded~\algebras{$\kf$}.
+  \end{enumerate}
+\end{example}
+
+
+\begin{lemma}
+  \label{characterizations of homogeneous ideals}
+  Let~$I$ be some kind of ideal in a graded~{\algebra{$\kf$}} (i.e.\ a left ideal, right ideal or two-sided ideal).
+  \begin{enumerate}
+    \item
+      The linear subspace~$\bigoplus_{i \geq 0} (I \cap A_i)$ is again an ideal in~$A$ of the same kind.
+    \item
+      The following conditions on~$I$ are equivalent:
+      \begin{enumerate}
+        \item
+          \label{direct sum of linear subspaces}
+          There exists linear subspaces~$I_i$ of~$A_i$ with~$i \geq 0$ such that~$I = \bigoplus_{i \geq 0} I_i$.
+        \item
+          \label{direct sum of intersections}
+          It holds that~$I = \bigoplus_{i \geq 0} (I \cap A_i)$.
+        \item
+          \label{contains all homogeneous components}
+          The ideal~$I$ contains the homogeneous components of all its elements.
+        \item
+          \label{generated by homogeneous}
+          The ideal~$I$ is generated by homogeneous elements.
+      \end{enumerate}
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We check that~$I' \defined \bigoplus_{i \geq 0} I \cap A_i$ is again a left ideal if~$I$ is one.
+      Indeed, we find that
+      \begin{align*}
+        A \cdot I'
+        &=
+              \left( \sum_{j \geq 0} A_j \right)
+        \cdot \left( \sum_{i \geq 0} (I \cap A_i) \right)
+        \\
+        &=
+        \sum_{i,j \geq 0} A_j \cdot (I \cap A_i)
+        \\
+        &\subseteq
+        \sum_{i, j \geq 0} (A_j \cdot I) \cap (A_j \cdot A_i)
+        \\
+        &\subseteq
+        \sum_{i,j \geq 0} (I \cap A_{i+j})
+        \\
+        &=
+        \sum_{k \geq 0} (I \cap A_k)
+        \\
+        &=
+        I'  \,.
+      \end{align*}
+      We find in the same way that~$I'$ is again a right ideal if~$I$ is one.
+      It follows from these two cases that~$I'$ is a two-sided ideal if~$I$ is one.
+    \item
+      \begin{implicationlist}
+        \item[\ref*{direct sum of linear subspaces}~$\implies$~\ref*{direct sum of intersections}]
+          It follows from the assumption that~$I_i = I \cap A_i$.
+        \item[\ref*{direct sum of intersections}~$\implies$~\ref*{direct sum of linear subspaces}]
+          We may take~$I_i = I \cap A_i$.
+        \item[\ref*{direct sum of linear subspaces}~$\implies$~\ref*{contains all homogeneous components}]
+          We may decompose~$x \in I$ with respect to the decomposition~$A = \bigoplus_{i \geq 0} A_i$ into homogeneuos components~$x = \sum_{i \geq 0} x_i$ and with respect to the decomposition~$I = \bigoplus_{i \geq 0} I_i$ as~$x = \sum_{i \geq 0} x'_i$.
+          Then~$x'_i \in I_i \subseteq A_i$ and hence~$x_i = x'_i$ by uniqueness of the decomposition in~$A$.
+          Thus~$x_i = x'_i \in I_i \subseteq I$ for all~$i \geq 0$.
+        \item[\ref*{contains all homogeneous components}~$\implies$~\ref*{generated by homogeneous}]
+          We may start with any generating set for~$I$ and then replace each generator by all of its homogeneous components.
+        \item[\ref*{generated by homogeneous}~$\implies$~\ref*{direct sum of intersections}]
+          Each homogeneous generator in contained in some summand~$I \cap A_i$.
+          Hence~$I$ is contained in the ideal~$\bigoplus_{i \geq 0} I \cap A_i$ which is in turn contained in~$I$.
+          Hence~$I = \bigoplus_{i \geq 0} I \cap A_i$.
+        \qedhere
+      \end{implicationlist}
+  \end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+  An ideal~$I$ (of any kind) in a graded~{\algebra{$\kf$}}~$A$ is \defemph{homogeneous ideal}\index{homogeneous!ideal} if it satisfies the equivalent conditions from \cref{characterizations of homogeneous ideals}.
+  We set~$I_i \defined I \cap A_i$ for all~$i \geq 0$.
+\end{definition}
+
+
+\begin{example}
+  If~$f \colon A \to B$ is a homomorphism of graded~{\algebras{$\kf$}} then~$\ker f$ is a homogeneous two-sided ideal in~$A$ because~$\ker f = \bigoplus_{i \geq 0} \ker f_i$.
+  The converse also holds:
+\end{example}
+
+
+\begin{proposition}
+  Let~$A$ be a graded~{\algebra{$\kf$}} and let~$I$ be a two-sided homogeneous ideal in~$A$.
+  Let~$\pi \colon A \to A/I$ be the canonical projection.
+  \begin{enumerate}
+    \item
+      The algebra~$A/I$ carries a grading via~$(A/I)_i \defined \pi(A_i)$ for every~$i \geq 0$, making~$A/I$ into a graded~{\algebra{$\kf$}}.
+    \item
+      This is the unique grading on~$A/I$ that makes~$\pi$ a homomorphism of graded~{\algebras{$\kf$}}.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      It follows from the usual isomorphism
+      \[
+        A/I
+        =
+        \left( \bigoplus_{i \geq 0} A_i \right)
+        \bigg/
+        \left(\bigoplus_{i \geq 0} I_i \right)
+        \cong
+        \bigoplus_{i \geq 0} (A_i / I_i)
+      \]
+      that~$A/I = \bigoplus_{i \in I} (A/I)_i$.
+      It holds for all~$i, j \geq 0$ that
+      \[
+        (A/I)_i (A/I)_j
+        =
+        \pi(A_i) \pi(A_j)
+        =
+        \pi(A_i A_j)
+        \subseteq
+        \pi(A_{i+j})
+        =
+        (A/I)_{i+j} \,.
+      \]
+    \item
+      Any such grading~$A/I = \bigoplus_{i \geq 0} (A/I)_i$ must satisfy~$\pi(A_i) \subseteq (A/I)_i$ for every~$i \geq 0$.
+      It follows from~$A/I = \bigoplus_{i \geq 0} \pi(A_i)$ and~$A/I = \bigoplus_{i \geq 0} (A/I)_i$ that~$\pi(A_i) = (A/I)_i$ for every~$i \geq 0$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{examples}
+  Let~$V$ be a vector space.
+  The two-sided ideal~$I$ in~$\Tensor(V)$ generated by the elements~$x \tensor y - y \tensor x$ with~$x,y \in V$ is a homogeneous ideal of~$\Tensor(V)$ because it is generated by homogeneous components.
+  The two sided ideal~$J$ in~$\Tensor(V)$ generated by the elements~$x \tensor x$ with~$x \in V$ is homogeneous because it generated by homogeneous elements.
+  The resulting quotient graded~{\algebras{$\kf$}} are the symmetric algebra~$\Symm(V) \cong A/I$ and the exterior algebra~$\Exterior(V) \cong A/J$.
+\end{examples}
+
+
+% Grading is on the wrong level.
 % 
 % \begin{remark}
-%  While a graded \algebra{$\kf$} is formally a pair $(A, (A_n)_{n \in \N})$ consisting of a \algebra{$\kf$} $A$ and a grading $A = \bigoplus_{n \in \N} A_n$ we will often just call $A$ a graded \algebra{$\kf$} without explicitily mentioning the grading. We also set $A_n \defined 0$ for every $n < 0$.
+%   One can also consider graded Lie~algebras, and if~$\glie$ is a graded Lie~algebra then~$\Univ(\glie)$ inherits the structure of a graded~{\algebra{$\kf$}}:
+%   \begin{enumerate}
+%     \item
+%       A \defemph{grading}\index{grading!of a vector space} of a vector space~$V$ is a direct sum decomposition~$V = \bigoplus_{i \geq 0} V_i$.
+%       A \defemph{graded vector space}\index{graded!vector space} is a vector space~$V$ together with a grading of~$V$.
+%     \item
+%       A \defemph{grading}\index{grading!of a Lie algebra} of a Lie~algebra~$\glie$ is a direct sum decomposition~$\glie = \bigoplus_{i \geq 0} \glie_i$ such that~$[\glie_i, \glie_j] \subseteq \glie_{i+j}$ for all~$i, j \geq 0$.
+%       A \defemph{graded Lie~algebra}\index{graded!Lie~algebra} is a Lie~algebra~$\glie$ together with a grading of~$\glie$.
+%     \item
+%       If~$V$ is a graded vector space then the tensor algebra~$\Tensor(V)$ inherits a grading from~$V$:
+%       We get for every~$d \geq 0$ a decomposition
+%       \[
+%         V^{\tensor d}
+%         =
+%         \left(
+%           \bigoplus_{i \geq 0} V_i
+%         \right)^{\tensor d}
+%         =
+%         \bigoplus_{i_1, \dotsc, i_d \geq 0} V_{i_1} \tensor \dotsb \tensor V_{i_d}  \,.
+%       \]
+%       This overall results for the tensor algebra~$\Tensor(V)$ in a decomposition
+%       \[
+%         \Tensor(V)
+%         =
+%         \bigoplus_{r \geq 0}
+%         V^{\tensor r}
+%         =
+%         \bigoplus_{\substack{r \geq 0 \\ i_1, \dotsc, i_r \geq 0}}
+%         V_{i_1} \tensor \dotsb \tensor V_{i_r}  \,.
+%       \]
+%       We define for all~$d \geq 0$ the homogeneous component~$\Tensor(V)_d$ as
+%       \[
+%         \Tensor(V)_d
+%         \defined
+%         \bigoplus_{
+%           \substack{r \geq 0 \\
+%                     i_1, \dotsc, i_r \geq 0 \\
+%                     i_1 + \dotsb + i_r = d}
+%         }
+%         V_{i_1} \tensor \dotsb \tensor V_{i_r}  \,.
+%       \]
+%       This defines a grading on~$\Tensor(V)$ which makes the inclusion~$V \inclusion \Tensor(V)$ into a homomorphism of graded vector spaces.
+%     \item
+%       If~$\glie$ is a graded Lie~algebra with grading~$\glie = \bigoplus_{i \neq 0} \glie_i$ then we regard the tensor algebra~$\Tensor(\glie)$ as a graded~{\algebra{$\kf$}} in the above way.
+%       Let~$I$ be the two-sided ideal in~$\Tensor(\glie)$ generated by all elements~$c_{x,y} \defined x \tensor y - y \tensor x - [x,y]$ with~$x, y \in \glie$.
+%       The ideal~$I$ is already generated by all~$c_{x,y}$ with~$x, y \in \glie$ homogeneous because~$c_{x,y}$ is bilinear in~$x$ and~$y$.
+%       The ideal~$I$ is hence graded and so the quotient~$\Univ(\glie) = \Tensor(\glie)/I$ inherits a grading from~$\Tensor(\glie)$.
+%       This is the unique grading that makes the canonical homomorphism~$\glie \to \Univ(\glie)$ a homomorphism of graded~{\algebras{$\kf$}}.
+%   \end{enumerate}
 % \end{remark}
-% 
-% 
-% \begin{remark}
-%  Given any semigroup $(S,\cdot)$ an \emph{$S$-grading} of a \algebra{$\kf$} $A$ is a decomposition $A = \bigoplus_{s \in S} A_s$ into linear subspaces such that $A_s A_t \subseteq A_{s \cdot t}$ for all $s,t \in S$. An $S$-graded \algebra{$\kf$} is a \algebra{$\kf$} $A$ together with an $S$-grading $A = \bigoplus_{s \in S} A_s$. An graded \algebra{$\kf$} in the sense of Definition~\ref{defi: graded algebras} is then the special case of an $\N$-graded \algebra{$\kf$}.
-% \end{remark}
-% 
-% 
-% \begin{lemma}
-%  Let $A$ be a graded \algebra{$\kf$}. Then $1 \in A_0$ and $A_0$ is a $k$-subalgebra.
-% \end{lemma}
-% \begin{proof}
-%  Let $1 = \sum_{i \in \N} e_i$ with respect to $A = \bigoplus_{n \in \N} A_n$. Then for any $j \in \N$ and $a \in A_j$
-%  \[
-%   A_j \ni a
-%   = a \cdot 1
-%   = a \left( \sum_{i \in \N} e_i \right)
-%   = \sum_{i \in \N} \underbrace{a e_i}_{\in A_{i+j}},
-%  \]
-%  and it follows from the directness of the decomposition $A = \bigoplus_{n \in \N} A_n$ that $a = a e_0$. It follows that $a e_0 = a$ for every $a \in A$, hence $e_0$ is the unit of $A$.
-%  
-%  That $A_0$ is a linear subspace which is closed under the multiplication follows from the definition of a graded \algebra{$\kf$}. As it contains the unit of $A$ it is a $k$-subalgebra.
-% \end{proof}
-% 
-% 
-% \begin{examples}\label{expls: graded algebras}
-%  \begin{enumerate}[leftmargin=*]
-%   \item
-%    Any \algebra{$\kf$} $A$ becomes a graded \algebra{$\kf$} by setting $A_0 \defined A$ and $A_i \defined 0$ for every $i > 1$.
-%   \item
-%    The polynomial ring $A = k[x_1, \dotsc, x_n]$ is a graded \algebra{$\kf$} by setting
-%    \[
-%     A_d \defined \vspan_k \{ x_1^{p_1} \dotsm x_n^{p_n} \mid p_1 + \dotsb + p_n = d\}
-%     \quad \text{for every $d \in \N$},
-%    \]
-%    i.e.\ $A_d$ consists of the homogeneous polynomials of degree $d$.
-%   \item
-%    Let $V$ be a $k$-vector space. Then the tensor algebra $T(V) = \bigoplus_{n \in \N} V^{\tensor n}$, the symmetric algebra $S(V) = \bigoplus_{n \in \N} S^n(V)$ and the exterior algebra $\Lambda(V) = \bigoplus_{n \in \N} \Lambda^n(V)$ carry the structure of a graded \algebra{$\kf$} via $T(V)_n \defined V^{\tensor n}$, $S(V)_n \defined S^n(V)$ and $\Lambda(V)_n \defined \Lambda^n(V)$ for every $n \in \N$.
-%  \end{enumerate}
-% \end{examples}
-% 
-% 
-% \begin{definition}
-%  Let $A$ and $B$ be graded \algebras{$\kf$}. A homomorphism of \algebras{$\kf$} $\varphi \colon A \to B$ is called a \emph{homomorphism of graded \algebras{$\kf$}} if $\varphi(A_n) \subseteq B_n$ for every $n \in \N$, and the induced homomorphisms of vector spaces are denoted by $\varphi_n \colon A_n \to B_n$ for every $n \in \N$. An homomorphism of graded \algebras{$\kf$} is called an isomorphism if it is bijective.
-% \end{definition}
-% 
-% 
-% \begin{remark}
-%  If $A$ is a graded \algebra{$\kf$} then $\id_A$ is a homomorphism of graded \algebras{$\kf$}, and if $B$ and $C$ are two other graded \algebras{$\kf$} and $\varphi \colon A \to B$ and $\psi \colon B \to C$ homomorphisms of graded \algebras{$\kf$} then so is $\psi \colon \varphi \colon A \to C$. Hence the graded \algebras{$\kf$} together with the homomorphisms of graded \algebras{$\kf$} between them form a category, which will be refered to by $\cGrad{k}$.
-% \end{remark}
-% 
-% 
-% \begin{example}
-%  \begin{enumerate}[leftmargin=*]
-%   \item
-%    For any vector space $V$ the two maps
-%    \begin{gather*}
-%     T(V) \to S(V), \quad x_1 \tensor \dotsb \tensor x_n \mapsto x_1 \dotsm x_n
-%    \shortintertext{and}
-%     T(V) \to \Lambda(V), \quad x_1 \tensor \dotsb \tensor x_n \mapsto x_1 \wedge \dotsb \wedge x_n
-%    \end{gather*}
-%    are homomorphisms of graded \algebras{$\kf$}.
-%   \item
-%    If $V$ is a finite dimensional vector space with basis $x_1, \dotsc, x_n$ the the isomorphism of \algebras{$\kf$}
-%    \[
-%     k[T_1, \dotsc, T_n] \to S(V), \quad T_i \mapsto x_i \quad \text{for every $i = 1, \dotsc, n$}
-%    \]
-%    is already an isomorphism of graded \algebras{$\kf$}.
-%  \end{enumerate}
+
+
+
+
+\subsection{Filtered \texorpdfstring{$\kf$}{k}-Algebras}
+
+
+\begin{definition}
+  A \defemph{filtration}\index{filtration} of a~\algebra{$\kf$}~$A$ is an increasing sequence
+  \[
+    A_{(0)}
+    \subseteq
+    A_{(1)}
+    \subseteq
+    A_{(2)}
+    \subseteq
+    \dotsb
+  \]
+  of linear subspaces of~$A$ such that~$A = \bigcup_{i \geq 0} A_{(i)}$ and~$A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ for all~$i,j \geq 0$, as well as~$1 \in A_{(0)}$.
+  A \defemph{filtered~\algebra{$\kf$}} is a~\algebra{$\kf$}~$A$ together with a filtration of~$A$.
+\end{definition}
+
+
+\begin{remark}
+  \label{filtration conventions}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We will just say that~\enquote{$A$ is a filtered algebra} without mentioning the filtration explicitely.
+      The parts of the filtration will then be denoted by~$A_{(i)}$ with~$i \geq 0$.
+    \item
+      If~$A$ is a filtered~{\algebra{$\kf$}} then we set~$A_{(-i)} \defined 0$ for all~$i < 0$ for convenience.
+      The relation~$A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ with~$i,j \geq 0$ then extends to all~$i, j \in \Integer$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ and~$B$ be two filtered~\algebras{$\kf$}.
+  \begin{enumerate}
+    \item
+      A~\defemph{homomorphism of filtered~\algebras{$\kf$}}~$A \to B$ is a homomorphism of the underlying~{\algebras{$\kf$}} such that~$f(A_{(i)}) \subseteq B_{(i)}$ for every~$i \geq 0$.
+    \item
+      If~$f \colon A \to B$ is a homomorphism of filtered~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction of~$f$ to a linear map~$A_{(i)} \to B_{(i)}$ is denoted by~$f_{(i)}$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$A$,~$B$ and~$C$ be filtered~\algebras{$\kf$}.
+  \begin{enumerate}
+    \item
+      The identity~$\id_A \colon A \to A$ is a homomorphism of filtered~\algebras{$\kf$}.
+    \item
+      If~$f \colon A \to B$ and~$g \colon B \to C$ are homomorphisms of filtered~\algebras{$\kf$} then their composition~$g \circ f \colon A \to C$ is again a homomorphism of filtered~\algebras{$\kf$}.
+  \end{enumerate}
+  This shows that filtered~\algebras{$\kf$} together with homomorphisms of filtered~\algebras{$\kf$} between them form a category, which we will denote by~\gls*{filtered algebras}.
+  \begin{enumerate}[start=3]
+    \item
+      A homomorphism of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ is hence an isomorphism if and only if there exists a homomorphism of filtered~{\algebras{$\kf$}}~$g \colon B \to A$ with~$fg = \id_B$ and~$gf = \id_A$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{warning}
+  Let~$A$ and~$B$ be two filtered~{\algebras{$\kf$}}.
+  A bijective homomorphism of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ is not necessarily an isomorphism of filtered~{\algebras{$\kf$}}.
+  Indeed, take any~{\algebra{$\kf$}}~$A$ with~$\kf \neq A$.
+  We can endow~$A$ with a filtration
+  \[
+    A_{(0)}
+    =
+    \kf
+    \subseteq
+    A
+    =
+    A
+    =
+    A
+    =
+    \dotsb
+  \]
+  which results in a filtered~{\algebra{$\kf$}}~$B_1$.
+  But we can also endow~$A$ with the filtration
+  \[
+    A_{(0)}
+    =
+    A
+    =
+    A
+    =
+    A
+    =
+    \dotsb
+  \]
+  which results in a filtered~{\algebra{$\kf$}}~$B_2$.
+  Then the identity~$\id_A \colon A \to A$  results in a bijective homomorphism of filtered~{\algebras{$\kf$}}~$B_1 \to B_2$.
+  But this is not an isomorphism of filtered~{\algebras{$\kf$}} because the inverse~$B_2 \to B_1$ does not respect the filtrations.
+\end{warning}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Any grading~$A = \bigoplus_{i \geq 0} A_i$ of a~{\algebra{$\kf$}}~$A$ results in a filtration~$A = \bigcup_{i \geq 0} A_{(i)}$ given by
+      \[
+        A_{(i)}
+        =
+        \bigoplus_{j \geq i} A_j
+      \]
+      for every~$i \geq 0$.
+      We can therefore regard every graded~{\algebra{$\kf$}} as a filtered~{\algebra{$\kf$}}.
+      Every homomorphism of graded~{\algebras{$\kf$}}~$f \colon A \to B$ is then also a homomorphism of filtered \algebras{$\kf$}.
+      This construction gives us a forgetful functor~$\cgAlg{\kf} \to \cfAlg{\kf}$.
+    \item 
+      If~$A$ is a filtered algebra and~$I$ is any two-sided ideal in~$A$ then the quotient algebra~$A/I$ inherits from~$A$ a filtration given by~$(A/I)_{(i)} \defined \pi(A_{(i)})$ for every~$i \geq 0$.
+      Here~$\pi \colon A \to A/I$ denotes the canonical projection.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{examples}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If~$V$ is any vector space then the tensor algebra~$\Tensor(V)$, the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ admit gradings as explained in \cref{examples of graded algebras} and hence also induced filtrations.
+    \item
+      If~$\glie$ is a Lie algebra then its universal enveloping algebra~$\Univ(\glie)$ inherits from the tensor algebra~$\Tensor(\glie)$ a filtration~$\Univ(\glie) = \bigcup_{i \geq 0} \Univ(\glie)_{(i)}$ with terms
+      \[
+        \Univ(\glie)_{(i)}
+        =
+        \gen{
+          \class{x_1 \dotsm x_j}
+        \suchthat
+          j \leq i,
+          x_1, \dotsc, x_j \in \glie
+        }_{\kf} \,.
+      \]
+    \item
+      Let~$M$ be a multiplicative monoid and let
+      \[
+        M_{(0)}
+        \subseteq
+        M_{(1)}
+        \subseteq
+        M_{(2)}
+        \subseteq
+        M_{(3)}
+        \subseteq
+        \dotsb
+      \]
+      be a filtration of~$M$, i.e.\ it holds that~$M = \bigcup_{i \geq 0} M_{(i)}$ with~$M_{(i)} M_{(j)} \subseteq M_{(i+j)}$ for all~$i, j \geq 0$ and~$1 \in M_{(0)}$.
+      Then the monoid algebra~$A \defined \kf[M]$ inherits a filtration given by
+      \[
+        A_{(i)}
+        =
+        \gen{ M_{(i)} }_{\kf}
+      \]
+      for all~$i \geq 0$.
+    \item
+      Let us give a special case of the previous example:
+      Let~$G$ be a group with generating set~$S$.
+      The length of an element~$g \in G$ with respect to the generating set~$S$ is given by
+      \[
+        l_S(g)
+        =
+        \min
+        \{
+          n \in \Natural
+        \suchthat
+          \text{there exist~$s_1, \dotsc, s_n \in S$ with~$g = s_1^{\pm 1} \dotsm s_n^{\pm 1}$}
+        \}  \,.
+      \]
+      The length function is subadditive in the sense that
+      \[
+        l_S(gh)
+        \leq
+        l_S(g) + l_S(h)
+      \]
+      for all~$g, h \in G$.
+      For every~$i \geq 0$ let
+      \[
+        G_{(i)}
+        \defined
+        \{
+          g \in G
+        \suchthat
+          l_S(g) \leq i
+        \}  \,,
+      \]
+      which is the ball of length~$i$.
+      These subsets given a filtration of~$G$.
+      That~$G_{(i)} G_{(j)} \subseteq G_{(i+j)}$ for all~$i, j \geq 0$ follows from the subadditivity of the length function~$l_S$.
+      We hence get for the group algebra~$A \defined \kf[G]$ a filtration given by
+      \[
+        A_{(i)}
+        \defined
+        \gen{ G_{(i)} }_{\kf}
+        =
+        \gen{
+          g \in G
+        \suchthat
+          l_S(g) \leq i
+        }_{\kf} \,.
+      \]
+  \end{enumerate}
+\end{examples}
+
+
+\begin{definition}
+  The \defemph{degree}\index{degree!filtration} of an element~$x \in A$ is the minimal~$i \geq 0$ with~$x \in A_{(i)}$.
+\end{definition}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A \defined \kf[t]$ be the polynomial ring in one variable.
+      The standard grading~$\kf[t] = \bigoplus_{i \geq 0} \kf t^i$ gives a filtration
+      \[
+        A_0
+        =
+        \kf
+        =
+        \gen{ 1 }_{\kf}
+        \subseteq
+        \gen{ 1, t }_{\kf}
+        \subseteq
+        \gen{ 1, t, t^2 }_{\kf}
+        \subseteq
+        \gen{ 1, t, t^2, t^3 }_{\kf}
+        \subseteq
+        \dotsb
+      \]
+      of~$A$.
+      The degree of a nonzero polynomial~$p \in A$ with respect to this filtration is the usual degree of a polynomial.
+    \item
+      If more generally~$A$ is any graded algebra with associated filtration then the degree of any nonzero element~$x \in A$ with homogeneous decomposition~$x = \sum_{i \geq 0} x_i$ is the largest index~$i$ with~$x_i \neq 0$.
+  \end{enumerate}
+\end{example}
+
+
+
+\subsubsection{The Associated Graded Algebra}
+
+
+\begin{definition}
+  Two elements~$x$ and~$y$ of a filtered~{\algebra{$\kf$}}~$A$ are \defemph{equal up to smaller degree}\index{equal up to smaller degree}\index{up to smaller degree}\index{degree!up to smaller} if~$x = y$ or their difference~$x - y$ is of degree strictly smaller than both~$x$ and~$y$.
+\end{definition}
+
+
+\begin{lemma}
+  Let~$A$ be a filtered algebra.
+  Two elements~$x, y \in A$ are equal up to smaller degree if and only if they have the same degree~$i \geq 0$ and~$x - y \in A_{(i-1)}$.
+\end{lemma}
+
+
+\begin{proof}
+  Suppose first that that~$x$ and~$y$ are equal up to smaller degree.
+  Let~$x$ be of degree~$i$ and let~$y$ be of degree~$j$ with~$i \geq j$.
+  Then~$x - y \in A_{(j)}$ and thus~$x = x' + (x- x') \in A_{(j)}$.
+  Hence~$i \leq j$ and thus~$i = j$.  
+  If now~$x = y$ then~$x - y = 0 \in A_{(i-1)}$.
+  (Recall for the case~$i = 0$ that~$A_{(-1)} = 0$.)
+  Otherwise~$x - y \in A_{(k)}$ for some~$0 \leq k < i$ and hence~$x - y \in A_{(k)}$.
+  
+  If on the other hand~$x$ and~$y$ have the same degree~$i \geq 0$ with~$x - y \in A_{(i-1)}$ then~$x = y$ or the degree of~$x - y$ is at most~$i-1$ and hence strictly smaller than~$i$.
+  This means that~$x$ and~$y$ are equal up to smaller degree.
+\end{proof}
+
+
+\begin{corollary}
+  If~$A$ is a filtered~{\algebra{$\kf$}} then \enquote{being equal up to smaller degree} is an equivalence relation on~$A$.
+  The equivalence class of an element~$x \in A$ of degree~$i$ is given by the coset~$x + A_{(i-1)}$.
+  \qed
+\end{corollary}
+
+
+\begin{remark}
+  Let~$A$ be a filtered~{\algebra{$\kf$}} and let~$\sim$ be the equivalence relation \enquote{equal up to smaller degree} on~$A$.
+  
+  When calculating in~$A$ we sometimes want to replace an element~$x \in A$ by another element~$x' \in A$ that is equal to~$x$ up to smaller degree, while hoping that the result ouf our calculation also stays the same up to smaller degree.
+  This can be useful if terms of smaller degree are not important in the given situation, or if they can be dealt with by induction.
+  
+  We would therefore like to have the properties
+  \begin{equation}
+    \label{wanted compatibility}
+    x + y
+    \sim
+    x' + y' \,,
+    \qquad
+    x \cdot y
+    \sim
+    x' \cdot y' \,,
+    \qquad
+    \lambda x \sim \lambda x'
+  \end{equation}
+  for all elements~$x, x', y, y' \in A$ with~$x \sim x'$ and~$y \sim y'$ and scalars~$\lambda \in \kf$.
+  This would then mean that the quotient set~$A/{\sim}$ inherits from~$A$ the structure of a~{\algebra{$\kf$}}, allowing us do calculations \enquote{up to smaller degree} by switching from~$A$ to~$A/{\sim}$.
+  
+  But alas the properties~\eqref{wanted compatibility} do not hold in general:%
+  \footnote{The equivalence relation~$\sim$ is actually compatible with scalar multiplication:
+  Suppose that~$x, x' \in A$ are two element that are equal up to smaller degree, so that~$x$ and~$x'$ are of the same degree~$i$ and~$x - x' \in A_{(i-1)}$.
+  If~$\lambda = 0$ then~$\lambda x = 0 = \lambda x'$ and hence~$\lambda x \sim \lambda x'$.
+  If~$\lambda \neq 0$ then it follows from~$x \in A_{(i)}$ and~$x \notin A_{(i-1)}$ that also~$\lambda x \in A_{(i)}$ and~$\lambda x' \notin A_{(i-1)}$.
+  This means that the element~$\lambda x$ is again of degree~$i$.
+  We find in the same way that~$\lambda x'$ is again of degree~$i$.
+  We moverover have~$\lambda x - \lambda x' = \lambda (x-x') \in A_{(i-1)}$ because~$x - x' \in A_{(i-1)}$.
+  Altogether this shows that~$\lambda x \sim \lambda x'$.}
+  \begin{itemize}
+    \item
+      Suppose that~$x$ and~$x'$ are of degree~$i$ whereas~$y$ and~$y'$ are of degree~$j$.
+      We would like to argue that~$x + y$ and~$x' + y'$ have the same degree~$\max(i,j)$ and that their difference
+      \[
+        (x + y) - (x' + y')
+        =
+        (x - x') + (y + y')
+      \]
+      has degree at most~$\max(i-1,j-1)$ and hence strictly smaller than~$i+j$.
+      But this argumentation doesn’t work because the sums~$x+y$ and~$x'+y'$ may have smaller degree than~$i+j$, which would mean that the difference~$(x + y) - (x' + y')$ may have too large of a degree.
+      
+      As a counterexample we can take the polynomial ring~$A = \kf[t]$ wih the filtration induced by the standard grading~$A = \bigoplus_{i \geq 0} \kf t^i$.
+      Then~$x = t$ and~$x' = t+1$ are the equal to smaller degree but for~$y = -t$ the sums~$x + y = 0$ and~$x' + y' = 1$ are not equal up to smaller degree.
+      
+      This shows that the equivalence relation~$\sim$ is not necessarily compatible with addition.
+    \item
+      The equivalence relation~$\sim$ also hasn’t to be compatible with multiplication.
+      
+      We take on~$\kf[t]$ the standard grading~$\kf[t] = \bigoplus_{i \geq 0} \kf t^i$.
+      The ideal~$(t^2)$ is homogeneous, and the quotient~$A \defined \kf[t]/(t^2)$ therefore inherits a grading given by
+      \[
+        A
+        =
+        \kf
+        \oplus
+        \kf t
+        \oplus
+        0
+        \oplus
+        0
+        \oplus
+        \dotsb
+      \]
+      The resulting filtration of~$A$ is given by
+      \[
+        A_0
+        =
+        \kf
+        \subsetneq
+        (t)/t^2
+        \subsetneq
+        A
+        =
+        A
+        =
+        A
+        =
+        \dotsb
+      \]
+      The elements~$x = t$ and~$x' = t+1$ are equal up to smaller degree but for~$y = y' = t$ the two products~$xy = 0$ and~$x' y' = t$ are not equal up to smaller degree.
+  \end{itemize}
+  We can also argue more abstractly that this approach to \enquote{working with elements up to smaller degree} cannot work:
+  We would have~$A/{\sim} = A/I$ for the then two-sided ideal~$I = \{x \in A \suchthat x \sim 0\}$.
+  But the only element that is equal to~$0$ up to smaller degree is~$0$ itself.
+  Hence~$I = 0$ and we would have that~$A = A/{\sim}$, meaning that no two elements~$x, y \in A$ with~$x \neq y$ could be equal up to smaller degree.
+  
+  The following construction gives us a way to circumvent these problems and to calculate \enquote{up to smaller degree} in a rigorous way:
+\end{remark}
+
+
+\begin{construction}[The associated graded algebra]
+  \label{construction of associated graded}
+  To every filtered~{\algebra{$\kf$}}~$A$ we can associate a graded~{\algebra{$\kf$}} as follows:
+  For every~$i \geq 0$ let
+  \[
+    \gr[i](A)
+    \defined
+    A_{(i)} / A_{(i-1)}
+  \]
+  where we use the convention~$A_{(-1)} = 0$ from \cref{filtration conventions}.
+  We denote the residue class of~$x \in A_{(i)}$ in~$\gr[i](A)$ by~$[x]_i$.
+  
+  For all~$i, j \geq 0$ the multiplication~$A \times A \to A$ restricts to a bilinear map~$A_{(i)} \times A_{(j)} \to A_{(i+j)}$ that in turn induces a well-defined bilinear map
+  \[
+    \mu_{i,j}
+    \colon
+    \gr[i](A) \times \gr[j](A)
+    \to
+    \gr[i+j](A) \,,
+    \quad
+    ([x]_i, [y]_j)
+    \mapsto
+    [xy]_{i+j}  \,.
+  \]
+  We will write~$[x]_i \cdot [y]_j$ or just~$[x]_i [y]_j$ instead of~$\mu_{i,j}([x]_i, [y]_j)$.
+  To see that the multipliction~$\mu_{i,j}$ is well-defined let~$x, x' \in A_{(i)}$ and~$y, y' \in A_{(j)}$ with~$x - x ' \in A_{(i-1)}$ and~$y - y' \in A_{(j-1)}$.
+  Then
+  \begin{align*}
+    x y
+    &=
+    (x' + (x - x')) (y' + (y - y'))
+    \\
+    &=
+    x' y' + (x - x') y' + x' (y - y') + (x - x')(y - y')
+    \\
+    &\in
+    x' y' + A_{(i-1)} A_{(j)} + A_{(i)} A_{(j-1)} + A_{(i-1)} A_{(j-1)}
+    \\
+    &\subseteq
+    x' y' + A_{(i+j-1)} + A_{(i+j-1)} + A_{(i+j-2)}
+    \\
+    &\subseteq
+    x' y' + A_{(i+j-1)}
+  \end{align*}
+  and hence~$[xy]_{i+j} = [x'y']_{i+j}$.
+  
+  The element~$[1]_0 \in \gr[0](A)$ satisfies~$[1]_0 \cdot [x]_i = [x]_i$ for all~$i \geq 0$ and every~$[x]_i \in \gr[i](A)$, and the multiplications~$\mu_{i,j}$ are relatively associative in the sense that
+  \[
+    [x]_i \cdot ([y]_j \cdot [z]_k)
+    =
+    [xyz]_{i+j+k}
+    =
+    ([x]_i \cdot [y]_j) \cdot [z]_k
+  \]
+  for all~$i, j, k \geq 0$ and~$[x]_i \in \gr[i](A)$,~$[y]_j \in \gr[j](A)$ and~$[z]_k \in \gr[k](A)$.
+  It follows from \cref{external description of graded algebras} that on the direct sum
+  \[
+    \gr(A)
+    \defined
+    \bigoplus_{i \geq 0} \gr[i](A)
+  \]
+  the multiplications~$\mu_{i,j}$ assemble into a single multiplication
+  \[
+    \mu
+    \colon
+    \gr(A) \times \gr(A)
+    \to
+    \gr(A)
+  \]
+  that makes~$\gr(A)$ into a graded~{\algebra{$\kf$}}.
+  The multiplicative neutral element of~$\gr(A)$ is given by~$[1]_0$.
+\end{construction}
+
+
+\begin{definition}
+  For a filtered~{\algebra{$\kf$}}~$A$ the graded algebra~$\gr(A)$ resulting from~$A$ by \cref{construction of associated graded} is the \defemph{associated graded algebra}\index{associated graded algebra} of~$A$.
+\end{definition}
+
+
+\begin{remark}
+  Let~$A$ be a filtered algebra.
+  \begin{enumerate}
+    \item
+      To every element~$x \in A$ we can associate an element in~$\gr(A)$:
+      We observe that if~$x$ is of degree~$i \geq 0$ then the residue class~$[x]_j$ is not defined for~$j < i$ because~$x \notin A_{(j)}$, whereas it is defined for all~$j \geq i$.
+      But for~$j > i$ we find that~$[x]_j = 0$ because~$x_i \in A_{(i)} \subseteq A_{(j-1)}$.
+      Hence the only interesting residue class associated to~$x$ is~$[x]_i$;
+      we note that~$[x]_i \neq 0$ because~$x \notin A_{(i-1)}$.
+    \item
+      We observe that two elements~$x, y \in A$ give the same associated element in~$\gr(A)$ if and only if~$x$ and~$y$ are equal up to smaller degree.
+      To show this we denote by~$\gamma \colon A \to \gr(A)$ the function that maps every~$x \in A$ to the associated element of~$\gr(A)$.
+      
+      Suppose first that~$x$ and~$y$ are equal up to smaller degree.
+      Then~$x$ and~$y$ are of the same degree~$i$ and~$x - y \in A_{(i-1)}$.
+      Hence~$\gamma(x) = [x]_i = [y]_i = \gamma(y)$.
+      
+      Suppose now that~$x$ and~$y$ are not equal up to smaller degree, where~$x$ is of degree~$i$ and that~$y$ is of degree~$j$.
+      If~$i \neq j$ then~$\gamma(x) = [x]_i \neq [y]_j = \gamma(y)$ because the terms~$[x]_i$ or~$[y]_j$ live in different homogeneous degrees and at least one of them is nonzero.
+      If~$i = j$ then~$x - y \notin A_{(i-1)}$ and hence~$\gamma(x) = [x]_i \neq [y]_i = \gamma(y)$.
+    \item
+      Observe that the image of~$\gamma$ consists precisely of the homogeneous elements of~$\gr(A)$.
+      If~$x \in A$ has degree~$i$ then~$[x]_i$ is homogeneous of degree~$i$ (or at least for~$x$ nonzero).
+  \end{enumerate}
+\end{remark}
+
+
+\begin{warning}
+  Let~$A$ be a filtered~{\algebra{$\kf$}}
+  \begin{enumerate}
+    \item
+      The map~$\gamma \colon A \to \gr(A)$ that assigns to each element~$x \in A$ the corresponding element of~$\gr(A)$ is in no way a homomorphism.
+      It is in general neither multiplicative nor additive.
+    \item
+      If~$x_i$,~$i \in I$ is a generating set for the algebra~$A$ then the associated elements of~$\gr(A)$ do not have to form a generating set for~$\gr(A)$.
+%     TODO: Add a reference to the universal eveloping algebra of heisenberg/sl2 later on.
+  \end{enumerate}
+\end{warning}
+
+
+\begin{remark}
+  Let~$A$ be a filtered algebra with finite algebra generating set~$x_1, \dotsc, x_n$ such that the generator~$x_i$ is of degree~$d_i$.
+  Then the associated elements in~$\gr(A)$ form a set of algebra generators of~$\gr(A)$ if and only if the generators~$x_1, \dotsc, x_n$ are compatible with the filtration of~$A$ in the sense that for every~$i \geq 0$ the linear subspace~$A_{(i)}$ is spanned by all those monomials~$x_{i_1} \dotsm x_{i_p}$ with~$d_{i_1} + \dotsb + d_{i_p} \leq i$.
+  See \cite{associated_generated} for more details on this.
+\end{remark}
+
+
+\begin{example}[Weyl algebra]
+  \label{weyl algebra}
+  We consider the \defemph{Weyl~algebra}\index{algebra!Weyl}\index{Weyl!algebra}
+  \[
+    A
+    \defined
+    \kf\gen{X, Y}/(YX - XY - 1) \,.%
+    \footnote{The algebra~$A$ is isomorphic to the subalgebra of~$\End_{\kf}(\kf[t])$ generated by the endomorphisms~$x$ and~$y$ that are given by~$x(p(t)) = t p(t)$ and~$y(p(t)) = p'(t)$.
+  These endomorphisms satsify the relations~$yx - xy - \id = 0$ by the product rule.}
+  \]
+  We denote the residue classes of~$X$ and~$Y$ in~$A$ by~$x$ and~$y$.
+  Then~$yx = xy + 1$, which one may think about as a rewriting rule for words in~$x$ and~$y$.
+  It follows from induction that
+  \[
+    y x^n
+    =
+    x^n y + n x^{n-1}
+  \]
+  for all~$n \geq 0$ and thus
+  \[
+    y p(x)
+    =
+    p(x) y + p'(x)
+  \]
+  for every polynomial~$p$.
+  
+  The~{\algebra{$\kf$}}~$T \defined \kf\gen{X, Y}$ carries a unique grading with~$X$ and~$Y$ in degree~$1$.
+  The resulting filtration of~$T$ is given by
+  \[
+    T_{(i)}
+    =
+    \gen{
+      Z_1 \dotsm Z_j
+    \suchthat
+      1 \leq j \leq i,
+      Z_k \in \{X, Y\}
+    }_{\kf}
+    =
+    \gen{
+      \text{words in~$X$,~$Y$ of length~$\leq i$}
+    }
+  \]
+  The Weyl~algebra~$A$ inherits a filtration given by
+  \begin{align*}
+    A_{(i)}
+    =
+    \gen{
+      z_1 \dotsm z_j
+    \suchthat
+      1 \leq j \leq i,
+      z_k \in \{x, y\}
+    }_\kf
+    =
+    \gen{
+      \text{words in~$x$,~$y$ of length~$\leq i$}
+    }
+  \end{align*}
+  
+  We observe that the two elements~$x, y \in T$ commute up to smaller degree, i.e.\ the two products~$xy$ and~$yx$ are equal up to smaller degree.
+  Hence the associated elements~$[x]_1$ and~$[y]_1$ in~$\gr(A)$ do actually commute because
+  \[
+    [x]_1 [y]_1
+    =
+    [xy]_2
+    =
+    [yx - 1]_2
+    =
+    [yx]_2
+    =
+    [y]_1 [x]_1 \,.
+  \]
+  We will in the following show that~$\gr(A) \cong \kf[t,u]$ if~$\ringchar(\kf) = 0$ with~$[x]_1$ and~$[y]_1$ corresponding to~$t$ and~$u$.
+  
+  \begin{claim}
+    \label{subspace spanned by monomials}
+    For every~$i \geq 0$ the linear subspace~$A_{(i)}$ is spanned by the monomial~$x^n y^m$ with~$n + m \leq i$.
+  \end{claim}
+  
+  \begin{proof}
+    We show the statement by induction over~$i$.
+    It holds for~$i = 0$ that
+    \[
+      A_{(0)}
+      =
+      \kf
+      =
+      \gen{1}_{\kf}
+      =
+      \gen{x^0 y^0}_{\kf}
+    \]
+    Suppose now that the statement holds for some~$i \geq 0$.
+    We have
+    \[
+      T_{(i+1)}
+      =
+      x T_{(i)} \oplus y T_{(i)}
+    \]
+    and in the quotient~$A$ therefore
+    \[
+      A_{(i+1)}
+      =
+      x A_{(i)} + y A_{(i)} \,.
+    \]
+    We find by the induction hypothesis that the summand~$x A_{(i)}$ is spanned by the monomials~$x^{n+1} y^m$ with~$n+m \leq i$ and that the summand~$y A_{(i)}$ is spanned by the monomials~$y x^n y^m$ with~$n + m \leq i$.
+    We have for these generators of~$y A_{(i)}$ that
+    \[
+      y x^n y^m
+      =
+      (x^n y + n x^{n-1}) y^m
+      =
+      x^n y^{m+1} + n x^{n-1} y^m \,.
+    \]
+    This shows that~$A_{(i+1)}$ is spanned by the monomials~$x^n y^m$ with~$n+m \leq i+1$.
+  \end{proof}
+  
+  It follows that the homogeneous component~$\gr[i](A)$ is spanned by the residue classes~$[x^n y^m]_i$ with~$n + m = i$.
+  The collection of all these residue classes therefore spans~$\gr(A)$ as a vector space.
+  These generators commute:
+  
+  \begin{claim}
+    It holds for all~$i, j \geq 0$ and~$n, m, k, l \geq 0$ with~$i = n+m$ and~$j = k+l$ that
+    \[
+      [x^n y^m]_i \cdot [x^k y^l]_j
+      =
+      [x^{n+k} y^{m+l}]_{i+j} \,.
+    \]
+  \end{claim}
+  
+  \begin{proof}
+    For the case~$i = 0$ we find that~$n = m = 0$ and hence
+    \[
+      [x^0 y^0]_0 \cdot [x^k y^l]_j
+      =
+      [1]_0 \cdot [x^k y^l]_j
+      =
+      [x^k y^l]_j
+    \]
+    For~$i = 1$ we have the two cases~$n = 1$,~$m = 0$ and~$n = 0$,~$m = 1$.
+    We find in these cases that
+    \[
+      [x^1 y^0]_1 \cdot [x^k y^l]_j
+      =
+      [x]_1 \cdot [x^k y^l]_j
+      =
+      [x^{k+1} y^l]_{j+1}
+    \]
+    and
+    \begin{align*}
+      [x^0 y^1]_1 \cdot [x^k y^l]_j
+      &=
+      [y]_1 \cdot [x^k y^l]_j
+      \\
+      &=
+      [y x^k y^l]_{j+1}
+      \\
+      &=
+      [(x^k y + k x^{k-1}) y^l]_{j+1}
+      \\
+      &=
+      [x^k y^{l+1} + k x^{k-1} y^l]_{j+1}
+      \\
+      &=
+      [x^k y^{l+1}]_{j+1} + k [x^{k-1} y^l]_{j+1}
+      \\
+      &=
+      [x^k y^{l+1}]_{j+1}
+    \end{align*}
+    where we used that~$x y^k = y^k x + k y^{k-1}$ and that~$[z]_{j+1} = 0$ for all~$z \in A_{(j)}$.
+    It follows for the general case that
+    \begin{align*}
+      {}&
+      [x^n y^m]_i \cdot [x^k y^l]_j
+      \\
+      ={}&
+      \underbrace{ [x]_1 \dotsm [x]_1 }_{n}
+      \underbrace{ [y]_1 \dotsm [y]_1 }_{m}
+      \cdot
+      [x^k y^l]_j
+      \\
+      ={}&
+      \underbrace{ [x]_1 \dotsm [x]_1 }_{n}
+      \underbrace{ [y]_1 \dotsm [y]_1 }_{m-1}
+      \cdot
+      [x^{1+k}  y^l]_j
+      \\
+      ={}&
+      \dotsb
+      \\
+      ={}&
+      [x^{n+k} y^{m+l}]_{i+j}
+    \end{align*}
+    as claimed.
+  \end{proof}
+
+  We have now seen that~$\gr(A)$ is spanned by the monomials~$[x^n y^m]_{n+m}$ with~$n, m \geq 0$ and these monomials commute with each other.
+  It only remains to show that these monomials~$[x^n y^m]_{n+m}$ are linearly indepependent.
+  For this it sufficies to show the following:
+  
+  \begin{claim}
+    \label{linear independence of monomials}
+    The monomials~$x^n y^m$ with~$n, m \geq 0$ in~$A$ are linearly independent if~$\ringchar(\kf) = 0$.
+  \end{claim}
+  
+  We will defer the proof of \cref{linear independence of monomials} to a later occasion.
+  
+  It follows from \cref{subspace spanned by monomials} and \cref{linear independence of monomials} that for every~$i \geq 0$ the quotient~$\gr[i](A) = A_{(i)} / A_{(i-1)}$ has the residue classes~$[x^n y^m]_{n+m}$ with~$n+m = i$ as a basis, and hence overall that the residue classes~$[x^n y^m]_{n+m}$ with~$n, m \geq 0$ form a basis of~$\gr(A)$.
+  
+  We find altogether that~$\gr(A) \cong \kf[t,u]$ with~$[x]_1$ and~$[y]_1$ corresponding to the variables~$x$ and~$y$.
+\end{example}
+
+
+\begin{remark}
+  The Weyl algebra is an example of a \defemph{skew polynomial ring}:
+  If~$R$ is a~{\algebra{$\kf$}} and~$\delta$ is a derivation of~$R$ then one can endow the polynomial vector space~$A = R[t]$ uniquely with the structure of a~{\algebra{$\kf$}}, different from the usual one (unless~$\delta = 0$), such that
+  \begin{itemize}
+    \item
+      the inclusion~$R \to A$,~$r \mapsto r t^0$ is a homomorphism of~{\algebras{$\kf$}},
+    \item
+      $t^i$ is the~{\howmanyth{$i$}} power of~$t$ in~$A$ and
+    \item
+      the variable~$t$ interacts with the elements~$r \in R$ via~$t r = r t + \delta(r)$.
+  \end{itemize}
+  The resulting~{\algebra{$\kf$}} is a \defemph{skew polynomial algebra}\index{skew polyomial algebra} over~$R$ and denoted by~\gls*{skew polynomial algebra}.
+  Observe that the multiplication in~$R[t;\delta]$ is built precisely so that the derivation~$[t,-]$ of~$R[t;\delta]$ acts on~$R \cong R t^0$ in the same way as~$\delta$.
+  The following are two special cases of skew polynomial algebras:
+  \begin{enumerate}
+    \item
+      If~$R$ is any~{\algebra{$\kf$}} and~$\delta = 0$ then~$R[t; \delta] = R[t]$ is the usual polynomial ring.
+    \item
+      If~$R = \kf[t]$ is the polynomial ring in one variable and~$\delta = \partial_t$ is the derivative with respect to the variable~$t$ than~$R[t;\delta] = R[t;\partial_t]$ is the Weyl~algebra.
+  \end{enumerate}
+  
+%   Currently not needed and distracting.
+%
+%   Skew polynomial algebras can be further generalized:
+%   If~$\sigma \colon R \to R$ is an algebra homomorphism then a~{\linear{$\kf$}} map~$\delta \colon R \to R$ is a~{\derivation{$\sigma$}}\index{$\sigma$-derivation}\index{derivation!$\sigma$-} if
+%   \[
+%     \delta(rs)
+%     =
+%     \delta(r) s + \sigma(r) \delta(s)
+%   \]
+%   for all~$r, s \in R$.
+%   Then the polynomial vector space~$A = R[t]$ can be endowed uniquely with the structure of a~{\algebra{$\kf$}} such that
+%   \begin{itemize}
+%     \item
+%       the inclusion~$R \to A$,~$r \mapsto r t^0$ is a homomorphism of~{\algebras{$\kf$}},
+%     \item
+%       $t^i$ is the~{\howmanyth{$i$}} power of~$t$ in~$A$ and
+%     \item
+%       the variable~$t$ interacts with the elements~$r \in R$ via~$t r = \sigma(r) t + \delta(r)$.
+%   \end{itemize}
+%   The resulting algebra~$A$ is an \defemph{Ore extension}\index{Ore extension} of~$R$ and is denoted by~\gls*{ore extension}.
+\end{remark}
+
+
+% Bad example: Already graded
+%
+% \begin{example}[Quantum plane]
+%   Let~$q \in \kf$ wit~$q \neq 0$.
+%   The \emph{quantum plane} is the~{\algebra{$\kf$}}~$A \defined \kf\gen{X,Y}/(YX - qXY)$.%
+%   \footnote{The usual polynomial ring~$\kf[x,y] \cong \kf\gen{X,Y}/(YX - XY)$ is the algebraic object corresponding to the plane~$\Aff^2 = k^2$ in the sense that~$\kf[x,y]$ is the algebra of (regular) functions on~$\Aff^2$.
+%   The given algebra~$A$ should therefore correspond to some (non-existing) plane, the functions on which don’t commute.}
+%   Let~$x, y \in A$ be the residue classes of~$X$ and~$Y$.
+%   The~{\algebra{$\kf$}}~$A$ inherits from the standard grading of the free algebra~$\kf\gen{X,Y}$ a filtration given by
+%   \[
+%     A_{(i)}
+%     =
+%     \gen{
+%       z_1 \dotsm z_j
+%     \suchthat
+%       0 \leq j \leq i,
+%       z_1, \dotsc, z_j \in \{x, y\}
+%     }_{\kf} \,.
+%   \]
+%   It can be shown as for the Weyl~algebra (actually easer than for the Weyl~algebra) for all~$i \geq 0$ the vector space~$A_{(i)}$ is spanned by the monomials~$x^n y^m$ with~$n + m \leq i$.
+%   The quotient vector space~$\gr[i](A)$ is therefore spanned for every~$i \geq 0$ by the residue classes~$[x^n y^m]_i$ with~$n + m = i$.
+%   The algebra~$\gr(A)$ is hence spanned by the collection of all such residue classes~$[x^n y^m]$ with~$n, m \geq 0$.
 % \end{example}
-% 
-% 
-% \begin{definition}
-%  Let $A$ be a graded \algebra{$\kf$}. A two-sided ideal $J \subseteq A$ is called \emph{homogeneous} if $J = \bigoplus_{n \in \N} (J \cap A_n)$. Equivalently, given any $x \in J$ with the decomposition $x = \sum_{n \in \N} x_n$ with respect to $A = \bigoplus_{n \in \N} A_n$ it follows that $x_n \in J$ for every $n \in \N$.
-% \end{definition}
-% 
-% 
-% \begin{lemma}
-%  Let $A$ be a graded \algebra{$\kf$} and $J \subseteq A$ a two-sided homogeneous ideal. Then $A/J$ is a graded \algebra{$\kf$} via $(A/J)_n = A_n/(J \cap A_n)$ for every $n \in \N$ and the canonical projection $\pi \colon A \to A/J, a \mapsto a + J$ is a homomorphism of graded \algebras{$\kf$}.
-% \end{lemma}
-% \begin{proof}
-%  This follows directly form the definition of a homogeneous ideal.
-% \end{proof}
-% 
-% 
-% \begin{lemma}
-%  Let $A$ be a graded \algebra{$\kf$}, $J \subseteq A$ a two-sided ideal and call an element $x \in J$ \emph{homogeneous (in $J$)} if $x_n \in J$ for every $n \in \N$ where $x = \sum_{n \in \N} x_n$ with respect to $A = \bigoplus_{n \in \N} A_n$. Then $J$ is homogeneous if and only if $J$ is generated by elements which are homogeneous in $J$.
-% \end{lemma}
-% \begin{proof}
-%  Let $I \defined \{x \in J \mid \text{$x$ is homogeneous in $J$}\}$ be the linear subspace of elements which are homogeneous in $J$. If $x \in I$ then $x_n \in J$ for every $n \in \N$ where $x = \sum_{n \in \N} x_n$ with respect to $A = \bigoplus_{n \in \N} A_n$. Given $a \in A$ with $a = \sum_{m \in \N} a_m$ with respect to $A = \bigoplus_{m \in \N} A_m$ it follows that $a_m x_n \in J$ for all $m,n \in \N$ because $J$ is left ideal, and therefore $ax = \sum_{m,n \in \N} a_m x_n \in J$. Hence $I$ is a left ideal. In the same way it follows that $I$ is also a right ideal and hence already a two-sided ideal in $A$.
-%  
-%  The ideal $J$ is homogeneous if and only if any of its elements is homogeneous in $J$, i.e.\ if $I = J$, from which the statement follows.
-% \end{proof}
-% 
-% 
-% \begin{examples}
-%  \begin{enumerate}[leftmargin=*]
-%   \item
-%    If $A$ and $B$ are graded \algebras{$\kf$} and $\varphi \colon A \to B$ a homomorphism of graded \algebras{$\kf$} then $\ker \varphi$ is a homogeneous ideal.
-%   \item
-%    Let $V$ be any vector space. The two-sided ideal $I$ of $T(V)$ generated by the elements $x \tensor y - y \tensor x$ with $x,y \in V$ is a homogeneous ideal of $T(V)$. The same goes for the two-sided ideal $J$ generated by the elements $x \tensor x$ with $x \in V$. The resulting (graded) quotient algebras are $S(V)$ and $\Lambda(V)$.
-%  \end{enumerate}
-% \end{examples}
-% 
-% 
-% 
-% \subsection{Filtered \algebras{$\kf$}}
-% 
-% 
-% \begin{definition}
-%  A \emph{filtration} of a \algebra{$\kf$} $A$ is an increasing sequence
-%  \[
-%   A_{(0)}
-%   \subseteq A_{(1)}
-%   \subseteq A_{(2)}
-%   \subseteq \dotsb
-%   \subseteq A
-%  \]
-%  such that $A = \bigcup_{i \in \N} A_{(i)}$ and $A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ for all $i,j \in \N$, as well as $1 \in A_{(0)}$. A \emph{filtered \algebra{$\kf$}} is a \algebra{$\kf$} $A$ together with a filtration $A = \bigcup_{n \in \N} A_{(n)}$.
-% \end{definition}
-% 
-% 
-% \begin{remark}
-%  As for graded \algebras{$\kf$} we will refer to a filtered \algebra{$\kf$} $A$ without explicitely mentioning the filtration. We also set $A_{(n)} \defined 0$ for every $n < 0$.
-% \end{remark}
-% 
-% 
-% \begin{definition}
-%  Let $A$ and $B$ be filtered \algebras{$\kf$}. A homomorphism of \algebras{$\kf$} $\varphi \colon A \to B$ is called a \emph{homomorphism of filtered \algebras{$\kf$}} if $\varphi(A_{(n)}) \subseteq B_{(n)}$ for every $n \in \N$.
-% \end{definition}
-% 
-% 
-% \begin{remark}
-%  If $A$, $B$ and $C$ are filtered \algebras{$\kf$} then $\id_A$ is a homomorphism of filtered \algebras{$\kf$} and if $\varphi \colon A \to B$ and $\psi \colon B \to C$ are homomorphisms of filtered \algebras{$\kf$} then $\psi \circ \varphi$ is also a homomorphism of filtered \algebras{$\kf$}. It follows that filtered \algebras{$\kf$} together with homomorphisms of filtered \algebras{$\kf$} between them form a category, which will be refered to by $\cFilt{k}$.
-% \end{remark}
-% 
+
+
+\begin{warning}
+  For a filtered~{\algebra{$\kf$}} there does not exist a \enquote{canonical} algebra homomorphism~$A \to \gr(A)$.
+  There does not even have to exist any algebra homomorphism~$A \to \gr(A)$ as \cref{weyl algebra} shows:
+  If~$A \defined \kf\gen{X,Y}/(YX - XY - 1)$ denotes the Weyl algebra with the filtration from \cref{weyl algebra} then we have seen that~$\gr(A) = \kf[t,u]$ is the commutative polynomial ring in two variables.
+  Algebra homomorphisms~$A \to \gr(A)$ correspond bijectively to elements~$x, y \in \kf[t,u]$ which satisfy the commutator relation~$yx - xy -1 = 0$, i.e.~$yx = xy + 1$.
+  But no such element exist in~$\kf[t,u]$.
+  Hence there exist no algebra homorphism~$A \to \gr(A)$.
+\end{warning}
+
+
+\begin{construction}
+  If~$f \colon A \to B$ is a homomorphism of filtered~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction~$f_{(i)}$ induces a linear map
+  \[
+    \gr[i](f)
+    \colon
+    \gr[i](A)
+    \to
+    \gr[i](B) \,,
+    \quad
+    [x]_i
+    \mapsto
+    [f(x)]_i  \,.
+  \]
+  These linear maps come together to form a linear map
+  \[
+    \gr(f)
+    \colon
+    \gr(A)
+    \to
+    \gr(B)  \,.
+  \]
+  This map is already an algebra homomorphism because~$\gr(f)([1]_0) = [f(1)]_0 = [1]_0$ and
+  \begin{align*}
+    \gr(f)( [x]_i [y]_j )
+    =
+    \gr(f)( [xy]_{i+j} )
+    =
+    [f(xy)]_{i+j}
+    =
+    [f(x) f(y)]_{i+j}
+    &=
+    [f(x)]_i [f(y)]_j
+    \\
+    &=
+    \gr(f)([x]_i) \gr(f)([y]_j) \,.
+  \end{align*}
+  for all~$i, j \geq 0$ and all~$[x]_i \in \gr[i](A)$ and~$[y]_j \in \gr[j](A)$.  
+  It holds for every filtered~{\algebra{$\kf$}}~$A$ that~$\gr(\id_A) = \id_{\gr(A)}$ and for all homomorphisms of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ and~$g \colon B \to C$ that~$\gr(g \circ f) = \gr(g) \circ \gr(f)$.
+  
+  We have hence constructed a functor~$\gr \colon \cfAlg{\kf} \to \cgAlg{\kf}$.
+\end{construction}
+
+
+
+% TODO: Move this at the right position.
 % 
 % \begin{examples}
 %  \begin{enumerate}[leftmargin=*]
-%   \item
-%    Any graded \algebra{$\kf$} $A$ also carries the structure of an filtered \algebra{$\kf$} by setting $A_{(n)} \defined \bigoplus_{i \leq n} A_i$ for every $n \in \N$. If $\varphi \colon A \to B$ is a homomorphism of graded \algebras{$\kf$} then it is also a homomorphism of filtered \algebras{$\kf$}. Hence this construction results into a functor $\flt \colon \cGrad{k} \to \cFilt{k}$.
-%   \item 
-%    If $A$ is a filtered algebra and $I \subseteq A$ any two-sided ideal then $A/I$ is a filtered \algebra{$\kf$} via $(A/I)_{(n)} \defined \pi(A_{(n)})$ for every $n \in \N$, where $\pi \colon A \to A/I, a \mapsto a + I$ denotes the canonical projection.
-%   \item
-%    If $\glie$ is a $k$-Lie algebra then $\Univ(\glie)$ carries the structure of a filtered \algebra{$\kf$} induced by the filtration of $T(\g)$, which in turn is induced by the gradation of $T(\g)$. Explicitely
-%    \[
-%    \Univ(\glie)_{(n)}
-%    = \vspan_k \{x_1 \dotsm x_m \mid m \in \N, m \leq n, x_1, \dotsc, x_m \in \g\}
-%    \quad\text{for every $n \in \N$}.
-%    \]
-%  \end{enumerate}
-% \end{examples}
-% 
-% 
-% \begin{lemma}
-%  Let $A$ be a graded \algebra{$\kf$} and set $B_n \defined A_n/A_{n-1}$ for every $n \in \N$. Then for all $n,m \in \N$ the map
-%  \[
-%   B_n \times B_m \to B_{n+m}, ([a], [b]) \mapsto [ab]
-%  \]
-%  is well-defined and bilinear.
-% \end{lemma}
-% \begin{proof}
-%  Let $a, a' \in A_n$ and $b, b' \in A_m$ with $[a] = [a']$ and $[b] = [b']$. Then $ab, a'b' \in A_{n+m}$ and because $[a] = [a']$ and $[b] = [b']$ it follows that $a-a' \in A_{n-1}$ and $b-b' \in A_{m-1}$. Therefore
-%  \[
-%   ab
-%   = (a'+(a-a'))(b'+(b-b'))
-%   = a'b' + \underbrace{(a-a')b'}_{\in A_{n+m-1}} + \underbrace{a'(b-b')}_{\in A_{n+m-1}} + \underbrace{(a-a')(b-b')}_{\in A_{n+m-2}}
-%  \]
-%  and thus $[ab] = [a'b']$.
-% \end{proof}
-% 
-% 
-% \begin{definition}
-%  Let $A$ be a filtered \algebra{$\kf$}. Its \emph{associated graded \algebra{$\kf$}} is the graded \algebra{$\kf$} consisting of the underlying vector space $\gr(A) \defined \bigoplus_{n \in \N} \gr_n(A)$ with $\gr_i(A) \defined A_{(i)} / A_{(i-1)}$ for every $i \in \N$ and the multiplication $\gr(A) \times \gr(A) \to \gr(A)$ induced by the well-defined bilinear maps
-%  \[
-%   \gr_n(A) \times \gr_m(A) \to \gr_{n+m}(A), \quad
-%   ([a],[b]) \to [ab]
-%   \quad\text{for all $n,m \in \N$}.
-%  \]
-%  together with the grading given by $\gr(A)_n \defined \gr_n(A)$ for every $n \in \N$.
-% \end{definition}
-% 
-% 
-% \begin{remark}
-%  If $A$ and $B$ are filtered \algebras{$\kf$} and $\varphi \colon A \to B$ is a homomorphism of filtered \algebras{$\kf$} then $\varphi$ induces a $k$-linear map $\varphi_n \colon \gr(A)_n \to \gr(B)_n, [a] \mapsto [\varphi(a)]$ for every $n \in \N$, which result in a homomorphism of graded \algebras{$\kf$}
-%  \[
-%   \gr(\varphi) \defined \bigoplus_{n \in \N} \varphi_n \colon \gr(A) \to \gr(B),
-%   \quad
-%   \sum_{n \in \N} a_n \mapsto \sum_{n \in \N} \varphi(a_n).
-%  \]
-%  Hence $\gr$ can be seen as a functor $\gr \colon \cFilt{k} \to \cGrad{k}$.
-% \end{remark}
-% 
-% 
-% \begin{examples}
-%  \begin{enumerate}[leftmargin=*]
-%   \item
-%    If $A$ is a graded \algebra{$\kf$} then $\gr(\flt(A))$ is naturally isomorphic to $A$ in the following way: The filtration on $\flt(A)$ is given by $A_{(n)} = \bigoplus_{i \leq n} A_i$ for every $n \in \N$. Hence there is for every $n \in \N$ an isomorphism of vector spaces
-%    \[
-%     \varphi_n \colon A_n \to A_{(n)}/A_{(n-1)} = \gr(\flt(A))_n, \quad a \mapsto [a].
-%    \]
-%    Combining these isomorphisms results in an isomorphism of graded \algebras{$\kf$}
-%    \[
-%     \bigoplus_{n \in \N} \varphi_n \colon
-%     \bigoplus_{n \in \N} A_n \to \bigoplus_{n \in \N} \gr(\flt(A))_n, \quad
-%     \sum_{n \in \N} a_n \mapsto \sum_{n \in \N} [a_n].
-%    \]
-%    We will therefore identify $A$ with $\gr A$ in the above way.
 %   \item
 %    Let $\glie$ be a $k$-Lie algebra. The canonical projection
 %    \[
@@ -2017,32 +3325,145 @@
 % \end{examples}
 % 
 % 
-% \begin{proposition}\label{prop: associated graded algebra and zero divisors}
-%  Let $A$ be a filtered \algebra{$\kf$}. If $\gr(A)$ is an integral domain then so is $A$.
-% \end{proposition}
-% \begin{proof}
-%  Suppose $A$ is no integral domain. Then there exist $a,b \in A$ with $a \neq 0$ and $b \neq 0$ but $ab = 0$. Then there exists a minimal $n \in \N$ with $a \in A_{(n)}$ and a minimal $b \in \N$ with $b \in A_{(m)}$. By the minimality of $n$ and $m$ it follows that $[a] \in \gr(A)_n$ and $[b] \in \gr(A)_m$ are nonzero residue classes with $[a] \cdot [b] = [ab] = 0$. Hence $\gr(A)$ is no integral domain.
-% \end{proof}
+
+\begin{lemma}
+  Let~$A$ be a graded~{\algebra{$\kf$}}.
+  Then the linear map
+  \[
+    \varphi 
+    \colon
+    A
+    \to
+    \gr(A)
+  \]
+  given by~$\varphi(x) = [x]_i$ for all~$i \geq 0$ and~$x \in A_i$ is an isomorphism of graded~{\algebras{$\kf$}}.
+\end{lemma}
+
+
+\begin{proof}
+  We have for all~$i \geq 0$ that~$A_{(i)} = \bigoplus_{j=0}^i A_j$ and hence
+  \[
+    \gr[i](A)
+    =
+    A_{(i)} / A_{(i-1)}
+    \cong
+    A_i
+  \]
+  as vector spaces.
+  It follows that~$\varphi$ is an isomorphism of vector spaces.
+  Moreover, we have for all homogeneous elements~$x \in A_i$ and~$y \in A_j$ with~$i, j \geq 0$ that
+  \[
+    \varphi(x) \varphi(y)
+    =
+    [x]_i [y]_j
+    =
+    [xy]_{i+j}
+    =
+    \varphi(xy)
+  \]
+  where the last equality holds because~$xy \in A_{i+j}$.
+  This shows that~$\varphi$ is multiplicative and hence already an isomorphism of~{\algebras{$\kf$}}.
+\end{proof}
+
+
+\begin{example}
+  Let~$A \defined \kf\gen{X, Y}/(YX - XY - 1)$ be the Weyl~algebra with the filtration from \cref{weyl algebra}.
+  Then~$\gr(A) \cong \kf[t,u]$ is commutative but~$A$ is not, hence~$\gr(A)$ and~$A$ are not isomorphic as algebras.
+  It follows that the filtration on~$A$ cannot come from a grading, as otherwise~$\gr(A) \cong A$ (already as graded~{\algebras{$\kf$}}).
+\end{example}
+
+
+\begin{warning}
+  If~$A$ is a filtered~{\algebra{$\kf$}} for which the filtration does not come from a grading then~$A$ and~$\gr(A)$ are not isomorphic as filtered algebras (where the filtration of~$\gr(A)$ is induced by the grading).
+\end{warning}
+
+
+\begin{definition}
+  Let~$A$ be a ring.
+  \begin{enumerate}
+    \item
+      An element~$x \in A$ is a \defemph{left zero divisor}\index{zero divisor!left} if there exists some nonzero~$y \in A$ with~$xy = 0$.
+    \item
+      An element~$x \in A$ is a \defemph{right zero divisor}\index{zero divisor!right} if there exists some nonzero~$y \in A$ with~$yx = 0$.
+    \item
+      An element~$x \in A$ is a \defemph{zero divisor}\index{zero divisor} if it is a left zero divisor or a right zero divisor.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Let~$A$ be a ring.
+  \begin{enumerate}
+    \item
+      An element~$x \in A$ is a left zero divisor if and only if the left multiplication map~$A \to A$,~$y \mapsto xy$ is not injective.
+      It is a right zero divisor if and only if the right multiplication map~$A \to A$,~$y \mapsto yx$ is not injective.
+    \item
+      The zero element~$0 \in A$ is both a left zero divisor and right zero divisor if~$A \neq 0$.
+      It is not a zero divisor for~$A = 0$.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{proposition}
+  \label{associated graded algebra and zero divisors}
+  Let~$A$ be a filtered~{\algebra{$\kf$}}.
+  \begin{enumerate}
+    \item
+      \label{associated graded has left zero divisors}
+      If~$\gr(A)$ doesn’t contain nonzero left zero divisors then neither does~$A$.
+    \item
+      \label{associated graded has right zero divisors}
+      If~$\gr(A)$ doesn’t contain nonzero right zero divisors then neither does~$A$.
+    \item
+      If~$\gr(A)$ doesn’t contain nonzero zero divisors then neither does~$A$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Suppose that~$A$ contains a nonzero left zero divisor~$x$.
+      Then there exists some nonzero~$y \in A$ with~$xy = 0$.
+      If~$x$ is of degree~$i$ and~$y$ is of degree~$j$ then~$[x]_i \neq 0$ and~$[y]_j \neq 0$ because both~$x$ and~$y$ are nonzero.
+      But~$[x]_i [y]_j = [xy]_{i+j} = [0]_{i+j} = 0$.
+      Hence~$[x]_i$ is again a nonzero left zero divisor.
+    \item
+      This can be shown in the same way as part~\ref*{associated graded has left zero divisors}.
+    \item
+      This is a combination of parts~\ref*{associated graded has left zero divisors} and~\ref*{associated graded has right zero divisors}.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+  The converse of \cref{associated graded algebra and zero divisors} does not hold.
+  To see this let~$A$ be any~\algebra{$\kf$} with~$\kf \subsetneq A$ and consider the filtration
+  \[
+    A_{(0)}
+    =
+    \kf
+    \subseteq
+    A
+    \subseteq
+    A
+    \subseteq
+    A
+    \subseteq
+    \dotsb
+  \]
+  Then~$\gr[0](A) = \kf$,~$\gr[1](A) = A/{\kf} \neq 0$ and~$\gr[i](A) = 0$ for every~$i \geq 2$.
+  Hence~$\gr[1](A) \gr[1](A) = 0$ even though~$\gr[1](A) \neq 0$.
+  This means that the elements of~$\gr[1](A)$ are both left zero divisors and right zero divisors.
+\end{remark}
 % 
 % 
-% \begin{remark}
-%  The converse of Proposition~\ref{prop: associated graded algebra and zero divisors} is not true, i.e.\ if $A$ is a filtered \algebra{$\kf$} which is an integral domain, then $\gr(A)$ is not necessarily an integral domain.
-%  
-%  To see this let $A$ be any \algebra{$\kf$} with $k \subsetneq A$ and with filtration
-%  \[
-%   A_{(0)} \defined k
-%   \quad\text{and}\quad
-%   A_{(n)} \defined A
-%   \quad\text{for every $n \geq 1$}.
-%  \]
-%  Then $\gr(A)_0 = k$, $\gr(A)_1 = A/k \neq 0$ and $\gr(A)_n = 0$ for every $n \geq 2$, hence $\gr(A)_1 \gr(A)_1 = 0$. So $\gr(A)$ is no integral domain, even if $A$ is.
-% \end{remark}
 % 
 % 
 % 
-% 
-% 
-% \subsection{The Poincar\'{e}--Birkhoff--Witt theorem (concrete version)}
+% \subsection{Poincar\'{e}--Birkhoff--Witt Theorem (Concrete Version)}
 % For this subsection we fix some $k$-Lie algebra $\glie$ with basis $(x_i)_{i \in I}$ where $(I, \leq)$ is a totally ordered index set. Before stating and proving the \emph{Poincar\'{e}--Birkhoff--Witt theorem} (PBW) we fix some notation which we will only use in this subsection.
 % 
 % 

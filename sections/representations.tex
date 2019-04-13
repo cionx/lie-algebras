@@ -1,10 +1,6 @@
 \section{Representations of Lie~Algebras}
 
 
-% TODO: Irreps of f.d. Lie algebras need not be f.d. (example: Heisenberg)
-%       Can have arbitrary dimension (exmaple: sl2)
-
-
 
 
 
@@ -110,6 +106,12 @@
       \]
       This representation is the the \defemph{natural representation}\index{natural representation}\index{representation!natural} of~$\glie$.
     \item
+      The Heisenberg Lie~algebra~$\glie$ from \cref{examples for lie algebras} admits a faithful representation (and thus a realization via endomorphisms) on the polynomial ring~$V = \kf[x_1, \dotsc, x_n]$:
+      
+      Let~$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c \in \gllie(V)$ so that~$p_i = \partial_i$ is the~{\howmanyth{$i$}} partial derivate,~$q_i$ is the multiplication with~$x_i$ and~$c = \id_V$.
+      These endomorphisms are linearly independent and satisfy the desired relations.
+      It follows that~$\hlie = \gen{p_1, \dotsc, p_n, q_1, \dotsc, q_n, c}_{\kf}$ is a Lie subalgebra of~$\gllie(V)$ that is isomorphic to the Heisenberg Lie~algebra.
+    \item
       Let~$\glie \defined \sllie_2(\kf)$ for any field~$\kf$.
       Then the polynomial ring~$\kf[x,y]$ becomes a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(\kf[x,y])$ given by
       \[
@@ -179,7 +181,7 @@
       for all~$n, m \geq 0$.
     \item
       Let~$\glie \defined \sllie_2(\kf)$ for any field~$\kf$.
-      Then the polynomial ring in one variable~$\kf[x]$ is a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(k[x])$ given by
+      Then the polynomial ring in one variable~$\kf[x]$ is a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(\kf[x])$ given by
       \[
         \rho(e)
         =
@@ -450,13 +452,12 @@
       \[
         \glie V
         \defined
-        \vspan_\kf
-        \{
+        \gen{
           x.v
           \suchthat
           x \in \glie,
           v \in V
-        \}
+        }_{\kf}
       \]
       is a subrepresentation of~$\glie$.
     \item
@@ -960,6 +961,29 @@
       This is the case if and only if~$\glie$ is either {\onedimensional} and abelian, or simple.
   \end{enumerate}
 \end{example}
+
+
+\begin{remark}
+  If~$A$ is a~{\algebra{$\kf$}} (associative and unital) then every simple~{\module{$A$}}~$M$ is cyclic and therefore satisfies~$\dim M \leq \dim A$.
+  It follows that if~$A$ is finite dimensional then all simple~{\modules{$A$}} are also finite dimensional, with their dimension uniformly bounded by the dimension of~$A$.
+  
+  The same does not hold for finite dimensional Lie~algebras:
+  If~$\glie$ is a finite dimensional Lie~algebra then the irreducible representations of~$\glie$ do not have to be finite dimensional again, and those irreducuble representations that are finite dimensional can have arbitrarily large dimension.
+  
+  Indeed, we will later see that the Lie~algebra~$\sllie_2(\kf)$ admits for every~$n \geq 1$ precisely one irreducible representation up to isomorphism and that~$\sllie_2(\kf)$ also admits infinite dimensional irreducible representations.
+  (Although at most of countable dimension.)
+  % TODO: Prove this in sl2 theory.
+  
+  But note that the following statements still hold any Lie~algebra~$\glie$:
+  \begin{enumerate}
+    \item
+      Any nonzero finite dimensional representation of~$\glie$ contains an irreducible subrepresentation.
+      We can simply take a subrepresentation of minimal nonzero dimension.
+    \item
+      There exists a finite dimensional irreducible representation~$V$ for~$\glie$.
+      We can simply take~$V = \kf$ with the trivial action.
+  \end{enumerate}
+\end{remark}
 
 
 \begin{lemma}[Schur]

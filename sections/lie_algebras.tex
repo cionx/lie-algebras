@@ -1,12 +1,13 @@
 \section{Lie Algebras}
 
 
-% TODO: Semidirect products of Lie algebras.
-
 
 
 
 \subsection{Definition and Examples}
+
+
+% TODO: Pre Lie-Algebras
 
 
 \begin{definition}
@@ -62,6 +63,7 @@
 
 
 \begin{examples}
+  \label{examples for lie algebras}
   \leavevmode
   \begin{enumerate}
     \item
@@ -75,30 +77,42 @@
         ={}&  a(bc-cb)-(bc-cb)a + b(ca-ac) - (ca-ac)b + c(ab-ba) - (ab-ba)c \\
         ={}&  abc - acb - bca + cba + bca - bac - cab + acb + cab - cba - abc + bac \\
         ={}&  0
-    \end{align*}
-    for all~$a, b, c \in A$.
-    The element~$[a,b]$ is the \defemph{commutator}\index{commutator} of~$a$ and~$b$.
-   
-    The following two are important examples of this construction:
-    \begin{enumerate}
+      \end{align*}
+      for all~$a, b, c \in A$.
+      The element~$[a,b]$ is the \defemph{commutator}\index{commutator} of~$a$ and~$b$.
+    
+      The following two are important examples of this construction:
+      \begin{enumerate}
+        \item
+          The~{\algebra{$\kf$}} of~($n \times n$)-matrices~$\Mat_n(\kf)$ becomes a Lie~algebra via
+          \[
+            [A,B]
+            \defined
+            AB - BA
+          \]
+          for all~$A, B \in \Mat_n(\kf)$.
+          This Lie~algebra is called the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} and is denoted by~\gls*{general lie matrix}.
+        \item
+          More generally for any~{\vectorspace{$\kf$}} the~{\algebra{$\kf$}}~$\End_k(V)$ becomes a Lie~algebra via
+          \[
+            [\phi_1, \phi_2]
+            \defined
+            \phi_1 \circ \phi_2 - \phi_2 \circ \phi_1
+          \]
+          for all~$\phi_1, \phi_2 \in \End_k$.
+          This Lie~algebra is called the \defemph{general linear Lie~algebra of~$V$}\index{general linear Lie algebra} and is denoted by~\gls*{general lie endomorphism}.
       \item
-        The~{\algebra{$\kf$}} of~($n \times n$)-matrices~$\Mat_n(\kf)$ becomes a Lie~algebra via
-        \[
-          [A,B]
-          \defined
-          AB - BA
-        \]
-        for all~$A, B \in \Mat_n(\kf)$.
-        This Lie~algebra is called the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} and is denoted by~\gls*{general lie matrix}.
-      \item
-        More generally for any~{\vectorspace{$\kf$}} the~{\algebra{$\kf$}}~$\End_k(V)$ becomes a Lie~algebra via
-        \[
-          [\phi_1, \phi_2]
-          \defined
-          \phi_1 \circ \phi_2 - \phi_2 \circ \phi_1
-        \]
-        for all~$\phi_1, \phi_2 \in \End_k$.
-        This Lie~algebra is called the \defemph{general linear Lie~algebra of~$V$}\index{general linear Lie algebra} and is denoted by~\gls*{general lie endomorphism}.
+        The \defemph{Heisenberg Lie~algebra}\index{Heisenberg Lie algebra}\index{Lie algebra!Heisenberg} consists of a~{\vectorspace{$\kf$}} with basis~$P_1, \dotsc, P_n, Q_1, \dotsc, Q_n, C$ together with the Lie~bracket~$[-,-]$ satisfying the relations
+        % TODO: Properly indent these:
+        \begin{itemize}
+          \item
+            $[P_i, P_j] = 0$ and~$[Q_i, Q_j] = 0$ for all~$i, j = 1, \dotsc, n$,
+          \item
+            $[P_i, C] = [Q_i, C] = 0$ for all~$i = 1, \dotsc, n$,
+          \item
+            $[P_i, Q_j] = \delta_{ij} C$ for all~$i,j = 1, \dotsc, n$.
+        \end{itemize}
+        We exhibit in \cref{examples for representations} a faithful representation of the Heisenberg Lie~algebra, which shows in particular that~$[-,-]$ is indeed a Lie~bracket.
     \end{enumerate}
   \end{enumerate}
 \end{examples}
@@ -181,13 +195,12 @@
   \[
     \gls*{commutator space}
     \defined
-    \vspan_k
-    \{
+    \gen{
       [x,y]
     \suchthat
       x \in X,
       y \in Y
-    \}
+    }_{\kf}
   \]
   is the \defemph{commutator}\index{commutator} of~$X$ and~$Y$.
 \end{definition}
@@ -205,12 +218,18 @@
 
 
 \begin{remark}
-  Note that a Lie~algebra~$\glie$ is abelian if and only if~$\centerlie(\glie) = 0$, if and only if~$[\glie, \glie] = 0$.
+  Note that a Lie~algebra~$\glie$ is abelian if and only if~$\centerlie(\glie) = \glie$, if and only if~$[\glie, \glie] = 0$.
 \end{remark}
 
 
 \begin{example}
-  A~{\algebra{$\kf$}}~$A$ is commutative if and only if it is abelian as a Lie~algebra.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A~{\algebra{$\kf$}}~$A$ is commutative if and only if it is abelian as a Lie~algebra.
+    \item
+      In a Lie~algebra~$\glie$ any element~$x \in \glie$ spans a {\onedimensional} abelian Lie~subalgebra of~$\glie$.
+  \end{enumerate}
 \end{example}
 
 
@@ -255,7 +274,6 @@
 \end{definition}
 
 
-% TODO: Fix this window.
 \begin{examples}[Linear Lie~algebras]
   \leavevmode
   \begin{enumerate}
@@ -886,8 +904,7 @@
     \]
    
     Hence there is a bijection between Lie~algebra homomorphisms~$\sllie_2(\kf) \to \glie$ and triples as above.
-    Such triples will play an important part later on.
-%   TODO: Do they?
+%     Such triples will play an important part later on.
   \end{enumerate}
 \end{examples}
 
@@ -1111,7 +1128,7 @@
   Suppose that~$\glie$ is a {\twodimensional}, non-abelian Lie~algebra over~$\kf$.
   Let~$\tilde{x}$,~$\tilde{y}$ be a basis of~$\glie$.
   We have~$[\glie,\glie] \neq 0$ because~$\glie$ is non-abelian, and~$[\glie, \glie]$ is spanned by the single element~$[\tilde{x}, \tilde{y}]$ because the Lie~bracket is alternating.
-  Hence~$[\glie, \glie] = \kf [\tilde{x}, \tilde{y}]$ with~$[\tilde{x}, \tilde{y}] \neq 0$.
+  Hence~$[\glie, \glie] = \gen{ [\tilde{x}, \tilde{y}] }_\kf$ with~$[\tilde{x}, \tilde{y}] \neq 0$.
   Let~$x \defined [\tilde{x},\tilde{y}]$ and~$y \in \glie$ such that~$x$,~$y$ is a basis of~$\glie$.
   Then~$[x,y] \neq 0$ because~$\glie$ is non-abelian, and~$[x,y] \in \kf x$.
   By rescaling~$y$ it can be assumed that~$[x,y] = x$.
@@ -1304,7 +1321,7 @@
 \begin{proposition}[Correspondence theorem]
   \label{correspondence theorem!for Lie algebras}
   Let~$I$ be an ideal in a Lie~algebra~$\glie$ and let~$\pi \colon \glie \to \hlie$ denote the canonical projection.
-  If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains~$I$ then quotient~$\hlie/I$ is a Lie subalgebra of of~$\glie/I$.
+  If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains~$I$ then quotient~$\hlie/I$ is a Lie~subalgebra of of~$\glie/I$.
   This construction induces a {\onetoone} correspondence
   \begin{align*}
     \{ \text{Lie~subalgebras~$\hlie$ of~$\glie$ containing~$I$} \}
