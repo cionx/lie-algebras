@@ -1,159 +1,409 @@
-\section{Definition and basic properties}
+\section{Definition and Basic Properties}
 
 
 \begin{definition}
- A Lie algebra $\g$ is called \emph{semisimple} if it is the sum of finitely many simple ideals, i.e.\ if there exists ideals $I_1, \dotsc, I_n \subideal \g$ which are simple (as Lie algebras) such that $\g = I_1 \oplus \dotsb \oplus I_n$.
+  A Lie~algebra~$\glie$ is \defemph{semisimple}\index{semisimple!Lie algebra}\index{Lie algebra!semisimple} if it is the direct sum of finitely many simple ideals, i.e.\ if there exist ideals~$I_1, \dotsc, I_n$ in~$\glie$ with~$\glie = I_1 \oplus \dotsb \oplus I_n$ such that every~$I_j$ is simple (as a Lie~algebra).
 \end{definition}
 
 
+\begin{recall}
+  If a Lie~algebra~$\glie$ can be decomposed into a direct sum~$\glie = I_1 \oplus \dotsb \oplus I_n$ where~$I_1, \dotsc, I_n$ are ideals of~$\glie$ then it follows (see \cref{direct sum of ideals}) that
+  \[
+    [x_1 + \dotsb + x_n, y_1 + \dotsb + y_n]
+    =
+    [x_1, y_1] + \dotsb + [x_n, y_n]
+  \]
+  for all~$x_j, y_j \in I_j$ where~$j = 1, \dotsc, n$.
+  In particular
+  \[
+    [\glie, \glie]
+    =
+    [I_1, I_1] \oplus \dotsb \oplus [I_n, I_n]
+  \]
+  and
+  \[
+    \centerlie(\glie)
+    =
+    \centerlie(I_1) \oplus \dotsb \oplus \centerlie(I_n)  \,.
+  \]
+\end{recall}
+
+
 \begin{lemma}
- Let $\g$ be a semisimple Lie algebra. Then $[\g,\g] = \g$ and $Z(\g) = 0$.
+  Let~$\glie$ be a semisimple Lie~algebra.
+  Then~$[\glie, \glie] = \glie$ and~$\centerlie(\glie) = 0$.
 \end{lemma}
+
+
 \begin{proof}
- Let $I_1, \dotsc, I_n \subideal \g$ be simple ideals such that $\g = I_1 \oplus \dotsb \oplus I_n$. Then
+ Let~$I_1, \dotsc, I_n$ be simple ideals in~$\glie$ with~$\glie = I_1 \oplus \dotsb \oplus I_n$.
+ Then
  \begin{gather*}
-  [\g,\g] = [I_1, I_1] \oplus \dotsb \oplus [I_n, I_n] = I_1 \oplus \dotsb \oplus I_n = \g
+  [\glie, \glie]
+  =
+  [I_1, I_1] \oplus \dotsb \oplus [I_n, I_n]
+  =
+  I_1 \oplus \dotsb \oplus I_n
+  =
+  \glie
  \shortintertext{as well as}
-  Z(\g) = Z(I_1) \oplus \dotsb \oplus Z(I_n) = 0 \oplus \dotsb \oplus 0 = 0.
-  \qedhere
+  \centerlie(\glie)
+  =
+  Z(I_1) \oplus \dotsb \oplus Z(I_n)
+  =
+  0 \oplus \dotsb \oplus 0
+  =
+  0
  \end{gather*}
+ because~$I_1, \dotsc, I_n$ are simple.
 \end{proof}
 
 
-\begin{corollary}\label{cor: representation of semisimple Lie algebra are traceless}
- Let $\g$ be a semisimple Lie algebra and $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$. Then $\rho(\g) \subseteq \sll(V)$, i.e.\ $\tr(\rho(x)) = 0$ for every $x \in \g$.
+\begin{corollary}
+  \label{representation of semisimple lie algebra are traceless}
+    Let~$\glie$ be a semisimple Lie~algebra and let~$\rho \colon \glie \to \gllie(V)$ be a finite dimensional representation of~$\glie$.
+    Then~$\rho(\glie)$ is contained in~$\sllie(V)$, i.e.~$\tr(\rho(x)) = 0$ for every~$x \in \glie$.
 \end{corollary}
+
+
 \begin{proof}
- Notice that $\rho(\g) = \rho([\g,\g]) = [\rho(\g), \rho(\g)] \subseteq [\gl(V), \gl(V)] = \sll(V)$.
+  We observe that~$\rho(\glie) = \rho([\glie,\glie]) = [\rho(\glie), \rho(\glie)] \subseteq [\gllie(V), \gllie(V)] = \sllie(V)$.
 \end{proof}
 
 
-\begin{corollary}\label{cor: decomposition of semisimple Lie algebra unique up to order}
- Let $\g$ be a semisimple Lie algebra and $I_1, \dotsc, I_n \subideal \g$ simple ideals with $\g = I_1 \oplus \dotsb \oplus I_n$. Then the ideals $I_1, \dotsc, I_n$ are unique up to reordering.
+\begin{lemma}
+  \label{properties of simple decompositions}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      \label{intersection of simples}
+      If~$I$ and~$J$ are two simple ideals in a Lie~algebra~$\glie$ then~$I \cap J = 0$ or~$I = J$.
+    \item
+      If~$\glie = I_1 \oplus \dotsb \oplus I_n$ is a decomposition into ideals and~$J$ is any other simple ideal in~$\glie$ then~$J = I_i$ for exactly one~$i$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If then~$I \cap J \neq 0$ then this intersection is a nonzero ideal in~$\glie$, and hence a nonzero ideal in both~$I$ and~$J$.
+      Then~$I = I \cap J = J$ because~$I$ and~$J$ are simple.
+    \item
+      We have~$J = [\glie, J]$ because on the one hand~$[\glie, J] \subseteq J$ because~$J$ is an ideal and on the other hand~$J = [J,J] \subseteq [\glie, J]$ because~$J$ is simple.
+      It follows that
+      \[
+        J
+        =
+        [J,J]
+        =
+        \left[ \bigoplus_{i=1}^n I_i, J \right]
+        =
+        \sum_{i=1}^n [I_i, J] \,.
+      \]
+      The sum~$\sum_{i=1}^n [I_i, J]$ is direct because the summand~$[I_i, J]$ is contained in~$I_i$, the sum of which is direct.
+      Hence
+      \begin{equation}
+        \label{decomposing into direct sum}
+        J
+        =
+        \bigoplus_{i=1}^n [I_i, J]  \,.
+      \end{equation}
+      It follows from~$J \neq 0$ that~$[I_i, J] \neq 0$ for some~$i$.
+      It follows from part~\ref*{intersection of simples} that already~$I_i = J$.
+      It follows from the directness of the sum~\eqref{decomposing into direct sum} that~$[J, I_j] = 0$ for every~$j \neq i$, and hence~$J \neq I_j$ for every~$j \neq i$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{corollary}
+  \label{uniqueness of semisimple decomposition}
+  Let~$\glie$ be a Lie~algebra and let~$I_1, \dotsc, I_n$ be simple ideals in~$\glie$ with~$\glie = I_1 \oplus \dotsb \oplus I_n$.
+  Then the ideals~$I_1, \dotsc, I_n$ are unique up to reordering.
 \end{corollary}
+
+
 \begin{proof}
- Let $J_1, \dotsc, J_m \subideal \g$ be simple ideals with $\g = J_1 \oplus \dotsm \oplus J_m$. Then
- \[
-  \g
-  = [\g,\g]
-  = [I_1 \oplus \dotsb \oplus I_n, J_1 \oplus \dotsb \oplus J_m]
-  = \bigoplus_{i=1}^n \bigoplus_{j=1}^m [I_i, J_j].
- \]
- For every $i = 1, \dotsc, n$ and $j = 1, \dotsc, m$ the ideals $I_i$ and $J_j$ are simple, which is why
- \[
-  [I_i, J_j] =
-  \begin{cases}
-   I_i & \text{if $I_i = J_j$}, \\
-     0 & \text{otherwise}.
-  \end{cases}
- \]
- It follows that for every $i = 1, \dotsc, n$ there exists some $1 \leq j \leq m$ with $I_i = J_j$, and similarly that for every $j = 1, \dotsc, m$ there exists some $1 \leq i \leq n$ with $J_j = I_i$. Hence $n = m$ and the statement follows.
+  Let~$J_1, \dotsc, J_m$ be simple ideals in~$\glie$ with~$\glie = J_1 \oplus \dotsb \oplus J_m$.
+  Then by \cref{properties of simple decompositions} there exists for every~$i \in \{1, \dotsc, n\}$ a unique index~$\sigma(i) \in \{1, \dotsc, m\}$ with~$I_i = J_{\sigma(i)}$.
+  In the same way we find that there exists for every index~$j \in \{1, \dotsc, m\}$ some index~$\tau(j) \in \{1, \dotsc, n\}$ with~$J_j = I_{\tau(j)}$.
+  Then~$I_{\tau(\sigma(i))} = I_i$ and hence~$\tau(\sigma(i)) = i$ for every~$i \in \{1, \dotsc, n\}$.
+  Similarly~$\sigma(\tau(j)) = j$ for every~$j \in \{1, \dotsc, m\}$.
+  This shows together that the maps~$\sigma$ and~$\tau$ are mutually inverse bijections, which give the claimed reordering.
 \end{proof}
-
-
+ 
+ 
 \begin{remark}
- If $\g$ is a semisimple Lie algebra then we will often just talk about \emph{the} decomposition $\g = I_1 \oplus \dotsb \oplus I_n$ into simple ideals, as this decomposition is unique up to reordering of the summands by Corollary~\ref{cor: decomposition of semisimple Lie algebra unique up to order}.
+  If~$\glie$ is a semisimple Lie~algebra then we will often just talk about \emph{the} decomposition of~$\glie$ into  direct sum of simple ideals, as this decomposition is unique up to reordering of the summands.
 \end{remark}
 
 
-\begin{theorem}\label{thrm: characterisations of finite-dimensional semisimple Lie algebras}
- For a finite dimensional Lie algebra $\g$ the following are equivalent:
- \begin{enumerate}[leftmargin=*]
-  \item\label{enum: definition semisimple Lie algebra product of simple Lie algebras}
-   $\g \cong \g_1 \times \dotsb \times \g_r$ for some $r \in \N$ and simple Lie algebras $\g_i$, $i = 1, \dotsc, r$.
-  \item\label{enum: definition semisimple Lie algebra sum of simple ideals}
-   $\g = I_1 \oplus \dotsb \oplus I_s$ for some $s \in \N$ and simple Ideals $I_1, \dotsc, I_s \subideal \g$.
-  \item\label{enum: definition semisimple Lie algebra killing form nondegenerate}
-   The Killing form $\kappa$ of $\g$ is non-degenerate (which is equivalent to $\rad \kappa = 0$).
-  \item\label{enum: definition semisimple Lie algebra radical is zero}
-   $\g$ has no nonzero solvable ideals (which is equivalent to $\rad \g = 0$).
-  \item\label{enum: definition semisimple Lie algebra no nonzero abelian ideals}
-   $\g$ has no nonzero abelian ideals.
- \end{enumerate}
+\begin{proposition}
+  \label{characterisation of zero radical}
+  For any finite dimensional Lie algebra~$\glie$ the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      \label{killing form is nondegenerate}
+      The Killing~form~$\kappa$ of~$\glie$ is non-degenerate (i.e.~$\rad \kappa = 0$).
+    \item
+      \label{contains no solvable ideal}
+      $\glie$ contains no nonzero solvable ideals (i.e.~$\rad \glie = 0$).
+    \item
+      \label{contains no abelian ideal}
+      $\glie$ contains no nonzero abelian ideals.
+  \end{equivalenceslist}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{implicationlist}
+    \item[\ref*{killing form is nondegenerate}~$\implies$~\ref*{contains no abelian ideal}:]
+      Let~$I$ be an abelian ideal in~$\glie$.
+      We show that~$I$ is contained in the radical of~$\kappa$, from which it then follows that~$I = 0$ because~$\rad \kappa = 0$.
+      We need to show that~$\kappa(x,y) = 0$ for all~$x \in I$ and~$y \in \glie$.
+      We have~$(\ad(x) \ad(y))^2 = 0$ because
+      \begin{align*}
+        (\ad(x) \ad(y))^2(\glie)
+        &=
+        \ad(x)\ad(y)\ad(x)\ad(y)(\glie)
+        \\
+        &\subseteq
+        \ad(x)\ad(y)\ad(x)(\glie)
+        \\
+        &\subseteq
+        \ad(x)\ad(y)(I)
+        \\
+        &\subseteq
+        \ad(x)(I)
+        \\
+        &\subseteq
+        [I,I] \,,
+      \end{align*}
+      where we use that~$\ad(x)(\glie) \subseteq I$ because~$I$ is an ideal.
+      Now~$[I,I] = 0$ because~$I$ is abelian, and thus~$(\ad(x)\ad(y))^2 = 0$.
+      This shows that~$\ad(x)\ad(y)$ is nilpotent, which gives
+      \[
+        \kappa(x,y)
+        =
+        \tr(\ad(x) \ad(y))
+        =
+        0 \,.
+      \]
+%     \item[\ref*{contains no solvable ideal}~$\implies$~\ref*{contains no abelian ideal}:]
+%       Every abelian ideal is solvable.
+    \item[\ref*{contains no abelian ideal}~$\implies$~\ref*{contains no solvable ideal}:]
+      Suppose that~$I$ is a nonzero solvable ideal in~$I$.
+      Then~$I^{(n)} \neq 0$ but~$I^{(n+1)} = 0$ for some~$n \geq 1$.
+      This means that~$I^{(n)}$ is a nonzero abelian ideal in~$\glie$.
+    \item[\ref*{contains no solvable ideal}~$\implies$~\ref*{killing form is nondegenerate}:]
+      The radical~$\rad \kappa$ is a solvable ideal by \cref{rad kappa is a solvable ideal}.
+%     \item[\ref*{product of simple lie algebras}~$\implies$~\ref*{sum of simple ideals}:]
+%       The factors~$\glie_i$ correspond to such simple ideals~$I_i$.
+    \qedhere
+  \end{implicationlist}
+\end{proof}
+
+
+\begin{corollary}
+  \label{decomposition into orthogonals for semisimple}
+  Let~$\glie$ be a finite dimensional Lie~algebra whose Killing~form~$\kappa$ is non-degenerate.
+  Then~$\glie = I \oplus I^\perp$ for every ideal~$I$ in~$\glie$.
+\end{corollary}
+
+
+\begin{proof}
+  The orthogonal~$I^\perp$ is again in ideal in~$\glie$ by \cref{orthogonal complement of an ideal is again an ideal}.
+  The intersection~$I \cap I^\perp$ is again an ideal in~$\glie$ with~$\restrict{\kappa}{I \cap I^\perp} = 0$.
+  This restriction is the Killing~form of~$I \cap I^\perp$ by \cref{restriction of the killing form to an ideal}.
+  It follows from Cartan’s~criterion that the ideal~$I \cap I^\perp$ is solvable.
+  Hence~$I \cap I^\perp = 0$ by \cref{characterisation of zero radical}.
+  It also holds that~$\dim \glie = \dim I + \dim I^\perp$ because~$\kappa$ is non-degenerate.
+  Together this means that~$\glie = I \oplus I^\perp$.
+\end{proof}
+
+
+\begin{theorem}[Characterizations of finite dimensional semisimple Lie~algebras]
+  \label{characterizations of fd semisimple lie algebras}
+  For any finite dimensional Lie algebra~$\glie$ the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+    \label{product of simple lie algebras general}
+      $\glie \cong \glie_1 \times \dotsb \times \glie_r$ for some~$n \geq 0$ and simple Lie~algebras~$\glie_1, \dotsc, \glie_n$.
+    \item
+      \label{sum of simple ideals general}
+      $\glie = I_1 \oplus \dotsb \oplus I_m$ for some~$m \geq 0$ and simple ideals~$I_1, \dotsc, I_m$ of~$\glie$.
+    \item
+      \label{killing form is nondegenerate general}
+      The Killing~form~$\kappa$ of~$\glie$ is non-degenerate (i.e.~$\rad \kappa = 0$).
+    \item
+      \label{contains no solvable ideal general}
+      $\glie$ contains no nonzero solvable ideals (i.e.~$\rad \glie = 0$).
+    \item
+      \label{contains no abelian ideal general}
+      $\glie$ contains no nonzero abelian ideals.
+  \end{equivalenceslist}
 \end{theorem}
-\begin{proof}
- (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra killing form nondegenerate}) This directly follows from the fact that $\rad \kappa$ is a solvable ideal in $\g$.
- 
- (\ref{enum: definition semisimple Lie algebra killing form nondegenerate} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra sum of simple ideals}) The implication can be shown by induction over $\dim \g$. If $\dim \g = 0$ then $\g = 0$ is the empty sum over zero simple ideals in $\g$. Suppose that $\dim \g \geq 1$ and the implication holds for all smaller dimensions. If $\g$ is simple then there is nothing left to show. Otherwise $\g$ contains a non-trivial ideal $I \subideal \g$, i.e.\ $I \neq 0$ and $I \neq \g$. Then
- \[
-  I^\perp \coloneqq \{y \in \g \mid \text{$\kappa(x,y) = 0$ for every $x \in I$}\}
- \]
- is an ideal in $\g$ and because $\kappa$ is non-degenerate it follows that $\dim \g = \dim I + \dim I^\perp$. Because $I \cap I^\perp$ is an ideal in $\g$ it also follows that
- \[
-  \kappa_{I \cap I^\perp}(x,y) = \kappa(x,y) = 0 \quad \text{for all $x,y \in I \cap I^\perp$}.
- \]
- By Cartan’s criterion $I \cap I^\perp$ is a solvable ideal in $\g$, from which it follows from the previous implication (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra killing form nondegenerate}) that $I \cap I^\perp = 0$. Therefore $\g = I \oplus I^\perp$, where $I$ and $I^\perp$ are proper ideals in $\g$. By Lemma \ref{lem: orthogonal ideals with respect to the killing form} the Killing form $\kappa$ is given by the sum of the Killing forms $\kappa_{I_1}$ and $\kappa_{I_2}$. AS $\kappa$ is non-degenerate it follows that the same goes for $\kappa_{I_1}$ and $\kappa_{I_2}$. Hence by induction hypothesis both $I_1$ and $I_2$ are the sum of simple ideals $I_1 = J_1 \oplus \dotsb \oplus J_r$ and $I_2 = K_1 \oplus \dotsb \oplus K_s$. It follows that
- \[
-  \g = I_1 \oplus I_2 = J_1 \oplus \dotsb J_r \oplus K_1 \oplus \dotsb \oplus K_s
- \]
- is a decomposition into simple ideals.
 
- (\ref{enum: definition semisimple Lie algebra sum of simple ideals} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra product of simple Lie algebras}) Follows from $\g = I_1 \oplus \dotsb \oplus I_s \cong I_1 \times \dotsb \times I_s$.
- 
- (\ref{enum: definition semisimple Lie algebra product of simple Lie algebras} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra radical is zero}) For each $i = 1, \dotsc, r$ let $\pi_i \colon \g \to \g_i$ be the canonical projection and let $I \subideal \g$ be a solvable ideal. Then for any $i = 1, \dotsc, r$ the image $\pi_i(I) \subseteq \g_i$ is a solvable ideal. Because $\g_i$ is simple it follows that $\pi_i(I) = 0$ for every $i = 1, \dotsc, n$. Hence $I = 0$.
- 
- (\ref{enum: definition semisimple Lie algebra radical is zero} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra no nonzero abelian ideals}) This directly follows from the fact that every abelian ideal is solvable.
- 
- (\ref{enum: definition semisimple Lie algebra no nonzero abelian ideals} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra radical is zero}) Suppose that there exists a nonzero solvable ideal $I \subideal \g$. Then let $i \geq 0$ such that $I^{(i+1)} = 0$ but $I^{(i)} \neq 0$. Then $I^{(i)}$ is a nonzero abelian ideal in $\g$.
+
+\begin{proof}
+  The equivalence of the conditions~\ref*{killing form is nondegenerate general},~\ref*{contains no solvable ideal general} and~\ref*{contains no abelian ideal general} is \cref{characterisation of zero radical}.
+  \begin{implicationlist}
+    \item[\ref*{killing form is nondegenerate general}~$\implies$~\ref*{sum of simple ideals general}:]
+      We show the implication by induction over the dimension~$n$ of~$\glie$.
+      If~$n = 0$ then~$\glie = 0$ is the empty sum over all its simple ideals.
+      Suppose that~$n \geq 1$ and that the implication holds for all strictly smaller dimensions.
+      If~$\glie$ is simple then we are already finished.
+      Otherwise~$\glie$ contains some nonzero proper ideal~$I$.
+      Then~$\glie = I \oplus I^\perp$ by \cref{decomposition into orthogonals for semisimple}.
+      The Killing~form~$\kappa$ of~$\glie$ is by \cref{orthogonal ideals with respect to the killing form} given by the orthogonal sum of the Killing~forms of~$I$ and~$I^\perp$.
+      That~$\kappa$ is non-degenerate therefore means that both~$\kappa_{I}$ and~$\kappa_{I^\perp}$ are non-degenerate. 
+      By induction hypothesis both~$I$ and~$I^\perp$ can be decomposed into direct sums of simple ideals.
+      By combining these two decompositions we get a decomposition of~$\glie$ into simple ideals.
+      (Here we use that if~$\glie = I \oplus J$ is a decomposition into ideals then any ideal of~$I$ (resp.~$J$) is again an ideal in~$\glie$.)
+    \item[\ref*{sum of simple ideals general}~$\implies$~\ref*{product of simple lie algebras general}:]
+      We can take~$\glie_i = I_i$ for every~$i$.
+    \item[\ref*{product of simple lie algebras general}~$\implies$~\ref*{contains no solvable ideal general}:]
+      For every~$i = 1, \dotsc, n$ let~$\pi_i \colon \glie \to \glie_i$ be the canonical projection.
+      If~$I$ is a nonzero ideal in~$\glie$ then~$\pi_i(I) \neq 0$ for some~$i$, and~$\pi_i(I)$ is an ideal in~$\glie$ because~$\pi_i$ is surjective.
+      Hence~$\pi_i(I) = \glie_i$ because~$\glie_i$ is simple.
+      If~$I$ is solvable then so is~$\pi(I) = \glie_i$, but this contradicts~$\glie_i$ being simple.
+    \qedhere
+  \end{implicationlist}
 \end{proof}
 
 
 \begin{corollary}
- Let $\g$ be a semisimple Lie algebra and $\g = I_1 \oplus \dotsb \oplus I_n$ the de\-com\-po\-si\-tion into simple ideals. If $I \subseteq \g$ is any ideal, then $I = I_{i_1} \oplus \dotsb \oplus I_{i_m}$ for some indices $1 \leq i_1 < \dotsb < i_m \leq n$.
+  \label{ideals are again sum of simples}
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra with decomposition into simple ideals~$\glie = I_1 \oplus \dotsb \oplus I_n$.
+  Then any ideal of~$\glie$ is of the form~$I_{j_1} \oplus \dotsb \oplus I_{j_m}$ for some~$j_1, \dotsc, j_m \in \{1, \dotsc, n\}$.
 \end{corollary}
+
+
 \begin{proof}
- The statement holds if $I = \g$ or $I = 0$, hence it can be assumed that $I$ is a non-trivial ideal of $\g$. From the proof of the implication (\ref{enum: definition semisimple Lie algebra killing form nondegenerate} $\Rightarrow$ \ref{enum: definition semisimple Lie algebra sum of simple ideals}) it follows that there exists a decomposition $\g = J_1 \oplus \dotsb \oplus J_m$ into simple ideals such that $I = J_1 \oplus \dotsb \oplus J_\ell$ for some $1 \leq \ell \leq m$. As such a decomposition is unique up to reordering of the summands by Corollary~\ref{cor: decomposition of semisimple Lie algebra unique up to order} the statement follows.
-\end{proof}
-
-
-\begin{corollary}\label{cor: ideals and quotients of semisimple again semisimple}
- If $\g$ is a semisimple Lie algebra and $I \subideal \g$ any ideal then both $I$ and $\g/I$ are also semisimple.
-\end{corollary}
-
-
-% TODO: Subalgebras not necessarily also semisimple
-
-
-\begin{corollary}\label{cor: semisimple Lie algebra identification with dual space}
- Let $\g$ be a finite-dimensional, semisimple Lie algebra. Then the map
- \[
-  \g \to \g^*, \quad x \mapsto \kappa(x,\cdot)
- \]
- is an isomorphism of representations of $\g$.
-\end{corollary}
-\begin{proof}
- The statement follows from Corollary \ref{cor: associative non-degenerate bilinear forms induce isomorphism to the dual} because $\kappa$ is non-degenerate.
+  Let~$I$ be any ideal of~$\glie$.
+  We proceed as in the proof of \cref{characterizations of fd semisimple lie algebras}:
+  
+  We have~$\glie = I \oplus I^\perp$ by \cref{decomposition into orthogonals for semisimple} and the Killing form of~$\glie$ is the orthogonal sum of the Killing forms of~$I$ and~$I^\perp$ by \cref{orthogonal ideals with respect to the killing form}.
+  Both~$\restrict{\kappa}{I}$ and~$\restrict{\kappa}{I^\perp}$ are therefore non-degenerate.
+  We can by \cref{characterizations of fd semisimple lie algebras} decompose both~$I$ and~$I^\perp$ into simple ideals
+  \[
+    I
+    =
+    J_1 \oplus \dotsb \oplus J_m \,,
+    \qquad
+    I^\perp
+    =
+    J_{m+1} \oplus \dotsb \oplus J_k  \,.
+  \]
+  Then
+  \[
+    \glie
+    =
+    I \oplus I^\perp
+    =
+    J_1 \oplus \dotsb \oplus J_m \oplus J_{m+1} \oplus \dotsb \oplus J_k
+  \]
+  is a decomposition of~$\glie$ into simple ideals.
+  We know from \cref{uniqueness of semisimple decomposition} that this decomposition coincides with the given decomposition~$\glie = I_1 \oplus \dotsb \oplus I_n$ up to permutation of the direct summands~$I_j$.
+  The direct summands~$J_1, \dotsc, J_m$ do therefore occur in the list of simple ideals~$I_1, \dotsc, I_n$.
 \end{proof}
 
 
 \begin{corollary}
- Let $\g$ be a finite dimensional simple Lie algebra and $\beta \colon \g \times \g \to k$ an associative bilinear form. Then $\beta$ is a scalar multiple of the killing form $\kappa \colon \g \times \g \to k$.
+  \label{ideals and quotients of semisimple again semisimple}
+  If~$\glie$ is a semisimple Lie algebra and~$I$ is any ideal in~$\glie$ then both~$I$ and~$\glie/I$ are again semisimple.
+  \qed
 \end{corollary}
+
+
 \begin{proof}
- Because $\beta$ is associative the map
- \[
-  \varphi \colon \g \to \g^*, \quad x \mapsto \beta(x, \cdot)
- \]
- is a homomorphism of representations of $\g$ by Lemma~\ref{lem: associative bilinear form induces homomorphism of representations}. Because $\g$ is simple, and therefore also semisimple, the Killing form $\kappa$ is non-degenerate. Therefore the map
- \[
-  \psi \colon \g \to \g^*, \quad x \mapsto \kappa(x, \cdot)
- \]
- is an isomorphism of representations of $\g$ by Corollary~\ref{cor: semisimple Lie algebra identification with dual space}. It follows that
- \[
-  \alpha \coloneqq \varphi \circ \psi^{-1} \colon \g \to \g, 
- \]
- is a homomorphism of representations of $\g$. Because $\g$ is simple the adjoint representation of $\g$ is irreducible. By Schur’s Lemma $\alpha$ is given by multiplication with a scalar $\lambda \in k$. It follows that $\varphi = \lambda \psi$.
+  Let~$\glie = I_1 \oplus \dotsb \oplus I_n$ be a decomposition into simple ideals.
+  Then by \cref{ideals are again sum of simples} we may assume that~$I = I_1 \oplus \dotsb \oplus I_m$ for some~$m$.
+  We see that~$I$ is semisimple, and it also follows that~$\glie/I \cong I_{m+1} \oplus \dotsb \oplus I_n$ is semisimple.
 \end{proof}
 
 
+\begin{warning}
+  Lie~subalgebras of semisimple Lie~algebras need not be semisimple again.
+  Indeed, the Lie~algebra~$\sllie_2(\kf)$ is simple and hence semisimple.
+  But the Lie~subalgebra~$\blie$ of~$\sllie_2(\kf)$ that consist of upper triangular matrices of trace zero is solvable and can therefore not be semisimple.
+\end{warning}
 
 
 
+\begin{lemma}
+  \label{semisimple lie algebra identification with dual space}
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra.
+  Then the map
+  \[
+    \glie
+    \to
+    \glie^* \,,
+    \quad
+    x
+    \mapsto
+    \kappa(x,-)
+  \]
+  is an isomorphism of~{\representations{$\glie$}}, where~$\kappa$ denotes the Killing~form of~$\glie$.
+\end{lemma}
 
 
+\begin{proof}
+  This follows from \cref{associative non-degenerate bilinear forms induce isomorphism to the dual} because~$\kappa$ is non-degenerate.
+\end{proof}
 
 
+\begin{corollary}
+  Let~$\glie$ be a finite dimensional simple Lie~algebra.
+  Then any associative bilinear form~$\beta \colon \glie \times \glie \to \kf$ is a scalar multiple of the killing form~$\kappa$ of~$\glie$.
+\end{corollary}
 
+
+\begin{proof}
+ The map
+ \[
+  \varphi
+  \colon
+  \glie
+  \to
+  \glie^* \,,
+  \quad
+  x
+  \mapsto
+  \beta(x, -)
+ \]
+ is a homomorphism of~{\representations{$\glie$}} by \cref{associative bilinear form induces homomorphism of representations}.
+ The Killing~form~$\kappa$ is non-degenerate because~$\glie$ is simple (and thus semisimple).
+ The map
+ \[
+  \psi
+  \colon
+  \glie
+  \to
+  \glie^* \,,
+  \quad
+  x
+  \mapsto
+  \kappa(x, -)
+ \]
+ is therefore an isomorphism of representations by \cref{associative non-degenerate bilinear forms induce isomorphism to the dual}.
+ The composition
+ \[
+  \psi^{-1}
+  \circ
+  \varphi
+  \colon
+  \glie
+  \to
+  \glie 
+ \]
+ is again a homomorphism of representations, where~$\glie$ is irreducible as a representation because~$\glie$ is simple as a Lie~algebra.
+ It follows from Schur’s~lemma that~$\psi^{-1} \circ \varphi = \lambda \id_{\glie}$ for some scalar~$\lambda \in \kf$.
+ So~$\varphi = \lambda \psi$ and equivalently~$\beta = \lambda \kappa$.
+\end{proof}
 
 
 
