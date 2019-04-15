@@ -1,0 +1,523 @@
+\subsection{Graded \texorpdfstring{$\kf$}{k}-Algebras}
+
+
+\begin{definition}
+  \label{graded algebras}
+  A \defemph{grading}\index{grading!of an algebra} or \defemph{gradation} of a~\algebra{$\kf$}~$A$ is a direct sum decomposition
+  \[
+    A
+    =
+    \bigoplus_{i \geq 0} A_i
+  \]
+  into linear subspaces~$A_i$ such that
+  \[
+    A_i A_j
+    \subseteq
+    A_{i+j}
+  \]
+  for all~$i, j \geq 0$.
+  A \defemph{graded~\algebra{$\kf$}}\index{graded!algebra} is a~\algebra{$\kf$}~$A$ together with a grading~$A = \bigoplus_{i \geq 0} A_i$.
+\end{definition}
+
+
+\begin{remark}
+  We will often just say that~$A$ is a graded algebra without mentioning the grading.
+\end{remark}
+
+
+\begin{remark}
+  Given any abelian semigroup~$(S, +)$ an~\defemph{\grading{$S$}}\index{grading} of a~\algebra{$\kf$}~$A$ is a decomposition
+  \[
+    A
+    =
+    \bigoplus_{s \in S} A_s
+  \]
+  into linear subspaces such that
+  \[
+    A_s A_t
+    \subseteq
+    A_{s + t}
+  \]
+  for all~$s,t \in S$.
+  An~{\graded{$S$}}~\algebra{$\kf$} is a~\algebra{$\kf$}~$A$ together with an~\grading{$S$}~$A = \bigoplus_{s \in S} A_s$.
+  A graded~\algebra{$\kf$} in the sense of \cref{graded algebras} is then the special case of an~{\graded{$\Natural$}}~\algebra{$\kf$}.
+  We will restrict our attention to~{\gradings{$\Natural$}} and refer to \cite[II.{\S}11, III.{\S}3]{bourbaki_algebra} for more general gradings.
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ be a graded~{\algebra{$\kf$}} with grading~$A = \bigoplus_{i \geq 0} A_i$.
+  \begin{enumerate}
+    \item
+      An element~$x \in A$ is \defemph{homogeneous}\index{homogeneous!element} of \defemph{degree}~$i$\index{homogeneous!degree}\index{degree!homogeneous} if~$x \in A_i$.
+    \item
+      If the decomposition of~$x \in A$ with respect to the grading~$A = \bigoplus_{i \geq 0} A_i$ is given by~$x = \sum_{i \geq 0} x_i$ then the summands~$x_i$ are the~\defemph{homogeneous components}\index{homogeneous!component} of~$x$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+  If~$A$ is a graded~\algebra{$\kf$} then~$1_A$ is homogeneous of degree~$0$.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$1 = \sum_{i \geq 0} e_i$ with respect to the grading~$A = \bigoplus_{i \geq 0} A_i$.
+  Then for any~$j \geq 0$ and~$a \in A_j$ we have that
+  \[
+    a
+    =
+    1 \cdot a
+    =
+    \left( \sum_{i \geq 0} e_i \right) \cdot a
+    =
+    \sum_{i \geq 0} \underbrace{ e_i a }_{\in A_{i+j}}  \,,
+  \]
+  and it follows from the directness of the decomposition~$A = \bigoplus_{i \geq 0} A_i$ that already~$a = e_0 a$.
+  It follows that~$e_0 a = a$ for every~$a \in A$, so that already~$1 = e_0$.
+\end{proof}
+
+
+\begin{corollary}
+  If~$A$ is a graded~\algebra{$\kf$} then~$A_0$ is a~{\subalgebra{$\kf$}} of~$A$.
+  \qed
+\end{corollary}
+
+
+
+\begin{examples}
+  \label{examples of graded algebras}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Any~\algebra{$\kf$}~$A$ becomes a graded~\algebra{$\kf$} by setting~$A_0 \defined A$ and~$A_i \defined 0$ for every~$i \geq 1$.
+    \item
+      The polynomial ring~$A = \kf[x_i \suchthat i \in I]$ is a graded~\algebra{$\kf$} by setting
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 + \dotsb + p_n = d
+        }_{\kf}
+      \]
+      for every~$d \geq 0$.
+      Then~$A_d$ consists of the homogeneous polynomials of degree~$d$, and the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ are homogeneous of degree~$p_1 + \dotsb + p_n$.
+      
+      We can more generally put the variable~$x_i$ is any degree~$d_i$:
+      Given any family~$(d_i)_{i \in I}$ of natural numbers~$d_i \geq 0$ we can define a grading on~$A$ via
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 d_1 + \dotsb + p_n d_n = d
+        }_\kf
+      \]
+      for every~$d \geq 0$.
+      Then the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ are homogeneous of degree~$p_1 d_1 + \dotsb + p_n d_n$.
+    \item
+      Similarly the free~{\algebra{$\kf$}}~$A \defined \kf\gen{x_i \suchthat i \in I}$ can be graded via
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 + \dotsb + p_n = d
+        }_{\kf}
+      \]
+      for every~$d \geq 0$, and for any family~$(d_i)_{i \in I}$ of natural numbers $d_i \geq 0$ via
+      \[
+        A_d
+        \defined
+        \gen{
+          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+        \suchthat
+          n \geq 0,
+          i_1, \dotsc, i_n \in I,
+          p_1 d_1 + \dotsb + p_n d_n = d
+        }_{\kf} \,.
+      \]
+      This grading makes the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ homogeneous of degree~$p_1 d_1 + \dotsb + d_n p_n$.
+    \item
+      The tensor algebra~$\Tensor(V)$ of a vector space~$V$ has a canonical grading with~$\Tensor(V)_d = V^{\tensor d}$ for all~$d \geq 0$.
+      Similarly both the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ have canonical gradings given by~$\Symm(V)_d = \Symm^d(V)$ and~$\Exterior(V)_d = \Exterior^d(V)$ for all~$d \geq 0$.
+    \item
+      Let~$(M, \cdot)$ be a monoid and let~$M = \coprod_{i \geq 0} M_i$ be a grading of~$M$, i.e.\ a decomposition into subsets with~$M_i \cdot M_j \subseteq M_{i+j}$ for all~$i, j \geq 0$.
+      Then the monoid algebra~$\kf[M]$ inhericts a grading via
+      \[
+        \kf[M]_i
+        \defined
+        \gen{ M_i }_{\kf}
+      \]
+      for every~$i \geq 0$.
+      As special cases of this construction we get the following examples:
+      \begin{itemize}
+        \item
+          If~$I$ is any index set then for~$M = \Natural^{\oplus I}$ a grading~$M = \coprod_{d \geq 0} M_d$ is given by the subsets
+          \[
+            M_d
+            \defined
+            \left\{
+              (p_i)_{i \in I} \in M
+            \suchthat*
+              \sum_{i \in I} p_i = d
+            \right\}
+          \]
+          with~$d \geq 0$.
+          Then~$\kf[M]$ with the induced grading is the commutative polynomial algebra~$\kf[x_i \suchthat i \in I]$.
+        \item
+          If~$I$ is any index set then let~$\Sigma \defined \{x_i \suchthat i \in I\}$ be an alphabet with letters~$x_i$ and let~$M = \Sigma^*$ be the monoid of words in the alphabet~$\Sigma$ together with concatenation of words as rule of composition.
+          Then~$\kf[M] = \kf\gen{X_i \suchthat i \in I}$ and the grading of~$\kf[M]$ (where every variable~$x_i$ is in degree~$1$) comes from the grading of~$M$ given by
+          \[
+            M_d
+            \defined
+            \{
+              w \in M
+            \suchthat
+              \text{$w$ is a word in~$\Sigma$ of length~$d$}
+            \}  \,.
+          \]
+      \end{itemize}
+  \end{enumerate}
+\end{examples}
+
+
+\begin{remark}
+  \label{external description of graded algebras}
+  The grading of the tensor algebra~$\Tensor(V)$, symmetric algebra~$\Symm(V)$ and exterior algebra~$\Exterior(V)$ are basically built into the construction of these algebras.
+  This way of constructing graded~{\algebras{$\kf$}} can be generalized as follows:
+  
+  Suppose that we are given a sequence of vector spaces~$A_i$ with~$i \geq 0$ and bilinear maps
+  \[
+    \mu_{i,j}
+    \colon
+    A_i \times A_j
+    \to
+    A_{i+j} \,,
+    \quad
+    (x,y)
+    \mapsto
+    xy
+  \]
+  for all~$i, j \geq 0$ such that
+  \begin{itemize}
+    \item
+      the~$\mu_{i, j}$ are relatively associative in the sense that
+      \[
+        x(yz)
+        =
+        (xy)z
+      \]
+      for all~$i, j, k \geq 0$ and~$x \in A_i$,~$y \in A_j$ and~$z \in A_k$ and
+    \item
+      there exists an element~$1 \in A_0$ with
+      \[
+        1 x
+        =
+        x
+        =
+        x 1
+      \]
+      for all~$i \geq 0$ and every~$x \in A_i$.
+  \end{itemize}
+  For the direct sum~$A \defined \bigoplus_{i \geq 0} A_i$ we can then fit together the multiplications~$\mu_{i,j}$ to a single multiplication~$\mu \colon A \times A \to A$ that is given on elements~$x, y \in A$ with~$x = (x_i)_{i \geq 0}$ and~$y = (y_i)_{i \geq 0}$ by
+  \[
+    x y
+    =
+    \left( \sum_{j=0}^i x_j y_{i-j} \right)_{j \geq 0}  \,.
+  \]
+  The bilinearity of~$\mu$ follows from the bilinearities of the~$\mu_{i,j}$, it follows from the relative associativity of the multiplications~$\mu_{i,j}$ that the multiplication~$\mu$ is associative, and~$1 \in A_0$ is multiplicative neutral for~$\mu$.
+  
+  This construction gives an external description of graded~{\algebras{$\kf$}}, in constrast to the previous internal description.
+\end{remark}
+
+
+\begin{definition}
+  Let~$A$ and~$B$ be two graded~\algebras{$\kf$}.
+  \begin{enumerate}
+    \item
+      A \defemph{homomorphism of graded~{\algebras{$\kf$}}}~$f \colon A \to B$\index{homomorphism!of graded $\kf$-algebras} is a homomorphism of~{\algebras{$\kf$}} such that~$f(A_i) \subseteq B_i$ for all~$i \geq 0$.
+    \item
+      If~$f \colon A \to B$ is a homomorphism of graded~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction of~$f$ to a linear map~$A_i \to B_i$ is denoted by~$f_i$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A$,~$B$ and~$C$ be graded~{\algebra{$\kf$}}.
+      \begin{enumerate}
+        \item
+          The identity~$\id_A \colon A \to A$ is a homomorphism of graded~{\algebras{$\kf$}}.
+        \item
+          If~$f \colon A \to B$ and~$g \colon B \to C$ are homomorphisms of graded~{\algebras{$\kf$}} then their composition~$g \circ f \colon A \to C$ is again a homomorphism of graded~{\algebras{$\kf$}}.
+      \end{enumerate}
+      Hence the graded~\algebras{$\kf$} together with the homomorphisms of graded~\algebras{$\kf$} between them form a category, which we will denote by~\gls*{graded algebras}.
+    \item
+      For a homomorphism of graded~{\algebras{$\kf$}}~$f \colon A \to B$ the following conditions are equivalent:
+      \begin{equivalenceslist}
+        \item
+          $f$ is an isomorphism of graded~{\algebras{$\kf$}}, i.e.\ there exists an inverse homomorphism of graded~{\algebras{$\kf$}}~$g \colon B \to A$ with~$fg = \id_B$ and~$gf = \id_A$.
+        \item
+          $f$ is bijective.
+        \item
+          For every~$i \geq 0$ the restriction~$f_i \colon A_i \to B_i$ is bijective.
+      \end{equivalenceslist}
+  \end{enumerate}
+\end{remark}
+
+
+\begin{example}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      For any vector space~$V$ the two maps
+      \begin{alignat*}{2}
+        \Tensor(V)
+        &\to
+        \Symm(V) \,,
+        &
+        \quad
+        x_1 \tensor \dotsb \tensor x_n
+        &\mapsto
+        x_1 \dotsm x_n
+      \shortintertext{and}
+        \Tensor(V)
+        &\to
+        \Exterior(V) \,,
+        &
+        \quad
+        x_1 \tensor \dotsb \tensor x_n
+        &\mapsto
+        x_1 \wedge \dotsb \wedge x_n
+      \end{alignat*}
+      are homomorphisms of graded~\algebras{$\kf$}.
+    \item
+      If~$V$ is a finite dimensional vector space with basis~$x_1, \dotsc, x_n$ then the resulting isomorphism of~\algebras{$\kf$}
+      \[
+        \kf[X_1, \dotsc, X_n]
+        \to
+        \Symm(V) \,,
+        \quad
+        X_i
+        \mapsto
+        x_i
+      \]
+      is already an isomorphism of graded~\algebras{$\kf$}.
+  \end{enumerate}
+\end{example}
+
+
+\begin{lemma}
+  \label{characterizations of homogeneous ideals}
+  Let~$I$ be some kind of ideal in a graded~{\algebra{$\kf$}} (i.e.\ a left ideal, right ideal or two-sided ideal).
+  \begin{enumerate}
+    \item
+      The linear subspace~$\bigoplus_{i \geq 0} (I \cap A_i)$ is again an ideal in~$A$ of the same kind.
+    \item
+      The following conditions on~$I$ are equivalent:
+      \begin{enumerate}
+        \item
+          \label{direct sum of linear subspaces}
+          There exists linear subspaces~$I_i$ of~$A_i$ with~$i \geq 0$ such that~$I = \bigoplus_{i \geq 0} I_i$.
+        \item
+          \label{direct sum of intersections}
+          It holds that~$I = \bigoplus_{i \geq 0} (I \cap A_i)$.
+        \item
+          \label{contains all homogeneous components}
+          The ideal~$I$ contains the homogeneous components of all its elements.
+        \item
+          \label{generated by homogeneous}
+          The ideal~$I$ is generated by homogeneous elements.
+      \end{enumerate}
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We check that~$I' \defined \bigoplus_{i \geq 0} I \cap A_i$ is again a left ideal if~$I$ is one.
+      Indeed, we find that
+      \begin{align*}
+        A \cdot I'
+        &=
+              \left( \sum_{j \geq 0} A_j \right)
+        \cdot \left( \sum_{i \geq 0} (I \cap A_i) \right)
+        \\
+        &=
+        \sum_{i,j \geq 0} A_j \cdot (I \cap A_i)
+        \\
+        &\subseteq
+        \sum_{i, j \geq 0} (A_j \cdot I) \cap (A_j \cdot A_i)
+        \\
+        &\subseteq
+        \sum_{i,j \geq 0} (I \cap A_{i+j})
+        \\
+        &=
+        \sum_{k \geq 0} (I \cap A_k)
+        \\
+        &=
+        I'  \,.
+      \end{align*}
+      We find in the same way that~$I'$ is again a right ideal if~$I$ is one.
+      It follows from these two cases that~$I'$ is a two-sided ideal if~$I$ is one.
+    \item
+      \begin{implicationlist}
+        \item[\ref*{direct sum of linear subspaces}~$\implies$~\ref*{direct sum of intersections}]
+          It follows from the assumption that~$I_i = I \cap A_i$.
+        \item[\ref*{direct sum of intersections}~$\implies$~\ref*{direct sum of linear subspaces}]
+          We may take~$I_i = I \cap A_i$.
+        \item[\ref*{direct sum of linear subspaces}~$\implies$~\ref*{contains all homogeneous components}]
+          We may decompose~$x \in I$ with respect to the decomposition~$A = \bigoplus_{i \geq 0} A_i$ into homogeneuos components~$x = \sum_{i \geq 0} x_i$ and with respect to the decomposition~$I = \bigoplus_{i \geq 0} I_i$ as~$x = \sum_{i \geq 0} x'_i$.
+          Then~$x'_i \in I_i \subseteq A_i$ and hence~$x_i = x'_i$ by uniqueness of the decomposition in~$A$.
+          Thus~$x_i = x'_i \in I_i \subseteq I$ for all~$i \geq 0$.
+        \item[\ref*{contains all homogeneous components}~$\implies$~\ref*{generated by homogeneous}]
+          We may start with any generating set for~$I$ and then replace each generator by all of its homogeneous components.
+        \item[\ref*{generated by homogeneous}~$\implies$~\ref*{direct sum of intersections}]
+          Each homogeneous generator in contained in some summand~$I \cap A_i$.
+          Hence~$I$ is contained in the ideal~$\bigoplus_{i \geq 0} I \cap A_i$ which is in turn contained in~$I$.
+          Hence~$I = \bigoplus_{i \geq 0} I \cap A_i$.
+        \qedhere
+      \end{implicationlist}
+  \end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+  An ideal~$I$ (of any kind) in a graded~{\algebra{$\kf$}}~$A$ is \defemph{homogeneous ideal}\index{homogeneous!ideal} if it satisfies the equivalent conditions from \cref{characterizations of homogeneous ideals}.
+  We set~$I_i \defined I \cap A_i$ for all~$i \geq 0$.
+\end{definition}
+
+
+\begin{example}
+  If~$f \colon A \to B$ is a homomorphism of graded~{\algebras{$\kf$}} then~$\ker f$ is a homogeneous two-sided ideal in~$A$ because~$\ker f = \bigoplus_{i \geq 0} \ker f_i$.
+  The converse also holds:
+\end{example}
+
+
+\begin{proposition}
+  Let~$A$ be a graded~{\algebra{$\kf$}} and let~$I$ be a two-sided homogeneous ideal in~$A$.
+  Let~$\pi \colon A \to A/I$ be the canonical projection.
+  \begin{enumerate}
+    \item
+      The algebra~$A/I$ carries a grading via~$(A/I)_i \defined \pi(A_i)$ for every~$i \geq 0$, making~$A/I$ into a graded~{\algebra{$\kf$}}.
+    \item
+      This is the unique grading on~$A/I$ that makes~$\pi$ a homomorphism of graded~{\algebras{$\kf$}}.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      It follows from the usual isomorphism
+      \[
+        A/I
+        =
+        \left( \bigoplus_{i \geq 0} A_i \right)
+        \bigg/
+        \left(\bigoplus_{i \geq 0} I_i \right)
+        \cong
+        \bigoplus_{i \geq 0} (A_i / I_i)
+      \]
+      that~$A/I = \bigoplus_{i \in I} (A/I)_i$.
+      It holds for all~$i, j \geq 0$ that
+      \[
+        (A/I)_i (A/I)_j
+        =
+        \pi(A_i) \pi(A_j)
+        =
+        \pi(A_i A_j)
+        \subseteq
+        \pi(A_{i+j})
+        =
+        (A/I)_{i+j} \,.
+      \]
+    \item
+      Any such grading~$A/I = \bigoplus_{i \geq 0} (A/I)_i$ must satisfy~$\pi(A_i) \subseteq (A/I)_i$ for every~$i \geq 0$.
+      It follows from~$A/I = \bigoplus_{i \geq 0} \pi(A_i)$ and~$A/I = \bigoplus_{i \geq 0} (A/I)_i$ that~$\pi(A_i) = (A/I)_i$ for every~$i \geq 0$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{examples}
+  Let~$V$ be a vector space.
+  The two-sided ideal~$I$ in~$\Tensor(V)$ generated by the elements~$x \tensor y - y \tensor x$ with~$x,y \in V$ is a homogeneous ideal of~$\Tensor(V)$ because it is generated by homogeneous components.
+  The two sided ideal~$J$ in~$\Tensor(V)$ generated by the elements~$x \tensor x$ with~$x \in V$ is homogeneous because it generated by homogeneous elements.
+  The resulting quotient graded~{\algebras{$\kf$}} are the symmetric algebra~$\Symm(V) \cong A/I$ and the exterior algebra~$\Exterior(V) \cong A/J$.
+\end{examples}
+
+
+% Grading is on the wrong level.
+% 
+% \begin{remark}
+%   One can also consider graded Lie~algebras, and if~$\glie$ is a graded Lie~algebra then~$\Univ(\glie)$ inherits the structure of a graded~{\algebra{$\kf$}}:
+%   \begin{enumerate}
+%     \item
+%       A \defemph{grading}\index{grading!of a vector space} of a vector space~$V$ is a direct sum decomposition~$V = \bigoplus_{i \geq 0} V_i$.
+%       A \defemph{graded vector space}\index{graded!vector space} is a vector space~$V$ together with a grading of~$V$.
+%     \item
+%       A \defemph{grading}\index{grading!of a Lie algebra} of a Lie~algebra~$\glie$ is a direct sum decomposition~$\glie = \bigoplus_{i \geq 0} \glie_i$ such that~$[\glie_i, \glie_j] \subseteq \glie_{i+j}$ for all~$i, j \geq 0$.
+%       A \defemph{graded Lie~algebra}\index{graded!Lie~algebra} is a Lie~algebra~$\glie$ together with a grading of~$\glie$.
+%     \item
+%       If~$V$ is a graded vector space then the tensor algebra~$\Tensor(V)$ inherits a grading from~$V$:
+%       We get for every~$d \geq 0$ a decomposition
+%       \[
+%         V^{\tensor d}
+%         =
+%         \left(
+%           \bigoplus_{i \geq 0} V_i
+%         \right)^{\tensor d}
+%         =
+%         \bigoplus_{i_1, \dotsc, i_d \geq 0} V_{i_1} \tensor \dotsb \tensor V_{i_d}  \,.
+%       \]
+%       This overall results for the tensor algebra~$\Tensor(V)$ in a decomposition
+%       \[
+%         \Tensor(V)
+%         =
+%         \bigoplus_{r \geq 0}
+%         V^{\tensor r}
+%         =
+%         \bigoplus_{\substack{r \geq 0 \\ i_1, \dotsc, i_r \geq 0}}
+%         V_{i_1} \tensor \dotsb \tensor V_{i_r}  \,.
+%       \]
+%       We define for all~$d \geq 0$ the homogeneous component~$\Tensor(V)_d$ as
+%       \[
+%         \Tensor(V)_d
+%         \defined
+%         \bigoplus_{
+%           \substack{r \geq 0 \\
+%                     i_1, \dotsc, i_r \geq 0 \\
+%                     i_1 + \dotsb + i_r = d}
+%         }
+%         V_{i_1} \tensor \dotsb \tensor V_{i_r}  \,.
+%       \]
+%       This defines a grading on~$\Tensor(V)$ which makes the inclusion~$V \inclusion \Tensor(V)$ into a homomorphism of graded vector spaces.
+%     \item
+%       If~$\glie$ is a graded Lie~algebra with grading~$\glie = \bigoplus_{i \neq 0} \glie_i$ then we regard the tensor algebra~$\Tensor(\glie)$ as a graded~{\algebra{$\kf$}} in the above way.
+%       Let~$I$ be the two-sided ideal in~$\Tensor(\glie)$ generated by all elements~$c_{x,y} \defined x \tensor y - y \tensor x - [x,y]$ with~$x, y \in \glie$.
+%       The ideal~$I$ is already generated by all~$c_{x,y}$ with~$x, y \in \glie$ homogeneous because~$c_{x,y}$ is bilinear in~$x$ and~$y$.
+%       The ideal~$I$ is hence graded and so the quotient~$\Univ(\glie) = \Tensor(\glie)/I$ inherits a grading from~$\Tensor(\glie)$.
+%       This is the unique grading that makes the canonical homomorphism~$\glie \to \Univ(\glie)$ a homomorphism of graded~{\algebras{$\kf$}}.
+%   \end{enumerate}
+% \end{remark}
+
+
+
+

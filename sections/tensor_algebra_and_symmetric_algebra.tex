@@ -1,0 +1,948 @@
+\section{Tensor Algebra and Symmetric Algebra}
+
+
+% \begin{example}[Monoid algebra]
+%   In the following all monoids will be written multiplicaitvely unless otherwise mentioned.
+%   The neutral element of a monoid~$M$ will be denoted by~$1$ or~$1_M$.
+%   Given two monoids~$M$ and~$N$ a map~$f \colon M \to N$ is a homomorphism of monids if~$f(m \cdot m') = f(m) \cdot f(m')$ for all~$m, m' \in M$ and~$f(1_M) = 1_N$.
+%   If~$M$ is any monoid then the identity~$\id_M$ is a homomorphism and if~$f \colon M \to N$ and~$g \colon N \to P$ are composable homomorphisms of monoids then their composition~$g \circ f \colon M \to P$ is again a homomorphism of monoids.
+%   The resulting category of monoids is denoted by~$\cMon$.
+%   
+%   \begin{description}
+%     \item[Construction:]
+%       If~$M$ is a monoid then the monoid algebra~\gls*{monoid algebra} is the (free) vector space with basis~$M$ together with the unique bilinear extension~$\kf[M] \times \kf[M] \to \kf[M]$ of the multiplication~$M \times M \to M$ as its multiplication.
+%   
+%       This means that the elements of~$\kf[M]$ are formal {\linear{$\kf$}} combinations~$\sum_{m \in M} a_m m$ with~$a_m = 0$ for all but finitely many~$m \in M$.
+%       The multiplication of two such elements is given by
+%       \[
+%         \left(
+%           \sum_{m \in M} a_m m
+%         \right)
+%         \left(
+%           \sum_{n \in M} b_n n
+%         \right)
+%         =
+%         \sum_{m, n \in M} (a_m b_n) m n  \,.
+%       \]
+%       We identify every element~$m \in M$ with the corresponding element~$1 \cdot m \in \kf[M]$.
+%       The product~$m \cdot n$ of two elements~$m, n \in M$ in~$\kf[M]$ is then the same as their product in~$M$.
+%       The associativity of the multiplication of~$\kf[M]$ follows from the associativity of the multiplication of~$M$, and the neutral element of~$M$ is given by the multiplicative neutral element for~$\kf[M]$.
+%       
+%     \item[Universal Property:]
+%       If~$A$ is any~{\algebra{$\kf$}} then~$(A, \cdot)$ is a multiplicative monoid, which we will denote by~$A^-$.
+%       If~$M$ is any monoid and~$f \colon M \to A^-$ is a monoid hommorphism then~$f$ extends uniquely to an algebra homomorphism~$F \colon \kf[M] \to A$.
+%       The algebra homomorphism~$F$ is given on elements by
+%       \[
+%         F\left( \sum_{m \in M} a_m m \right)
+%         =
+%         \sum_{m \in M} a_m f(m) \,.
+%       \]
+%       On the other hand every algebra homomorphism~$\kf[M] \to A$ restricts to a monoid homomorphism~$M \to A^-$.
+%       This construction results in a {\onetoone} correspondence
+%       \[
+%         \{
+%           \text{monoid homomorphisms~$M \to A^-$}
+%         \}
+%         \longonetoone
+%         \{
+%           \text{algebra homomorphisms~$\kf[M] \to A$}
+%         \}  \,.
+%       \]
+%     
+%     \item[Uniqueness:]
+%       The monoid algebra~$\kf[M]$ together with the inclusion~$i \colon M \to \kf[M]$ is uniquely determined by its universal property up to isomorphism:
+%   \end{description}
+% \end{example}
+
+
+% \begin{recall}[Free algebra]
+%   Let~$I$ be any set.
+%   The \defemph{noncommutative polynomial algebra}~$\kf\gen{X_i \suchthat i \in I}$\index{noncommutative polynomial algebra} has as a basis the set of all monomials
+%   \[
+%     X_{i_1} \dotsm X_{i_n}
+%     \qquad
+%     \text{with~$i_1, \dotsc, i_n$}
+%   \]
+%   and the multiplication is on these basis elements given by
+%   \[
+%     X_{i_1} \dotsm X_{i_n}
+%     \cdot
+%     X_{j_1} \dotsm X_{j_m}
+%     =
+%     X_{i_1} \dotsm X_{i_n} X_{j_1} \dotsm X_{j_m} \,.
+%   \]
+%   In contrast to the usual (commutative) polynomial algebra~$\kf[X_i \suchthat i \in I]$ the variables~$X_i$ are not required to commute with each other.
+%   
+%   We can alternatively construct~$\kf\gen{X_i \suchthat i \in I}$ as the monomial algebra of the free monoid on~$I$:
+%   Let~$M$ be the set of all words in~$I$, i.e.\ the set of all finite sequences
+%   \[
+%     (i_1, \dotsc, i_n)
+%     \qquad
+%     \text{with~$i_1, \dotsc, i_n \in I$}  \,.
+%   \]
+%   Then~$M$ is a monoid with respect to concatenation of words given by
+%   \[
+%     (i_1, \dotsc, i_n) (j_1, \dotsc, j_m)
+%     =
+%     (i_1, \dotsc, i_n, j_1, \dotsc, j_m)
+%   \]
+%   for all words~$(i_1, \dotsc, i_n), (j_1, \dotsc, j_m) \in M$.
+%   The neutral element of~$M$ is given by the empty word~$()$.
+% \end{recall}
+
+
+
+
+
+\subsection{Reviewing the Tensor Algebra}
+
+
+\begin{recall}[Tensor algebra]
+  Let~$V$ be a vector space.
+  \begin{description}
+    \item[Construction:]
+      For all~$v_1, \dotsc, v_d \in V$ we denote the resulting simple tensor~$v_1 \tensor \dotsb \tensor v_d$ in~$V^{\tensor d}$ by~$(v_1, \dotsc, v_d)$.
+      Observe that for~$d = 0$ the tensor power~$V^{\tensor d} = V^{\tensor 0}$ has as a basis the emtpy simple tensor~$()$.
+      We will therefore identify the tensor power~$V^{\tensor 0}$ with the ground field~$\kf$, so that empty simple tensor~$()$ corresponds to~$1 \in \kf$.
+      
+      For all~$p, q \geq 0$ we define a multiplication
+      \[
+        \mu_{p,q}
+        \colon
+        V^{\tensor p} \times V^{\tensor q}
+        \to
+        V^{\tensor (p+q)} \,,
+        \quad
+        (x,y)
+        \mapsto
+        x y
+      \]
+      that is on simple tensors~$(v_1, \dotsc, v_p) \in V^{\tensor p}$ and~$(v_{p+1}, \dotsc, v_{p+q}) \in V^{\tensor q}$ given by
+      \[
+        (v_1, \dotsc, v_p) \cdot (v_{p+1}, \dotsc, v_{p+q})
+        =
+        (v_1, \dotsc, v_{p+q})  \,.
+      \]
+      Note that for~$p = 0$ or~$q = 0$ this multiplication is just scalar multiplication.  
+      These multiplications fit together associatively in the sense that for all~$p, q, r \geq 0$ and simple tensors~$x \in V^{\tensor p}$,~$y \in V^{\tensor q}$ and~$z \in V^{\tensor r}$ the equality
+      \[
+        x \cdot (y \cdot z)
+        =
+        (x \cdot y) \cdot z
+      \]
+      holds.
+      
+      Let~$\Tensor(V) \defined \bigoplus_{d \geq 0} V^{\tensor d}$.
+      We can fit together the multiplications~$\mu_{p,q}$ with~$p, q \geq 0$ to a single multiplication
+      \[
+        \mu
+        \colon
+        \Tensor(V) \times \Tensor(V)
+        \to
+        \Tensor(V)  \,,
+        \quad
+        (x,y)
+        \mapsto
+        xy 
+      \]
+      that is given on elements~$x, y \in \Tensor(V)$ with~$x = (x_d)_{d \geq 0}$ and~$y = (y_d)_{d \geq 0}$ by
+      \[
+        x y
+        =
+        \left(
+          \sum_{p+q = d} x_p y_q
+        \right)_{d \geq 0} \,.
+      \]
+      This multiplication is built precisely so that it follows from the bilinearity of the multiplications~$\mu_{p,q}$ that the multipliation~$\mu$ is again bilinear.
+      It follows from the associativities of the multiplications~$\mu_{p,q}$ that the multiplication~$\mu$ is associative.
+      We may identify the ground field~$\kf = V^{\tensor 0}$ with the corresponding direct summand in~$\Tensor(V)$ to regard~$\kf$ as a linear subspace of~$\Tensor(V)$.
+      We have seen above that~$1 \in \kf$ is then unital for the multiplication of~$\Tensor(V)$.
+      We have thus altogether constructed a~{\algebra{$\kf$}}~$\Tensor(V)$.
+      
+      We may identify~$V = V^{\tensor 1}$ with the corresponding direct summand of~$\Tensor(V)$ to regard~$V$ as a linear subspace of~$\Tensor(V)$.
+      We then have for all~$v_1, \dotsc, v_n \in V$ that
+      \[
+        v_1 \dotsm v_n
+        =
+        (v_1) \dotsm (v_n)
+        =
+        (v_1, \dotsc, v_n)
+        =
+        v_1 \tensor \dotsb \tensor v_n  \,.
+      \]
+      It follows in particular that~$\Tensor(V)$ is then generated by~$V$ as an algebra.
+      The algebra~\gls*{tensor algebra} is the \defemph{tensor algebra of~$V$}
+      
+      We will more generally identify for all~$d \geq 0$ the tensor power~$V^{\tensor d}$ with the corresponding summand in~$\Tensor(V)$.
+      The tensor algebra~$\Tensor(V)$ hence consists of linear combinations simple tensors~$v_1 \tensor \dotsb \tensor v_n$.
+    
+    \item[Universal Property:]
+      The tensor algebra~$\Tensor(V)$ can be though of as the \enquote{free~{\algebra{$\kf$}} on~$V$}, in at least two ways:
+      \begin{itemize}
+        \item(Informal)
+          The tensor algebra~$\Tensor(V)$ arises from~$V$ by starting with the elements of~$V$ and adding to~$V$ all kinds of expressions that can be constructed from the elements of~$V$ by algebra operations.
+          But it follows from the axioms that many of these expressions have to be the same, so that we only end up with expressions of a certain form.
+          
+          Let us be a bit more explicit:
+          Suppose that a~{\algebra{$\kf$}}~$A$ contains~$V$ as a linear subspace.
+          Then it also contains products of the form~$v_1 \dotsm v_n$ with~$v_i \in V$ and hence sums of such products, i.e.\ elements of the form
+          \[
+            \sum_{i=k}^r v_{i_1} \dotsm v_{i_{n_k}}
+          \]
+          with~$r \geq 0$ and~$v_{ij} \in V$.
+          If we continue to combine elements of this form with algebra operations then we do not gain any new elements, since by the axioms of an algebra they must already be of the above form.
+          
+          But in an arbitrary~{\algebra{$\kf$}} it may happen that some of these expressions are equal even though this does not follow pureley from the axioms of a~{\algebra{$\kf$}}.
+          Consider for example the polynomial ring~$A = \kf[x, y]$ and the linear subspace~$V = \gen{x, y}_{\kf}$.
+          It follows from the axioms of a~{\algebra{$\kf$}} that the expressions~$x (x+y)$ and~$x^2 + xy$ are the same, but it does not follow just from the axioms that~$xy = yx$, even though this holds in~$A$.
+          There are hence certain additional \emph{relations} between the elements~$x$ and~$y$ of~$V$ in the ambient {\algebra{$\kf$}}~$A$.
+          
+          In the tensor algebra~$\Tensor(V)$ this does not happen:
+          Whenever two expressions~$x$ and~$y$ that are built from elements of~$V$ via algebra operations coincide, then this equality can be derived from the algebra axioms alone.
+          Hence there exist no additional relations between the elements of~$V$ in~$\Tensor(V)$.
+          The only required condition is that~$V$ is a linear subspace of~$\Tensor(V)$, i.e.\ that addition and scalar multiplication in~$V$ does coincide with the one coming from~$\Tensor(V)$.
+          
+          The tensor algebra~$\Tensor(V)$ is in this way the \enquote{freest} way of expanding~$V$ into a~{\algebra{$\kf$}}.
+        \item(Formal)
+          Let~$\iota \colon V \to \Tensor(V)$ be the inclusion map, which is~{\linear{$\kf$}}.
+          Then if~$A$ is any other~{\algebra{$\kf$}} and~$f \colon V \to A$ any~{\linear{$\kf$}} map (which one can think of as somewhat of an inclusion, albeit not injective), then~$f$ extends uniquely to an algebra homomorphism~$f^+ \colon \Tensor(V) \to A$, i.e.\ there exists a unique algebra homomorphism~$f^+ \colon \Tensor(V) \to A$ that makes the triangular diagram
+          \[
+            \begin{tikzcd}
+              V
+              \arrow{r}[above]{f}
+              \arrow{d}[left]{i}
+              &
+              A
+              \\
+              \Tensor(V)
+              \arrow[dashed]{ur}[below right]{f^+}
+              &
+              {}
+            \end{tikzcd}
+          \]
+          commute.
+          The algebra homomorphism~$f^+$ is given by
+          \[
+            f^+(v_1 \tensor \dotsb \tensor v_d)
+            =
+            f(v_1) \dotsm f(v_d)
+          \]
+          for all~$d \geq 0$ and simple tensors~$v_1 \tensor \dotsb \tensor v_d \in V^{\tensor d}$.
+          This construction results in a {\onetoone} correspondence
+          \begin{align*}
+            \{ \text{\linear{$\kf$} maps~$V \to A$} \}
+            &\longonetoone
+            \{ \text{algebra homomorphisms~$\Tensor(V) \to A$} \} \,,
+            \\
+            f
+            &\longmapsto
+            f^+ \,,
+            \\
+            \restrict{F}{V}
+            &\longmapsfrom
+            F \,.
+          \end{align*}
+          Hence~$(\Tensor(V), i)$ is the \enquote{universal way} of mapping the vector space~$V$ into a~{\algebra{$\kf$}}.
+          
+          This formal explanation relates to the previous informal explanation in the following way:
+          If~$A$ is any~{\algebra{$\kf$}} that contains~$V$ as a linear subspace then the inclusion~$V \to A$ extend uniquely to an algebra homomorphism~$\Tensor(V) \to A$.
+          Every relation between expressions built from the elements of~$V$ that holds in~$\Tensor(V)$ must then also hold in~$A$.
+          Therefore the only relations that hold in~$\Tensor(V)$ between such expressions are the one that hold in \emph{every}~{\algebra{$\kf$}} containing~$V$.
+      \end{itemize}
+      
+    \item[Uniqueness]
+      The above universal property determines the tensor algebra~$\Tensor(V)$ together with the inclusion~$i \colon V \to \Tensor(V)$ uniquely up to unique isomorphism, in the following sense:
+      Let~$A$ be another~{\algebra{$\kf$}} and let~$j \colon V \to T$ be a~{\linear{$\kf$}} map such that for every~{\algebra{$\kf$}}~$A$ and every~{\linear{$\kf$}} map~$f \colon V \to A$ there exists a unique algebra homomorphism~$F \colon T \to A$ that makes the triangular diagram
+      \[
+        \begin{tikzcd}
+          V
+          \arrow{r}[above]{f}
+          \arrow{d}[left]{j}
+          &
+          A
+          \\
+          T
+          \arrow{ur}[below right]{F}
+          &
+          {}
+        \end{tikzcd}
+      \]
+      commute.
+      
+      Then there exist unique algebra homomorphisms~$f \colon A \to T$ and~$g \colon T \to A$ that make the triangular diagrams
+      \[
+        \begin{tikzcd}[column sep = small]
+          {}
+          &
+          V
+          \arrow{dl}[above left]{i}
+          \arrow{dr}[above right]{j}
+          &
+          {}
+          \\
+          \Tensor(V)
+          \arrow[dashed]{rr}[below]{f}
+          &
+          {}
+          &
+          T
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}[column sep = small]
+          {}
+          &
+          V
+          \arrow{dl}[above left]{j}
+          \arrow{dr}[above right]{i}
+          &
+          {}
+          \\
+          T
+          \arrow[dashed]{rr}[below]{g}
+          &
+          {}
+          &
+          \Tensor(V)
+        \end{tikzcd}
+      \]
+      commute.
+      It then follows that the compositions~$g \circ f \colon \Tensor(V) \to \Tensor(V)$ and~$f \circ g \colon T \to T$ make the triangular diagrams
+      \[
+        \begin{tikzcd}[column sep = small]
+          {}
+          &
+          V
+          \arrow{dl}[above left]{i}
+          \arrow{dr}[above right]{i}
+          &
+          {}
+          \\
+          \Tensor(V)
+          \arrow[dashed]{rr}[below]{g \circ f}
+          &
+          {}
+          &
+          \Tensor(V)
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}[column sep = small]
+          {}
+          &
+          V
+          \arrow{dl}[above left]{j}
+          \arrow{dr}[above right]{j}
+          &
+          {}
+          \\
+          T
+          \arrow[dashed]{rr}[below]{f \circ g}
+          &
+          {}
+          &
+          T
+        \end{tikzcd}
+      \]
+      commute.
+      The algebra homomorphisms~$g \circ f$ and~$f \circ g$ are unique with this propert by the universal properties of~$(\Tensor(V), i)$ and~$(T, j)$.
+      But the identities~$\id_{\Tensor(V)}$ and~$\id_T$ also make these diagrams commute.
+      We therefore find that~$g \circ f = \id_{\Tensor(V)}$ and~$f \circ g = \id_{\Tensor(V)}$, so that~$f$ and~$g$ are mutually inverse algebra isomorphisms.
+    
+    \item[Functoriality:]
+      If~$f \colon V \to W$ is any~{\linear{$\kf$}} map then we can consider the following diagram:
+      \[
+        \begin{tikzcd}
+          V
+          \arrow{r}[above]{f}
+          \arrow{d}
+          &
+          W
+          \arrow{d}
+          \\
+          \Tensor(V)
+          &
+          \Tensor(W)
+        \end{tikzcd}
+      \]
+      By applying the universal property of the tensor algebra~$\Tensor(V)$ to the composition~$V \to W \to \Tensor(W)$ it follows that there exists a unique algebra homomorphism~$f_* \colon \Tensor(V) \to \Tensor(W)$ that makes the square diagram
+      \[
+        \begin{tikzcd}
+          V
+          \arrow{r}[above]{f}
+          \arrow{d}
+          &
+          W
+          \arrow{d}
+          \\
+          \Tensor(V)
+          \arrow[dashed]{r}[below]{f_*}
+          &
+          \Tensor(W)
+        \end{tikzcd}
+      \]
+      commute.
+      This induced algebra homorphism is functorial in the following sense:
+      \begin{itemize}
+        \item
+          It holds that~$(\id_V)_* = \id_{\Tensor(V)}$.
+          Indeed, the commutativity of the square 
+          \[
+            \begin{tikzcd}[column sep = large]
+              V
+              \arrow{r}[above]{f}
+              \arrow{d}
+              &
+              V
+              \arrow{d}
+              \\
+              \Tensor(V)
+              \arrow[dashed]{r}[below]{(\id_V)_*}
+              &
+              \Tensor(V)
+            \end{tikzcd}
+          \]
+          shows that the identity~$\id_{\Tensor(V)}$ satifies the defining property of the induced algebra homomorphism~$(\id_V)_*$.
+        \item
+          It holds for all linear maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(g \circ f)_* = g_* \circ f_*$.
+          Indeed, it follows from the commutativity of the diagram
+          \[
+            \begin{tikzcd}
+              U
+              \arrow[dashed, bend left=45]{rr}[above]{g \circ f}
+              \arrow{r}[above]{f}
+              \arrow{d}
+              &
+              V
+              \arrow{r}[above]{g}
+              \arrow{d}
+              &
+              W
+              \arrow{d}
+              \\
+              \Tensor(U)
+              \arrow{r}[below]{f_*}
+              \arrow[dashed, bend right=45]{rr}[below]{g_* \circ f_*}
+              &
+              \Tensor(V)
+              \arrow{r}[below]{g_*}
+              &
+              \Tensor(W)
+            \end{tikzcd}
+          \]
+          that the subdiagram
+          \[
+            \begin{tikzcd}[column sep = large]
+              U
+              \arrow{r}[above]{g \circ f}
+              \arrow{d}
+              &
+              W
+              \arrow{d}
+              \\
+              \Tensor(U)
+              \arrow[dashed]{r}[below]{g_* \circ f_*}
+              &
+              \Tensor(W)
+            \end{tikzcd}
+          \]
+          commutes.
+          This shows that the composition~$g_* \circ f_*$ satisfies the defining property of the induced algebra homomorphism~$(g \circ f)_*$.
+      \end{itemize}
+      
+      This shows that the assignment~$V \mapsto \Tensor(V)$ extends to a (covariant) functor~$\Tensor \colon \cVect{\kf} \to \cAlg{\kf}$.
+      The universal property of the tensor algebra states that the functor~$\Tensor$ is left adjoint to the forgetful functor~$\cAlg{\kf} \to \cVect{\kf}$ that assigns to each~{\algebra{$\kf$}} its underlying~{\vectorspace{$\kf$}}.
+    
+    \item[Description via a basis:]
+      If a basis~$(v_i)_{i \in I}$ of~$V$ is choosen then every tensor power~$V^{\tensor d}$ inherits a basis that is given by all simple tensors
+      \[
+        v_{i_1} \tensor \dotsb \tensor v_{i_d}
+      \]
+      with~$i_1, \dotsc, i_d \in I$.
+      It follows that the tensor power has as a basis of all such simple tensors with~$d \geq 0$ and~$i_{i_1, \dotsc, i_d} \in I$.
+      The product of two such basis vectors is again a basis vector.
+      So we may think about the basis vectors as finite words~$i_1 \dotsm i_d$ in the alphabet~$I$, and as the multiplication of two basis vectors as the concatenation of the corresponding words.
+      
+      If we think about the basis vector~$v_i$ of~$V$ as a formal variable~$X_i$ then we see that the tensor algebra~$\Tensor(V)$ is isomorphic to the noncommutative polynomial ring~$\kf\gen{X_i \suchthat i \in I}$.
+      This noncommutative polynomial ring is also the free~{\algebra{$\kf$}} on the generators~$X_i$ with~$i \in I$, while~$V$ is the free~{\vectorspace{$\kf$}} on the letters~$i \in I$.
+      This gives another explanation for why~$\Tensor(V)$ is the free~{\algebra{$\kf$}} on the vector space~$V$.
+      More exicitely, we have the following commutative diagram of forgetful functors:
+      \[
+        \begin{tikzcd}
+          \cVect{\kf}
+          \arrow{d}
+          &
+          \cAlg{\kf}
+          \arrow{l}
+          \arrow{dl}
+          \\
+          \cSet
+          &
+          {}
+        \end{tikzcd}
+      \]
+      It then follows that the resulting diagram of left adjoint functors
+      \[
+        \begin{tikzcd}
+          \cVect{\kf}
+          \arrow{r}[above]{\Tensor}
+          &
+          \cAlg{\kf}
+          \\
+          \cSet
+          \arrow{u}[left]{F}
+          \arrow{ur}[below right]{\kf\gen{X_i \suchthat i \in (-)}}
+          &
+          {}
+        \end{tikzcd}
+      \]
+      commutes up to natural isomorphism.
+      Hence~$\Tensor(V) \cong \Tensor(F(I)) \cong \kf\gen{X_i \suchthat i \in I}$.
+  \end{description}
+\end{recall}
+
+
+
+
+
+\subsection{Reviewing the Symmetric Algebra}
+
+
+\begin{recall}[Symmetric power]
+  Let~$V$ be a vector space and let~$d \geq 0$.
+  The~{\howmanyth{$d$}} \defemph{symmetric power}\index{symmetric!power}~$\Symm^d(V)$ is the quotient vector space of the tensor power~$\Symm^d(V)$ by the~{\linear{$\kf$}} subspace~$U_d$ that is generated by all all differences
+  \[
+      v_1 \tensor \dotsb \tensor v_d
+    - v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)}
+  \]
+  where~$v_1 \tensor \dotsb \tensor v_d \in V^{\tensor d}$ is a simple tensor and~$\sigma \in S_n$ is a permuation.
+  Hence
+  \begin{align*}
+    \Symm^d(V)
+    &=
+    V^{\tensor d} / U_d
+    \\
+    &=
+    V^{\tensor d}
+    /
+    \gen{
+        v_1 \tensor \dotsb \tensor v_d
+      - v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)} 
+    \suchthat
+      v_1, \dotsc, v_n \in V,
+      \sigma \in S_n
+    }_{\kf} \,.
+  \end{align*}
+  Observe that~$\Symm^0(V) = V^{\tensor 0} = \kf$ because~$U_0 = 0$.
+  For~$v_1, \dotsc, v_n \in V$ we denote the residue class of the simple tensor~$v_1 \tensor \dotsb \tensor v_d$ in~$\Symm^d(V)$ by~$v_1 \dotsm v_d$, and call this a \defemph{symmetric simple tensor}\index{symmetric!simple tensor}.
+  
+  We have by construction of~$\Symm^d(V)$ that
+  \[
+    v_1 \dotsm v_d
+    =
+    v_{\sigma(1)} \dotsm v_{\sigma(d)}
+  \]
+  for all simple symmetric tensors~$v_1 \dotsm v_n \in \Symm^d(V)$ and permutations~$\sigma \in S_d$, and for~$d \geq 1$ the symmetric power~$\Symm^d(V)$ is universal with this property in the following sense:
+  The map
+  \[
+    V^{\times d}
+    \to
+    \Symm^d(V)  \,,
+    \quad
+    (v_1, \dotsc, v_d)
+    \mapsto
+    v_1 \dotsm v_d
+  \]
+  is symmetric and multilinear, and if~$f \colon V^{\times d} \to W$ is any other symmetric multilinear map into any vector space~$W$ then there exists a unique linear map~$g \colon \Symm^d(V) \to W$ that makes the triangular diagram
+  \[
+    \begin{tikzcd}
+      V^{\times d}
+      \arrow{d}
+      \arrow{dr}[above right]{f}
+      &
+      {}
+      \\
+      \Symm^d(V)
+      \arrow[dashed]{r}[below]{g}
+      &
+      W
+    \end{tikzcd}
+  \]
+  commute.
+  A linear map~$\Symm^d(V) \to W$ is in this sense the same as a symmetric bilinear map~$V^{\times d} \to W$.
+  
+  If~$(v_i)_{i \in I}$ is a basis of~$V$ such that~$(I, \leq)$ is a linearly ordered set then the ordered monomials
+  \[
+    v_{i_1} \dotsm v_{i_d}
+    \qquad
+    \text{with~$i_1 \leq \dotsb \leq i_d$}
+  \]
+  form a basis of the symmetric power~$\Symm^d(V)$.
+  If~$V$ is of finite dimension~$n$ then it follows that
+  \[
+    \dim \Symm^d(V)
+    =
+    \binom{n+d-1}{d}  \,.
+  \]
+\end{recall}
+
+
+\begin{recall}[Symmetric algebra]
+  Let~$V$ be a vector space.
+  Just as the tensor algebra~$\Tensor(V)$ is the free~{\algebra{$\kf$}} on~$V$ and can be constructed by using the tensor powers~$V^{\tensor d}$ we can use the symmetric powers~$\Symm^d(V)$ to construct the \defemph{symmetric algebra}\index{symmetric algebra}~\gls*{symmetric algebra}.
+  The argumentation is analogous to that for the tensor algebra, so we will skip some of the details this time.
+  
+  \begin{description}
+    \item[Construction:]
+      For all~$v_1, \dotsc, v_d \in V$ we denote the corresponding simple symmetric tensor in~$\Symm^d(V)$ by~$v_1 \dotsm v_d$.
+      We can define on~$\Symm(V) \defined \bigoplus_{d \geq 0} \Symm^d(V)$ a multiplication such that
+      \[
+        (v_1 \dotsm v_p) \cdot (v_{p+1} \dotsm v_{p+q})
+        =
+        v_1 \dotsm v_p v_{p+1} \dotsm v_{p+q}
+      \]
+      for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^p(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$.
+      By identifying~$\Symm^0(V)$ with the ground field~$\kf$ this makes~$\Symm(V)$ into an associative~{\algebra{$\kf$}}.
+      This is already a commutative~{\algebra{$\kf$}} because
+      \begin{align*}
+        (v_1 \dotsm v_p) \cdot (v_{p+1} \dotsm v_{p+q})
+        &=
+        v_1 \dotsm v_p v_{p+1} \dotsm v_{p+q}
+        \\
+        &=
+        v_{p+1} \dotsm v_{p+q} v_1 \dotsm v_p
+        \\
+        &=
+        (v_{p+1} \dotsm v_{p+q}) \cdot (v_1 \dotsm v_p)
+      \end{align*}
+      for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^p(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$. 
+      We can identify~$V = \Symm^1(V)$ with the corresponding direct summand of~$\Symm(V)$, and more generally every symmetric power~$\Symm^d(V)$ with the corresponding direct summand of~$\Symm(V)$.
+      The algebra~$\Symm(V)$ thus consists of linear combinations of simple symmetric tensors.
+      
+    \item[Universal property:]
+      The symmetric algebra~$\Symm(V)$ is the \enquote{free commutative~{\algebra{$\kf$}}} on the vector space~$V$ in the following sense:
+      If~$i \colon V \to \Symm(V)$ is the inclusion then there exists for every~{\algebra{$\kf$}}~$A$ and every linear map~$f \colon V \to A$ a unique algebra homomorphism~$f^+ \colon \Symm(V) \to A$ that makes the triangular diagram
+      \[
+        \begin{tikzcd}
+          V
+          \arrow{r}[above]{f}
+          \arrow{d}[left]{i}
+          &
+          A
+          \\
+          \Symm(V)
+          \arrow{ur}[below right]{f^+}
+          &
+          {}
+        \end{tikzcd}
+      \]
+      commute.
+      The algebra homomorphism~$f^+$ is given by
+      \[
+        f^+(v_1 \dotsm v_d)
+        =
+        f(v_1) \dotsm f(v_d)
+      \]
+      for all~$d \geq 0$ and simple symmetric tensors~$v_1, \dotsc, v_d \in V$.
+      This construction results in a {\onetoone} correspondence
+      \begin{align*}
+        \{ \text{\linear{$\kf$} maps~$V \to A$} \}
+        &\longonetoone
+        \{ \text{algebra homomorphisms~$\Symm(V) \to A$} \} \,,
+        \\
+        f
+        &\longmapsto
+        f^+ \,,
+        \\
+        \restrict{F}{V}
+        &\longmapsfrom
+        F \,.
+      \end{align*}
+      
+      It follows that a relations between elements of~$V$ holds in the symmetric algebra~$\Symm(V)$ if and only if it holds in every commutative algebra that contains~$V$.
+      
+    \item[Uniqueness]
+      If~$S$ is a commutative~{\algebra{$\kf$}} and~$j \colon V \to S$ is a~{\linear{$\kf$}} such that~$(S, j)$ satisfies the same universal property as the symmetric algebra~$(\Symm(V), i)$  then there exists unique algebra homomorphisms~$f \colon \Symm(V) \to S$ and~$g \colon S \to \Symm(V)$ that make the triangular diagrams
+      \[
+        \begin{tikzcd}[column sep = small]
+          {}
+          &
+          V
+          \arrow{dl}[above left]{i}
+          \arrow{dr}[above right]{j}
+          &
+          {}
+          \\
+          \Symm(V)
+          \arrow[dashed]{rr}[below]{f}
+          &
+          {}
+          &
+          S
+        \end{tikzcd}
+        \qquad\text{and}\qquad
+        \begin{tikzcd}[column sep = small]
+          {}
+          &
+          V
+          \arrow{dl}[above left]{j}
+          \arrow{dr}[above right]{i}
+          &
+          {}
+          \\
+          S
+          \arrow[dashed]{rr}[below]{g}
+          &
+          {}
+          &
+          \Symm(V)
+        \end{tikzcd}
+      \]
+      commute.
+      Then~$f$ and~$g$ are mutually inverse algebra isomorphisms.
+      
+    \item[Functoriality]
+      For every linear map~$f \colon V \to W$ there exists a unique induced algebra homomorphism~$f_* \colon \Symm(V) \to \Symm(W)$ that makes the square diagram
+      \[
+        \begin{tikzcd}
+          V
+          \arrow{r}[above]{f}
+          \arrow{d}
+          &
+          W
+          \arrow{d}
+          \\
+          \Symm(V)
+          \arrow[dashed]{r}[below]{f_*}
+          &
+          \Symm(W)
+        \end{tikzcd}
+      \]
+      commmute.
+      It holds that~$(\id_V)_* = \id_{\Symm(V)}$ and it holds for all composable~{\linear{$\kf$}} maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(g \circ f)_* = g_* \circ f_*$.
+      This construction promotes the assignment~$V \mapsto \Symm(V)$ to a (covariant) functor~$\Symm \colon \cVect{\kf} \to \cCAlg{\kf}$, where~$\cCAlg{\kf}$ denotes the category of commutative~{\algebras{$\kf$}}.
+      
+    \item[Description via a basis]
+      If~$(v_i)_{i \in I}$ is a basis of$~V$ where~$(I, \leq)$ is a linearly ordered set then the symmetric power~$\Symm^d(V)$ inherits a basis that is given by all simple symmetric tensors
+      \[
+        v_{i_1} \dotsm v_{i_d}
+        \qquad
+        \text{where~$i_1 \leq \dotsb \leq i_d$} \,.
+      \]
+      It follows that the symmetric algebra~$\Symm(V)$ has as a basis all simple symmetric tensors~$v_{i_1} \dotsm v_{i_d}$ with~$d \geq 0$ and~$i_1, \dotsc, i_d \in I$ with~$i_1 \leq \dotsb \leq i_d$.
+      This basis may also be written as
+      \[
+        v_{i_1}^{\nu_1} \dotsm v_{i_r}^{\nu_r}
+      \]
+      with~$r \geq 0$,~$i_1, \dotsc, i_r \in I$ such that~$i_1 < \dotsb < i_r$ and~$\nu_1, \dotsc, \nu_r \geq 0$ (which is connected to the above description via~$d = \nu_1 + \dotsb + \nu_r$).
+      
+      We see from this description that the symmetric algebra~$\Symm(V)$ is isomorphic to the commutative polynomial ring~$\kf[X_i \suchthat i \in I]$, which is the free commutative~{\algebra{$\kf$}} on the generators~$i \in I$
+      This can again be explained by considering the commutative diagram of forgetful functors
+      \[
+        \begin{tikzcd}
+          \cVect{\kf}
+          \arrow{d}
+          &
+          \cCAlg{\kf}
+          \arrow{l}
+          \arrow{dl}
+          \\
+          \cSet
+          &
+          {}
+        \end{tikzcd}
+      \]
+      from which we see that the resulting diagram of left adjoints
+      \[
+        \begin{tikzcd}
+          \cVect{\kf}
+          \arrow{r}[above]{\Symm}
+          &
+          \cCAlg{\kf}
+          \\
+          \cSet
+          \arrow{u}[left]{F}
+          \arrow{ur}[below right]{\kf[X_i \suchthat i \in (-)]}
+          &
+          {}
+        \end{tikzcd}
+      \]
+      commutes up to natural isomorphism.
+      
+    \item[Contruction via the tensor algbra]
+      The symmetric algebra~$\Symm(V)$ can also be constructed as a quotient of the tensor algebra~$\Tensor(V)$.
+      We give multiple ways how to see and think about this.
+      Let in the following~$i \colon V \to \Tensor(V)$ and~$j \colon V \to \Symm(V)$ denote the 
+      \begin{itemize}
+        \item
+          Let~$I$ be the commutator ideal of~$\Tensor(V)$, i.e.\ the two-sided ideal generated by all commutators
+          \[
+            x \tensor y - y \tensor x
+          \]
+          with~$x, y \in \Tensor(V)$.
+          Let~$\pi \colon \Tensor(V) \to \Tensor(V)/I$ be the canonical projection.
+          Then the quotient~$\Tensor(V)/I$ is commutative, and hence there exists by the universal property of the symmetric algebra a unique algebra homomorphism~$f \colon \Symm(V) \to \Tensor/I$ that makes the diagram
+          \[
+            \begin{tikzcd}
+              {}
+              &
+              V
+              \arrow[bend right]{ddl}[above left]{i}
+              \arrow[bend left]{dr}[above right]{j}
+              &
+              {}
+              \\
+              {}
+              &
+              {}
+              &
+              \Tensor(V)
+              \arrow{d}[right]{\pi}
+              \\
+              \Symm(V)
+              \arrow[dashed]{rr}[above]{f}
+              &
+              {}
+              &
+              \Tensor(V)/I
+            \end{tikzcd}
+          \]
+          commute.
+          The homomorphism~$f$ is on the genareting set~$V$ of~$\Symm(V)$ given by~$f(v) = \class{v}$.
+          On the other hand we get from the universal property of the tensor algebra~$\Tensor(V)$ a unique algebra homomorphism~$\tilde{g} \colon \Tensor(V) \to \Symm(V)$ that makes the diagram
+          \[
+            \begin{tikzcd}
+              {}
+              &
+              V
+              \arrow[bend right]{dl}[above left]{j}
+              \arrow[bend left]{ddr}[above right]{i}
+              &
+              {}
+              \\
+              \Tensor(V)
+              \arrow[bend left, dashed]{drr}[above right]{\tilde{g}}
+              \arrow{d}[left]{\pi}
+              &
+              {}
+              &
+              {}
+              \\
+              \Tensor(V)/I
+              &
+              {}
+              &
+              \Symm(V)
+            \end{tikzcd}
+          \]
+          commute.
+          The commutator~$I$ is contained in the kernel of~$\tilde{g}$ because the algebra~$\Symm(V)$ is commutative.
+          Hence there exists a unique algebra homomorphism~$g \colon \Tensor(V)/I \to \Symm(V)$ that makes the diagram
+          \[
+            \begin{tikzcd}
+              {}
+              &
+              V
+              \arrow[bend right]{dl}[above left]{j}
+              \arrow[bend left]{ddr}[above right]{i}
+              &
+              {}
+              \\
+              \Tensor(V)
+              \arrow[bend left]{drr}[above right]{\tilde{g}}
+              \arrow{d}[left]{\pi}
+              &
+              {}
+              &
+              {}
+              \\
+              \Tensor(V)/I
+              \arrow[dashed]{rr}[below]{g}
+              &
+              {}
+              &
+              \Symm(V)
+            \end{tikzcd}
+          \]
+          commute.
+          The algebra homomorphism~$g$ is given on the generators~$\class{v}$ with~$v \in V$ of~$\tensor(V)/I$ given by~$g(\class{v}) = v$.
+          
+          It follows from the explicit descriptions of~$f$ and~$g$ on generators that their are mutually inverse algebra isomorphisms.
+          Thus~$\Symm(V) \cong \Tensor(V)/I$ via the isomorphism~$f$.
+          
+          Observe also that the commutator ideal~$I$ is already generated by the commutators~$v \tensor w - w \tensor v$ with~$v, w \in V$.
+          Indeed, the ideal~$J$ generated by these elements is contained in~$I$.
+          But on the other hand the quotient~$\Tensor(V)/J$ is already commutative because it is generated by the residue classes~$\class{v}$ with~$v \in V$, all of which commute with each other.
+          The commutator ideal~$I$ is therefore contained in the kernel of the canonical projection~$\Tensor(V) \to \Tensor(V)/J$, i.e.\ it is containted in~$J$.
+          
+        \item
+          The above argumentatio is not surprising if we remember that~$\Tensor(V)$ is the universal~{\algebra{$\kf$}} on~$V$ and that quotiening out the commutator ideal is the universal way of making an algebra commutative.
+          The quotient~$\Tensor(V)/I$ therefore ought to be the universal commutative~{\algebra{$\kf$}}.
+          
+          This motivation can be formalized by observing that the diagram of forgetful functors
+          \[
+            \begin{tikzcd}
+              \cAlg{\kf}
+              \arrow{d}
+              &
+              \cCAlg{\kf}
+              \arrow{l}
+              \arrow{dl}
+              \\
+              \cVect{\kf}
+              &
+              {}
+            \end{tikzcd}
+          \]
+          commutes.
+          It follows that the resulting diagram of left adjoints
+          \[
+            \begin{tikzcd}
+              \cAlg{\kf}
+              \arrow{r}[above]{C}
+              &
+              \cCAlg{\kf}
+              \\
+              \cVect{\kf}
+              \arrow{u}[left]{\Tensor}
+              \arrow{ur}[below right]{\Symm}
+              &
+              {}
+            \end{tikzcd}
+          \]
+          commutes up to natural isomorphism.
+          The adjoint~$C$ of the forgetful functor~$\cCAlg{\kf} \to \cAlg{\kf}$ is given by quotiening out the commutator ideal, and hence~$\Symm(V) \cong \Tensor(V)/I$ as before.
+        \item
+          The above argumentation be also expressed by observing that for every commutative~{\algebra{$\kf$}}~$A$ there exist natural bijections
+          \begin{align*}
+            {}&
+            \{ \text{algebra homomorphisms~$\Symm(V) \to A$} \}
+            \\
+            \cong{}&
+            \{ \text{{\linear{$\kf$}} maps~$V \to A$} \}
+            \\
+            \cong{}&
+            \{ \text{algebra homomorphisms~$\Tensor(V) \to A$} \}
+            \\
+            \cong{}&
+            \{ \text{algebra homomorphisms~$\Tensor(V)/I \to A$} \} \,,
+          \end{align*}
+          where the last bijection uses that the algebra~$A$ is commutative and therefore every algebra homomorphism~$\Tensor(V) \to A$ contains the commutator ideal~$I$ in its kernel.
+          It now follows from Yoneda’s~lemma that~$\Symm(V) \cong \Tensor(V)/I$.
+      \end{itemize}
+  \end{description}
+\end{recall}
+
+
+\begin{remark}  % TODO: Fix glossary and bigwedge
+  One can similarly construct the \emph{exterior algebra}~$\gls*{exterior algebra} = \bigoplus_{d \geq 0} \Exterior^d(V)$ of a vector space~$V$ by replacing the use of the tensor powers~$V^{\tensor d}$ or symmetric powers~$\Symm^d(V)$ by the exterior powers~$\Exterior^d(V)$.
+  For any other~{\algebra{$\kf$}}~$A$ an algebra homomorphism~$F \colon \Exterior(V) \to A$ is then the same as a~{\linear{$\kf$}}~$f \colon V \to A$ with~$f(v)^2 = 0$ for every~$v \in V$.
+% TODO: Do we have to worry about char(k) = 2?
+  It thus follows from a similar argumentation as for the symmetric algebra that~$\Exterior(V) \cong \Tensor(V)/I$ for the two-sided ideal~$I$ in~$\Tensor(V)$ generated by all~$v \tensor v$ with~$v \in V$.
+  
+  
+  If~$V$ is finite dimensional then the exterior algebra~$\Exterior(V)$ is again finite dimensional, namely with~$\dim \Exterior(V) = 2^{\dim V}$.
+  This is different to both the tensor algebra~$\Tensor(V)$ and symmetric algebra~$\Symm(V)$, which are infinite dimensional whenever~$V \neq 0$.
+\end{remark}
+
+
+
+
