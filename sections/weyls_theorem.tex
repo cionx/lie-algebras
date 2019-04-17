@@ -1,158 +1,638 @@
-\section{Weyl’s Theorem on complete reducibility}
+\section{Weyl’s Theorem on Complete Reducibility}
 
 
-\begin{lemma}\label{lem: Casimirs endomorphism for Weyl}
- Let $\g$ be an $n$-dimensional semisimple Lie algebra, $V$ a finite dimensional vector space and $\rho \colon \g \to \gl(V)$ a representation of $\g$.
- \begin{enumerate}
-  \item
-   The map $\beta \colon \g \times \g \to k$ with $\beta(x,y) \coloneqq \tr(\rho(x)\rho(y))$ for all $x,y \in \g$ is an associative and symmetric bilinear form.
-  \item
-   If $\rho$ is a faithful representation then $\beta$ is non-degenerate.
-  \item
-   Suppose $\rho$ is faithful. Let $x_1, \dotsc, x_n$ ba a basis of $\g$ and $x^1, \dotsc, x^n$ the dual basis with respect to $\beta$. Then the map
-   \[
-    C_\beta^V \colon V \to V,
-    \quad
-    v \mapsto C_\beta \cdot v = \sum_{i=1}^n x_i.x^i.v = \sum_{i=1}^n \rho(x_i)\rho(x^i)(v)
-   \]
-   is a homomorphism of representations with $\tr(C_\beta^V) = \dim_k \g$.
- \end{enumerate}
-\end{lemma}
-\begin{proof}
- \begin{enumerate}[leftmargin=*]
-  \item
-   This was already remarked in Remark~\ref{rem: associative bilinear form of a representation}.
-  \item
-   Because $\rad \beta \subideal \g$ is and $\rho$ is an isomorphism onto its image it follows that $\rho(\rad \beta) \subideal \rho(\g)$ is an ideal with $\tr(xy) = 0$ for all $x,y \in \rho(\g)$. By Cartan’s criterion for linear Lie algebras (see Lemma~\ref{lem: Cartans criterion for linear Lie algebra}) the ideal $\rho(\rad \beta)$ is solvable. Because $\rho(\g)$ is semisimple it follows that $\rho(\rad \beta) = 0$ and hence $\rad \beta = 0$ because $\rho$ is faithful.
-  \item
-   That $C_\beta^V$ is a homomorphism of representations was follows from Corollary~\ref{cor: Casimir homomorphism of a representation} and notice that
-   \[
-    \tr(C_\beta^V)
-    = \tr\left( \sum_{i=1}^n \rho(x_i)\rho(x^i) \right)
-    = \sum_{i=1}^n \tr(\rho(x_i)\rho(x^i))
-    = \sum_{i=1}^n \beta(x_i, x^i)
-    = n
-    = \dim \g.
-    \qedhere
-   \]
- \end{enumerate}
-\end{proof}
+
+\subsection{The Casimir Element}
 
 
-\begin{definition}\label{defi: casimir endomorphism of a faithful representation}
- Let $V$ be a faithful representation of a finite dimensional semisimple Lie algebra $\g$ and $\beta \colon \g \times \g \to k$ the associative, symmetric and non-degenerate bilinear form defined by $\beta(x,y) = \tr(\rho(x)\rho(y))$ for all $x,y \in \g$. Then define
- \[
-  C^V_\g \colon V \to V, \quad v \mapsto C_\beta \cdot v.
- \]
+\begin{convention}
+  For this subsection let~$\glie$ be a finite dimensional Lie~algebra and let~$\beta$ be a non-degenerate associative symmetric bilinear form on~$\glie$.
+\end{convention}
+
+
+\begin{definition}
+  \label{definition of casimir}
+  Let $\varphi \colon \glie \tensor \glie^* \to \End_{\kf}(\glie)$ and~$\psi \colon \glie \to \glie^*$ be the isomorphisms of vector spaces given by
+  \[
+    \varphi(x \tensor \phi)(y) = \phi(y) x
+    \qquad\text{and}\qquad
+    \psi(x) = \beta(x, -)
+  \]  
+  for all~$x,y \in \glie$ and~$\phi \in \glie^*$.
+  Then the image of~$1 \in \kf$ under the composition
+  \begin{equation}
+    \label{casimir without coordinates}
+    \kf
+    \xlongto{\lambda \mapsto \lambda \id_{\glie}}
+    \End_{\kf}(\glie)
+    \xlongto{\varphi^{-1}}
+    \glie \tensor \glie^*
+    \xlongto{\id_{\glie} \tensor \psi^{-1}}
+    \glie \tensor \glie
+    \xlongto{\text{multiplication}}
+    \Univ(\glie)
+  \end{equation}
+  is the \defemph{Casimir~element of~$\beta$}\index{Casimir!element}, and it is denoted by~\gls*{bilinear casimir}.
 \end{definition}
 
 
-\begin{remark}
- Notice for the situation of Definition~\ref{defi: casimir endomorphism of a faithful representation} that if $x_1, \dotsc, x_n$ is a basis of $\g$ and $x^1, \dotsc, x^n$ is the dual basis with respect to $\beta$ then $C^V_\g$ can also be expressed as
- \[
-  C^V_\g = \sum_{i=1}^n \rho(x_i) \rho(x^i).
- \]
-\end{remark}
-
-
-\begin{remark}
- Definition~\ref{defi: casimir endomorphism of a faithful representation} was not given in the lecture, but helps to bake the following easier to read.
-\end{remark}
-
-
-\begin{lemma}\label{lem: decomposition of representations of semisimple Lie algebras}
- Let $g$ be a finite dimensional semisimple $k$-Lie algebra and let $V$ be a finite dimensional representation of $\g$. Then $V = \g V \oplus V^\g$ for the subrepresentations
- \[
-  \g V \coloneqq \{x.v \mid x \in \g, v \in V\}
-  \quad\text{and}\quad
-  V^\g \coloneqq \{v \in V \mid \text{$x.v = 0$ for every $x \in \g$}\}
- \]
+\begin{lemma}
+  The Casimir~element~$C_\beta$ in central in the universal enveloping algebra~$\Univ(\glie)$.
 \end{lemma}
+
+
 \begin{proof}
- If $V = U_1 \oplus \dotsb \oplus U_n$ is a decomposition into subrepresentations of $\g$ then $\g V = \g U_1 \oplus \dotsb \oplus \g U_n$ and $V^\g = U_1^\g \oplus \dotsb \oplus U_n^\g$. Hence it sufficies to show the statement for indecomposable representations. Hence suppose that $V$ is indecomposable. It can also be assumed that $V \neq 0$.
+  Let~$\varphi$ and~$\psi$ be as in \cref{definition of casimir}.
+  
+  It sufficies to show~$C_\beta$ commutes with every~$x \in \glie$ because~$\Univ(\glie)$ is generated by~$\glie$ as a~\algebra{$\kf$}.
+  We thus need to show that~$[x, C_\beta] = 0$ for every~$x \in \glie$ (where the commutator bracket~$[-,-]$ is taken in~$\Univ(\glie)$).
+  We let~$\glie$ act on~$\Univ(\glie)$ via~$x.a = [x,a]$ for all~$x \in \glie$ and~$a \in A$ (note that this is just the restriction of the adjoint action of~$\Univ(\glie)$ to an action of~$\glie$).
+  This allows us to observe that every map in~\eqref{casimir without coordinates} is a homomorphism of~{\representations{$\glie$}}.
+  \begin{itemize}
+    \item
+      The first map~$\kf \to \End_{\kf}(\glie)$ is a homomorphism of representations because~$\glie$ acts trivially on both~$\kf$ and on the {\onedimensional} linear subspace~$\kf \id_{\glie}$ of~$\End_{\kf}(\glie)$ (since~$\id_{\glie} \in \End_{\glie}(\glie) = \End_{\kf}(\glie)^{\glie}$).
+    \item
+      We known from \cref{list of homomorphism of representations} that~$\varphi$ is an isomorphism of representations.
+    \item
+      The map~$\psi \colon \glie \to \glie^*$ is an isomorphism of representations by \cref{associative non-degenerate bilinear forms induce isomorphism to the dual}.
+      It follows from \cref{list of homomorphism of representations} that~$\id_{\glie} \tensor \psi^{-1}$ is again a homomorphism of representations.
+    \item
+      That the multiplication map~$\mu \colon \glie \tensor \glie \to \Univ(\glie)$ given by~$x \tensor y \mapsto xy$ is a homomorphism of representations can be seen from direct calculation, as we have for all~$x, y, z \in \glie$ that
+      \begin{align*}
+        \mu(x.(y \tensor z))
+        &=
+        \mu((x.y) \tensor z + y \tensor (x.z))
+        \\
+        &=
+        (x.y)z + y(x.z)
+        \\
+        &=
+        [x,y]z + y[x,z]
+        \\
+        &=
+        xyz - yxz + yxz - yzx
+        \\
+        &=
+        xyz - yzx
+        \\
+        &= [x,yz]
+        \\
+        &= x.(yz)
+        \\
+        &= x.\mu(y \tensor z) \,.
+      \end{align*}
+  \end{itemize}
+  
+  It now follows that the element~$1 \in \kf$ on which~$\glie$ acts trivially is mapped to the element~$C_\beta \in \Univ(\glie)$ on which~$\glie$ then also has to act trivially.
+  By choice of the action of~$\glie$ on~$\Univ(\glie)$ this means that
+  \[
+    0
+    =
+    x.C_\beta
+    =
+    [x, C_\beta]
+  \]
+  for every~$x \in \glie$, as desired.
+\end{proof}
+
+
+\begin{corollary}
+  \label{casimir homomorphism of a representation}
+  Let~$V$ be any~{\module{$\Univ(\glie)$}} (i.e.~{\representation{$\glie$}}).
+  Then the map
+  \[
+    C_\beta^V
+    \colon
+    V
+    \to
+    V \,,
+    \quad
+    v
+    \mapsto
+    C_\beta \cdot v
+  \]
+  is an~{\module{$\Univ(\glie)$}} endomorphism (and equivalently an endomorphism of~$V$ as a~{\representation{$\glie$}}).
+\end{corollary}
+
+
+\begin{proof}
+  This holds because~$C_\beta$ is central in~$\Univ(\glie)$.
+\end{proof}
+
+
+\begin{lemma}[Casimir in coordinates]
+  \label{casimir in coordinates}
+  Let~$x_1, \dotsc, x_n$ be a basis of~$\glie$ and let~$x^1, \dotsc, x^n$ be the dual basis of~$\glie$ with respect to~$\beta$, i.e.\ $\beta(x_i, x^{\spacing j}) = \delta_{ij}$ for all $i,j = 1, \dotsc, n$.
+  Then the Casimir~element~$C_\beta$ is given by
+  \[
+    C_\beta = \sum_{i=1}^n x_i x^i  \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  Let~$\psi$ be as in \cref{definition of casimir}.
+  If~$x_1^*, \dotsc, x_n^*$ denotes the dual basis of~$\glie^*$ then~$x^i = \psi^{-1}(x_i^*)$ for every~$i = 1, \dotsc, n$.
+  With this information we can follow the element~$1 \in \kf$ through its travel in~\eqref{casimir without coordinates} to see that
+  \[
+    1
+    \longmapsto
+    \id_{\glie}
+    \longmapsto
+    \sum_{i=1}^n x_i \tensor x_i^*
+    \longmapsto
+    \sum_{i=1}^n x_i \tensor x^i
+    \longmapsto
+    \sum_{i=1}^n x_i x^i  \,.
+  \]
+  The last term of this chain of mappings is by definition the Casimir~element~$C_\beta$.
+\end{proof}
+
+
+\begin{example}
+  We have seen in \cref{killing form of sln} that the Killing~form of~$\sllie_2(\kf)$ is given by
+  \[
+    \kappa(x,y)
+    =
+    4\tr(x,y)
+  \]
+  for all~$x, y \in \glie$.
+  On the standard basis
+  \[
+    e
+    \defined
+    \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix} \,,
+    \qquad
+    h
+    \defined
+    \begin{pmatrix*}[r]
+      1 &  0  \\
+      0 & -1
+    \end{pmatrix*}  \,,
+    \qquad
+    f
+    \defined
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix}
+  \]
+  of~$\sllie_2(\kf)$ the Killing~form~$\kappa$ is therefore represented by the matrix
+  \[
+    \begin{pmatrix}
+      0
+      &
+      0
+      &
+      4
+      \\
+      0
+      &
+      8
+      & 
+      0
+      \\
+      4
+      &
+      0
+      &
+      0
+    \end{pmatrix} \,.
+  \]
+  The dual basis of the standard basis~$e$,~$h$,~$f$ is therefore given by
+  \[
+    e^*
+    =
+    \frac{1}{4} \spacing f \,,
+    \qquad
+    h^*
+    =
+    \frac{1}{8} h \,,
+    \qquad
+    f^*
+    =
+    \frac{1}{4} e \,.
+  \]
+  The Casimir~element~$C_\kappa$ is therefore given by
+  \[
+    C_\kappa
+    =
+    e e^* + h h^* + f {} f^*
+    =
+    \frac{1}{4} ef + \frac{1}{8} h^2 + \frac{1}{4} \spacing fe \,.
+  \]
+  By writing~$fe = ef + [\spacing f,e] = ef - h$ we may also write~$C_\kappa$ as
+  \[
+    C_\kappa
+    =
+    \frac{1}{4} ef + \frac{1}{8} h^2 + \frac{1}{4} (ef - h)
+    =
+    \frac{1}{2} ef + \frac{1}{8} h^2 - \frac{1}{4} h
+  \]
+  but we could also use the relation~$ef = fe + [e,f] = fe + h$ to write~$C_\beta$ as
+  \[
+    C_\kappa
+    =
+    \frac{1}{4} ({\spacing}fe + h) + \frac{1}{8} h^2 + \frac{1}{4} \spacing fe
+    =
+    \frac{1}{8} h^2 + \frac{1}{4} h + \frac{1}{2} \spacing fe  \,.
+  \]
+\end{example}
+
+
+% TODO: (How) does the Casimir~element change if we use (\spacing g^* \tensor g) instead of (\spacing g \tensor g^*)?
+
+
+\begin{remark}
+  That the Casimir~element~$C_\beta$ is central in~$\glie$ can also be shown with the above coordinate description of~$C_\beta$:
+  
+  Let~$x_1, \dotsc, x_n \in \glie$ be basis of~$\glie$ and let~$x \in \glie$.
+  We need to show that~$[x, C_\beta] = 0$.
+  We can for every~$i \in I$ write the commutators~$[x, x_i]$ and~$[x, x^i]$ as linear combinations
+  \[
+    [x, x_i]
+    =
+    \sum_{j=1}^n a_{ij} x_j
+    \qquad\text{and}\qquad
+    [x, x^i]
+    =
+    \sum_{j=1}^n b_{ij} x^{\spacing j} \,.
+  \]
+  Then on the one hand
+  \[
+    \beta([x, x_i], x^{\spacing j})
+    =
+    \sum_{k=1}^n a_{ik} \beta(x_k, x^{\spacing j})
+    =
+    a_{ij}
+  \]
+  but on the other hand also
+  \[
+    \beta([x, x_i], x^{\spacing j})
+    =
+    -\beta([x_i, x], x^{\spacing j})
+    =
+    -\beta(x_i, [x, x^{\spacing j}])
+    =
+    -\sum_{k=1}^n b_{jk} \beta(x_i, x^k)
+    =
+    -b_{ji}
+  \]
+  for all~$i, j = 1, \dotsc, n$.
+  Hence~$a_{ij} = -b_{ji}$ for all~$i, j = 1, \dotsc, n$.
+  It follows that
+  \begin{align*}
+    x C_\beta - C_\beta x
+    &=
+    \sum_{i=1}^n x x_i x^i - \sum_{i=1}^n x_i x^i x
+    \\
+    &=
+      \sum_{i=1}^n x x_i x^i
+    - \sum_{i=1}^n x_i x x^i
+    + \sum_{i=1}^n x_i x x^i
+    - \sum_{i=1}^n x_i x^i x
+    \\
+    &=
+    \sum_{i=1}^n [x, x_i] x^i - \sum_{i=1}^n x_i [x^i, x]
+    \\
+    &=
+    \sum_{i,j=1}^n a_{ij} x_j x^i + \sum_{i,j=1}^n b_{ij} x_i x^{\spacing j}
+    \\
+    &=
+    \sum_{i,j=1}^n a_{ij} x_j x^i - \sum_{i,j=1}^n a_{ij} x_j x^i
+    \\
+    &=
+    0 \,.
+  \end{align*}
+\end{remark}
+
+
+
+
+
+\subsection{Weyl’s Theorem}
+
+
+\begin{lemma}
+  \label{construction of casimir endomorphism}
+  Let~$\glie$ be Lie~algebra,~$V$ a finite dimensional vector space and~$\rho \colon \glie \to \gllie(V)$ a representation of~$\glie$.
+  \begin{enumerate}
+    \item
+      The map~$\beta \colon \glie \times \glie \to \kf$ given by~$\beta(x,y) \defined \tr(\rho(x)\rho(y))$ for all~$x,y \in \glie$ is an associative and symmetric bilinear form on~$\glie$.
+  \end{enumerate}
+  Suppose now that the representation~$(V,\rho)$ is faithful and that~$\glie$ is~{\dimensional{$n$}} and semisimple.
+  \begin{enumerate}[resume]
+    \item
+      If the representation~$V$ is faithful then~$\beta$ is non-degenerate.
+    \item
+      The homomorphism of representations~$C^V \colon V \to V$,~$v \mapsto C_\beta \cdot v$ has trace~$\tr(C^V) = \dim_{\kf} \glie$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      See \cref{associative bilinear form of a representation}.
+    \item
+      The radical of~$\beta$ is an ideal in~$\glie$ and~$\rho$ is an isomorphism onto its image.
+      It follows that~$\rho(\rad \beta)$ is an ideal in~$\rho(\glie)$ with~$\tr(xy) = 0$ for all~$x,y \in \rho(\rad \beta)$.
+      By Cartan’s criterion for linear Lie~algebras (\cref{cartans criterion for linear lie algebra}) the ideal~$\rho(\rad \beta)$ is solvable.
+      The Lie~algebra~$\rho(\glie) \cong \glie$ is semisimple whence~$\rho(\rad \beta) = 0$.
+      Then~$\rad \beta = 0$ because~$\rho$ is injective.
+    \item
+      \Cref{casimir homomorphism of a representation} shows that~$C^V$ is a homomorphism of representations.
+      If~$x_1, \dotsc, x_n$ is a basis of~$\glie$ and~$x^1, \dotsc, x^n$ is the dual basis with respect to~$\beta$ then~$C_\beta = \sum_{i=1}^n x_i x^i$ by \cref{casimir in coordinates} and thus
+      \[
+        \tr(C^V)
+        =
+        \tr\left( \sum_{i=1}^n \rho(x_i)\rho(x^i) \right)
+        =
+        \sum_{i=1}^n \tr(\rho(x_i)\rho(x^i))
+        =
+        \sum_{i=1}^n \beta(x_i, x^i)
+        =
+        n
+      \]
+      as claimed.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+  \label{casimir endomorphism of a faithful representation}
+  Let~$V$ be a faithful representation of a finite dimensional semisimple Lie~algebra~$\glie$ and let~$\beta \colon \glie \times \glie \to \kf$ the associative, symmetric, non-degenerate bilinear form defined by~$\beta(x,y) = \tr(\rho(x)\rho(y))$ for all~$x,y \in \glie$.
+  Then the endomorphism~$C^V$ of~$V$ given by
+  \[
+    C^V
+    \colon
+    V
+    \to
+    V \,,
+    \quad
+    v
+    \mapsto
+    C_\beta \cdot v
+  \]
+  is the \defemph{Casimir endomorphism}\index{Casimir!endomorphism} of~$V$.
+\end{definition}
  
- By replacing $\g$ with $\rho(\g)$ it can be assumed w.l.o.g.\ that $V$ is a faithful representation of $\g$. Notice that $\rho(\g)$ is also semisimple by Corollary~\ref{cor: ideals and quotients of semisimple again semisimple}.
- 
- Now let $C \coloneqq C^V_\g \colon V \to V$ be the endomorphism of $V$ defined as in Lemma~\ref{lem: Casimirs endomorphism for Weyl}. Because $C$ is a homomorphism of representations of $\g$ and $V$ is finite dimensional it follows that $V$ decomposes into the generalized eigenspaces of $C$. Because $V$ is indecomposable by assumption it follows that $V$ is the generalized eigenspace of $C$ with respect to some $\lambda \in k$ (here it is used that $V \neq 0$ by assumption). Notice that by Lemma~\ref{lem: Casimirs endomorphism for Weyl}
- \[
-  \dim_k \g = \tr(C) = (\dim_k V) \cdot \lambda.
- \]
- 
- If $\lambda = 0$ then it follows that $\g = 0$ (this can also be seen directly because $\g$ acts faithful by assumption). Then $V = V^\g$ and the statement holds.
- 
- Suppose otherwise that $\lambda \neq 0$. Then $\det C = \lambda^{\dim_k V} \neq 0$, hence $C$ is actully an automorphism of $V$, hence $C(V) = V$. As $C$ is given by multiplication with a Casimir element $C_\beta \in \Ue(\g)$ it follows that
- \[
-  \g V
-  = \{x.v \mid x \in \g, v \in V\}
-  = \{x \cdot v \mid x \in \Ue(\g) \mid V\}
-  \supseteq \{ C_\beta \cdot v \mid v \in V\}
-  = C(V)
-  = V,
- \]
- hence $\g V = V$.
+
+\begin{proposition}[Canonical decomposition]
+  \label{decomposition of representations of semisimple lie algebras}
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra and let~$V$ be a finite dimensional representation of~$\glie$.
+  Then~$V = \glie V \oplus V^{\glie}$.
+\end{proposition}
+
+
+\begin{proof}
+  There exists a decomposition~$V = U_1 \oplus \dotsb U_n$ into indecomposable subrepresentations.
+  We have
+  \begin{align*}
+    \glie V
+    &=
+    \glie U_1 \oplus \dotsb \oplus \glie U_n
+  \shortintertext{and}
+    V^{\glie}
+    &=
+    U_1^{\glie} \oplus \dotsb \oplus U_n^{\glie}
+  \end{align*}
+  It therefore sufficies to consider the case that~$V$ is indecomposable.
+  
+  If~$\rho \colon \glie \to \gllie(V)$ is the Lie~algebra homomorphism that corresponds to the action of~$\glie$ on~$V$ then we may replace~$\glie$ with~$\rho(\glie)$ to assume that the representation~$V$ is faithful.
+  Note that~$\rho(\glie)$ again semisimple by Corollary~\ref{ideals and quotients of semisimple again semisimple}.
+  
+  We can now consider the Casimir~endomorphism~$C \defined C^V \colon V \to V$. 
+  We can decompose~$V$ into the generalized eigenspaces of~$C$, each of which is a subrepresentation of~$V$ because~$C$ is an endomorphism of~$V$ as a representation.
+  It follows that~$V$ is the generalized eigenspace of~$C$ with respect to some eigenvalue~$\lambda \in \kf$ because~$V$ is indecomposable.
+  We know from \cref{construction of casimir endomorphism} that
+  \[
+    \dim_\kf \glie
+    =
+    \tr(C)
+    =
+    \dim_{\kf}(V) \cdot \lambda  \,.
+  \]
+  
+  We now distinguish between the two cases~$\lambda \neq 0$ and~$\lambda \neq 0$:
+  If~$\lambda = 0$ then it follows that~$\dim \glie = 0$ and hence~$\glie = 0$.
+  Then $V = V^{\glie}$.
+  If~$\lambda \neq 0$ then~$\det C = \lambda^{\dim_{\kf} V} \neq 0$, hence~$C$ is actully an automorphism of~$V$, whence~$C(V) = V$.
+  The Casimir endomorphism~$C$ is given by multiplication with the Casimir~element~$C_\beta \in \Univ(\glie)$ (where~$\beta$ is the associative, symmetric, non-degenerate bilinear form on~$V$ as described in \cref{construction of casimir endomorphism}).
+  Therefore
+  \[
+    V
+    =
+    C(V)
+    =
+    C_\beta \cdot V
+    \subseteq
+    \glie V
+  \]
+  and hence~$V = \glie V$.
+\end{proof}
+
+
+\begin{corollary}
+  \label{everything is projective and injective}
+  Let~$V$ and~$W$ be two finite dimensional representations of a finite dimensional semisimple Lie~algebra~$\glie$.
+  Let~$f \colon V \to W$ be a homomorphism of representations.
+  Suppose that~$f$ is surjective (resp.\ injective).
+  \begin{enumerate}
+    \item
+      \label{restrictions again sur or inj}
+      The restrictions~$\glie V \to \glie W$ and~$V^{\glie} \to W^{\glie}$ are again surjective (resp.\ injective).
+  \end{enumerate}
+  Suppose now that~$U$ is another finite dimensional representation of~$\glie$.
+  \begin{enumerate}[resume]
+    \item
+      \label{everything projective}
+      For every finite dimensional~{\representation{$\glie$}}~$U$ the induced linear map
+      \[
+        f_*
+        \colon
+        \Hom_{\glie}(U,V)
+        \to
+        \Hom_{\glie}(U,W)
+      \]
+      is again surjective (resp.\ injective).
+    \item
+      \label{everything injective}
+      For every finite dimensional~{\representation{$\glie$}}~$U$ of~$\glie$ the induced linear map
+      \[
+        f^*
+        \colon
+        \Hom_{\glie}(W,U)
+        \to
+        \Hom_{\glie}(V,U)
+      \]
+      is injective (resp.\ surjective).
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If~$f_1$ denotes the restriction~$\glie V \to \glie W$ and~$f_2$ denotes the restrictions~$V^{\glie} \to W^{\glie}$ then with respect to the decompositions~$V = \glie V \oplus V^{\glie}$ and~$W = \glie W \oplus W^{\glie}$ we have~$f = f_1 \oplus f_2$.
+      Thus~$f$ is surjective (resp.\ injective) if and only if both~$f_1$ and~$f_2$ are.
+    \item
+      The induced linear map~$f_* \colon \Hom_{\kf}(U,V) \to \Hom_{\kf}(U,W)$ is a homomorphism of representations by \cref{list of homomorphism of representations}.
+      We can now apply part~\ref*{restrictions again sur or inj} with~$\Hom_{\glie}(U,V) = \Hom_{\kf}(U,V)^{\glie}$ and~$\Hom_{\glie}(U,W) = \Hom_{\kf}(U,W)^{\glie}$.
+    \item
+      The induced linear map~$f^* \colon \Hom_{\kf}(W,U) \to \Hom_{\kf}(V,U)$ is a homomorphism of representations by \cref{list of homomorphism of representations}.
+      We can now again apply part~\ref*{restrictions again sur or inj}.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
 \begin{theorem}[Weyl]
- Let $V$ be finite dimensional representation of a finite dimensional semisimple Lie algebra $\g$. Then $V$ is completely reducible.
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra.
+  Then every finite dimensional representation~$V$ of~$\glie$ is completely reducible.
 \end{theorem}
+
+
 \begin{proof}
- It sufficies to show that any subrepresentation $U \subseteq V$ has a direct complement which is again a subrepresentation, i.e.\ that there exists a subrepresentation $W \subseteq V$ with $V = U \oplus W$.
- 
- By Lemma~\ref{lem: decomposition of representations of semisimple Lie algebras} there exists a short exact sequence
- \[
-  0 \to \g \Hom_k(V, U) \to \Hom_k(V,U) \xrightarrow{\pi_V} \Hom_k(V,U)^\g \to 0
- \]
- as well as a short exact sequence
- \[
-  0 \to \g \Hom_k(U, U) \to \Hom_k(U,U) \xrightarrow{\pi_U} \Hom_k(U,U)^\g \to 0.
- \]
- The restriction map $\rho \colon \Hom_k(V,U) \to \Hom_k(U,U), f \mapsto f|_{U} = f \circ \iota$ is surjective, where $\iota \colon U \inc V$ denotes the canonical inclusion (notice that it a map between the $k$-linear maps). It is a homomorphism of representations of $\g$, hence induces a map $\bar{\rho} \colon \Hom_k(V,U)^\g \to \Hom_k(U,U)^\g$ by restriction. The maps so far fit in the following commutative diagram:
- \[
-   \begin{tikzcd}
-     \Hom_k(V,U)
-     \arrow{r}[above]{\rho}
-     \arrow{d}[left]{\pi_V}
-     &
-     \Hom_k(U,U)
-     \arrow{d}[right]{\pi_U}
-     \\
-     \Hom_k(V,U)^\g
-     \arrow{r}[above]{\tilde{\rho}}
-     &
-     \Hom_k(U,U)^\g
-   \end{tikzcd}
- \]
- Because $\pi_U$ and $\rho$ are surjective it follows that $\bar{\rho}$ is also surjective. Thus there exists some $\pi \in \Hom_k(V,U)^\g$ with $\id_U = \bar{\rho}(\pi) = \pi \circ \iota$.
- 
- Notice that $\Hom_k(V,U)^\g = \Hom_\g(V,U)$ and $\Hom_k(U,U)^\g = \Hom_\g(U,U)$ as already seen in Remark~\ref{rem: homomorphisms of representations as invariants}. Hence $\id_U = \pi \circ \iota$ is a statement about homomorphism of representations of $\g$, i.e.\ homomorphisms of $\Ue(\g)$-modules. It follows that $\pi$ is a retraction in the category of $\Ue(\g)$-modules, which is why $V = U \oplus \ker \pi$ with $\ker \pi \subseteq V$ being a subrepresentation of $\g$.
+  It sufficies to show that any subrepresentation~$U$ of~$V$ admits a direct complement that is again a subrepresentation.
+  The inclusion~$\iota \colon U \to V$ is injective whence the induced linear map~$\iota_* \colon \Hom_{\glie}(V, U) \to \Hom_{\glie}(U, U)$ is surjective by \cref{everything is projective and injective}.
+  It follows that there exists a homomorphism of representations~$\sigma \colon V \to U$ with~$\id_U = \iota^*(\sigma) = \sigma \circ \iota$, i.e.\ a split for~$\iota$.
+  Now
+  \[
+    V
+    =
+    \im \iota \oplus \ker \sigma
+    =
+    U \oplus \ker \sigma
+  \]
+  with~$\ker \sigma$ being a subrepresentation of~$V$.
 \end{proof}
 
 
 \begin{remark}
- As a representation $V$ of a Lie algebra $\g$ is completely reducible if and only if it is semisimple as an $\Ue(\g)$-module one has the usual equivalent definitions of complete reducibility, i.e.\ the following are equivalent:
- \begin{enumerate}
-  \item
-   $V$ is a completely reducible, i.e.\ $V$ is the direct sum of irreducible subrepresentations.
-  \item
-   $V$ is the direct sum of irreducible subrepresentations.
-  \item
-   Every submodule $U \subseteq V$ has a direct summand which is also a subreprentation.
- \end{enumerate}
+  Let~$\glie$ be a Lie~algebra and let~$\catA$ be the category of finite dimensional representation of~$\glie$.  
+  Part~\ref*{everything projective} of \cref{everything is projective and injective} shows that for every representation~$V \in \catA$ the left-exact functor
+  \[
+    \Hom_{\glie}(V, -)
+    \colon
+    \catA
+    \to
+    \cVect{\kf}
+  \]
+  is already exact, which means that every~$V \in \catA$ is projective.
+  Part~\ref*{everything injective} of \cref{everything is projective and injective} also shows that for every representation~$V \in \catA$ the left-exact functor
+  \[
+    \Hom_{\glie}(-, V)
+    \colon
+    \catA^\op
+    \to
+    \cVect{\kf}
+  \]
+  is already exact, which means that every~$V \in \catA$ is injective.
+  Each of these conditions is equivalent to~$\catA$ being semisimple, which is a reformulation of Weyl’s~theorem.
 \end{remark}
 
 
-\begin{remark}
- Weyl’s theorem does not necessarily hold for infine dimensional representations. To see this take $k[X]$ as a representation of $\sll_2(k)$ via
- \[
-  \sll_2(k) \to \gl(k[X]), \quad
-  e \mapsto \dd{X}, \quad
-  h \mapsto -2X\dd{X}, \quad
-  f \mapsto -x^2\dd{X}
- \]
- which was already shown in Examples~\ref{expls: representations of Lie algebras} to define a representation of $\sll_2(k)$. Notice that $k \subseteq k[X]$ is a subrepresentation. If $U \subseteq k[X]$ is a subrepresentation and $P \in U$ a polynomial of degree $n$ then by applying $e$ it turns out that $U$ contains of polynomial of degree $d$ for every $d \leq n$, which is why $U$ contains $1, X, \dotsc, X^n$ (here it is used that $\chara k = 0$). Moreover, if $X \in U$ then by applying $f$ it turns out that $X^d \in U$ for every $d \geq 1$. Hence if $U$ contains a non constant polynomial then already $X^d \in U$ for every $d \in \N$ and therefore $U = k[X]$.
- 
- So $0,$ $k$ and $k[X]$ are the only subrepresentations of $k[X]$. in particular $k[X]$ is not completely reducible.
+\begin{warning}
+  Weyl’s theorem does not generalize to infinite dimensional representations.
+  We can more explicitly answer the following question:
+  \begin{center}
+    \emph{Question}:
+    For which Lie~algebras is every representation completely reducible?
+  \end{center}
+  For this we reformulate this question:
+  \begin{center}
+    \emph{Question}:
+    For which Lie~algebras~$\glie$ is every~{\module{$\Univ(\glie)$}} semisimple?
+  \end{center}
+  The answer turns out to be surprisingly easy:
+  \begin{center}
+    \emph{Answer}:
+    Only~$\glie = 0$.
+  \end{center}
+  Indeed, if~$\glie = 0$ then~$\Univ(\glie) = \kf$ so that~{\modules{$\Univ(\glie)$}} are the same as vector spaces.
+  
+  If~$\glie \neq 0$ then~$\Univ(\glie)$ is infinite dimensional by the PBW~theorem.
+  The~{\module{$\Univ(\glie)$}} module structure of~$M \defined \Univ(\glie)$ makes~$M$ into a~{\representation{$\glie$}} whose subrepresentations are precisely the left ideals of~$\Univ(\glie)$.
+  We now observe that every nonzero left ideal in~$\Univ(\glie)$ is infinite dimensional as for every nonzero~$x \in \Univ(\glie)$ the cyclic left ideal~$\Univ(\glie) x = \gen{x}_{\Univ(\glie)}$ is infinite dimensional by \cref{uea contains no zero divisors}.
+  
+  It follows that in~$\Univ(\glie)$ no proper ideal of finite codimension admits a direct complement that is again an ideal.
+  But the zero Lie~algebra homomorphism~$\glie \to \kf$ induces an algebra homomorphism~$\varepsilon \colon \Univ(\glie) \to \kf$ --- which is necessarily surjective because~$1_{\Univ(\glie)} \mapsto 1_{\kf}$ --- whose kernel is an ideal in~$\Univ(\glie)$ of codimension~$1$. 
+  This shows that~$\ker(\varepsilon)$ is a~{\subrepresentation{$\glie$}} of~$M$ that admits no direct complement.
+  
+%     \item
+%       Weyl’s theorem does not necessarily hold for infine dimensional representations. To see this take $k[X]$ as a representation of $\sll_2(k)$ via
+%       \[
+%         \sll_2(k) \to \gl(k[X]), \quad
+%         e \mapsto \dd{X}, \quad
+%         h \mapsto -2X\dd{X}, \quad
+%         f \mapsto -x^2\dd{X}
+%       \]
+%       which was already shown in Examples~\ref{expls: representations of Lie algebras} to define a representation of $\sll_2(k)$. Notice that $k \subseteq k[X]$ is a subrepresentation. If $U \subseteq k[X]$ is a subrepresentation and $P \in U$ a polynomial of degree $n$ then by applying $e$ it turns out that $U$ contains of polynomial of degree $d$ for every $d \leq n$, which is why $U$ contains $1, X, \dotsc, X^n$ (here it is used that $\chara k = 0$). Moreover, if $X \in U$ then by applying $f$ it turns out that $X^d \in U$ for every $d \geq 1$. Hence if $U$ contains a non constant polynomial then already $X^d \in U$ for every $d \in \N$ and therefore $U = k[X]$.
+%       
+%       So $0,$ $k$ and $k[X]$ are the only subrepresentations of $k[X]$. in particular $k[X]$ is not completely reducible.
+\end{warning}
+
+
+\begin{remark}[Semisimplicity for Hopf~algebras]
+  The above results falls into a more general picture:
+  The universal enveloping algebra~$\Univ(\glie)$ of a Lie~algebra~$\glie$ inherits from the Lie~algebra structure of~$\glie$ the additional structure of a \defemph{Hopf~algebra}\index{Hopf algebra}.
+  Part of the structure of a Hopf~algebra~$H$ is an algebra homomorphism~$\varepsilon \colon H \to \kf$.
+  One can then show that the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      \label{hopf is semisimple}
+      $H$ is semisimple, i.e.~every~{\module{$H$}} is semisimple.
+    \item
+      \label{counit kernel has complement}
+      The ideal~$\ker(\varepsilon)$ admits a direct complement in~$H$ that is again a left ideal.
+    \item
+      \label{hopf admits unnormed integral}
+      There exists some~$z \in H$ with~$xz = \varepsilon(x)z$ for every~$x \in H$ such that~$\varepsilon(z) \neq 0$.
+    \item
+      \label{hopf admits normed integral}
+      There exists some~$z \in H$ with~$xz = \varepsilon(x)z$ for every~$x \in H$ such that~$\varepsilon(z) = 1$.
+  \end{equivalenceslist}
+  The implications between these conditions are as follows:
+  \begin{implicationlist}
+    \item[\ref*{hopf is semisimple}~$\implies$~\ref*{counit kernel has complement}]
+      The kernel~$\ker(\varepsilon)$ is an~{\submodule{$H$}} of~$H$ and thus admits a direct complement.
+    \item[\ref*{counit kernel has complement}~$\implies$~\ref*{hopf admits unnormed integral}]
+      A complement~$I$ of~$\ker(\varepsilon)$ is necessarily {\onedimensional} and thus spanned by a single nonzero element~$z$.
+      We find that~$\varepsilon(z) \neq 0$ because otherwise~$\varepsilon = 0$, which would contradicts~$\varepsilon$ being an algebra homomorphism (as~$\varepsilon(1) = 1$).
+      It follows for every~$x \in H$ from~$z \in I$ that~$xz \in I = \gen{z}_\kf$ so that~$xz = \lambda z$ for some~$\lambda \in \kf$.
+      Then~$\varepsilon(xz) = \varepsilon(x)\varepsilon(z)$ but also~$\varepsilon(xz) = \varepsilon(\lambda z) = \lambda \varepsilon(z)$ so that~$\lambda = \varepsilon(x)$.
+    \item[\ref*{hopf admits unnormed integral}~$\implies$~\ref*{hopf admits normed integral}]
+      We may replace~$z$ by~$z/\varepsilon(z)$.
+    \item[\ref*{hopf admits normed integral}~$\implies$~\ref*{hopf is semisimple}]
+      For this implications one needs some basic notions about Hopf~algebras and their representations.
+      The actual proof is a direct copy of the proof of Maschke’s theorem about representations of a finite group~$G$ with~$\ringchar(\kf) \mid \abs{G}$.
+      The element~$z$ plays the role of the averaging element~$\frac{1}{\abs{G}} \sum_{g \in G} g$.%
+      \footnote{The group algebra~$\kf[G]$ is actually also a Hopf~algebra and the algebra homomorphism~$\varepsilon \colon \kf[G] \to \kf$ is given by~$\varepsilon(\spacing g) = 1$ for every~$g \in g$, so that~$\varepsilon(\sum_{g \in G} a_g g) = \sum_{g \in G} a_g$.
+      We can therefore apply the equivalence of the given conditions to the group algebra~$\kf[G]$:
+      
+      An element~$z \in \kf[G]$ satisfies~$xz = \varepsilon(x)z$ for all~$x \in \kf[G]$ if and only if~$gz = z$ for every~$g \in G$.
+      This means that~$z = c \sum_{g \in G} g$ for some~$c \in \kf$ if~$G$ is finite, and~$z = 0$ if~$G$ is infinite.
+      Hence~$\kf[G]$ is not semisimple if~$G$ is infinite.
+      If~$G$ is finite then~$\varepsilon(z) = c \abs{G}$.
+      Therefore~$\varepsilon(z) \neq 0$ is possible if and only if~$\abs{G} \neq 0$ in~$\kf$, i.e.\ if and only if~$\ringchar(\kf) \nmid \abs{G}$.
+      The conditions~$\varepsilon(z) = 1$ then means that~$z = \frac{1}{|G|} \sum_{g \in G}$.
+      }
+  \end{implicationlist}
+  It can moreover be shown that if an element~$z$ as in condition~\ref*{hopf admits normed integral} exists then it is unique.
+  
+  It can also be shown that if a Hopf~algebra~$H$ contains a finite dimensional nonzero one-sided ideal then~$H$ is already finite dimensional itself.
+  Whence an infinite dimensional Hopf~algebra can never be semisimple, as~$\ker(\varepsilon)$ cannot have a complement that is again a left ideal.
+  
+  In the light of these general facts about Hopf~algebras it is clear how to proceed for the universal enveloping algebra~$\Univ(\glie)$ of a Lie~algebra~$\glie$:
+  If~$\glie \neq 0$ then~$\Univ(\glie)$ is infinite dimensional by the PBW~theorem and thus cannot be semisimple by the general theory of Hopf~algebras.
+  Moreover, the kernel of~$\varepsilon$ is then an ideal in~$\Univ(\glie)$ that won’t admit a direct complement.
 \end{remark}
 
 

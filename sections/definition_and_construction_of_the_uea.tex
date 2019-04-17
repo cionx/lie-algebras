@@ -183,8 +183,14 @@
 
 
 \begin{remark}
-  \Cref{representations are modules} shows that representations of~$\glie$ are the same as~{\modules{$\Univ(\glie)$}}.
-  The categories~$\cRep{\glie}$ and~$\cMod{\Univ(\glie)}$ are hence isomorphic.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      \Cref{representations are modules} shows that representations of~$\glie$ are the same as~{\modules{$\Univ(\glie)$}}.
+      The categories~$\cRep{\glie}$ and~$\cMod{\Univ(\glie)}$ are hence isomorphic.
+    \item
+      A representation~$V$ of~$\glie$ is completely reducible if and only if it is semisimple as an~{\module{$\Univ(\glie)$}}.
+  \end{enumerate}
 \end{remark}
 
 
@@ -413,8 +419,8 @@
   We know find on the other hand that~{\algebra{$\kf$}} homomorphisms~$\Tensor(V)/I \to A$ correspond to algebra homomorphisms~$\Tensor(V) \to A$ that annihilate~$I$, with the algebra homorphisms~$\Tensor(V) \to A$ corresponding to~{\linear{$\kf$}} maps~$\glie \to A$.
   A linear map~$f \colon \glie \to A$ is a homorphism of Lie~algebras if and only if
   \[
-      f(x)f(y)
-    - f(y)f(x)
+      f(x) \spacing f(y)
+    - f(y) \spacing f(x)
     - f([x,y])
     =
     0 \,,
@@ -643,6 +649,12 @@
 \end{examples}
 
 
+\begin{example}
+  We find for~$\glie = 0$ that~$\Univ(\glie) = \kf$.
+\end{example}
+
+
+
 
 \subsubsection{Products of Lie~Algebras}
 
@@ -758,7 +770,7 @@
     \\
     f
     &\longmapsto
-    (f \circ i, f \circ j)  \,,
+    (\spacing f \circ i, f \circ j)  \,,
     \\
     \biggl( a \tensor b \mapsto \phi(a)\psi(b) \biggr)
     &\longmapsfrom
@@ -1088,7 +1100,7 @@
         \end{tikzcd}
       \]
       commute.
-      It holds for every set~$X$ that~$(\id_X)_* = \id_{F(X)}$ and it holds for all composable maps of sets~$f \colon X \to Y$ and~$g \colon Y \to Z$ that~$(g \circ f)_* = g_* \circ f_*$.
+      It holds for every set~$X$ that~$(\id_X)_* = \id_{F(X)}$ and it holds for all composable maps of sets~$f \colon X \to Y$ and~$g \colon Y \to Z$ that~$(\spacing g \circ f)_* = g_* \circ f_*$.
       We therefore get a functor~$F \colon \cSet \to \cLie{\kf}$.
       
       The universal property of the free Lie~algebra states that the functor~$F$ is left adjoint to the forgetful functor~$\cLie{\kf} \to \cSet$.

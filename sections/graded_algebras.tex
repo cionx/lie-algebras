@@ -97,7 +97,7 @@
         A_d
         \defined
         \gen{
-          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+          x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}
         \suchthat
           n \geq 0,
           i_1, \dotsc, i_n \in I,
@@ -105,7 +105,7 @@
         }_{\kf}
       \]
       for every~$d \geq 0$.
-      Then~$A_d$ consists of the homogeneous polynomials of degree~$d$, and the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ are homogeneous of degree~$p_1 + \dotsb + p_n$.
+      Then~$A_d$ consists of the homogeneous polynomials of degree~$d$, and the monomials~$x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}$ are homogeneous of degree~$p_1 + \dotsb + p_n$.
       
       We can more generally put the variable~$x_i$ is any degree~$d_i$:
       Given any family~$(d_i)_{i \in I}$ of natural numbers~$d_i \geq 0$ we can define a grading on~$A$ via
@@ -113,7 +113,7 @@
         A_d
         \defined
         \gen{
-          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+          x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}
         \suchthat
           n \geq 0,
           i_1, \dotsc, i_n \in I,
@@ -121,14 +121,14 @@
         }_\kf
       \]
       for every~$d \geq 0$.
-      Then the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ are homogeneous of degree~$p_1 d_1 + \dotsb + p_n d_n$.
+      Then the monomials~$x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}$ are homogeneous of degree~$p_1 d_1 + \dotsb + p_n d_n$.
     \item
       Similarly the free~{\algebra{$\kf$}}~$A \defined \kf\gen{x_i \suchthat i \in I}$ can be graded via
       \[
         A_d
         \defined
         \gen{
-          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+          x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}
         \suchthat
           n \geq 0,
           i_1, \dotsc, i_n \in I,
@@ -140,14 +140,14 @@
         A_d
         \defined
         \gen{
-          x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}
+          x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}
         \suchthat
           n \geq 0,
           i_1, \dotsc, i_n \in I,
           p_1 d_1 + \dotsb + p_n d_n = d
         }_{\kf} \,.
       \]
-      This grading makes the monomials~$x_{i_1}^{p_1} \dotsm x_{i_n}^{p_n}$ homogeneous of degree~$p_1 d_1 + \dotsb + d_n p_n$.
+      This grading makes the monomials~$x_{i_1}^{\spacing p_1} \dotsm x_{i_n}^{\spacing p_n}$ homogeneous of degree~$p_1 d_1 + \dotsb + d_n p_n$.
     \item
       The tensor algebra~$\Tensor(V)$ of a vector space~$V$ has a canonical grading with~$\Tensor(V)_d = V^{\tensor d}$ for all~$d \geq 0$.
       Similarly both the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ have canonical gradings given by~$\Symm(V)_d = \Symm^d(V)$ and~$\Exterior(V)_d = \Exterior^d(V)$ for all~$d \geq 0$.
@@ -168,7 +168,7 @@
             M_d
             \defined
             \left\{
-              (p_i)_{i \in I} \in M
+              (\spacing p_i)_{i \in I} \in M
             \suchthat*
               \sum_{i \in I} p_i = d
             \right\}
@@ -269,7 +269,7 @@
       For a homomorphism of graded~{\algebras{$\kf$}}~$f \colon A \to B$ the following conditions are equivalent:
       \begin{equivalenceslist}
         \item
-          $f$ is an isomorphism of graded~{\algebras{$\kf$}}, i.e.\ there exists an inverse homomorphism of graded~{\algebras{$\kf$}}~$g \colon B \to A$ with~$fg = \id_B$ and~$gf = \id_A$.
+          $f$ is an isomorphism of graded~{\algebras{$\kf$}}, i.e.\ there exists an inverse homomorphism of graded~{\algebras{$\kf$}}~$g \colon B \to A$ with~$f {} g = \id_B$ and~$g \spacing f = \id_A$.
         \item
           $f$ is bijective.
         \item

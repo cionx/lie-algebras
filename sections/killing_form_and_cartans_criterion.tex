@@ -1,12 +1,6 @@
 \section{The Killing Form and Cartan’s Criterion}
 
 
-
-
-
-\subsection{Associative Bilinear Forms}
-
-
 \begin{definition}
   \label{associative bilinear form}
   Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$.
@@ -21,6 +15,7 @@
 
 
 \begin{remark}
+  \label{associative is invariant}
   Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$.
   Then the actions of~$\glie$ on~$V$ and~$W$ induces an action of~$\glie$ on~$(V \tensor W)^*$ as described in \cref{new representations from old ones}:
   We have for all~$x \in \glie$,~$\phi \in (V \tensor W)^*$ and simple tensors~$v \tensor w \in V \tensor W$ that
@@ -73,371 +68,6 @@
 \end{remark}
 
 
-\begin{lemma}
-  \label{bilinear forms and hom identification}
-  Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$.
-  Then the natural isomorphims of vector spaces
-% TODO: Align these
-  \[
-    \Phi_1
-    \colon
-    \BF(V,W)
-    \to
-    \Hom_\kf(V, W^*) \,,
-    \quad
-    \beta
-    \mapsto
-    (
-      v
-      \mapsto
-      \beta(v,-)
-    )
-  \]
-  and
-  \[
-    \Phi_2
-    \colon
-    \BF(V,W)
-    \to
-    \Hom_\kf(W, V^*) \,,
-    \quad
-    \beta
-    \mapsto
-    (
-      w
-      \mapsto
-      \beta(-,w)
-    )
-  \]
-  are already isomorphisms of representations.
-\end{lemma}
-
-
-\begin{proof}
-  We have for all~$x \in \glie$,~$\beta \in \BF(V,W)$ and~$v \in V$,~$w \in W$ that
-  \begin{align*}
-    \Phi_1(x.\beta)(v)(w)
-    &=
-    ((x.\beta)(v,-))(w)
-    \\
-    &=
-    (x.\beta)(v,w)
-    \\
-    &=
-    - \beta(x.v, w) - \beta(v, x.w)
-  \shortintertext{as well as}
-    (x.\Phi_1(\beta))(v)(w)
-    &=
-    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
-    \\
-    &=
-    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
-    \\
-    &=
-    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
-    \\
-    &=
-    (x.\beta(v,-))(w) - \beta(x.v, w)
-    \\
-    &=
-    - \beta(v,-)(x.w) - \beta(x.v, w)
-    \\
-    &=
-    - \beta(v, x.w) - \beta(x.v, w) \,.
-  \end{align*}
-  This shows that~$\Phi_1$ is a homomorprhism, and hence isomorphism, of representations.
-  For~$\Phi_2$ a similar caculation can be done.%
-  \footnote{The author hasn’t actually done this but hopes that no sign problems occur.}
-\end{proof}
-
-
-\begin{corollary}
-  \label{invariant bilinear form induces homomorphism of representations}
-  Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$.
-  Let~$\beta \colon V \times W \to \kf$ be a bilinear form with associated linear maps
-  \begin{alignat*}{3}
-    \phi_1
-    \colon
-    V
-    \to
-    W^* \,,
-    \quad
-    v
-    \mapsto
-    \beta(v, -) \,,
-  \shortintertext{and}
-    \phi_2
-    \colon
-    W
-    \to
-    V^* \,,
-    \quad
-    w
-    \mapsto
-    \beta(-, w) \,.
-  \end{alignat*}
-  Then the following conditions on~$\beta$ are equivalent:
-  \begin{equivalenceslist}
-    \item
-      \label{beta invariant}
-      $\beta$ is invariant.
-    \item
-      \label{phi1 a homomorphism}
-      $\phi_1$ is a homomorphism of representations.
-    \item
-      \label{phi2 a homomorphism}
-      $\phi_2$ is a homomorphism of representations.
-  \end{equivalenceslist}
-\end{corollary}
-
-
-\begin{proof}
-  The isomorphisms of representations~$\Phi_1$ from \cref{bilinear forms and hom identification} restrict to vector space isomorphisms between the invariants~$\BF(V, W)^{\glie}$ and~$\Hom_\kf(V,W)^{\glie}$.
-  We know from \cref{homomorphisms of representations as invariants} that~$\Hom_\kf(V,W)^{\glie} = \Hom_{\glie}(V,W)$, whence the equivalence of~\ref*{beta invariant} and~\ref*{phi1 a homomorphism}.
-  The equivalence of~\ref*{beta invariant} and~\ref*{phi2 a homomorphism} can be seen in the same way.
-\end{proof}
-
-
-\begin{corollary}
-  \label{associative bilinear form induces homomorphism of representations}
-  Let~$\glie$ be a Lie~algebra.
-  Let~$\beta \colon \glie \times \glie \to \kf$ be a bilinear form with associated linear maps
-  \begin{alignat*}{3}
-    \phi_1
-    \colon
-    \glie
-    \to
-    \glie^* \,,
-    \quad
-    x
-    \mapsto
-    \beta(x, -) \,,
-  \shortintertext{and}
-    \phi_2
-    \colon
-    \glie
-    \to
-    \glie^* \,,
-    \quad
-    y
-    \mapsto
-    \beta(-, y) \,.
-  \end{alignat*}
-  Then the following conditions on~$\beta$ are equivalent:
-  \begin{equivalenceslist}
-    \item
-      $\beta$ is associative.
-    \item
-      $\phi_1$ is a homomorphism of representations.
-    \item
-      $\phi_2$ is a homomorphism of representations.
-  \end{equivalenceslist}
-\end{corollary}
-
-
-\begin{proof}
-  Apply \cref{invariant bilinear form induces homomorphism of representations} with~$V$ and~$W$ the adjoint representation of~$\glie$.
-\end{proof}
-
-
-\begin{recall}
-  Given two vector spaces~$V$ and~$W$ a bilinear form~$\beta \colon V \times W \to \kf$ is \defemph{non-degenerate}\index{non-degenerate bilinear form} if
-  \begin{equivalenceslist}
-    \item
-      \label{nondegenerate in the left}
-      for every nonzero~$v \in V$ there exists some~$w \in W$ with~$\beta(v,w) \neq 0$ and
-    \item
-      \label{nondegenerate in the right}
-      for every nonzero~$w \in W$ there exists some~$v \in V$ with~$\beta(v,w) \neq 0$.
-  \end{equivalenceslist}
-  If more generally condition~\ref*{nondegenerate in the left} is satisfied then~$\beta$ is \defemph{non-degenerate in the left argument} and if condition~\ref*{nondegenerate in the right} is satisfied then~$\beta$ is \defemph{non-degenerate in the right argument}.
-  The bilinear form~$\beta$ is therefore non-degenerate if and only if it is both non-degenerate in the left argument and non-degenerate in the right argument.
-  
-  If~$\phi_1 \colon V \to W^*$ and~$\phi_2 \colon W \to V^*$ are the linear maps associated to~$\beta$ then the conditions~\ref*{nondegenerate in the left} and~\ref*{nondegenerate in the right} may be rewritten, stating that
-  \begin{equivalenceslist}[label = \roman*')]
-    \item
-      the linear map~$\phi_1 \colon V \to W^*$ is injective,
-    \item
-      the linear map~$\phi_2 \colon W \to V^*$ is injective.
-  \end{equivalenceslist}
-  
-  Suppose now that both~$V$ and~$W$ are finite dimensional.
-  For~$\beta$ to be non-degenerate in the left argument we need that~$\dim V \leq \dim W^* = \dim W$ because we need~$\phi_1$ to be injective.
-  For~$\beta$ to be non-degenerate in the right argument we similarly need that~$\dim W \leq \dim V$.
-  Hence for~$\beta$ to even have a chance at being non-degenerate we need that~$\dim V = \dim W$.%
-  \footnote{
-  This conclusion does not hold for infinite dimensional vector spaces:
-  If~$V$ is any infinite dimensional then the evaluation map~$\beta \colon V \times V^* \to \kf$ given by~$\beta(v,\alpha) = \alpha(v)$ is a non-degenerate bilinear form.
-  The linear map~$\phi_1 \colon V \to V^{**}$ is the canonical inclusion and the linear map~$\phi_2 \colon V^* \to V^*$ is just the identity, both of which are injective.
-  But the dual space~$V^*$ has a strictly larger dimension than~$V$ itself.}
-  
-  So suppose now that both~$V$ and~$W$ have the same finite dimension~$n$.
-  Then for basis~$v_1, \dotsc, v_n$ of~$V$ and a basis~$w_1, \dotsc, w_n$ of~$W$ we can represent the bilinear form~$\beta$ by a square matrix~$A \in \Mat_n(\kf)$ that is given by
-  \[
-    A_{ij}
-    \defined
-    \beta(v_i, w_j)
-  \]
-  for all~$i,j = 1, \dotsc, n$.
-  Then with respect to the basis~$v_1, \dotsc, v_n$ of~$V$ and the (dual) basis~$w_1^*, \dotsc, w_n^*$ of~$W$ the linear map~$\phi_1 \colon V \to W^*$ is represented by the matrix~$A^T$;
-  with respect to the basis~$w_1, \dotsc, w_n$ of~$W$ and the (dual) basis~$v_1^*, \dotsc, v_n^*$ of~$V^*$ the linear map~$\phi_2 \colon W \to V^*$ is given by the matrix~$A$.
-  We therefore find that
-  \begin{align*}
-        {}& \text{$\beta$ is non-degenerate in the left argument} \\
-    \iff{}& \text{$\phi_1$ is injective}  \\
-    \iff{}& \text{$A^T$ is injective} \\
-    \iff{}& \text{$A^T$ is invertible}
-  \end{align*}
-  and similarly that
-  \begin{align*}
-        {}& \text{$\beta$ is non-degenerate in the right argument} \\
-    \iff{}& \text{$\phi_2$ is injective}  \\
-    \iff{}& \text{$A$ is injective} \\
-    \iff{}& \text{$A$ is invertible}  \,.
-  \end{align*}
-  But~$A$ is invertible if and only its transpose~$A^T$ is invertible.
-  
-  By using these observations, and that~$\dim V = \dim W = \dim V^* = \dim W^*$ we see that all of the following conditions are equivalent:
-  \begin{equivalenceslist}
-    \item
-      The bilinear form~$\beta$ is non-degenerate.
-    \item
-      The bilinear form~$\beta$ is non-degenerate in the left argument.
-    \item
-      The bilinear form~$\beta$ is non-degenerate in the right argument.
-    \item
-      The linear map~$\phi_1$ is injective.
-    \item
-      The linear map~$\phi_1$ is bijective.
-    \item
-      The linear map~$\phi_2$ is injective.
-    \item
-      The linear map~$\phi_2$ is bijective.
-    \item
-      The matrix~$A$ is invertible.
-  \end{equivalenceslist}
-\end{recall}
-
-
-\begin{corollary}
-  \label{associative non-degenerate bilinear forms induce isomorphism to the dual}
-  If~$\glie$ is a finite dimensional Lie~algebra and~$\beta \colon \glie \times \glie \to \kf$ is a bilinear form then for the associated bilinear maps
-% TODO: Fix alignment.
-  \begin{gather*}
-    \phi_1
-    \colon
-    \glie
-    \to
-    \glie^*,
-    \quad
-    x
-    \mapsto
-    \beta(x,-)
-  \shortintertext{and}
-    \phi_2
-    \colon
-    \glie
-    \to
-    \glie^*,
-    \quad
-    y
-    \mapsto
-    \beta(-,y)
-  \end{gather*}
-  The following conditions are equivalent:
-  \begin{equivalenceslist}
-    \item
-      $\beta$ is associative and non-degenerate.
-    \item
-      $\phi_1$ is an isomorphism of representations.
-    \item
-      $\phi_2$ is an isomorphism of representations.
-    \qed
-  \end{equivalenceslist}
-\end{corollary}
-
-
-\begin{definition}
- Let~$V$ be a vector space and let~$\beta \colon V \times V \to \kf$ be a symmetric bilinear form.
- Then
- \[
-  \gls*{radical bilinear}
-  \defined
-  \{
-    x \in V
-  \suchthat
-    \text{$\beta(x,y) = 0$ for every~$y \in V$}
-  \}
- \]
- is the~\defemph{radical}\index{radical!of a bilinear form} of~$\beta$.
-\end{definition}
-
-
-\begin{lemma}
-  \label{orthogonal complement of an ideal is again an ideal}
-  Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$ and~$\beta \colon \glie \times \glie \to \kf$ an associative symmetric bilinear form.
-  Then for any ideal~$I$ in~$\glie$ the orthogonal
-  \[
-    I^\perp
-    \defined
-    \{
-      x \in \glie
-    \suchthat
-      \text{$\beta(x,y) = 0$ for every $y \in I$}
-    \}
-  \]
-  is again an ideal in~$\glie$.
-\end{lemma}
-
-
-\begin{proof}
-  The associated linear map~$\phi \colon \glie \to \glie^*$ given by~$\phi(x) = \beta(x,-)$ is a homomorphism of representations because~$\beta$ is associative.
-  The inclusion~$I \to \glie$ is a homomorphism of representions, and so its dual map
-  \[
-    \glie^*
-    \to
-    I^* \,,
-    \quad
-    \alpha
-    \mapsto
-    \restrict{\alpha}{I}
-  \]
-  is again a homomorphism of representations.
-  It follows that the composition
-  \[
-    \psi
-    \colon
-    \glie
-    \to
-    I^* \,,
-    \quad
-    x
-    \mapsto
-    \restrict{\beta(x,-)}{I}
-  \]
-  is homomorphism of representations.
-  Hence~$I^\perp = \ker \psi$ is a subrepresentation of~$\glie$, i.e.\ an ideal in~$\glie$.
-\end{proof}
-
-
-\begin{corollary}
-  \label{radical of bilinear form is an ideal}
-  If~$\beta$ is an associative symmetric bilinear form on a Lie~algebra~$\glie$ then its radical~$\rad \beta$ is an ideal in~$\glie$.
-\end{corollary}
-
-
-\begin{proof}
-  Apply \cref{orthogonal complement of an ideal is again an ideal} to~$I = \glie$.
-\end{proof}
-
-
-\begin{remark}
- The proof of \ref{orthogonal complement of an ideal is again an ideal} did not use that~$\beta$ is symmetric.
- This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right).
- The main example of an associative bilinear form will be the Killing~form, which is symmetric, so this assumption will pose no problems to us.
-\end{remark}
-
-
 
 
 
@@ -449,16 +79,16 @@
   Let~$V$ be a finite dimensional~{\vectorspace{$\kf$}}.
   Then
   \[
-    \tr(f g)
+    \tr( \spacing f {} g)
     =
-    \tr(g f)
+    \tr(\spacing g \spacing f)
   \]
   for any two endomorphisms~$f, g \in \End_\kf(V)$.
   It follows by induction that
   \[
-    \tr(f_1 f_2 \dotsm f_n)
+    \tr(\spacing f_1 \spacing f_2 \dotsm f_n)
     =
-    \tr(f_2 \dotsm f_n f_1)
+    \tr(\spacing f_2 \dotsm f_n \spacing f_1)
   \]
   for all endomorphisms~$f_1, f_2, \dotsc, f_n \in \End_\kf(V)$.
 \end{recall}
@@ -467,9 +97,9 @@
 \begin{warning}
   If~$V$ is a finite dimensional~{\vectorspace{$\kf$}} with~$\dim V \geq 2$ then it \emph{does not} hold that
   \[
-    \tr(f_1 \dotsm f_n)
+    \tr(\spacing f_1 \dotsm f_n)
     =
-    \tr(f_{\sigma(1)} \dotsm f_{\sigma(n)})
+    \tr(\spacing f_{\sigma(1)} \dotsm f_{\sigma(n)})
   \]
   for all endomorphisms~$f_1, \dotsc, f_n \in \End_\kf(V)$ and every permuation~$\sigma \in S_n$.
   This can be seen by considering the matrices~$A_1, A_2, A_3 \in \Mat_2(\kf)$ given by
@@ -512,44 +142,21 @@
   \label{recalling the trace form}
   For any finite dimensional~{\vectorspace{$\kf$}}~$V$ the endomorphism vector space~$\End_\kf(V)$ admits a bilinear form~$(-,-)_{\tr}$ given by
   \[
-    (f,g)_{\tr}
+    (\spacing f, g)_{\tr}
     \defined
-    \tr(fg) \,,
+    \tr(\spacing f {} g) \,,
   \]
   the so called~\defemph{trace form}\index{trace form} on~$\End_\kf(V)$.
-  The trace form is symmetric by \cref{symmetric property of trace}, and it non degenerate:
-  If with respect to a basis~$v_1, \dotsc, v_n$ of~$V$ the endomorphisms~$f, g \in \End_\kf(V)$ are represented by matrices~$A, B \in \Mat_n(\kf)$ then
-  \[
-    (f,g)_{\tr}
-    =
-    \tr(fg)
-    =
-    \tr(AB)
-    =
-    \sum_{i=1}^n (AB)_{ii}
-    =
-    \sum_{i,j=1}^n
-    A_{ij} B_{ji} \,.
-  \]
-  If~$f \neq 0$ then~$A \neq 0$ and hence~$A_{ij} \neq 0$ for some indices~$i$,~$j$.
-  For the endomorphism~$g$ with~$B = E_{ji}$ we then find that
-  \[
-    (f,g)_{\tr}
-    =
-    A_{ij}
-    \neq
-    0 \,.
-  \]
-  The trace form is also associative in the sense that
+  The trace form is symmetric by \cref{symmetric property of trace} and it is associative in the sense that
   \begin{equation}
     \label{associativity of the trace form wrt multiplication}
-    (fg, h)_{\tr}
+    (\spacing f {} g, h)_{\tr}
     =
-    \tr(fgh)
+    \tr(\spacing f {} g h)
     =
-    (f, gh)_{\tr}
+    (\spacing f, gh)_{\tr}
   \end{equation}
-  for all~$f, g, h \in \End_\kf(V)$.
+  for all~$f, g, h \in \End_{\kf}(V)$.
 \end{recall}
 
 
@@ -560,27 +167,27 @@
   \begin{equation}
     \label{associativity of the trace form wrt bracket}
     \begin{aligned}
-      ([f,g],h)_{\tr}
+      ([\spacing f,g],h)_{\tr}
       &=
-      (fg - gf, h)_{\tr}
+      (\spacing f {} g - g \spacing f, h)_{\tr}
       \\
       &=
-      (fg, h)_{\tr} - (gf,h)_{\tr}
+      (\spacing f {} g, h)_{\tr} - (\spacing g \spacing f,h)_{\tr}
       \\
       &=
-      (fg, h)_{\tr} - (h, gf)_{\tr}
+      (\spacing f {} g, h)_{\tr} - (h, g \spacing f)_{\tr}
       \\
       &=
-      (f, gh)_{\tr} - (hg, f)_{\tr}
+      (\spacing f, gh)_{\tr} - (hg, \spacing f)_{\tr}
       \\
       &=
-      (f, gh)_{\tr} - (f, hg)_{\tr}
+      (\spacing f, gh)_{\tr} - (\spacing f, hg)_{\tr}
       \\
       &=
-      (f, gh - hg)_{\tr}
+      (\spacing f, gh - hg)_{\tr}
       \\
       &=
-      (f, [g,h])_{\tr}
+      (\spacing f, [\spacing g,h])_{\tr}
     \end{aligned}
   \end{equation}
   for all~$f, g, h \in \gllie(V)$.
@@ -608,7 +215,7 @@
   \[
     \alpha(x,y)
     \defined
-    \beta(f(x), f(y))
+    \beta(\spacing f(x), f(y))
   \]
   is an associative bilinear form on~$\glie$.
   If~$\beta$ is symmetric then so is~$\alpha$.
@@ -656,36 +263,20 @@
 
 
 \begin{example}
-  \label{killing form of gl_n}
+  \label{killing form of gln}
   Let~$\glie \defined \glie_n(\kf)$ for some arbitrary~field $\kf$.
   Then
-  \[
+  \begin{equation}
+    \label{killing form general formula}
     \kappa(x,y)
     =
     2n\tr(xy) - 2\tr(x)\tr(y)
-    \defines
-    \beta(x,y)
-  \]
-  for all~$x, y \in \glie$.
-  
-  To see this let~$E_{ij}$ with~$i,j = 1, \dotsc, n$ be the standard basis of~$\gllie_n(\kf)$.
-  Then
-  \begin{equation}
-    \label{product of elementary matrices}
-    E_{ij} E_{kl}
-    =
-    \delta_{jk} E_{il}
   \end{equation}
-  for all~$i,j,k,l = 1, \dotsc, n$.
-  To show that~$\kappa = \beta$ is sufficies to show that
-  \[
-    \kappa(E_{ij}, E_{kl})
-    =
-    \beta(E_{ij}, E_{kl})
-  \]
-  for all~$i,j,k,l = 1, \dotsc, n$ as both~$\kappa$ and~$\beta$ are bilinear.
+  for all~$x, y \in \glie$.
+  To see this let~$E_{ij}$ with~$i,j = 1, \dotsc, n$ be the standard basis of~$\gllie_n(\kf)$.
+  It sufficies to show the claimed equality \eqref{killing form general formula} for these basis vectors.
   
-  For all~$k,l,g,h = 1, \dotsc, n$ it follows from the relation~\eqref{product of elementary matrices} that
+  We have for all~$k,l,g,h = 1, \dotsc, n$ that
   \[
     \ad(E_{kl})(E_{gh})
     =
@@ -762,10 +353,7 @@
     2n \delta_{jk} \tr(E_{il})  - 2 \tr(E_{ij}) \tr(E_{kl})
     \\
     &=
-    2n \tr(E_{ij} E_{kl}) - 2 \tr(E_{ij}) \tr(E_{kl})
-    \\
-    &=
-    \beta(E_{ij}, E_{kl})  \,.
+    2n \tr(E_{ij} E_{kl}) - 2 \tr(E_{ij}) \tr(E_{kl}) \,.
   \end{align*}
 \end{example}
 
@@ -847,7 +435,8 @@
 
 
 \begin{example}
-  We have seen in \cref{killing form of gl_n} that the Killing~form of~$\gllie_n(\kf)$ is given by
+  \label{killing form of sln}
+  We have seen in \cref{killing form of gln} that the Killing~form of~$\gllie_n(\kf)$ is given by
   \[
     \kappa_{\gllie_n(\kf)}(x,y)
     =
@@ -860,77 +449,10 @@
     =
     2n \tr(xy)
   \]
-  for all~$x, y \in \sllie_n(\kf)$ (recall that~$\sllie_n(\kf) = \{x \in \gllie_n(\kf) \suchthat \tr(x) = 0\}$.
+  for all~$x, y \in \sllie_n(\kf)$.
   We observe that the Killing~form of~$\sllie_n(\kf)$ is a scalar multiple of the trace form.
+  This is no coincidence, as we will see in \cref{uniqueness of invariant bilinear forms for simple}.
 \end{example}
-
-
-\begin{lemma}
-  \label{orthogonal ideals with respect to the killing form}
-  Let~$\glie$ be a finite dimensional Lie~algebra and suppose that~$\glie = I \oplus J$ for two ideals~$I$ and~$J$.
-  \begin{enumerate}
-    \item
-      The ideals~$I$ and~$J$ are mutually orthogonal with respect to the Killing form of~$\glie$.
-    \item
-      If~$x,y \in \glie$ are given by~$x = x_1 + x_2$ and~$y = y_1 + y_2$ with respect to the decomposition~$\glie = I \oplus J$ then
-      \[
-        \kappa_{\glie}(x,y)
-        =
-        \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,.
-      \]
-  \end{enumerate}
-\end{lemma}
-
-
-\begin{proof}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      We have for all~$x \in I$ and~$y \in J$ that~$\ad(x) \ad(y) = 0$ because
-      \[
-        \ad(x)\ad(y)(\glie)
-        =
-        [x,[y,\glie]]
-        \subseteq
-        [I,[J,\glie]]
-        \subseteq
-        [I,J]
-        \subseteq
-        I \cap J
-        =
-        0 \,.
-      \]
-      Is follows that
-      \[
-        \kappa(x,y)
-        =
-        \tr(\ad(x)\ad(y))
-        =
-        \tr(0)
-        =
-        0 \,.
-      \]
-    \item
-      We know from \cref{restriction of the killing form to an ideal} that~$\kappa(x_1, y_1) = \kappa_I(x_1, y_1)$ and~$\kappa(x_2, y_2) = \kappa_J(x_2, y_2)$.
-      Therefore
-      \begin{align*}
-        \kappa(x,y)
-        &=
-        \kappa(x_1 + x_2, y_1 + y_2)
-        \\
-        &=
-          \kappa(x_1, y_1)
-        + \underbrace{\kappa(x_1, y_2)}_{=0}
-        + \underbrace{\kappa(x_2, y_1)}_{=0}
-        + \kappa(x_2, y_2)
-        \\
-        &=
-        \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,,
-      \end{align*}
-      as desired.
-    \qedhere
-  \end{enumerate}
-\end{proof}
 
 
 
@@ -1362,7 +884,7 @@
   \[
     y_f
     \defined
-    (f(\lambda_1), \dotsc, f(\lambda_n))  \,.
+    (\spacing f(\lambda_1), \dotsc, \spacing  f(\lambda_n))  \,.
   \]
   We have seen that the construction of~$y_f$ ensures condition~\eqref{function condition}.
   Condition~\eqref{difference condition} holds by the additivity of~$f$ because
@@ -1384,16 +906,16 @@
   \[
     0
     =
-    \lambda_1 f(\lambda_1) + \dotsb + \lambda_n f(\lambda_n)  \,.
+    \lambda_1 \spacing f(\lambda_1) + \dotsb + \lambda_n \spacing f(\lambda_n)  \,.
   \]
   
   We now return to our trick from~\eqref{sum of squares is zero}:
-  If we restrict our attention to additive functions~$f \colon E \to \Integer$ then the term~$\sum_{i=1}^n \lambda_i f(\lambda_i)$ is again contained in~$E$, and it hence it makes sense to apply~$f$ to it.
+  If we restrict our attention to additive functions~$f \colon E \to \Integer$ then the term~$\sum_{i=1}^n \spacing \lambda_i \spacing f(\lambda_i)$ is again contained in~$E$, and it hence it makes sense to apply~$f$ to it.
   It then follows that
   \[
     0
     =
-    \sum_{i=1}^n f(\lambda_i)^2 \,.
+    \sum_{i=1}^n \spacing f(\lambda_i)^2 \,.
   \]
   The field~$\kf$ contains~$\Integer$ is a subring because~$\ringchar \kf = 0$, hence this is already an identity in~$\Integer$.%
   \footnote{For~$\ringchar \kf = p > 0$ this would only be an identity modulo~$p$.}
@@ -1473,38 +995,10 @@
 
 
 \begin{proof}
-  The Lie algebra~$\glie$ is solvable if and only if~$\glie' \defined \ad(\glie) = \glie/\centerlie(\glie)$ is solvable.
+  The Lie algebra~$\glie$ is solvable if and only if~$\glie' \defined \ad(\glie) = \glie/{\centerlie(\glie)}$ is solvable.
   By Cartan’s criterion for~$\gllie(\glie)$ this is the case if and only if~$\tr(x' y') = 0$ for all~$x' \in \glie'$ and~$y' \in [\glie', \glie']$.
   This is equivalent to~$\kappa(xy) = 0$ for all~$x, y \in [\glie, \glie]$ because~$[\glie', \glie'] = [\ad(\glie), \ad(\glie)] = \ad([\glie, \glie])$.
 \end{proof}
-
-
-\begin{corollary}
-  \label{rad kappa is a solvable ideal}
-  Let~$\glie$ be a finite dimensional Lie~algebra with Killing~form~$\kappa$.
-  Then~$\rad \kappa$ is a solvable ideal in~$\glie$
-\end{corollary}
-
-
-\begin{proof}
-  \Cref{radical of bilinear form is an ideal} shows that~$\rad \kappa$ is an ideal in~$\glie$.
-  It follows from \cref{restriction of the killing form to an ideal} that
-  \[
-    \kappa_{\rad \glie}(x,y)
-    =
-    \kappa(x,y)
-    =
-    0
-  \]
-  for all~$x, y \in \rad \kappa$.
-  Hence~$\rad \kappa$ is solvable by Cartan’s criterion.
-\end{proof}
-
-
-\begin{corollary}
-  If~$\glie$ is a finite dimensional Lie~algebra with Killing form~$\kappa$ then~$\rad \kappa \subseteq \rad \glie$.
-  \qed
-\end{corollary}
 
 
 

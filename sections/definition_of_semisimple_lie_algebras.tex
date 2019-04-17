@@ -1,6 +1,503 @@
 \section{Definition and Basic Properties}
 
 
+
+
+
+\subsection{More on Bilinear Forms}
+
+
+\begin{lemma}
+  \label{bilinear forms and hom identification}
+  Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$.
+  Then the natural isomorphims of vector spaces
+  \begin{alignat*}{2}
+    \Phi_1
+    &\colon
+    \BF(V,W)
+    \to
+    \Hom_\kf(V, W^*) \,,
+    &
+    \quad
+    \beta
+    &\mapsto
+    (
+      v
+      \mapsto
+      \beta(v,-)
+    )
+  \shortintertext{and}
+    \Phi_2
+    &\colon
+    \BF(V,W)
+    \to
+    \Hom_\kf(W, V^*) \,,
+    &
+    \quad
+    \beta
+    &\mapsto
+    (
+      w
+      \mapsto
+      \beta(-,w)
+    )
+  \end{alignat*}
+  are already isomorphisms of representations.
+  (Here~$\glie$ acts on~$\BF(V,W) \cong (V \tensor W)^*$ as discussed in \cref{associative is invariant}.)
+\end{lemma}
+
+
+\begin{proof}
+  We have for all~$x \in \glie$,~$\beta \in \BF(V,W)$ and~$v \in V$,~$w \in W$ that
+  \begin{align*}
+    \Phi_1(x.\beta)(v)(w)
+    &=
+    ((x.\beta)(v,-))(w)
+    \\
+    &=
+    (x.\beta)(v,w)
+    \\
+    &=
+    - \beta(x.v, w) - \beta(v, x.w)
+  \shortintertext{as well as}
+    (x.\Phi_1(\beta))(v)(w)
+    &=
+    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
+    \\
+    &=
+    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
+    \\
+    &=
+    \bigl( x.\Phi_1(\beta)(v) - \Phi_1(\beta)(x.v) \bigr)(w)
+    \\
+    &=
+    (x.\beta(v,-))(w) - \beta(x.v, w)
+    \\
+    &=
+    - \beta(v,-)(x.w) - \beta(x.v, w)
+    \\
+    &=
+    - \beta(v, x.w) - \beta(x.v, w) \,.
+  \end{align*}
+  This shows that~$\Phi_1$ is a homomorprhism, and hence isomorphism, of representations.
+  For~$\Phi_2$ a similar caculation can be done.%
+  \footnote{The author hasn’t actually done this but hopes that no sign problems occur.}
+\end{proof}
+
+
+\begin{corollary}
+  \label{invariant bilinear form induces homomorphism of representations}
+  Let~$V$ and~$W$ be representations of a Lie~algebra~$\glie$.
+  Let~$\beta \colon V \times W \to \kf$ be a bilinear form with associated linear maps
+  \begin{alignat*}{2}
+    \phi_1
+    &\colon
+    V
+    \to
+    W^* \,,
+    &
+    \quad
+    v
+    &\mapsto
+    \beta(v, -) \,,
+  \shortintertext{and}
+    \phi_2
+    &\colon
+    W
+    \to
+    V^* \,,
+    &
+    \quad
+    w
+    &\mapsto
+    \beta(-, w) \,.
+  \end{alignat*}
+  Then the following conditions on~$\beta$ are equivalent:
+  \begin{equivalenceslist}
+    \item
+      \label{beta invariant}
+      $\beta$ is invariant.
+    \item
+      \label{phi1 a homomorphism}
+      $\phi_1$ is a homomorphism of representations.
+    \item
+      \label{phi2 a homomorphism}
+      $\phi_2$ is a homomorphism of representations.
+  \end{equivalenceslist}
+\end{corollary}
+
+
+\begin{proof}
+  The isomorphisms of representations~$\Phi_1$ from \cref{bilinear forms and hom identification} restrict to an isomorphism between the spaces of invariants~$\BF(V, W)^{\glie}$ and~$\Hom_\kf(V,W)^{\glie}$.
+  We know from \cref{homomorphisms of representations as invariants} that~$\Hom_\kf(V,W)^{\glie} = \Hom_{\glie}(V,W)$, whence the equivalence of~\ref*{beta invariant} and~\ref*{phi1 a homomorphism}.
+  The equivalence of~\ref*{beta invariant} and~\ref*{phi2 a homomorphism} can be seen in the same way.
+\end{proof}
+
+
+\begin{corollary}
+  \label{associative bilinear form induces homomorphism of representations}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$\beta \colon \glie \times \glie \to \kf$ be a bilinear form with associated linear maps
+  \begin{alignat*}{3}
+    \phi_1
+    \colon
+    \glie
+    \to
+    \glie^* \,,
+    \quad
+    x
+    \mapsto
+    \beta(x, -) \,,
+  \shortintertext{and}
+    \phi_2
+    \colon
+    \glie
+    \to
+    \glie^* \,,
+    \quad
+    y
+    \mapsto
+    \beta(-, y) \,.
+  \end{alignat*}
+  Then the following conditions on~$\beta$ are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $\beta$ is associative.
+    \item
+      $\phi_1$ is a homomorphism of representations.
+    \item
+      $\phi_2$ is a homomorphism of representations.
+  \end{equivalenceslist}
+\end{corollary}
+
+
+\begin{proof}
+  Let~$V$ and~$W$ be the adjoint representation of~$\glie$.
+  We know from~\cref{associative is invariant} that~$\beta$ is associative if and only if~$\beta$ is invariant.
+  We can therefore apply \cref{invariant bilinear form induces homomorphism of representations}.
+\end{proof}
+
+
+\begin{recall}[Non-degeneracy]
+  Given two vector spaces~$V$ and~$W$ a bilinear form~$\beta \colon V \times W \to \kf$ is \defemph{non-degenerate}\index{non-degenerate bilinear form} if
+  \begin{equivalenceslist}
+    \item
+      \label{nondegenerate in the left}
+      for every nonzero~$v \in V$ there exists some~$w \in W$ with~$\beta(v,w) \neq 0$ and
+    \item
+      \label{nondegenerate in the right}
+      for every nonzero~$w \in W$ there exists some~$v \in V$ with~$\beta(v,w) \neq 0$.
+  \end{equivalenceslist}
+  If more generally condition~\ref*{nondegenerate in the left} is satisfied then~$\beta$ is \defemph{non-degenerate in the left argument} and if condition~\ref*{nondegenerate in the right} is satisfied then~$\beta$ is \defemph{non-degenerate in the right argument}.
+  The bilinear form~$\beta$ is therefore non-degenerate if and only if it is both non-degenerate in the left argument and non-degenerate in the right argument.
+  
+  If~$\phi_1 \colon V \to W^*$ and~$\phi_2 \colon W \to V^*$ are the linear maps associated to~$\beta$ then the conditions~\ref*{nondegenerate in the left} and~\ref*{nondegenerate in the right} may be rewritten, stating that
+  \begin{equivalenceslist}[label = \roman*')]
+    \item
+      the linear map~$\phi_1 \colon V \to W^*$ is injective,
+    \item
+      the linear map~$\phi_2 \colon W \to V^*$ is injective.
+  \end{equivalenceslist}
+  
+  Suppose now that both~$V$ and~$W$ are finite dimensional.
+  For~$\beta$ to be non-degenerate in the left argument we need that~$\dim V \leq \dim W^* = \dim W$ because we need~$\phi_1$ to be injective.
+  For~$\beta$ to be non-degenerate in the right argument we similarly need that~$\dim W \leq \dim V$.
+  Hence for~$\beta$ to even have a chance at being non-degenerate we need that~$\dim V = \dim W$.%
+  \footnote{
+  This conclusion does not hold for infinite dimensional vector spaces:
+  If~$V$ is any infinite dimensional then the evaluation map~$\beta \colon V \times V^* \to \kf$ given by~$\beta(v,\alpha) = \alpha(v)$ is a non-degenerate bilinear form.
+  The linear map~$\phi_1 \colon V \to V^{**}$ is the canonical inclusion and the linear map~$\phi_2 \colon V^* \to V^*$ is just the identity, both of which are injective.
+  But the dual space~$V^*$ has a strictly larger dimension than~$V$ itself.}
+  
+  So suppose now that both~$V$ and~$W$ have the same finite dimension~$n$.
+  Then for basis~$v_1, \dotsc, v_n$ of~$V$ and a basis~$w_1, \dotsc, w_n$ of~$W$ we can represent the bilinear form~$\beta$ by a square matrix~$A \in \Mat_n(\kf)$ that is given by
+  \[
+    A_{ij}
+    \defined
+    \beta(v_i, w_j)
+  \]
+  for all~$i,j = 1, \dotsc, n$.
+  Then with respect to the basis~$v_1, \dotsc, v_n$ of~$V$ and the (dual) basis~$w_1^*, \dotsc, w_n^*$ of~$W$ the linear map~$\phi_1 \colon V \to W^*$ is represented by the matrix~$A^T$;
+  with respect to the basis~$w_1, \dotsc, w_n$ of~$W$ and the (dual) basis~$v_1^*, \dotsc, v_n^*$ of~$V^*$ the linear map~$\phi_2 \colon W \to V^*$ is given by the matrix~$A$.
+  We therefore find that
+  \begin{align*}
+        {}& \text{$\beta$ is non-degenerate in the left argument} \\
+    \iff{}& \text{$\phi_1$ is injective}  \\
+    \iff{}& \text{$A^T$ is injective} \\
+    \iff{}& \text{$A^T$ is invertible}
+  \end{align*}
+  and similarly that
+  \begin{align*}
+        {}& \text{$\beta$ is non-degenerate in the right argument} \\
+    \iff{}& \text{$\phi_2$ is injective}  \\
+    \iff{}& \text{$A$ is injective} \\
+    \iff{}& \text{$A$ is invertible}  \,.
+  \end{align*}
+  But~$A$ is invertible if and only its transpose~$A^T$ is invertible.
+  
+  By using these observations, and that~$\dim V = \dim W = \dim V^* = \dim W^*$ we see that all of the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      The bilinear form~$\beta$ is non-degenerate.
+    \item
+      The bilinear form~$\beta$ is non-degenerate in the left argument.
+    \item
+      The bilinear form~$\beta$ is non-degenerate in the right argument.
+    \item
+      The linear map~$\phi_1$ is injective.
+    \item
+      The linear map~$\phi_1$ is bijective.
+    \item
+      The linear map~$\phi_2$ is injective.
+    \item
+      The linear map~$\phi_2$ is bijective.
+    \item
+      The matrix~$A$ is invertible.
+  \end{equivalenceslist}
+\end{recall}
+
+
+\begin{recall}[Dual bases]
+  Let~$\beta \colon V \times W \to \kf$ be a bilinear form where~$V$ and~$W$ are two~{\vectorspaces{$\kf$}}.
+  
+  One sufficient criterion for~$\beta$ to be non-degenerate in any one argument is the existence of a dual family:
+  Suppose that~$(v_i)_{i \in I}$ is some basis of~$V$, for which there exists elements~$(w^i)_{i \in I}$ with~$\beta(v_i, w^i) = \delta_{ij}$ for all~$i, j \in I$.
+  Then~$\beta$ is non-degenerate in the left argument:
+  If~$v \in V$ with~$v \neq 0$ then in the linear combination~$v = \sum_{i \in I} \lambda_i v_i$ we have~$\lambda_j \neq 0$ for some~$j$.
+  Then
+  \[
+    \beta(v, w^{\spacing j})
+    =
+    \beta\left( \sum_{i \in I} v_i, w^{\spacing j} \right)
+    =
+    \sum_{i \in I} \lambda_i \underbrace{\beta(v_i, w^{\spacing j})}_{= \delta_{ij}}
+    =
+    \lambda_j
+    \neq
+    0 \,.
+  \]
+  We note that by a similar calculation the family~$(w^i)_{i \in I}$ is again linearly independent.
+  
+  Similarly,~$\beta$ is non-degenerate in the right argument if there exists for some basis~$(w_j)_{j \in J}$ of~$W$ a family~$(v^{\spacing j})_{j \in J}$ in~$V$ with~$\beta(v^i, w_j) = \delta_{ij}$ for all~$i, j \in J$.
+  
+  But these sufficient criterion are not necessary:
+  Consider for an infinite dimensional vector space~$V$ the standard bilinear form~$\varepsilon \colon V \times V^* \to \kf$ given by~$\epsilon(v, \varphi) = \varphi(v)$, which is non-degenerate (i.e.\ non-degenerate in both arguments).
+  Then for every basis~$(v_i)_{i \in I}$ there does indeed exist a dual family~$(v_i^*)_{i \in I}$ in~$V^*$ with~$\epsilon(v_i, v_j^*) = \delta_{ij}$ for all~$i, j \in I$.
+  But for no basis~$(\varphi_j)_{i \in I}$ of~$V^*$ can such a dual family in~$V$ exist:
+  We have seen above that this famliy would be linearly independent, which is not possible because~$V$ is of strictly smaller dimension than~$V^*$.
+  
+  This problem does not occur in the finite dimensional case:
+  If both~$V$ and~$W$ are of the same finite dimension~$n$ then the following conditions on~$\beta$ are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $\beta$ is non-degenerate.
+    \item
+      For some basis~$v_1, \dotsc, v_n$ of~$V$ there exists a dual family~$w^1, \dotsc, w^n$ of~$W$ with~$\beta(v_i, w^{\spacing j}) = \delta_{ij}$ for all~$i, j = 1, \dotsc, n$.
+    \item
+      For every basis~$v_1, \dotsc, v_n$ of~$V$ there exists a dual family~$w^1, \dotsc, w^n$ of~$W$ with~$\beta(v_i, w^{\spacing j}) = \delta_{ij}$ for all~$i, j = 1, \dotsc, n$.
+    \item
+      For some basis~$w_1, \dotsc, w_n$ of~$W$ there exists a dual family~$v^1, \dotsc, v^n$ of~$V$ with~$\beta(v^i, w_j) = \delta_{ij}$ for all~$i, j = 1, \dotsc, n$.
+    \item
+      For every basis~$w_1, \dotsc, w_n$ of~$W$ there exists a dual family~$v^1, \dotsc, v^n$ of~$V$ with~$\beta(v^i, w_j) = \delta_{ij}$ for all~$i, j = 1, \dotsc, n$.
+  \end{equivalenceslist}
+  The dual family is in each case again linearly independent and hence a basis;
+  it is furthermore unique with the given property.
+  
+  To construct for a basis~$v_1, \dotsc, v_n$ of~$V$ the corresponding dual basis~$w^1, \dotsc, w^n$ of~$W$ one considers the induced isomorphism of vector spaces~$\psi \colon W \to V^*$ given by~$\psi(w) = \beta(-,w)$.
+  Then necessarily~$w_i = \psi^{-1}(v_i^*)$ for every~$i = 1, \dotsc, n$ where~$v_1^*, \dotsc, v_n^*$ is the usual dual basis of the dual space~$V^*$.
+  This then shows both the existence and uniqueness of such a dual basis.
+  (The usual dual basis~$v_1^*, \dotsc, v_n^*$ of~$V^*$ is itself a dual basis in the more general sense of non-degenerate bilinear forms, namely via the standard bilinear form~$\varepsilon \colon V \times V^* \to \kf$.)
+\end{recall}
+
+
+\begin{recall}[Orthogonals and non-degeneracy]
+  If~$V$ is a finite dimensional (real or complex) inner product space then for every linear subspace~$U$ of~$V$ the restriction of the inner product to~$U$ is again an inner product,~$V = U \oplus U^\perp$ and~$(U^\perp)^\perp = U$.
+  That the restriction is again an inner product holds because positive definiteness is a pointwise property.
+  That~$U \cap U^\perp = 0$ also follows from the positive definiteness, and that~$V = U \oplus U^\perp$ can then be concluded from the dimension formula~$\dim V = \dim U + \dim U^\perp$.
+  
+  If~$\beta$ is non-degenerate symmetric bilinear form on~$V$ then for an arbitrary linear subspace~$U$ of~$V$ the restriction of~$\beta$ to~$U$ does not have to be non-degenerate again.
+  The problem is that even though there exists for every~$u \in U$ some~$v \in V$ with~$\beta(u,v) \neq 0$, no such element~$v$ needs to exist in the subspace~$U$.
+  
+  But if~$V$ is finite dimensional then the dimension formula
+  \[
+    \dim V
+    =
+    \dim U + \dim U^\perp
+  \]
+  still holds.
+  This can be seen by considering the composition~$\rho \circ \phi \colon V \to U^*$ of the isomorphism~$\phi \colon V \to V^*$,~$v \mapsto \beta(-,v)$ and the restriction map~$\rho \colon V^* \to U^*$,~$\varphi \mapsto \restrict{\varphi}{U}$.
+  Then both~$\rho$ and~$\phi$ are surjective whence~$\rho \circ \phi$ is surjective.
+  The kernel of~$\rho \circ \phi$ is given by the orthogonal~$U^\perp$.
+  Hence
+  \[
+    \dim V
+    =
+    \dim \im (\rho \circ \phi)
+    +
+    \dim \ker (\rho \circ \phi)
+    =
+    \dim U^* + \dim U^\perp
+    =
+    \dim U + \dim U^\perp \,.
+  \]
+  It follows from that~$(U^\perp)^\perp = U$ because~$U \subseteq (U^\perp)^\perp$ and~$\dim (U^\perp)^\perp = \dim V - \dim U^\perp = \dim U$.
+  
+  If~$\beta$ is a non-degenerate symmetric bilinear form on a finite dimensional vector space~$V$ then we have moreover the following equivalent conditions for any linear subspace~$U$ of~$V$:
+  \begin{equivalenceslist}
+    \item
+      \label{restriction to U is nondegenerate}
+      The restriction of~$\beta$ to~$U$ is again non-degenerate.
+    \item
+      \label{restriction to Uorth is nondegenerate}
+      The restriction of~$\beta$ to~$U^\perp$ is again non-degenerate.
+    \item
+      \label{U does not intersect Uorth}
+      $U \cap U^\perp = 0$.
+    \item
+      \label{sum of U and Uorth}
+      $V = U + U^\perp$.
+    \item
+      \label{direct sum of U and Uorth}
+      $V = U \oplus U^\perp$.
+  \end{equivalenceslist}
+  The equivalence of~\ref*{restriction to U is nondegenerate} and~\ref*{U does not intersect Uorth} holds because~$U \cap U^\perp$ is the radical of the restriction of~$\beta$ to~$U$.
+  The equivalences of~\ref*{U does not intersect Uorth},~\ref*{sum of U and Uorth} and~\ref*{direct sum of U and Uorth} follows from the dimension formula~$\dim V = \dim U + \dim U^\perp$.
+  The last three conditions are symmetric in~$U$ and~$U^\perp$ because~$(U^\perp)^\perp = U$.
+  The equivalence of~\ref*{restriction to U is nondegenerate} and~\ref*{restriction to Uorth is nondegenerate} therefore follows from the equivalences of~\ref*{restriction to U is nondegenerate} and~\ref*{U does not intersect Uorth}.
+\end{recall}
+
+
+\begin{example}
+  The trace form~$(-,-)_{\tr}$ on~$\Mat_n(\kf)$ is non-degenerate because the standard basis~$(E_{ij})_{i,j = 1, \dotsc, n}$ of~$\Mat_n(\kf)$ has as its dual the transposed standard basis~$(E_{ji})_{i,j = 1, \dotsc, n}$.
+\end{example}
+
+
+\begin{corollary}
+  \label{associative non-degenerate bilinear forms induce isomorphism to the dual}
+  If~$\glie$ is a finite dimensional Lie~algebra and~$\beta \colon \glie \times \glie \to \kf$ is a bilinear form then for the associated bilinear maps
+% TODO: Fix alignment.
+  \begin{gather*}
+    \phi_1
+    \colon
+    \glie
+    \to
+    \glie^*,
+    \quad
+    x
+    \mapsto
+    \beta(x,-)
+  \shortintertext{and}
+    \phi_2
+    \colon
+    \glie
+    \to
+    \glie^*,
+    \quad
+    y
+    \mapsto
+    \beta(-,y)
+  \end{gather*}
+  The following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $\beta$ is associative and non-degenerate.
+    \item
+      $\phi_1$ is an isomorphism of representations.
+    \item
+      $\phi_2$ is an isomorphism of representations.
+    \qed
+  \end{equivalenceslist}
+\end{corollary}
+
+
+\begin{definition}
+ Let~$V$ be a vector space and let~$\beta \colon V \times V \to \kf$ be a symmetric bilinear form.
+ Then
+ \[
+  \gls*{radical bilinear}
+  \defined
+  \{
+    x \in V
+  \suchthat
+    \text{$\beta(x,y) = 0$ for every~$y \in V$}
+  \}
+ \]
+ is the~\defemph{radical}\index{radical!of a bilinear form} of~$\beta$.
+\end{definition}
+
+
+\begin{lemma}
+  \label{orthogonal complement of an ideal is again an ideal}
+  Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$ and~$\beta \colon \glie \times \glie \to \kf$ an associative symmetric bilinear form.
+  Then for any ideal~$I$ in~$\glie$ the orthogonal
+  \[
+    I^\perp
+    \defined
+    \{
+      x \in \glie
+    \suchthat
+      \text{$\beta(x,y) = 0$ for every $y \in I$}
+    \}
+  \]
+  is again an ideal in~$\glie$.
+\end{lemma}
+
+
+\begin{proof}
+  The associated linear map~$\phi \colon \glie \to \glie^*$ given by~$\phi(x) = \beta(x,-)$ is a homomorphism of representations because~$\beta$ is associative.
+  The inclusion~$I \to \glie$ is a homomorphism of representions, and so its dual map
+  \[
+    \glie^*
+    \to
+    I^* \,,
+    \quad
+    \varphi
+    \mapsto
+    \restrict{\varphi}{I}
+  \]
+  is again a homomorphism of representations.
+  It follows that the composition
+  \[
+    \psi
+    \colon
+    \glie
+    \to
+    I^* \,,
+    \quad
+    x
+    \mapsto
+    \restrict{\beta(x,-)}{I}
+  \]
+  is homomorphism of representations.
+  Hence~$I^\perp = \ker \psi$ is a subrepresentation of~$\glie$, i.e.\ an ideal in~$\glie$.
+\end{proof}
+
+
+\begin{corollary}
+  \label{radical of bilinear form is an ideal}
+  If~$\beta$ is an associative symmetric bilinear form on a Lie~algebra~$\glie$ then its radical~$\rad \beta$ is an ideal in~$\glie$.
+\end{corollary}
+
+
+\begin{proof}
+  Apply \cref{orthogonal complement of an ideal is again an ideal} to~$I = \glie$.
+\end{proof}
+
+
+\begin{remark}
+ The proof of \ref{orthogonal complement of an ideal is again an ideal} did not use that~$\beta$ is symmetric.
+ This artficial restraint is only there to simplify the situation and notation (we do not need to distinguish between orthogonal complements from the left and from the right).
+ The main example of an associative bilinear form will be the Killing~form, which is symmetric, so this assumption will pose no problems to us.
+\end{remark}
+
+
+
+
+
+\subsection{Definition and Characterizations of Semisimple Lie Algebras}
+
+
+
 \begin{definition}
   A Lie~algebra~$\glie$ is \defemph{semisimple}\index{semisimple!Lie algebra}\index{Lie algebra!semisimple} if it is the direct sum of finitely many simple ideals, i.e.\ if there exist ideals~$I_1, \dotsc, I_n$ in~$\glie$ with~$\glie = I_1 \oplus \dotsb \oplus I_n$ such that every~$I_j$ is simple (as a Lie~algebra).
 \end{definition}
@@ -71,13 +568,23 @@
 \end{proof}
 
 
+\begin{corollary}
+  Every {\onedimensional} representation of a semisimple Lie~algebra~$\glie$ is trivial.
+\end{corollary}
+
+
+\begin{proof}
+  The image of the corresponding Lie~algebra homomorphism~$\rho \colon \glie \to \gllie(V)$ is contained in~$\sllie(V) = 0$.
+\end{proof}
+
+
 \begin{lemma}
   \label{properties of simple decompositions}
   Let~$\glie$ be a Lie~algebra.
   \begin{enumerate}
     \item
       \label{intersection of simples}
-      If~$I$ and~$J$ are two simple ideals in a Lie~algebra~$\glie$ then~$I \cap J = 0$ or~$I = J$.
+      If~$I$ and~$J$ are two simple ideals in a Lie~algebra~$\glie$ then~$I \cap \spacing J = 0$ or~$I = J$.
     \item
       If~$\glie = I_1 \oplus \dotsb \oplus I_n$ is a decomposition into ideals and~$J$ is any other simple ideal in~$\glie$ then~$J = I_i$ for exactly one~$i$.
   \end{enumerate}
@@ -88,15 +595,15 @@
   \leavevmode
   \begin{enumerate}
     \item
-      If then~$I \cap J \neq 0$ then this intersection is a nonzero ideal in~$\glie$, and hence a nonzero ideal in both~$I$ and~$J$.
-      Then~$I = I \cap J = J$ because~$I$ and~$J$ are simple.
+      If then~$I \cap \spacing J \neq 0$ then this intersection is a nonzero ideal in~$\glie$, and hence a nonzero ideal in both~$I$ and~$J$.
+      Then~$I = I \cap \spacing J = J$ because~$I$ and~$J$ are simple.
     \item
-      We have~$J = [\glie, J]$ because on the one hand~$[\glie, J] \subseteq J$ because~$J$ is an ideal and on the other hand~$J = [J,J] \subseteq [\glie, J]$ because~$J$ is simple.
+      We have~$J = [\glie, J]$ because on the one hand~$[\glie, J] \subseteq J$ because~$J$ is an ideal and on the other hand~$J = [\spacing J,J] \subseteq [\glie, J]$ because~$J$ is simple.
       It follows that
       \[
         J
         =
-        [J,J]
+        [\spacing J,J]
         =
         \left[ \bigoplus_{i=1}^n I_i, J \right]
         =
@@ -112,7 +619,7 @@
       \end{equation}
       It follows from~$J \neq 0$ that~$[I_i, J] \neq 0$ for some~$i$.
       It follows from part~\ref*{intersection of simples} that already~$I_i = J$.
-      It follows from the directness of the sum~\eqref{decomposing into direct sum} that~$[J, I_j] = 0$ for every~$j \neq i$, and hence~$J \neq I_j$ for every~$j \neq i$.
+      It follows from the directness of the sum~\eqref{decomposing into direct sum} that~$[\spacing J, I_j] = 0$ for every~$j \neq i$, and hence~$J \neq I_j$ for every~$j \neq i$.
     \qedhere
   \end{enumerate}
 \end{proof}
@@ -138,6 +645,107 @@
 \begin{remark}
   If~$\glie$ is a semisimple Lie~algebra then we will often just talk about \emph{the} decomposition of~$\glie$ into  direct sum of simple ideals, as this decomposition is unique up to reordering of the summands.
 \end{remark}
+
+
+\begin{fluff}
+  We will now show that finite dimensional semisimple Lie~algebras can equivalently be described in terms of their Killing form.
+\end{fluff}
+
+
+\begin{lemma}
+  \label{rad kappa is a solvable ideal}
+  Let~$\glie$ be a finite dimensional Lie~algebra with Killing~form~$\kappa$.
+  Then~$\rad \kappa$ is a solvable ideal in~$\glie$
+\end{lemma}
+
+
+\begin{proof}
+  \Cref{radical of bilinear form is an ideal} shows that~$\rad \kappa$ is an ideal in~$\glie$.
+  It follows from \cref{restriction of the killing form to an ideal} that
+  \[
+    \kappa_{\rad \glie}(x,y)
+    =
+    \kappa(x,y)
+    =
+    0
+  \]
+  for all~$x, y \in \rad \kappa$.
+  Hence~$\rad \kappa$ is solvable by Cartan’s criterion.
+\end{proof}
+
+
+\begin{corollary}
+  If~$\glie$ is a finite dimensional Lie~algebra with Killing form~$\kappa$ then~$\rad \kappa \subseteq \rad \glie$.
+  \qed
+\end{corollary}
+
+
+\begin{lemma}
+  \label{orthogonal ideals with respect to the killing form}
+  Let~$\glie$ be a finite dimensional Lie~algebra and suppose that~$\glie = I \oplus J$ for two ideals~$I$ and~$J$.
+  \begin{enumerate}
+    \item
+      The ideals~$I$ and~$J$ are mutually orthogonal with respect to the Killing form of~$\glie$.
+    \item
+      If~$x,y \in \glie$ are given by~$x = x_1 + x_2$ and~$y = y_1 + y_2$ with respect to the decomposition~$\glie = I \oplus J$ then
+      \[
+        \kappa_{\glie}(x,y)
+        =
+        \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,.
+      \]
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have for all~$x \in I$ and~$y \in J$ that~$\ad(x) \ad(y) = 0$ because
+      \[
+        \ad(x)\ad(y)(\glie)
+        =
+        [x,[y,\glie]]
+        \subseteq
+        [I,[\spacing J,\glie]]
+        \subseteq
+        [I,J]
+        \subseteq
+        I \cap \spacing J
+        =
+        0 \,.
+      \]
+      Is follows that
+      \[
+        \kappa(x,y)
+        =
+        \tr(\ad(x)\ad(y))
+        =
+        \tr(0)
+        =
+        0 \,.
+      \]
+    \item
+      We know from \cref{restriction of the killing form to an ideal} that~$\kappa(x_1, y_1) = \kappa_I(x_1, y_1)$ and~$\kappa(x_2, y_2) = \kappa_J(x_2, y_2)$.
+      Therefore
+      \begin{align*}
+        \kappa(x,y)
+        &=
+        \kappa(x_1 + x_2, y_1 + y_2)
+        \\
+        &=
+          \kappa(x_1, y_1)
+        + \underbrace{\kappa(x_1, y_2)}_{=0}
+        + \underbrace{\kappa(x_2, y_1)}_{=0}
+        + \kappa(x_2, y_2)
+        \\
+        &=
+        \kappa_I(x_1, y_1) + \kappa_J(x_2, y_2) \,,
+      \end{align*}
+      as desired.
+    \qedhere
+  \end{enumerate}
+\end{proof}
 
 
 \begin{proposition}
@@ -234,7 +842,7 @@
       $\glie \cong \glie_1 \times \dotsb \times \glie_r$ for some~$n \geq 0$ and simple Lie~algebras~$\glie_1, \dotsc, \glie_n$.
     \item
       \label{sum of simple ideals general}
-      $\glie = I_1 \oplus \dotsb \oplus I_m$ for some~$m \geq 0$ and simple ideals~$I_1, \dotsc, I_m$ of~$\glie$.
+      $\glie = I_1 \oplus \dotsb \oplus I_m$ for some~$m \geq 0$ and simple ideals~$I_1, \dotsc, I_m$ of~$\glie$ (i.e.~$\glie$ is semisimple).
     \item
       \label{killing form is nondegenerate general}
       The Killing~form~$\kappa$ of~$\glie$ is non-degenerate (i.e.~$\rad \kappa = 0$).
@@ -278,7 +886,7 @@
 \begin{corollary}
   \label{ideals are again sum of simples}
   Let~$\glie$ be a finite dimensional semisimple Lie~algebra with decomposition into simple ideals~$\glie = I_1 \oplus \dotsb \oplus I_n$.
-  Then any ideal of~$\glie$ is of the form~$I_{j_1} \oplus \dotsb \oplus I_{j_m}$ for some~$j_1, \dotsc, j_m \in \{1, \dotsc, n\}$.
+  Then any ideal of~$\glie$ is of the form~$I_{j_1} \oplus \dotsb \oplus I_{j_m}$ for some indices~$j_1, \dotsc, j_m \in \{1, \dotsc, n\}$.
 \end{corollary}
 
 
@@ -357,6 +965,7 @@
 
 
 \begin{corollary}
+  \label{uniqueness of invariant bilinear forms for simple}
   Let~$\glie$ be a finite dimensional simple Lie~algebra.
   Then any associative bilinear form~$\beta \colon \glie \times \glie \to \kf$ is a scalar multiple of the killing form~$\kappa$ of~$\glie$.
 \end{corollary}

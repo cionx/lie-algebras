@@ -153,7 +153,7 @@
     \item
       A \defemph{Lie~subalgebra}\index{Lie!subalgebra} of~$\glie$ is a~{\linear{$\kf$}} subspace~$\hlie \subseteq \glie$ such that~$[x,y] \in \hlie$ for all~$x, y \in \hlie$.
     \item
-      A \defemph{Lie~ideal}\index{Lie!ideal}, or simply~\defemph{ideal} in~$\glie$ is a~{\linear{$\kf$}} subspace~$I \subseteq \glie$ such that~$[x,y] \in I$ for all~$x \in \glie$ and~$y \in I$.
+      A \defemph{Lie~ideal}\index{Lie!ideal}, or simply~\defemph{ideal} of~$\glie$ is a~{\linear{$\kf$}} subspace~$I$ of~$\glie$ such that~$[x,y] \in I$ for all~$x \in \glie$ and~$y \in I$.
       That~$I$ is an ideal in~$\glie$ is denoted by~$I \mathrel{\gls*{lie ideal}} \glie$.
   \end{enumerate}
 \end{definition}
@@ -259,11 +259,11 @@
         \subseteq
         [I, z] + [y, J]
         \subseteq
-        [I, J] + [J, I]
+        [I, J] + [\spacing J, I]
         =
         [I,J] \,.
       \]
-      Here we use that~$[J,I] = -[I,J] = [I,J]$ by the antisymmetry of the Lie bracket~$[-,-]$.
+      Here we use that~$[\spacing J,I] = -[I,J] = [I,J]$ by the antisymmetry of the Lie bracket~$[-,-]$.
    \qedhere
  \end{enumerate}
 \end{proof}
@@ -336,7 +336,7 @@
         \{
           f \in \gllie(V)
         \suchthat
-          \tr(f) = 0
+          \tr(\spacing f) = 0
         \}
       \]
       is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra} of~$V$.
@@ -483,7 +483,7 @@
     \qquad
     [h, f]
     =
-    -2f \,,
+    -2 \spacing f \,,
     \qquad
     [e,f]
     =
@@ -749,12 +749,12 @@
     \Res\left( \frac{\partial a}{\partial t}, b \right) \,.
   \]
   The bilinear form~$\kappa$ is also antisymmetric:
-  Let~$a = x \tensor t^i$ and~$b = y \tensor t^j$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
+  Let~$a = x \tensor t^i$ and~$b = y \tensor t^{\spacing j}$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
   Then
   \begin{align*}
-    \kappa(x \tensor t^i, y \tensor t^j)
+    \kappa(x \tensor t^i, y \tensor t^{\spacing j})
     &=
-    \Res(i x \tensor t^{i-1}, y \tensor t^j)
+    \Res(i x \tensor t^{i-1}, y \tensor t^{\spacing j})
     \\
     &= 
     \Res(i t^{i+j-1} (x,y)_{\tr})
@@ -767,16 +767,16 @@
   \end{align*}
   In the same way we find that
   \[
-    \kappa(y \tensor t^j, x \tensor t^i)
+    \kappa(y \tensor t^{\spacing j}, x \tensor t^i)
     =
     \begin{cases}
-      j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
-                  0 & \text{otherwise}  \,.
+      \spacing  j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
+      \spacing              0 & \text{otherwise}  \,.
     \end{cases}
   \]
   Since~$(\cdot,\cdot)_{\tr}$ is symmetric we find that
   \begin{align*}
-    \kappa(x \tensor t^i, y \tensor t^j)
+    \kappa(x \tensor t^i, y \tensor t^{\spacing j})
     &=
     \begin{cases}
     i (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
@@ -788,7 +788,7 @@
                   0 & \text{otherwise}  \,,
     \end{cases} \\
     &=
-    -\kappa(y \tensor t^j, x \tensor t^i) \,.
+    -\kappa(y \tensor t^{\spacing j}, x \tensor t^i) \,.
   \end{align*}
 \end{example}
 
@@ -809,7 +809,7 @@
  \[
   f([x,y])
   =
-  [f(x),f(y)]
+  [\spacing f(x),f(y)]
  \]
  for all~$x, y \in \glie$.
 \end{definition}
@@ -824,7 +824,7 @@
     \item
       Given Lie~algebras~$\glie$,~$\hlie$ and~$\klie$ and Lie~algebra homomorphisms~$f \colon \glie \to \hlie$ and~$g \colon \hlie \to \klie$ the composition~$g \circ f \colon \glie \to \klie$ is again a homomorphism of Lie~algebras.
     \item
-      If~$\glie$ is a Lie~algebra and~$\hlie \subseteq \glie$ a Lie~subalgebra then the inclusion~$\hlie \inclusion \glie$ is a homomorphism of Lie~algebras.
+      If~$\glie$ is a Lie~algebra and~$\hlie$ is a Lie~subalgebra of~$\glie$ then the inclusion~$\hlie \inclusion \glie$ is a homomorphism of Lie~algebras.
     \item
       Given two abelian Lie~algebras~$\glie$ and~$\hlie$ any linear map~$\glie \to \hlie$ is already a homomorphism of Lie~algebras.
     \item
@@ -873,7 +873,7 @@
       =
       f(a)f(b) - f(b)f(a)
       =
-      [f(a), f(b)]
+      [\spacing f(a), f(b)]
     \]
     for all~$a, b \in A$.
   \item
@@ -884,7 +884,7 @@
       \qquad
       H \defined \phi(h)  \,,
       \qquad
-      F \defined \phi(f)
+      F \defined \phi(\spacing f)
     \]
     satisfy the relations
     \[
@@ -894,7 +894,7 @@
       \qquad
       [E, F] = H \,.
     \]
-    On the other hand every such triple~$(E', H', F')$ of elements satisfying the above relations (with~$X$ replaced by~$X'$ for~$X \in \{ E, H, F \}$) gives rise to a unique homomorphism of Lie~algebras~$\phi' \colon \sllie_2(k) \to \glie$ that is given by
+    On the other hand every such triple~$(E', H', F')$ of elements satisfying the above relations (with~$X$ replaced by~$X'$ for~$X \in \{ E, H, F \}$) gives rise to a unique homomorphism of Lie~algebras~$\phi' \colon \sllie_2(\kf) \to \glie$ that is given by
     \[
       \phi'(E) = E' \,,
       \qquad
@@ -974,13 +974,13 @@
     \\
     f
     &\longmapsto
-    (f \circ i, f \circ j)  \,,
+    (\spacing f \circ i, f \circ j)  \,,
     \\
-    \biggl( (g,h) \mapsto \phi(g) + \psi(h) \biggr)
+    \biggl( (\spacing g,h) \mapsto \phi(\spacing g) + \psi(h) \biggr)
     &\longmapsfrom
     (\psi, \psi)  \,.
   \end{align*}
-  Here may think about the compositions~$f \circ $ and~$f \circ j$ as the restrictions of~$f$ to~$\glie$ and~$\hlie$.
+  Here may think about the compositions~$f \circ i$ and~$f \circ j$ as the restrictions of~$f$ to~$\glie$ and~$\hlie$.
   
   If~$\klie$ is another Lie~algebra then we see that for any Lie~algebra homomorphism~$f \colon \glie \times \hlie \to \klie$ the corresponding restrictions~$\phi = f \circ i$ and~$\psi = f \circ j$ are again Lie~algebra homomorphisms (because~$i$ and~$j$ are Lie~algebra homomorphisms).
   These two restrictions have the properties that their images in~$\klie$ commute with each other, because~$\glie$ and~$\hlie$ commute with each other in~$\glie \times \hlie$.
@@ -988,7 +988,7 @@
   \[
     [\phi(x), \psi(y)]
     =
-    [f(i(x)), f(j(x))]
+    [\spacing f(i(x)), f(\spacing j(x))]
     =
     f( [i(x), j(x)] )
     =
@@ -1000,7 +1000,7 @@
   If on the other hand~$\phi \colon \glie \to \klie$ and~$\psi \colon \glie \to \klie$ are two Lie~algebra homomorphisms whose images commute with each other then the resulting linear map~$f \colon \glie \times \hlie \to \klie$ given by~$f((x,y)) = \phi(x) + \psi(y)$ is again a Lie~algebra homomorphism because
   \begin{align*}
     {}&
-    [ f((x_1, y_1)), f((x_2, y_2)) ]
+    [\spacing f((x_1, y_1)), f((x_2, y_2)) ]
     \\
     ={}&
     [ \phi(x_1) + \psi(y_1), \phi(x_2) + \psi(y_2) ]
@@ -1059,11 +1059,11 @@
  \begin{align*}
   f^{-1}( [x,y] )
   &=
-  f^{-1}( [ f(f^{-1}(x)), f(f^{-1}(y)) ] ) \\
+  f^{-1}( [\spacing f(\spacing f^{-1}(x)), f(\spacing f^{-1}(y)) ] ) \\
   &=
-  f^{-1}(f( [f^{-1}(x), f^{-1}(y)] )) \\
+  f^{-1}(\spacing f( [\spacing f^{-1}(x), f^{-1}(y)] )) \\
   &=
-  [f^{-1}(x), f^{-1}(y)]
+  [\spacing f^{-1}(x), f^{-1}(y)]
  \end{align*}
  for all~$x, y \in \hlie$.
 \end{proof}
@@ -1215,7 +1215,7 @@
         \colon
         \glie/{\ker f}
         \to
-        \im(f)  \,,
+        \im(\spacing f)  \,,
         \quad
         \class{x}
         \mapsto
@@ -1224,7 +1224,7 @@
     \item
       If~$I$ and~$J$ are two ideals in~$\glie$ with~$I \subseteq J$ then~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
       \[
-        (\glie/I) / (J/I)
+        (\glie/I) / (\spacing J/I)
         \to
         \glie/I \,,
         \quad
@@ -1298,7 +1298,7 @@
   \[
     f([X,Y])
     =
-    [f(X), f(Y)]
+    [\spacing f(X), f(Y)]
   \]
   for any two subsets~$X, Y \subseteq \glie$.
   \qed
@@ -1351,7 +1351,7 @@
     &\longmapsfrom
     K \,.
   \end{align*}
-  If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
+  If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(\spacing J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
   \qed
 \end{proposition}
 
@@ -1560,7 +1560,7 @@
       \[
         [h,e] = 2e  \,,
         \qquad
-        [h,f] = -2f \,,
+        [h,f] = -2 \spacing f \,,
         \qquad
         [e,f] = h \,.
       \]

@@ -75,7 +75,7 @@
 
 
 \begin{definition}
-  If~$\glie$ is a Lie~algebra then~$\glie^{(1)} = g^1 = [\glie, \glie]$ is the \defemph{derived Lie~algebra}\index{derived Lie algebra}\index{Lie algebra!derived} of~$\glie$.
+  If~$\glie$ is a Lie~algebra then~$\glie^{(1)} = \glie^1 = [\glie, \glie]$ is the \defemph{derived Lie~algebra}\index{derived Lie algebra}\index{Lie algebra!derived} of~$\glie$.
 \end{definition}
 
 
@@ -176,7 +176,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      This can be shown by induction because~$f([X,Y]) = [f(X), f(Y)]$ for all subsets~$X, Y \subseteq \glie$.
+      This can be shown by induction because~$f([X,Y]) = [\spacing f(X), f(Y)]$ for all subsets~$X, Y \subseteq \glie$.
     \item
       The inclusion~$\hlie \inclusion \glie$ is a Lie algebra homomorphism, hence~$\hlie^{(i)} \subseteq \glie^{(i)}$ for every~$i \geq 0$.
       It thus follows from~$\glie^{(n)} = 0$ for~$n$ sufficiently large that also~$\hlie^{(n)} = 0$.
@@ -301,7 +301,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      This can be shown inductively because~$f([X,Y]) = [f(X), f(Y)]$ for any two subsets~$X, Y \subseteq \glie$.
+      This can be shown inductively because~$f([X,Y]) = [\spacing f(X), f(Y)]$ for any two subsets~$X, Y \subseteq \glie$.
     \item
       The inclusion~$\hlie \to \glie$ is a homomorphism of Lie~algebras, hence~$\hlie^i \subseteq \glie^i$ for all~$i \geq 0$.
       It thus follows for~$n$ sufficiently large from~$\glie^i = 0$ that also~$\hlie^i = 0$.
@@ -380,13 +380,13 @@
 
 \begin{corollary}
   \label{nilpotent iff nilpotent moudulo center}
-  A Lie algebra~$\glie$ is nilpotent if and only if its quotient~$\glie/\centerlie(\glie)$ is nilpotent.
+  A Lie algebra~$\glie$ is nilpotent if and only if its quotient~$\glie/{\centerlie(\glie)}$ is nilpotent.
   \qed
 \end{corollary}
 
 
 \begin{remark}
-  Observe that the quotient~$\glie/\centerlie(\glie)$ can be identified with the Lie~subalgebra~$\ad(\glie)$ of~$\gllie(\glie)$.
+  Observe that the quotient~$\glie/{\centerlie(\glie)}$ can be identified with the Lie~subalgebra~$\ad(\glie)$ of~$\gllie(\glie)$.
   We can therefore use \cref{solvable via ses} and \cref{nilpotent iff nilpotent moudulo center} to reduce questions about solvability or nilpotence of Lie~algebras to the case of linear Lie~algebras (observe for the application of \cref{solvable via ses} that the ideal~$\centerlie(\glie)$ is abelian and hence solvable).
 \end{remark}
 
@@ -408,7 +408,7 @@
       [I+J, [I+J, [\dotsc, [I+J, I+J] \dotsc] ] ]
       \\
       &=
-      \sum_{K_i \in \{I, J\}}
+      \sum_{K_i \in \{I, \spacing J\}}
       [K_1, [K_2, [\dotsc, [K_{2n}, K_{2n+1}] \dotsc] ] ] \,.
     \end{aligned}
   \end{equation}
@@ -1182,7 +1182,7 @@
     \item
       Finding a common eigenvectors for~$I$ by induction hypothesis.
     \item
-      Showing that~$\glie$ stabilizes as nonzero subspace~$U \subseteq V$ of such eigenvectors.
+      Showing that~$\glie$ stabilizes a nonzero subspace~$U$ of~$V$ that consists of such eigenvectors.
     \item
       Writing~$\glie = I \oplus \kf y$ (as vector spaces) and finding an eigenvector of~$y$ in~$U$.
   \end{itemize}
@@ -1190,7 +1190,7 @@
   For the first step we note that~$[\glie,\glie]$ in~$\glie$ because~$\glie$ is nonzero and solvable.
   Hence~$\glie/[\glie,\glie]$ is a nonzero abelian Lie~algebra.
   Any linear subspace~$J \subseteq \glie/[\glie,\glie]$ of codimension~$1$ is then an ideal in~$\glie/[\glie,\glie]$.
-  Hence the preimage~$I = \pi^{-1}(J)$ under the canonical projection~$\glie \to \glie/[\glie,\glie]$ is an ideal in~$\glie$ of codimension~$1$.
+  Hence the preimage~$I = \pi^{-1}(\spacing J)$ under the canonical projection~$\glie \to \glie/[\glie,\glie]$ is an ideal in~$\glie$ of codimension~$1$.
  
   For the second step we note~$I$ is solvable because it is a Lie~subalgebra of~$\glie$.
   So by induction hypothesis there exists a common eigenvector for~$I$.
@@ -1333,7 +1333,7 @@
     \item[\ref*{every fd rep is triangularizable}~$\implies$~\ref*{g is solvable}]
       We find that for the adjoint representation of~$\glie$ there exists a basis of~$\glie$ with respect to which the action of every~$x \in \glie$ (i.e.~$[x,-]$) is given by an upper triangular matrix.
       This means by \cref{triangularization of solvable linear lie algebras} that the Lie~subalgebra~$\glie' \defined \ad(\glie)$ of~$\gllie(V)$ is solvable.
-      Therefore~$\glie$ is solvable because~$\glie' \cong \glie/\centerlie(\glie)$ with~$\centerlie(\glie)$ being an abelian and hence solvable ideal in~$\glie$.
+      Therefore~$\glie$ is solvable because~$\glie' \cong \glie/{\centerlie(\glie)}$ with~$\centerlie(\glie)$ being an abelian and hence solvable ideal in~$\glie$.
     \qedhere
   \end{implicationlist}
 \end{proof}

@@ -54,6 +54,7 @@
 \setmathfont[range=\mathbb,Scale=MatchUppercase]{TeX Gyre Schola Math}
 \setmathfont[range=\mathcal,Scale=MatchUppercase]{Latin Modern Math}
 \setmathfont[range=\mathfrak,Scale=MatchUppercase]{Asana Math}
+\setmathfont[range={}]{EBGaramond12-Italic}
 
 
 
@@ -172,6 +173,7 @@
 \newcommand{\representation}[1]{#1\nobreakdash-representation}
 \newcommand{\representations}[1]{#1\nobreakdash-representations}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
+\newcommand{\submodule}[1]{#1\nobreakdash-submodule}
 \newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
 \newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentation}
 \newcommand{\threedimensional}{three\nobreakdash-dimensional}
@@ -184,6 +186,11 @@
 \newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
 \newcommand{\weightspace}[1]{#1\nobreakdash-weight space}
 \newcommand{\weightvector}[1]{#1\nobreakdash-weight vector}
+
+% hacks
+\newcommand{\spacing}{\,}
+
+
 
 
 %%%%% MATH STUFF
@@ -212,8 +219,9 @@
 \newcommand{\looplie}{\mathcal{L}}
 
 % categories
-\newcommand{\catC}{\mathcal{C}}
 \newcommand{\catname}[1]{\mathbf{#1}}
+\newcommand{\catC}{\mathcal{C}}
+\newcommand{\catA}{\mathcal{A}}
 \newcommand{\cAlg}[1]{#1\text{-}\catname{Alg}}
 \newcommand{\cCAlg}[1]{#1\text{-}\catname{CAlg}}
 \newcommand{\cfAlg}[1]{#1\text{-}\catname{fAlg}}
@@ -265,11 +273,12 @@
 
 % arrows
 \newcommand{\longonetoone}{\longleftrightarrow}
-\newcommand{\longto}{\longrightarrow}
+\newcommand{\longto}[1]{\longrightarrow}
 \newcommand{\xto}{\xrightarrow}
-\newcommand{\xlongto}{\xlongrightarrow}
+\newcommand{\xlongto}[1]{\xlongrightarrow{\;#1\;}}
 
 % delimiters
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
 \NewDocumentCommand{\restrict}{smmO{}}{
   \IfBooleanTF{#1}
@@ -286,6 +295,7 @@
 \newcommand{\class}{\overline}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \newcommand{\induced}{\overline}
+\newcommand{\op}{\mathrm{op}}
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
 
 % shortcuts

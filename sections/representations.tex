@@ -119,7 +119,7 @@
         \qquad
         \rho(h) = y \dd{y} - x \dd{x} \,,
         \qquad
-        \rho(f) = x \dd{y}  \,.
+        \rho(\spacing f) = x \dd{y}  \,.
       \]
       Here we denote by~$x$ and~$y$ not only the variables of~$\kf[x,y]$ but also the multiplication with these variables, and~$(e,h,f)$ denotes the standard basis of~$\sllie_2(\kf)$.
       To see that this is a homomorphism of Lie~algebra note that
@@ -172,7 +172,7 @@
           -2 x^{n+1} y^{m-1}
           \\
           &=
-          -2f.(x^n y^{m-1})
+          -2 \spacing f.(x^n y^{m-1})
           \\
           &=
           [h,f].(x^n y^{m-1})
@@ -191,7 +191,7 @@
         =
         -2x\dd{x} \,,
         \qquad
-        \rho(f)
+        \rho(\spacing f)
         =
         -\dd{x} \,.
       \]
@@ -221,7 +221,7 @@
         h.f.x^n - f.h.x^n
         = 2n(n+1) x^{n+1} - 2 n^2 x^{n+1}
         = 2n x^{n+1}
-        = -2f.x^n
+        = -2 \spacing f.x^n
         = [h,f].x^n
       \end{gather*}
       for every~$n \geq 0$.
@@ -318,7 +318,7 @@
         =
         x.f(v) - f(x.v)
       \]
-      for all~$x \in \glie$,~$f \in \Hom_\kf(V,W)$ and~$v \in V$.
+      for all~$x \in \glie$,\,~$f \in \Hom_\kf(V,W)$ and~$v \in V$.
     \item
       Every~{\vectorspace{$\kf$}}~$V$ becomes a representation of~$\glie$ via the \defemph{trivial action}\index{trivial action}
       \[
@@ -330,11 +330,11 @@
     \item
       By letting~$\glie$ act trivially on~$\kf$ the dual~$V^* = \Hom_\kf(V, \kf)$ becomes a representation of~$\glie$ in the above way, i.e.\ via
       \[
-        (x.\phi)(v)
+        (x.\varphi)(v)
         =
-        -\phi(x.v)
+        -\varphi(x.v)
       \]
-      for all~$x \in \glie$ and~$v \in V$.
+      for all~$x \in \glie$,~$\varphi \in V^*$ and~$v \in V$.
   \end{enumerate}
 \end{proposition}
 
@@ -430,7 +430,7 @@
 
 
 \begin{remark}
-  If~$(V, \rho)$ is a representation of a Lie~algebra~$\glie$ then a linear subspace~$U \subseteq V$ is a subrepresentation if and only if~$U$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, in the sense that~$\rho(x)(U) \subseteq U$.
+  If~$(V, \rho)$ is a representation of a Lie~algebra~$\glie$ then a linear subspace~$U$ of~$V$ is a subrepresentation if and only if~$U$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, in the sense that~$\rho(x)(U) \subseteq U$.
 \end{remark}
 
 
@@ -480,12 +480,12 @@
       \[
         V_{(\lambda)}
         \defined
-        \bigcup_{n \geq 0} \ker(f - \lambda \id_V)^n
+        \bigcup_{n \geq 0} \ker(\spacing f - \lambda \id_V)^n
         =
         \{
           v \in V
         \suchthat
-        \text{$(f - \lambda \id_V)^n(v) = 0$ for some~$n \geq 0$}
+        \text{$(\spacing f - \lambda \id_V)^n(v) = 0$ for some~$n \geq 0$}
         \}
       \]
       are subrepresentations of~$V$.
@@ -668,9 +668,9 @@
       \[
         f^{-1}(x.v)
         =
-        f^{-1}(x.f(f^{-1}(v)))
+        f^{-1}(x.f(\spacing f^{-1}(v)))
         =
-        f^{-1}(f(x.f^{-1}(v)))
+        f^{-1}(\spacing f(x.f^{-1}(v)))
         =
         x.f^{-1}(v)
       \]
@@ -727,6 +727,32 @@
         f \circ \phi
       \]
       is again a homomorphism of representations.
+    \item
+      More generally, for all representations~$U$,~$V$ and~$W$ of~$\glie$ and every homomorphism of representations~$f \colon U \to V$ the two induced linear maps
+      \begin{alignat*}{2}
+        f_*
+        &\colon
+        \Hom_{\kf}(W,U)
+        \to
+        \Hom_{\kf}(W,V) \,,
+        &
+        \quad
+        g 
+        &\mapsto
+        f \circ g
+      \shortintertext{and}
+        f^*
+        &\colon
+        \Hom_{\kf}(V,W)
+        \to
+        \Hom_{\kf}(U,W) \,,
+        &
+        \quad
+        g
+        &\mapsto
+        g \circ f
+      \end{alignat*}
+      are again homomorphisms of representations.
     \item
       For any two representations~$V$ and~$W$ of~$\glie$ the natural linear map
       \[
