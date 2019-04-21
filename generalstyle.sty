@@ -69,6 +69,9 @@
   
 % the file containing the references for biblatex
 \bibliography{references.bib}
+% no unplaned surprises with \cite
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
 
 % index and glossary
 \makeindex

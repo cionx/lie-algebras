@@ -1,194 +1,409 @@
-\section{The abstract Jordan decomposition}
-In this section the concrete Jordan decomposition (Theorem~\ref{thrm: concrete Jordan decomposition}) is generalized to finite dimensional semisimple Lie algebras. The approach taken is mostly from \cite[\S 4.2, \S 5.3, \S 5.4, \S 6.4]{Humphreys} with some inspiration from the lecture.
+\section{The Abstract Jordan Decomposition}
 
 
-\begin{lemma}\label{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements}
- Let $\g \subseteq \gl(V)$ be a finite dimensional semisimple linear Lie algebra. Then $\g$ contains the semisimple and nilpotent parts of all its elements.
+\begin{lemma}
+  \label{ss linear lie algebra contains ss and nilpotent parts}
+ Let~$\glie$ be a finite dimensional semisimple linear Lie~algebra.
+ Then~$\glie$ contains the semisimple and nilpotent parts of all its elements.
 \end{lemma}
-\begin{proof}
- It sufficies to show the statement for $V \neq 0$ because otherwise $\g = \gl(V) = 0$.
- 
- Let $N \coloneqq N_{\gl(V)}(\g)$. This is a Lie subalgebra of $\gl(V)$ containing $\g$. Let $x \in \g$. Because $\ad(x)(\g) \subseteq \g$ it follows that $\ad(x_s)(\g) \subseteq \g$ and $\ad(x_n)(\g) \subseteq \g$ with the abbreviation $\ad = \ad_{\gl(V)}$. From Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent} it follows that $\ad(x)_s = \ad(x_s)$ and $\ad(x)_n = \ad(x_n)$ where $x = x_s + x_n$ is the concrete Jordan decomposition of $x$. Hence $x_s, x_n \in N$.
- 
- Notice that $\g \subsetneq N$ because $\id_V \in N$ but $\id_V \notin \g$ since $Z(\g) \neq 0$. The idea is to now shrink $N$ down to $\g$ by adding additional restraints while maintaining the property that the semisimle and nilpotent parts of all element of $\g$ are contained.
- 
- For any $\g$-subrepresentation $W \subseteq V$ let
- \[
-  \g_W \coloneqq \{x \in \gl(V) \mid x(W) \subseteq W, \tr x|_W = 0\};
- \]
- notice that this is a Lie subalgebra of $\gl(V)$. Also notice that together with Corollary~\ref{cor: representation of semisimple Lie algebra are traceless} it follows that $\g \subseteq \g_W$ for every $\g$-subrepresentation $W \subseteq V$. Let
- \[
-  \hat{\g} \coloneqq N \cap \bigcap \{\g_W \mid \text{$W \subseteq V$ is a $\g$-subrepresentation}\}.
- \]
- Notice that for any $\g$-subrepresentation $W \subseteq V$ and $x \in \g$ it follows from $x(W) \subseteq W$ that als $x_s(W) \subseteq W$ and $x_n(W) \subseteq W$. Because $x_n|_W$ is nilpotent it also follows that $\tr x_n|_W = 0$ and therefore also $\tr x_s|_W = \tr x|_W - \tr x_n|_W = 0$. Hence $x_s, x_n \in \g_W$.
- 
- Combining the above observations it follows that $\hat{\g}$ is a Lie subalgebra of $\gl(V)$ which contains $\g$ as an ideal and for which $x_s, x_n \in \hat{\g}$ for every $x \in \g$. By Lemma~\ref{lem: direct complement of semisimple ideals} there exists an ideal $I \subseteq \hat{\g}$ with $\hat{\g} = \g \oplus I$. Let $x \in I$ and $W \subseteq V$ be an irreducible subrepresentation. By construction of $\hat{\g}$ the action of $\g$ on $W$ extends to the natural action of $\hat{\g}$ on $W$. Because $[\g,I] = 0$ it follows that $x \in I$ is a homomorphisms of representations of $\g$. By Schur’s Lemma it follows that $x = \lambda \id_W$ for some $\lambda \in k$. Because $\lambda \dim W = \tr x|_W = 0$ this scalar has to be zero. Hence $x = 0$ and therefore $I = 0$. Thus $\hat{\g} = \g$.
-\end{proof}
 
 
-\begin{lemma}\label{lem: generalized eigenspace decomposition for derivations}
- Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, and $\delta \in \Der A$. For every $\lambda \in k$ let
- \[
-  A_\lambda
-  \coloneqq \bigcup_{n \in \N} \ker(\delta-\lambda I)^n
-  = \{x \in A \mid \text{$(\delta-\lambda I)^m(x) = 0$ for some $m \in \N$}\}
- \]
- be the generalized eigenspace of $\delta$ with respect to $\lambda$. Then $A = \bigoplus_{\lambda \in k} A_\lambda$ and
- \[
-  A_\lambda A_\mu \subseteq A_{\lambda + \mu} \quad \text{for all $\lambda, \mu \in k$}.
- \]
-\end{lemma}
 \begin{proof}
- For this proof abbreviate $1 \coloneqq I$. That $A = \bigoplus_{\lambda \in k} A_\lambda$ is a standard fact from linear algebra. Let $x \in A_\lambda$ and $y \in A_\mu$. It needs to be shown that $xy \in A_{\lambda + \mu}$, i.e.\ $(\delta-(\lambda+\mu)I)^m(xy) = 0$ for some $m \in \N$. Because $(\delta-\lambda I)^{m_1}(x) = 0$ and $(\delta-\mu I)^{m_2}(y) = 0$ for some $m_1, m_2 \in \N$ this follows from the formula
- \[
-  (\delta-(\lambda+\mu)I)^n(xy)
-  = \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
-  \quad\text{for every $n \in \N$},
- \]
- which can be shown by induction over $n \in \N$: For $n = 0$ the statement holds. Suppose it holds for some $n \in \N$. Then
- \begingroup
- \allowdisplaybreaks
- \begin{align*}
-  &\, (\delta-(\lambda+\mu)I)^{n+1}(xy)
-  = (\delta-(\lambda+\mu)I)((\delta-(\lambda+\mu)I)^n(xy)) \\
-  =&\, (\delta-(\lambda+\mu)I)\left(
-       \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
-       \right) \\
-  =&\,  \sum_{i=0}^n \binom{n}{i} \delta\left( (\delta-\lambda I)^i(x) \right) (\delta-\mu I)^{n-i}(y)
-       +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) \delta\left( (\delta-\mu I)^{n-i}(y) \right) \\
-   &\, -\sum_{i=0}^n \binom{n}{i} \lambda(\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
-       -\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) \mu(\delta-\mu I)^{n-i}(y) \\
-  =&\,  \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^{i+1}(x) (\delta-\mu I)^{n-i}(y)
-       +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
-  =&\,  \sum_{i=1}^{n+1} \binom{n}{i-1} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
-       +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
-  =&\,  \sum_{i=1}^n \left(\binom{n}{i-1}+\binom{n}{i}\right) (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
-   &\, +(\delta-\mu I)^{n+1}(y) + (\delta-\lambda I)^{n+1}(x) \\
-  =&\,  \sum_{i=1}^n \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
-       +(\delta-\mu I)^{n+1}(y) + (\delta-\lambda I)^{n+1}(x) \\
-  =&\, \sum_{i=0}^{n+1} \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
- \qedhere
- \end{align*}
- \endgroup
+  Let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ for a finite dimensional vector space~$V$.
+  Let~$\hat{\glie}$ be the Lie~subalgebra of~$\gllie(V)$ that is generated by the semisimple and nilpotent parts of all~$x \in \glie$.
+  We observe that~$\hat{\glie}$ has the following properties:
+  \begin{itemize}
+    \item
+      The Lie~algebra~$\hat{\glie}$ contains~$\glie$:
+      For every~$x \in \glie$ we have~$x_s, x_n \in \hat{\glie}$ and hence~$x = x_s + x_n \in \hat{\glie}$.
+    \item
+      The Lie~algebra~$\glie$ is in fact an ideal in~$\hat{\glie}$:
+      We need to show that every~$y \in \hat{\glie}$ normalizes~$\glie$.
+      It sufficies to consider the case that~$y$ is a Lie~algebra generator~$y = x_s$ or~$y = x_n$ for some~$x \in \glie$ because the normalizer~$\normallie_{\hat{\glie}}(\glie)$ is a Lie~subalgebra of~$\hat{\glie}$.
+      We have~$\ad(x)(\glie) = [x,\glie] \subseteq \glie$ and hence~$\ad(x)_s(\glie) \subseteq \glie$ and~$\ad(x)_n(\glie) \subseteq \glie$ by \cref{concrete jordan decomposition}.
+      We know from \cref{concrete jordan decomposition compatible with adjoint representation} that~$\ad(x)_s = \ad(x_s)$ and~$\ad(x)_n = \ad(x_n)$.
+      Thus~$x_s$ and~$x_n$ normalize~$\glie$.
+    \item
+      Every~{\subrepresentation{$\glie$}}~$W$ of~$V$ (with respect to the natural action) is also a~{\subrepresentation{$\hat{\glie}$}}:
+      It follows for every~$x \in \glie$ from~$x(W) \subseteq W$ that also~$x_s(W) \subseteq W$ and~$x_n(W) \subseteq W$.
+      The stabilizer~$\glie_W = \{ z \in \gllie(V) \suchthat z(W) \subseteq W \}$ is a Lie~subalgebra of~$\gllie(V)$ that contains the generators of~$\hat{\glie}$ and thus all of~$\hat{\glie}$.
+      This means that~$W$ is a~{\subrepresentation{$\hat{\glie}$}}.
+    \item
+      For every~$y \in \hat{\glie}$ and every~{\subrepresentation{$\glie$}}~$W$ of~$V$ the restriction~$\restrict{y}{W}$ (which is well-defined because~$W$ is a~{\subrepresentation{$\hat{\glie}$}}) has trace zero:
+      It suffcies to show this holds for the Lie~algebra generators~$x_s$ and~$x_n$ with~$x \in \glie$ because~$\sllie(V) = \{z \in \gllie(V) \suchthat \tr(z) = 0 \}$ is a Lie~subalgebra of~$\gllie(V)$.
+      The restriction~$\restrict{x_n}{W}$ has trace zero because it is again nilpotent.
+      The restriction~$\restrict{x}{W}$ has trace zero by \cref{representation of semisimple lie algebra are traceless}, hence also~$\tr(\restrict{x_s}{W}) = \tr(\restrict{x}{W}) - \tr(\restrict{x_n}{W}) = 0$.
+  \end{itemize}
+  
+  It follows from this properties that already~$\hat{\glie} = \glie$.
+  Indeed, there exists by \cref{decomposition into orthogonals for semisimple} an ideal~$I$ of~$\glie$ with~$\hat{\glie} = \glie \oplus I$ because~$\glie$ is semisimple.
+  Let~$x \in I$.
+  For every irreducible subrepresentations~$W$ of~$V$ the restriction~$\restrict{x}{W} \colon W \to W$ is well-defined because~$W$ is a~{\subrepresentation{$\hat{\glie}$}}.
+  We have~$[\glie, I] = 0$ because~$\hat{\glie} = \glie \oplus I$ is a decomposition into ideals, hence~$[x, \glie] = 0$.
+  This means that~$\restrict{x}{W}$ is an endomorphism of~$W$ as a~{\representation{$\glie$}}.
+  It follows from Schur’s~lemma that~$\restrict{x}{W}$ acts by multiplication by some scalar~$\lambda \in \kf$.
+  But we have seen that~$\restrict{x}{W}$ has trace zero, so~$\lambda = 0$.
+  This shows that~$\restrict{x}{W} = 0$ for every irreducible subrepresentation~$W$ of~$V$.
+  It follows that~$x = 0$ because~$V$ is completely reducible.
+  This shows that~$I = 0$ and hence~$\hat{\glie} = \glie$.
+%   Let~$\nlie$ be the normalizer of~$\glie$ in~$\gllie(V)$.
+%   This is a Lie~subalgebra of~$\gllie(V)$ that contains $\glie$.
+%   We have for~$x \in \glie$ that~$\ad_{\gllie(V)}(x)(\glie) \subseteq \glie$ and hence~$(\ad_{\gllie(V)}(x))_s(\glie) \subseteq \glie$ and~$(\ad_{\gllie(V)}(x))_n(\glie) \subseteq \glie$.
+%   We know from~\cref{ss and nilpotent implies ad-ss and ad-nilpotent} that~$(\ad_{\gllie(V)}(x))_s = \ad(x_s)$ and $\ad(x)_n = \ad(x_n)$ where~$x = x_s + x_n$ is the concrete Jordan~decomposition of~$x$.
+%   Hence $x_s, x_n \in \nlie$.
+%  
+%   We observe that~$\glie$ is an ideal in~$\nlie$, but a proper one because~$\id_V \in \nlie$ while~$\id_V \notin \glie$ since $\centerlie(\glie) \neq 0$.
+%   We will now shrink down~$\nlie$ to~$\glie$ by adding additional restraints, while maintaining the property that~$\nlie$ contains the simisimple and nilpotent part of all its element.
+%  
+%   For every~{\subrepresentation{$\glie$}}~$W$ of~$V$ the stabilizer
+%   \[
+%     \glie_W
+%     \defined
+%     \{
+%       x \in \gllie(V)
+%     \suchthat
+%       x(W) \subseteq W,
+%       \tr \restrict{x}{W} = 0
+%     \}  \,.
+%   \]
+%   Then~$\glie_W$ is a Lie~subalgebra of $\gllie(V)$.
+%   We know from \cref{representation of semisimple lie algebra are traceless} that every~$x \in \glie$ is traceless, hence that~$\glie$ is contained in~$\glie_W$.
+%   For every~$x \in \glie_W$ the nilpotent part~$x_n$ again satifies~$x_n(W) \subseteq W$ by \cref{concrete jordan decomposition} and it has trace zero because it is nilpotent.
+%   This shows that the Lie~algebra~$\glie_W$ contains the nilpotent part~$x_n$, and hence also the semisimple part~$x_s = x - x_n$.
+%   
+%   Let~$\hat{\glie}$ be the intersection of the normalizer~$\nlie$ with all the stabilizers~$\glie_W$ where~$W$ ranges through the~{\subrepresentations{$\glie$}} of~$V$.
+%   Then~$\hat{\glie}$ is a Lie~subalgebra of~$\gllie(V)$ that contains~$\glie$ as an ideal and that contains the nilpotent and semisimple parts of all its elements.
+%   We will now show that~$\glie = \hat{\glie}$.
+% 
+%   By \cref{decomposition into orthogonals for semisimple} there exists an ideal~$I$ in~$\hat{\glie}$ with~$\hat{\glie} = \glie \oplus I$.
+%   We show that~$x = 0$ for every~$x \in I$, which means that~$x(v) = 0$ for every~$v \in V$.
+%   We know from Weyl’s~theorem that~$V$ decomposes into irreducible~{\subrepresentations{$\glie$}}.
+%   It sufficies to show that~$x(v) = 0$ for every irreducible~{\subrepresentation{$\glie$}}~$W$ of~$V$ and every~$x \in W$.
+%   
+%   The natural action of~$\hat{\glie}$ on~$V$ restricts by construction of~$W$ to an irreducible representation
+%   
+% %   Let $x \in I$ and~$W$ be an irreducible~{\subrepresentation{$\glie$}} of~$V$.
+% %   The natural aciton of~$\glie$ on~$W$ extends to the natural action of~$\hat{\glie}$ on~$W$ and~$W$ is also irreducible as a~{\representation{$\hat{\glie}$}}
+% %   Because $[\g,I] = 0$ it follows that $x \in I$ is a homomorphisms of representations of $\glie$. By Schur’s Lemma it follows that $x = \lambda \id_W$ for some $\lambda \in k$. Because $\lambda \dim W = \tr x|_W = 0$ this scalar has to be zero. Hence $x = 0$ and therefore $I = 0$. Thus $\hat{\glie} = \glie$.
 \end{proof}
 
 
 \begin{remark}
- Notice that the formula in the proof of Lemma~\ref{lem: generalized eigenspace decomposition for derivations} is just a generalization of the binomial theorem, which follows by setting $\delta = 0$.
+  Our proof of \cref{ss linear lie algebra contains ss and nilpotent parts} is a variantion of the standard proof as found in~\cite[Theorem~6.4]{humphreys} and~\cite[Proposition~I.\S6.3]{bourbaki_lie}.
 \end{remark}
 
 
-\begin{lemma}\label{lem: derivations contain the ss and np part of all its elements}
- Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, e.g.\ a Lie algebra. Then $\Der(A)$ contains the semisimple and nilpotent parts (in $\End_k(A)$) of all its elements.
-\end{lemma}
-\begin{proof}
- Let $\delta \in \Der(A)$ and for every $\lambda \in k$ let $A_\lambda$ be the generalized eigenspace with respect to $\lambda$. To show that $\Der(A)$ contains the semisimple and nilpotent part of $\delta$ is sufficies to do so for the semisimple part, which will be denoted by $\sigma$. As seen in the proof of Theorem~\ref{thrm: concrete Jordan decomposition} (the concrete Jordan decomposition) $\sigma$ acts on $A_\lambda$ by multiplication with $\lambda$ for every $\lambda \in k$. If $x \in A_\lambda$ and $y \in A_\mu$ then $xy \in A_{\lambda + \mu}$ and thus
- \[
-  \sigma(xy)
-  = (\lambda + \mu)(xy)
-  = (\lambda x)y + x(\mu y)
-  = \sigma(x)y + x\sigma(y).
- \]
- Because $A = \bigoplus_{\lambda \in k} A_\lambda$ it follows that $\sigma$ is a derivation of $A$.
-\end{proof}
-
-
-\begin{lemma}\label{lem: direct complement of semisimple ideals}
- Let $\g$ be a finite dimensional Lie algebra and $I \subideal \g$ a semisimple ideal. Then there exists an ideal $J \subideal \g$ with $\g = I \oplus J$.
-\end{lemma}
-\begin{proof}
- Because $I \subideal \g$ is an ideal it follows that $\kappa_I = \kappa_\g|_{I \times I}$. Because $I$ is semisimple it also follows that $\kappa_I$ is non-degenerate. It follows for the linear map
- \[
-  \varphi \colon \g \to I^*, \quad x \mapsto \kappa(x, \cdot)
- \]
- that $\varphi|_I \colon I \to I^*$ is an isomorphism. Hence $I \cap \ker \varphi = 0$ with
- \[
-  \dim I = \dim I^* = \dim \g - \dim \ker \varphi.
- \]
- Let $J \coloneqq I^\perp$ be the orthogonal complement of $I$ with respect to the Killing form. From Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} it is known that $J$ is an ideal in $\g$. Because $J = \ker \varphi$ it follows from the previous observations that $I \cap J = 0$ and $\dim \g = \dim I + \dim J$ and thus $\g = I \oplus J$.
-\end{proof}
-
-
-\begin{lemma}\label{lem: every derivation of a semisimple Lie algebra is inner}
- Let $\g$ be a finite dimensional semisimple Lie algebra. Then every derivation of $\g$ is inner.
-\end{lemma}
-\begin{proof}
- As seen in Lemma~\ref{lem: inner derivations are in ideal} and its proof the inner derivations form an ideal $I \subideal \Der(\g)$ with $[\delta,\ad(x)] = \ad(\delta(x))$ for every $\delta \in \Der(\g)$ and $x \in \g$. By Lemma~\ref{lem: direct complement of semisimple ideals} there exists an ideal $J \subideal \Der(\g)$ with $\Der(\g) = I \oplus J$. Let $\delta \in J$. Then for any $x \in \g$
- \[
-  \ad(\delta(x)) = [\delta, \ad(x)] \in J \cap I = 0,
- \]
- and thus $\ad(\delta(x)) = 0$. Because $\ad$ is injective it follows that $\delta(x) = 0$ for every $x \in \g$ and thus $\delta = 0$. Therefore $J = 0$ and thus $\Der(A) = I$.
-\end{proof}
-
-
-\begin{theorem}[Abstract Jordan decomposition] \label{thrm: abstract Jordan decomposition}
- Let $\g$ be a finite dimensional semisimple Lie algebra. Then for any $x \in \g$ there exist unique elements $x_s, x_n \in \g$ such that $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(x_s) = \ad(x)_s$ and $\ad(x_n) = \ad(x)_n$.
- 
- Then $x = x_s + x_n$ and an arbitrary element of $\g$ commutes with $x$ if and only if it commutes both with $x_s$ and $x_n$. In particular $x$, $x_s$ and $x_n$ are pairwise commuting.
-\end{theorem}
-\begin{proof}
- By Lemma~\ref{lem: every derivation of a semisimple Lie algebra is inner} the adjoint representation $\ad \colon \g \to \ad(\g) = \Der(\g)$ is an isomorphism of Lie algebras. By Lemma~\ref{lem: derivations contain the ss and np part of all its elements} $\Der(\g)$ contains the semisimple and nilpotent parts of all its elements. By setting $x_s \coloneq \ad^{-1}(\ad(x)_s)$ and $x_n \coloneqq \ad^{-1}(\ad(x)_n)$ the theorem follows from the properties of the concrete Jordan decomposition as stated in Theorem~\ref{thrm: concrete Jordan decomposition}.
-\end{proof}
-
-
-\begin{definition}\label{defi: definition of abstract ss and np}
- Let $\g$ be a finite dimensional semisimple Lie algebra and $x \in \g$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{abstract semisimple part} and $x_n$ is the \emph{abstract nilpotent part} of $x$.
+\begin{definition}
+  Let~$\glie$ be a semisimple Lie~algebra.
+  An element~$x \in \glie$ is \defemph{\textup(abstract\textup) semisimple}\index{semisimple!element} (resp.\ \defemph{\textup(abstract\textup) nilpotent}\index{nilpotent!element}) if~$x$ acts semisimple (resp.\ nilpotent) on every finite dimensional representation of~$\glie$, i.e.\ if for every finite dimensional representation~$(V,\rho)$ of~$\glie$ the endomorphism~$\rho(x)$ is semisimple (resp.\ nilpotent).
 \end{definition}
 
 
 \begin{remark}
- By Definition~\ref{defi: definition of abstract ss and np} an element of a finite dimensional semisimple Lie algebra is semisimple if and only if it is $\ad$-semisimple and nilpotent if and only if it is $\ad$-nilpotent.
+  If~$f \colon \glie \to \hlie$ is an isomorphism of finite dimensional semisimple Lie~algebras then an element~$x \in \glie$ is semisimple (resp.\ nilpotent) if and only if the corresponding element~$\varphi(x) \in \hlie$ is semisimple (resp.\ nilpotent).
 \end{remark}
 
 
-\begin{proposition}\label{prop: abstract and concrete Jordan decomposition coincide}
- Let $\g$ be a finite dimensional semisimple linear Lie algebra. Then the abstract and concrete Jordan decomposition coincide.
-\end{proposition}
+\begin{lemma}
+  \label{characterizations of semisimple elements}
+  Let~$\glie$ be a linear semisimple Lie~algebra.
+  For any element~$x \in \glie$ the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      \label{concrete semisimple}
+      $x$ is concrete semisimple, i.e.\ semisimple as an endomorphism of~$V$.
+    \item
+      \label{adsemisimple}
+      $x$ is~{\adsemisimple}, i.e.~$\ad_{\glie}(x)$ is semisimple as an endomorphism of~$\glie$.
+    \item
+      \label{abstract semisimple}
+      $x$ is abstract semisimple, i.e.~$\rho(x)$ is a semisimple endomorphism of~$V$ for every finite dimensional representation~$(V,\rho)$ of~$\glie$.
+    \item
+      \label{rep adsemisimple}
+      $\rho(x)$ is~{\adsemisimple} in~$\rho(\glie)$ for every finite dimensional representation~$(V,\rho)$ of~$\glie$.
+  \end{equivalenceslist}
+  The analogous statement for nilpotency also holds.
+\end{lemma}
+
+
 \begin{proof}
- Let $x \in \g$, $x = xc_s + x_n$ the abstract Jordan decomposition of $x$ and $x = y_s + y_n$ the concrete Jordan decomposition of $x$. From Lemma~\ref{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements} it follows that $y_s, y_n \in \g$ and by Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent} $\ad(x) = \ad(y_s) + \ad(y_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(y_s) = \ad(x)_s$ and $\ad(y_n) = \ad(x)_n$. Hence $y_s$ is the abstract semisimple part of $x$ and $y_n$ is the abstract nilpotent part of $x$.
+  We have seen the implication~\ref*{concrete semisimple}~$\implies$~\ref*{adsemisimple} in \cref{ss and nilpotent implies ad-ss and ad-nilpotent} and deduced in \cref{concrete jordan decomposition compatible with adjoint representation} that for every~$x \in \glie$ with concrete Jordan~decomposition~$x = x_s + x_n$ the concrete Jordan decomposition of the endomorphism~$\ad(x)$ is given by~$\ad(x) = \ad(x_s) + \ad(x_n)$.
+  The adjoint representation of~$\glie$ is faithful because~$\centerlie(\glie) = 0$, whence
+  \begin{align*}
+    \text{$x$ is concrete semisimple}
+    &\iff
+    x = x_s
+    \\
+    &\iff
+    \ad(x) = \ad(x_s)
+    \\
+    &\iff
+    \text{$\ad(x)$ is concrete semisimple}
+    \\
+    &\iff
+    \text{$x$ is~{\adsemisimple}} \,.
+  \end{align*}
+  This shows the equivalence~\ref*{concrete semisimple}~$\iff$~\ref*{adsemisimple}.
+  The equivalence~\ref*{abstract semisimple}~$\iff$~\ref*{abstract semisimple} follows because~$\rho(\glie)$ is again a linear semisimple Lie~algebra.
+  The implication~\ref*{adsemisimple}~$\implies$~\ref*{rep adsemisimple} holds because~$\ad(\rho(x)) \colon \rho(\glie) \to \rho(\glie)$ is the endomorphism induced by~$\ad(x) \colon \glie \to \glie$.
+  The implication~\ref*{abstract semisimple}~$\implies$~\ref*{concrete semisimple} follows by considering the natural representation.
+  (We could equivalently consider the adjoint representation for the implication~\ref*{abstract semisimple}~$\implies$~\ref*{adsemisimple}.)
+  
+  For the nilpotent case we argue in the same way.
+\end{proof}
+
+
+\begin{theorem}[Abstract Jordan~decomposition]
+  \label{abstract jordan decomposition}
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra.
+  \begin{enumerate}
+    \item
+      \label{existence of unique jd}
+      Every element~$x \in \glie$ admits a unique decomposition~$x = x_s + x_n$ such that~$x_s$ is semisimple,~$x_n$ is nilpotent and the summands~$x_s$ and~$x_n$ commute.
+    \item
+      \label{abstract and concrete jd coincide}
+      If~$\glie$ is linear then this decomposition coincides with the concrete Jordan decomposition.
+    \item
+      \label{functoriality of jordan decomposition}
+      The Jordan decomposition is functorial:
+      If~$f \colon \glie \to \hlie$ is a homomorphism of Lie~algebras where~$\hlie$ is another finite dimensional semisimple Lie~algebra then~$f(x_s) = f(x)_s$ and~$f(x)_n = f(x_n)$ for every~$x \in \glie$.
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{definition}
+  The decomposition from \cref{abstract jordan decomposition} is the \defemph{\textup(abstract\textup) Jordan~decomposition}\index{Jordan decomposition!abstract}.
+\end{definition}
+
+
+\begin{remark}
+  If~$\glie$ is a finite dimensional semisimple Lie~algebra then the abstract Jordan decomposition~$x = x_s + x_n$ of~$x \in \glie$ is built precisely so that for every finite dimensional representation~$(V,\rho)$ of~$\glie$ the induced decomposition~$\rho(x) = \rho(x_s) + \rho(x_n)$ is precisely the concrete Jordan~decomposition of~$\rho(x)$.
+  If~$(V,\rho)$ is faithful then the abstract Jordan decomposition in~$\glie$ can conversely be calculated from the concrete Jordan decomposition in~$\glie(V)$.
+  This applies in particular to the adjoint representation.
+\end{remark}
+
+\begin{proof}[Proof of \cref{abstract jordan decomposition}]
+  If~$\glie$ is linear then the concrete Jordan decomposition restricts to~$\glie$ by \cref{ss linear lie algebra contains ss and nilpotent parts}.
+  Then parts~\ref*{existence of unique jd} and~\ref*{abstract and concrete jd coincide} follow with \cref{characterizations of semisimple elements} from the concrete Jordan decomposition.
+  In the general case the semisimple Lie~algebra~$\glie$ is isomorphic to a linear Lie~algebra via the adjoint representation and hence part~\ref*{existence of unique jd} follows from the linear case.
+  
+  For part~\ref*{functoriality of jordan decomposition} let~$x \in \glie$.
+  If~$x$ is semisimple then every finite dimensional representation~$(V, \rho)$ of~$\hlie$ gives a finite dimensional representation~$(V, \rho \circ f)$ of~$\glie$ for which the endomorphism~$\rho(\spacing f(x))$ is then semisimple.
+  This shows that~$f(x)$ is again semisimple and we find in the same way that~$f(x)$ is nilpotent if~$x \in \glie$ is nilpotent.
+  If~$x \in \glie$ has the abstract Jordan decomposition~$x = x_s + x_n$ then it follows that~$f(x) = f(x_s) + f(x_n)$ is the abstract Jordan decomposition of~$f(x)$.
 \end{proof}
 
 
 \begin{remark}
- By Proposition~\ref{prop: abstract and concrete Jordan decomposition coincide} we need not to distinguish between the concrete and abstract Jordan decomposition when working with a finite dimensional semisimple linear Lie algebra, which is why we will stop doing so.
+  We have taken our approach from~\cite[I.\S6.3]{bourbaki_lie}.
+  In~\cite{humphreys} the abstract Jordan decomposition is first constructed by considering the adjoint representation:
+  It is shown in~\cite[\S 4.2, \S 5.3]{humphreys} that~$\Der(\glie)$ contains the semisimple and nilpotent parts of all its elements (for any Lie~algebra~$\glie$) and it is then shown that every derivation of~$\glie$ is inner (if~$\glie$ is semisimple).
+  Then~$\ad \colon \glie \to \Der(\glie)$ is an isomorphism and one can pull back the concrete Jordan decomposition in~$\Der(\glie)$ to the abstract Jordan decomposition~$\glie$.
+  For this approach one has to \emph{define} an element~$x \in \glie$ as semisimple (resp.\ nilpotent) if it is~{\adsemisimple} (resp.\ {\adnilpotent}).
+  In~\cite[\S 6]{humphreys} it is then shown with \cref{ss linear lie algebra contains ss and nilpotent parts} that in the linear case the concrete and abstract Jordan decompositions coincide, and that the Jordan decomposition is functorial.
+  From this one then gets the equivalence with our definition of semisimple (resp.\ nilpotent) elements.
 \end{remark}
 
 
-% TODO: Examples all around the Jordan decomposition
+\begin{example}
+  The element~$h \in \sllie_2(\kf)$ is semisimple and hence acts semisimply on every finite dimensional~{\representation{$\sllie_2(\kf)$}}.
+  This matches what we have seen in the classification of finite dimensional~{\representations{$\sllie_2(\kf)$}}.
+  We will see in the next section how this generalizes to finite semisimple Lie~algebras.
+\end{example}
 
 
-\begin{lemma}\label{lem: functoriality of the Jordan decomposition for linear Lie algebras}
- Let $\g$ be a finite dimensional semisimple Lie algbra, $\rho \colon \g \to \gl(V)$ a finite dimensional representation of $\g$ and $x \in \g$. If $x = x_s + x_n$ is the Jordan decomposition of $x$ then $\rho(x) = \rho(x_s) + \rho(x_n)$ is the Jordan decomposition of $\rho(x)$ with $\rho(x_s) = \rho(x)_s$ and $\rho(x_n) = \rho(x)_n$.
-\end{lemma}
-\begin{proof}
- Let $x \in \g$ be semisimple (resp.\ nilpotent). Then $x$ is $\ad_\g$-semisimple (resp.\ $\ad_\g$-nilpotent). It follows that $\rho(x)$ is $\ad_{\rho(\g)}$-semisimple (resp.\ $\ad_{\rho(\g)}$-nilpotent) and therefore semisimple (resp.\ nilpotent).
-\end{proof}
+% 
+% \begin{proof}[Proof of \cref{abstract jordan decomposition}]
+%   \leavevmode
+%   \begin{enumerate}[start=3]
+%     \item
+%       We consider first the case that~$\glie$ is a linear Lie~algebra, say a Lie~subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$.
+%       If~$x \in \glie$ admits a decomposition~$x = x_s + x_n$ with~$x_s$ abstract semisimiple,~$x_n$ abstract nilpotent and~$[x_s, x_n] = 0$.
+%       Then for the natural representation~$\rho \colon \glie \inclusion \gllie(V)$ we have~$\rho(x) = \rho(x_s) + \rho(x_n)$ with~$\rho(x_s)$ concret semisimple,~$\rho(x_n)$ concret nilpotent and~$[\rho(x_s), \rho(x_n)] = \rho([x_s, x_n]) = \rho(0) = 0$.
+%       This means that~$\rho(x) = \rho(x_s) + \rho(x_n)$ is the concrete Jordan decomposition of~$\rho(x)$.
+%       But~$\rho$ is the inclusion of~$\glie$ into~$\gllie(V)$, so~$\rho(x') = x'$ for every~$x' \in \glie$.
+%       This shows that if such a decomposition exists, then it coincides with the concrete Jordan decomposition.
+%       This shows part~\ref*{abstract and concrete jd coincide} and the uniqueness in part~\ref*{existence of unique jd} for linear Lie~algebras.
+%       
+%       Let~$x \in \glie$ with concrete Jordan~decomposition~$x = x_s + x_n$.
+%       By \cref{ss linear lie algebra contains ss and nilpotent parts} both~$x_s$ and~$x_n$ are again contained in~$\glie$, and in light of part~\ref*{abstract and concrete jd coincide} we need to show that~$x_s$ is abstract semisimple and that~$x_n$ is abstract nilpotent.
+%       So let~$(W,\rho)$ be any finite dimensional representation of~$\glie$.
+%       By \cref{decomposition into orthogonals for semisimple}
+%       
+%       
+%     \item
+%       Let~$f \colon \glie \to \hlie$ be a homomorphism of Lie~algebras between semisimple Lie~algebras~$\glie$ and~$\hlie$.
+%       Let~$x \in \glie$ be semisimple.
+%       Every finite dimensional representation~$(V, \rho)$ of~$\hlie$ gives a finite dimensional~{\representation{$\glie$}}~$(V, \rho \circ f)$ for which the endomorphism~$\rho(f(x))$ is then semisimple.
+%       This shows that~$f(x)$ is again semisimple, and we find in the same way that~$f(x)$ is nilpotent if~$x \in \glie$ is nilpotent.
+%       If~$x \in \glie$ admits a decomposition~$x = x_s + x_n$ as in~\ref*{existence of unique jd} then~$f(x) = f(x_s) + f(x_n)$ with~$f(x_s)$ semisimple,~$f(x_n)$ nilpotent and~$[\spacing f(x_s), f(x_n)] = f([x_s, x_n]) = f(0) = 0$.
+%       Hence~$f(x_s) = f(x)_s$ and~$f(x_n) = f(x)_n$ by the uniqueness in of the decomposition in part~\ref*{existence of unique jd}.
+%       This shows part~\ref*{functoriality of jordan decomposition}.
+%   \end{enumerate}
+% 
+% %   Let~$f \colon \glie \to \hlie$ be a homomorphism of Lie~algebras between semisimple Lie~algebras~$\glie$ and~$\hlie$.
+% %   Let~$x \in \glie$ be semisimple.
+% %   Every finite dimensional representation~$(V, \rho)$ of~$\hlie$ gives a finite dimensional~{\representation{$\glie$}}~$(V, \rho \circ f)$ for which the endomorphism~$\rho(f(x))$ is then semisimple.
+% %   This shows that~$f(x)$ is again semisimple, and we find in the same way that~$f(x)$ is nilpotent if~$x \in \glie$ is nilpotent.
+% %   If~$x \in \glie$ admits the Jordan~decomposition~$x = x_s + x_n$ then~$f(x) = f(x_s) + f(x_n)$ with~$f(x_s)$ semisimple,~$f(x_n)$ nilpotent and~$[\spacing f(x_s), f(x_n)] = f([x_s, x_n]) = f(0) = 0$.
+% %   This shows part~\ref*{functoriality of jordan decomposition}.
+% %   
+% %   For part~\ref*{jordan decomposition on reps} we observe that the image~$\rho(\glie)$ is again semisimple and hence by part~\ref*{abstract and concrete jd coincide} the concrete and abstract Jordan decomposition in~$\rho(\glie)$ coincide.
+% %   The assertion now follows from part~\ref*{functoriality of jordan decomposition}.
+% %   
+% %   To show parts~\ref*{existence of unique jd} and~\ref*{jordan decomposition on reps} we observe that by parts~\ref*{jordan decomposition on reps} and~\ref*{abstract and concrete jd coincide} the Jordan decomposition of any element~$x \in \glie$ can be calculated via any faithful representation~$V$ and the concrete Jordan decomposition in~$\gllie(V)$.
+% %   
+% %   So let~$V$ be a faithful representation of~$\glie$ (e.g.\ the adjoint representation, which is faithful because~$\ker \ad_{\glie} = \centerlie(\glie) = 0$).
+% \end{proof}
 
 
-\begin{corollary}[Functoriality of the Jordan decomposition] \label{cor: functoriality of the Jordan decomposition}
- Let $\g_1$ and $\g_2$ be finite dimensional semisimple Lie algebras and $\phi \colon \g_1 \to \g_2$ a homomorphism of Lie algebras. Then $\phi$ preserves the Jordan decomposition, i.e.\ $\phi(x_s) = \phi(x)_s$ and $\phi(x_n) = \phi(x)_n$ for every $x \in \g_1$.
-\end{corollary}
-\begin{proof}
- By Lemma~\ref{lem: functoriality of the Jordan decomposition for linear Lie algebras} the homomorphism of Lie algebras $\ad_{\g_2} \!\circ\, \phi \colon \g_1 \to \gl(\g_2)$ preserves the Jordan decomposition. The homomorphism $\ad_{\g_2}^{-1} \colon \ad(\g_2) \to \g_2$ preserves the Jordan decomposition by the definition of the abstract Jordan decomposition. Hence $\phi = \ad_{\g_2}^{-1} \circ \ad_{\g_2}\! \circ\, \phi$ preserves the Jordan decomposition as well.
-\end{proof}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+% \begin{lemma}\label{lem: generalized eigenspace decomposition for derivations}
+%  Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, and $\delta \in \Der A$. For every $\lambda \in k$ let
+%  \[
+%   A_\lambda
+%   \defined \bigcup_{n \in \N} \ker(\delta-\lambda I)^n
+%   = \{x \in A \mid \text{$(\delta-\lambda I)^m(x) = 0$ for some $m \in \N$}\}
+%  \]
+%  be the generalized eigenspace of $\delta$ with respect to $\lambda$. Then $A = \bigoplus_{\lambda \in k} A_\lambda$ and
+%  \[
+%   A_\lambda A_\mu \subseteq A_{\lambda + \mu} \quad \text{for all $\lambda, \mu \in k$}.
+%  \]
+% \end{lemma}
+% \begin{proof}
+%  For this proof abbreviate $1 \defined I$. That $A = \bigoplus_{\lambda \in k} A_\lambda$ is a standard fact from linear algebra. Let $x \in A_\lambda$ and $y \in A_\mu$. It needs to be shown that $xy \in A_{\lambda + \mu}$, i.e.\ $(\delta-(\lambda+\mu)I)^m(xy) = 0$ for some $m \in \N$. Because $(\delta-\lambda I)^{m_1}(x) = 0$ and $(\delta-\mu I)^{m_2}(y) = 0$ for some $m_1, m_2 \in \N$ this follows from the formula
+%  \[
+%   (\delta-(\lambda+\mu)I)^n(xy)
+%   = \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
+%   \quad\text{for every $n \in \N$},
+%  \]
+%  which can be shown by induction over $n \in \N$: For $n = 0$ the statement holds. Suppose it holds for some $n \in \N$. Then
+%  \begingroup
+%  \allowdisplaybreaks
+%  \begin{align*}
+%   &\, (\delta-(\lambda+\mu)I)^{n+1}(xy)
+%   = (\delta-(\lambda+\mu)I)((\delta-(\lambda+\mu)I)^n(xy)) \\
+%   =&\, (\delta-(\lambda+\mu)I)\left(
+%        \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
+%        \right) \\
+%   =&\,  \sum_{i=0}^n \binom{n}{i} \delta\left( (\delta-\lambda I)^i(x) \right) (\delta-\mu I)^{n-i}(y)
+%        +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) \delta\left( (\delta-\mu I)^{n-i}(y) \right) \\
+%    &\, -\sum_{i=0}^n \binom{n}{i} \lambda(\delta-\lambda I)^i(x) (\delta-\mu I)^{n-i}(y)
+%        -\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) \mu(\delta-\mu I)^{n-i}(y) \\
+%   =&\,  \sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^{i+1}(x) (\delta-\mu I)^{n-i}(y)
+%        +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
+%   =&\,  \sum_{i=1}^{n+1} \binom{n}{i-1} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
+%        +\sum_{i=0}^n \binom{n}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
+%   =&\,  \sum_{i=1}^n \left(\binom{n}{i-1}+\binom{n}{i}\right) (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y) \\
+%    &\, +(\delta-\mu I)^{n+1}(y) + (\delta-\lambda I)^{n+1}(x) \\
+%   =&\,  \sum_{i=1}^n \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
+%        +(\delta-\mu I)^{n+1}(y) + (\delta-\lambda I)^{n+1}(x) \\
+%   =&\, \sum_{i=0}^{n+1} \binom{n+1}{i} (\delta-\lambda I)^i(x) (\delta-\mu I)^{n+1-i}(y)
+%  \qedhere
+%  \end{align*}
+%  \endgroup
+% \end{proof}
+% 
+% \begin{remark}
+%  Notice that the formula in the proof of Lemma~\ref{lem: generalized eigenspace decomposition for derivations} is just a generalization of the binomial theorem, which follows by setting $\delta = 0$.
+% \end{remark}
+% 
+% 
+% \begin{lemma}\label{lem: derivations contain the ss and np part of all its elements}
+%  Let $A$ be a finite dimensional $k$-algebra, not necessarily associative nor unital, e.g.\ a Lie algebra. Then $\Der(A)$ contains the semisimple and nilpotent parts (in $\End_k(A)$) of all its elements.
+% \end{lemma}
+% \begin{proof}
+%  Let $\delta \in \Der(A)$ and for every $\lambda \in k$ let $A_\lambda$ be the generalized eigenspace with respect to $\lambda$. To show that $\Der(A)$ contains the semisimple and nilpotent part of $\delta$ is sufficies to do so for the semisimple part, which will be denoted by $\sigma$. As seen in the proof of Theorem~\ref{thrm: concrete Jordan decomposition} (the concrete Jordan decomposition) $\sigma$ acts on $A_\lambda$ by multiplication with $\lambda$ for every $\lambda \in k$. If $x \in A_\lambda$ and $y \in A_\mu$ then $xy \in A_{\lambda + \mu}$ and thus
+%  \[
+%   \sigma(xy)
+%   = (\lambda + \mu)(xy)
+%   = (\lambda x)y + x(\mu y)
+%   = \sigma(x)y + x\sigma(y).
+%  \]
+%  Because $A = \bigoplus_{\lambda \in k} A_\lambda$ it follows that $\sigma$ is a derivation of $A$.
+% \end{proof}
+% 
+% 
+% \begin{lemma}\label{lem: direct complement of semisimple ideals}
+%  Let $\glie$ be a finite dimensional Lie algebra and $I \subideal \glie$ a semisimple ideal. Then there exists an ideal $J \subideal \glie$ with $\g = I \oplus J$.
+% \end{lemma}
+% \begin{proof}
+%  Because $I \subideal \glie$ is an ideal it follows that $\kappa_I = \kappa_\g|_{I \times I}$. Because $I$ is semisimple it also follows that $\kappa_I$ is non-degenerate. It follows for the linear map
+%  \[
+%   \varphi \colon \g \to I^*, \quad x \mapsto \kappa(x, \cdot)
+%  \]
+%  that $\varphi|_I \colon I \to I^*$ is an isomorphism. Hence $I \cap \ker \varphi = 0$ with
+%  \[
+%   \dim I = \dim I^* = \dim \g - \dim \ker \varphi.
+%  \]
+%  Let $J \defined I^\perp$ be the orthogonal complement of $I$ with respect to the Killing form. From Lemma~\ref{lem: orthogonal complement of an ideal is again an ideal} it is known that $J$ is an ideal in $\glie$. Because $J = \ker \varphi$ it follows from the previous observations that $I \cap J = 0$ and $\dim \g = \dim I + \dim J$ and thus $\g = I \oplus J$.
+% \end{proof}
+% 
+% 
+% \begin{lemma}\label{lem: every derivation of a semisimple Lie algebra is inner}
+%  Let $\glie$ be a finite dimensional semisimple Lie algebra. Then every derivation of $\glie$ is inner.
+% \end{lemma}
+% \begin{proof}
+%  As seen in Lemma~\ref{lem: inner derivations are in ideal} and its proof the inner derivations form an ideal $I \subideal \Der(\glie)$ with $[\delta,\ad(x)] = \ad(\delta(x))$ for every $\delta \in \Der(\glie)$ and $x \in \glie$. By Lemma~\ref{lem: direct complement of semisimple ideals} there exists an ideal $J \subideal \Der(\glie)$ with $\Der(\glie) = I \oplus J$. Let $\delta \in J$. Then for any $x \in \glie$
+%  \[
+%   \ad(\delta(x)) = [\delta, \ad(x)] \in J \cap I = 0,
+%  \]
+%  and thus $\ad(\delta(x)) = 0$. Because $\ad$ is injective it follows that $\delta(x) = 0$ for every $x \in \glie$ and thus $\delta = 0$. Therefore $J = 0$ and thus $\Der(A) = I$.
+% \end{proof}
+% 
+% 
+% \begin{theorem}[Abstract Jordan decomposition] \label{thrm: abstract Jordan decomposition}
+%  Let $\glie$ be a finite dimensional semisimple Lie algebra. Then for any $x \in \glie$ there exist unique elements $x_s, x_n \in \glie$ such that $\ad(x) = \ad(x_s) + \ad(x_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(x_s) = \ad(x)_s$ and $\ad(x_n) = \ad(x)_n$.
+%  
+%  Then $x = x_s + x_n$ and an arbitrary element of $\glie$ commutes with $x$ if and only if it commutes both with $x_s$ and $x_n$. In particular $x$, $x_s$ and $x_n$ are pairwise commuting.
+% \end{theorem}
+% \begin{proof}
+%  By Lemma~\ref{lem: every derivation of a semisimple Lie algebra is inner} the adjoint representation $\ad \colon \g \to \ad(\glie) = \Der(\glie)$ is an isomorphism of Lie algebras. By Lemma~\ref{lem: derivations contain the ss and np part of all its elements} $\Der(\glie)$ contains the semisimple and nilpotent parts of all its elements. By setting $x_s \coloneq \ad^{-1}(\ad(x)_s)$ and $x_n \defined \ad^{-1}(\ad(x)_n)$ the theorem follows from the properties of the concrete Jordan decomposition as stated in Theorem~\ref{thrm: concrete Jordan decomposition}.
+% \end{proof}
+% 
+% 
+% \begin{definition}\label{defi: definition of abstract ss and np}
+%  Let $\glie$ be a finite dimensional semisimple Lie algebra and $x \in \glie$. Then the decomposition $x = x_s + x_n$ as is Theorem~\ref{thrm: abstract Jordan decomposition} is the \emph{abstract Jordan decomposition} of $x$ where $x_s$ is the \emph{abstract semisimple part} and $x_n$ is the \emph{abstract nilpotent part} of $x$.
+% \end{definition}
+% 
+% 
+% \begin{remark}
+%  By Definition~\ref{defi: definition of abstract ss and np} an element of a finite dimensional semisimple Lie algebra is semisimple if and only if it is $\ad$-semisimple and nilpotent if and only if it is $\ad$-nilpotent.
+% \end{remark}
+% 
+% 
+% \begin{proposition}\label{prop: abstract and concrete Jordan decomposition coincide}
+%  Let $\glie$ be a finite dimensional semisimple linear Lie algebra. Then the abstract and concrete Jordan decomposition coincide.
+% \end{proposition}
+% \begin{proof}
+%  Let $x \in \glie$, $x = xc_s + x_n$ the abstract Jordan decomposition of $x$ and $x = y_s + y_n$ the concrete Jordan decomposition of $x$. From Lemma~\ref{lem: semisimple linear Lie algebra containing the semisimple and nilpotent parts of its elements} it follows that $y_s, y_n \in \glie$ and by Lemma~\ref{lem: ss and nilpotent implies ad-ss and ad-nilpotent} $\ad(x) = \ad(y_s) + \ad(y_n)$ is the concrete Jordan decomposition of $\ad(x)$ with $\ad(y_s) = \ad(x)_s$ and $\ad(y_n) = \ad(x)_n$. Hence $y_s$ is the abstract semisimple part of $x$ and $y_n$ is the abstract nilpotent part of $x$.
+% \end{proof}
+% 
+% 
+% \begin{remark}
+%  By Proposition~\ref{prop: abstract and concrete Jordan decomposition coincide} we need not to distinguish between the concrete and abstract Jordan decomposition when working with a finite dimensional semisimple linear Lie algebra, which is why we will stop doing so.
+% \end{remark}
+% 
+% 
+% % TODO: Examples all around the Jordan decomposition
+% 
+% 
+% \begin{lemma}\label{lem: functoriality of the Jordan decomposition for linear Lie algebras}
+%  Let $\glie$ be a finite dimensional semisimple Lie algbra, $\rho \colon \g \to \gllie(V)$ a finite dimensional representation of $\glie$ and $x \in \glie$. If $x = x_s + x_n$ is the Jordan decomposition of $x$ then $\rho(x) = \rho(x_s) + \rho(x_n)$ is the Jordan decomposition of $\rho(x)$ with $\rho(x_s) = \rho(x)_s$ and $\rho(x_n) = \rho(x)_n$.
+% \end{lemma}
+% \begin{proof}
+%  Let $x \in \glie$ be semisimple (resp.\ nilpotent). Then $x$ is $\ad_\glie$-semisimple (resp.\ $\ad_\glie$-nilpotent). It follows that $\rho(x)$ is $\ad_{\rho(\glie)}$-semisimple (resp.\ $\ad_{\rho(\glie)}$-nilpotent) and therefore semisimple (resp.\ nilpotent).
+% \end{proof}
+% 
+% 
+% \begin{corollary}[Functoriality of the Jordan decomposition] \label{cor: functoriality of the Jordan decomposition}
+%  Let $\g_1$ and $\g_2$ be finite dimensional semisimple Lie algebras and $\phi \colon \g_1 \to \g_2$ a homomorphism of Lie algebras. Then $\phi$ preserves the Jordan decomposition, i.e.\ $\phi(x_s) = \phi(x)_s$ and $\phi(x_n) = \phi(x)_n$ for every $x \in \g_1$.
+% \end{corollary}
+% \begin{proof}
+%  By Lemma~\ref{lem: functoriality of the Jordan decomposition for linear Lie algebras} the homomorphism of Lie algebras $\ad_{\g_2} \!\circ\, \phi \colon \g_1 \to \gl(\g_2)$ preserves the Jordan decomposition. The homomorphism $\ad_{\g_2}^{-1} \colon \ad(\g_2) \to \g_2$ preserves the Jordan decomposition by the definition of the abstract Jordan decomposition. Hence $\phi = \ad_{\g_2}^{-1} \circ \ad_{\g_2}\! \circ\, \phi$ preserves the Jordan decomposition as well.
+% \end{proof}
+% 
+% 
+% 
 
 
 

@@ -1,6 +1,9 @@
 \section{Definition and Basic Properties}
 
 
+% TODO: Relative Killing form
+
+
 
 
 
@@ -341,6 +344,8 @@
     \dim U + \dim U^\perp \,.
   \]
   It follows from that~$(U^\perp)^\perp = U$ because~$U \subseteq (U^\perp)^\perp$ and~$\dim (U^\perp)^\perp = \dim V - \dim U^\perp = \dim U$.
+  
+  We note that if~$\beta$ is degenerate then still~$\dim V \leq \dim U + \dim U^\perp$.
   
   If~$\beta$ is a non-degenerate symmetric bilinear form on a finite dimensional vector space~$V$ then we have moreover the following equivalent conditions for any linear subspace~$U$ of~$V$:
   \begin{equivalenceslist}
@@ -800,16 +805,12 @@
         =
         0 \,.
       \]
-%     \item[\ref*{contains no solvable ideal}~$\implies$~\ref*{contains no abelian ideal}:]
-%       Every abelian ideal is solvable.
     \item[\ref*{contains no abelian ideal}~$\implies$~\ref*{contains no solvable ideal}:]
       Suppose that~$I$ is a nonzero solvable ideal in~$I$.
       Then~$I^{(n)} \neq 0$ but~$I^{(n+1)} = 0$ for some~$n \geq 1$.
       This means that~$I^{(n)}$ is a nonzero abelian ideal in~$\glie$.
     \item[\ref*{contains no solvable ideal}~$\implies$~\ref*{killing form is nondegenerate}:]
       The radical~$\rad \kappa$ is a solvable ideal by \cref{rad kappa is a solvable ideal}.
-%     \item[\ref*{product of simple lie algebras}~$\implies$~\ref*{sum of simple ideals}:]
-%       The factors~$\glie_i$ correspond to such simple ideals~$I_i$.
     \qedhere
   \end{implicationlist}
 \end{proof}
@@ -817,19 +818,20 @@
 
 \begin{corollary}
   \label{decomposition into orthogonals for semisimple}
-  Let~$\glie$ be a finite dimensional Lie~algebra whose Killing~form~$\kappa$ is non-degenerate.
-  Then~$\glie = I \oplus I^\perp$ for every ideal~$I$ in~$\glie$.
+  Let~$\glie$ be a finite dimensional Lie~algebra and let~$I$ be an ideal in~$\glie$.
+  Let~$I^\perp$ be the orthogonal of~$I$ with respect to the Killing~form of~$\glie$.
+  If at least one of the Lie~algebras~$\glie$,~$I$ or~$I^\perp$ has non-degenerate Killing~form then~$\glie = I \oplus I^\perp$.
 \end{corollary}
 
 
 \begin{proof}
-  The orthogonal~$I^\perp$ is again in ideal in~$\glie$ by \cref{orthogonal complement of an ideal is again an ideal}.
-  The intersection~$I \cap I^\perp$ is again an ideal in~$\glie$ with~$\restrict{\kappa}{I \cap I^\perp} = 0$.
-  This restriction is the Killing~form of~$I \cap I^\perp$ by \cref{restriction of the killing form to an ideal}.
+  The orthogonal~$I^\perp$ is again an ideal in~$\glie$ by \cref{orthogonal complement of an ideal is again an ideal}.
+  The intersection~$I \cap I^\perp$ is thus an ideal in~$\glie$.
+  Then~$\restrict{\kappa}{I \cap I^\perp} = 0$ and this restriction is the Killing~form of~$I \cap I^\perp$ by \cref{restriction of the killing form to an ideal}.
   It follows from Cartan’s~criterion that the ideal~$I \cap I^\perp$ is solvable.
-  Hence~$I \cap I^\perp = 0$ by \cref{characterisation of zero radical}.
-  It also holds that~$\dim \glie = \dim I + \dim I^\perp$ because~$\kappa$ is non-degenerate.
-  Together this means that~$\glie = I \oplus I^\perp$.
+  If one of the Lie~algebras~$\glie$,~$I$ and~$I^\perp$ has non-degenerate Killing~form then~$I \cap I^\perp = 0$ by \cref{characterisation of zero radical} because~$I \cap I^\perp$ is an ideal in any of these Lie~algebras.
+  It also holds that~$\dim \glie \leq \dim I + \dim I^\perp$.
+  Thus~$\glie = I \oplus I^\perp$.
 \end{proof}
 
 
