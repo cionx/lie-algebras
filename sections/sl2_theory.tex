@@ -1,636 +1,1496 @@
-\section{Finite dimensional representations of \texorpdfstring{$\sll_2(k)$}{sl2(k)}}
-Recall that the standard basis $(e,h,f)$ of $\sll_2(k)$ is given by
-\[
- e = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}, \quad
- h = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \quad
- f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
-\]
-and that this basis satisfies the relations
-\[
- [h,e] = 2e, \quad
- [h,f] = -2f, \quad
- [e,f] = h.
-\]
+\section{Representations of \texorpdfstring{$\sllie_2(\kf)$}{sl2(k)}}
+
+
+\begin{recall}
+  The standard basis~$e$,~$h$,~$f$ of~$\sllie_2(\kf)$ is given by
+  \[
+    e
+    =
+    \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix} \,,
+    \qquad
+    h
+    =
+    \begin{pmatrix*}[r]
+      1 &  0 \\
+      0 & -1
+      \end{pmatrix*}  \,,
+    \qquad
+    f
+    =
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix}
+  \]
+  and this basis satisfies the relations
+  \[
+    [h,e] = 2e \,,
+    \qquad
+    [h,f] = -2 \spacing f \,,
+    \qquad
+    [e,f] = h \,.
+  \]
+\end{recall}
 
 
 \begin{definition}
- Let $V$ be a representation of $\sll_2(k)$. For any $\lambda \in k$ let
- \[
-  V_\lambda \coloneqq \{v \in V \mid h.v = \lambda v\}
- \]
- be the \emph{weight space} of $V$ with respect to $\lambda$. An element $\lambda \in k$ is called a \emph{weight} of $V$ if $V_\lambda \neq 0$.
+  Let~$V$ be a representation of~$\sllie_2(\kf)$.
+  For any scalar~$\lambda \in \kf$ the linear subspace
+  \[
+    \gls*{weight space}
+    \defined
+    \{
+      v \in V
+    \suchthat
+      h.v = \lambda v
+    \}
+  \]
+  is the \defemph{weight space}\index{weight!space} of~$V$ with respect to~$\lambda$.
+  An element~$\lambda \in \kf$ is a \defemph{weight}\index{weight} of~$V$ if~$V_\lambda \neq 0$.
+  A nonzero element~$v \in V_\lambda$ is a \defemph{weight vector}\index{weight!vector}.
 \end{definition}
 
 
-\begin{lemma}\label{lem: e and f moving the eigenspaces}
- If $V$ is a representation of $\g$ then
- \[
-  e.V_\lambda \subseteq V_{\lambda+2}
-  \quad\text{and}\quad
-  f.V_\lambda \subseteq V_{\lambda-2}
-  \quad\text{for every $\lambda \in k$}.
- \]
+\begin{convention}
+  For~$\lambda \in \kf$ we write~$\lambda \geq 0$ to mean that~$\lambda$ is a non-negative integer.
+\end{convention}
+
+
+\begin{remark}
+  One can define a partial order~$\leq$ on~$\kf$ by requiring that~$\lambda \leq \lambda + 1$ for all~$\lambda \in \kf$.
+  The partial order~$\leq$ is then given by~$\lambda \leq \mu$ if and only if the difference~$\mu - \lambda$ is a non-negative integer.
+  This then entails that~$\lambda \geq 0$ if and only if~$\lambda$ is a non-negative integer.
+\end{remark}
+
+
+
+
+
+\subsection{Highest Weight Representations}
+
+
+\begin{lemma}[Shifting lemma]
+  \label{shifting lemma}
+  If~$V$ is any~{\representation{$\sllie_2(\kf)$}} then
+  \[
+    e.V_\lambda \subseteq V_{\lambda+2}
+    \quad\text{and}\quad
+    f.V_\lambda \subseteq V_{\lambda-2} \,.
+  \]
 \end{lemma}
+
+
 \begin{proof}
- Let $v \in V_\lambda$. Then
- \begin{gather*}
-  h.(e.v)
-  = e.h.v + [h,e].v
-  = \lambda e.v + 2e.v
-  = (\lambda+2) e.v
- \shortintertext{and}
-  h.(f.v)
-  = h.f.v + [h,f].v
-  = \lambda h.v - 2f.v
-  = (\lambda-2) f.v.
- \qedhere
- \end{gather*}
+  Let~$v \in V_\lambda$.
+  Then
+  \[
+    h.(e.v)
+    =
+    e.h.v + [h,e].v
+    =
+    \lambda e.v + 2e.v
+    =
+    (\lambda + 2) e.v
+  \]
+  and thus~$e.v \in V_{\lambda + 2}$, and similarly
+  \[
+    h.(\spacing f.v)
+    =
+    h . \spacing f . v + [h,f].v
+    =
+    \lambda h.v - 2 \spacing f.v
+    =
+    (\lambda - 2) \spacing f.v
+  \]
+  and thus~$f.v \in V_{\lambda - 2}$.
 \end{proof}
 
 
-\begin{example}\label{expl: natural representation of sl2}
- Let $e_1$, $e_2$ be the standard basis of $V \coloneqq k^2$, which is the natural representation of $\sll_2(k)$. Then $h.e_1 = e_1$ and $h.e_2 = -e_2$, so $V_1 = k e_1$ and $V_{-1} = k e_2$ with $V = V_{-1} \oplus V_1$. That $e.V_{-1} = V_1$ and $f.V_1 = V_{-1}$ can then by seen by a glance at the following:
- \[
-  e = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
-  \quad\text{and}\quad
-  f = \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}.
- \]
+\begin{example}
+  \label{natural representation of sl2}
+  Let~$e_1$,~$e_2$ be the standard basis of~$V \defined \kf^2$, which is the natural representation of~$\sllie_2(\kf)$.
+  Then~$h.e_1 = e_1$ and~$h.e_2 = -e_2$, so~$V_1 = \kf e_1$ and~$V_{-1} = \kf e_2$ with~$V = V_{-1} \oplus V_1$.
+  That~$e.V_{-1} = V_1$ and~$f.V_1 = V_{-1}$ can then by seen by a glance at the matrices
+  \[
+    e
+    =
+    \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix}
+    \qquad\text{and}\qquad
+    f
+    =
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+      \end{pmatrix} \,.
+  \]
 \end{example}
 
 
+\begin{definition}
+  Let~$V$ be an~{\representation{$\sllie_2(\kf)$}}.
+  \begin{enumerate}
+    \item
+      A vector~$v \in V$ is \defemph{primitive}\index{primitive vector} if it is a weight vector (and hence in particular nonzero) with~$e.v = 0$.
+    \item
+      The representation~$V$ is of \defemph{highest weight~$\lambda$} if~$V$ is generated by a primitive vector of weight~$\lambda$.
+  \end{enumerate}
+\end{definition}
 
 
-
-\subsection{Finite dimensional irreducible representations}
-
-
-\begin{theorem}[Classification of finite dimensional irreducible representations of $\sll_2(k)$]
- For every $n \in \N$ there exists up to isomorphism a unique $(n+1)$-dimensional irreducible representation of $\sll_2(k)$. More explicitely:
- \begin{enumerate}[leftmargin=*]
-  \item
-   For every $n \in \N$ there exists an $(n+1)$-dimensional irreducible representation $V^{(n)}$ of $\sll_2(k)$.
-  \item
-   Let $V$ be an $(n+1)$-dimensional irreducible representation of $\sll_2(k)$ for some $n \in \N$. Then
-   \[
-    V = V_{-n} \oplus V_{-n+2} \oplus \dotsb \oplus V_{n-2} \oplus V_n
-   \]
-   and $V_i$ is one-dimensional for every $i = -n, -n+2, \dotsc, n-2, n$. In particular all occuring weights are integral and the heighest weight is $n$.
-   
-   More explicitely there exists a basis $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ of $V$ with $v_i \in V_i$ for every $i = -n, -n+2, \dotsc, n-2, n$, with respect to which the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
-   \[
-    \begin{tikzcd}
-       v_{-n}
-       \arrow[bend left]{r}[above]{1}
-       &
-       v_{-n+2}
-       \arrow[bend left]{r}[above]{2}
-       \arrow[bend left, dashed]{l}[below]{n-1}
-       &
-       v_{-n+4}
-       \arrow[bend left]{r}[above]{3}
-       \arrow[bend left, dashed]{l}[below]{n-2}
-       &
-       v_{-n+6}
-       \arrow[bend left]{r}
-       \arrow[bend left, dashed]{l}[below]{n-3}
-       &
-       \dots
-       \arrow[bend left]{r}
-       \arrow[bend left, dashed]{l}
-       &
-       v_{n-6}
-       \arrow[bend left]{r}[above]{n-3}
-       \arrow[bend left, dashed]{l}
-       &
-       v_{n-4}
-       \arrow[bend left]{r}[above]{n-2}
-       \arrow[bend left, dashed]{l}[below]{3}
-       &
-       v_{n-2}
-       \arrow[bend left]{r}[above]{n-1}
-       \arrow[bend left, dashed]{l}[below]{2}
-       &
-       v_n
-       \arrow[bend left, dashed]{l}[below]{1}
-     \end{tikzcd}
-   \]
-   In particular
-   \begin{gather*}
-    e.V_i =
-    \begin{cases}
-     V_{i+2} & \text{for $i = -n, -n+2, \dotsc, n-2$}, \\
-     0       & \text{otherwise},
-    \end{cases}
-   \shortintertext{and}
-    f.V_i =
-    \begin{cases}
-     V_{i-2} & \text{if $i = -n, \dotsc, n-2, n$}, \\
-     0       & \text{otherwise}.
-    \end{cases}
-   \end{gather*}
- \end{enumerate}
-\end{theorem}
-\begin{proof}
- \begin{enumerate}[leftmargin=*]
-  \item
-   Let $\sll_2(k)$ act on $V \coloneqq k[x,y]$ via
-   \[
-    \sll_2(k) \to \gl(V), \quad
-    e \mapsto y\dd{x}, \quad
-    h \mapsto y\dd{y}-x\dd{x}, \quad
-    f \mapsto x\dd{y}.
-   \]
-   It was already shown in Examples~\ref{expls: representations of Lie algebras} that this defines a representation of $\sll_2(k)$. Let $V^{(n)} \subseteq V$ be the linear subspace consisting of the homogeneous polynomials of degree $n$, i.e.\
-   \[
-    V^{(n)} = \vspan_k\left( x^n, x^{n-1} y, \dotsc, x y^{n-1}, y^n \right).
-   \]
-   Then $V^{(n)}$ is an $(n+1)$-dimensional subrepresentation of $V$.
-   
-   Let $U \subseteq V^{(n)}$ be a nonzero subrepresentation. If $p \in U$ is a nonzero polynomial then by applying $f$ often enough it follows that $x^n \in U$, from which it follows from applying $e$ often enough that $x^{n-i} y^i \in U$ for every $i = 0, \dotsc, n$. Hence $U = V$. So $V^{(n)}$ is an irreducible representation of $\sll_2(k)$.
-   
-  \item
-   Because $V \neq 0$ is finite dimensional and $k$ is algebraically closed there exists some $\lambda \in k$ with $V_\lambda \neq 0$. Because $v$ is finite dimensional $\lambda$ can be choosen such that $V_{\lambda-2} = 0$. Let $w \in V_\lambda$ with $w \neq 0$. Set
-   \[
-    w_i \coloneqq e^i.w \quad \text{for every $i \in \N$}.
-   \]
-   \begin{claim*}
-    \begin{enumerate}[leftmargin=*]
-     \item
-      $h.w_i = (\lambda+2i) w_i$ for every $i \in \N$.
-     \item
-      $f.w_0 = 0$ and $f.w_{i+1} = -(i+1)(\lambda+i)w_i$ for every $n \in \N$.
-    \end{enumerate}
-   \end{claim*}
-   \begin{proof}
-    \begin{enumerate}[leftmargin=*]
-     \item
-      This follows from $w \in V_\lambda$ and Lemma~\ref{lem: e and f moving the eigenspaces}.
-     \item
-      From $w_0 = w \in V_\lambda$ and Lemma~\ref{lem: e and f moving the eigenspaces} it follows that $f.w_0 \in V_{\lambda-2}$. Because $V_{\lambda-2} \neq 0$ it follows that $f.w_0 = 0$.
-      
-      The second formula will be shown by induction over $i \in \N$. It holds for $i = 0$ because
+\begin{theorem}[Structure of highest weight~{\representations{$\sllie_2(\kf)$}}]
+  \label{classification of highest weight for sl2}
+  Let~$V$ be a representation of~$\sllie_2(\kf)$ of highest weight~$\lambda$, generated by a primitive vector~$v$ of weight~$\lambda$.
+  Let~$v_i \defined f^i.v$ for every~$i \geq 0$.
+  \begin{enumerate}
+    \item
+      The representation~$V$ is spanned by the vectors~$v_i$ with~$i \geq 0$ as a vector space, and the actions of~$e$,~$h$ and~$f$ on these vector space generators is given by
       \[
-       f.w_1
-       = f.e.w_0
-       = [f,e].w_0 - e.f.w_0
-       = -h.w_0
-       = -\lambda w_0.
+        e.v_{i+1}
+        =
+        (i+1)(\lambda-i) v_i  \,,
+        \quad
+        h.v_i
+        =
+        (\lambda-2i) v_i  \,,
+        \quad
+        f.v_i
+        =
+        v_{i+1} \,.
       \]
-      Now let $i > 0$ and suppose the formula holds for $i-1$. Then
+    \item
+      \label{highest weight nondominant}
+      If~$\lambda \ngeq 0$ then~$V$ is irreducible with basis~$v_i$,~$i \geq 0$.
+    \item
+      For~$\lambda \geq 0$ then there are two cases:
+      \begin{enumerate}
+        \item
+          If~$\lambda \geq 0$ and~$V$ is finite dimensional then~$V$ is irreducible with basis~$v_0, \dotsc, v_{\lambda}$.
+          The representation~$V$ is in particular~{\dimensional{$(\lambda+1)$}}.
+        \item
+          If~$\lambda \geq 0$ and~$V$ is infinite dimensional then~$V$ has the vectors~$v_i \geq 0$ with~$i \geq 0$ as a basis.
+          Then~$u \defined v_{\lambda+1}$ is a primitive vector of weight~$-\lambda-2$.
+          The subrepresentation~$U$ of~$V$ generated by~$u$ is the unique nonzero proper subrepresentation of~$V$.
+          The subrepresentation~$U$ is infinite dimensional and irreducible of highest weight~$-\lambda-2$ whereas the quotient~$V/U$ is finite dimensional and irreducible of highest weight~$\lambda$.
+      \end{enumerate}
+    \item
+      If~$V$ is infinite dimensional then the decomposition~$V = \bigoplus_{i \geq 0} \kf v_i$ gives the weight space decomposition~$V = \bigoplus_{i \geq 0} V_{\lambda-2i}$.
+      The actions of~$e$ and~$f$ on the basis~vectors~$v_i$ are given as indicated in the following diagram, where the dashed arrows represent the action of~$f$.
+      \begin{equation}
+        \label{picture of infinite dimensional verma irrep}
+        \begin{tikzcd}[column sep = 2em]
+          v_0
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          &
+          v_1
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{\lambda}
+          &
+          v_2
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{2(\lambda-1)}
+          &
+          v_3
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{3(\lambda-2)}
+          &
+          v_4
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[bend left = 50]{l}[below]{4(\lambda-3)}
+          &
+          \dotsb
+          \arrow[bend left = 50]{l}
+        \end{tikzcd}
+      \end{equation}
+      If~$V$ is finite dimensional --- and thus~$\lambda \geq 0$ --- then the decompositon~$V = \kf v_0 \oplus \dotsb \oplus \kf v_\lambda$ gives the weight space decomposition~$V = V_{\lambda} \oplus V_{\lambda-2} \oplus \dotsb \oplus V_{-\lambda+2} \oplus V_{-\lambda}$.
+      On the basis~vectors~$v_0, \dotsc, v_\lambda$ the actions of~$e$ and~$f$ are given as follows:
+      \begin{equation}
+        \label{picture of finite dimensional verma irrep}
+        \begin{tikzcd}[column sep = 2em]
+          v_0
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          &
+          v_1
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{\lambda}
+          &
+          v_2
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{2(\lambda-1)}
+          &
+          v_3
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[bend left = 50]{l}[below]{3(\lambda-2)}
+          &
+          \dotsb
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[dashed, bend left = 50]{l}
+          &
+          v_{\lambda-3}
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}
+          &
+          v_{\lambda-2}
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{(\lambda-2)3}
+          &
+          v_{\lambda-1}
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          \arrow[bend left = 50]{l}[below]{(\lambda-1)2}
+          &
+          v_{\lambda}
+          \arrow[bend left = 50]{l}[below]{\lambda}
+        \end{tikzcd}
+      \end{equation}
+      By normalizing vectors the basis~$v_0, \dotsc, v_\lambda$ we get a basis~$w_{\lambda}, w_{\lambda-2}, \dotsc, w_{-\lambda+2}, w_{-\lambda}$ of~$V$ consisting of weight vectors~$w_\mu \in V_{\mu}$ on which the action of~$e$ and~$f$ is given as follows:
+      \begin{equation}
+        \label{picture of finite dimensional verma irrep normalized}
+        \begin{tikzcd}[column sep = 1.4em]
+          w_{\lambda}
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          &
+          w_{\lambda-2}
+          \arrow[dashed, bend left = 50]{r}[above]{2}
+          \arrow[bend left = 50]{l}[below]{\lambda}
+          &
+          w_{\lambda-4}
+          \arrow[dashed, bend left = 50]{r}[above]{3}
+          \arrow[bend left = 50]{l}[below]{\lambda-1}
+          &
+          w_{\lambda-6}
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[bend left = 50]{l}[below]{\lambda-2}
+          &
+          \dotsb
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[dashed, bend left = 50]{l}
+          &
+          w_{-\lambda+6}
+          \arrow[dashed, bend left = 50]{r}[above]{\lambda-2}
+          \arrow[bend left = 50]{l}
+          &
+          w_{-\lambda+4}
+          \arrow[dashed, bend left = 50]{r}[above]{\lambda-1}
+          \arrow[bend left = 50]{l}[below]{3}
+          &
+          w_{-\lambda+2}
+          \arrow[dashed, bend left = 50]{r}[above]{\lambda}
+          \arrow[bend left = 50]{l}[below]{2}
+          &
+          w_{-\lambda}
+          \arrow[bend left = 50]{l}[below]{1}
+        \end{tikzcd}
+      \end{equation}
+  \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      That~$v_i \in V_{\lambda - 2i}$ follows by induction from~\cref{shifting lemma}.
+      That~$f.v_i = v_{i+1}$ holds by definition.
+      That~$e.v_{i+1} = (i+1)(\lambda-i) v_i$ follows from~$e.v_0 = e.v = 0$ by induction over~$i$:
+      We find for~$i = 0$ that
+      \[
+        e.v_1
+        =
+        e . \spacing f . v_0
+        =
+        [e,f].v_0 + f.e.v_0
+        =
+        h.v_0 + f.e.v_0
+        =
+        \lambda v_0
+      \]
+      because~$v_0 = v$ is primitive of weight~$\lambda$.
+      For the induction step we find that
       \begin{align*}
-       f.w_{i+1}
-       &= f.e.w_i
-       = [f,e].w_i + e.f.w_i
-       = -h.w_i + e.f.w_i \\
-       &= -(\lambda+2i) w_i -i(\lambda+i-1) e.w_{i-1} \\
-       &= (-\lambda -2i -i\lambda -i^2 +i) w_i
-       =  -(i+1)(\lambda+i) w_i.
-      \qedhere
+        e.v_{i+1}
+        &=
+        e . \spacing f . v_i
+        \\
+        &=
+        [e,f].v_i + f.e.v_i
+        \\
+        &=
+        h.v_i + f.e.v_i
+        \\
+        &=
+        (\lambda - 2i)v_i + i (\lambda-i+1) \spacing f.v_{i-1}
+        \\
+        &=
+        (\lambda - 2i)v_i + i (\lambda-i+1) v_i
+        \\
+        &=
+        (\lambda - 2i + \lambda i - i^2 + i) v_i
+        \\
+        &=
+        (\lambda i - i^2 + \lambda - i) v_i
+        \\
+        &=
+        (i+1)(\lambda-i) v_i
       \end{align*}
-     \qedhere
-    \end{enumerate}
-   \end{proof}
-   
-   Because $w_i \in V_{\lambda+2i}$ for every $i \in \N$ with $w_0 = v \neq 0$ and $V$ is finite dimensional it follows that there exists a maximal $m \in \N$ such that $w_0, \dotsc, w_m$ are nonzero but $w^{m+1} = 0$. By the previous claim $\vspan_k(w_0, \dotsc, w_m)$ is a subrepresentation of $V$. Because $V$ is irreducible it follows that $V = \vspan_k(w_0, \dotsc, w_m)$. Because $w_0, \dotsc, w_m$ are linearly independent it follows that $w_0, \dotsc, w_m$ is a basis of $V$.
-   
-   As $V$ is ($n+1$)-dimensional it follows that $m = n$. By the claim
-   \[
-    0
-    = f.w_{n+1}
-    = -n(\lambda+n).w_n
-   \]
-   and therefore $\lambda = -n$. Because $w_i \in V_{\lambda + 2i} = V_{-n+2i}$ for every $i \in \N$ it follows that
-   \[
-    V
-    = kw_0 \oplus \dotsb \oplus kw_n
-    = V_{-n} \oplus V_{-n+2} \oplus \dotsb \oplus V_{n-2} \oplus V_n
-   \]
-   with $V_i$ being one-dimensional for every $i = -n, -n+2, \dotsc, n-2, n$. From the definition of $w_0, \dotsc, w_n$ and the claim it follows that the actions of $e$ and $f$ are given as in the following diagram, where the dashed arrows represent the action of $f$.
-   \[
-      \begin{tikzcd}
-        w_0
-        \arrow[bend left]{r}[above]{1}
-        &
-        w_1
-        \arrow[bend left]{r}[above]{1}
-        \arrow[bend left, dashed]{l}[below]{n-1}
-        &
-        w_2
-        \arrow[bend left]{r}[above]{1}
-        \arrow[bend left, dashed]{l}[below]{2(n-2)}
-        &
-        w_3
-        \arrow[bend left]{r}
-        \arrow[bend left, dashed]{l}[below]{3(n-3)}
-        &
-        \dots
-        \arrow[bend left]{r}
-        \arrow[bend left, dashed]{l}
-        &
-        w_{n-3}
-        \arrow[bend left]{r}[above]{1}
-        \arrow[bend left, dashed]{l}
-        &
-        w_{n-2}
-        \arrow[bend left]{r}[above]{1}
-        \arrow[bend left, dashed]{l}[below]{(n-3)3}
-        &
-        w_{n-1}
-        \arrow[bend left]{r}[above]{1}
-        \arrow[bend left, dashed]{l}[below]{(n-2)2}
-        &
-        w_n
-        \arrow[bend left, dashed]{l}[below]{n-1}
-     \end{tikzcd}
-   \]
-   The desired basis $v_1, \dotsc, v_n$ can now be defined as
-   \[
-    v_{-n+2i} \coloneqq \frac{w_i}{i!}
-    \quad \text{for every $i = 0, 1, \dotsc, n+1$}.
+      as claimed.
+    \item
+      The linear subspace of~$V$ spanned by all~$v_i$,~$i \geq 0$ is closed under the actions of~$h$ and~$f$, and by the formula~$e.v_{i+1} = (i+1)(\lambda-i) v_i$ also under the action of~$e$ (because~$e.v_0 = e.v = 0$).
+      This linear span contains the generator~$v_0 = v$ and hence equals~$V$.
+    \item
+      It follows from our assumption~$\lambda \ngeq 0$ that~$(i+1)(\lambda-i) \neq 0$ for every~$i \geq 0$.
+      We hence find for every~$i \geq 0$ from the formula~$e.v_{i+1} = (i+1)(\lambda-i) v_i$ that~$v_{i+1} \neq 0$ if~$v_i \neq 0$.
+      It therefore follows inductively from~$v_0 = v \neq 0$ that~$v_{i+1} \neq 0$ for every~$i \geq 0$.
+      The vector space generators~$v_i$ with~$i \geq 0$ are thus nonzero.
+      They are already linearly independent because they are of pairwise different weights.
+      Hence the vector space generating set~$v_i$,~$i \geq 0$ is a basis of~$V$.
+      
+      For the irreducibility of~$V$ we show that any nonzero vector~$u \in V$ generates~$V$ as a representation.
+      Let~$U$ be the subrepresentation of~$V$ generated by~$u$.
+      We have seen that~$e$ maps for every~$i \geq 0$ the basis~vector~$v_{i+1}$ to a nonzero multiple of the previous basis~vector~$v_i$ and annihilates the first basis~vector~$v_0$.
+      We hence find that~$e^n.u$ is a nonzero multiple of~$e_0$ for a suitable power~$n$ (if~$u = \sum_{i \geq 0} a_i v_i$ with~$a_i \in \kf$ then let~$n$ be maximal with~$a_n \neq 0$).
+      This shows~$v_0 \in U$ and whence~$v_i = f^i.v \in U$ for every~$i \geq 0$.
+      Thus~$U = V$, which means that~$u$ generates~$V$.
+    \item
+      We find from the relation~$e.v_{i+1} = (i+1)(\lambda-i)$ for~$i \geq 0$ that~$e$ maps for every~$i = 1, \dotsc, \lambda$ the vector~$v_i$ to a nonzero multiple of the previous vector~$v_{i-1}$.
+      But we also find that~$e.v_{\lambda+1} = 0$.
+      We now distinguish between the cases~$v_{\lambda+1} = 0$ and~$v_{\lambda+1} \neq 0$.
+      \begin{enumerate}
+        \item
+          If~$v_{\lambda+1} = 0$ then~$v_i = 0$ for all~$i \geq \lambda+1$.
+          Then~$V$ is generated by the vectors~$v_0, v_1, \dotsc, v_\lambda$.
+          We find as in the case~$\lambda \ngeq 0$ that~$v_0, \dotsc, v_n$ are actually linearly indepedent and thus a basis.
+          Hence~$V$ is of finite dimension~$\lambda+1$.
+          That~$V$ is irreducible can be seen as in the case~$\lambda \ngeq 0$.
+        \item
+          If~$v_{\lambda+1} \neq 0$ then~$u \defined v_{\lambda+1}$ is a weight vector for the weight~$\lambda-2(\lambda+1)$ with~$e.u = 0$.
+          Hence~$u$ is a primitive vector for the weight~$-\lambda-2$.
+          The subrepresentation~$U$ generated by~$u$ is infinite dimensional and irreducible by part~\ref*{highest weight nondominant} because~$-\lambda-2 \ngeq 0$.
+          The representation~$V/U$ admits the residue class~$\class{v}$ as a primitive generator of weight~$\lambda$ and~$V/U$ is finite dimensional, namely spanned by the residue classes~$\class{v_0}, \dotsc, \class{v_\lambda}$.
+          Hence~$V/U$ is irreducible of highest weight~$\lambda$ and dimension~$\lambda+1$ by the previous case.
+          
+          It remains to show that~$U$ is the unique nonzero proper subrepresentation of~$U$.
+          We first observe that every nonzero subrepresentation of~$V$ contains~$U$:
+          For every nonzero~$w \in V$ we have~$f^n.w \in U$ for~$n$ sufficiently large (namely~$n \geq \lambda+1$) and then~$f^n.w$ generates~$U$ because~$U$ is irreducible.
+          Hence~$U$ is contained in any nonzero cyclic subrepresentation, and therefore in every nonzero subrepresentation.
+          The subrepresentations of~$V$ that contain~$U$ are in {\onetoone} correspondence to the subrepresentations of~$V/U$.
+          The representation~$V/U$ is irreducible and hence admits precisely two subrepresentations, namely~$0$ and~$V/U$.
+          Thus~$V$ admits sprecisely two subrepresentations that contain~$U$, namely~$U$ and~$V$.
+          This shows altogether that~$0$,~$U$ and~$V$ are the only subrepresentations of~$V$.
+      \end{enumerate}
+    \item
+      It remains to show how to normalize in the finite dimensional case the basis~$v_0, \dotsc, v_\lambda$.
+      By normalizing the basis~vectors~$v_0, \dotsc, v_\lambda$ as~$\tilde{w}_i \defined v_i/i!$ we get a basis~$\tilde{w}_0, \dotsc, \tilde{w}_\lambda$ of~$V$ on which the actions of~$e$ and~$f$ are as follows:
+      \[
+        \begin{tikzcd}[column sep = 1.5em]
+          \tilde{w}_0
+          \arrow[dashed, bend left = 50]{r}[above]{1}
+          &
+          \tilde{w}_1
+          \arrow[dashed, bend left = 50]{r}[above]{2}
+          \arrow[bend left = 50]{l}[below]{\lambda}
+          &
+          \tilde{w}_2
+          \arrow[dashed, bend left = 50]{r}[above]{3}
+          \arrow[bend left = 50]{l}[below]{\lambda-1}
+          &
+          \tilde{w}_3
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[bend left = 50]{l}[below]{\lambda-2}
+          &
+          \dotsb
+          \arrow[dashed, bend left = 50]{r}
+          \arrow[dashed, bend left = 50]{l}
+          &
+          \tilde{w}_{\lambda-3}
+          \arrow[dashed, bend left = 50]{r}[above]{\lambda-2}
+          \arrow[bend left = 50]{l}
+          &
+          \tilde{w}_{\lambda-2}
+          \arrow[dashed, bend left = 50]{r}[above]{\lambda-1}
+          \arrow[bend left = 50]{l}[below]{3}
+          &
+          \tilde{w}_{\lambda-1}
+          \arrow[dashed, bend left = 50]{r}[above]{\lambda}
+          \arrow[bend left = 50]{l}[below]{2}
+          &
+          \tilde{w}_\lambda
+          \arrow[bend left = 50]{l}[below]{1}
+        \end{tikzcd}
+      \]
+      We now arrive at the desired basis~$v_{\lambda}, v_{\lambda-2}, \dotsc, v_{-\lambda+2}, v_{-\lambda}$ of~$V$ by relabeling the given basis~vectors~$\tilde{w}_0, \dotsc, \tilde{w}_\lambda$.
     \qedhere
-   \]
- \end{enumerate}
+  \end{enumerate}
 \end{proof}
 
 
+\begin{lemma}[Existence of highest weight representations of~$\sllie_2(\kf)$]
+  \label{existence of highest weight for sl2}
+  For every scalar~$\lambda \in \kf$ there exists an infinite dimensional~{\representation{$\sllie_2(\kf)$}} of highest weight~$\lambda$.
+\end{lemma}
+
+
+\begin{proof}[First proof]
+  Let~$V$ be a vector space with basis~$v_i$ where~$i \geq 0$.
+  We set~$v_{-1} \defined 0$ and define an action of~$e$,~$h$ and~$f$ on~$V$ via
+  \[
+    e.v_i
+    =
+    i(\lambda-i+1) v_{i-1}  \,,
+    \qquad
+    h.v_i
+    =
+    (\lambda-2i) v_i  \,,
+    \qquad
+    f.v_i
+    =
+    v_{i+1}
+  \]
+  for all~$i \geq 0$.
+  We observe that the identity~$h.v_i = (\lambda-2i) v_i$ also holds for~$i = -1$.
+  This gives~$V$ the structure of a~{\representation{$\sllie_2(\kf)$}}:
+  We have for all~$i \geq 0$ that
+  \begin{align*}
+    h.e.v_i - e.h.v_i
+    &=
+    i(\lambda-i+1)h.v_{i-1} - (\lambda-2i)e.v_i
+    \\
+    &=
+    i(\lambda-i+1)(\lambda-2i+2) v_{i-1} - i(\lambda-i+1)(\lambda-2i) v_{i-1}
+    \\
+    &=
+    2i(\lambda-i+1) v_{i-1}
+    \\
+    &=
+    2e.v_i
+    \\
+    &=
+    [h,e].v_i \,.
+  \end{align*}
+  We also have for all~$i \geq 0$ that
+  \begin{align*}
+    h . \spacing f . v_i - f.h.v_i
+    &=
+    h.v_{i+1} - (\lambda-2i) \spacing f.v_i
+    \\
+    &=
+    (\lambda-2i-2) v_{i+1} - (\lambda-2i) v_{i+1}
+    \\
+    &=
+    -2 v_{i+1}
+    \\
+    &=
+    -2 \spacing f.v_i
+    \\
+    &=
+    [h,f].v_i \,.
+  \end{align*}
+  Lastly we have to check the relation~$e . \spacing f . v_i - f.e.v = h.v_i$ for all~$i \geq 0$.
+  For~$i = 0$ we find
+  \[
+    e . \spacing f . v_0 - f.e.v_0
+    =
+    e.v_1 - f.0
+    =
+    \lambda v_0
+    =
+    h.v_0
+  \]
+  and for~$i \geq 1$ we see that
+  \begin{align*}
+    e . \spacing f . v_i - f.e.v_i
+    &=
+    e.v_{i+1} - i(\lambda-i+1) \spacing f.v_{i-1}
+    \\
+    &=
+    (i+1)(\lambda-i) v_i - i(\lambda-i+1) v_i
+    \\
+    &=
+    \biggl( i(\lambda-i) + (\lambda-i) - i(\lambda-i) - i \biggr) v_i
+    \\
+    &=
+    (\lambda-2i) v_i
+    \\
+    &=
+    h.v_i \,.
+  \end{align*}
+  Altogether this shows that we have defined on~$V$ the structure of a representation of~$\sllie_2(\kf)$.
+  The vector~$v_0$ is primitive of weight~$\lambda$ and generates the representation~$V$.
+  This means that~$V$ is a representation of~$\sllie_2(\kf)$ of highest weight~$\lambda$.
+\end{proof}
+
+
+\begin{proof}[Second proof]
+  Let~$\blie$ be the Lie~subalgebra of~$\sllie_2(\kf)$ consisting of traceless upper triangular matrices.
+  The standard basis~$e$,~$h$,~$f$ of~$\sllie_2(\kf)$ restricts to a basis~$e$,~$h$ of~$\blie$.
+  We can make the {\onedimensional} vector space~$\kf$ into a representation of~$\sllie_2(\kf)$ via~$e.x = 0$ and~$h.x = \lambda x$ for all~$x \in \kf$.
+  We denote this representation by~$\kf_{\, \lambda}$.
+  We may regard~$\kf_{\, \lambda}$ as a~{\module{$\Univ(\blie)$}} and then use extensions of scalars to form the~\module{$\Univ(\sllie_2(\kf))$}
+  \[
+    V
+    \defined
+    \Univ(\sllie_2(\kf)) \tensor_{\Univ(\blie)} \kf_{\, \lambda} \,.
+  \]
+  It follows from the PBW~theorem that the~{\algebra{$\kf$}}~$\Univ(\sllie_2(\kf))$ is free with basis~$f^i$,~$i \geq 0$ as a right~{\module{$\Univ(\blie)$}}.
+  Hence~$V$ has as a~{\basis{$\kf$}} the elements~$f^i \tensor 1$ with~$i \geq 0$.
+  The nonzero vector~$v \defined 1 \tensor 1 \in V$ is primitive with weight~$\lambda$ because
+  \begin{gather*}
+    e.v
+    =
+    e.(1 \tensor 1)
+    =
+    e \tensor 1
+    =
+    1 \tensor (e.1)
+    =
+    1 \tensor 0
+    =
+    0
+  \shortintertext{and}
+    h.v
+    =
+    h.(1 \tensor 1)
+    =
+    h \tensor 1
+    =
+    1 \tensor (h.1)
+    =
+    1 \tensor \lambda
+    =
+    \lambda (1 \tensor 1)
+    =
+    \lambda v \,.
+  \end{gather*}
+  The element~$1 \in \kf_{\, \lambda}$ generates~$\kf_{\, \lambda}$ as a left~{\module{$\Univ(\blie)$}} whence the induced element~$1 \tensor 1 \in V$ generates~$V$ as a left~{\module{$\Univ(\sllie_2(\kf)$}}.
+  Hence~$V$ is an infinite dimensional~{\representation{$\sllie_2(\kf)$}} of highest weight~$\lambda$.
+\end{proof}
+
+
+\begin{proposition}[Classification of irreducible highest weight representations of~$\sllie_2(\kf)$]
+  For every~$\lambda \in \kf$ there exists up to isomorphism a unique irreducible~{\representation{$\sllie_2(\kf)$}}~\gls*{sl2 irrep} of highest weight~$\lambda$.
+  \begin{enumerate}
+    \item
+      If~$\lambda \ngeq 0$ then~$\irr(\lambda)$ is infinite dimensional and admits a basis~$v_i$,~$i \geq 0$ of weight vectors~$v_i \in V_{\lambda-2i}$ on which~$e$ and~$f$ act as in~\eqref{picture of infinite dimensional verma irrep}.
+    \item
+      If~$\lambda \geq 0$ then~$\irr(\lambda)$ is of finite dimension~$\lambda+1$.
+      The representation~$V$ admits a basis~$v_0, \dotsc, v_n$ of weight vectors~$v_i \in V_{\lambda-2i}$ on which~$e$ and~$f$ act as in~\eqref{picture of finite dimensional verma irrep};
+      the representation~$V$ also admits a basis~$v_{\lambda}, v_{\lambda-2}, \dotsc, v_{-\lambda+2}, v_{-\lambda}$ of weight vectors~$w_\mu \in V_\mu$ on which~$e$ and~$f$ act as in~\eqref{picture of finite dimensional verma irrep normalized}.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  Let~$V$ be an infinite dimensional~{\representation{$\sllie_2(\kf)$}} of highest weight~$\lambda$;
+  the existence of~$V$ is ensured by \cref{existence of highest weight for sl2}.
+  If~$\lambda \ngeq 0$ then~$V$ is irreducible and of the desired form by \cref{classification of highest weight for sl2}.
+  If~$\lambda \geq 0$ then~$V$ admits a unique nonzero proper subrepresentation~$U$ by \cref{classification of highest weight for sl2}.
+  The representation~$V/U$ is then irreducible, of highest weight~$\lambda$ and of the desired form, again by \cref{classification of highest weight for sl2}.
+  The uniqueness up to isomorphism follows from the explicit description of the actions of~$e$,~$h$ and~$f$ on the bases~$v_i$,~$i \geq 0$ (resp.~$i = 0, \dotsc, \lambda$).
+\end{proof}
+
+
+\begin{lemma}
+  \label{fd contains a weight sl2}
+  Every finite dimensional~{\representation{$\sllie_2(\kf)$}}~$V$ contains a primitive vector (for some weight).
+\end{lemma}
+
+
+\begin{proof}
+  The representation~$V$ admits some weight~$\lambda \in \kf$ because~$V$ is finite dimensional and~$\kf$ is algebraically closed.
+  For some occuring weight~$\lambda$ we have~$V_{\lambda+2} = 0$ because~$V$ is finite dimensional.
+  Then any nonzero~$v \in V_\lambda$ does the job.
+\end{proof}
+
+
+\begin{corollary}[Classification of irreducible finite dimensional representations of~$\sllie_2(\kf)$]
+  The representations~$\irr(\lambda)$ with~$\lambda \geq 0$ form a set of representations for the isomorphism classes of finite dimensional irreducible~$\sllie_2(\kf)$ representations.
+\end{corollary}
+
+
+\begin{proof}
+  It remains to show that every finite dimensional~{\representation{$\sllie_2(\kf)$}}~$V$ is isomorphic to~$\irr(\lambda)$ for some~$\lambda \geq 0$.
+  
+  There exists a primitive vector~$v \in V$ for some weight~$\lambda \in \kf$ by \cref{fd contains a weight sl2}.
+  The primitive vector~$v$ generates~$V$ as a representation because~$V$ is irreducible, so~$V$ is of highest weight~$\lambda$.
+  It follows from \cref{classification of highest weight for sl2} that~$V \cong \irr(\lambda)$ with~$\dim V = \lambda + 1$ because otherwise~$V$ would need to be infinite dimensional. 
+\end{proof}
+
+% 
+% 
+% 
+% 
+% \begin{theorem}[Classification of finite dimensional irreducible representations of~$\sllie_2(\kf)$]
+%   \label{classification of fd sl2 irreps}
+%     For every~$\lambda \geq 0$ there exists up to isomorphism a unique~{\dimensional{$(\lambda+1)$}} irreducible representation of~$\sllie_2(\kf)$.
+%     More explicitely:
+%   \begin{enumerate}
+%     \item
+%       For every~$\lambda \geq 0$ there exists an~{\dimensional{$(\lambda+1)$}} irreducible representation of~$\sllie_2(\kf)$.
+%     \item
+%       Let~$V$ be an~{\dimensional{$(\lambda+1)$}} irreducible representation of~$\sllie_2(\kf)$ for some~$\lambda \geq 0$.
+%       Then
+%       \[
+%         V
+%         =
+%         V_{-\lambda} \oplus V_{-\lambda+2} \oplus \dotsb \oplus V_{\lambda-2} \oplus V_\lambda
+%       \]
+%       and each occuring weight space~$V_\mu$ is {\onedimensional}.
+%       In particular all occuring weights are integral and the highest occuring weight is~$\lambda$.
+% 
+%       Even more explicitely, there exists a basis~$v_{-\lambda}, v_{-\lambda+2}, \dotsc, v_{\lambda-2}, v_\lambda$ of~$V$ such that~$v_\mu \in V_\mu$ for every~$\mu = -\lambda, -\lambda+2, \dotsc, \lambda-2, \lambda$, with respect to which the actions of~$e$ and~$f$ on~$V$ are given as in the following diagram, where the dashed arrows represent the action of $f$:
+%       \begin{equation}
+%         \begin{tikzcd}[column sep = 1.5em]
+%           v_{-\lambda}
+%           \arrow[bend left]{r}[above]{1}
+%           &
+%           v_{-\lambda+2}
+%           \arrow[bend left]{r}[above]{2}
+%           \arrow[bend left, dashed]{l}[below]{\lambda-1}
+%           &
+%           v_{-\lambda+4}
+%           \arrow[bend left]{r}[above]{3}
+%           \arrow[bend left, dashed]{l}[below]{\lambda-2}
+%           &
+%           v_{-\lambda+6}
+%           \arrow[bend left]{r}
+%           \arrow[bend left, dashed]{l}[below]{\lambda-3}
+%           &
+%           \dots
+%           \arrow[bend left]{r}
+%           \arrow[bend left, dashed]{l}
+%           &
+%           v_{\lambda-6}
+%           \arrow[bend left]{r}[above]{\lambda-3}
+%           \arrow[bend left, dashed]{l}
+%           &
+%           v_{\lambda-4}
+%           \arrow[bend left]{r}[above]{\lambda-2}
+%           \arrow[bend left, dashed]{l}[below]{3}
+%           &
+%           v_{\lambda-2}
+%           \arrow[bend left]{r}[above]{\lambda-1}
+%           \arrow[bend left, dashed]{l}[below]{2}
+%           &
+%           v_\lambda
+%           \arrow[bend left, dashed]{l}[below]{1}
+%         \end{tikzcd}
+%       \end{equation}
+%       The actions of~$e$ and~$\spacing f$ on the endpoints is given by~$e.v_\lambda = 0$ and~$f.v_{-\lambda} = 0$.
+%  \end{enumerate}
+% \end{theorem}
+% 
+% 
+% \begin{proof}
+%   \leavevmode
+%   \begin{enumerate}
+%     \item
+%       Let~$\sllie_2(\kf)$ act on the polynomial ring~$V \defined \kf[x,y]$ via
+%       \[
+%         \sllie_2(\kf)
+%         \to
+%         \gllie(V) \,,
+%         \qquad
+%         e
+%         \mapsto
+%         y\dd{x} \,,
+%         \quad
+%         h
+%         \mapsto
+%         y\dd{y} - x\dd{x}
+%         \,,
+%         \quad
+%         f
+%         \mapsto
+%         x\dd{y} \,.
+%       \]
+%       It was already shown in~\cref{examples for representations} that this defines a representation of~$\sllie_2(\kf)$.
+%       Let~$V^{(n)}$ be the linear subspace of~$V$ consisting of the homogeneous polynomials of degree~$n$, i.e.\
+%       \[
+%         V^{(n)}
+%         =
+%         \gen*{ x^n, x^{n-1} y, \dotsc, x y^{n-1}, y^n }_{\kf} \,.
+%       \]
+%       Then~$V^{(n)}$ is an~{\dimensional{$(n+1)$}} subrepresentation of~$V$.
+%       The action of~$e$ and~$f$ on~$V^{(n)}$ is on these basis~vectors given by
+%       \[
+%         e . x^i y^{n-i}
+%         =
+%         k x^{i-1} y^{n-i+1} \,,
+%         \qquad
+%         f. x^i y^{n-i}
+%         =
+%         (n-i) x^{i+1} y^{n-i-1} \,.
+%       \]
+%       So up to coefficient the actions of~$e$ and~$f$ move around the 
+%       
+%       Let~$U$ be a nonzero subrepresentation of~$V^{(n)}$.
+%       If~$p \in U$ is a nonzero polynomial then by applying~$f$ often enough it follows that~$x^n \in U$, from which it follows from applying~$e$ often enough that~$x^{n-i} y^i \in U$ for all~$i = 0, \dotsc, n$.
+%       Hence~$U = V$.
+%       We have shown that~$V^{(n)}$ is an irreducible representation of~$\sllie_2(\kf)$.
+%     
+%     \item
+%       Because~$V$ is finite dimensional and nonzero and~$\kf$ is algebraically closed there exists some~$\lambda \in \kf$ with~$V_\lambda \neq 0$.
+%       The eigenvalue~$\lambda$ can be choosen such that~$V_{\lambda+2} = 0$ because~$V$ is finite dimensional.
+%       Let~$v \in V_\lambda$ be a nonzero weight vector and let
+%       \[
+%         w_i
+%         \defined
+%         f^i.v
+%       \]
+%       for all~$i \geq 0$.
+%       We find from \cref{shifting lemma} that~$e.w_{i+1} = (i+1)(\lambda-i)w_i$ for every~$i \geq 0$.
+%       
+%       There exists by the finite dimensionality of~$V$ some maximal~$m$ for which the vetors~$w_0, \dotsc, w_m$ are nonzero but~$w_{m+1} = 0$.
+%       The nonzero elements~$w_0, \dotsc, w_m$ are linearly independent as they live in different weight spaces.
+%       The linear space~$\gen{w_0, \dotsc, w_m}$ is a subrepresentation of~$V$:
+%       It is closed under the action of~$h$ because the~$w_i$ are weight vectors;
+%       it is closed under the action of~$f$ because~$f.w_i = w_{i+1}$ for~$i = 0, \dotsc, m-1$ and~$f.w_m = 0$;
+%       and it is closed under the action of~$e$ by \cref{shifting lemma} because~$e.w_0 = 0$.
+%       It follows from the irreducibility of~$V$ that~$V = \gen{w_0, \dotsc, w_m}$ so that~$w_0, \dotsc, w_m$ is a basis of~$V$.
+%       
+%       It follows in particular that~$m = n$.
+%       We have~$0 = e.w_{n+1} = (n+1)(\lambda-n)w_n$ with~$w_n \neq 0$ and hence~$\lambda = n$.
+%       We have thus constructed a basis~$w_0, \dotsc, w_m$ of~$V$ with~$w_i \in V_{\lambda-i}$ and on which the actions of~$e$ and~$f$ are given as indicated by the following diagram, where the dashed arrows represent the action of~$f$:
+%       
+%       
+%       
+%     \qedhere
+%   \end{enumerate}
+% \end{proof}
+
+
 \begin{examples}
- \begin{enumerate}[leftmargin=*]
-  \item
-   The one-dimensional irreducible representation of $\sll_2(k)$ can be realized by $\sll_2(k)$ acting trivially on $k$ (or any one-dimensional vector space for that matter.)
-  \item
-   The two-dimensional irreducible representation of $\sll_2(k)$ can be realized as the natural representation of $\sll_2(k)$. The detailed calculations were already shown in Example~\ref{expl: natural representation of sl2}.
-  \item
-   Let $V = \sll_2(k)$ be the adjoint representation of $\sll_2(k)$. Because $\sll_2(k)$ is simple it follows that $V$ is irreducible and $V = V_{-2} \oplus V_0 \oplus V_2$ with $V_{-2} = k f$, $V_0 = k h$ and $V_2 = k e$.
- \end{enumerate}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The irreducible representation~$\irr(0)$ can be realized by~$\sllie_2(\kf)$ acting trivially on~$\kf$ (or on any {\onedimensional} vector space for that matter).
+    \item
+      The irreducible representation~$\irr(1)$ can be realized as the natural representation of~$\sllie_2(\kf)$ as seen in \cref{natural representation of sl2}.
+    \item
+      Let~$V = \sllie_2(\kf)$ be the adjoint representation of~$\sllie_2(\kf)$.
+      The representation~$V$ is irreducible because the Lie~algebra~$\sllie_2(\kf)$ is simple, and it is {\threedimensional}.
+      Whence~$V \cong \irr(2)$ and hence~$V = V_{-2} \oplus V_0 \oplus V_2$.
+      The occuring weight spaces are given by~$V_{-2} = \gen{\spacing f}_{\kf}$,~$V_0 = \gen{h}_{\kf}$ and~$V_2 = \gen{e}_{\kf}$.
+    \item
+      For every~$\lambda \geq 0$ the Lie~algebra~$\sllie_2(\kf)$ acts on the polynomial ring~$\kf[x,y]$ as discussed in \cref{examples for representations}.
+      The homogeneous polynomials of degree~$\lambda$ form an irreducible subrepresentation of~$\kf[x,y]$ of dimension~$\lambda + 1$, which gives another construction of~$\irr(\lambda)$.
+  \end{enumerate}
 \end{examples}
 
 
 
 
 
-\subsection{Arbitrary finite dimensional representations}
+\subsection{Finite Dimensional Representations of~\texorpdfstring{$\sllie_2(\kf)$}{sl2(k)}}
+
+
+
+\subsubsection{Classification of Finite Dimensional Representations}
+
+
+\begin{fluff}
+  We know from Weyl’s theorem that every finite dimensional~{\representation{$\sllie_2(\kf)$}}~$V$ decomposes into a direct sum of irreducible representations.
+  The occuring irreducible direct summands are again finite dimesional and hence of the form~$\irr(\lambda)$ for some~$\lambda \geq 0$.
+  We can determine which irreducible representations~$\irr(\lambda)$ occur in~$V$ and by which multiplicity, as long as we know the dimensions of the weight spaces of~$V$:
+  
+  How the total dimension of~$V$ it distribuited among its weight spaces can be represented by a \defemph{weight diagram}\index{weight diagram}\footnote{The author takes full blame for this definition.} of the following form:
+  \[
+    \sldiagram{0,2,1,3,1,2,0}
+  \]
+  In this example both~$\dim V_2$ and~$\dim V_{-2}$ are {\twodimensional},~$V_1$ and~$V_{-1}$ are {\onedimensional} and~$V_0$ is {\threedimensional}.
+  All other weight spaces are zero.
+  The representation~$V$ has total dimension~$9$.
+  
+  The irreducible representations~$\irr(\lambda)$ with~$\lambda \geq 0$ have particularly nice weight diagrams:
+  We have a single dot in the columns~$-\lambda, -\lambda+2, \dotsc, \lambda-2, \lambda$ and no dots in the other columns.
+  The weight diagrams of~$\irr(\lambda)$ for small values of~$\lambda$ are given as follows:
+  \begingroup
+  \setlength{\jot}{5ex}
+  \begin{gather*}
+    \sldiagram{0,0,0,0,1,0,0,0,0}
+    \tag{$\lambda=0$}
+    \\
+    \sldiagram{0,0,0,1,0,1,0,0,0}
+    \tag{$\lambda=1$}
+    \\
+    \sldiagram{0,0,1,0,1,0,1,0,0}
+    \tag{$\lambda=2$}
+    \\
+    \sldiagram{0,1,0,1,0,1,0,1,0}
+    \tag{$\lambda=3$}
+    \\
+    \sldiagram{1,0,1,0,1,0,1,0,1}
+    \tag{$\lambda=4$}
+  \end{gather*}
+  \endgroup
+  If~$U$ and~$W$ are two finite dimensional~{\representations{$\sllie_2(\kf)$}} then the weight diagram of their direct sum~$V \oplus W$ results from the weight diagrams of~$U$ and~$W$ by columnwise combination.
+  If for example the weight diagram of~$U$ and~$W$ are given by
+  \[
+    \sldiagram[0.9]{0,2,2,4,2,2,0}
+    \qquad\text{and}\qquad
+    \sldiagram[0.9]{0,0,0,0,0,0,0\\2,1,3,0,3,1,2}
+  \]
+  then the weight diagram of~$U \oplus W$ will be given as follows:
+  \[
+    \sldiagram{0,2,2,4,2,2,0\\2,1,3,0,3,1,2}
+  \]
+\end{fluff}
+
+
+\begin{fluff}
+  Suppose now that~$V$ is a finite dimensional~{\representation{$\sllie_2(\kf)$}} that has the following weight diagram:
+  \[
+    \sldiagram{0,1,2,1,3,1,2,1,0}
+  \]
+  We see that the weight space~$V_3$ is nonzero.
+  Hence one of the irreducible direct summands of~$V$ must be of the form~$\irr(\lambda)$ with~$\irr(\lambda)_3 \neq 0$, i.e.\ with~$\lambda \geq 3$ and~$\lambda$ odd.
+  But we also see that~$V_\mu = 0$ for every~$\mu \geq 4$, so~$V$ cannot contain any direct summand~$\irr(\lambda)$ with~$\lambda \geq 4$.
+  This means that one of the direct summands of~$V$ must be~$\irr(3)$.
+  
+  If~$W$ is a direct complement of~$\irr(3)$ in~$V$, i.e.\ a subrepresentation of~$V$ with~$V \cong W \oplus \irr(3)$ then we have seen that the weight diagram of~$W$ results from that of~$V$ by substracting the weight diagram of~$\irr(3)$.
+  The weight diagram of~$\irr(3)$ looks as follows:
+  \[
+    \sldiagram{0,1,0,1,0,1,0,1,0}
+  \]
+  The weight diagram of~$W$ is therefore given as follows:
+  \[
+    \sldiagram{0,0,2,0,3,0,2,0,0}
+  \]
+  We can now repeat the above argumentation for~$W$, and find that~$\irr(2)$ is an irreducible direct summand of~$W$.
+  By continuing this argumentation we see that
+  \begin{align*}
+    V
+    &\cong
+    W \oplus \irr(3)
+    \\
+    &\cong
+    W' \oplus \irr(2) \oplus \irr(3)
+    \\
+    &\cong
+    W'' \oplus \irr(2) \oplus \irr(2) \oplus \irr(3)
+    \\
+    &\cong
+    \irr(0) \oplus \irr(2) \oplus \irr(2) \oplus \irr(3) \,.
+  \end{align*}
+\end{fluff}
 
 
 \begin{example}
- The map
- \[
-  \phi \colon \sll_2(k) \to \sll_3(k), \quad
-  A \mapsto \begin{pmatrix} A & 0 \\ 0 & 0 \end{pmatrix}
- \]
- is a homomorphism of Lie algebras. Therefore $V \coloneqq \sll_3(k)$ can be made into a representation of $\sll_2(k)$ via
- \[
-  \rho \colon \sll_2(k) \xlongrightarrow{\phi} \sll_3(k) \xlongrightarrow{\ad} \gl(\sll_3(k)) = \gl(V).
- \]
- Then $h$ acts on $V$ by $\ad(H)$ for
- \[
-%   E \coloneqq
-%   \begin{pmatrix}
-%    0 & 1 & 0 \\
-%    0 & 0 & 0 \\
-%    0 & 0 & 0
-%   \end{pmatrix},
-%   \quad
-  H \coloneqq \phi(h) =
-  \begin{pmatrix}
-   1 &  0 & 0 \\
-   0 & -1 & 0 \\
-   0 &  0 & 0
-  \end{pmatrix},
-%   \quad
-%   F \coloneqq
-%   \begin{pmatrix}
-%    0 & 0 & 0 \\
-%    1 & 0 & 0 \\
-%    0 & 0 & 0
-%   \end{pmatrix},
- \]
+  The map
+  \[
+    \phi
+    \colon
+    \sllie_2(\kf)
+    \to
+    \sllie_3(\kf) \,,
+    \quad
+    A
+    \mapsto
+    \begin{pmatrix}
+      A & 0 \\
+      0 & 0
+    \end{pmatrix}
+  \]
+  is a homomorphism of Lie~algebras.
+  By pulling back the adjoint representation of~$\sllie_3(\kf)$ to a representation of~$\sllie_2(\kf)$ we get a~{\representation{$\sllie_2(\kf)$}}~$V \defined \sllie_3(\kf)$.
+  Then~$h$ acts on~$V$ by the endomorphism~$\ad(H)$ where
+  \[
+    H
+    \defined
+    \begin{pmatrix*}[r]
+    1 &  0 & 0 \\
+    0 & -1 & 0 \\
+    0 &  0 & 0
+    \end{pmatrix*} \,.
+  \]
 
- Notice that this representation is not irreducible because $\phi(\sll_2(k))$ is a non-trivial subrepresentation. However, by Weyl’s theorem $V$ decomposes into the direct sum of irreducible subrepresentations and it will be shown how to do so:
- 
- Let $e_{12}, e_{13}, e_{23}, e_{21}, e_{31}, e_{32}, h_1, h_2$ be the basis of $V$ with
- \[
-  h_1 \coloneqq \diag(1, -1, 0) \quad\text{and}\quad h_2 \coloneqq \diag(0, 1, -1).
- \]
- Notice that
- \[
-  [\diag(a_1, a_2, a_3), e_{ij}] = (a_i-a_j) e_{ij}
-  \quad\text{for all $a_1, a_2, a_3 \in k$ and $i,j = 1, \dotsc, 3$}.
- \]
- It follows that
- \[
-  e_{21} \in V_{-2}, \quad
-  e_{23}, e_{31} \in V_{-1}, \quad
-  h_1, h_2 \in V_0, \quad
-  e_{13}, e_{32} \in V_1, \quad
-  e_{12} \in V_2.
- \]
- So $V = \bigoplus_{i \in \Z} V_i$ with dimensions
- \begin{equation}\label{eqn: dimensions of eigenspaces of sl3}
-  \dim V_i =
-  \begin{cases}
-   1 & \text{if $i = -2, 2$}, \\
-   2 & \text{if $i = -1, 0, 1$}, \\
-   0 & \text{otherwise}.
-  \end{cases}
- \end{equation}
- 
- Suppose that $V = W^1 \oplus W^2$ for two four-dimensional irreducible subrepresentations $W^1$ and $W^2$. Then
- \[
-  W^1 = W^1_{-3} \oplus W^1_{-1} \oplus W^1_1 \oplus W^1_3
-  \quad\text{and}\quad
-  W^2 = W^2_{-3} \oplus W^2_{-1} \oplus W^2_1 \oplus W^2_3.
- \]
- and it follows that
- \[
-  V = \underbrace{W^1_{-3} \oplus W^2_{-3}}_{= V_{-3}} \oplus
-      \underbrace{W^1_{-1} \oplus W^2_{-1}}_{= V_{-1}} \oplus
-      \underbrace{W^1_1 \oplus W^2_1}_{= V_{1}}  \oplus
-      \underbrace{W^1_3 \oplus W^2_3}_{= V_{3}},
- \]
- contradicting \eqref{eqn: dimensions of eigenspaces of sl3}.
- 
- To emphasize the chosen approach suppose that there exists a decomposition $V = W^{0,1} \oplus W^{0,2} \oplus W^{0,3} \oplus W^{1,1} \oplus W^{2,1}$ into irreducible subrepresentations with $\dim W^{0,1} = \dim W^{0,2} = \dim W^{0,3} = 1$, $\dim W^{1,1} = 2$ and $\dim W^{1,1} = 3$. Then
- \begin{align*}
-  V
-  &= W^{0,1} \oplus W^{0,2} \oplus W^{0,3} \oplus W^{1,1} \oplus W^{2,1} \\
-  &= \underbrace{W^{2,1}_{-2}}_{= V_{-2}} \oplus
-     \underbrace{W^{1,1}_{-1}}_{= V_{-1}} \oplus
-     \underbrace{W^{0,1}_0 \oplus W^{0,2}_0 \oplus W^{0,3}_0 \oplus W^{2,1}_0}_{= V_0} \oplus
-     \underbrace{W^{1,1}_1}_{= V_1} \oplus
-     \underbrace{W^{2,1}_1}_{= V_2},
- \end{align*}
- also contradicting \eqref{eqn: dimensions of eigenspaces of sl3}.
- 
- The above observations can easily be generalized: Let $V = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ be a decomposition into irreducible subrepresentations with $W^{d,j}$ being $(d+1)$-dimensional, i.e.\ having heighest weight $d$. As in the previous examples it follows that $V_i = \bigoplus_{p \in \N, d=|i|+2p} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i$ for every $i \in \Z$ and therefore $\dim V_i = \sum_{p \in \N, d=|i|+2p} \nu_d$. Hence
- \[
-  \nu_d = \dim V_d - \dim V_{d+2}
-  \quad\text{for every $d \in \N$}.
- \]
- With this it follows from \eqref{eqn: dimensions of eigenspaces of sl3} that $\nu_0 = 1$, $\nu_1 = 2$ and $\nu_2 = 1$.
- 
- The three-dimensional irreducible subrepresentation is given by
- \[
-  W^{2,1} \coloneqq \phi(\sll_2(k)) = \vspan_k(e_{12}, h_1, e_{21})
- \]
- The two two-dimensional irreducible subrepresentations $W^{1,1}$ and $W^{1,2}$ must satisfy
- \[
-  W^{1,1} \oplus W^{1,2} = V_{-1} \oplus V_1 = \vspan_k(e_{23}, e_{31}, e_{13}, e_{32}).
- \]
- They then can be choosen as $W^{1,1} \coloneqq \vspan_k(e_{23}, e_{13})$ and $W^{1,2} \coloneqq \vspan_k(e_{31}, e_{32})$. That these are indeed subrepresentations follows from direct calculation. To find the remaining one-dimensional irreducible subrepresentation notice that
- \begin{gather*}
-  e.h_1 = -2e_{12}, \quad h.h_1 = 0, \quad f.h_1 = 2e_{21},
- \shortintertext{and}
-  e.h_2 = e_{12}, \quad h.h_2 = 0, \quad f.h_2 = -e_{21}.
- \end{gather*}
- Hence $\sll_2(k)$ acts trivially on the one-dimensional linear subspace $W^{0,1} \coloneqq k (h_1 + 2h_2)$, which is why it is a subrepresentation.
+  Let~$e_{12}$,~$e_{13}$,~$e_{23}$,~$e_{21}$,~$e_{31}$~$e_{32}$,~$h_1$,~$h_2$ be the basis of~$V$ consisting of the standard matrices~$e_{ij}$ with~$i \neq j$ together with the two traceless diagonal matrices
+  \[
+    h_1
+    \defined
+    \diag(1,-1,0)
+    \quad\text{and}\quad
+    h_2
+    \defined
+    \diag(0,1,-1) \,.
+  \]
+  We observe that
+  \[
+    [\diag(a_1, a_2, a_3), e_{ij}] = (a_i - a_j) e_{ij}
+  \]
+  for all~$a_1, a_2, a_3 \in \kf$ and~$i,j = 1, \dotsc, 3$.
+  It follows that
+  \[
+    e_{21}
+    \in
+    V_{-2}\,,
+    \quad
+    e_{23}, e_{31}
+    \in
+    V_{-1}  \,,
+    \quad
+    h_1, h_2
+    \in
+    V_0 \,,
+    \quad
+    e_{13}, e_{32}
+    \in
+    V_1 \,,
+    \quad
+    e_{12}
+    \in
+    V_2 \,.
+  \]
+  The weight diagram of~$V$ is hence as follows:
+  \[
+    \sldiagram{1,2,2,2,1}
+  \]
+  It follows that
+  \[
+    V
+    \cong
+    \irr(2) \oplus \irr(1) \oplus \irr(1) \oplus \irr(0)  \,.
+  \]
+  
+  We can also exhibit an explicit decomposition of~$V$ into irreducible subrepresentations:
+  We know that the adjoint representation of~$\sllie_2(\kf)$ is irreducible because~$\sllie_2(\kf)$ is simple;
+  it is isomorphism to~$\irr(2)$.
+  A {\threedimensional} irreducible subrepresentation of~$V$ is hence given by
+  \[
+    W^{2,1}
+    \defined
+    \phi(\sllie_2(\kf))
+    =
+    \gen{ e_{12}, h_1, e_{21} }_{\kf} \,.
+  \]
+  This is actually the only {\threedimensional} irreducible subrepresentation of~$V$:
+  If~$U$ were another one with~$U \neq W^{2,1}$ then~$U \cap W^{2,1} = 0$ because~$U$ and~$W^{2,1}$ are simple.
+  But then~$U \oplus W^{2,1}$ is a direct summand of~$V$ isomorphic to~$\irr(2) \oplus \irr(2)$.
+  This is not possible because~$\irr(2)$ has multiplicity~$1$ in~$V$.
+  
+  Any two {\twodimensional} irreducible subrepresentations~$W^{1,1}$ and~$W^{1,2}$ of~$V$ must satisfy
+  \[
+    W^{1,1} \oplus W^{1,2}
+    =
+    V_{-1} \oplus V_1
+    =
+    \gen{ e_{23}, e_{31}, e_{13}, e_{32} }_{\kf}  \,.
+  \]
+  We can choose~$W^{1,1} \defined \gen{e_{23}, e_{13}}_{\kf}$ and $W^{1,2} \defined \gen{e_{31}, e_{32}}_{\kf}$.
+  To find a {\onedimensional} irreducible subrepresentation --- which is actually unique by the same argument as for the {\threedimensional} irreducible subrepresentation --- we observe that
+ \begin{alignat*}{3}
+    e.h_1 &= -2 e_{12} \,,
+    &
+    \quad
+    h.h_1 &= 0 \,,
+    &
+    \quad
+    f.h_1 &= 2e_{21} \,,
+  \shortintertext{and}
+    e.h_2 &= e_{12}  \,,
+    &
+    \quad
+    h.h_2 &= 0 \,,
+    &
+    \quad
+    f.h_2 &= -e_{21} \,.
+ \end{alignat*}
+ Whence~$\sllie_2(\kf)$ acts trivially on the {\onedimensional} linear subspace~$W^{0,1} \defined \gen{ h_1 + 2h_2 }_{\kf}$, which is why it is a subrepresentation.
 \end{example}
 
 
-\begin{theorem}\label{thrm: finite dimensional representations of sl2}
- Let $V$ be a finite dimensional representation of $\sll_2(k)$.
- \begin{enumerate}[leftmargin=*]
-  \item
-   $V = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} W^{d,j}$ where $W^{d,j} \subseteq V$ is an irreducible $(d+1)$-dimensional subrepresentation for all $d \in \N$ and $j = 1, \dotsc, \nu_d$.
-  \item
-   $V = \bigoplus_{i \in \Z} V_i$ with
-   \begin{equation}\label{eqn: eigenspace of a finite dimensional representation}
-    V_i = \bigoplus_{\substack{p \in \N \\ d = |i|+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
-    \quad \text{for every $i \in \Z$}
-   \end{equation}
-   and $\dim V_i = \sum_{p \in \N, d = |i|+2p} \nu_d$ for every $i \in \Z$. In particular all occuring weights are integral.
-  \item 
-   The numbers $\nu_d$ for $d \in \N$ are unique with $\nu_d = \dim V_d - \dim V_{d+2}$ for every $d \in \N$.
-  \item
-   $\dim V_i = \dim V_{-i}$ for every $i \in \Z$.
- \end{enumerate}
+\begin{example}
+  Let~$V \defined \irr(\lambda)$ with~$\lambda \geq 0$ be the irreducible~{\representation{$\sllie_2(\kf)$}} with highest weight~$\lambda$.
+  Let~$v_{-\lambda}, v_{-\lambda+2}, \dotsc, v_{\lambda-2}, v_{\lambda}$ be a basis of~$V$ consisting of weight vectors~$v_\mu \in V_\mu$.
+  Then~$h.v_\mu^* = -\mu v_\mu^*$ for the dual basis~$v_{-\lambda}^*, v_{-\lambda+2}^*, \dotsc, v_{\lambda-2}^*, v_{\lambda}^*$ of~$V^*$ because
+  \[
+    (h.v_\mu^*)(v_\kappa)
+    =
+    v_\mu^*(-h.v_\kappa)
+    =
+    v_\mu^*(-\kappa v_\kappa)
+    =
+    -\kappa \delta_{\mu,\kappa}
+    =
+    -\kappa v_\mu^*(v_\kappa)
+  \]
+  for every basis~vector~$v_\kappa$.
+  Hence the weight diagram for~$V^*$ is the same as for~$\irr(\lambda)$ (and hence~$V$ itself).
+  This shows that~$\irr(\lambda)^* \cong \irr(\lambda)$ for all~$\lambda \geq 0$.
+\end{example}
+
+
+\begin{theorem}[Structure of finite dimensional~{\representations{$\sllie_2(\kf)$}}]
+  \label{finite dimensional representations of sl2}
+  Let~$V$ be a finite dimensional~{\representation{$\sllie_2(\kf)$}}.
+  \begin{enumerate}
+    \item
+      There exists a decomposition
+      \begin{equation}
+        \label{decomposition into irreps}
+        V
+        =
+        \bigoplus_{\lambda \geq 0}
+        \bigoplus_{i=1}^{n_\lambda}
+        W^{\lambda,i}
+      \end{equation}
+      into irreducible subrepresentations where the summands~$W^{\lambda,i}$ are of highest weight~$\lambda$.
+    \item
+      The representation~$V$ admits a weight space decomposition~$V = \bigoplus_{\mu \in \Integer} V_\mu$.
+      In particular all occuring weights are integral.
+    \item
+      It holds for every potential weight~$\mu \in \Integer$ that~$\dim V_\mu = \dim V_{-\mu}$.
+%     \item
+%       Let~$\lambda \in \Integer$ be a potential weight.
+%       If~$\lambda \geq 0$ then
+%       \begin{equation}
+%         \label{positive eigenspace of a finite dimensional representation}
+%           V_\lambda
+%           =
+%           \bigoplus_{\substack{\mu \geq \lambda \\ \mu \equiv \lambda}}
+%           \bigoplus_{i=1}^{n_\mu} W^{\mu,i}_\lambda
+%       \end{equation}
+%       where~$\mu \equiv \lambda$ means that~$\mu \equiv \lambda \pmod{2}$.
+%       If~$\lambda \leq 0$ then similarly
+%       \begin{equation}
+%         \label{negative eigenspace of a finite dimensional representation}
+%           V_\lambda
+%           =
+%           \bigoplus_{\substack{\mu \leq \lambda \\ \mu \equiv \lambda}}
+%           \bigoplus_{j=1}^{n_\mu} W^{\mu,j}_\lambda \,.
+%       \end{equation}
+%       In both cases each summand~$W^{\lambda,j}_\lambda$ is {\onedimensional}.
+    \item
+      \label{calculation of multiplicities}
+      The multiplicities~$n_\lambda$ for~$\lambda \geq 0$ are given by~$n_\lambda = \dim V_\lambda - \dim V_{\lambda+2}$.
+  \end{enumerate}
 \end{theorem}
+
+
 \begin{proof}
- That $V$ decomposes into the direct sum of irreducible subrepresentations follows directly from Weyl’s theorem. From the classification of finite dimensional irreducible representations of $\sll_2(k)$ it follows that
- \[
-  W^{d,j}
-  = W^{d,j}_{-d} \oplus W^{d,j}_{-d+2} \oplus \dotsb \oplus W^{d,j}_{d-2} \oplus W^{d,j}_d
-  = \bigoplus_{p=0}^d W^{d,j}_{-d+2p}
- \]
- for every $d \in \N$ and $j = 1, \dotsc, \nu_d$. It follows that
- \[
-  V
-  = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} W^{d,j}
-  = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} \bigoplus_{p=0}^d W^{d,j}_{-d+2p}.
- \]
- This shows that $V_i = \bigoplus_{i \in \Z} V_i$. Formula \eqref{eqn: eigenspace of a finite dimensional representation} follows from reordering the summands. It follows that
- \[
-  \dim V_i
-  = \dim \bigoplus_{\substack{p \in \N \\ d = |i|+2p}} \bigoplus_{j=1}^{\nu_d} W^{d,j}_i
-  = \sum_{\substack{p \in \N \\ d = |i|+2p}} \sum_{j=1}^{\nu_d} \underbrace{\dim W^{d,j}_i}_{=1}
-  = \sum_{\substack{p \in \N \\ d = |i|+2p}} \nu_d.
- \]
- As a direct consequence it follows that $\dim V_i = \dim V_{-i}$ for every $i \in \Z$ and
- \[
-  \dim V_d - \dim V_{d+2}
-  = \sum_{\substack{p \in \N \\ d' = i+2p}} \nu_{d'} - \sum_{\substack{p \in \N \\ d' = i+2+2p}} \nu_{d'}
-  = \nu_d
-  \quad\text{for every $d \in \N$}.
- \qedhere
- \]
+  It follows from Weyl’s~theorem that there exists such a decomposition~$V = \bigoplus_{\lambda \geq 0} \bigoplus_{i=1}^{n_\lambda} W^{\lambda,i}$ into irreducible subrepresentations.
+  Each irreducible direct summand~$W^{\lambda,i} \cong \irr(\lambda)$ admits a weight space decomposition, the combination of which gives a weight space decomposition for~$V$.
+  We have for all~$\lambda \geq 0$ and~$\mu \in \Integer$ that~$\dim W^{\lambda,i}_\mu = W^{\lambda,i}_{-\mu}$ because~$W^{\lambda,i} \cong \irr(\lambda)$.
+  It follows that~$\dim V_\mu = \dim V_{-\mu}$.
+  
+  For~$\mu \geq 0$ the dimension of the corresponding weight space~$V_\mu$ counts how many direct summands~$W^{\lambda,i}$ with~$\lambda \geq \mu$ and~$\mu \equiv \lambda \pmod{2}$ occur in the given decomposition.
+  The difference~$\dim V_\mu - \dim V_{\mu + 2}$ therefore counts the how many direct summands of the form~$W^{\lambda,i}$ with exactly~$\lambda = \mu$ appear in the given decomposition.
 \end{proof}
 
 
 
+\subsubsection{The Clebsch--Gordan Decomposition}
 
 
-\subsection{The Clebsch--Gordan decomposition}
+\begin{lemma}
+  \label{tensor of sl2 weights}
+  Let~$V$ and~$W$ be two~{\representations{$\sllie_2(\kf)$}} and let~$v \in V_\lambda$ and~$w \in W_\mu$ for some potential weights~$\lambda, \mu \in \kf$.
+  Then~$v \tensor w \in (V \tensor W)_{\lambda + \mu}$.
+\end{lemma}
 
 
-\begin{example}\label{expl: decomposition of the tensor product of 4 and 5}
- For every $n \in \N$ let $V^{(n)}$ be the $(n+1)$-dimensional irreducible representation of $V$ and abbreviate $V \coloneqq V^{(3)}$ and $W \coloneqq V^{(4)}$. Then
- \begin{equation}\label{eqn: decomposition of 4 tensor 5}
-  V \otimes W \cong V^{(7)} \otimes V^{(5)} \otimes V^{(3)} \otimes V^{(1)}.
- \end{equation}
- To see this notice that for $i,j \in \Z$ with $v \in V_\lambda$ and $w \in W_\lambda$ it follows that
- \[
-  h.(v \otimes w)
-  = (h.v) \otimes w + v \otimes (h.w)
-  = iv \otimes w + jv \otimes w
-  = (i+j) v \otimes w
- \]
- and therefore $V_i \otimes W_j \subseteq (V \otimes W)_{i+j}$. It follows that
- \begin{align*}
-  (V \otimes W)_{-7}
-  &= V_{-3} \otimes W_{-4}, \\
-  (V \otimes W)_{-5}
-  &= (V_{-3} \otimes W_{-2}) \oplus (V_{-1} \oplus W_{-4}), \\
-  (V \otimes W)_{-3}
-  &= (V_{-3} \otimes W_0) \oplus (V_{-1} \otimes W_{-2}) \oplus (V_1 \otimes W_{-4}), \\
-  (V \otimes W)_{-1}
-  &= (V_{-3} \otimes W_2) \oplus (V_{-1} \otimes W_0) \oplus (V_1 \otimes W_{-2}) \oplus (V_3 \otimes W_{-4}), \\
-  (V \otimes W)_1
-  &= (V_{-3} \otimes W_4) \oplus (V_{-1} \otimes W_2) \oplus (V_1 \otimes W_0) \oplus (V_3 \otimes W_{-2}), \\
-  (V \otimes W)_3
-  &= (V_{-1} \otimes W_4) \oplus (V_1 \otimes W_2) \oplus (V_3 \otimes W_0), \\
-  (V \otimes W)_5
-  &= (V_1 \otimes W_4) \oplus (V_3 \otimes W_2), \\
-  (V \otimes W)_7
-  &= V_3 \otimes W_4.
- \end{align*}
- with each of the summands being one-dimensional. Therefore the weights spaces of $V \otimes W$ have the following dimensions:
- \[
-  \begin{array}{c|rrrrrrrrc}
-   i \in \Z             & -7 & -5 & -3 & -1 & 1 & 3 & 5 & 7 & \text{otherwise} \\
-   \hline
-   \dim (V \otimes W)_i &  1 &  2 &  3 &  4 & 4 & 3 & 2 & 1 & 0
-  \end{array}
- \]
- Formula \eqref{eqn: decomposition of 4 tensor 5} follows from this by Theorem \ref{thrm: finite dimensional representations of sl2}.
+\begin{proof}
+  We have~$h.(v \tensor w) = (h.v) \tensor w + v \tensor (h.w) = \lambda v \tensor w + \mu v \tensor w = (\lambda + \mu) v \tensor w$.
+\end{proof}
+
+
+\begin{example}
+  \label{tensor of 3 and 2}
+  The weight diagrams of~$V \defined \irr(3)$ and~$W \defined \irr(2)$ look as follows:
+  \[
+    \sldiagram{1,0,1,0,1,0,1}
+    \qquad
+    \qquad
+    \sldiagram{1,0,1,0,1}
+  \]
+  We may choose basis~$v_{-3}$,~$v_1$,~$v_1$,~$v_3$ of~$V$ and~$w_{-2}$,~$w_0$,~$w_2$ of~$W$ consisting of weight vectors~$v_\lambda \in V_\lambda$ and~$w_\mu \in W_\mu$.
+  It follows from \cref{tensor of sl2 weights} that~$v_\lambda \tensor w_\mu$ is a weight vector in~$V \tensor W$ of weight~$\lambda + \mu$.
+  Hence~$V \tensor w_\mu$ admits a weight diagram (even though it is for~$\mu \neq 0$ not a subrepresentation of~$V \tensor W$).
+  The weight diagram of~$V \tensor w_\mu$ results from that of~$V$ by shifting it by~$\mu$:
+  \[
+    \sldiagram[2][1]{1,0,1,0,1,0,1}[-3+\mu,-2+\mu,-1+\mu,0+\mu,1+\mu,2+\mu,3+\mu]
+  \]
+  It follows that in the decomposition
+  \[
+    V \tensor W
+    =
+    V \tensor (\kf w_{-2} \oplus \kf w_0 \oplus \kf w_2)
+    =
+    (V \tensor w_{-2}) \oplus (V \tensor w_0) \oplus (V \tensor w_2)
+  \]
+  the direct summand~$V \tensor w_{-2}$,~$V \tensor w_0$ and~$V \tensor w_2$ have the following weight diagrams:
+  \[
+    \begingroup
+    \renewcommand{\arraystretch}{3.5}
+    \begin{array}{rc}
+      V \tensor w_{-2}:
+      &
+      \sldiagram{1,0,1,0,1,0,1,0,0,0,0} \\
+      V \tensor w_0:
+      &
+      \sldiagram{0,0,0,0,0,0,0,0,0,0,0\\0,0,1,0,1,0,1,0,1,0,0} \\
+      V \tensor w_2:
+      &
+      \sldiagram{0,0,0,0,0,0,0,0,0,0,0\\0,0,0,0,0,0,0,0,0,0,0\\0,0,0,0,1,0,1,0,1,0,1}
+    \end{array}
+    \endgroup
+  \]
+  We get the total weight diagram of~$V \tensor W$ by adding together these three weight diagrams:
+  \[
+    \begin{array}{rc}
+    V \tensor W:
+    &
+    \sldiagram{1,0,1,0,1,0,1,0,0,0,0\\0,0,1,0,1,0,1,0,1,0,0\\0,0,0,0,1,0,1,0,1,0,1}
+    \end{array}
+  \]
+  We see from the weight diagram of~$V \tensor W$ that
+  \[
+    \irr(3) \tensor \irr(2)
+    =
+    V \tensor W
+    \cong
+    \irr(5) \oplus \irr(3) \oplus \irr(1) \,.
+  \]
 \end{example}
 
 
-\begin{proposition}
- For all $n \in \N$ let $V^{(n)}$ denote the $(n+1)$-dimensional irreducible representation of $\sll_2(k)$. Then
- \[
-  V^{(n)} \otimes V^{(m)} \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(|n-m|)}
-  \quad\text{for all $n,m \in \N$}.
- \]
+\begin{example}
+  \label{tensor of 4 and 3}
+  We find in the same way as in \cref{tensor of 3 and 2} that the weight diagram of the tensor product~$\irr(4) \tensor \irr(3)$ is as follows:
+  \[
+    \sldiagram{1,0,1,0,1,0,1,0,1,0,0,0,0,0,0\\0,0,1,0,1,0,1,0,1,0,1,0,0,0,0\\0,0,0,0,1,0,1,0,1,0,1,0,1,0,0\\0,0,0,0,0,0,1,0,1,0,1,0,1,0,1}
+  \]
+  Hence
+  \[
+    \irr(4) \tensor \irr(3)
+    \cong
+    \irr(7) \oplus \irr(5) \oplus \irr(3) \oplus \irr(1)  \,.
+  \]
+\end{example}
+
+
+\begin{proposition}[Clebsch--Gordan]
+  \label{clebsch gordan}
+  For all weights~$\lambda, \mu \geq 0$ with~$\lambda \geq \mu$,
+  \[
+    \irr(\lambda) \tensor \irr(\mu)
+    \cong
+    \irr(\lambda+\mu) \oplus \irr(\lambda+\mu-2) \oplus \dotsb \oplus \irr(\lambda-\mu) \,,
+  \]
+  and hence more generally
+  \[
+    \irr(\lambda) \tensor \irr(\mu)
+    \cong
+    \irr(\lambda+\mu) \oplus \irr(\lambda+\mu-2) \oplus \dotsb \oplus \irr(\abs{\lambda-\mu})
+  \]
+  for all~$\lambda, \mu \geq 0$.
 \end{proposition}
-\begin{proof}
- It can be assummed w.l.o.g.\ that $n \geq m$. Abbreviate $V \coloneqq V^{(n)}$ and $W \coloneqq W^{(m)}$. Then $V = \bigoplus_{p=0}^n V_{-n+2p}$ and $W = \bigoplus_{q=0}^m W_{-m+2q}$ and therefore
- \[
-  V \otimes W
-  = \bigoplus_{p=0}^n \bigoplus_{q=0}^m \underbrace{V_{-n+2p} \otimes W_{-m+2q}}_{\subseteq (V \otimes W)_{-(n+m)+2(p+q)}}.
- \]
- Because $V \otimes W$ decomposes into weight spaces it follows that
- \[
-  (V \otimes W)_i
-  = \bigoplus_{\substack{j_1 = -n, -n+2, \dotsc, n-2, n \\ j_2 = -m, -m+2 \dotsc, m-2, m \\ p+q=i}} V_p \otimes W_q
-  \quad\text{for every $i \in \Z$}.
- \]
- Therefore $\dim (V \otimes W)_i$ is the number of solutions of the equation
- \begin{equation}\label{eqn: Clebsch Gordan by counting}
-  p+q = i
-  \quad\text{with}\quad
-  p \in \{-n, -n+2, \dotsc, n-2, n\},
-  q \in \{-m, -m+2, \dotsc, m-2, m\}.
- \end{equation}
- To count these solutions notice that \eqref{eqn: Clebsch Gordan by counting} has no solution for $i < -n-m$ or $i > n+m$. Also notice that $p+q \equiv n+m\pmod(2)$ in \eqref{eqn: Clebsch Gordan by counting}. So it is enough to count the solutions of \eqref{eqn: Clebsch Gordan by counting} for $i = -(n+m), -(n+m)+2, \dotsc, n+m-2, n+m$. The solutions are given in the table in Figure~\ref{fig: solutions for counting dimensions} (page \pageref{fig: solutions for counting dimensions}).
- \begin{figure}
- \[
-  \setlength\arraycolsep{4pt}
-  \begin{array}{c|c|c}
-  i      & \text{solutions $(p,q)$ for $p+q = i$}        & \text{number} \\
-  \hline
-  n+m    & (n, m)                                        & 1      \\
-  n+m-2  & (n, m-2), (n-2, m),                           & 2      \\
-  n+m-4  & (n, m-4), (n-2, m-2), (n-4, m),               & 3      \\
-  \vdots & \vdots                                        & \vdots \\
-  n-m    & (n, -m), (n-2, -m+2), \dotsc,  (n-2m, m)      & m+1    \\
-  n-m-2  & (n-2, -m), (n-4, -m+2), \dotsc, (n-2m-2, m)   & m+1    \\
-  \vdots & \vdots                                        & \vdots \\
-  -n+m+2 & (-n+2m+2,-m), (-n+2m, -m+2), \dotsc, (-n+2,m) & m+1    \\
-  -n+m   & (-n+2m,-m), (-n+2m-2, -m+2), \dotsc, (-n,m)   & m+1    \\
-  \vdots & \vdots                                        & \vdots \\
-  -n-m+4 & (-n+4,-m), (-n+2,-m+2), (-n,-m+4)             & 3      \\
-  -n-m+2 & (-n+2,-m), (-n,-m+2)                          & 2      \\
-  -n-m   & (-n,-m)                                       & 1
-  \end{array}
- \]
- \caption{Solutions for counting dimensions of weight spaces.}
- \label{fig: solutions for counting dimensions}
- \end{figure}
- This results in the following dimensions:
- \[
-  \setlength\arraycolsep{2pt}
-  \begin{array}{c:c:c:c:c:c:c:c:c:c}
-   i \in \Z            & -n-m & -n-m+2 & \cdots & -n+m & \cdots & n-m & \cdots & n+m-2 & n+m \\
-   \hline
-   \dim(V \otimes W)_i & 1    & 2      & \cdots & m+1  & \cdots & m+1 & \cdots & 2     & 1
-  \end{array}
- \]
- From this it follows from Theorem~\ref{thrm: finite dimensional representations of sl2} that
- \[
-  V \otimes W \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(n-m)}.
-  \qedhere
- \]
+
+
+\begin{proof}[First proof]
+  Let~$V \defined \irr(\lambda)$ and $W \defined \irr(\mu)$.
+  Then both~$V = \bigoplus_{p=0}^\lambda V_{-\lambda+2p}$ and~$W = \bigoplus_{q=0}^\mu W_{-\mu+2q}$ and hence
+  \[
+    V \tensor W
+    =
+    \bigoplus_{p=0}^\lambda
+    \bigoplus_{q=0}^\mu
+    V_{-\lambda+2p} \tensor W_{-\mu+2q}
+  \]
+  We find for every potential weight~$\kappa \geq 0$ that
+  \[
+    (V \tensor W)_\kappa
+    =
+    \bigoplus_{
+      \substack{
+        \lambda'      = -\lambda, -\lambda+2, \dotsc, \lambda-2, \lambda \\
+        \mu'          = -\mu, -\mu+2 \dotsc, \mu-2, \mu \\
+        \lambda + \mu = \kappa
+      }
+    }
+    V_{\lambda'} \tensor W_{\mu'} \,.
+  \]
+  The dimension of $(V \tensor W)_\kappa$ is therefore the number of solutions of the equation
+  \begin{equation}
+    \label{clebsch gordan by counting}
+    \lambda' + \mu' = \kappa
+    \qquad\text{with}\qquad
+    \left\{
+    \begin{aligned}
+      p &\in \{-\lambda, -\lambda+2, \dotsc, \lambda-2, \lambda\}  \,,  \\
+      q &\in \{-\mu, -\mu+2, \dotsc, \mu-2, \mu\}  \,.
+    \end{aligned}
+    \right.
+  \end{equation}
+  Let us count these solutions:
+  We observe that \eqref{clebsch gordan by counting} has no solution for~$\kappa < -\lambda-\mu$ or~$\kappa > \lambda+\mu$.
+  We also observe that~$\lambda' + \mu' \equiv \lambda+\mu \pmod{2}$ in \eqref{clebsch gordan by counting}.
+  So we only need to count the solutions of \eqref{clebsch gordan by counting} for~$\kappa = -(\lambda+\mu), -(\lambda+\mu)+2, \dotsc, (\lambda+\mu)-2, (\lambda+\mu)$.
+  The solutions to these values of~$\kappa$ are given as follows:
+  \[
+    \begingroup
+    \renewcommand{\arraystretch}{1.3}
+    \begin{array}{ccc}
+        \kappa
+      & \text{solutions $(\lambda', \mu')$ for~$\lambda' + \mu' = \kappa$ as in~\eqref{clebsch gordan by counting}} 
+      & \text{\#solutions}
+      \\
+      \hline
+        \lambda + \mu
+      & (\lambda, \mu)
+      & 1
+      \\
+        \lambda + \mu - 2  
+      & (\lambda, \mu - 2),
+        (\lambda - 2, \mu),
+      & 2
+      \\
+      \lambda + \mu - 4
+      & (\lambda, \mu - 4),
+        (\lambda - 2, \mu - 2),
+        (\lambda - 4, \mu),
+      & 3
+      \\
+        \vdots
+      & \vdots
+      & \vdots
+      \\
+        \lambda - \mu
+      & (\lambda, -\mu),
+        (\lambda - 2, - \mu + 2),
+        \dotsc,
+        (\lambda - 2\mu, \mu)
+      & \mu + 1
+      \\
+        \lambda - \mu - 2
+      & (\lambda - 2, - \mu),
+        (\lambda - 4, - \mu + 2),
+        \dotsc,
+        (\lambda - 2 \mu - 2, \mu)
+      & \mu + 1
+      \\
+        \vdots
+      & \vdots
+      & \vdots
+      \\
+        - \lambda + \mu + 2 
+      & \quad
+        (- \lambda + 2 \mu + 2, - \mu),
+        (- \lambda + 2 \mu, - \mu + 2),
+        \dotsc,
+        (- \lambda + 2, \mu)
+        \quad
+      & \mu + 1
+      \\
+        - \lambda + \mu
+      & (- \lambda + 2 \mu, - \mu),
+        (- \lambda + 2 \mu - 2, - \mu + 2),
+        \dotsc,
+        (- \lambda, \mu)
+      & \mu + 1
+      \\
+        \vdots
+      & \vdots
+      & \vdots
+      \\
+        - \lambda - \mu + 4
+      & (- \lambda + 4, - \mu),
+        (- \lambda + 2, - \mu + 2),
+        (- \lambda, - \mu + 4)
+      & 3
+      \\
+        - \lambda - \mu + 2
+      & (- \lambda + 2, - \mu),
+        (- \lambda, - \mu + 2)
+      & 2
+      \\
+        - \lambda - \mu
+      & (- \lambda, - \mu)
+      & 1
+    \end{array}
+    \endgroup
+  \]
+  This results in the following dimensions:
+  \[
+    \begingroup
+    \renewcommand{\arraystretch}{1.2}
+    \begin{array}{cccccccccc}
+        \kappa
+      & -\lambda-\mu
+      & -\lambda-\mu+2
+      & \cdots
+      & -\lambda+\mu
+      & \cdots
+      & \lambda-\mu
+      & \cdots 
+      & \lambda+\mu-2
+      & \lambda+\mu
+      \\
+      \hline
+      \dim(V \tensor W)_\kappa
+      & 1
+      & 2
+      & \cdots
+      & \mu+1
+      & \cdots
+      & \mu+1
+      & \cdots
+      & 2
+      & 1
+    \end{array}
+    \endgroup
+  \]
+  We find with part~\ref*{calculation of multiplicities}~of~\cref{finite dimensional representations of sl2} (or with the weight diagram of~$V \tensor W$)   that
+  \[
+    \irr(\lambda) \tensor \irr(\mu)
+    =
+    V \tensor W
+    \cong
+            \irr(\lambda+\mu)
+    \oplus  \irr(\lambda+\mu-2)
+    \oplus  \dotsb
+    \oplus  \irr(\lambda-\mu)
+  \]
+  as claimed.
+\end{proof}
+ 
+\begin{proof}[Second proof of \cref{clebsch gordan} {\cite[\S 1.4]{lectures_on_sl2_modules}}]
+  We use induction on~$\mu$ (with~$\lambda \geq \mu$).
+  For~$\mu = 0$ we have~$\irr(\lambda) \tensor \irr(0) \cong \irr(\lambda) \tensor \kf \cong \irr(\lambda)$.
+  
+  For~$\mu = 1$ let~$v_{-\lambda}, v_{-\lambda+2}, \dotsc, v_{\lambda-2}, v_\lambda$ be a basis of~$\irr(\lambda)$ consisting of weight vectors~$v_\kappa \in V_\kappa$.
+  We may assume~$e.v_{\lambda-2} = v_\lambda$ by rescaling the basis~vectors if necessary.
+  Similarly let~$w_{-1}$,~$w_1$ be a basis of~$\irr(1)$ with~$w_1 \in W_1$ and~$w_{-1} \in W_{-1}$.
+  We have~$e.v_\lambda = 0$ and~$e.w_1 = 0$.
+  
+  The element~$v_\lambda \tensor w_1 \in \irr(\lambda) \tensor \irr(1)$ is a primitive vector of weight~$\lambda + \mu$.
+  It follows from \cref{classification of highest weight for sl2} that the tensor product~$\irr(\lambda) \tensor \irr(1)$ contains a copy~$U_1$ of~$\irr(\lambda+1)$.
+  Similarly the element~$z \defined v_{n-2} \tensor w_1 - v_n \tensor w_2 \in \irr(\lambda) \tensor \irr(1)$ is a primitive vector of weight~$\lambda - 1$ (where it is used that $e.v_{n-2} = v_n$).
+  It follows from \cref{classification of highest weight for sl2} that the tensor product~$\irr(\lambda) \tensor \irr(1)$ contains a copy~$U_2$ of~$\irr(\lambda-1)$.
+  We have~$U_1 \cap U_2 = 0$ because~$U_1$ and~$U_2$ are two distinct irreducible subrepresentations.
+  It follows that~$V = U_1 \oplus U_2 \cong \irr(\lambda+1) \oplus \irr(\lambda-1)$ because
+  \[
+    \dim U_1 + \dim U_2
+    =
+    (\lambda+2) + \lambda
+    =
+    2\lambda + 2
+    =
+    \dim \irr(\lambda) \cdot \dim \irr(1)
+    =
+    \dim \irr(\lambda) \tensor \irr(1)  \,.
+  \]
+  This shows the claimed formula for~$\mu = 1$.
+  
+  For the induction step let~$\mu \geq 2$.
+  To understand the tensor product~$\irr(\lambda) \tensor \irr(\mu)$ we calculate the term~$\irr(\lambda) \tensor \irr(\mu-1) \tensor \irr(2)$ in two ways.
+  We have on the one hand that
+  \begin{align*}
+    {}&
+    \irr(\lambda) \tensor \irr(\mu-1) \tensor \irr(2)
+    \\
+    \cong{}&
+    \irr(\lambda) \tensor ( \irr(\mu-1) \tensor \irr(2) )
+    \\
+    \cong{}&
+    \irr(\lambda) \tensor ( \irr(\mu) \oplus \irr(\mu-2) )
+    \\
+    \cong{}&
+    ( \irr(\lambda) \tensor \irr(\mu) )
+    \oplus
+    ( \irr(\lambda) \tensor \irr(\mu-2) )
+  \end{align*}
+  where the second direct summand~$\irr(\lambda) \tensor \irr(\mu-2)$ is by induction hypothesis given by
+  \[
+    \irr(\lambda) \tensor \irr(\mu-2)
+    =
+            \irr(\lambda+\mu-2)
+    \oplus  \irr(\lambda+\mu-4)
+    \oplus  \dotsb
+    \oplus  \irr(\lambda-\mu+2) \,.
+  \]
+  We have on the other hand that
+  \begin{align*}
+    {}&
+    \irr(\lambda) \tensor \irr(\mu-1) \tensor \irr(2)
+    \\
+    \cong{}&
+    ( \irr(\lambda) \tensor \irr(\mu-1) ) \tensor \irr(2)
+    \\
+    \cong{}&
+    (
+              \irr(\lambda+\mu-1)
+      \oplus  \irr(\lambda+\mu-3)
+      \oplus  \dotsb
+      \oplus  \irr(\lambda-\mu+1)
+    )
+    \tensor
+    \irr(2)
+    \\
+    \cong{}&
+            ( \irr(\lambda+\mu-1) \tensor \irr(2) )
+    \oplus  ( \irr(\lambda+\mu-3) \tensor \irr(2) )
+    \oplus  \dotsb
+    \oplus  ( \irr(\lambda-\mu+1) \tensor \irr(2) )
+    \\
+    \cong{}&
+            \irr(\lambda+\mu)   \oplus \irr(\lambda+\mu-2)
+    \oplus  \irr(\lambda+\mu-2) \oplus \dotsb
+    \\
+    {}& 
+            \phantom{\irr(\lambda+\mu)} \,
+    \oplus  \irr(\lambda-\mu+2)
+    \oplus  \irr(\lambda-\mu+2) \oplus \irr(\lambda-\mu)  \,.
+  \end{align*}
+  By comparing both decompositions of~$\irr(\lambda) \tensor \irr(\mu-1) \tensor \irr(1)$ and then using the uniqueness of multiplicities for irreducible summands we see that
+  \[
+    \irr(\lambda) \tensor \irr(\mu)
+    \cong
+            \irr(\lambda+\mu)
+    \oplus  \irr(\lambda+\mu-2)
+    \oplus  \dotsb
+    \oplus  \irr(\lambda-\mu) \,,
+  \]
+  as claimed.
 \end{proof}
 
 
-We also give another proof, taken from \cite[\S 1.4]{Lectures_on_sl2_modules}.
-
-
-\begin{proof}
- It can be assummed w.l.o.g.\ that $n \geq m$. The formula can then be shown by induction on $m$. As $\sll_2(k)$ acts trivially on the one-dimensional representation $V^{(0)} \cong \Cbb$ it follows that the map $V^{(n)} \to V^{(n)} \otimes V^{(0)}, v \mapsto v \otimes 1$ is an isomorphism representations. This shows the formula for $m = 0$.
- 
- To show the formula for $m = 1$ first notice the following:
- \begin{claim*}
-  Let $V$ be a finite dimenisonal representation of $\sll_2(k)$. Suppose there exist a nonzero $v \in V$ with $h.v =  r v$ and $e.v = 0$ for $r \in \N$. Then $V$ contains a subrepresentation which is isomorphic to $V^{(r)}$.
- \end{claim*}
- \begin{proof}
-  Let $V = \bigoplus_{d \in \N} \bigoplus_{j=1}^{\nu_d} V^{d,j}$ be a decomposition into irreducible subrepresentations with $V^{d,j}$ having heighest weight $d$ for every $d \in \N$ and $j = 1, \dotsc, \nu_d$. Then $v \in V_r = \bigoplus_{p \in \N, d = r+2p} \bigoplus_{j=0}^{\nu_d} V^{d,j}_r$. Suppose that $V$ contains no submodule which is isomorphic to $V^{(r)}$. Then $\nu_r = 0$ and therefore $V_r = \bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$. Because $e.V^{d,j}_r = V^{d,j}_{r+2}$ for every $d > r$ and $j = 1, \dotsc, \nu_d$ it follows that $e$ maps $V_r = \bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_r$ isomorphically into $\bigoplus_{p \geq 1, d = r+2p} \bigoplus_{j=1}^{\nu_d} V^{d,j}_{r+2} \subseteq V_{r+2}$. Because $e.v = 0$ it follows that $e = 0$, contradicting the assumption that $v$ is nonzero.
- \end{proof}
- 
- Let $v_{-n}, v_{-n+2}, \dotsc, v_{n-2}, v_n$ be a basis of $V^{(n)}$ with $v_i \in V_i$ for every $i$ and $e.v_{n-2} = v_n$ (notice that $n \geq m = 1$, so $v_{n-2}$ is well-defined). Similarly and $w_{-1}, w_1$ a basis of $V^{(1)}$ with $w_j \in W_j$ for $j = -1,1$. Then $v_n \otimes w_1 \in V^{(n)} \otimes V^{(1)}$ with $h.(v_n \otimes w_1) = (n+1) v_n \otimes w_1$ and $e.(v_n \otimes w_1) = 0$. By the previous claim $V^{(n)} \otimes V^{(1)}$ contains a subrepresentation $W^1 \cong V^{(n+1)}$. Similarly $x \coloneqq v_{n-2} \otimes w_1 - v_n \otimes w_2 \in V^{(n)} \otimes V^{(1)}$ with $e.x = 0$ (here it is used that $e.v_{n-2} = v_n$) and $h.x = (n-1)x$. By the claim $V$ contains another subrepresentation $W^2 \cong V^{(n-1)}$. Because $W^1$ and $W^2$ are irreducible and not equal it follows that $W^1 \cap W^2 = 0$. Because
- \[
-  \dim W^1 + \dim W^2 = 2n+2
-  = \left(\dim V^{(n)}\right) \cdot \left(\dim V^{(1)}\right)
-  = \dim\left( V^{(n)} \otimes V^{(1)} \right)
- \]
- it follows that $V = W^1 \oplus W^2 \cong V^{(n+1)} \oplus V^{(n-1)}$. This shows the formula for $m = 1$.
- 
- Suppose that $m \geq 2$ and the statement holds for $0, 1, \dotsc, m-1$. Then on the one hand
- \begin{align*}
-  V^{(n)} \otimes V^{(m-1)} \otimes V^{(1)}
-  &\cong V^{(n)} \otimes \left( V^{(m)} \oplus V^{(m-2)} \right)
-  \cong V^{(n)} \otimes V^{(m)} \oplus V^{(n)} \otimes V^{(m-2)} \\
-  &\cong V^{(n)} \otimes V^{(m)} \oplus \left( V^{(n+m-2)} \oplus V^{(n+m-4} \oplus \dotsb \otimes V^{(n-m+2)} \right)
- \end{align*}
- while on the other hand
- \begin{align*}
-       &\, V^{(n)} \otimes V^{(m-1)} \otimes V^{(1)} \\
-  \cong&\, \left( V^{(n+m-1)} \oplus V^{(n+m-3)} \oplus \dotsb \oplus V^{n-m+1} \right) \otimes V^{(1)} \\
-  \cong&\, \left( V^{(n+m-1)} \otimes V^{(1)} \right)
-           \oplus \left( V^{(n+m-3)} \otimes V^{(1)} \right)
-           \oplus \dotsb
-           \oplus \left( V^{(n-m+1)} \otimes V^{(1)} \right) \\
-  \cong&\, \left( V^{(n+m)} \oplus V^{(n+m-2)} \right)
-           \oplus \left( V^{(n+m-2)} \oplus V^{(n+m-4)} \right)
-           \oplus \dotsb
-           \oplus \left( V^{(n-m+2)} \oplus V^{(n-m)} \right) \\
-  \cong&\, \left( V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(n-m)} \right) \\
-       &\,  \oplus \left( V^{(n+m-2)} \oplus V^{(n+m-4)} \oplus \dotsb \oplus V^{(n-m+2)} \right).
- \end{align*}
- By the uniqueness of the decomposition of $V^{(n)} \otimes V^{(m-1)} \otimes V^{(1)}$ into irreducible subrepresentations is follows that
- \[
-  V^{(n)} \otimes V^{(m)} \cong V^{(n+m)} \oplus V^{(n+m-2)} \oplus \dotsb \oplus V^{(n-m)},
- \]
- which finishes the proof.
-\end{proof}
-
-
-\begin{remark}
- \cite{Lectures_on_sl2_modules} has a pretty cool cover and we advise the reader to check it out.
-\end{remark}
-
-
-% TODO: Why it is named after Clebsch and Gordan and its origin in invariant theory.
-
-
-
-
-
-
-% TODO: Remark about point diagrams
-
-
-% TODO: Remark about dual representation for nice basis
-
-
-% TODO: Decomposition of the tensor product
-
-
-
-
-
-
-
-
+\begin{example}
+  For all~$\lambda, \mu \geq 0$ we find that
+  \begin{align*}
+    \Hom_\kf( \irr(\lambda), \irr(\mu) )
+    &\cong
+    \irr(\lambda)^* \tensor \irr(\mu)
+    \\
+    &\cong
+    \irr(\lambda) \tensor \irr(\mu)
+    \\
+    &\cong
+            \irr(\lambda+\mu)
+    \oplus  \irr(\lambda+\mu-2)
+    \oplus  \dotsb
+    \oplus  \irr(\abs{\lambda-\mu})
+  \end{align*}
+  as representations and hence
+  \begin{align*}
+    \Hom_{\sllie_2(\kf)}( \irr(\lambda), \irr(\mu) )
+    &=
+    \Hom_{\kf}( \irr(\lambda), \irr(\mu) )^{\sllie_2(\kf)}
+    \\
+    &\cong
+            \irr(\lambda+\mu)^{\sllie_2(\kf)}
+    \oplus  \irr(\lambda+\mu-2)^{\sllie_2(\kf)}
+    \oplus  \dotsb
+    \oplus  \irr(\abs{\lambda-\mu})^{\sllie_2(\kf)} \,.
+  \end{align*}
+  We have for every weight~$\kappa \geq 0$ that~$\irr(\kappa)^{\sllie_2(\kf)} = 0$ if~$\kappa \neq 0$ and otherwise~$\irr(0)^{\sllie_2(\kf)} = \irr(0)$.
+  Whence the space~$\Hom_{\glie}( \irr(\lambda), \irr(\mu) )$ is {\onedimensional} if~$\lambda = \mu$ and zero otherwise.
+  This agrees with Schur’s~lemma.
+\end{example}
 
 
 
