@@ -212,6 +212,40 @@
 \end{example}
 
 
+\begin{lemma}
+  \label{commuting via abstract jd}
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra and let~$x \in \glie$.
+  Then any other element~$y \in \glie$ commutes with~$x$ if and only if both~$y_s$ and~$y_n$ commute with~$x$.
+\end{lemma}
+
+
+\begin{proof}
+  We may assume that~$\glie$ is linear by using the adjoint representation, which is faithful.
+  Then the assertion follows from \cref{concrete jordan decomposition} because the concrete and abstract Jordan decompositions coincide.
+\end{proof}
+
+
+\begin{lemma}
+  \label{abstract jordan decomposition of sum}
+    Let~$x$ and~$y$ be two commuting elements of a finite dimensional semisimple Lie~algebra~$\glie$.
+    Then the Jordan decomposition of~$x+y$ can be computed from the Jordan decompositions of~$x$ and~$y$ via
+    \[
+      (x + y)_s
+      =
+      x_s + y_s
+      \quad\text{and}\quad
+      (x + y)_n
+      =
+      x_n + y_n \,.
+    \]
+\end{lemma}
+
+
+\begin{proof}
+  We may assume that~$\glie$ is linear and then apply \cref{concrete jordan decomposition of sum}.
+\end{proof}
+
+
 % 
 % \begin{proof}[Proof of \cref{abstract jordan decomposition}]
 %   \leavevmode

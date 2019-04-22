@@ -1067,6 +1067,8 @@
     \item
       \label{calculation of multiplicities}
       The multiplicities~$n_\lambda$ for~$\lambda \geq 0$ are given by~$n_\lambda = \dim V_\lambda - \dim V_{\lambda+2}$.
+    \item
+      The total multiplicity~$\sum_{\lambda \geq 0} n_\lambda$ is given by~$\dim V_0 + \dim V_1$.
   \end{enumerate}
 \end{theorem}
 
@@ -1078,7 +1080,8 @@
   It follows that~$\dim V_\mu = \dim V_{-\mu}$.
   
   For~$\mu \geq 0$ the dimension of the corresponding weight space~$V_\mu$ counts how many direct summands~$W^{\lambda,i}$ with~$\lambda \geq \mu$ and~$\mu \equiv \lambda \pmod{2}$ occur in the given decomposition.
-  The difference~$\dim V_\mu - \dim V_{\mu + 2}$ therefore counts the how many direct summands of the form~$W^{\lambda,i}$ with exactly~$\lambda = \mu$ appear in the given decomposition.
+  It follows that the difference~$\dim V_\mu - \dim V_{\mu + 2}$ counts how many direct summands of the form~$W^{\lambda,i}$ with exactly~$\lambda = \mu$ appear in the given decomposition.
+  It also follows that~$\dim V_0 + \dim V_1$ counts the total number of irreducible direct summands, where~$\dim V_0$ counts those summands~$W^{\lambda,i}$ with~$\lambda$ even and~$\dim V_1$ counts those summands~$W^{\lambda,i}$ with~$\lambda$ odd.
 \end{proof}
 
 

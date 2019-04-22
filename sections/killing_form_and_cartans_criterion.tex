@@ -696,6 +696,28 @@
 \end{warning}
 
 
+\begin{lemma}
+  \label{concrete jordan decomposition of sum}
+  Let~$x$ and~$y$ be two commuting endomorphisms of a finite dimensional~{\vectorspace{$\kf$}}.
+  Then the Jordan decomposition of~$x+y$ can be computed from that of~$x$ and~$y$ via
+  \[
+    (x + y)_s
+    =
+    x_s + y_s
+    \quad\text{and}\quad
+    (x + y)_n
+    =
+    x_n + y_n \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  It follows from the commutativity of~$x$ and~$y$ that each part~$x_s$ and~$x_n$ of~$x$ commutes with each part~$y_s$ and~$y_n$ of~$y$.
+  It follows that~$x_s + y_s$ is again semisimple and that~$x_n + y_n$ is again nilpotent.
+\end{proof}
+
+
 \begin{definition}
   An element~$x \in \glie$ of a finite dimensional Lie~algebra~$\glie$ is~\defemph{\adsemisimple} if the endomorphism~$\ad(x)$ of~$\glie$ is semisimple.
 \end{definition}

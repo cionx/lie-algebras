@@ -1,0 +1,740 @@
+\section{Root Space Decomposition}
+
+
+\begin{convention}
+  Throughout this section~$\glie$ denotes a finite dimensional semisimple Lie~algebra.
+\end{convention}
+
+
+
+
+
+\subsection{Construction of the Root Space Decomposition}
+
+
+\begin{definition}
+  A Lie~subalgebra~$\hlie$ of~$\glie$ is \defemph{toral}\index{toral subalgebra} if it consists of semisimple elements.
+\end{definition}
+
+
+\begin{lemma}
+  Every toral Lie~subalgebra of~$\glie$ is abelian.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$x \in \hlie$. 
+  Then~$\ad_{\hlie}(x) = \restrict{\ad_{\glie}(x)}{\hlie}$ is semisimple because it is the restriction of the semisimple endomorphism~$\ad_{\glie}(x)$.
+  We show that all eigenvalues of~$\ad_{\hlie}(x)$ are zero.
+  
+  Let~$y \in \hlie$ be an eigenvector of~$\ad_{\hlie}(x)$ with corresponding eigenvalue~$\mu \in \kf$.
+  Then~$\ad_{\hlie}(y)$ is semisimple by the the above argumentation.
+  For every~$\lambda \in \kf$ let~$\hlie_\lambda$ denote the eigenspace of~$\ad_{\hlie}(y)$ with respect to the eigenvalue~$\lambda$.
+  On the one hand $[y,x] \in \hlie_0$ because
+  \[
+    \ad_{\hlie}(y)([y,x])
+    =
+    [y,[y,x]]
+    =
+    [y, -\mu y]
+    =
+    0 \,.
+  \]
+  On the other hand
+  \[
+    [y,x]
+    =
+    \ad_{\hlie}(y)(x)
+    \in
+    \ad_{\hlie}(y)(\hlie)
+    =
+    \ad_{\hlie}(y)\left( \bigoplus_{\lambda \in \kf} \hlie_\lambda \right)
+    =
+    \bigoplus_{\lambda \neq 0} \hlie_\lambda \,.
+  \]
+  It follows from the directness of the sum~$\hlie = \bigoplus_{\lambda \in \kf} \hlie_\lambda$ that $0 = [y,x] = -\mu y$.
+  It follows that~$\mu = 0$ because~$y \neq 0$.
+\end{proof}
+
+
+\begin{definition}
+  A \defemph{Cartan~subalgebra}\index{Cartan!subalgebra} of~$\glie$ is an inclusion maximal toral subalgebra.
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The toral Lie~subalgebra~$0$ is contained in a toral Lie~subalgebra of~$\glie$ of maximal dimension, which is then a Cartan~subalgebra of~$\glie$.
+      Therefore~$\glie$ contains a Cartan~subalgebra.
+    \item
+      If~$\glie \neq 0$ then any Cartan~subalgebra of~$\glie$ is non-zero.
+      Indeed,~$\glie$ contains some nonzero semisimple element~$x$ because otherwise~$\glie$ would need to be nilpotent by Engel’s~theorem.
+      The linear subspace~$\kf x$ is then a toral Lie~subalgebra of~$\glie$.
+    \item
+      It can be shown (see \cite[\S 16.2]{humphreys}) that Cartan subalgebras are unique up to automorphism:
+      If~$\hlie$ and~$\hlie'$ are two Cartan subalgebra of~$\glie$ then there exists an automorphism~$\sigma$ of~$\glie$ with~$\sigma(\hlie) = \hlie'$.
+      It follows in particular that any two Cartan subalgebras are of the same dimension, and hence that Cartan subalgebras can equivalently be characterized as those toral Lie~subalgebras of maximal dimension.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{definition}
+  Let~$\hlie$ be a Cartan~subalgebra of~$\glie$.
+  For every~$\alpha \in \hlie^*$ the linear subspace
+  \[
+    \glie_\alpha
+    \defined
+    \{
+      y \in \glie
+    \suchthat
+      \text{$[x,y] = \alpha(x)y$ for every~$x \in \hlie$}
+    \}
+  \]
+  is the \defemph{root space}\index{root space} of~$\glie$ with respect to~$\alpha$.
+  If~$\alpha \neq 0$ then~$\alpha$ is a \defemph{root}\index{root} and the set of roots is denoted by~$\Phi(\glie, \hlie) \defined \{\alpha \in \hlie^* \smallsetminus \{0\} \suchthat \glie_\alpha \neq 0\}$.
+\end{definition}
+
+
+\begin{remark}
+  The root space~$\glie_0$ is the centralizer of~$\hlie$ in~$\glie$, i.e.~$\glie_0 = \centerlie_{\glie}(\hlie)$.
+\end{remark}
+
+
+\begin{lemma}
+  \label{pre root space decomposition}
+  If~$\hlie$ is a Cartan subalgebra of~$\glie$ with roots~$\Phi \defined \Phi(\glie, \hlie)$ then~$\glie = \centerlie_{\glie}(\hlie) \oplus \bigoplus_{\alpha \in \Phi} \glie_\alpha$.
+\end{lemma}
+
+
+\begin{proof}
+  The linear subspace~$\ad_{\glie}(\hlie)$ of~$\gllie(\glie)$ consists of pairwise commuting semisimple endomorphisms.
+  Hence~$\ad_{\glie}(\hlie)$ is simultaneously diagonalizable, so that
+  \[
+    \glie
+    =
+    \bigoplus_{\lambda \in \hlie^*} \glie_\lambda
+    =
+    \glie_0
+    \oplus
+    \bigoplus_{\alpha \in \Phi} \glie_\alpha
+    =
+    \centerlie_{\glie}(\hlie)
+    \oplus
+    \bigoplus_{\alpha \in \Phi} \glie_\alpha
+  \]
+  as claimed.
+\end{proof}
+
+
+% TODO: Add examples.
+
+
+\begin{lemma}
+  Let~$\hlie$ be a Cartan subalgebra of~$\glie$.
+  Then~$[\glie_\alpha, \glie_\beta] \subseteq \glie_{\alpha+\beta}$ for all~$\alpha, \beta \in \hlie^*$.
+\end{lemma}
+
+
+\begin{proof}
+  We have for all~$h \in \hlie$ and~$x \in \glie_\alpha$,~$y \in \glie_\beta$ that
+  \[
+    [h,[x,y]]
+    =
+    [[h,x],y] + [x,[h,y]]
+    =
+    \alpha(h)[x,y] + \beta(h)[x,y]
+    =
+    (\alpha+\beta)(h) [x,y]
+  \]
+  and hence~$[x,y] \in \glie_{\alpha+\beta}$.
+\end{proof}
+
+
+\begin{lemma}
+  \label{root spaces orthogonal with respect to killing form}
+  Let~$\hlie$ be a Cartan subalgebra of~$\glie$.
+  If~$\alpha, \beta \in \hlie^*$ with~$\alpha \neq -\beta$ then the root spaces~$\glie_\alpha$ and~$\glie_\beta$ are orthogonal with respect to the Killing form~$\kappa$ of~$\glie$.
+\end{lemma}
+
+
+\begin{proof}
+ There exists some~$h \in \hlie$ with~$\alpha(h) \neq -\beta(h)$.
+ We have for all~$x \in \glie_\alpha$ and~$y \in \glie_\beta$ that
+ \[
+  \alpha(h) \kappa(x,y)
+  =
+  \kappa([h,x],y)
+  =
+  -\kappa([x,h],y)
+  =
+  -\kappa(x,[h,y])
+  =
+  -\beta(h) \kappa(x,y)
+ \]
+ and hence~$\kappa(x,y) = 0$.
+\end{proof}
+
+
+\begin{corollary}
+  \label{restriction of killing form to centralizer is non-degenerate}
+  Let~$\hlie$ be a Cartan subalgebra of~$\glie$.
+  Then the restriction of the Killing form~$\kappa$ of~$\glie$ to the centralizer~$\centerlie_{\glie}(\hlie)$ is non-degenerate.
+\end{corollary}
+
+
+\begin{proof}
+  The Killing form~$\kappa$ is non-degenerate because~$\glie$ is semisimple.
+  It follows from \cref{root spaces orthogonal with respect to killing form} that~$\centerlie_{\glie}(\hlie) = \glie_0$ is orthogonal to every root space~$\glie_\alpha$ with~$\alpha \neq 0$ whence~$\glie = \centerlie_{\glie}(\hlie) \oplus \bigoplus_{\alpha \in \Phi} \glie_\alpha$ is the decompsition~$\glie = \centerlie_{\glie}(\hlie) \oplus \centerlie_{\glie}(\hlie)^\perp$.
+  It follows from \cref{pre root space decomposition} that the restriction of~$\kappa$ to~$\centerlie_{\glie}(\hlie)$ is non-degenerate.
+\end{proof}
+
+
+\begin{proposition}
+  \label{csa are self-centralizing}
+  Let~$\hlie$ be a Cartan subalgebra of~$\glie$.
+  Then~$\hlie$ is self-centralizing, i.e.~$\centerlie_{\glie}(\hlie) = \hlie$.
+\end{proposition}
+
+
+\begin{proof}
+  Throughout this proof abbreviate $\clie \defined \centerlie_{\glie}(\hlie)$,~$\ad \defined \ad_{\glie}$ and~$\kappa \defined \kappa_{\glie}$.
+
+  \begin{claim*}
+    \label{technical and traceless}
+    If~$x \in \glie$ is nilpotent and~$y \in \glie$ commutes with~$x$ then~$\kappa(x,y) = 0$.
+  \end{claim*}
+ 
+  \begin{proof}
+    The endomorphisms~$\ad(x)$ and~$\ad(y)$ commute and~$\ad(x)$ is nilpotent.
+    Therefore~$\ad(x)\ad(y)$ is again nilpotent and hence~$0 = \tr(\ad(x)\ad(y)) = \kappa(x,y)$.
+  \end{proof}
+ 
+  We know from \cref{commuting via abstract jd} that the centralizer~$\clie$ contains the semisimple and nilpotent parts of all its elements.
+  
+  Every semisimple element of~$\clie$ is already contained in~$\hlie$:
+  If~$s \in \clie$ is semisimple then~$\hlie + \kf s$ is again a toral Lie~subalgebra of~$\glie$ by \cref{abstract jordan decomposition of sum}.
+  Then~$\hlie = \hlie + \kf s$ by the maximality of~$\hlie$ and hence~$s \in \hlie$.
+ 
+  The Lie~algebra~$\clie$ is nilpotent:
+  Let~$x \in \clie$ with Jordan decomposition~$x = x_s + x_n$.
+  We have shown that~$x_s \in \hlie$, so~$\ad_{\clie}(x_s) = 0$ because~$\clie$ centralizes~$\hlie$ and thus~$\ad_{\clie}(x) = \ad_{\clie}(x_n) = \restrict{\ad_{\glie}(x_n)}{\clie}$.
+  This shows that~$\ad_{\clie}(x)$ is nilpotent for every~$x \in \clie$ whence~$\clie$ is nilpotent by Engel’s theorem.
+ 
+  The restriction of~$\kappa$ to~$\hlie$ is non-degenerate:
+  Let~$x \in \hlie$ with $\kappa(x, \hlie) = 0$.
+  We have seen that every semisimple~$s \in \clie$ is already contained in~$\hlie$ thus~$\kappa(x,s) = 0$ for every such~$s$.
+  We have also seen in the above claim that~$\kappa(x,n) = 0$ for every nilpotent~$n \in \clie$.
+  It follows that~$\kappa(x,y) = 0$ for every~$y \in \clie$ because~$\clie$ contains the semisimple and nilpotent parts of all its elements.
+  We can now conclude from \cref{restriction of killing form to centralizer is non-degenerate} that~$x = 0$.
+  
+  It follows that~$\hlie \cap [\clie,\clie] = 0$ because~$[\hlie,\clie] = 0$ and thus~$\kappa(\hlie, [\clie,\clie]) = \kappa([\hlie, \clie], \clie) = 0$.
+  
+  It further follows that $\clie$ is abelian:
+  Otherwise~$[\clie, \clie] \neq 0$.
+  Then $\centerlie(\clie) \cap [\clie,\clie] \neq 0$ because~$\clie$ is nilpotent.
+  Let~$x \in \centerlie(\clie) \cap [\clie,\clie]$ be non-zero.
+  We observe that~$x$ cannot be semisimple because otherwise~$x \in \hlie$ as seen above, but $\hlie \cap [\clie,\clie] = 0$.
+  The nilpotent part~$x_n$ must therefore be nonzero, and we have seen that~$x_n \in \clie$.
+  It follows from~$x \in \centerlie(\clie)$ that also~$x_n \in \centerlie(\clie)$ by \cref{commuting via abstract jd}.
+  Thus~$\kappa(x_n, \clie) = 0$ by the above claim.
+  It follows that~$x_n = 0$ because the restriction of~$\kappa$ to~$\clie$ is non-degenerate, contradicting that~$x_n$ is non-zero.
+ 
+  Suppose now that~$\hlie$ is a proper Lie~subalgebra of~$\clie$ and let~$x \in \clie$ with~$x \notin \hlie$.
+  Both~$x_s$ and~$x_n$ are again contained in~$\clie$, and~$x_s$ is even contained in~$\hlie$.
+  We may replace~$x$ by~$x_n$ to assume that~$x$ is nilpotent.
+  Then~$\kappa(x, \clie) = 0$ by the above claim, which contradict~$\kappa$ being non-degenerate on~$\clie$.
+\end{proof}
+
+
+\begin{remark}
+  The proof of \cref{csa are self-centralizing} is taken from \cite[\S 8.2]{humphreys}.
+\end{remark}
+
+
+\begin{corollary}[Existence of root space decomposition]
+  Let~$\hlie$ be a Cartan subalgebra of~$\glie$.
+  Then
+  \[
+    \glie
+    =
+    \hlie
+    \oplus
+    \bigoplus_{\alpha \in \Phi(\glie,\hlie)}
+    \glie_\alpha
+  \]
+  and the restriction of the Killing form of~$\glie$ to~$\hlie$ is non-degenerate.
+\end{corollary}
+
+
+\begin{proof}
+  This follows from \cref{pre root space decomposition} and \cref{restriction of killing form to centralizer is non-degenerate} because~$\hlie$ is self centralizing.
+\end{proof}
+
+
+\begin{corollary} 
+  \label{g alpha and g -alpha pair non degenerate with the killing form}
+  Let~$\hlie$ be a Cartan subalgebra of~$\glie$ and let~$\alpha \in \Phi(\glie,\hlie)$.
+  Then~$\kappa_{\glie}(\glie_\alpha, \glie_{-\alpha}) \neq 0$, i.e.\ there exist~$x \in \glie_\alpha$ and~$y \in \glie_{-\alpha}$ with $\kappa_{\glie}(x,y) \neq 0$.
+\end{corollary}
+
+
+\begin{proof}
+  The root space~$\glie_\alpha$ is nonzero, hence there exists some nonzero~$x \in \glie_\alpha$.
+  It follows from the non-degeneracy of~$\kappa_{\glie}$ that there exists some~$y \in \glie$ with~$\kappa(x,y) = 0$.
+  The root space~$\glie_\alpha$ is orthogonal to every root space~$\glie_\beta$ with~$\beta \neq -\alpha$.
+  Hence we may assume that~$y \in \glie_{-\alpha}$.
+\end{proof}
+
+
+\begin{definition}
+  If~$\hlie$ is a Cartan subalgebra of~$\glie$ with roots~$\Phi \defined \Phi(\glie, \hlie)$ then the decomposition
+  \[
+    \glie
+    = 
+    \hlie \oplus \bigoplus_{\alpha \in \Phi} \glie_\alpha
+  \]
+  is the \defemph{root space decomposition} of~$\glie$ with respect to $\hlie$.
+\end{definition}
+
+
+
+
+
+\subsection{Properties of the Root Space Decomposition}
+
+
+\begin{convention}
+  Troughout this subsection let~$\hlie$ be a Cartan subalgebra of~$\glie$ with associated set of roots~$\Phi \defined \Phi(\glie,\hlie)$.
+  Let~$\kappa$ be the Killing form of~$\glie$.
+\end{convention}
+
+
+\begin{definition}
+  \label{def of t_phi}
+  For every~$\phi \in \hlie^*$ let~$t_\phi \in \hlie$ be the unique element with~$\kappa(t_{\phi}, -) = \phi$.
+\end{definition}
+
+
+\begin{remark}
+  \Cref{def of t_phi} makes sense because because~$\kappa$ is non-degenerate on~$\hlie$ and thus induced an isomorphism of vector spaces~$\hlie \to \hlie^*$ given by~$x \mapsto \kappa(x,-)$.
+\end{remark}
+
+
+\begin{proposition}
+  \leavevmode
+  \begin{enumerate}
+    \item 
+      The set of roots~$\Phi$ spans the dual space~$\hlie^*$.
+    \item
+      If~$\alpha \in \Phi$ then also~$-\alpha \in \Phi$, i.e.\ the negative of any root is again a root.
+    \item
+      \label{bracket via kappa}
+      $[x,y] = \kappa(x,y) t_\alpha$ for every root~$\alpha \in \Phi$ and all~$x \in \glie_\alpha$ and~$y \in \glie_{-\alpha}$.
+    \item
+      For every root~$\alpha \in \Phi$ then the linear subspace~$[\glie_\alpha, \glie_{-\alpha}]$ of~$\hlie$ is {\onedimensional} with basis~$t_\alpha$.
+    \item
+      If~$\alpha \in \Phi$ is any root then~$\alpha(t_\alpha) = \kappa(t_\alpha, t_\alpha) \neq 0$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Suppose~$\Phi$ does not span~$\hlie^*$.
+      Then there exists some~$\phi \in \hlie^*$ with~$\phi \notin \gen{\Phi}_{\kf}$.
+      Then there exists some~$x' \in \hlie^{**}$ with~$x'(\alpha) = 0$ for every~$\alpha \in \Phi$ but~$x'(\phi) \neq 0$.
+      Using the natural isomorphism~$\hlie \to \hlie^{**}$ there exists some nonzero~$x \in \hlie$ such that~$x'$ is given by evaluation at~$x$.
+      Then~$\alpha(x) = 0$ for every~$\alpha \in \hlie^*$ but~$\phi(x) \neq 0$;
+      in particular~$x \neq 0$.
+      In the root space decomposition~$\glie = \hlie \oplus \bigoplus_{\alpha \in \Phi} \glie_\alpha$ we see that~$x$ commutes with every root space~$\glie_\alpha$,~$\alpha \in \Phi$.
+      And~$x$ also commutes with~$\hlie$ because~$\hlie$ is abelian.
+      This means that~$x \in \centerlie(\glie)$.
+      But~$\centerlie(\glie) = 0$ because~$\glie$ is semisimple while~$x$ is supposed to be nonzero.
+    \item
+      Let $\alpha \in \Phi$.
+      Then~$\kappa(\glie_\alpha, \glie_{-\alpha}) \neq 0$ by \cref{g alpha and g -alpha pair non degenerate with the killing form} whence~$\glie_{-\alpha} \neq 0$, which means that~$-\alpha \in \Phi$.
+    \item
+      We find for~$h \in \hlie$ that
+      \begin{align*}
+        \kappa(h, [x,y])
+        &=
+        \kappa([h,x], y)
+        \\
+        &= 
+        \alpha(h) \kappa(x,y)
+        \\
+        &=
+        \kappa(t_\alpha, h) \kappa(x,y)
+        \\
+        &=
+        \kappa(\kappa(x,y) t_\alpha, h)
+        \\
+        &=
+        \kappa(h, \kappa(x,y) t_\alpha) \,.
+      \end{align*}
+      It follows that~$[x,y] = \kappa(x,y) t_\alpha$ because the restriction of~$\kappa$ to~$\hlie$ is non-degenerate.
+    \item
+      We have seen in part~\ref*{bracket via kappa} that~$[\glie_\alpha, \glie_{-\alpha}]$ is contained in the span of~$t_\alpha$.
+      It follows from \cref{g alpha and g -alpha pair non degenerate with the killing form} that~$[\glie_\alpha, \glie_{-\alpha}]$ already contains some nonzero multiple of~$t_\alpha$, and hence the span of~$t_\alpha$.
+    \item
+      Let us suppose that there exist some~$\alpha \in \Phi$ with~$\alpha(\alpha, t_\alpha) = \kappa(t_\alpha, t_\alpha) = 0$.
+      We know from \cref{g alpha and g -alpha pair non degenerate with the killing form} that there exists~$x \in \glie_\alpha$ and~$y \in \glie_{-\alpha}$ with~$\kappa(x,y) \neq 0$.
+      We can choose~$x$ and~$y$ so that~$\kappa(x,y) = 1$ and thus~$[x,y] = \kappa(x,y) t_\alpha = t_\alpha$.
+      Then~$\rlie \defined \gen{x, t_\alpha, y}_{\kf}$ is a {\threedimensional} solvable Lie~subalgebra of~$\glie$ because~$[t_\alpha, x] = \alpha(t_\alpha) x = 0$ and~$[t_\alpha, y] = -\alpha(t_\alpha) y = 0$.
+      
+      It follows that~$\ad(\rlie)$ is a {\threedimensional} solvable Lie~subalgebra of~$\gllie(\glie)$, and is hence given by upper triangular matrices with respect to some suitable basis of~$\glie$ by \cref{triangularization of solvable linear lie algebras}.
+      Then~$[\ad(\rlie), \ad(\rlie)] = \ad([\rlie, \rlie]) = \kf \ad(t_\alpha)$ consists of nilpotent endomorphisms whence~$\ad(t_\alpha)$ is nilpotent.
+      But the element~$t_\alpha$ is semisimple because it is contained in the Cartan subalgebra~$\hlie$ whence the endomorphism~$\ad(t_\alpha)$ is semisimple.
+      This shows that the endomorphism~$\ad(t_\alpha)$ is both nilpotend and semisimple whence~$\ad(t_\alpha) = 0$.
+      It follows that~$t_\alpha = 0$ because the adjoint representation is faithful, but this contradicts~$\kappa(t_\alpha, -) = \alpha$ being nonzero.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+% \begin{recall}[Reflections]
+%   \leavevmode
+%   \begin{enumerate}
+%     \item
+%       Let~$V$ be a finite dimensional euclidian vector space, i.e.\ a real vector space endowed with an inner product~$\bil{-,-}$.
+%       
+%       We can consider for any linear subspace~$U$ of~$V$ the orthogonal reflection at~$U$.
+%       This reflection~$s$ is uniquely determined by the property that~$s(u) = u$ for every~$u \in U$ and~$s(u') = -u'$ for every~$u' \in U^\perp$.
+%       So with respect to the decomposition~$V = U \oplus U^\perp$ the reflection~$s$ is given by~$s = (\id_U) \oplus (-\id_{U^\perp})$.
+%       If~$p \colon V \to V$ is the orthogonal projection onto~$U^\perp$ then the reflection~$s$ can also be expressed as
+%       \[
+%         s(x)
+%         =
+%         x - 2 p(x)
+%       \]
+%       for every~$x \in V$.
+%       
+%       If~$H$ is a hyperplane in~$V$, i.e.\ a linear subspace of codimension~$1$, then the orthogonal complement~$H^\perp$ is {\onedimensional}.
+%       For every nonzero~$v \in H^\perp$ the orthogonal projection~$p$ onto~$H^\perp$ is given by
+%       \[
+%         p_v(x)
+%         =
+%         \frac{\bil{x,v}}{\bil{v,v}} v
+%       \]
+%       for every~$x \in V$.
+%       The reflection at~$H$ is then given by
+%       \[
+%         s_v(x)
+%         =
+%         x - 2 p_v(x)
+%         =
+%         x - 2 \frac{\bil{x,v}}{\bil{v,v}} v \,.
+%       \]
+%       There are two special cases of these formulae, depending on choices of~$v$:
+%       If~$v$ is normalized so that~$\bil{v,v} = 1$ (i.e.~$\norm{v} = 1$) then
+%       \[
+%         p_v(x)
+%         =
+%         \frac{x,v} v
+%         \quad\text{and}\quad
+%         s_v(x)
+%         =
+%         x - 2 \bil{x,v} v \,.
+%       \]
+%       If~$v$ is normalized so that~$\bil{v,v} = 2$ then
+%       \[
+%         p_v(x)
+%         =
+%         \frac{\bil{x,v}}{2} v
+%         \quad\text{and}\quad
+%         s_v(x)
+%         =
+%         x - \bil{x,v} v \,.
+%       \]
+%     \item
+%       Suppose now that~$V$ is any vector space endowed wih a non-degenerate symmetric bilinear form~$\bil{-,-}$.
+%       For an arbitrary linear subspace~$U$ of~$V$ it does not have to hold that~$V = U \oplus U^\perp$.
+%       But if it does then we can again define the reflection at~$U$ as in the euclidian case.
+%       Recall from \cref{reviewing orthogonals} that~$V = U \oplus U^\perp$ if and only if the restriction of~$\beta$ to~$U$ is again non-degenerate, if and only if the restriction of~$\beta$ to~$U^\perp$ is again non-degenerate.
+%       
+%       Suppose that~$H$ is a hyperplane in~$V$.
+%       Then~$V = H \oplus H^\perp$ if and only if the restriction of~$H^\perp$ is non-degenerate.
+%       If~$v \in H^\perp$ then this means that~$\beta(v,v) \neq 0$.
+%       If this condition holds then define the reflection~$s_v \colon V \to V$ along~$v$ as
+%       \[
+%         s_v(x)
+%         \defined
+%         x - 2 \frac{\bil{x,v}}{\bil{v,v}} v \,.
+%       \]
+%       Then~$\bil{s_v(x), s_v(y)} = \bil{x,y}$ for all~$x, y \in V$~$\det s = -1$ and~$s_v^2 = 0$.
+%     \item
+%       If~$\bil{-,-}$ is a non-degenerate bilinear form on a vector space~$V$ then we 
+%   \end{enumerate}
+% \end{recall}
+
+
+% 
+% 
+% \begin{remark}
+%  Let $\alpha \in \Phi$. The existence and uniqueness of $h_\alpha$ follows from the fact that $[\glie_\alpha, \glie_{-\alpha}]$ is one-dimensional with $\alpha([\glie_\alpha, \glie_{-\alpha}]) = k \alpha(t_\alpha) \neq 0$. Notice that $[\glie_\alpha, \glie_{-\alpha}] = kh_\alpha$ and that $(-\alpha)^\vee = -h_\alpha$. Also notice that $h_\alpha = 2 t_\alpha / \kappa(t_\alpha, t_\alpha)$ because
+%  \[
+%   \alpha\left( \frac{2 t_\alpha}{\kappa(t_\alpha, t_\alpha)} \right)
+%   = \frac{2\alpha(t_\alpha)}{\kappa(t_\alpha, t_\alpha)}
+%   = \frac{2\kappa(t_\alpha,t_\alpha)}{\kappa(t_\alpha, t_\alpha)}
+%   = 2.
+%  \]
+% \end{remark}
+% 
+% 
+
+
+\begin{construction}
+  \label{construction of S alpha}
+    Let~$\alpha \in \Phi$ be any root.
+    
+    We have for every~$h' \in [\glie_\alpha, \glie_\beta]$ and all~$e' \in \glie_\alpha$ and~$f' \in \glie_{-\alpha}$ that
+    \[
+      [h', e']
+      =
+      \alpha(h') e'
+      \quad\text{and}\quad
+      [h', f']
+      =
+      -\alpha(h') \spacing f'  \,.
+    \]
+    We have seen that the linear subspace~$[\glie_\alpha, \glie_\beta]$ of~$\hlie$ is {\onedimensional} with basis vector~$t_\alpha$, for which~$\alpha(t_\alpha) = \kappa(t_\alpha, t_\alpha) \neq 0$.
+    Thus there exists a unique element~$h_\alpha \in [\glie_\alpha, \glie_\beta]$ with~$\alpha(h_\alpha) = 2$, which can be gained by normalizing~$t_\alpha$ as~$h_\alpha = 2 t_\alpha / \kappa(t_\alpha, t_\alpha)$.
+    We then have
+    \[
+      [h_\alpha, e']
+      =
+      2 e'
+      \quad\text{and}\quad
+      [h_\alpha, f']
+      =
+      -2 \spacing f'
+    \]
+    for all~$e' \in \glie_\alpha$ and~$f' \in \glie_{-\alpha}$.
+    We may choose~$e_\alpha \in \glie_\alpha$ and~$f_\alpha \in \glie_\beta$ such that~$[e_\alpha, f_\alpha] = h_\alpha$ because~$[\glie_\alpha, \glie_\beta]$ is {\onedimensional} and spanned by~$t_\alpha$.
+    
+    We note that~$h_\alpha \neq 0$ because~$\alpha(h_\alpha) = 2$ and hence also~$e_\alpha, f_\alpha \neq 0$.
+    The elements~$e_\alpha$,~$h_\alpha$ and~$f_\alpha$ are hence linearly independent as they live in distinct root spaces.
+    We see altogether that~$\sllie_2^\alpha \defined \gen{e_\alpha, h_\alpha, f_\alpha}$ is a {\threedimensional} Lie~subalgebra of~$\glie$ that is isomophiic to~$\sllie_2(\kf)$ via
+    \[
+      \phi
+      \colon
+      \sllie_2(\kf)
+      \to
+      \sllie_2^\alpha \,,
+      \quad
+      e
+      \mapsto
+      e_\alpha  \,,
+      \quad
+      h
+      \mapsto
+      h_\alpha  \,,
+      \quad
+      f
+      \mapsto
+      f_\alpha  \,.
+    \]
+    We see in particular that~$\glie$ becomes a representation of~$\sllie_2(\kf)$ via~$x.y = [\phi(x), y]$ for all~$x \in \sllie_2(\kf)$ and~$y \in \glie$.
+    We can now use our understanding of finite dimensional~{\representations{$\sllie_2(\kf)$}} to better understand the root space decomposition of~$\glie$:
+\end{construction}
+
+
+\begin{proposition}
+  \label{roots spaces are onedimensional and reduced}
+  Let~$\alpha \in \Phi$ be any root.
+  \begin{enumerate}
+    \item
+      The root space~$\glie_\alpha$ is one-dimensional.
+    \item
+      The only multiples of~$\alpha$ which are themselves roots are~$\alpha$ and~$-\alpha$, i.e.~$\kf \alpha \cap \Phi = \{\alpha, -\alpha\}$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  We consider the copy~$\sllie_2^\alpha$ of~$\sllie_2(\kf)$ in~$\glie$ and observe that
+  \[
+    V
+    \defined
+    \kf h_\alpha
+    \oplus
+    \bigoplus_{\substack{c \neq 0}} \glie_{c\alpha}
+  \]
+  is an~{\subrepresentation{$\sllie_2^\alpha$}} of~$\glie$:
+  The know that~$V$ is closed under the action of~$h_\alpha$ because~$h_\alpha$ acts on every direct summand by some scalar (namely~$2c$ for~$c \neq 0$ and~$0$ for~$\kf h_\alpha$).
+  It is closed under the action of~$e_\alpha$ because~$[e_\alpha, \glie_{c\alpha}] \subseteq \glie_{(c+1)\alpha}$ for~$c \neq -1$ and~$[e_\alpha, \glie_{-\alpha}] \subseteq [\glie_\alpha, \glie_{-\alpha}] \subseteq \kf h_\alpha$.
+  That~$V$ is closed under the action of~$f_\alpha$ can be seen similarly.
+  
+  It follows from Weyl’s theorem that~$V$ is completely reducible, and it follows from the classification of finite dimensional~$\sllie_2(\kf)$ representations that~$V = \bigoplus_{n \in \Integer} V_n$ with~$h_\alpha$ acting on~$V_n$ by the scalar~$n$.
+  The element~$h_\alpha$ acts on the direct summand~$\glie_{c\alpha}$ by the scalar~$2c$ and on~$\kf h_\alpha$ by the scalar$~0$.
+  The weight space~$V_n$ does therefore coincide with the root space~$\glie_{n \alpha / 2}$ for all nonzero~$n \in \Integer$, and the weight space~$V_0$ coincides with the span~$\kf h_\alpha$.
+  
+  This already shows that the only multiples of~$\alpha$ that can again be roots are the nonzero half-integer multiples of~$\alpha$, i.e.\ those of the form~$n \alpha / 2$ with nonzero~$n \in \Integer$.
+  
+  We know from the classification of finite dimensional~{\representations{$\sllie_2(\kf)$}} that the dimension of~$V_0$ counts the total multiplicities of the irreducible representaions~$\irr(n)$ where~$n \geq 0$ is even.
+  We have that~$\dim V_0 = \dim \kf h_\alpha = 1$.
+  Hence only one of the irreducible representation~$\irr(n)$ where~$n \geq 0$ is even appears in~$V$, and only with multiplicity~$1$.
+  We see that~$\sllie_2^\alpha \cong \irr(2)$ itself is such an irreducible subrepresentation of~$V$.
+  Hence
+  \[
+    \kf h_\alpha
+    \oplus
+    \bigoplus_{\substack{n \in \Integer \\ \text{$n \neq 0$ even}}}
+    \glie_{n \alpha/2}
+    =
+    \bigoplus_{\substack{n \in \Integer \\ \text{$n$ even}}}
+    V_n
+    =
+    \sllie_2^\alpha
+  \]
+  and therefore
+  \[
+    V
+    =
+    \sllie_2^\alpha
+    \oplus
+    \bigoplus_{\substack{n \in \Integer \\ \text{$n$ odd}}}
+    V_n
+    =
+    \sllie_2^\alpha
+    \oplus
+    \bigoplus_{\substack{n \in \Integer \\ \text{$n$ odd}}}
+    \glie_{n \alpha/2}  \,.
+  \]
+  We observe that in particular~$2\alpha$ is not again a root:
+  
+  \begin{claim*}
+    If~$\beta \in \Phi$ is any root then~$2 \beta$ is not it root, i.e.\ twice a root is never a root.
+  \end{claim*}
+ 
+  The dimension~$\dim V_1$ counts the total multiplicities of the irreducible representations~$\irr(n)$ where~$n \geq 0$ is odd.
+  It follows from the above claim that~$\alpha/2$ cannot be a root (because otherwise~$\alpha$ could not be a root), so~$\dim V_1 = \dim \glie_{\alpha/2} = 0$.
+  Hence no irreducible representation~$\irr(n)$ where~$n \geq 0$ is odd appears in~$V$.
+  This shows that~$V_n = 0$ for every odd~$n \in \Integer$, i.e.~$\glie_{n \alpha/2} = 0$ for every odd~$n \in \Integer$.
+  
+  We find altogether that
+  \[
+    V
+    =
+    \sllie_2^\alpha
+    =
+    \kf h_\alpha \oplus \kf e_\alpha \oplus \kf \spacing f_\alpha 
+    =
+    \kf h_\alpha \oplus \glie_\alpha \oplus \glie_{-\alpha} \,.
+  \]
+  This shows that the only nonzero multiples~$\beta$ of~$\alpha$ with~$\glie_\beta \neq 0$ are~$\alpha$ and~$-\alpha$, and that both~$\glie_\alpha$ and~$\glie_{-\alpha}$ are {\onedimensional}.
+\end{proof}
+
+
+\begin{definition}
+  For all~$\lambda \in \hlie^*$ and~$h \in \hlie$ the evaluation of~$\lambda$ at~$h$ is denoted by
+  \[
+    \pair{h, \lambda}
+    \defined
+    \pair{\lambda, h}
+    \defined
+    \lambda(h)  \,.
+  \]
+\end{definition}
+
+
+% \begin{definition}
+%   For any root~$\alpha \in \Phi$ the element~$h_\alpha \defined h_\alpha$ is the associated \defemph{coroot}\index{coroot} to~$\alpha$.
+% \end{definition}
+
+
+\begin{proposition}
+\label{integral and reflection properties of root pairing}
+  Let~$\alpha, \beta \in \Phi$.
+  Then~$\pair{\alpha, h_\beta} \in \Integer$ and~$\alpha - \pair{\alpha, h_\beta} \beta \in \Phi$.
+\end{proposition}
+
+
+\begin{proof}
+  If the roots~$\alpha$ and~$\beta$ are linearly dependent then~$\beta = \pm \alpha$ by \cref{roots spaces are onedimensional and reduced}.
+  Then~$h_\beta = \pm h_\alpha$ and therefore~$\pair{\alpha, h_\beta} = \pm \pair{\alpha, h_\alpha} = \pm 2 \in \Integer$ and
+  \[
+    \alpha - \pair{\alpha, h_\beta} \beta
+    =
+    \alpha - \pair{\alpha, \pm h_\alpha} (\pm \alpha)
+    =
+    \alpha - \pair{\alpha, h_\alpha} \alpha
+    =
+    \alpha - 2 \alpha
+    =
+    -\alpha \in \Phi  \,.
+  \]
+ 
+  Suppose now that the roots~$\alpha$ and~$\beta$ are linearly independent.
+  The copy~$\sllie_2^\beta$ of~$\sllie_2(\kf)$ in~$\glie$ acts on $\glie$ and~$V \defined \bigoplus_{i \in \Integer} \glie_{\alpha+i\beta}$ is a~{\subrepresentation{$\sllie_2^\beta$}}.
+  We find that for~$x \in \glie_{\alpha + i \beta}$,
+  \[
+    h.x
+    =
+    [h_\beta, x]
+    =
+    (\alpha + i\beta)(h_\beta)x
+    =
+    (\pair{\alpha, h_\beta} + 2i) x \,,
+  \]
+  so~$\glie_{\alpha+i\beta} = V_{\pair{\alpha, h_\beta}+2i}$ for every~$i \in \Integer$.
+  All weight of~$V$ are integral and we find for~$i = 0$ that~$V_{\pair{\alpha, h_\beta}} = \glie_\alpha \neq 0$.
+  Thus~$\pair{\alpha, \beta} \in \Integer$.
+  
+  We know from the structure of~{\representations{$\sllie_2(\kf)$}} that the negative of~$\pair{\alpha, \beta}$ is again weight of~$V$.
+  There hence exists some~$i \in \Integer$ with~$\pair{\alpha, h_\beta} + 2i = -\pair{\alpha, h_\beta}$;
+  necessarily~$i = -\pair{\alpha, h_\beta}$.
+  Then
+  \[
+    \glie_{\alpha - \pair{\alpha, h_\beta} \beta}
+    =
+    \glie_{\alpha + i \beta}
+    =
+    V_{\pair{\alpha, h_\beta}+2i}
+    =
+    V_{\pair{\alpha, h_\beta} - 2\pair{\alpha, h_\beta}}
+    =
+    V_{-\pair{\alpha, h_\beta}}
+    \neq
+    0,
+  \]
+  which shows that~$\alpha - \pair{\alpha, h_\beta} \beta \in \Phi$ is again a root.
+\end{proof}
+
+
+\begin{corollary}
+  For any two roots~$\alpha, \beta \in \Phi$,
+  \[
+    [\glie_\alpha, \glie_\beta]
+    =
+    \begin{cases}
+    \glie_{\alpha+\beta}  & \text{if $\alpha+\beta \in \Phi$} \,, \\
+    0                     & \text{otherwise}  \,.
+    \end{cases}
+  \]
+\end{corollary}
+
+
+\begin{proof}
+  We have already seen that~$[\glie_\alpha, \glie_\beta] \subseteq \glie_{\alpha + \beta}$.
+  If~$\alpha+\beta \notin \Phi$ then~$\glie_{\alpha + \beta} = 0$ and thus~$[\glie_\alpha, \glie_\beta] = 0$.
+  We consider in the following the case~$\alpha + \beta \in \Phi$.
+  Then~$\alpha$ and~$\beta$ are linearly independent because otherwise~$\beta = \pm \alpha$ and therefore~$\alpha + \beta \in \{-2 \alpha, 0, 2 \alpha\}$ none of which is again a root.
+  
+  We consider again the~{\subrepresentation{$\sllie_2^\alpha$}}~$V \defined \bigoplus_{i \in \Integer} \glie_{\beta + i\alpha}$ of~$\glie$.
+  Then again~$\glie_{\beta + i\alpha} = V_{\pair{\beta, h_\alpha}+2i}$ for every~$i \in \Integer$.
+  Every nonzero weight space of~$V$ is {\onedimensional} by \cref{roots spaces are onedimensional and reduced} and all weights have the same parity as they are of the form~$\pair{\beta, h_\alpha} + 2i$ with~$i \in \Integer$.
+  Hence $V$ is irreducible as an~{\representation{$\sllie_2^\alpha$}} (as can be seen from the weight diagram we just described).
+  
+  Both~$V_{\pair{\beta, h_\alpha}} = \glie_\beta$ and~$V_{\pair{\beta, h_\alpha}+2} = \glie_{\alpha+\beta}$ are nonzero because both~$\alpha$ and~$\alpha+\beta$ are roots.
+  We find with our understanding of (irreducible)~{\representations{$\sllie_2(\kf)$}} that~$e_\alpha.V_{\pair{\beta, h_\alpha}} = V_{\pair{\beta, h_\alpha}+2}$.
+  This means that~$[e_\alpha, \glie_\beta] = \glie_{\alpha+\beta}$ and thus~$[\glie_\alpha, \glie_\beta] = \glie_{\alpha+\beta}$.
+\end{proof}
+
+
+
+
