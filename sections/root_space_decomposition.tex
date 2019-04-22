@@ -1,6 +1,9 @@
 \section{Root Space Decomposition}
 
 
+% TODO: Add sln example. 
+
+
 \begin{convention}
   Throughout this section~$\glie$ denotes a finite dimensional semisimple Lie~algebra.
 \end{convention}
@@ -13,7 +16,7 @@
 
 
 \begin{definition}
-  A Lie~subalgebra~$\hlie$ of~$\glie$ is \defemph{toral}\index{toral subalgebra} if it consists of semisimple elements.
+  A Lie~subalgebra~$\hlie$ of~$\glie$ is \defemph{toral}\index{toral Lie subalgebra} if it consists of semisimple elements.
 \end{definition}
 
 
@@ -84,7 +87,7 @@
   Let~$\hlie$ be a Cartan~subalgebra of~$\glie$.
   For every~$\alpha \in \hlie^*$ the linear subspace
   \[
-    \glie_\alpha
+    \gls*{root space}
     \defined
     \{
       y \in \glie
@@ -93,7 +96,7 @@
     \}
   \]
   is the \defemph{root space}\index{root space} of~$\glie$ with respect to~$\alpha$.
-  If~$\alpha \neq 0$ then~$\alpha$ is a \defemph{root}\index{root} and the set of roots is denoted by~$\Phi(\glie, \hlie) \defined \{\alpha \in \hlie^* \smallsetminus \{0\} \suchthat \glie_\alpha \neq 0\}$.
+  If~$\alpha \neq 0$ then~$\alpha$ is a \defemph{root}\index{root} and the set of roots is denoted by~$\gls*{roots} \defined \{\alpha \in \hlie^* \smallsetminus \{0\} \suchthat \glie_\alpha \neq 0\}$.
 \end{definition}
 
 
@@ -518,7 +521,7 @@
     
     We note that~$h_\alpha \neq 0$ because~$\alpha(h_\alpha) = 2$ and hence also~$e_\alpha, f_\alpha \neq 0$.
     The elements~$e_\alpha$,~$h_\alpha$ and~$f_\alpha$ are hence linearly independent as they live in distinct root spaces.
-    We see altogether that~$\sllie_2^\alpha \defined \gen{e_\alpha, h_\alpha, f_\alpha}$ is a {\threedimensional} Lie~subalgebra of~$\glie$ that is isomophiic to~$\sllie_2(\kf)$ via
+    We see altogether that~$\gls*{sl2 copy} \defined \gen{e_\alpha, h_\alpha, f_\alpha}$ is a {\threedimensional} Lie~subalgebra of~$\glie$ that is isomophiic to~$\sllie_2(\kf)$ via
     \[
       \phi
       \colon
@@ -682,7 +685,7 @@
     (\pair{\alpha, h_\beta} + 2i) x \,,
   \]
   so~$\glie_{\alpha+i\beta} = V_{\pair{\alpha, h_\beta}+2i}$ for every~$i \in \Integer$.
-  All weight of~$V$ are integral and we find for~$i = 0$ that~$V_{\pair{\alpha, h_\beta}} = \glie_\alpha \neq 0$.
+  All occuring weights of~$V$ are integral and we find for~$i = 0$ that~$V_{\pair{\alpha, h_\beta}} = \glie_\alpha \neq 0$.
   Thus~$\pair{\alpha, \beta} \in \Integer$.
   
   We know from the structure of~{\representations{$\sllie_2(\kf)$}} that the negative of~$\pair{\alpha, \beta}$ is again weight of~$V$.
