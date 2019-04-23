@@ -1,8 +1,6 @@
 \section{Lie Algebras}
 
 
-% TODO: Pre Lie-Algebras
-
 % TODO: Examples for Derivations
 
 % TODO: Lie algebra of a bilinear form
@@ -146,6 +144,39 @@
   This means that the matrix~$E_{ij}$ maps one of the standard basis vectors~$e_1, \dotsc, e_n$ (namely~$e_j$) to another standard basis vector (namely~$e_i$), but filters out all other standard basis vectors.
 \end{recall}
 
+
+\begin{remark}[Pre-Lie~algebras]
+  Suppose that more generally~$A$ is a vector space together with a bilinear multiplication map~$A \times A \to A$,~$(a,b) \mapsto ab$.
+  We can then define a bilinear bracket~$[-,-]$ on~$A$ via~$[a,b] \defined ab-ba$.
+  We have just seen that if the multiplication of~$A$ is associative then the associated bracket is a Lie~bracket.
+  But the associativity of~$A$ is not needed for~$[-,-]$ to be a Lie~bracket, weaker conditions suffice.
+  
+  One important example of this are \defemph{pre-Lie~algebras}\index{pre-Lie algebra}:
+  We say that~$A$ is a pre-Lie algebra if the multiplication of~$A$ satisfies the condition
+  \[
+    [L_a, L_b]
+    =
+    L_{[a,b]}
+  \]
+  for all~$a, b \in A$, where the left hand side is the endomorphism commutator~$[L_a, L_b] = L_a L_b - L_b L_a$ and where we denote for every~$a \in A$ by~$L_a \colon A \to A$ the left multiplication~$x \mapsto ax$.
+  Writing out the above condition means that
+  \[
+    a(bc) - b(ac)
+    =
+    (ab-ba)c
+  \]
+  for all~$a, b, c \in A$, or equivalently
+  \[
+    a(bc) - (ab)c
+    =
+    b(ac) - (ba)c
+  \]
+  for all~$a, b, c \in A$.
+  If~$A$ is a pre-Lie~algebra then it still follows that the commutator bracket~$[-,-]$ of~$A$ is a Lie~bracket.
+  We note that every associative algebra is a pre-Lie~algebra, and hence that the Lie~algebra structure on an associative algebra comes from its pre-Lie~algebra structure.
+  
+ Pre-Lie~algebras was first introduced by Gerstenhaber and we refer to~\cite{gerstenhaber} to see this concept in action.
+\end{remark}
 
 
 \begin{definition}
