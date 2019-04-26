@@ -639,13 +639,7 @@
 \end{lemma}
 
 
-\begin{definition}
-  The Lie algebra~$\gls*{quotient lie algebra}$ from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient! Lie algebra}\index{Lie algebra!quotient} of~$\glie$ by~$I$.
-\end{definition}
-
-
-
-\begin{proof}[Proof of \cref*{construction of quotient lie algebra}]
+\begin{proof}
   The bilinear map~$[-,-]$ on~$\glie/I$ is well-defined:
   If~$x, y, x', y' \in \glie$ with both~$x+I = x'+I$ and~$y+I = y'+I$ then~$x-x' \in I$ and~$y-y' \in I$ and thus
   \begin{align*}
@@ -666,6 +660,11 @@
 \end{proof}
 
 
+\begin{definition}
+  The Lie algebra~$\gls*{quotient lie algebra}$ from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient! Lie algebra}\index{Lie algebra!quotient} of~$\glie$ by~$I$.
+\end{definition}
+
+
 \begin{lemma}
   \label{quasi extension of scalars for lie algebras}
   Let~$\glie$ be a Lie~algebra over a field~$\kf$ and let~$A$ be an associative, commutative~{\algebra{$\kf$}}.
@@ -683,6 +682,7 @@
     [x,y] \tensor (ab)
   \]
   for all simple tensors~$x \tensor a, y \tensor b \in \glie \tensor A$.
+  \qed
 \end{lemma}
 
 
@@ -719,115 +719,150 @@
 \end{definition}
  
  
-\begin{example}
-  Another example for constructing new Lie~algebras out of old ones are \defemph{central extensions}:
-  Let~$\glie$ be any~$\kf$-Lie~algebra.
-  Then let
-  \[
-    \widetilde{\glie}
-    \defined
-    \glie \oplus \kf
-    =
-    \{
-      x + \lambda c
-    \suchthat
-      x \in \glie,
-      \lambda \in \kf
-    \},
-  \]
-  where we understand~$c$ as a formal variable.
-  Suppose that~$\kappa \colon \glie \times \glie \to \kf$ is a~{\bilinear{$\kf$}} map satisfying the following properties:
-  \begin{enumerate}
-  \item
-    $\kappa$ is antisymmetric, i.e.~$\kappa(x,y) = -\kappa(y,x)$ for all~$x,y \in \glie$.
-  \item
-    $\kappa$ satisfies the \defemph{$2$-cocycle condition}\index{$2$-cocycle condition}
-    \[
-      \kappa([x,y],z) + \kappa([y,z],x) + \kappa([z,x],y) = 0
-    \]
-    for all~$x, y, z \in \glie$.
-  \end{enumerate}
-  Then~$\widetilde{\glie}$ becomes a Lie~algebra via
-  \[
-    [x + \lambda c, y + \mu c]
-    \defined
-    [x,y] + \kappa(x,y) c
-  \]
-  for all~$x, y \in \glie$ and~$\lambda, \mu \in \kf$.
-  Note that the element~$c$ is central in~$\widetilde{\glie}$ in the sense that~$[x,c] = 0$ for all~$x \in \glie$.
-  
-  Take for example~$\glie \defined \gllie_n(\kf)$.
-  We can then define a symmetric bilinear form~$(-,-)_{\tr}$ on~$\glie$ via
-  \[
-    (A,B)_{\tr}
-    \defined
-    \tr(AB)
-  \]
-  for all~$A, B \in \glie$.
-  We can use~$(-,-)_{\tr}$ to define on the Loop~algebra~$\looplie(\glie)$ a~{\bilinear{$\kf[t,t^{-1}]$}} form~$(-,-)$ via
-  \[
-    \looplie(\glie) \times \looplie(\glie)
-    \to
-    \kf[t,t^{-1}] \,,
-    \quad
-    (x \tensor p, y \tensor q)
-    \mapsto
-    (x,y)_{\tr} \, pq \,.
-  \]
-  We get from this a bilinear form a~{\twococycle}~$\kappa \colon \looplie(\glie) \times \looplie(\glie) \to \kf$ via
-  \[
-    \kappa(a,b)
-    \defined
-    \Res\left( \frac{\partial a}{\partial t}, b \right) \,.
-  \]
-  The bilinear form~$\kappa$ is also antisymmetric:
-  Let~$a = x \tensor t^i$ and~$b = y \tensor t^{\spacing j}$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
-  Then
-  \begin{align*}
-    \kappa(x \tensor t^i, y \tensor t^{\spacing j})
-    &=
-    \Res(i x \tensor t^{i-1}, y \tensor t^{\spacing j})
-    \\
-    &= 
-    \Res(i t^{i+j-1} (x,y)_{\tr})
-    \\
-    &=
-    \begin{cases}
-      i (x,y)_{\tr} & \text{if~$i+j = 0$} \,,\\
-                  0 & \text{otherwise}  \,.
-    \end{cases}
-  \end{align*}
-  In the same way we find that
-  \[
-    \kappa(y \tensor t^{\spacing j}, x \tensor t^i)
-    =
-    \begin{cases}
-      \spacing  j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
-      \spacing              0 & \text{otherwise}  \,.
-    \end{cases}
-  \]
-  Since~$(\cdot,\cdot)_{\tr}$ is symmetric we find that
-  \begin{align*}
-    \kappa(x \tensor t^i, y \tensor t^{\spacing j})
-    &=
-    \begin{cases}
-    i (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
-                0 & \text{otherwise}  \,,
-    \end{cases} \\
-    &=
-    \begin{cases}
-    -j (x,y)_{\tr} & \text{if~$i+j = 0$}  \,, \\
-                  0 & \text{otherwise}  \,,
-    \end{cases} \\
-    &=
-    -\kappa(y \tensor t^{\spacing j}, x \tensor t^i) \,.
-  \end{align*}
-\end{example}
+% \begin{example}
+%   Another example for constructing new Lie~algebras out of old ones are \defemph{central extensions}:
+%   Let~$\glie$ be any~$\kf$-Lie~algebra.
+%   Then let
+%   \[
+%     \widetilde{\glie}
+%     \defined
+%     \glie \oplus \kf
+%     =
+%     \{
+%       x + \lambda c
+%     \suchthat
+%       x \in \glie,
+%       \lambda \in \kf
+%     \},
+%   \]
+%   where we understand~$c$ as a formal variable.
+%   Suppose that~$\kappa \colon \glie \times \glie \to \kf$ is a~{\bilinear{$\kf$}} map satisfying the following properties:
+%   \begin{enumerate}
+%   \item
+%     $\kappa$ is antisymmetric, i.e.~$\kappa(x,y) = -\kappa(y,x)$ for all~$x,y \in \glie$.
+%   \item
+%     $\kappa$ satisfies the \defemph{$2$-cocycle condition}\index{$2$-cocycle condition}
+%     \[
+%       \kappa([x,y],z) + \kappa([y,z],x) + \kappa([z,x],y) = 0
+%     \]
+%     for all~$x, y, z \in \glie$.
+%   \end{enumerate}
+%   Then~$\widetilde{\glie}$ becomes a Lie~algebra via
+%   \[
+%     [x + \lambda c, y + \mu c]
+%     \defined
+%     [x,y] + \kappa(x,y) c
+%   \]
+%   for all~$x, y \in \glie$ and~$\lambda, \mu \in \kf$.
+%   Note that the element~$c$ is central in~$\widetilde{\glie}$ in the sense that~$[x,c] = 0$ for all~$x \in \glie$.
+%   
+%   Take for example~$\glie \defined \gllie_n(\kf)$.
+%   We can then define a symmetric bilinear form~$(-,-)_{\tr}$ on~$\glie$ via
+%   \[
+%     (A,B)_{\tr}
+%     \defined
+%     \tr(AB)
+%   \]
+%   for all~$A, B \in \glie$.
+%   We can use~$(-,-)_{\tr}$ to define on the Loop~algebra~$\looplie(\glie)$ a~{\bilinear{$\kf[t,t^{-1}]$}} form~$(-,-)$ via
+%   \[
+%     \looplie(\glie) \times \looplie(\glie)
+%     \to
+%     \kf[t,t^{-1}] \,,
+%     \quad
+%     (x \tensor p, y \tensor q)
+%     \mapsto
+%     (x,y)_{\tr} \, pq \,.
+%   \]
+%   We get from this a bilinear form a~{\twococycle}~$\kappa \colon \looplie(\glie) \times \looplie(\glie) \to \kf$ via
+%   \[
+%     \kappa(a,b)
+%     \defined
+%     \Res\left( \frac{\partial a}{\partial t}, b \right) \,.
+%   \]
+%   The bilinear form~$\kappa$ is also antisymmetric:
+%   Let~$a = x \tensor t^i$ and~$b = y \tensor t^{\spacing j}$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
+%   Then
+%   \begin{align*}
+%     \kappa(x \tensor t^i, y \tensor t^{\spacing j})
+%     &=
+%     \Res(i x \tensor t^{i-1}, y \tensor t^{\spacing j})
+%     \\
+%     &= 
+%     \Res(i t^{i+j-1} (x,y)_{\tr})
+%     \\
+%     &=
+%     \begin{cases}
+%       i (x,y)_{\tr} & \text{if~$i+j = 0$} \,,\\
+%                   0 & \text{otherwise}  \,.
+%     \end{cases}
+%   \end{align*}
+%   In the same way we find that
+%   \[
+%     \kappa(y \tensor t^{\spacing j}, x \tensor t^i)
+%     =
+%     \begin{cases}
+%       \spacing  j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
+%       \spacing              0 & \text{otherwise}  \,.
+%     \end{cases}
+%   \]
+%   Since~$(\cdot,\cdot)_{\tr}$ is symmetric we find that
+%   \begin{align*}
+%     \kappa(x \tensor t^i, y \tensor t^{\spacing j})
+%     &=
+%     \begin{cases}
+%     i (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
+%                 0 & \text{otherwise}  \,,
+%     \end{cases} \\
+%     &=
+%     \begin{cases}
+%     -j (x,y)_{\tr} & \text{if~$i+j = 0$}  \,, \\
+%                   0 & \text{otherwise}  \,,
+%     \end{cases} \\
+%     &=
+%     -\kappa(y \tensor t^{\spacing j}, x \tensor t^i) \,.
+%   \end{align*}
+% \end{example}
+% 
+% 
+% \begin{remark}
+%   During the rest of these notes we will never see the Loop algebra again.
+% \end{remark}
 
 
-\begin{remark}
-  During the rest of these notes we will never see the Loop algebra again.
-\end{remark}
+\begin{recall}
+  If~$A$ is any kind of~{\algebra{$\kf$}} --- not necessarily associative or unital --- with multiplication~$\cdot$ then one can form the \defemph{opposite algebra}\index{opposite!algebra}~\gls*{opposite algebra} of~$A$:
+  It has the same underlying~{\vectorspace{$\kf$}} as~$A$ but with multiplication~$*$ given by
+  \[
+    a * b
+    \defined
+    b \cdot a
+  \]
+  for all~$a, b \in A^{\op}$.
+  Then~$(A^{\op})^{\op} = A$.
+  It holds that~$A$ is associative if and only if~$A^{\op}$ is associative, and an element~$1 \in A$ is a multiplicative neutral element for the multiplication~$\cdot$ if and only if it is a multiplicative neutral element for the multiplication~$*$.
+  Hence~$A$ is an associative unital~{\algebra{$\kf$}} if and only if~$A^{\op}$ is one.
+\end{recall}
+
+
+\begin{lemma}
+  If~$(\glie, [-,-])$ is a~{\liealgebra{$\kf$}} then the bilinear map~$[-,-]^{\op} \colon \glie \times \glie \to \glie$ given by
+  \[
+    [x,y]^{\op}
+    \defined
+    [y,x]
+    =
+    -[x,y]
+  \]
+  for all~$x, y \in \glie$ is again a Lie~bracket on~$\glie$.
+  \qed
+\end{lemma}
+
+
+\begin{definition}
+  For a Lie~algebra~$(\glie, [-,-])$ its \defemph{opposite Lie~algebra}\index{opposite!Lie-algebra} is given by~$(\glie^{\op}, [-,-]^{\op})$ with the same underlying vector space~$\glie^{\op} = \glie$ and the Lie~bracket~$[x,y]^{\op} = [y,x] = -[x,y]$ for all~$x, y \in \glie$.
+  The opposite Lie~algebra of a Lie~algebra~$\glie$ is denoted by~\gls{opposite lie algebra}.
+\end{definition}
 
 
 
@@ -837,13 +872,12 @@
 
 
 \begin{definition}
- Given Lie~algebras~$\glie$ and~$\hlie$ over the same field~$\kf$ a \defemph{homomorphism of Lie~algebras}~$\glie \to \hlie$\index{homomorphism!of Lie algebras} is a~{\linear{$\kf$}} map~$f \colon \glie \to \hlie$ such that
+ Given Lie~algebras~$\glie$ and~$\hlie$ over the same field~$\kf$ a \defemph{homomorphism of Lie~algebras}~$\glie \to \hlie$\index{homomorphism!of Lie algebras} is a~{\linear{$\kf$}} map~$f \colon \glie \to \hlie$ such that for all~$x, y \in \glie$,
  \[
   f([x,y])
   =
-  [\spacing f(x),f(y)]
+  [\spacing f(x),f(y)]  \,.
  \]
- for all~$x, y \in \glie$.
 \end{definition}
 
 
@@ -1205,6 +1239,75 @@
   Hence there exist up to isomorphism precisely two {\twodimensional} Lie~algebras over~$\kf$, one of which is abelian and the other non-abelian.
 \end{example}
 
+% 
+% \begin{lemma}
+%   Let~$\glie$ be a Lie~algebra.
+%   Every element~$x \in \glie$ can be regarded as an element~$x^{\op} \in \glie^{\op}$, resulting in a map~$i \colon \glie \to \glie^{\op}$.
+% \end{lemma}
+
+
+\begin{recall}
+  Let~$A$ and~$B$ be two~{\algebras{$\kf$}} that are not necessarily associative or unital.
+  Then a map~$f \colon A \to B$ is an \defemph{anti-homomorphism}\index{antihomomorphism!of k-algebras} if it is~{\linear{$\kf$}} with~$f(ab) = f(b)f(a)$ for all~$a, b \in A$.
+  A map~$A \to B$ is an antihomomorphism if any only if it is a homomorphism~$A^{\op} \to B$, if and only if it is a homomorphism~$A \to B^{\op}$.
+\end{recall}
+
+
+\begin{definition}
+  A map~$f \colon \glie \to \hlie$ between~{\liealgebras{$\kf$}}~$\glie$ and~$\hlie$ is an \defemph{anti-homomorphism} of~{\liealgebras{$\kf$}} if it is~{\linear{$\kf$}} with~$f([x,y]) = [\spacing f(x), f(y)]$ for all~$x, y \in \glie$.
+\end{definition}
+
+
+\begin{lemma}
+  \label{antihomomorphisms correspond to opposite homomorphisms}
+  For a map~$\glie \to \hlie$ between two~{\liealgebras{$\kf$}}~$\glie$ and~$\hlie$ the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $f \colon \glie \to \hlie$ is an anti-homomorphism of Lie~algebras.
+    \item
+      $f \colon \glie^{\op} \to \hlie$ is a homomorphism of Lie~algebras.
+    \item
+      $f \colon \glie \to \hlie^{\op}$ is a homomorphism of Lie~algebras.
+    \item
+      $f \colon \glie^{\op} \to \hlie^{\op}$ is an anti-homomorphism of Lie~algebras.
+      \qed
+  \end{equivalenceslist}
+\end{lemma}
+
+
+\begin{lemma}
+  \label{lie algebra isomorphic to its opposite}
+  Every Lie~algebra~$\glie$ is isomorphic to its opposite Lie~algebra~$\glie^{\op}$ via the map
+  \[
+    \glie
+    \to
+    \glie^{\op}\,,
+    \quad
+    x
+    \mapsto
+    -x  \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  The map~$\varphi \colon \glie \to \glie$,~$x \mapsto -x$ is an anti-homomorphism of Lie~algebras because
+  \[
+    \varphi([x,y])
+    =
+    -[x,y]
+    =
+    [y,x]
+    =
+    [-y,-x]
+    =
+    [\varphi(y), \varphi(x)]
+  \]
+  for all~$x, y \in \glie$.
+  It is hence a homomorphism of Lie~algebras~$\glie \to \glie^{\op}$.
+  It is also bijective.
+\end{proof}
+
 
 \begin{proposition}[Homomorphism theorem]
   \index{homomorphism theorem!for Lie algebras}
@@ -1232,6 +1335,7 @@
       \]
       commute.
       It holds that~$\ker \induced{f} = {\ker f}/I$ and~$\im \induced{f} = \im f$.
+      \qed
   \end{enumerate}
 \end{proposition}
 

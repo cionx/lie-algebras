@@ -1,9 +1,6 @@
 \section{Representations of Lie~Algebras}
 
 
-% TODO: Right actions and isomorphism to opposite Lie algebra
-
-
 
 
 
@@ -267,6 +264,53 @@
 \end{remark}
 
 
+\begin{remark}
+  \label{right representations}
+  Let~$\glie$ be a~{\liealgebra{$\kf$}}.
+  Instead of left~{\representations{$\glie$}} one could also consider right~{\representations{$\glie$}}:
+  A \defemph{right~{\representation{$\glie$}}}\index{representation!right}\index{right representation} of~$\glie$ is a~{\vectorspace{$\kf$}}~$V$ together with a~{\bilinear{$\kf$}} map~$V \times \glie \to V$~$(v,x) \mapsto v.x$ such that
+  \begin{equation}
+    \label{right representation}
+    (v.x).y - (v.y).x
+    =
+    v.[x,y]
+  \end{equation}
+  for all~$v \in V$ and~$x, y \in \glie$.
+  But it turns out that right representations are \enquote{the same} as left representations:
+  
+  We note that a bilinear action~$V \times \glie \to V$ gives~$V$ the structure of a right~{\representations{$\glie$}} if and only if the corresponding linear map~$\rho \colon \glie \to \gllie(V)$ given by~$\rho(x)(v) = v.x$ is an anti-homomorphism of Lie~algebras.
+  Indeed, for any two elements~$x, y \in \glie$ the identity~\eqref{right representation} holds for every~$v \in V$ if and only if~$\rho(y)\rho(x) - \rho(x) \rho(y) = \rho([x,y])$.
+  We know from~\cref{antihomomorphisms correspond to opposite homomorphisms} that anti-homomorphisms of Lie~algebras~$\glie \to \gllie(V)$ are the same as homomorphisms of Lie~algebras~$\glie^\op \to \gllie(V)$.
+  Hence we find that the structure of a right~{\representation{$\glie$}} on~$V$ is the same as the structure of a left~{\representation{$\glie^{\op}$}}.
+  If we denote the right action of~$\glie$ by~$\cdot$ and the corresponding left action of~$\glie^\op$ by~$*$ then
+  \[
+    x * v
+    =
+    v \cdot x
+  \]
+  for all~$x \in \glie^\op$ and~$v \in V$.
+  
+  But we know from \cref{lie algebra isomorphic to its opposite} that the Lie~algebras~$\glie$ and~$\glie^{\op}$ are actually isomorphic via the mapping~$x \mapsto -x$.
+  Hence left~{\representations{$\glie^{\op}$}} are the same as left~{\representations{$\glie$}}.
+  More precisely, if~$V$ is a left~{\representation{$\glie^\op$}} with action denoted by~$*$ then~$V$ becomes a left~{\representation{$\glie$}} with action denoted by~$\bullet$ via
+  \[
+    x \bullet v
+    =
+    -x * v
+  \]
+  for all~$x \in \glie$ and~$v \in V$.
+  
+  By combining both constructions we see that the structure of a right~{\representation{$\glie$}} on~$V$ corresponds uniquely to the structure of a left~{\representation{$\glie$}} on~$V$.
+  If the right action is denoted by~$\cdot$ and the left action is denoted by~$\bullet$ then this correspondence is given by
+  \[
+    x \bullet v
+    =
+    -v \cdot x
+  \]
+  for all~$x \in \glie$ and~$v \in V$.
+\end{remark}
+
+
 
 
 
@@ -426,6 +470,20 @@
 \end{proof}
 
 
+\begin{remark}
+  That the dual~$V^*$ of a representation~$V$ becomes again a representation can also be explained in a more structural way:
+  The structure of a left~{\representation{$\glie$}} on~$V$ induces on the dual space~$V^*$ the structure of a right~{\representation{$\glie$}} via
+  \[
+    (\varphi.x)(v)
+    =
+    \varphi(x.v)
+  \]
+  for all~$x \in \glie$,~$\varphi \in V^*$ and~$v \in V$.
+  But we have seen in \cref{lie algebra isomorphic to its opposite} that this right~{\representation{$\glie$}} structure is equivalent to the structure of a left~{\representation{$\glie$}} on~$V^*$.
+  This left~{\representation{$\glie$}} structure on~$V^*$ is precisely as in \cref{new representations from old ones}.
+\end{remark}
+
+
 \begin{definition}
   Let~$V$ be a representation of a Lie~algebra~$\glie$.
   A \defemph{subrepresentation} of~$V$ is a linear subpace~$U$ of~$V$ such that~$x.u \in U$ for all~$x \in \glie$ and~$u \in U$.
@@ -474,6 +532,7 @@
         \{
           v \in V
         \suchthat
+          \spacing
           f(v)
           =
           \lambda v
