@@ -51,7 +51,7 @@
 %%% FONTS
 \usepackage[silent]{fontspec}
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % has to be loaded after mathtools and amssymb
-\setmainfont[RawFeature={+calt}, Numbers=Lining]{EB Garamond}
+\setmainfont[Numbers=Lining]{EB Garamond}
 \setmathfont{TeX Gyre Termes Math}
 \setmathfont[range=\mathup/{num,latin,Latin},Numbers=Lining]{EBGaramond12-Regular}
 \setmathfont[range=\mathit/{latin,Latin}]{EBGaramond12-Italic}
@@ -173,6 +173,7 @@
 \newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
 \newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
+\newcommand{\matrices}[1]{#1\nobreakdash-matrices}
 \newcommand{\many}[1]{#1\nobreakdash-many}
 \newcommand{\module}[1]{#1\nobreakdash-module}
 \newcommand{\modules}[1]{#1\nobreakdash-modules}
@@ -272,6 +273,7 @@
 }
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\sign}{sgn}
 \DeclareMathOperator{\tr}{tr}
 
 % relations and operators

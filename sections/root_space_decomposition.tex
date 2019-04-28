@@ -1,7 +1,7 @@
 \section{Root Space Decomposition}
 
 
-% TODO: Add sln example. 
+% TODO: Review simultaneous diagonalization.
 
 
 \begin{convention}
@@ -83,6 +83,39 @@
 \end{remark}
 
 
+\begin{lemma}
+  Let~$\glie$ be a semisimple Lie~subalgebra of~$\gllie_n(\kf)$.
+  If~$\glie$ contains a diagonal matrix with pairwise different diagonal entries, or more generally for all indices~$i, j = 1, \dotsc, n$ a diagonal matrix~$D$ with~$D_{ii} \neq D_{jj}$, then
+  \[
+    \hlie
+    =
+    \{
+      D \in \glie
+    \suchthat
+      \text{$D$ is a diagonal matrix}
+    \}
+    =
+    \glie
+    \cap
+    \dlie_n(\kf)
+  \]
+  is a Cartan subalgebra of~$\glie$.
+\end{lemma}
+
+
+\begin{proof}
+  The subspace~$\hlie$ of~$\glie$ is a Lie~subalgebra because diagonal matrices commute with each other.
+  It follows from \cref{background on diagonal matrices} that every matrix that commutes with every element of~$\hlie$ is itself diagonal.
+  This shows that~$\hlie$ is not properly contained in any abelian Lie~subalgebra of~$\glie$.
+  It is in particular not properly contained in any toral Lie~subalgebra of~$\glie$.
+\end{proof}
+
+
+\begin{example}
+  The Lie~subalgebra~$\hlie$ of~$\sllie_n(\kf)$ where~$n \geq 2$ that consists of the traceless diagonal matrices is a Cartan subalgebra of~$\sllie_n(\kf)$ because it contains a diagonal matrix with pairwise different diagonal entries (since~$\ringchar \kf = 0$).
+\end{example}
+
+
 \begin{definition}
   Let~$\hlie$ be a Cartan~subalgebra of~$\glie$.
   For every~$\alpha \in \hlie^*$ the linear subspace
@@ -103,6 +136,80 @@
 \begin{remark}
   The root space~$\glie_0$ is the centralizer of~$\hlie$ in~$\glie$, i.e.~$\glie_0 = \centerlie_{\glie}(\hlie)$.
 \end{remark}
+
+
+\begin{example}
+  \label{root space decomposition for sln}
+  Let us consider the (semi)simple Lie~algebra~$\glie \defined \sllie_n(\kf)$ where~$n \geq 2$ and let~$\hlie$ be the Cartan subalgebra of~$\glie$ that consists of all traceless diagonal matrices.
+  Let~$\varepsilon_1, \dotsc, \varepsilon_n \in \hlie^*$ be the linear functionals given by
+  \[
+    \varepsilon_i(D)
+    \defined
+    D_{ii}
+  \]
+  for all~$i = 1, \dotsc, n$.
+  Then
+  \[
+    [D,E_{ij}]
+    =
+    (D_{ii} - D_{jj}) E_{ij}
+    =
+    (\varepsilon_i - \varepsilon_j)(D) E_{ij}
+  \]
+  for all~$i, j = 1, \dotsc, n$ by \cref{background on diagonal matrices}.
+  We see that the basis elements~$E_{ij}$ with~$i \neq j$ are contained in the weight space~$\glie_{\varepsilon_i - \varepsilon_j}$, whereas the basis elements~$E_{ii} - E_{i+1,i+1}$ with~$i = 1, \dotsc, n-1$ form a basis of~$\hlie$.
+  We can thus make the following observations for~$\glie$:
+  \begin{enumerate}
+    \item
+      The Lie~algebra~$\glie$ decomposes into~$\hlie$ and the occuring weight spaces:
+      
+      We have that
+      \[
+        \glie
+        =
+        \hlie
+        \oplus
+        \bigoplus_{1 \leq i \neq j \leq n}
+        \glie_{\varepsilon_i - \varepsilon_j} \,.
+      \]
+      (Note that the sum is necessarily direct.)
+      It follows that~$\glie_{\alpha} = 0$ for all roots~$\alpha$ apart from~$\varepsilon_i - \varepsilon_j$, so that~$\Phi(\glie, \hlie) = \{ \varepsilon_i - \varepsilon_j \suchthat 1 \leq i \neq j \leq n \}$.
+      We can therefore rewrite the above decomposition as
+      \[
+        \glie
+        =
+        \hlie
+        \oplus
+        \bigoplus_{\alpha \in \Phi(\glie, \hlie)}
+        \glie_{\alpha}  \,.
+      \]
+    \item
+      The weight spaces~$\glie_\alpha$ and~$\glie_\beta$ with~$\beta \neq -\alpha$ are orthogonal with respect to the Killing form~$\kappa$ of~$\glie$:
+      
+      We know from \cref{killing form of sln} that~$\kappa$ is given by~$\kappa(x,y) = 2n \tr(xy)$ for all~$x, y \in \sllie_n(\kf)$.
+      For~$\alpha = \varepsilon_i - \varepsilon_j$ and~$\beta \neq - \alpha$ we have~$\beta = \varepsilon_k - \varepsilon_l$ with~$(k,l) \neq (\spacing j,i)$.
+      Then~$\glie_\alpha$ is spanned by the standard basis matrix~$E_{ij}$ and~$\glie_\beta$ is spanned by the standard basis matrix~$E_{kl}$;
+      we thus find
+      \[
+        \kappa(E_{ij}, E_{kl})
+        =
+        2n \tr(E_{ij} E_{kl})
+        =
+        2n \delta_{jk} \tr(E_{il})
+        =
+        2n \delta_{jk} \delta_{il}
+        =
+        0 \,.
+      \]
+    \item
+      The restriction of the Killing form~$\kappa$ to~$\hlie$ is non-degenerate:
+      
+      We know that the trace form~$(-,-)_{\tr}$ is non-degenerate on~$\dlie_n(\kf)$ as the basis~$E_{11}, \dotsc, E_{nn}$ is self-dual with respect to~$(-,-)_{\tr}$.
+      The decomposition~$\dlie_n(\kf) = \gen{I}_{\kf} \oplus \hlie$ is orthogonal with respect to~$(-,-)_{\tr}$ whence restrictions of~$(-,-)_{\tr}$ to both~$\gen{I}_{\kf}$ and~$\hlie$ are again non-degenerate.
+      Therefore~$\kappa = 2n (-,-)_{\tr}$ is also non-degenerate on~$\hlie$.
+  \end{enumerate}
+  We will now see that these observations generalizes to all finite dimensional semisimple Lie~algebras.
+\end{example}
 
 
 \begin{lemma}
@@ -129,9 +236,6 @@
   \]
   as claimed.
 \end{proof}
-
-
-% TODO: Add examples.
 
 
 \begin{lemma}
@@ -306,6 +410,79 @@
 
 
 \subsection{Properties of the Root Space Decomposition}
+
+
+\begin{example}
+  Let again~$\glie \defined \sllie_n(\kf)$ where~$n \geq 2$ and let~$\hlie$ be the Cartan subalgebra of~$\sllie_n(\kf)$ that consists of all traceless diagonal matrices.
+  The root space decomposition of~$\glie$ with respect to~$\hlie$ is given by
+  \[
+    \glie
+    =
+    \hlie
+    \oplus
+    \bigoplus_{1 \leq i \neq j \leq n}
+    \glie_{\varepsilon_i - \varepsilon_j}
+  \]
+  where for every~$i = 1, \dotsc, n$ the linear functional~$\varepsilon_i \in \hlie^*$ is given by
+  \[
+    \varepsilon_i(D)
+    =
+    D_{ii}  \,.
+  \]
+  and the root space~$\glie_{\varepsilon_i - \varepsilon_j}$ is spanned by the single basis vector~$E_{ij}$.
+  In particular
+  \[
+    \Phi(\glie, \hlie)
+    =
+    \{
+      \varepsilon_i - \varepsilon_j
+    \suchthat
+      1 \leq i \neq j \leq n
+    \}  \,.
+  \]
+  We have seen these results in \cref{root space decomposition for sln}.
+  
+  We now continue our observations from \cref{root space decomposition for sln} to see that the root space decomposition of~$\glie$ with respect to~$\hlie$ enjoys the following additional properties:
+  \begin{enumerate}
+    \item
+      The root spaces~$\glie_\alpha$ with~$\alpha \in \Phi(\glie, \hlie)$ are all~{\onedimensional}.
+    \item
+      For every root~$\alpha \in \Phi(\glie, \hlie)$ the negative~$-\alpha$ is again a root.
+      But except for~$\alpha$ and~$-\alpha$ no other multiple of~$\alpha$ is again a root.
+    \item
+      For any root~$\alpha \in \Phi(\glie, \hlie)$ with~$\alpha = \varepsilon_i - \varepsilon_j$ where~$1 \leq i \neq j \leq n$ the commutator space~$[\glie_\alpha, \glie_\beta]$ is {\onedimensional} with basis~$H_{ij} \defined [E_{ij}, E_{ji}] = E_{ii} - E_{jj}$.
+      The matrices~$H$,~$E_{ij}$,~$E_{ji}$ satisfy the commutator relations
+      \[
+        [H, E_{ij}]       = 2 E_{ij}  \,,
+        \quad
+        [H, E_{ji}]       = -2 E_{ji} \,,
+        \quad
+        [E_{ij}, E_{ji}]  = H_{ij}    \,.
+      \]
+      The linear span~$\gen{E_{ij}, H, E_{ji}}_{\kf}$ is hence a Lie~subalgebra of~$\glie$ that is isomorphic to our favorite Lie~algebra~$\sllie_2(\kf)$.
+    \item
+      It holds for all roots~$\alpha, \beta \in \Phi$ with~$\alpha = \varepsilon_i - \varepsilon_j$ and~$\beta = \varepsilon_k - \varepsilon_l$ that~$\alpha + \beta$ is again a root if and only if~$j = k$ or~$i = l$.
+%     TODO: Is this true?
+      If this is the case then
+      \begin{align*}
+        [\glie_\alpha, \glie_\beta]
+        =
+        \gen{ [E_{ij}, E_{kl}] }_{\kf}
+        =
+        \gen{\delta_{jk} E_{il} - \delta_{il} E_{kj}}_{\kf}
+        &=
+        \begin{cases}
+          \gen{ E_{il} }_{\kf}  & \text{if~$j=k$} \,, \\
+          \gen{ E_{kj} }_{\kf}  & \text{if~$i=l$} \,,
+        \end{cases}
+        \\
+        &=
+        \glie_{\alpha + \beta}  \,.
+      \end{align*}
+      (Note that~$\alpha + \beta = \varepsilon_i - \varepsilon_l$ if~$j = k$ and~$\alpha + \beta = \varepsilon_k - \varepsilon_j$ if~$i=l$).
+  \end{enumerate}
+  We will now see that these observations again holds for all finite dimensional semisimple Lie~algebras.
+\end{example}
 
 
 \begin{convention}

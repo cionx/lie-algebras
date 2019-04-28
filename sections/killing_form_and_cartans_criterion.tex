@@ -1,7 +1,8 @@
 \section{The Killing Form and Cartan’s Criterion}
 
 
-% TODO: Concrete Jordan decompositon via JNF
+% TODO: Cartans criterion for char 0 without algebraically closed.
+
 
 
 \begin{definition}
@@ -75,9 +76,6 @@
 
 
 \subsection{The Killing~Form}
-
-
-% TODO: Cartans criterion for char 0 without algebraically closed.
 
 
 \begin{recall}
@@ -268,7 +266,109 @@
 \end{remark}
 
 
-\begin{example}
+\begin{examples}
+  \label{examples for killing form}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$\glie$ be the non-abelian {\twodimensional} Lie~algebra, given by the basis~$x$,~$y$ with~$[x,y] = y$.
+      With respect to the basis~$x$,~$y$ of~$\glie$ the adjoint endomorphisms~$\ad(x)$ and~$\ad(y)$ are given by the matrices
+      \[
+        \ad(x)
+        =
+        \begin{pmatrix}
+          0 & 0 \\
+          0 & 1
+        \end{pmatrix}
+        \quad\text{and}\quad
+        \ad(y)
+        =
+        \begin{pmatrix*}[r]
+           0  & 0 \\
+          -1  & 0
+        \end{pmatrix*}  \,.
+      \]
+      We compute that
+      \begin{gather*}
+          \tr(\ad(x)\ad(x))
+        = 1 \,,
+      \intertext{and}
+          \tr(\ad(x)\ad(y))
+        = \tr(\ad(y)\ad(x))
+        = \tr(\ad(y)\ad(y))
+        = 0 \,.
+      \end{gather*}
+      This shows that with respect to the basis~$x$,~$y$ of~$\glie$ the Killing form~$\kappa$ of~$\glie$ is given by the matrix
+      \[
+        \kappa_{\glie}
+        =
+        \begin{pmatrix}
+          1 & 0 \\
+          0 & 0
+        \end{pmatrix} \,.
+      \]
+    \item
+      The Lie~algebra~$\sllie_2(\kf)$ has the standard basis~$e$,~$h$,~$f$.
+      With respect to this basis the endomorphisms~$\ad(e)$,~$\ad(h)$,~$\ad(\spacing f))$ is given by the matrices
+      \[
+        \ad(e)
+        =
+        \begin{pmatrix*}[r]
+          0 & -2  & 0 \\
+          0 &  0  & 1 \\
+          0 &  0  & 0
+        \end{pmatrix*}  \,,
+        \quad
+        \ad(h)
+        =
+        \begin{pmatrix*}[r]
+          2 & 0 &  0  \\
+          0 & 0 &  0  \\
+          0 & 0 & -2
+        \end{pmatrix*}  \,,
+        \quad
+        \ad(\spacing f))
+        =
+        \begin{pmatrix*}[r]
+           0  & 0 & 0 \\
+          -1  & 0 & 0 \\
+           0  & 2 & 0
+        \end{pmatrix*}  \,.
+      \]
+      We compute that
+      \begin{gather*}
+            \tr(\ad(e)\ad(e))
+         =  \tr(\ad(e)\ad(h))
+         =  \tr(\ad(h)\ad(\spacing f)))
+         =  \tr(\ad(\spacing f))\ad(\spacing f)))
+         =  0
+      \shortintertext{and}
+          \tr(\ad(e)\ad(\spacing f))
+        = 4 \,,
+        \quad
+          \tr(\ad(h)\ad(h))
+        = 8 \,.
+      \end{gather*}
+      It follows that the Killing form of~$\sllie_2(\kf)$ is with respect to the basis~$e$,~$h$,~$f$ given by the matrix
+      \[
+        \kappa_{\sllie_2(\kf)}
+        =
+        \begin{pmatrix}
+          0 & 0 & 4 \\
+          0 & 8 & 0 \\
+          4 & 0 & 0
+        \end{pmatrix} \,.
+      \]
+      (The missing entries are determined from the calculated ones by the symmetry of the Killing form.)
+    \item
+      If a finite dimensional Lie~algebra~$\glie$ is nilpotent then then there exists some power~$n \geq 0$ with~$\glie^n = 0$ and hence~$\ad(x_1) \dotsm \ad(x_n) = 0$ for all~$x_1, \dotsc, x_n \in \glie$.
+      It follows for all~$x, y \in \glie$ that the endomorphism~$\ad(x)\ad(y)$ of~$\glie$ is nilpotent whence~$\kappa(x,y) = \tr(\ad(x)\ad(y)) = 0$.
+      This shows that the Killing form of~$\kappa$ is zero.
+  \end{enumerate}
+\end{examples}
+
+
+\begin{example}[Klling form of~$\gllie_n(\kf)$]
   \label{killing form of gln}
   Let~$\glie \defined \glie_n(\kf)$ for some arbitrary~field $\kf$.
   Then
@@ -437,10 +537,13 @@
 \end{proof}
 
 
-% TODO: Lemma does not hold for the restriction to subalgebras
+\begin{warning}
+  \Cref{restriction of the killing form to an ideal} does not hold for Lie~subalgebras, i.e.\ if~$\hlie$ is a Lie~subalgebra of a finite dimensional Lie~algebra~$\glie$ then not necessarily~$\restrict{\kappa_{\glie}}{\hlie} = \kappa_{\hlie}$.
+  If for example~$\glie$ is the {\twodimensional} non-abelian Lie~algebra with basis~$x$,~$y$ so that~$[x,y] = y$ then~$\hlie = \gen{x}_{\kf}$ is a one-dimensional Lie~subalgebra with~$\kappa_{\hlie} = 0$ but~$\kappa_{\glie}(x,x) = 1$ as seen in \cref{examples for killing form}.
+\end{warning}
 
 
-\begin{example}
+\begin{example}[Killing form of~$\sllie_n(\kf)$]
   \label{killing form of sln}
   We have seen in \cref{killing form of gln} that the Killing~form of~$\gllie_n(\kf)$ is given by
   \[
@@ -672,21 +775,36 @@
 \end{definition}
 
 
-\begin{example}
-  \label{computation of jd via jnf}
-  Let~$x$ be an endomorphism of a finite dimensional vector space and let~$v_1, \dotsc, v_n$ be a basis of~$V$ with respect to which~$x$ is in Jordan normal form~$J \in \Mat_n(\kf)$.
+\begin{remark}
+  The Jordan decomposition is also known as the Jordan--Chevalley decomposition.
+\end{remark}
+
+
+\begin{remark}[Jordan decomposition and Jordan normal form]
+  \label{jd via jnf}
+  The existence of the Jordan decomposition can also be derived from the existence of the Jordan normal form, and the uniqueness of the Jordan decomposition can then be shown by more elementary means than done above:
+  
+  For the first assertion let~$x$ be an endomorphism of a finite dimensional vector spacen~$V$ and let~$v_1, \dotsc, v_n$ be a basis of~$V$ with respect to which~$x$ is in Jordan normal form~$J \in \Mat_n(\kf)$.
   Then
   \[
     J
     =
     D + N
   \]
-  for a diagonal matrix~$D$ and strictly upper triangular (and hence nilpotent) matrix~$N$, and the two matrices~$D$ and~$N$ commute.
+  for a diagonal matrix~$D$ and a strictly upper triangular (and hence nilpotent) matrix~$N$, and the two matrices~$D$ and~$N$ commute.
   We find that~$D$ is the semisimple part of~$J$ and that~$N$ is the nilpotent part of~$J$.
   With respect to the choosen basis of~$V$ the semisimple part of~$x$ is now given by~$D$, and the nilpotent part of~$x$ is given by~$N$.
+  This shows the existence of the Jordan decomposition, and that the decomposition of an endomorphism~$x$ corresponds to the decomposition of its Jordan normal form~$J$ into a diagonal part~$D$ and a strictly upper triangular part~$N$.
   
-  This shows that in coordinates the concrete Jordan decomposition of an endomorphism~$x$ corresponds to the decomposition of its Jordan normal form~$J$ into a diagonal part~$D$ and a strictly upper triangular part~$N$.
-\end{example}
+  For the second assertion let~$x = x_s + x_n$ be any Jordan decomposition of~$x$.
+  Then~$V$ decomposes into the eigenspaces~$V_\lambda$ of~$x_s$ where~$\lambda \in \kf$.
+  The endomorphisms~$x_s$ and~$x_n$ commute whence every eigenspace~$V_\lambda$ is~{\invariant{$x_n$}}.
+  The restrictions~$\restrict{x_n}{V_\lambda}$ are again nilpotent and thus admit Jordan normal forms with respect to some suitable bases~$\mc{B}_\lambda$ of the eigenspaces~$V_\lambda$.
+  Note that the restrictions~$\restrict{x_s}{V_\lambda}$ are with respect to the bases~$\mc{B}_\lambda$ (or any basis of~$V_\lambda$ for that matter) given by~$\lambda I$.
+  By combining the various bases~$\mc{B}_\lambda$ into a single basis~$\mc{B}$ of~$V$ we arrive at a basis of~$V$ with respect to which~$x$ is in Jordan normal form~$J$.
+  The semisimple part~$x_s$ is by construction represented by the diagonal part of~$J$ and the nilpotent part~$x_n$ is represented by the strictly upper triangular part of~$J$.
+  This shows the uniqueness of the Jordan decomposition and also retrieves its description via the Jordan normal form.
+\end{remark}
 
 
 \begin{warning}
@@ -723,6 +841,70 @@
 \end{definition}
 
 
+\begin{recall}
+  \label{background on diagonal matrices}
+  If~$D \in \gllie_n(\kf)$ is a diagonal matrix with diagonal entries~$\lambda_1, \dotsc, \lambda_n \in \kf$ then for any other matrix~$A \in \gllie_n(\kf)$ the product~$DA$ results from~$A$ by multiplying for all~$i = 1, \dotsc, n$ the~{\howmanyth{$i$}} row of~$A$ by the scalar~$\lambda_i$.
+  Similarly the product~$AD$ results from~$A$ by multiplying for all~$j = 1, \dotsc, n$ the~{\howmanyth{$j$}} column of~$A$ by the scalar~$\lambda_j$.
+  This means in formulae that
+  \[
+    (DA)_{ij}
+    =
+    \lambda_i A_{ij}
+    \quad\text{and}\quad
+    (AD)_{ij}
+    =
+    \lambda_j A_{ij}
+  \]
+  for all~$i, j = 1, \dotsc, n$.
+  It follows that
+  \[
+    [D, A]_{ij}
+    =
+    (DA - AD)_{ij}
+    =
+    (DA)_{ij} - (AD)_{ij}
+    =
+    \lambda_i A_{ij} - \lambda_j A_{ij}
+    =
+    (\lambda_i - \lambda_j) A_{ij}
+  \]
+  for all~$i, j = 1, \dotsc, n$.
+  We find in particular the following:
+  \begin{enumerate}
+    \item
+      For all~$i, j = 1, \dotsc, n$ the matrix~$E_{ij}$ is an eigenvector of~$\ad_{\gllie_n(\kf)}(D)$ with corresponding eigenvalues~$\lambda_i - \lambda_j$.
+    \item
+      A matrix~$A \in \gllie_n(\kf)$ commutes with~$D$ if and only if~$A_{ij} = 0$ for all~$i, j = 1, \dotsc, n$ with~$\lambda_i \neq \lambda_j$.
+      If the diagonal entries of~$D$ are arranged so that
+      \[
+        D
+        =
+        \diag
+        (
+          \underbrace{ \mu_1, \dotsc, \mu_1 }_{n_1},
+          \dotsc,
+          \underbrace{\mu_k, \dotsc, \mu_k}_{n_k}
+        )
+      \]
+      with~$\mu_i \neq \mu_j$ for all~$i \neq j$ and~$n_1, \dotsc, n_k \geq 0$ then therefore
+      \[
+        \centerlie_{\gllie_n(\kf)}(D)
+        =
+        \left\{
+          \begin{pmatrix}
+            A_1 &         &     \\
+                & \ddots  &     \\
+                &         & A_k
+          \end{pmatrix}
+        \suchthat*
+          \text{$A_i \in \gllie_{n_i}(\kf)$ for all~$i = 1, \dotsc, k$}
+        \right\}  \,.
+      \]
+      If~$D$ has pairwise different diagonal entries then it follows that every matrix that commutes with~$D$ is again diagonal.
+  \end{enumerate}
+\end{recall}
+
+
 \begin{lemma}
   \label{ss and nilpotent implies ad-ss and ad-nilpotent}
   Let~$\glie$ be a Lie subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$, or let~$\glie$ be a subalgebra of~$\gllie_n(\kf)$ for some~$n \geq 0$.
@@ -740,10 +922,11 @@
 
 
 \begin{proof}
-  It sufficies to consider~$\glie \subseteq \gllie(V)$.
-  \begin{enumerate}[leftmargin=*]
+  It sufficies to consider the case that~$\glie$ is a Lie~subalgebra of~$\gllie(V)$.
+  \begin{enumerate}
     \item
-      We have for all~$i,j,k = 1, \dotsc, n$ that
+      This follows from \cref{background on diagonal matrices}.
+      We have alternatively for all~$i,j,k = 1, \dotsc, n$ that
       \begin{align*}
         [x,E_{ij}](e_k)
         &=
@@ -765,8 +948,14 @@
         (\lambda_i - \lambda_j) \delta_{jk} e_i
         \\
         &=
-        (\lambda_i - \lambda_j) E_{ij} e_k  \,.
+        (\lambda_i - \lambda_j) E_{ij} e_k
       \end{align*}
+      and thus
+      \[
+        [x, E_{ij}]
+        =
+        (\lambda_i - \lambda_j) E_{ij}  \,.
+      \]
       This calculation shows that~$E_{ij}$ is indeed an eigenvector for~$\ad(x) = [x,-]$ with eigenvalue~$\lambda_i - \lambda_j$.
       This shows that~$\ad_{\gllie(V)}(x)$ is semisimple.
       The restriction~$\restrict{\ad_{\gllie}(V)(x)}{\glie} = \ad_{\glie}(x)$ is therefore again semisimple.
@@ -812,7 +1001,8 @@
   \]
   If~$x \in T$ with~$\tr(xz) = 0$ for every~$z \in T$ then~$x$ is nilpotent.
 \end{lemma}
-% 
+
+
 \begin{proof}
   Let $x = x_s + x_n$ be the concrete Jordan decomposition of $x$.
   We need to show that~$x_s = 0$.
@@ -828,7 +1018,7 @@
   \]
   Hence also~$x_s \in T$.
   
-  Let~$v_1, \dotsc, v_n$ be a basis of~$V$ with respect to which~$x_s$ is given by a diagonal matrix and~$x_n$ is given by a strictly upper triangular matrix (e.g.\ a basis such that~$x$ is in Jordan normal form, see \cref{computation of jd via jnf}).
+  Let~$v_1, \dotsc, v_n$ be a basis of~$V$ with respect to which~$x_s$ is given by a diagonal matrix and~$x_n$ is given by a strictly upper triangular matrix (e.g.\ a basis such that~$x$ is in Jordan normal form, see \cref{jd via jnf}).
   This is in particular a basis consisting of eigenvectors for~$x_s$ with corresponding eigenvalues~$\lambda_1, \dotsc, \lambda_n \in \kf$.
   We say that an endomorphism~$y \in \gllie(V)$ is \defemph{diagonal} if~$v_1, \dotsc, v_n$ are eigenvectors of~$y$, i.e.\ if~$y$ is represented by a diagonal matrix with respect to this basis.
   We write~$y = (\mu_1, \dotsc, \mu_n)$ to mean that~$y$ is the diagonal endomorphism with~$y(v_i) = \mu_i$.
@@ -1027,6 +1217,39 @@
   By Cartan’s criterion for~$\gllie(\glie)$ this is the case if and only if~$\tr(x' y') = 0$ for all~$x' \in \glie'$ and~$y' \in [\glie', \glie']$.
   This is equivalent to~$\kappa(xy) = 0$ for all~$x, y \in [\glie, \glie]$ because~$[\glie', \glie'] = [\ad(\glie), \ad(\glie)] = \ad([\glie, \glie])$.
 \end{proof}
+
+
+\begin{example}[Killing form of~$\tlie_n(\kf)$]
+  Let~$\glie = \tlie_n(\kf)$ be the Lie~algebra of upper triangular~{\matrices{$(n \times n)$}}.
+  Then~$[\glie, \glie] = \nlie_n(\kf)$ is the Lie~algebra of strictly upper triangular~{\matrices{$(n \times n)$}}.
+  The Lie~algebra~$\glie$ is solvable whence~$\glie$ and~$\nlie_n(\kf)$ are orthogonal with respect to~$\kappa_{\glie}$.
+  We may decompose any two matrices~$A, B \in \glie$ as~$A = D + N$ and~$B = D' + N'$ where~$D$ and~$D$ are diagonal and~$N$ and~$N'$ are strictly upper triangular.
+  We now find that
+  \[
+    \kappa_{\glie}(A, B)
+    =
+    \kappa_{\glie}(D, D')
+    =
+    \tr(\ad_{\glie}(D) \ad_{\glie}(D')) \,.
+  \]
+  We know from \cref{background on diagonal matrices} that the standard basis matrices~$E_{ij}$ with~$i \leq j$ form a simultaneous eigenbasis of~$\glie$ for both~$\ad_{\glie}(D)$ and~$\ad_{\glie}(D')$ where the eigenvalues corresponding to~$E_{ij}$ is given by~$D_{ii} - D_{jj}$ and~$D'_{ii} - D'_{jj}$.
+  We hence find that
+  \begin{align*}
+    \kappa_{\glie}(A, B)
+    &=
+    \kappa_{\glie}(D, D')
+    \\
+    &=
+    \sum_{i \geq j} (D_{ii} - D_{jj}) (D'_{ii} - D'_{jj})
+    \\
+    &=
+    \sum_{i > j} (D_{ii} - D_{jj}) (D'_{ii} - D'_{jj})
+    \\
+    &=
+    \sum_{i > j} (A_{ii} - A_{jj}) (B_{ii} - B_{jj})  \,.
+  \end{align*}
+
+\end{example}
 
 
 

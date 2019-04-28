@@ -381,28 +381,29 @@
 \begin{corollary}
   \label{associative non-degenerate bilinear forms induce isomorphism to the dual}
   If~$\glie$ is a finite dimensional Lie~algebra and~$\beta \colon \glie \times \glie \to \kf$ is a bilinear form then for the associated bilinear maps
-% TODO: Fix alignment.
-  \begin{gather*}
+  \begin{alignat*}{2}
     \phi_1
     \colon
     \glie
-    \to
+    &\to
     \glie^*,
+    &
     \quad
     x
-    \mapsto
+    &\mapsto
     \beta(x,-)
   \shortintertext{and}
     \phi_2
     \colon
     \glie
-    \to
+    &\to
     \glie^*,
+    &
     \quad
     y
-    \mapsto
+    &\mapsto
     \beta(-,y)
-  \end{gather*}
+  \end{alignat*}
   The following conditions are equivalent:
   \begin{equivalenceslist}
     \item
@@ -944,7 +945,6 @@
 \end{warning}
 
 
-
 \begin{lemma}
   \label{semisimple lie algebra identification with dual space}
   Let~$\glie$ be a finite dimensional semisimple Lie~algebra.
@@ -967,54 +967,46 @@
 \end{proof}
 
 
+\begin{lemma}
+  \label{bilinear form on irreducible}
+  Let~$V$ be an irreducible representation and let~$\beta$ be an invariant symmetric bilinear form on~$V$.
+  \begin{enumerate}
+    \item
+      The bilinear form~$\beta$ is either zero or non-degenerate.
+    \item
+      If~$\beta$ is non-degenerate and~$V$ is finite dimensional then every other invariant symmetric bilinear form on~$V$ is a scalar multiple of~$\beta$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  Let~$\phi \colon V \to V^*$,~$v \mapsto \beta(-,v)$ be the linear map corresponding to~$\beta$.
+  That~$\beta$ is invariant means by \cref{invariant bilinear form induces homomorphism of representations} that~$\varphi$ is a homomorphism of representations.
+  \begin{enumerate}
+    \item
+      The kernel of~$\varphi$ is a subrepresentation of~$V$ whence~$\ker \varphi = 0$ or~$\ker \varphi = V$.
+      The bilinear form~$\beta$ is non-degenerate in the first case and zero in the second case.
+    \item
+      The map~$\varphi$ is injective because~$\beta$ is non-degenerate and hence bijective because~$V$ is finite-dimensional.
+      If~$\gamma$ is another invariant symmetric bilinear form on~$V$ with corresponding homomorphism of representations~$\psi \colon V \to V^*$ then the composition~$\varphi^{-1} \psi \colon V \to V$ is again a homomorphism of representations.
+      It follows from Schur’s lemma that~$\varphi^{-1} \psi = \lambda \id_V$ for some scalar~$\lambda \in \kf$.
+      Then~$\psi = \lambda \varphi$ and hence~$\gamma = \lambda \beta$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
 \begin{corollary}
   \label{uniqueness of invariant bilinear forms for simple}
   Let~$\glie$ be a finite dimensional simple Lie~algebra.
-  Then any associative bilinear form~$\beta \colon \glie \times \glie \to \kf$ is a scalar multiple of the killing form~$\kappa$ of~$\glie$.
+  Then any associative bilinear form~$\beta \colon \glie \times \glie \to \kf$ is a scalar multiple of the Killing form~$\kappa$ of~$\glie$.
 \end{corollary}
 
 
 \begin{proof}
- The map
- \[
-  \varphi
-  \colon
-  \glie
-  \to
-  \glie^* \,,
-  \quad
-  x
-  \mapsto
-  \beta(x, -)
- \]
- is a homomorphism of~{\representations{$\glie$}} by \cref{associative bilinear form induces homomorphism of representations}.
- The Killing~form~$\kappa$ is non-degenerate because~$\glie$ is simple (and thus semisimple).
- The map
- \[
-  \psi
-  \colon
-  \glie
-  \to
-  \glie^* \,,
-  \quad
-  x
-  \mapsto
-  \kappa(x, -)
- \]
- is therefore an isomorphism of representations by \cref{associative non-degenerate bilinear forms induce isomorphism to the dual}.
- The composition
- \[
-  \psi^{-1}
-  \circ
-  \varphi
-  \colon
-  \glie
-  \to
-  \glie 
- \]
- is again a homomorphism of representations, where~$\glie$ is irreducible as a representation because~$\glie$ is simple as a Lie~algebra.
- It follows from Schur’s~lemma that~$\psi^{-1} \circ \varphi = \lambda \id_{\glie}$ for some scalar~$\lambda \in \kf$.
- So~$\varphi = \lambda \psi$ and equivalently~$\beta = \lambda \kappa$.
+  The regular representation~$\glie = V$ is irreducible because~$\glie$ is simple.
+  The Killing~form on~$\glie$ is invariant, symmetric and non-degenerate (invariance is equivalent to associativity by \cref{associative is invariant}).
+  The assertions thus follows from \cref{bilinear form on irreducible}.
 \end{proof}
 
 

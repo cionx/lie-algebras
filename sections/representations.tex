@@ -1,6 +1,9 @@
 \section{Representations of Lie~Algebras}
 
 
+% TODO: Tensor hom adjunction for internal hom.
+
+
 
 
 
@@ -344,7 +347,7 @@
         =
         (x.v) \tensor w + v \tensor (x.w)
       \]
-      for all~$x \in \glie$,~$v \in V$ and~$w \in W$.
+      for all~$x \in \glie$ and every simple tensor~$v \tensor w \in V \tensor W$.
       More generally, if~$V_1, \dotsc V_n$ are representations of~$\glie$ then their tensor product~$V_1 \tensor \dotsb \tensor V_n$ is again a representation of~$\glie$ via
       \[
         x.(v_1 \tensor \dotsb \tensor v_n)
@@ -357,7 +360,7 @@
           \tensor \dotsb
           \tensor v_n
       \]
-      for every~$x \in \glie$ and all~$v_i \in V_i$ with~$i = 1, \dotsc, n$.
+      for every~$x \in \glie$ and every simple tensor~$v_1 \tensor \dotsb \tensor v_n \in V_1 \tensor \dotsb \tensor V_n$.
     \item
       If~$V$ and~$W$ are two representations of~$\glie$ then~$\Hom_\kf(V,W)$ is again a representation of~$\glie$ via
       \[
@@ -674,6 +677,163 @@
   Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
   The representation~\gls*{quotient representation} from \cref{quotient representation} is the \defemph{quotient representation}\index{quotient!representations}\index{representation!quotient} of~$V$ by~$U$.
 \end{definition}
+
+
+\begin{lemma}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      If~$V$ is a representation of~$\glie$ then for every~$d \geq 0$ the exterior power~$\Exterior^d(V)$ is again a representation of~$\glie$ via
+      \[
+        x.(v_1 \wedge \dotsb \wedge v_d)
+        =
+        \sum_{i=1}^d
+        v_1 \wedge \dotsb \wedge v_{i-1} \wedge (x.v_i) \wedge v_{i+1} \wedge \dotsb \wedge v_d
+      \]
+      for every simple wedge~$v_1 \wedge \dotsb \wedge v_d \in \Exterior^d(V)$.
+    \item
+      If~$V$ is a representation of~$\glie$ then for every~$d \geq 0$ the symmetric power~$\Symm^d(V)$ is again a representation of~$\glie$ via
+      \[
+        x.(v_1 \dotsm v_d)
+        =
+        \sum_{i=1}^d
+        v_1 \dotsm v_{i-1} (x.v_i) v_{i+1} \dotsm v_d
+      \]
+      for every simple symmetric tensor~$v_1 \dotsm v_d \in \Symm^d(V)$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have~$\Exterior^d(V) = V^{\tensor d}/U$ for the linear suspace~$U$ of~$V^{\tensor d}$ given by
+      \[
+        U
+        =
+        \gen{
+          v_1 \tensor \dotsb \tensor v_d
+        \suchthat
+          \text{$v_1, \dotsc, v_d \in V$,~$v_i = v_j$ for some~$i \neq j$}
+        }_{\kf} \,.
+      \]
+      It sufficies to show that~$U$ is a subrepresentation of~$V^{\tensor d}$.
+      To see this let~$v_1 \tensor \dotsb \tensor v_d \in V^{\tensor d}$ be a simple tensor with~$v_i = v_j$ for some~$i < j$.
+      Then for every~$x \in \glie$,
+      \[
+        x.(v_1 \tensor \dotsb \tensor v_d)
+        =
+        \sum_{k=1}^d v_1
+        \tensor \dotsb \tensor v_{k-1}
+        \tensor (x.v_k)
+        \tensor v_{k+1} \tensor \dotsb \tensor v_d  \,.
+      \]
+      The summands for~$k \neq i,j$ are again contained in~$U$ as the tensor factors in the~{\howmanyth{$i$}} and~{\howmanyth{$j$}} place remain unchanged.
+      With~$w \defined v_i = v_j$ the two remaining summands may be rewritten as
+      \begin{align*}
+        {}&
+          v_1 \tensor \dotsb
+          \tensor (x.w)
+          \tensor \dotsb
+          \tensor w
+          \tensor \dotsb \tensor v_d
+        \\
+        {}&
+        + v_1 \tensor \dotsb
+          \tensor w
+          \tensor \dotsb
+          \tensor (x.w)
+          \tensor \dotsb \tensor v_d
+        \\
+        ={}&
+          v_1 \tensor \dotsb
+          \tensor (x.w + w)
+          \tensor \dotsb
+          \tensor (x.w + w)
+          \tensor \dotsb \tensor v_d
+        \\
+        {}&
+        - v_1 \tensor \dotsb
+          \tensor (x.w)
+          \tensor \dotsb
+          \tensor (x.w)
+          \tensor \dotsb \tensor v_d
+        \\
+        {}&
+        - v_1 \tensor \dotsb
+          \tensor w
+          \tensor \dotsb
+          \tensor w
+          \tensor \dotsb \tensor v_d  \,.
+      \end{align*}
+      This term is again contained in~$U$.
+      This shows altogether that~$U$ is indeed a subrepresentation of~$V^{\tensor d}$.
+    \item
+      Similarly to before we have to show that the linear subspace~$U$ of~$V^{\tensor d}$ given by
+      \[
+        U
+        \defined
+        \gen{
+          v_1 \tensor \dotsb \tensor v_d
+          - \sign(\sigma) v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)}
+        }_{\kf}
+      \]
+      is a subrepresentation of~$V^{\tensor d}$.
+      We denote the permutation action of the symmetric group~$S_d$ on the tensor power~$V^{\tensor d}$ by~$\sigma.t$ for all~$\sigma \in S_nd$ and~$t \in V^{\tensor d}$.
+      This action is on simple tensors given by
+      \[
+        \sigma.(v_1 \tensor \dotsb \tensor v_d)
+        =
+        v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)}  \,.%
+        \footnote{The observant reader will object that this formula does not give a left action but a right action.
+        We agree with the reader.
+        We have choosen our convention to make the following calculations more readable, and will restrict our choice of convention to this proof only.
+        }
+      \]
+      We fix~$x \in \glie$ and denote for every~$i = 1, \dotsc, n$ by~$X_i \colon V^{\tensor d} \to V^{\tensor d}$ the linear map that is given on simple tensors by
+      \[
+        X_i(v_1 \tensor \dotsb \tensor v_d)
+        =
+        v_1 \tensor \dotsb \tensor v_{i-1}
+        \tensor (x.v_i)
+        \tensor v_{i+1} \tensor \dotsb \tensor v_d  \,.
+      \]
+      
+      We observe the relation
+      \[
+        X_i( \sigma.t )
+        =
+        \sigma . X_{\sigma(i)}(t)
+      \]
+      for all~$\sigma \in S_d$,~$i = 1, \dotsc, n$ and~$t \in V^{\tensor d}$.
+      Indeed, if~$t = v_1 \tensor \dotsb \tensor v_d$ is a simple tensor then the~{\howmanyth{$i$}} tensor factor of the right hand side is given by the~{\howmanyth{$\sigma(i)$}} tensor factor of~$X_{\sigma(i)}(t)$, which is~$x.v_{\sigma(i)}$.
+      The~{\howmanyth{$i$}} tensor factor of the left hand side~$X_i(\sigma.t)$ is similarly given by~$x.v_{\sigma(i)}$.
+      All other tensor factors are on both sides permuted in the same way but otherwise unchanged, and hence also coincide for both sides.
+      
+      It follows that for every simple tensor~$t \in V^{\tensor d}$,
+      \begin{align*}
+        x.( t - \sigma.t )
+        &=
+        x.t - x.(\sigma.t)
+        \\
+        &=
+        \sum_{i=1}^n X_i(t) - \sum_{i=1}^n X_i(\sigma.t)
+        \\
+        &=
+        \sum_{i=1}^n X_i(t) - \sum_{i=1}^n \sigma.X_{\sigma(i)}(t)
+        \\
+        &=
+        \sum_{i=1}^n X_i(t) - \sum_{i=1}^n \sigma.X_i(t)
+        \\
+        &=
+        \sum_{i=1}^n \biggl( X_i(t) - \sigma.X_i(t) \biggr) \,,
+      \end{align*}
+      The summands~$X_i(t) - \sigma.X_i(t)$ are again contained in~$U$, so we have shown that~$U$ is indeed a subrepresentation of~$V^{\tensor d}$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
 
 
 
@@ -1068,11 +1228,9 @@
   It follows that if~$A$ is finite dimensional then all simple~{\modules{$A$}} are also finite dimensional, with their dimension uniformly bounded by the dimension of~$A$.
   
   The same does not hold for finite dimensional Lie~algebras:
-  If~$\glie$ is a finite dimensional Lie~algebra then the irreducible representations of~$\glie$ do not have to be finite dimensional again, and those irreducuble representations that are finite dimensional can have arbitrarily large dimension.
+  If~$\glie$ is a finite dimensional Lie~algebra then the irreducible representations of~$\glie$ do not have to be finite dimensional again, and those irreducible representations that are finite dimensional can have arbitrarily large dimension.
   
-  Indeed, we will later see that the Lie~algebra~$\sllie_2(\kf)$ admits for every~$n \geq 1$ precisely one irreducible representation up to isomorphism and that~$\sllie_2(\kf)$ also admits infinite dimensional irreducible representations.
-  (Although at most of countable dimension.)
-  % TODO: Prove this in sl2 theory.
+  Indeed, we will see in \cref{highest weight irreps for sl2} that the Lie~algebra~$\sllie_2(\kf)$ admits for every~$d \geq 1$ up to isomorphism precisely one irreducible representation of dimension~$d$ (if~$\kf$ is algebraically closed) and that~$\sllie_2(\kf)$ also admits infinite dimensional irreducible representations.
   
   But note that the following statements still hold any Lie~algebra~$\glie$:
   \begin{enumerate}

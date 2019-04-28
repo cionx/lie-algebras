@@ -472,20 +472,20 @@
 
 
 \begin{warning}
+  \label{generators of associated graded}
   Let~$A$ be a filtered~{\algebra{$\kf$}}
   \begin{enumerate}
     \item
       The map~$\gamma \colon A \to \gr(A)$ that assigns to each element~$x \in A$ the corresponding element of~$\gr(A)$ is in no way a homomorphism.
       It is in general neither multiplicative nor additive.
     \item
+      \label{generators of associated graded part}
       If~$x_i$,~$i \in I$ is a generating set for the algebra~$A$ then the associated elements of~$\gr(A)$ do not have to form a generating set for~$\gr(A)$.
-%     TODO: Add a reference to the universal eveloping algebra of heisenberg/sl2 later on.
   \end{enumerate}
 \end{warning}
 
 
 \begin{remark}
-  \label{generators of associated graded}
   Let~$A$ be a filtered algebra with finite algebra generating set~$x_1, \dotsc, x_n$ such that the generator~$x_i$ is of degree~$d_i$.
   Then the associated elements in~$\gr(A)$ form a set of algebra generators of~$\gr(A)$ if and only if the generators~$x_1, \dotsc, x_n$ are compatible with the filtration of~$A$ in the sense that for every~$i \geq 0$ the linear subspace~$A_{(i)}$ is spanned by all those monomials~$x_{i_1} \dotsm x_{i_p}$ with~$d_{i_1} + \dotsb + d_{i_p} \leq i$.
   See \cite{associated_generated} for more details on this.
@@ -893,27 +893,6 @@
   We have hence constructed a functor~$\gr \colon \cfAlg{\kf} \to \cgAlg{\kf}$.
 \end{construction}
 
-
-
-% TODO: Move this at the right position.
-% 
-% \begin{examples}
-%  \begin{enumerate}[leftmargin=*]
-%   \item
-%    Let $\glie$ be a $k$-Lie algebra. The canonical projection
-%    \[
-%     \pi \colon T(\g) \to \Univ(\glie), \quad x_1 \tensor \dotsb \tensor x_n \to x_1 \dotsm x_n
-%     \quad \text{for every $n \in \N$ and all $x_1, \dotsc, x_n \in \g$}
-%    \]
-%    is a homomorphism of filtered \algebras{$\kf$}, where the filtration of $T(\g)$ is induced by the gradation discussed in Examples \ref{expls: graded algebras}. Hence it induces a homomorphism of graded \algebras{$\kf$}
-%    \[
-%     \gr(\pi) \colon T(\g) \to \gr(\Univ(\glie)),
-%    \]
-%    where $T(\g)$ is identified with $\gr(T(\g))$ as above. This homomorphism maps an element $x_1 \tensor \dotsb \tensor x_n$ with $x_1, \dots, x_n \in \g$ to the residue class $[x_1 \dotsm x_n] \in \gr(\Univ(\glie))_n$.
-%  \end{enumerate}
-% \end{examples}
-% 
-% 
 
 \begin{lemma}
   Let~$A$ be a graded~{\algebra{$\kf$}}.
