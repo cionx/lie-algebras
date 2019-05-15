@@ -141,7 +141,7 @@
       It follows that
       \begin{gather*}
         \begin{aligned}
-        e.f.(x^n y^m) - f.e.(x^n y^m)
+        e . \spacing f . (x^n y^m) - f . e . (x^n y^m)
         &=
         (n+1)m x^n y^m - n(m+1) x^n y^m
         \\
@@ -167,7 +167,7 @@
         \end{aligned}
       \shortintertext{and}
         \begin{aligned}
-          h.f.(x^n y^m) - f.h.(x^n y^m)
+          h . \spacing f . (x^n y^m) - f . h . (x^n y^m)
           &=
           m(m-n-2) x^{n+1} y^{m-1} - m(m-n) x^{n+1} y^{m-1}
           \\
@@ -209,7 +209,7 @@
       for every~$n \geq 0$.
       This is indeed a representation of~$\glie$ because
       \begin{gather*}
-        e.f.x^n - f.e.x^n
+        e . \spacing f . x^n - f.e.x^n
         = -n(n+1) x^n + n(n-1) x^n
         = -2n x^n
         = h.x^n
@@ -221,7 +221,7 @@
         = 2e.x^n
         = [h,e].x^n
       \shortintertext{and}
-        h.f.x^n - f.h.x^n
+        h . \spacing f . x^n - f . h . x^n
         = 2n(n+1) x^{n+1} - 2 n^2 x^{n+1}
         = 2n x^{n+1}
         = -2 \spacing f.x^n
@@ -364,9 +364,9 @@
     \item
       If~$V$ and~$W$ are two representations of~$\glie$ then~$\Hom_\kf(V,W)$ is again a representation of~$\glie$ via
       \[
-        (x.f)(v)
+        (x.\spacing f)(v)
         =
-        x.f(v) - f(x.v)
+        x . \spacing f(v) - f(x.v)
       \]
       for all~$x \in \glie$,\,~$f \in \Hom_\kf(V,W)$ and~$v \in V$.
     \item
@@ -848,7 +848,7 @@
     \item
       A~{\linear{$\kf$}} map~$f \colon V \to W$ is a \defemph{homomorphism of representations}\index{homomorphism!of representations} if
       \[
-        f(x.v) = x.f(v)
+        f(x.v) = x.\spacing f(v)
       \]
       for all~$x \in \glie$ and~$v \in V$.
     \item
@@ -890,11 +890,11 @@
       \[
         f^{-1}(x.v)
         =
-        f^{-1}(x.f(\spacing f^{-1}(v)))
+        f^{-1}(x . \spacing f(\spacing f^{-1}(v)))
         =
-        f^{-1}(\spacing f(x.f^{-1}(v)))
+        f^{-1}(\spacing f(x . \spacing f^{-1}(v)))
         =
-        x.f^{-1}(v)
+        x . \spacing f^{-1}(v)
       \]
       for all~$x \in \glie$ and~$v \in V$.
     \item
@@ -921,10 +921,10 @@
   Indeed, we see that
   \begin{align*}
         {}& \text{$f$ is a homomorphism}  \\
-    \iff{}& \text{$f(x.v) = x.f(v)$ for all~$x \in \glie$ and~$v \in V$}  \\
-    \iff{}& \text{$f(x.v) - x.f(v) = 0$ for all~$x \in \glie$ and~$v \in V$}  \\
-    \iff{}& \text{$(x.f)(v) = 0$ for all~$x \in \glie$ and~$v \in V$} \\
-    \iff{}& \text{$x.f = 0$ for every~$x \in \glie$}  \\
+    \iff{}& \text{$f(x.v) = x.\spacing f(v)$ for all~$x \in \glie$ and~$v \in V$}  \\
+    \iff{}& \text{$f(x.v) - x.\spacing f(v) = 0$ for all~$x \in \glie$ and~$v \in V$}  \\
+    \iff{}& \text{$(x.\spacing f)(v) = 0$ for all~$x \in \glie$ and~$v \in V$} \\
+    \iff{}& \text{$x.\spacing f = 0$ for every~$x \in \glie$}  \\
     \iff{}& \text{$f$ is invariant} \,.
   \end{align*}
   Hence~$\Hom_{\glie}(V,W) = \Hom_\kf(V,W)^{\glie}$.
