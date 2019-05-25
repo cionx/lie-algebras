@@ -136,14 +136,60 @@
 
 \begin{corollary}
   \label{uea contains no zero divisors}
-  For every Lie~algebra~$\glie$ the universal enveloping algebra~$\Univ(\glie)$ contains no nonzero zero divisors.
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      The universal enveloping algebra~$\Univ(\glie)$ contains no nonzero zero divisors.
+    \item
+      If~$\glie$ is finite dimensional then~$\Univ(\glie)$ is both left noetherian and right noetherian.
+  \end{enumerate}
 \end{corollary}
 
 
 \begin{proof}
-  The statement holds for the associated graded algebra~$\gr(\Univ(\glie)) \cong \Symm(\glie)$ because it is an integral domain.
-  It follows from \cref{associated graded algebra and zero divisors} that this also holds for~$\Univ(\glie)$.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The statement holds for the associated graded algebra~$\gr(\Univ(\glie)) \cong \Symm(\glie)$ because it is an integral domain.
+      It follows from \cref{associated graded algebra and zero divisors} that this also holds for~$\Univ(\glie)$.
+    \item
+      If~$\glie$ is~{\dimensional{$n$}} then~$\gr(\Univ(\glie)) \cong \Symm(\glie) \cong k[t_1, \dotsc, t_n]$ is noetherian and therefore~$\Univ(\glie)$ is both left noetherian and right noetherian by \cref{universal enveloping reflects chain conditions}
+    \qedhere
+  \end{enumerate}
 \end{proof}
+
+
+\begin{lemma}
+  If~$\glie$ is any nonzero Lie~algebra then~$\Univ(\glie)$ is neither left artinian nor right artinian.
+\end{lemma}
+
+
+\begin{proof}
+  We show that~$\Univ(\glie)$ is not left artinian;
+  that~$\Univ(\glie)$ is not right artinian can then be shown in the same way.
+  
+  Let~$(x_i)_{i \in I}$ be a basis of~$\glie$ such that~$(I, \leq)$ is linearly ordered with maximal element~$j$.
+  Then for every~$m \geq 0$ the left ideal~$\Univ(\glie) x_j^m$ has as a basis all monomials~$x_{i_1}^{n_1} \dotsm x_{i_r}^{n_r} x_j^m$ with~$r \geq 0$,~$n_i \geq 0$ and~$i_1 < \dotsb < i_r < j$.
+  Therefore
+  \[
+    \Univ(\glie)
+    \supsetneq
+    \Univ(\glie) x_j
+    \supsetneq
+    \Univ(\glie) x_j^2
+    \supsetneq
+    \Univ(\glie) x_j^3
+    \supsetneq
+    \dotsb
+  \]
+  is a strictly decreasing sequence of left ideals in~$\Univ(\glie)$.
+\end{proof}
+
+
+\begin{remark}
+  There exist examples for infinite dimensional Lie~algebras whose universal enveloping algebras are not noetherian, see \cite{uea_of_witt_algebra_not_noetherian}.
+  It is (according to \cite[p.\ xix]{introduction_to_noncommutative_noetherian}) an open problem if the universal enveloping algebra of an infinite dimensional Lie~algebra must be non-noetherian.
+\end{remark}
 
 
 \begin{remark}
