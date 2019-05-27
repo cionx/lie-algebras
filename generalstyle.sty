@@ -293,6 +293,7 @@
 % delimiters
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\bil}{\langle}{\rangle}
+\DeclarePairedDelimiter{\inner}{(}{)}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
 \NewDocumentCommand{\restrict}{smmO{}}{
@@ -307,6 +308,16 @@
 }
 
 % decorations
+\RenewDocumentCommand{\check}{sm}{
+  \IfBooleanTF{#1}
+  {#2^{\vee}\!}
+  {#2^{\vee}}
+}
+\NewDocumentCommand{\dcheck}{sm}{
+  \IfBooleanTF{#1}
+  {#2^{\vee\vee}\!}
+  {#2^{\vee\vee}}
+}
 \newcommand{\class}{\overline}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
 \newcommand{\induced}{\overline}
