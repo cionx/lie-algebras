@@ -133,9 +133,9 @@
         =
         t \circ s_{\alpha} \circ t^{-1} \,.
       \]
-      Indeed, the transformation~$t s_{\alpha} t^{-1}$ maps the vetcor~$t(\alpha)$ to its negative, and fixes pointwise the hyperplane~$t(\alpha^\perp)$.
+      Indeed, the transformation~$t \circ s_{\alpha} \circ t^{-1}$ maps the vetcor~$t(\alpha)$ to its negative, and fixes pointwise the hyperplane~$t(\alpha^\perp)$.
       Now~$t(\alpha^\perp) = t(\alpha)^\perp$ since~$t$ is an isometry.
-      Hence~$t s_{\alpha} t^{-1}  = s_{t(\alpha)}$ as claimed.
+      Hence~$t \circ s_{\alpha} \circ t^{-1}  = s_{t(\alpha)}$ as claimed.
   \end{enumerate}
 \end{recall} 
 
@@ -204,7 +204,7 @@
         \{
           v \in H
         \suchthat
-          v - \pair{v, \check{\alpha}} \alpha = vs_{s_\alpha(\beta), \spacing s_{\check{\alpha}}(\check{\beta})}
+          v - \pair{v, \check{\alpha}} \alpha = v
         \}
         =
         \{
@@ -298,7 +298,9 @@
 \begin{recall}
   If~$f \colon V \to W$ is a linear map betblnde ween finite dimensional vector spaces~$V$ and~$W$ then there exists a unique linear map~$f^* \colon W^* \to V^*$ with
   \[
-    \pair{\spacing f(v), \varphi} = \pair{v, f^*(\varphi)}
+    \pair{\spacing f(v), \varphi}
+    =
+    \pair{v, \spacing f^*(\varphi)}
   \]
   for all~$v \in V$ and~$\varphi \in W^*$.
   The map~$f^*$ is the \defemph{dual}\index{dual map}\index{map!dual} or \defemph{transpose}\index{transpose map}\index{map!transpose} of~$f$, and is given by~$f^*(\varphi) \defined \varphi \circ f$.
