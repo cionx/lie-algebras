@@ -3,16 +3,21 @@
 
 \begin{convention}
   For this section let~$\kf$ be an arbitrary field of characteristic~$0$.
-  All occuring vector spaces are over~$\kf$ unless otherwise stated.
   We denote for every vector space~$V$ by~$\pair{-,-} \colon V \times V^* \to \kf$ the bilinear evaluation map~$\pair{v, \varphi} = \varphi(v)$.
 \end{convention}
+
+
+
+
+
+\subsection{Reflecting on Reflections}
 
 
 \begin{recall}
   \leavevmode
   \begin{enumerate}
     \item
-      Let~$V$ be a finite dimensional real product space with inner product~$\inner{-,-}$.
+      Let~$V$ be a finite dimensional real vector space with inner product~$\inner{-,-}$.
       Then for every linear subspace~$U$ of~$V$,
       \[
         V
@@ -26,26 +31,30 @@
         =
         v - 2 p(v)
       \]
-      for every~$v \in V$.
+      for every~$v \in V$.%
+      \footnote{The occuring factor~$2$ will appear frequently throughout this section.
+      We advise the reader to get friendly with it.}
       
-      If~$H$ is a hyperplane in~$V$, i.e.\ a linear subspace of codimension~$1$\index{hyperplane}, then the orthogonal complement~$H^\perp$ is {\onedimensional} and thus of the form~$H^\perp = \gen{\alpha}_{\kf}$ for some nonzero~$\alpha \in V$.
+      If~$H$ is a hyperplane in~$V$, i.e.\ a linear subspace of codimension~$1$\index{hyperplane}, then the orthogonal complement~$H^\perp$ is {\onedimensional} and thus of the form~$H^\perp = \gen{\alpha}_{\kf}$ for some nonzero vector~$\alpha \in V$.
       The orthogonal projection~$p$ onto~$H^\perp = \gen{\alpha}_{\kf}$ is given by
       \[
         p(v)
         =
-        \frac{\inner{v,\alpha}}{\inner{\alpha,\alpha}} \,.
+        \frac{\inner{v,\alpha}}{\inner{\alpha,\alpha}} \alpha \,.
       \]
+      Indeed, if~$v \in H$ then~$\inner{v,\alpha} = 0$ and thus~$p(v) = 0$, and~$p(\alpha) = \alpha$.
       The orthogonal reflection~$s$ at~$H$ is thus given by
       \[
         s(v)
         =
         v - 2 p(v)
         =
-        v - 2 \frac{\inner{v,\alpha}}{\inner{v,v}} \,.
+        v - 2 \frac{\inner{v,\alpha}}{\inner{v,v}} \alpha \,.
       \]
-      The reflection at~$H$ can thus be parametrized by~$\alpha$, and can therefore be denoted by~$s_\alpha$.
+      This shows how the reflection at~$H$ can be parametrized by~$\alpha$;
+      it is often denoted by~$s_\alpha$.
     \item
-      Suppose more generally that~$V$ is any vector space over an arbitrary field~$\kf$ and that~$(-,-)$ is a non-degenerate symmetric bilinear form on~$V$.
+      Suppose more generally that~$V$ is a finite dimensional vector space over an arbitrary field~$\kf$ and that~$(-,-)$ is a non-degenerate symmetric bilinear form on~$V$.
       Then for a subspace~$U$ of~$V$ the following conditions are equivalent (as seen in \cref{reviewing orthogonals}):
       \begin{equivalenceslist}
         \item
@@ -55,16 +64,16 @@
         \item
           The restriction~$\restrict{\inner{-,-}}{U^\perp}$ is non-degenerate.
       \end{equivalenceslist}
-      If these conditions are satisfied then we can again consider the orthogonal reflection at the linear subspace~$U$.
-      If~$H$ is a hyperplane in~$V$ then the orthogonal~$H^{\perp}$ is {\onedimensional} (since~$\dim V = \dim U + \dim U^\perp$) and thus of the form~$H^{\perp} = \gen{\alpha}_\kf$ for some nonzero~$\alpha \in V$.
-      That~$\restrict{\inner{-,-}}{H^\perp}$ is non-degenerate means~$\inner{\alpha, \alpha} \neq 0$.
-      The orthogonal reflection at~$H$ is then again given by
+      If these conditions are satisfied then we can again consider the \defemph{orthogonal reflection}\index{orthogonal reflection}\index{reflection!orthogonal} at the linear subspace~$U$.
+      
+      If~$H$ is a hyperplane in~$V$ then~$H^{\perp}$ is {\onedimensional} (as~$\dim V = \dim U + \dim U^\perp$) and thus of the form~$H^{\perp} = \gen{\alpha}_\kf$ for some nonzero vector~$\alpha \in V$.
+      The restriction~$\restrict{\inner{-,-}}{H^\perp}$ is non-degenerate if and only~$\inner{\alpha, \alpha} \neq 0$.
+      If this condition is satisfied then we can consider the orthogonal reflection at~$H$, which is then again given by
       \[
         s_\alpha(v)
         =
-        v - 2 \frac{\inner{v,\alpha}}{\inner{\alpha,\alpha}} \,.
+        v - 2 \frac{\inner{v,\alpha}}{\inner{\alpha,\alpha}} \alpha \,.
       \]
-      (Since this map fixes~$H$ pointwise and maps~$\alpha$ to~$-\alpha$.)
     \item
       In the above situation a map~$t \colon V \to V$ is an \defemph{isometry}\index{isometry} with respect to~$\inner{-,-}$ if
       \[
@@ -74,10 +83,11 @@
       \]
       for all~$v, w \in V$.
       Then~$t$ is necessarily invertible because~$\inner{-,-}$ is non-degenerate.
-      (If~$v \in \ker(t)$ then~$\inner{v,w} = \inner{t(v),t(w)} = 0$ for every~$w \in V$ and thus~$v = 0$.)
+      (If~$v \in \ker(t)$ then~$\inner{v,w} = \inner{t(v),t(w)} = 0$ for every~$w \in V$ and thus~$v = 0$.
+      This shows that~$t$ is injectiv and thus an isomorphism by the finite-dimensionality of~$V$.)
       
-      If~$\inner{\alpha, \alpha} \neq 0$ then the above reflection~$s_\alpha$ is such an isometry:
-      It sufficies to check the condition~$\inner{s_\alpha(v), s_\alpha(w)} = \inner{v,w}$ for~$v, w \in H, \gen{\alpha}_{\kf}$ because~$V = H \oplus \gen{\alpha}_{\kf}$.
+      If~$\inner{\alpha, \alpha} \neq 0$ then the reflection~$s_\alpha$ is such an isometry:
+      It sufficies to check the necessary condition~$\inner{s_\alpha(v), s_\alpha(w)} = \inner{v,w}$ for~$v, w \in H, \gen{\alpha}_{\kf}$ since~$V = H \oplus \gen{\alpha}_{\kf}$.
       For~$v, w \in \gen{\alpha}_{\kf}$ it furthermore sufficies to consider the case~$v, w = \alpha$.
       Then
       \begin{alignat*}{2}
@@ -118,7 +128,7 @@
         &=
         \inner{-\alpha, -\alpha}
         =
-        -\inner{\alpha,\alpha} \,.
+        \inner{\alpha,\alpha} \,.
         &
         {}
         &
@@ -126,40 +136,39 @@
       \end{alignat*}
       
       If~$t \colon V \to V$ is any isometry and~$\inner{\alpha, \alpha} \neq 0$ for some~$\alpha \in V$ then also~$\inner{t(\alpha), t(\alpha)} = \inner{\alpha, \alpha} \neq 0$.
-      We can then consider both the reflection~$s_\alpha$ and~$s_{t(\alpha)}$.
-      These are related by the formula
+      We can then consider both the reflection~$s_\alpha$ and the reflection~$s_{t(\alpha)}$.
+      These two reflections are related by the formula
       \[
         s_{t(\alpha)}
         =
         t \circ s_{\alpha} \circ t^{-1} \,.
       \]
-      Indeed, the transformation~$t \circ s_{\alpha} \circ t^{-1}$ maps the vetcor~$t(\alpha)$ to its negative, and fixes pointwise the hyperplane~$t(\alpha^\perp)$.
+      Indeed, the transformation~$t \circ s_{\alpha} \circ t^{-1}$ maps the vector~$t(\alpha)$ to its negative, and fixes pointwise the hyperplane~$t(\alpha^\perp)$.
       Now~$t(\alpha^\perp) = t(\alpha)^\perp$ since~$t$ is an isometry.
       Hence~$t \circ s_{\alpha} \circ t^{-1}  = s_{t(\alpha)}$ as claimed.
   \end{enumerate}
-\end{recall} 
+\end{recall}
 
 
 \begin{definition}
-  A \defemph{reflection}\index{reflection} in a vector space~$V$ is a map~$s \colon V \to V$ with~$s^2 = \id_V$ and such that the fixed subspace~$\{v \in V \suchthat s(v) = v\}$ has codimension~$1$.
+  A \defemph{reflection}\index{reflection} in a vector space~$V$ is a map~$s \colon V \to V$ with~$s^2 = \id_V$ and such that the fixed subspace~$\{v \in V \suchthat s(v) = v\}$ has codimension~one.
 \end{definition}
 
 
 \begin{lemma}
   Let~$V$ be a vector space and let~$s \colon V \to V$ be a linear map.
-  The following conditions on~$V$ are equivalent:
+  The following conditions on~$s$ are equivalent:
   \begin{enumerate}
     \item
       \label{is a reflection}
-      $s$ is a reflection.
+      The map~$s$ is a reflection.
     \item
       \label{is suitable diagonalizable}
-      $s$ is diagonalizable with~$V = V_+ \oplus V_-$ where~$V_+ = \{v \in V \suchthat s(v) = v\}$ has codimension~$1$ and~$V_- = \{v \in V \suchthat s(v) = -v\}$ is {\onedimensional}.
+      The map~$s$ is diagonalizable with~$V = V_+ \oplus V_-$ where~$V_+ = \{v \in V \suchthat s(v) = v\}$ has codimension~one and~$V_- = \{v \in V \suchthat s(v) = -v\}$ is {\onedimensional}.
     \item
       \label{existence of dual check}
-      There exist~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$ such that~$s(v) = v - \pair{v, \check{\alpha}} \alpha$ for every~$v \in V$.
+      There exist a vector~$\alpha \in V$ and a functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$ such that~$s(v) = v - \pair{v, \check{\alpha}} \alpha$ for every~$v \in V$.
   \end{enumerate}
-  Then~$V_+ = \ker(\alpha)$ and~$V_- = \gen{\alpha}_{\kf}$.
 \end{lemma}
 
 
@@ -186,7 +195,7 @@
         =
         v - \pair{v, \check{\alpha}} \alpha + \pair{v, \check{\alpha}} \alpha
         =
-        v \,.
+        v
         \notag
       \end{gather}
       for every~$v \in V$.
@@ -196,34 +205,34 @@
       \begin{equation}
         \label{hyperplane is kernel}
         \{
-          v \in H
+          v \in V
         \suchthat
           s(v) = v
         \}
         =
         \{
-          v \in H
+          v \in V
         \suchthat
           v - \pair{v, \check{\alpha}} \alpha = v
         \}
         =
         \{
-          v \in H
+          v \in V
         \suchthat
           \pair{v, \check{\alpha}} = 0
         \}
         =
         \ker(\check{\alpha})
       \end{equation}
-      has codimension~$1$.
+      has codimension~one.
 
     \item[\ref*{is a reflection}~$\implies$~\ref*{is suitable diagonalizable}]
       The endomorphism~$s$ satisfies the polynomial~$x^2 - 1 = (x-1)(x+1)$ and is therefore diagonalizable with possible eigenvalues~$1$ and~$-1$.
       Thus~$V = V_+ \oplus V_-$.
-      The space~$V_+$ has codimension~$1$ because~$s$ is a reflection, so~$V_-$ is {\onedimensional}.
+      The space~$V_+$ has codimension~one because~$s$ is a reflection, so~$V_-$ must be {\onedimensional}.
     \item[\ref*{is suitable diagonalizable}~$\implies$~\ref*{existence of dual check}]
       Let~$\alpha \in V_-$ be nonzero.
-      Then~$V = V_+ \oplus \gen{\alpha}_{\kf}$ and thus there exists a unique linear functional~$\check*{\alpha} \in V^*$ with~$\restrict{\check{\alpha}}{V_+} = 0$ and~$\pair{\alpha, \check{\alpha}} = 2$.
+      Then~$V = V_+ \oplus \gen{\alpha}_{\kf}$ and there hence   exists a unique linear functional~$\check*{\alpha} \in V^*$ with~$\restrict{\check{\alpha}}{V_+} = 0$ and~$\pair{\alpha, \check{\alpha}} = 2$.
       For the resulting linear map
       \begin{gather*}
         s_{\alpha, \check{\alpha}}
@@ -236,12 +245,16 @@
         \mapsto
         v - \pair{v, \check{\alpha}} \alpha
       \shortintertext{we have}
-        \restrict{s_{\alpha, \check{\alpha}}}{V_+}
+        s_{\alpha, \check{\alpha}}(v)
         =
-        \id_{V_+}
+        v - \pair{v, \check{\alpha}} \alpha
         =
-        \restrict{s}{V_+}
-      \shortintertext{and}
+        v - 0 \cdot \alpha
+        =
+        v
+        =
+        s(v)
+      \shortintertext{for every~$v \in V_+$ and}
         s_{\alpha, \check{\alpha}}(\alpha)
         =
         \alpha - \pair{\alpha, \check{\alpha}} \alpha
@@ -260,7 +273,7 @@
 
 \begin{definition}
   Let~$V$ be a vector space.
-  For~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ the \defemph{associated reflections} are the reflection
+  For any vector~$\alpha \in V$ and any functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$ the \defemph{associated reflections} are the reflection
   \begin{alignat*}{2}
     s_{\alpha, \check{\alpha}}
     &\colon
@@ -272,7 +285,7 @@
     v
     &\mapsto
     v - \pair{v, \check{\alpha}} \alpha
-  \shortintertext{and}
+  \shortintertext{and its dual reflection}
     s_{\check{\alpha}, \alpha}
     &\colon
     V^*
@@ -282,21 +295,75 @@
     \quad
     \varphi
     &\mapsto
-    \varphi - \check{\alpha, \varphi} \check{\alpha} \,.
+    \varphi - \pair{\alpha, \varphi} \check{\alpha} \,.
   \end{alignat*}
 \end{definition}
 
 
 \begin{remark}
-  Let~$V$ be a vector space and let~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
-  The element~$\alpha$ of~$V$ results in an element~$\dcheck{\alpha} \in V^{**}$ given by~$\pair{\varphi, \dcheck{\alpha}} = \pair{\alpha, \varphi}$ for every~$\varphi \in V^*$.
-  In particular~$\pair{\check{\alpha}, \dcheck{\alpha}} = \pair{\alpha, \check{\alpha}} = 2$.
-  It follows that~$s_{\check{\alpha}, \alpha} = s_{\check{\alpha}, \dcheck{\alpha}}$ is indeed a reflection.
+  \label{regarding general reflections}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$V$ be a vector space and let~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
+      The vector~$\alpha$ corresponds to an element~$\dcheck*{\alpha} \in V^{**}$ given by evaluation at~$\alpha$, i.e.\ by~$\pair{\varphi, \dcheck{\alpha}} = \pair{\alpha, \varphi}$ for every~$\varphi \in V^*$.
+      In particular~$\pair{\check{\alpha}, \dcheck{\alpha}} = \pair{\alpha, \check{\alpha}} = 2$.
+      Then~$s_{\check{\alpha}, \alpha} = s_{\check{\alpha}, \dcheck{\alpha}}$, which shows that~$s_{\check{\alpha}, \alpha}$ is indeed a reflection.
+    \item
+      \label{uniqueness of reflection parametrization}
+      Let~$V$ be vector space and let~$s \colon V \to V$ be a reflection with associated eigenspace decomposition~$V = V_+ \oplus V_-$ and explicit description~$s = s_{\alpha, \check{\alpha}}$ for some vector~$\alpha \in V$ and linear functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
+      We see from~$V_- = \gen{\alpha}_{\kf}$ that~$\alpha$ is unique up to nonzero scalar, and we see from~$V_+ = \ker(\check{\alpha})$ that~$\check{\alpha}$ is unique up to nonzero scalar.
+      Together with the condition~$\pair{\alpha, \check{\alpha}} = 2$ we see that the pair~$(\alpha, \check{\alpha})$ is unique up to the~{\action{$\kf^{\times}$}} given by~$\lambda.(\alpha, \check{\alpha}) = (\lambda \alpha, \lambda^{-1} \check{\alpha})$.
+      
+      If~$s$ is a given reflection then this shows that for every vector~$\alpha \in V$ with~$\alpha(v) = -v$ there exists precisely one linear functional~$\check*{\alpha} \in V^*$ with~$s = s_{\alpha, \check{\alpha}}$.
+  \end{enumerate}
 \end{remark}
 
 
+\begin{lemma}
+  \label{subspaces invariant under reflection}
+  Let~$V$ be a vector space and let~$s \colon V \to V$ a reflection.
+  Suppose that~$s = s_{\alpha, \check{\alpha}}$ for some vector~$\alpha \in V$ and linear functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
+  Then a linear subspace~$U$ of~$V$ is~{\invariant{$s$}} (in the sense that~$s(U) \subseteq U$) if and only if~$\alpha \in U$ or~$U \subseteq \ker(\check{\alpha})$.
+  In other words:
+  A linear subspace is~{\invariant{$s$}} if and only if it contains the flipped vector~$\alpha$ or if~$s$ acts trivially on it.
+\end{lemma}
+
+
+\begin{proof}[First proof]
+  Suppose first that~$U$ is~{\invariant{$s$}}.
+  If~$s$ does not act trivially on~$U$ then there exists some~$\beta \in U$ with~$s(\beta) \neq \beta$.
+  Then~$s(\beta) - \beta \in U$ is nonzero with~$s(\beta) - \beta = \pair{\beta, \check{\alpha}} \alpha$.
+  We then find~$\alpha \in U$.
+
+  If~$s$ acts trivially on~$U$ then~$U$ is pointwise fixed by~$s$ and thus~{\invariant{$s$}}.
+  
+  Suppose lastly that~$\alpha$ is contained in~$U$.
+  With respect to the decomposition~$V = \gen{\alpha}_{\kf} \oplus \ker(\check{\alpha})$ we can write every~$u \in U$ as~$u = \lambda \alpha + w$ for some~$\lambda \in \kf$ and~$w \in \ker(\check{\alpha})$.
+  Then
+  \[
+    s(u)
+    =
+    s(\lambda \alpha + w)
+    =
+    -\lambda \alpha + w \,.
+  \]
+  We have~$s(u) - u = -2 \lambda \alpha \in U$ and thus~$s(u) = u + (s(u)-u) \in U$.
+\end{proof}
+
+
+\begin{proof}[Second proof]
+  Let~$V = V_+ \oplus V_-$ be the eigenspace decomposition of~$V$ with respect to~$s$, given by~$V_- = \gen{\alpha}_{\kf}$ and~$V_+ = \ker(\check{\alpha})$.
+  The~{\invariant{$s$}} subspaces of~$V$ are precisely those of the form~$U = U_+ \oplus U_-$ where~$U_+$ is any linear subspace of~$V_+$ and~$U_-$ is any linear subspace of~$V_-$.
+  There are two cases such a subspace~$U$:
+  If~$U_- = 0$ then~$U = U_+$ is contained in~$V_+ = \ker(\check{\alpha})$.
+  Otherwise~$\gen{\alpha}_{\kf} = V_-$ is contained in~$U$.
+\end{proof}
+
+
 \begin{recall}
-  If~$f \colon V \to W$ is a linear map betblnde ween finite dimensional vector spaces~$V$ and~$W$ then there exists a unique linear map~$f^* \colon W^* \to V^*$ with
+  \label{recalling the transposed map}
+  If~$f \colon V \to W$ is a linear map between finite dimensional vector spaces~$V$ and~$W$ then there exists a unique linear map~$f^* \colon W^* \to V^*$ with
   \[
     \pair{\spacing f(v), \varphi}
     =
@@ -304,7 +371,7 @@
   \]
   for all~$v \in V$ and~$\varphi \in W^*$.
   The map~$f^*$ is the \defemph{dual}\index{dual map}\index{map!dual} or \defemph{transpose}\index{transpose map}\index{map!transpose} of~$f$, and is given by~$f^*(\varphi) \defined \varphi \circ f$.
-  We find that
+  We find
   \begin{gather*}
     \ker( \spacing f^*(\varphi) )
     =
@@ -326,13 +393,15 @@
     \end{aligned}
   \end{gather*}
   for every~$v \in V$.
-  If~$f$ is invertible then so is~$f^*$ with~$(\spacing f^*)^{-1} = (\spacing f^{-1})^* \defines f^{-*}$.
+  If~$f$ is an isomorphism then~$f^*$ is again an isomorphism, and then~$(\spacing f^*)^{-1} = (\spacing f^{-1})^*$.
+  We denote this linear map by~$f^{-*}$.
 \end{recall}
 
 
 \begin{lemma}
+  \label{properties of reflections}
   Let~$V$ be a finite dimensional vector space.
-  Let~$\alpha \in V$ and~$\check{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$, and let~$t \colon V \to V$ be an isomorphism.
+  Let~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$, and let~$t \colon V \to V$ be any vector space isomorphism.
   Then
   \begin{enumerate}
     \item
@@ -347,7 +416,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      We have for every~$\varphi \in V^*$ and~$v \in V$ that
+      We have
       \begin{align*}
         \pair{v, s_{\alpha, \check{\alpha}}^*(\varphi)}
         &=
@@ -365,9 +434,9 @@
         &=
         \pair{v, s_{\check{\alpha}, \alpha}(\varphi)}
       \end{align*}
-      and hence~$s_{\alpha, \check{\alpha}}^* = s_{\check{\alpha}, \alpha}$ is claimed.
+       for all~$\varphi \in V^*$ and~$v \in V$, and hence~$s_{\alpha, \check{\alpha}}^* = s_{\check{\alpha}, \alpha}$ as claimed.
     \item
-      It holds that
+      The reflection~$s_{t(\alpha), t^{-*}(\check{\alpha})}$ is well-defined because
       \[
         \pair{t(\alpha), t^{-*}(\check{\alpha})}
         =
@@ -375,133 +444,674 @@
         =
         \pair{\alpha, \check{\alpha}}
         =
-        2
+        2 \,.
       \]
-      whence the reflection~$s_{t(\alpha), t^{-*}(\check{\alpha})}$ is well-defined.
-      The associated hyperplane that is pointwise fixed by~$s_{t(\alpha), t^{-*}(\check{\alpha})}$ is given by
+      The vector~$t(\alpha)$ is flipped by~$s_{t(\alpha), t^{-*}(\check{\alpha})}$ and also flipped by~$t \circ s_{\alpha, \check{\alpha}} \circ t^{-1}$ because~$s_{\alpha, \check{\alpha}}$ flips the vector~$\alpha$.
+      The reflection hyperplane of~$s_{t(\alpha), t^{-*}(\check{\alpha})}$ is given by
       \[
         \ker(t^{-*}(\check{\alpha}))
         =
         \ker((t^{-1})^*(\check{\alpha}))
         =
-        (t^{-1})^{-1}(\check{\alpha})
+        (t^{-1})^{-1}(\ker(\check{\alpha}))
         =
-        t(\ker(\check{\alpha}) \,.
+        t(\ker(\check{\alpha})) \,.
       \]
+      (The second equality was explained in \cref{recalling the transposed map}.)
       This hyperplane is also pointwise fixed by~$t \circ s_{\alpha, \check{\alpha}} \circ t^{-1}$ because~$s_{\alpha, \check{\alpha}}$ fixes pointwise the hyperplane~$\ker(\check{\alpha})$.
-      The vector~$t(\alpha)$ is flipped by~$s_{t(\alpha), t^{-*}(\check{\alpha})}$ and also flipped by~$t \circ s_{\alpha, \check{\alpha}} \circ t^{-1}$ because~$s_{\alpha, \check{\alpha}}$ flips the vector~$\alpha$.
-      This shows that indeed~$t \circ s_{\alpha, \check{\alpha}} \circ t^{-1} = s_{t(\alpha), t^{-*}(\alpha)}$.
+      
+      This shows together that indeed~$t \circ s_{\alpha, \check{\alpha}} \circ t^{-1} = s_{t(\alpha), t^{-*}(\check{\alpha})}$.
     \qedhere
   \end{enumerate}
 \end{proof}
 
-% 
-% \begin{lemma}
-%   Let~$V$ be a vector space.
-%   Let~$\alpha, \beta \in V$ and~$\check{\alpha}, \check*{\beta} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = \pair{\beta, \check{\beta}} = 2$.
-%   We abbreviate the reflection~$s_{\alpha, \check{\alpha}}$ and~$s_{\check{\alpha}, \alpha}$ by~$s_\alpha$ and~$s_{\check{\alpha}}$, and similarly for~$s_{\beta, \check{\beta}}$ and~$s_{\check{\beta}, \beta}$.
-%   Then
-%   \begin{enumerate}
-%     \item
-%       $s_{\check{\alpha}} = s_\alpha^*$ and
-%     \item
-%       $s_\alpha s_\beta s_\alpha^{-1} = s_{s_\alpha(\beta), \spacing s_{\check{\alpha}}(\check{\beta})}$.
-%   \end{enumerate}
-% \end{lemma}
-
-% 
-% \begin{definition}
-%  Let~$V$ be a vector space.
-%  For~$v \in V$ and~$\lambda \in V^*$ the evaluation of~$\lambda$ at~$v$ is denoted by
-%  \[
-%   \pair{v, \lambda}
-%   \defined
-%   \pair{\lambda, v}
-%   \defined
-%   \lambda(v)  \,.
-%  \]
-% \end{definition}
-% 
-% 
-% \begin{definition}
-%   Let~$V$ be a finite dimensional vector spaces.
-%   A subset~$R$ of~$V$ is an \defemph{\textup(abstract\textup) root system}\index{root system} (in~$V$) if it satisfies the following conditions:
-%   \begin{enumerate}
-%     \item
-%       $R$ is finite,~$0 \notin R$ and~$R$ spans~$V$ as a vector space.
-%     \item
-%       For every~$\alpha \in R$ there exists some~$\alpha^\vee \in V^*$ such that~$\alpha^\vee(\alpha) = 2$ and~$S_{\alpha, \alpha^\vee}(R) \subseteq R$ for the linear map
-%       \[
-%         S_{\alpha, \alpha^\vee}
-%         \colon
-%         V
-%         \to
-%         V,
-%         \quad
-%         v
-%         \mapsto
-%         v - \pair{v, \alpha^\vee}\alpha \,.
-%       \]
-%     \item
-%       $\pair{\alpha, \beta^\vee} \in \Integer$ for all~$\alpha, \beta \in R$.
-%   \end{enumerate}
-%     The root system~$R$ is \defemph{reduced}\index{reduced root system}\index{root system!reduced} if~$\kf \alpha \cap R = \{-\alpha, \alpha\}$ for every~$\alpha \in R$, i.e.\ if the only multiples of~$\alpha$ which are also roots are~$\alpha$ and~$-\alpha$.
-%     The~\defemph{rank} of the root system~$R$ is the dimension of~$V$.
-% \end{definition}
-% % 
-% % 
-% % \begin{remark}\label{rem: -alpha also in the root system}
-% %  Notice that if $V$ is a finite dimensional vector space and $R \subseteq V$ a root system with $\alpha \in R$ then also
-% %  \[
-% %   -\alpha = \alpha - 2 \alpha = \alpha - \pair{\alpha, \alpha^\vee} \alpha = S_{\alpha, \alpha^\vee}(\alpha) \in R.
-% %  \]
-% % \end{remark}
-% % 
-% % 
-% % \begin{lemma}
-% %  Let $V$ be a finite dimensional $k$-vector space and $R \subseteq V$ a root system. Then the element $\alpha^\vee \in V$ with $\alpha^\vee(\alpha) = 2$ is unique.
-% % \end{lemma}
-% % \begin{proof}
-% %  Let $\alpha^\vee, \tilde{\alpha}^\vee \in V^*$ with $\alpha^\vee(\alpha) = \tilde{\alpha}^\vee(\alpha) = 2$ and $s(R) \subseteq R$ as well as $t(R) \subseteq R$ for $s \coloneqq S_{\alpha, \alpha^\vee}$ and $t \coloneqq S_{\alpha, \tilde{\alpha}^\vee}$. Notice that $s(\alpha) = t(\alpha) = -\alpha$ as already seen in Remark~\ref{rem: -alpha also in the root system}.
-% %  
-% %  By induction on $n$ it follows that
-% %  \begin{equation}\label{eqn: iterated composition of reflections}
-% %   (s \circ t)^n(x) =  x - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} \alpha
-% %   \quad \text{for every $x \in V$ and $n \geq 1$}.
-% %  \end{equation}
-% %  For $n = 1$ this holds because
-% %  \begin{align*}
-% %   s(t(x))
-% %   &= s(x - \pair{x, \tilde{\alpha}^\vee}\alpha)
-% %   = s(x) - \pair{x, \tilde{\alpha}^\vee} s(\alpha) \\
-% %   &= x - \pair{x, \alpha^\vee}\alpha + \pair{x, \tilde{\alpha}^\vee}\alpha
-% %   = x - \pair{x, \alpha^\vee - \tilde{\alpha}^\vee} \alpha.
-% %  \end{align*}
-% %  If the formula holds for some $n \geq 1$ then
-% %  \begin{align*}
-% %   (s \circ t)^{n+1}(x)
-% %   &= s(t(x - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} \alpha))
-% %   = s(t(x)) - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} s(t(\alpha)) \\
-% %   &= x - \pair{x, \alpha^\vee - \tilde{\alpha}^\vee} \alpha - n\pair{x,\alpha^\vee - \tilde{\alpha}^\vee} s(t(\alpha)) \\
-% %   &= x - (n+1)\pair{x, \alpha^\vee - \tilde{\alpha}^\vee} \alpha.
-% %  \end{align*}
-% %  
-% %  Because $s$ and $t$ are automorphisms of $V$ (as a $k$-vector space) the same goes for $s \circ t$. Because $(s \circ t)(R) = s(t(R)) \subseteq s(R) \subseteq R$ and $R$ is finite it follows that the restriction $(s \circ t)|_R$ is a permutation of $R$. Since $R$ is finite $(s \circ t)|_R$ has finite order, i.e.\ there exists some $n \geq 1$ with $(s \circ t)^n|_R = \id_R$. Because $R$ spans $V$ it already follows that $(s \circ t)^n = \id_V$. Together with \eqref{eqn: iterated composition of reflections} it follows that $\pair{x, \alpha^\vee - \tilde{\alpha}^\vee} = 0$ for every $x \in V$, so $\alpha^\vee - \tilde{\alpha}^\vee = 0$ as seen in Remark~\ref{rem: natural pairing is nondegenerate}.
-% % \end{proof}
-% % 
-% % 
-% 
 
 
 
 
+\subsection{Abstract Root Systems}
 
 
+\begin{lemma}[Uniqueness of reflections]
+  \label{uniqueness of reflections}
+  Let~$R$ be a finite generating set of a vector space~$V$ and let~$s, t \colon V \to V$ be two reflections that leave~$R$ invariant (in the sense that~$s(R), t(R) = R$) and such that~$s(\alpha), t(\alpha) = -\alpha$ for some nonzero vector~$\alpha \in R$.
+  Then~$s = t$.
+\end{lemma}
 
 
+\begin{proof}
+  We may write the reflections~$s$ and~$t$ in the form~$s = s_{\alpha, \check{\alpha}}$ and~$t = s_{\alpha, \check{\beta}}$ for some~$\check{\alpha}, \check*{\beta} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = \pair{\alpha, \check{\beta}} = 2$.
+  Then
+  \begin{align*}
+    (t \circ s)(v)
+    &=
+    t(s(v))
+    \\
+    &=
+    t\bigl( v - \pair{v, \check{\alpha}} \alpha \bigr)
+    \\
+    &=
+    t(v) - \pair{v, \check{\alpha}} t(\alpha)
+    \\
+    &=
+    v - \pair{v, \check{\beta}} \alpha + \pair{v, \check{\alpha}} \alpha
+    \\
+    &=
+    v - \pair{v, \check{\beta} - \check{\alpha}} \alpha \,.
+  \end{align*}
+  With~$(t \circ s)(\alpha) = \alpha$ we find inductively
+  \begin{equation}
+    \label{inductive reflection formula}
+    (t \circ s)^n(v)
+    =
+    v - n \pair{v, \check{\beta} - \check{\alpha}} \alpha
+  \end{equation}
+  for every~$n \geq 0$.
+  
+  The restriction of~$t \circ s$ to~$R$ is a permuation of~$R$, which is a finite set.
+  There hence exists some power~$n \geq 1$ with~$\restrict{(t \circ s)^n}{R} = \id_{R}$.
+  Then already~$(t \circ s)^n = \id_V$ since~$V$ is spanned by~$R$.
+  It follows from the formula~\eqref{inductive reflection formula} (and~$\ringchar(\kf) = 0$,~$\alpha \neq 0$) that~$\pair{v, \check{\beta} - \check{\alpha}} = 0$ for every~$v \in V$.
+  Thus~$\check{\beta} - \check{\alpha} = 0$ and therefore~$\check{\alpha} = \check{\beta}$.
+  This shows that indeed~$s = s_{\alpha, \check{\alpha}} = s_{\alpha, \check{\beta}} = t$.
+\end{proof}
 
 
+\begin{example}[Motivation]
+  Let~$\glie$ be a finite dimensional semisimple Lie~algebra over an algebraically closed field~$\kf$ of characteristic zero.
+  Let~$\hlie$ be a Cartan~subalgebra of~$\glie$ and let~$R \defined \Phi(\glie, \hlie)$ be the associated set of roots, which is a subset of~$\hlie^*$.
+  For every~$\alpha \in R$ let~$h_\alpha \in \hlie$ as explained in \cref{construction of S alpha}.
+  Every leement~$h_\alpha$ defines an element~$\check*{\alpha} \in \hlie^{**}$ that is given by evaluation at~$h_\alpha$.
+  We have previously made the following observations:
+  \begin{itemize}
+    \item
+      The set~$R$ does not contain~$0$ (by definition) and is finite (because~$\glie$ is finite dimensional).
+    \item
+      The set~$R$ spans~$\hlie^*$ (by \cref{basics properties of roots}).
+    \item
+      For every~$\alpha \in R$ the multiples of~$\alpha$ that are again contained in~$R$ are precisely~$\alpha$ and~$-\alpha$ (by \cref{roots spaces are onedimensional and reduced}).
+    \item
+      We have~$\pair{\alpha, \check{\beta}} \in \Integer$ for all~$\alpha, \beta \in R$ (by \cref{integral and reflection properties of root pairing}).
+    \item
+      We have~$s_{\alpha, \check{\alpha}}(\beta) \in R$ for all~$\alpha, \beta \in R$ (by \cref{integral and reflection properties of root pairing}).
+  \end{itemize}
+  Motivated by this example we make the following definition:
+\end{example}
 
+
+\begin{definition}
+  Let~$V$ be a vector space.
+  A subset~$R$ of~$V$ is an \defemph{abstract root system}\index{abstract!root system}\index{root system!abstract}, or simply \defemph{root system}\index{root system} if it satisfies the following conditions:
+  \begin{enumerate}
+    \item
+      The vector space~$V$ is spanned by~$R$, and~$0 \notin R$.
+    \item
+      For every element~$\alpha$ there exists some~$\check*{\alpha} \in V^*$ with~$s_{\alpha, \check{\alpha}}(R) \subseteq R$.
+  \end{enumerate}
+  The root system~$R$ is \defemph{reduced}\index{reduced root system}\index{root system!reduced} if
+  \begin{enumerate}[resume]
+    \item
+      for every~$\alpha \in R$ the only multiples of~$\alpha$ that are again contained in~$R$ are~$\alpha$ and~$-\alpha$.
+  \end{enumerate}
+  The root system~$R$ is \defemph{crystallographic}\index{crystallographic root system}\index{root system!crystallographic} if
+  \begin{enumerate}[resume]
+    \item
+      $\pair{\alpha, \check{\beta}} \in \Integer$ for all~$\alpha, \beta \in R$.
+  \end{enumerate}
+  The elements of~$R$ are the \defemph{roots}\index{root}, and the \defemph{coroots}\index{coroot}\index{root system!coroot} are the elements of the set
+  \[
+    \check{R}
+    \defined
+    \{
+      \check{\alpha}
+    \suchthat
+      \alpha \in R
+    \} \,.
+  \]
+\end{definition}
+
+
+\begin{remark}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      If~$R$ is a root system in a vector space~$V$ then~$V$ is necessarily finite dimensional since~$V$ is spanned by~$R$, which is finite.
+    \item
+      It follows from \cref{uniqueness of reflections} that for every~$\alpha \in R$ the reflection~$s_{\alpha, \check{\alpha}}$ is uniquely determined by~$\alpha$.
+      It further follows from \cref{regarding general reflections} that~$\check{\alpha}$ is uniquely determined by~$\alpha$.
+      This shows that for every~$\alpha \in R$ the corresponding coroot is well-defined.
+      We can (and will) therefore abbreviate~$s_{\alpha, \check{\alpha}}$ by~$s_\alpha$ when dealing with a fixed root system~$R$.
+    \item
+      We have for every~$\alpha \in R$ that~$-\alpha = s_\alpha(\alpha) \in R$.
+      That~$R$ is reduced is therefore only a restriction on which multiples of~$\alpha$ are allowed to be contained in~$R$, but make no additional requirement on which multiples of~$\alpha$ are to appear in~$R$.
+    \item
+      For the study of semisimple Lie~algebras we will be interested in root systems that are both reduced and crystallographic.
+      But at least for now we will not assume these conditions.
+  \end{enumerate}
+\end{remark}
+
+
+\begin{definition}
+  Let~$R$ and~$R'$ be root systems in finite dimensional vector spaces~$V$ and~$V'$.
+  An \defemph{isomorphism of root systems}\index{isomorphism!of root systems}\index{root system!isomorphism}~$(V,R) \to (V',R')$ is an isomorphism of vector spaces~$f \colon V \to V'$ with~$f(R) = R'$ such that for all~$\alpha, \beta \in R$,
+  \[
+    \pair{\alpha, \check{\beta}}
+    =
+    \pair{\spacing f(\alpha), \spacing \check{f(\beta)}} \,.
+  \]
+\end{definition}
+
+
+\begin{remark}
+  If~$f \colon (V,R) \to (V',R')$ is an isomorphism of roots systems, then~$f^{-1}$ is an isomorphism of root systems~$(V',R') \to (V,R)$.
+  If~$f \colon (V, R) \to (V', R')$ and~$g \colon (V', R') \to (V'', R'')$ are isomorphisms of root systems then their composition~$g \circ f$ is an isomorphism of root systems~$(V, R) \to (V'', R'')$.
+  Isomorphism of root systems is therefore an equivalence relation.
+\end{remark}
+
+
+\begin{lemma}
+  \label{induced root system of subspace}
+  Let~$R$ be a root system in a vector space~$V$ and let~$U$ be a linear subspace of~$V$.
+  Then~$R' \defined R \cap U$ is a root system in its span.
+  If~$R$ is reduced or crystallographic the the same holds for~$R'$.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$U'$ be the span of~$R'$.
+  The proposed coroot of~$\alpha \in R'$ is is the restriction~$\restrict{\check{\alpha}}{U'} \in (U')^*$, where~$\check{\alpha} \in V^*$ denotes the coroot of~$\alpha$ as an element of the full root system~$R$.
+  We have
+  \[
+    \pair{\alpha, \restrict{\check{\alpha}}{U'}}
+    =
+    \pair{\alpha, \check{\alpha}}
+    =
+    2 \,,
+  \]
+  and if~$\beta \in R'$ then the vector
+  \[
+    s_{\alpha, \restrict{\check{\alpha}}{U'}}(\beta)
+    =
+    \beta - \pair{\beta, \restrict{\check{\alpha}}{U'}} \alpha
+    =
+    \beta - \pair{\beta, \check{\alpha}} \alpha
+    =
+    s_{\alpha,\check{\alpha}}(\beta)
+  \]
+  is again contained in~$R$ (since~$R$ is a root system) and also again contained in~$U'$ (since both~$\alpha$ and~$\beta$ are contained in~$U'$), and thus contained in~$R'$.
+  This shows that~$R'$ is indeed a root system in~$U'$.
+  
+  Suppose that~$R$ is reduced.
+  If~$\alpha \in R'$ then every multiple of~$\alpha$ contained in~$R'$ is also a multiple of~$\alpha$ contained in~$R$, of which there are only~$\alpha$ and~$-\alpha$.
+  Thus~$R'$ is reduced.
+  
+  If~$R$ is crystallographic then~$\pair{\alpha, \restrict{\check{\beta}}{U'}} = \pair{\alpha, \check{\beta}} \in \Integer$ for all~$\alpha, \beta \in R'$, so~$R'$ is again crystallographic.
+\end{proof}
+
+
+\begin{corollary}
+  \label{decomposition of root systems}
+  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R = R_1 \cup \dotsb \cup R_n$ be a decomposition into subsets~$R_i$, and let~$V_i$ be the span of~$R_i$ for every~$i = 1, \dotsc, n$.
+  If~$V = V_1 \oplus \dotsb \oplus V_n$ then~$R_i$ is a root system in~$V_i$ for every~$i = 1, \dotsc, n$.
+\end{corollary}
+
+
+\begin{proof}
+  This follows from \cref{induced root system of subspace} since for every~$i = 1, \dotsc, n$,~$V_i \cap R = R_i$ and~$R_i$ spans~$V_i$.
+\end{proof}
+
+
+\begin{remark}
+  In the situation of \cref{decomposition of root systems} the subsets~$R_1, \dotsc, R_n$ are necessarily pairwise disjoint because the sum~$V = V_1 \oplus \dotsb \oplus V_n$ is direct and no~$R_i$ contains the zero vector (which is the only common element of~$V_i$ and~$V_j$ for~$i \neq j$).
+  The decomposition~$R = R_1 \cup \dotsb R_n$ is therefore necessarily disjoint, so that~$R = R_1 \dcup \dotsb \dcup R_n$.
+\end{remark}
+
+
+\begin{definition}
+  A root system~$R$ is a vector space~$V$ is \defemph{reducible}\index{reducible root system}\index{root system!reducible}%
+  \footnote{Not to be confused with \emph{reduced}.}
+  if there exists a decomposition~$R = R_1 \dcup \dotsb \dcup R_n$ into nonempty root systems~$R_i$ as in \cref{decomposition of root systems}.
+  The root system~$R$ is then the \defemph{product}\index{product of root systems}\index{root system!product} of~$R_1, \dotsc, R_n$, and this is denoted by~$R = R_1 \times \dotsb \times R_n$.
+  If~$R$ is nonempty (i.e.\ if~$V \neq 0$) and not reducible then it is \defemph{irreducible}\index{irreducible root system}\index{root system!irreducible}.
+\end{definition}
+
+
+% \begin{example}[External union of root systems]
+%   Let~$V_1, \dotsc, V_n$ be finite dimensional vector spaces, and for every~$i = 1, \dotsc, n$ let~$R_i$ be a root system in~$V_i$.
+%   The~$R_i$ assemble to a root system~$R$ of~$V \defined V_1 \oplus \dotsc \oplus V_n$:
+%   
+%   We can regard every~$V_i$ as a subspace of~$V$, and hence every~$\alpha \in R_i$ as an element of~$V$.
+%   In~$V$ we can thus consider the disjoint union~$R \defined R_1 \dcup \dotsb \dcup R_n$.
+%   By using the isomorphism
+%   \[
+%     V^*
+%     =
+%     (V_1 \oplus \dotsb \oplus V_n)^*
+%     \cong
+%     V_1^* \oplus \dotsb \oplus V_n^*
+%   \]
+%   
+%   Then~$R$ is a root system in~$V$ with coroots~$\check{R} = \check{R_1} \dcup \dotsb \dcup \check{R_n}$:
+%   
+%   Every~$R_i$ spans~$V_i$ whence~$R$ spans~$V$.
+%   For every~$\alpha \in R$ with~$\alpha \in R_i$ the coroot~$\check{\alpha}$, when regarded as an element of~$V^*$, satisfies~$\pair{\alpha, \check{\alpha}} = 2$ and~$\pair{\beta, \check{\alpha}} = 0$ for every~$\beta \in R_j$ with~$j \neq i$.
+%   Then~$s_{\alpha, \check{\alpha}}(\beta) = \beta$ for every~$\beta \in R_j$ with~$i \neq j$, and~$s_{\alpha, \check{\alpha}}(R_i) = R_i$.
+%   Thus~$R$ is a root system as claimed.
+% \end{example}
+
+
+\begin{proposition}[Properties of decompositions]
+  \label{properties of decompositions}
+  Let~$R$ be a root system in a vector space~$V$ that admits a decomposition~$R = R_1 \times \dotsb \times R_n$.
+  For every~$i = 1, \dotsc, n$ let~$V_i$ be the span of~$R_i$.
+  \begin{enumerate}
+    \item
+      \label{root summands are orthogonal}
+      If~$\alpha \in R_i$ and~$\beta \in R_j$ with~$i \neq j$ then~$\pair{\alpha, \check{\beta}} = 0$ and~$s_\alpha(\beta) = \beta$.
+    \item
+      The root system~$R$ is reduced if and only if each~$R_i$ is reduced.
+    \item
+      The root system~$R$ is crystallographic if and only if each~$R_i$ is crystallographic.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have~$s_\beta(\alpha) \in R_k$ for some~$k$, and thus~$s_\beta(\alpha) \in V_k$.
+      But~$s_\beta(\alpha) = \alpha - \pair{\alpha, \check{\beta}} \beta$ admits with respect to the decomposition~$V = V_1 \oplus \dotsb \oplus V_n$ a nonzero component in~$V_i$ (namely~$\alpha$), whence~$k = i$.
+      It follows that the component of~$s_\beta(\alpha)$ in~$V_j$ must be zero, i.e.\ that~$\pair{\alpha, \check{\beta}} \beta = 0$, whence~$\pair{\alpha, \check{\beta}} = 0$.
+      In particular~$s_\beta(\alpha) = \alpha$.
+    \item
+      If~$\alpha \in R$ then~$\alpha \in R_i$ for some~$i$ and then~$\gen{\alpha}_{\kf} \cap R_i = \gen{\alpha}_{\kf} \cap V_i \cap R = \gen{\alpha}_{\kf} \cap R$.
+      Thus~$R$ is non-reduced if and only if some~$R_i$ is non-reduced.
+    \item
+      It follows from part~\ref*{root summands are orthogonal} that the two sets
+      \[
+        \{
+          \pair{\alpha, \check{\beta}}
+        \suchthat
+          \alpha, \beta \in R
+        \}
+        \quad\text{and}\quad
+        \{
+          \pair{\alpha, \check{\beta}}
+        \suchthat
+          \text{$\alpha, \beta \in R_i$ for some~$i = 1, \dotsc, n$}
+        \}
+      \]
+      differ at most by the element~$0$.
+      That~$R$ is crystallographic means that the left hand side consists only of integers, and that~$R_1, \dotsc, R_n$ are all crystallographic means that the right hand side consists only of integers.
+      Thankfully~$0$ is an integer, so both conditions are equivalent.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{corollary}
+  \label{reflection fixes other summands}
+  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R = R_1 \times \dotsb \times R_n$ be a decomposition into root systems~$R_i$ with spans~$V_i$.
+  Then for every~$\alpha \in R_i$ the reflection~$s_\alpha$ fixes pointwise all~$V_j$ with~$j \neq i$.
+\end{corollary}
+
+
+\begin{proof}
+  This follows from part~\ref*{root summands are orthogonal} of \cref{properties of decompositions}.
+\end{proof}
+
+
+\begin{lemma}
+  \label{common refinement of root system decomposition}
+  Let~$R$ be a root system in a vector space~$V$ with two decompositions~$R = R_1 \times \dotsb \times R_n$ and~$R = R'_1 \times \dotsb \times R'_m$ into root systems~$R_i$ and~$R'_j$.
+  Then the two decompositions can be refined to the decomposition~$R = \prod_{i,j} (R_i \cap R'_j)$ into root systems~$R_i \cap R'_j$.
+\end{lemma}
+
+
+\begin{proof}
+  For every~$i = 1, \dotsc, n$ let~$V_i$ be the span of~$R_i$, and for every~$j = 1, \dotsc, m$ let~$V'_j$ be the span of~$R'_j$.
+  The disjoint decomposition~$R = R'_1 \dcup \dotsb \dcup R'_m$ gives for every~$i = 1, \dotsc, n$ a decomposition
+  \[
+    R_i
+    =
+    (R_i \cap R'_1) \dcup \dotsb \dcup (R_i \cap R'_m)
+  \]
+  We denote the span of~$R_i \cap R'_j$ by~$V_{ij}$ and find that
+  \[
+    V_i
+    =
+    V_{i1} \oplus \dotsb \oplus V_{im} \,.
+  \]
+  It follows that overall
+  \[
+    V
+    =
+    \bigoplus_i V_i
+    =
+    \bigoplus_{i,j} V_{ij}
+  \]
+  where~$V_{ij}$ is spanned by~$R_i \cap R'_j$ and where~$R$ decomposes as
+  \[
+    R
+    =
+    \bigdcup_i R_i
+    =
+    \bigdcup_{i,j} (R_i \cap R'_j) \,.
+  \]
+  The assertion of the \lcnamecref{common refinement of root system decomposition} now follows from \cref{decomposition of root systems}.
+\end{proof}
+
+
+\begin{corollary}
+  \label{irreducible decomposition of root systems}
+  Every root system~$R$ in a vector space~$V$ decomposes into irreducible root systems in a unique way (up to permutation).
+\end{corollary}
+
+
+\begin{proof}
+  If~$R$ is irreducible then everything is well.
+  Otherwise~$R$ can be decomposed as~$R = R' \times R''$ where both~$R'$ and~$R''$ have strictly smaller cardinality than~$R$.
+  By repeating this process finitely many times we arrive at a decomposition~$R = R_1 \times \dotsb \times R_n$ into irreducible root systems~$R_1, \dotsc, R_n$.
+  
+  To show the uniqueness of this decomposition let~$R = R'_1 \times \dotsb \times R'_m$ be another decomposition into irreducible root systems~$R'_1, \dotsc, R'_m$.
+  According to \cref{common refinement of root system decomposition} both decompositions admit a common refinement~$R = \prod_{i,j} (R_i \cap R'_j)$.
+  This entails that each~$R_i$ admits a decomposition~$R_i = (R_i \cap R'_1) \times \dotsb \times (R_i \cap R'_m)$.
+  It follows from the irreducibility of~$R_i$ that~$R_i = R_i \cap R'_{\sigma(i)}$ for some index~$\sigma(i)$ and hence~$R_i \subseteq R'_{\sigma(i)}$.
+  There exists similarly for every~$j = 1, \dotsc, m$ some index~$\tau(\spacing j)$ with~$R'_j \subseteq R_{\tau(\spacing j)}$.
+  Then~$R_i \subseteq R_{\tau(\sigma(i))}$ and hence~$\tau(\sigma(i)) = i$, and similarly~$\sigma(\tau(\spacing j)) = j$.
+  Then furthermore~$R_i \subseteq R_{\tau(\sigma(i))} = R_i$ and hence~$R_i = R'_{\sigma(i)}$.
+  
+  This means that~$\sigma$ and~$\tau$ are mutually inverse permutations, which shows that both decompositions coincide up to permutation of the factors.
+\end{proof}
+
+
+\begin{lemma}[Combining root systems]
+  \label{combining root systems}
+  Let~$V$ be a finite dimensional vector space with direct sum decomposition~$V = V_1 \oplus \dotsb \oplus V_n$.
+  For every~$i = 1, \dotsc, n$ let~$R_i$ be a root system in~$V$.
+  Then~$R \defined R_1 \cup \dotsb \cup R_n$ is a root system in~$V$ with~$R = R_1 \times \dotsb \times R_n$.
+\end{lemma}
+
+
+\begin{proof}
+  The vector space~$V$ is spanned by~$R$ because each summand~$V_i$ is spanned by the corresponding root system~$R_i$.
+  No~$R_i$ contains the zero vector and so neither does~$R$.
+  
+  We note that~$R = R_1 \dcup \dotsb \dcup R_n$ since the~$V_i$ are mutually disjoint expect for the zero vector (which is not contained in any~$R_i$).
+  By using the isomorphism
+  \[
+    V^*
+    =
+    (V_1 \oplus \dotsb \oplus V_n)^*
+    =
+    V_1^* \oplus \dotsb \oplus V_n^*
+  \]
+  we can regard for every~$\alpha \in R$ with~$\alpha \in R_i$ the coroot~$\check{\alpha}$ as an element of~$V^*$ (where~$\pair{v, \check{\alpha}} = 0$ for every~$v \in V_j$ with~$j \neq i$).
+  
+  This identification leaves the equality~$\pair{\alpha, \check{\alpha}} = 2$ unchanged.
+  The reflection~$s_{\alpha, \check{\alpha}}$ fixes pointwise all~$\beta \in R_j$ with~$j \neq i$ because~$\pair{\beta, \check{\alpha}} = 0$.
+  Thus~$s_{\alpha, \check{\alpha}}(R_j) = R_j$ for all~$j \neq i$, and~$s_{\alpha, \check{\alpha}}(R_i) = R_i$ because~$R_i$ is a root system (in~$V_i$).
+  Overall~$s_{\alpha, \check{\alpha}}(R) = R$.
+  
+  This shows that~$R$ is a root system in~$V$.
+  That~$R = R_1 \times \dotsb \times R_n$ follows from \cref{decomposition of root systems}.
+\end{proof}
+
+
+\begin{example}
+  If~$V_1, \dotsc, V_n$ are vector spaces containing root systems~$R_1, \dotsc, R_n$ then we can regard the vector spaces~$V_1, \dotsc, V_n$ as linear subspaces of the external direct sum~$V \defined V_1 \oplus \dotsb \oplus V_n$.
+  By using \cref{combining root systems} we can combine the root systems~$R_1, \dotsc, R_n$ to a single root system~$R$ of~$V$ with~$R = R_1 \times \dotsb \times R_n$ (at least up to abuse of notation).
+\end{example}
+
+
+\begin{definition}
+  For a root system~$R$ in a vector space~$V$ its \defemph{Weyl~group}\index{Weyl group}~$\Weyl(R)$ is the subgroup of~$\GL(V)$ generated by all reflections~$s_\alpha$ with~$\alpha \in R$.
+\end{definition}
+
+
+\begin{remark}
+  Let~$R$ be a root system in a vector space~$V$.
+  Every~$w \in \Weyl(R)$ leaves the set~$R$ invariant because this holds for the generators~$s_\alpha$ with~$\alpha \in R$.
+  We can therefore identify the Weyl~group~$\Weyl(R)$ with a subgroup of the symmetric group of~$R$.
+  We see in particular that the Weyl~group~$\Weyl(R)$ is finite because~$R$ is finite.
+\end{remark}
+
+
+\begin{lemma}
+  \label{decomposition of weyl group}
+  Let~$R$ be a root system in a vector space~$V$.
+  Suppose that~$R = R_1 \times \dotsb R_n$ for root systems~$R_1, \dotsc, R_n$ with spans~$V_i$.
+  Then with respect to the decomposition~$V = V_1 \oplus \dotsb \oplus V_n$ the Weyl~group~$\Weyl(R)$ decomposes as
+  \[
+    \Weyl(R)
+    \cong
+    \Weyl(R_1) \times \dotsb \times \Weyl(R_n) \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  This follows from \cref{reflection fixes other summands}.
+\end{proof}
+
+
+\begin{lemma}
+  \label{characterizations of root system decompositions}
+  Let~$R$ be a root system in a vector space~$V$ and let~$V = V_1 \oplus \dotsb \oplus V_n$ be a direct sum decomposition.
+  For every~$i = 1, \dotsc, n$ let~$R_i \defined R \cap V_i$.
+  Then the following conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      \label{decomposition into subreps}
+      $V = V_1 \oplus \dotsb \oplus V_n$ is a decomposition into~{\subrepresentations{$\Weyl(R)$}}.
+    \item
+      \label{contained in union}
+      $R \subseteq R_1 \cup \dotsb R_n$.
+    \item
+      \label{decomposition into subsets}
+      $R = R_1 \cup \dotsb \cup R_n$.
+    \item
+      \label{disjoint decomposition into subsets}
+      $R = R_1 \dcup \dotsb \dcup R_n$.
+    \item
+      \label{decomposition into root systems}
+      $R_1, \dotsc, R_n$ are root systems in~$V_1, \dotsc, V_n$ with~$R = R_1 \times \dotsb \times R_n$.
+  \end{equivalenceslist}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{implicationlist}
+    \item[\ref*{decomposition into subreps}~$\implies$~\ref*{contained in union}]
+      For every~$\alpha \in R$ the reflection~$s_\alpha$ is non-trivial and thus acts non-trivially on some~$V_i$.
+      It follows from \cref{subspaces invariant under reflection} that~$\alpha \in V_i$.
+    \item[\ref*{contained in union}~$\implies$~\ref*{decomposition into subsets}]
+      The inclusion~$R_1 \cup \dotsb \cup R_n \subseteq R$ always holds.
+    \item[\ref*{decomposition into subsets}~$\implies$~\ref*{disjoint decomposition into subsets}]
+      The disjointness of the union~$R = R_1 \cup \dotsb \cup R_n$ follows from the directness of the sum~$V = V_1 \oplus \dotsb \oplus V_n$ since no~$R_i$ contains the zero vector.
+    \item[\ref*{disjoint decomposition into subsets}~$\implies$~\ref*{decomposition into root systems}]
+      The span of~$R_i$ is contained in~$V_i$ and~$V = V_1 \oplus \dotsb \oplus V_n$ is spanned by~$R$.
+      Therefore~$V_i$ is spanned by~$R_i$ for every~$i = 1, \dotsc, n$.
+      The assertion now follows from \cref{decomposition of root systems}.
+    \item[\ref*{decomposition into root systems}~$\implies$~\ref*{decomposition into subreps}]
+      This follows from \cref{decomposition of weyl group}.
+    \qedhere
+  \end{implicationlist}
+\end{proof}
+
+
+\begin{corollary}
+  For a root system~$R$ in a vector space~$V$ the following conditions are equivalent:
+  \begin{enumerate}
+    \item
+      \label{root system is irreducible}
+      $R$ is irreducible.
+    \item
+      \label{irrep of weyl group}
+      $V$ is irreducible as a~{\representation{$\Weyl(R)$}}.
+    \item
+      \label{indecomp of weyl group}
+      $V$ is indecomposable as a~{\representation{$\Weyl(R)$}}.
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proof}
+  The equivalence of~\ref*{root system is irreducible} and~\ref*{indecomp of weyl group} follows from \cref{characterizations of root system decompositions} and the equivalence of~\ref*{irrep of weyl group} and~\ref*{indecomp of weyl group} follows from Maschke’s~theorem (which applies because~$\Weyl(R)$ is finite and~$\ringchar(\kf) = 0$).
+\end{proof}
+
+
+\begin{corollary}
+  \label{weyl group fixes no vector}
+  If~$R$ is a root system in a vector space~$V$ then the only vector~$v \in V$ fixed by every element of the Weyl~group~$\Weyl(R)$ is the zero vector~$v = 0$.
+\end{corollary}
+
+
+\begin{proof}
+  By \cref{decomposition of weyl group} and \cref{irreducible decomposition of root systems} we may assume that~$R$ is irreducible, so that~$V$ is irreducible as a~{\representation{$\Weyl(R)$}}.
+  Then~$V^{\Weyl(R)} = \{v \in V \suchthat \text{$w(v) = v$ for every~$w \in \Weyl(R)$}\}$ is a proper subrepresentation of~$R$ --- proper since~$\Weyl(R)$ is non-trivial --- and thus~$V^{\Weyl(R)} = 0$.
+\end{proof}
+
+
+\begin{lemma}
+  \label{properties of coroots}
+  Let~$R$ be a root system in a vector space~$V$.
+  \begin{enumerate}
+    \item
+      If~$\alpha \in R$ is a root and~$\lambda \neq 0$ such that~$\lambda \alpha$ is again a root then~$\check{(\lambda \alpha)} = \lambda^{-1} \check{\alpha}$.
+    \item
+      For all~$\alpha, \beta \in R$,~$\check{s_\alpha(\beta)} = s_{\check{\alpha}, \alpha}(\check{\beta})$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have~$\pair{\lambda \alpha, \lambda^{-1} \check{\alpha}} = \pair{\alpha, \check{\alpha}} = 2$ whence the reflection~$s_{\lambda \alpha, \spacing \lambda^{-1} \alpha}$ is well-defined.
+      It follows from part~\ref*{uniqueness of reflection parametrization} of \cref{regarding general reflections} that~$s_{\lambda \alpha, \spacing \lambda^{-1} \check{\alpha}} = s_{\alpha, \check{\alpha}}$, which shows that~$s_{\lambda \alpha, \spacing \lambda^{-1} \check{\alpha}}$ leaves~$R$ invariant.
+      Together this shows that~$\lambda^{-1} \check{\alpha}$ satisfies the defining properties of~$\check{(\lambda \alpha)}$.
+    \item
+      We have
+      \[
+        \pair{s_\alpha(\beta), s_{\check{\alpha}, \alpha}(\check{\beta})}
+        =
+        \pair{s_\alpha(\beta), s_\alpha^*(\check{\beta})}
+        =
+        \pair{s_\alpha^2(\beta), \check{\beta}}
+        =
+        \pair{\beta, \check{\beta}}
+        =
+        2
+      \]
+      where we use that~$s_{\check{\alpha}, \alpha}= s_{\alpha, \check{\alpha}}^* = s_\alpha^*$ by \cref{properties of reflections}.
+      The reflection~$s_{[s_\alpha(\beta)], [s_{\check{\alpha}, \alpha}(\check{\beta})]}$ is therefore well-defined.%
+      \footnote{The brackets are only here for better readability and have no meaning on their own.}
+      We also see from \cref{properties of reflections} that
+      \[
+        s_{[s_\alpha(\beta)], [s_{\check{\alpha}, \alpha}(\check{\beta})]}
+        =
+        s_{[s_\alpha(\beta)], [s_\alpha^*(\check{\beta})]}
+        =
+        s_\alpha \circ s_\beta \circ s_\alpha^{-1} 
+        =
+        s_\alpha \circ s_\beta \circ s_\alpha \,.
+      \]
+      We see from this that the reflection~$s_{[s_\alpha(\beta)], [s_{\check{\alpha}, \alpha}(\check{\beta})]}$ leaves~$R$ invariant.
+      This shows that~$s_{\check{\alpha}, \alpha}(\check{\beta})$ satisfies the defining property of the coroot~$\check{s_\alpha(\beta)}$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{theorem}
+  \label{dual root system}
+  If~$R$ is a root system in a vector space~$V$ then the set of coroots~$\check{R}$ is a root system in~$V^*$.
+  For every~$\alpha \in R$ the coroot of~$\check{\alpha}$, i.e.\ the element~$\dcheck*{\alpha} \in V^{**}$, is given by evaluation at~$\alpha$.
+  If~$R$ is reduced or crystallographic then the same holds for~$\check{R}$.
+\end{theorem}
+
+
+\begin{proof}
+  If~$0 \in \check{R}$ then~$\check{\alpha} = 0$ for some~$\alpha \in R$, which would contradict~$\pair{\alpha, \check{\alpha}} = 2$.
+  Thus~$0 \notin \check{R}$.
+  
+  The set of coroots~$\check{R}$ spans~$V^*$:
+  Otherwise the the span of~$\check{R}$ would a proper linear subspace of~$V^*$.
+  Then there would exists some nonzero~$v \in V$ with~$\pair{v, \varphi} = 0$ for every~$\varphi$ contained in this span.
+  Then in particular~$\pair{v, \check{\alpha}} = 0$ for every~$\alpha \in R$ and thus~$s_\alpha(v) = v$ for every~$\alpha \in R$.
+  Then~$w(v) = v$ for every~$w \in \Weyl(R)$, which would contradicts \cref{weyl group fixes no vector}.
+  Thus~$\check{R}$ spans~$V^*$
+  
+  For every~$\alpha \in R$ the proposed coroot of~$\check{\alpha} \in \check{R}$ is the element~$\dcheck*{\alpha} \in V^{**}$ given by evaluation at~$\alpha$.
+  Indeed,~$\pair{\check{\alpha}, \dcheck{\alpha}} = \pair{\alpha, \check{\alpha}} = 2$ and for every~$\beta \in R$,
+  \[
+    s_{\check{\alpha}, \dcheck{\alpha}}(\check{\beta})
+    =
+    s_{\check{\alpha}, \alpha}(\check{\beta})
+    =
+    \check{s(\beta)}
+    \in
+    \check{R}
+  \]
+  by \cref{properties of coroots}.
+  This shows that~$\check{R}$ is indeed a root system, with the coroot~$\dcheck*{\alpha} \in V^{**}$ of~$\check{\alpha}$ given by evaluation at~$\alpha$.
+  
+  Suppose that~$R$ is reduced, and that for some~$\alpha \in R$ some multiple~$\lambda \check{\alpha}$ is contained in~$R$.
+  Note that necessarily~$\lambda \neq 0$ since~$0 \notin \check{R}$.
+  Then also~$\lambda^{-1} \dcheck{\alpha} = \check{(\lambda\check{\alpha})} \in \dcheck{R}$ by \cref{properties of coroots}.
+  We know that under the natural isomorphism~$V \cong V^{**}$ the root system~$R$ corresponds to~$\dcheck{R}$;
+  more precisely,~$\alpha$ corresponds to~$\dcheck{\alpha}$.
+  It hence follows from~$\lambda^{-1} \dcheck*{\alpha} \in \dcheck{R}$ that~$\lambda^{-1} \alpha \in R$.
+  It follows that~$\lambda^{-1} = \pm 1$ and thus~$\lambda = \pm 1$ because~$R$ is reduced.
+  Thus the only multiples of~$\check{\alpha}$ contained in~$\check{R}$ are~$\check{\alpha}$ and~$-\check{\alpha}$, showing that~$\check{R}$ is again reduced.
+  
+  Suppose that~$R$ is crystallographic.
+  Then~$\pair{\check{\alpha}, \dcheck{\beta}} = \pair{\beta, \check{\alpha}} \in \Integer$ for all~$\alpha, \beta \in R$.
+  Thus~$\check{R}$ is again crystallographic.
+\end{proof}
+
+
+\begin{remark}
+  If~$R$ is a root system in a vector space~$V$ then by applying \cref{dual root system} two times we see that not only is~$\check{R}$ is a root system in~$V^*$ but also that~$\dcheck{R}$ is a root system in~$V^{**}$.
+  We then see from \cref{dual root system} that the natural isomorphism~$V \to V^{**}$ is an isomorphism of root systems~$R \to \dcheck{R}$.
+  In this sense the root systems~$R$ and~$\check{R}$ are mutually dual.
+% TODO: Come back to this once root data have been introduced.
+  A consequence of this duality is the following:
+\end{remark}
+
+
+\begin{corollary}
+  If~$R$ is a root system then the map~$R \to \check{R}$,~$\alpha \mapsto \check{\alpha}$ is a bijection.
+  \qed
+\end{corollary}
+
+
+\begin{corollary}
+  Let~$R$ be a root system in a vector space~$V$ with decomposition~$R = R_1 \cup \dotsb \cup R_n$.
+  Then~$R = R_1 \times \dotsb \times R_n$ if and only if~$\pair{\alpha, \check{\beta}} = 0$ for all~$\alpha \in R_i$ and~$\beta \in R_j$ with~$i \neq j$.
+\end{corollary}
+
+
+\begin{proof}
+  If~$R = R_1 \times \dotsb \times R_n$ then~$\pair{\alpha, \check{\beta}} = 0$ for all~$\alpha \in R_i$ and~$\beta \in R_j$ with~$i \neq j$ by part~\ref*{root summands are orthogonal} of \cref{properties of decompositions}.
+  
+  Suppose now that conversely~$\pair{\alpha, \check{\beta}} = 0$ for all~$\alpha \in R_i$ and~$\beta \in R_j$ with~$i \neq j$.
+%   We note that the decomposition~$R = R_1 \cup \dotsb \cup R_n$ must already be disjoint, i.e.~$R = R_1 \dcup \dotsb \dcup R_n$, because for~$\alpha \in R$ for~$\alpha \in R_i$ and~$\alpha \in R_j$ with~$i \neq j$ we would have~$\pair{\alpha, \check{\alpha}} = 2 \neq 0$.
+  To show that~$R = R_1 \times \dotsb \times R_n$ it sufficies --- thanks to induction --- to consider the case~$n = 2$.
+  
+  Let~$V_i$ be the span of~$R_i$.
+  Then~$V = V_1 + V_2$ because~$R$ spans~$V$.
+  We need to check that~$V_1 \cap V_2 = 0$, as we can then apply \cref{decomposition of root systems}.
+  If~$v \in V_1 \cap V_2$ then it follows from~$v \in V_1$ that~$\pair{v, \check{\beta}} = 0$ for all~$\beta \in R_2$ and it follows from~$v \in V_2$ that~$\pair{v, \check{\beta}} = 0$ for all~$\beta \in R_1$.
+  Therefore~$\pair{v, \check{\beta}} = 0$ for all~$\beta \in R$ and thus~$s_\beta(v) = v$ for every~$\beta \in R$.
+  It follows from \cref{weyl group fixes no vector} that~$v = 0$.
+\end{proof}
 
 
 

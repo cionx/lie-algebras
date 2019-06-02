@@ -155,6 +155,7 @@
 \newcommand{\defemph}{\emph}
 
 % text shortcuts, mostly involving nobreakdash
+\newcommand{\action}[1]{#1\nobreakdash-action}
 \newcommand{\adnilpotent}{$\ad$\nobreakdash-nilpotent}
 \newcommand{\adsemisimple}{$\ad$\nobreakdash-semisimple}
 \newcommand{\algebra}[1]{#1\nobreakdash-algebra}
@@ -251,6 +252,7 @@
 \DeclareMathOperator{\Der}{Der}
 \DeclareMathOperator{\End}{End}
 \newcommand{\Exterior}{\bigwedge}
+\DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\irr}{L}
@@ -261,6 +263,7 @@
 \DeclareMathOperator{\Tensor}{T}
 \DeclareMathOperator{\Univ}{U}
 \DeclareMathOperator{\verma}{M}
+\DeclareMathOperator{\Weyl}{W}
 
 % functions
 \DeclareMathOperator{\ad}{ad}
@@ -296,16 +299,20 @@
 \DeclarePairedDelimiter{\inner}{(}{)}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
-\NewDocumentCommand{\restrict}{smmO{}}{
+\NewDocumentCommand{\restrict}{smm}{
   \IfBooleanTF{#1}
-    {\left. {#2} \middle|_{#3}^{#4} \right.}
-    {{#2} |_{#3}^{#4}}
+    {\left. {#2} \middle|_{#3} \right.}
+    {#2|_{#3}}
 }
 \NewDocumentCommand{\suchthat}{s}{
   \IfBooleanTF{#1}
     {\,\middle|\,}
     {\mathrel{|}}
 }
+
+% binary operations and relations
+\newcommand{\dcup}{\amalg}
+\newcommand{\bigdcup}{\coprod}
 
 % decorations
 \RenewDocumentCommand{\check}{sm}{
@@ -327,7 +334,6 @@
 % shortcuts
 \newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
 \newcommand{\mc}[1]{\mathcal{#1}}
-
 
 
 %%%%% COMPLICATED STUFF
