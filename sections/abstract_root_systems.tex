@@ -1,9 +1,12 @@
 \section{Abstract Root Systems}
 
 
+% TODO: Add missing symbols in the list of symbols.
+
+
 \begin{convention}
   For this section let~$\kf$ be an arbitrary field of characteristic~$0$.
-  We denote for every vector space~$V$ by~$\pair{-,-} \colon V \times V^* \to \kf$ the bilinear evaluation map~$\pair{v, \varphi} = \varphi(v)$.
+  We denote for every~{\vectorspace{$\kf$}}~$V$ by~$\pair{-,-} \colon V \times V^* \to \kf$ the bilinear evaluation map~$\pair{v, \varphi} = \varphi(v)$.
 \end{convention}
 
 
@@ -151,12 +154,12 @@
 
 
 \begin{definition}
-  A \defemph{reflection}\index{reflection} in a vector space~$V$ is a map~$s \colon V \to V$ with~$s^2 = \id_V$ and such that the fixed subspace~$\{v \in V \suchthat s(v) = v\}$ has codimension~one.
+  A \defemph{reflection}\index{reflection} in a~{\vectorspace{$\kf$}}~$V$ is a map~$s \colon V \to V$ with~$s^2 = \id_V$ and such that the fixed subspace~$\{v \in V \suchthat s(v) = v\}$ has codimension~one.
 \end{definition}
 
 
 \begin{lemma}
-  Let~$V$ be a vector space and let~$s \colon V \to V$ be a linear map.
+  Let~$V$ be a~{\vectorspace{$\kf$}} and let~$s \colon V \to V$ be a linear map.
   The following conditions on~$s$ are equivalent:
   \begin{enumerate}
     \item
@@ -272,7 +275,7 @@
 
 
 \begin{definition}
-  Let~$V$ be a vector space.
+  Let~$V$ be a~{\vectorspace{$\kf$}}.
   For any vector~$\alpha \in V$ and any functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$ the \defemph{associated reflections} are the reflection
   \begin{alignat*}{2}
     s_{\alpha, \check{\alpha}}
@@ -305,13 +308,13 @@
   \leavevmode
   \begin{enumerate}
     \item
-      Let~$V$ be a vector space and let~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
+      Let~$V$ be a~{\vectorspace{$\kf$}} and let~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
       The vector~$\alpha$ corresponds to an element~$\dcheck*{\alpha} \in V^{**}$ given by evaluation at~$\alpha$, i.e.\ by~$\pair{\varphi, \dcheck{\alpha}} = \pair{\alpha, \varphi}$ for every~$\varphi \in V^*$.
       In particular~$\pair{\check{\alpha}, \dcheck{\alpha}} = \pair{\alpha, \check{\alpha}} = 2$.
       Then~$s_{\check{\alpha}, \alpha} = s_{\check{\alpha}, \dcheck{\alpha}}$, which shows that~$s_{\check{\alpha}, \alpha}$ is indeed a reflection.
     \item
       \label{uniqueness of reflection parametrization}
-      Let~$V$ be vector space and let~$s \colon V \to V$ be a reflection with associated eigenspace decomposition~$V = V_+ \oplus V_-$ and explicit description~$s = s_{\alpha, \check{\alpha}}$ for some vector~$\alpha \in V$ and linear functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
+      Let~$V$ be~{\vectorspace{$\kf$}} and let~$s \colon V \to V$ be a reflection with associated eigenspace decomposition~$V = V_+ \oplus V_-$ and explicit description~$s = s_{\alpha, \check{\alpha}}$ for some vector~$\alpha \in V$ and linear functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
       We see from~$V_- = \gen{\alpha}_{\kf}$ that~$\alpha$ is unique up to nonzero scalar, and we see from~$V_+ = \ker(\check{\alpha})$ that~$\check{\alpha}$ is unique up to nonzero scalar.
       Together with the condition~$\pair{\alpha, \check{\alpha}} = 2$ we see that the pair~$(\alpha, \check{\alpha})$ is unique up to the~{\action{$\kf^{\times}$}} given by~$\lambda.(\alpha, \check{\alpha}) = (\lambda \alpha, \lambda^{-1} \check{\alpha})$.
       
@@ -322,7 +325,7 @@
 
 \begin{lemma}
   \label{subspaces invariant under reflection}
-  Let~$V$ be a vector space and let~$s \colon V \to V$ a reflection.
+  Let~$V$ be a~{\vectorspace{$\kf$}} and let~$s \colon V \to V$ a reflection.
   Suppose that~$s = s_{\alpha, \check{\alpha}}$ for some vector~$\alpha \in V$ and linear functional~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$.
   Then a linear subspace~$U$ of~$V$ is~{\invariant{$s$}} (in the sense that~$s(U) \subseteq U$) if and only if~$\alpha \in U$ or~$U \subseteq \ker(\check{\alpha})$.
   In other words:
@@ -363,7 +366,7 @@
 
 \begin{recall}
   \label{recalling the transposed map}
-  If~$f \colon V \to W$ is a linear map between finite dimensional vector spaces~$V$ and~$W$ then there exists a unique linear map~$f^* \colon W^* \to V^*$ with
+  If~$f \colon V \to W$ is a linear map between finite dimensional~{\vectorspace{$\kf$}}s~$V$ and~$W$ then there exists a unique linear map~$f^* \colon W^* \to V^*$ with
   \[
     \pair{\spacing f(v), \varphi}
     =
@@ -400,8 +403,8 @@
 
 \begin{lemma}
   \label{properties of reflections}
-  Let~$V$ be a finite dimensional vector space.
-  Let~$\alpha \in V$ and~$\check*{\alpha} \in V^*$ with~$\pair{\alpha, \check{\alpha}} = 2$, and let~$t \colon V \to V$ be any vector space isomorphism.
+  Let~$V$ be a finite dimensional~{\vectorspace{$\kf$}}.
+  Let~$\alpha \in V$ be a vector and~$\check*{\alpha} \in V^*$ a functional with~$\pair{\alpha, \check{\alpha}} = 2$, and let~$t \colon V \to V$ be any vector space isomorphism.
   Then
   \begin{enumerate}
     \item
@@ -474,7 +477,7 @@
 
 \begin{lemma}[Uniqueness of reflections]
   \label{uniqueness of reflections}
-  Let~$R$ be a finite generating set of a vector space~$V$ and let~$s, t \colon V \to V$ be two reflections that leave~$R$ invariant (in the sense that~$s(R), t(R) = R$) and such that~$s(\alpha), t(\alpha) = -\alpha$ for some nonzero vector~$\alpha \in R$.
+  Let~$R$ be a finite generating set of a~{\vectorspace{$\kf$}}~$V$ and let~$s, t \colon V \to V$ be two reflections that leave~$R$ invariant (in the sense that~$s(R), t(R) = R$) and such that~$s(\alpha), t(\alpha) = -\alpha$ for some nonzero vector~$\alpha \in R$.
   Then~$s = t$.
 \end{lemma}
 
@@ -540,7 +543,7 @@
 
 
 \begin{definition}
-  Let~$V$ be a vector space.
+  Let~$V$ be a~{\vectorspace{$\kf$}}.
   A subset~$R$ of~$V$ is an \defemph{abstract root system}\index{abstract!root system}\index{root system!abstract}, or simply \defemph{root system}\index{root system} if it satisfies the following conditions:
   \begin{enumerate}
     \item
@@ -575,7 +578,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      If~$R$ is a root system in a vector space~$V$ then~$V$ is necessarily finite dimensional since~$V$ is spanned by~$R$, which is finite.
+      If~$R$ is a root system in a~{\vectorspace{$\kf$}}~$V$ then~$V$ is necessarily finite dimensional since~$V$ is spanned by~$R$, which is finite.
     \item
       It follows from \cref{uniqueness of reflections} that for every~$\alpha \in R$ the reflection~$s_{\alpha, \check{\alpha}}$ is uniquely determined by~$\alpha$.
       It further follows from \cref{regarding general reflections} that~$\check{\alpha}$ is uniquely determined by~$\alpha$.
@@ -592,7 +595,7 @@
 
 
 \begin{definition}
-  Let~$R$ and~$R'$ be root systems in finite dimensional vector spaces~$V$ and~$V'$.
+  Let~$R$ and~$R'$ be root systems in~{\vectorspaces{$\kf$}}~$V$ and~$V'$.
   An \defemph{isomorphism of root systems}\index{isomorphism!of root systems}\index{root system!isomorphism}~$(V,R) \to (V',R')$ is an isomorphism of vector spaces~$f \colon V \to V'$ with~$f(R) = R'$ such that for all~$\alpha, \beta \in R$,
   \[
     \pair{\alpha, \check{\beta}}
@@ -611,7 +614,7 @@
 
 \begin{lemma}
   \label{induced root system of subspace}
-  Let~$R$ be a root system in a vector space~$V$ and let~$U$ be a linear subspace of~$V$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$ and let~$U$ be a linear subspace of~$V$.
   Then~$R' \defined R \cap U$ is a root system in its span.
   If~$R$ is reduced or crystallographic the the same holds for~$R'$.
 \end{lemma}
@@ -651,7 +654,7 @@
 
 \begin{corollary}
   \label{decomposition of root systems}
-  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
   Let~$R = R_1 \cup \dotsb \cup R_n$ be a decomposition into subsets~$R_i$, and let~$V_i$ be the span of~$R_i$ for every~$i = 1, \dotsc, n$.
   If~$V = V_1 \oplus \dotsb \oplus V_n$ then~$R_i$ is a root system in~$V_i$ for every~$i = 1, \dotsc, n$.
 \end{corollary}
@@ -669,7 +672,7 @@
 
 
 \begin{definition}
-  A root system~$R$ is a vector space~$V$ is \defemph{reducible}\index{reducible root system}\index{root system!reducible}%
+  A root system~$R$ is a~{\vectorspace{$\kf$}}~$V$ is \defemph{reducible}\index{reducible root system}\index{root system!reducible}%
   \footnote{Not to be confused with \emph{reduced}.}
   if there exists a decomposition~$R = R_1 \dcup \dotsb \dcup R_n$ into nonempty root systems~$R_i$ as in \cref{decomposition of root systems}.
   The root system~$R$ is then the \defemph{product}\index{product of root systems}\index{root system!product} of~$R_1, \dotsc, R_n$, and this is denoted by~$R = R_1 \times \dotsb \times R_n$.
@@ -677,33 +680,9 @@
 \end{definition}
 
 
-% \begin{example}[External union of root systems]
-%   Let~$V_1, \dotsc, V_n$ be finite dimensional vector spaces, and for every~$i = 1, \dotsc, n$ let~$R_i$ be a root system in~$V_i$.
-%   The~$R_i$ assemble to a root system~$R$ of~$V \defined V_1 \oplus \dotsc \oplus V_n$:
-%   
-%   We can regard every~$V_i$ as a subspace of~$V$, and hence every~$\alpha \in R_i$ as an element of~$V$.
-%   In~$V$ we can thus consider the disjoint union~$R \defined R_1 \dcup \dotsb \dcup R_n$.
-%   By using the isomorphism
-%   \[
-%     V^*
-%     =
-%     (V_1 \oplus \dotsb \oplus V_n)^*
-%     \cong
-%     V_1^* \oplus \dotsb \oplus V_n^*
-%   \]
-%   
-%   Then~$R$ is a root system in~$V$ with coroots~$\check{R} = \check{R_1} \dcup \dotsb \dcup \check{R_n}$:
-%   
-%   Every~$R_i$ spans~$V_i$ whence~$R$ spans~$V$.
-%   For every~$\alpha \in R$ with~$\alpha \in R_i$ the coroot~$\check{\alpha}$, when regarded as an element of~$V^*$, satisfies~$\pair{\alpha, \check{\alpha}} = 2$ and~$\pair{\beta, \check{\alpha}} = 0$ for every~$\beta \in R_j$ with~$j \neq i$.
-%   Then~$s_{\alpha, \check{\alpha}}(\beta) = \beta$ for every~$\beta \in R_j$ with~$i \neq j$, and~$s_{\alpha, \check{\alpha}}(R_i) = R_i$.
-%   Thus~$R$ is a root system as claimed.
-% \end{example}
-
-
 \begin{proposition}[Properties of decompositions]
   \label{properties of decompositions}
-  Let~$R$ be a root system in a vector space~$V$ that admits a decomposition~$R = R_1 \times \dotsb \times R_n$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$ that admits a decomposition~$R = R_1 \times \dotsb \times R_n$.
   For every~$i = 1, \dotsc, n$ let~$V_i$ be the span of~$R_i$.
   \begin{enumerate}
     \item
@@ -753,7 +732,7 @@
 
 \begin{corollary}
   \label{reflection fixes other summands}
-  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
   Let~$R = R_1 \times \dotsb \times R_n$ be a decomposition into root systems~$R_i$ with spans~$V_i$.
   Then for every~$\alpha \in R_i$ the reflection~$s_\alpha$ fixes pointwise all~$V_j$ with~$j \neq i$.
 \end{corollary}
@@ -766,8 +745,9 @@
 
 \begin{lemma}
   \label{common refinement of root system decomposition}
-  Let~$R$ be a root system in a vector space~$V$ with two decompositions~$R = R_1 \times \dotsb \times R_n$ and~$R = R'_1 \times \dotsb \times R'_m$ into root systems~$R_i$ and~$R'_j$.
-  Then the two decompositions can be refined to the decomposition~$R = \prod_{i,j} (R_i \cap R'_j)$ into root systems~$R_i \cap R'_j$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
+  Suppose that~$R$ admits two decompositions~$R = R_1 \times \dotsb \times R_n$ and~$R = R'_1 \times \dotsb \times R'_m$ into root systems~$R_i$ and~$R'_j$.
+  Then the two decompositions can be refined to the single decomposition~$R = \prod_{i,j} (R_i \cap R'_j)$ into root systems~$R_i \cap R'_j$.
 \end{lemma}
 
 
@@ -807,7 +787,7 @@
 
 \begin{corollary}
   \label{irreducible decomposition of root systems}
-  Every root system~$R$ in a vector space~$V$ decomposes into irreducible root systems in a unique way (up to permutation).
+  Every root system~$R$ in a~{\vectorspace{$\kf$}}~$V$ decomposes into irreducible root systems in a unique way (up to permutation).
 \end{corollary}
 
 
@@ -830,7 +810,7 @@
 
 \begin{lemma}[Combining root systems]
   \label{combining root systems}
-  Let~$V$ be a finite dimensional vector space with direct sum decomposition~$V = V_1 \oplus \dotsb \oplus V_n$.
+  Let~$V$ be a finite dimensional~{\vectorspace{$\kf$}} with direct sum decomposition~$V = V_1 \oplus \dotsb \oplus V_n$.
   For every~$i = 1, \dotsc, n$ let~$R_i$ be a root system in~$V$.
   Then~$R \defined R_1 \cup \dotsb \cup R_n$ is a root system in~$V$ with~$R = R_1 \times \dotsb \times R_n$.
 \end{lemma}
@@ -862,18 +842,18 @@
 
 
 \begin{example}
-  If~$V_1, \dotsc, V_n$ are vector spaces containing root systems~$R_1, \dotsc, R_n$ then we can regard the vector spaces~$V_1, \dotsc, V_n$ as linear subspaces of the external direct sum~$V \defined V_1 \oplus \dotsb \oplus V_n$.
+  If~$V_1, \dotsc, V_n$ are~{\vectorspaces{$\kf$}} containing root systems~$R_1, \dotsc, R_n$ then we can regard the vector spaces~$V_1, \dotsc, V_n$ as linear subspaces of the external direct sum~$V \defined V_1 \oplus \dotsb \oplus V_n$.
   By using \cref{combining root systems} we can combine the root systems~$R_1, \dotsc, R_n$ to a single root system~$R$ of~$V$ with~$R = R_1 \times \dotsb \times R_n$ (at least up to abuse of notation).
 \end{example}
 
 
 \begin{definition}
-  For a root system~$R$ in a vector space~$V$ its \defemph{Weyl~group}\index{Weyl group}~$\Weyl(R)$ is the subgroup of~$\GL(V)$ generated by all reflections~$s_\alpha$ with~$\alpha \in R$.
+  For a root system~$R$ in a~{\vectorspace{$\kf$}}~$V$ its \defemph{Weyl~group}\index{Weyl group}~$\Weyl(R)$ is the subgroup of~$\GL(V)$ generated by all reflections~$s_\alpha$ with~$\alpha \in R$.
 \end{definition}
 
 
 \begin{remark}
-  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
   Every~$w \in \Weyl(R)$ leaves the set~$R$ invariant because this holds for the generators~$s_\alpha$ with~$\alpha \in R$.
   We can therefore identify the Weyl~group~$\Weyl(R)$ with a subgroup of the symmetric group of~$R$.
   We see in particular that the Weyl~group~$\Weyl(R)$ is finite because~$R$ is finite.
@@ -882,7 +862,7 @@
 
 \begin{lemma}
   \label{decomposition of weyl group}
-  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
   Suppose that~$R = R_1 \times \dotsb R_n$ for root systems~$R_1, \dotsc, R_n$ with spans~$V_i$.
   Then with respect to the decomposition~$V = V_1 \oplus \dotsb \oplus V_n$ the Weyl~group~$\Weyl(R)$ decomposes as
   \[
@@ -900,7 +880,7 @@
 
 \begin{lemma}
   \label{characterizations of root system decompositions}
-  Let~$R$ be a root system in a vector space~$V$ and let~$V = V_1 \oplus \dotsb \oplus V_n$ be a direct sum decomposition.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$ and let~$V = V_1 \oplus \dotsb \oplus V_n$ be a direct sum decomposition.
   For every~$i = 1, \dotsc, n$ let~$R_i \defined R \cap V_i$.
   Then the following conditions are equivalent:
   \begin{equivalenceslist}
@@ -945,7 +925,7 @@
 
 
 \begin{corollary}
-  For a root system~$R$ in a vector space~$V$ the following conditions are equivalent:
+  For a root system~$R$ in a~{\vectorspace{$\kf$}}~$V$ the following conditions are equivalent:
   \begin{enumerate}
     \item
       \label{root system is irreducible}
@@ -967,7 +947,7 @@
 
 \begin{corollary}
   \label{weyl group fixes no vector}
-  If~$R$ is a root system in a vector space~$V$ then the only vector~$v \in V$ fixed by every element of the Weyl~group~$\Weyl(R)$ is the zero vector~$v = 0$.
+  If~$R$ is a root system in a~{\vectorspace{$\kf$}}~$V$ then the only vector~$v \in V$ fixed by every element of the Weyl~group~$\Weyl(R)$ is the zero vector~$v = 0$.
 \end{corollary}
 
 
@@ -979,7 +959,7 @@
 
 \begin{lemma}
   \label{properties of coroots}
-  Let~$R$ be a root system in a vector space~$V$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
   \begin{enumerate}
     \item
       If~$\alpha \in R$ is a root and~$\lambda \neq 0$ such that~$\lambda \alpha$ is again a root then~$\check{(\lambda \alpha)} = \lambda^{-1} \check{\alpha}$.
@@ -1031,7 +1011,7 @@
 
 \begin{theorem}
   \label{dual root system}
-  If~$R$ is a root system in a vector space~$V$ then the set of coroots~$\check{R}$ is a root system in~$V^*$.
+  If~$R$ is a root system in a~{\vectorspace{$\kf$}}~$V$ then the set of coroots~$\check{R}$ is a root system in~$V^*$.
   For every~$\alpha \in R$ the coroot of~$\check{\alpha}$, i.e.\ the element~$\dcheck*{\alpha} \in V^{**}$, is given by evaluation at~$\alpha$.
   If~$R$ is reduced or crystallographic then the same holds for~$\check{R}$.
 \end{theorem}
@@ -1078,7 +1058,7 @@
 
 
 \begin{remark}
-  If~$R$ is a root system in a vector space~$V$ then by applying \cref{dual root system} two times we see that not only is~$\check{R}$ is a root system in~$V^*$ but also that~$\dcheck{R}$ is a root system in~$V^{**}$.
+  If~$R$ is a root system in a~{\vectorspace{$\kf$}}~$V$ then by applying \cref{dual root system} two times we see that not only is~$\check{R}$ is a root system in~$V^*$ but also that~$\dcheck{R}$ is a root system in~$V^{**}$.
   We then see from \cref{dual root system} that the natural isomorphism~$V \to V^{**}$ is an isomorphism of root systems~$R \to \dcheck{R}$.
   In this sense the root systems~$R$ and~$\check{R}$ are mutually dual.
 % TODO: Come back to this once root data have been introduced.
@@ -1093,7 +1073,7 @@
 
 
 \begin{corollary}
-  Let~$R$ be a root system in a vector space~$V$ with decomposition~$R = R_1 \cup \dotsb \cup R_n$.
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$ with decomposition~$R = R_1 \cup \dotsb \cup R_n$.
   Then~$R = R_1 \times \dotsb \times R_n$ if and only if~$\pair{\alpha, \check{\beta}} = 0$ for all~$\alpha \in R_i$ and~$\beta \in R_j$ with~$i \neq j$.
 \end{corollary}
 
@@ -1112,6 +1092,34 @@
   Therefore~$\pair{v, \check{\beta}} = 0$ for all~$\beta \in R$ and thus~$s_\beta(v) = v$ for every~$\beta \in R$.
   It follows from \cref{weyl group fixes no vector} that~$v = 0$.
 \end{proof}
+
+
+\begin{lemma}
+  Let~$R$ be a root system in a~{\vectorspace{$\kf$}}~$V$.
+  Then the Weyl~groups~$\Weyl(R)$ and~$\Weyl(\check{R})$ are isomorphic via the mapping
+  \[
+    \Weyl(R)
+    \to
+    \Weyl(\check{R}) \,,
+    \quad
+    w
+    \mapsto
+    w^{-*} \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  The map~$\End_{\kf}(V) \to \End_{\kf}(V^*)$,~$f \mapsto f^*$ is an algebra anti-isomorphism and thus induces a group anti-isomorphism~$\GL(V) \to \GL(V^*)$,~$f \mapsto f^*$.
+  The Weyl group~$\Weyl(R)$ is generated by the reflections~$s_{\alpha,\check{\alpha}}$ with~$\alpha \in R$ and the Weyl group~$\Weyl(\check{R})$ is generated by the reflections~$s_{\check{\alpha}, \dcheck{\alpha}} = s_{\check{\alpha}, \alpha} = s_{\alpha, \check{\alpha}}^*$ with~$\alpha \in R$.
+  The group anti-isomorphism~$\GL(V) \to \GL(V^*)$ therefore restricts to a group anti-isomorphism~$\Weyl(R) \to \Weyl(\check{R})$,~$w \mapsto w^*$.
+  By composing with the group anti-automorphism~$\Weyl(\check{R}) \to \Weyl(\check{R})$,~$w \mapsto w^{-1}$ we arrive at the claimed the group isomorphism~$\Weyl(R) \to \Weyl(\check{R})$,~$w \mapsto w^{-*}$.
+\end{proof}
+
+
+\begin{warning}
+  Even though the root systems~$R$ and~$\check{R}$ have isomorphic Weyl group, the root systems themselves are not necessarily isomorphic.
+\end{warning}
 
 
 
