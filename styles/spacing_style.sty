@@ -1,0 +1,28 @@
+% french spacing
+% This disables additional spacing after the end of a sentence.
+\frenchspacing
+
+
+% big penalties to prevent things
+\binoppenalty = \maxdimen         % breaking of binary operators
+\relpenalty = \maxdimen           % breaking of relation symbols
+\widowpenalty = \maxdimen         % widows
+\displaywidowpenalty = \maxdimen  % orphans
+
+
+% fix a bug in amsmath
+% see https://tex.stackexchange.com/questions/461537/
+\patchcmd{\colon}{{:}}{\mathopen:}{}{}
+
+
+% show overfull hboxes
+\overfullrule = 2mm
+
+
+% hack for manual spacing
+\newcommand{\spacing}{\,}
+
+
+
+
+

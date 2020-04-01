@@ -1,0 +1,22 @@
+% add the index to the table of contents
+% for KOMA-script classes
+\KOMAoptions{index = totoc}
+
+% trying to fix the positing of the index title
+% see https://tex.stackexchange.com/questions/510724/
+
+\renewcommand{\idx@heading}{%
+  \if@openright\cleardoublepage\else\clearpage\fi
+  \@chaptertolistsfalse
+  \idx@@heading{\indexname}%
+  \ifidx@leveldown
+    \addsecmark{\indexname}%
+  \else
+    \@mkdouble{\MakeMarkcase{\indexname}}%
+  \fi
+}
+\apptocmd{\theindex}{\setlength{\multicolsep}{0pt}\begin{multicols*}{2}}{}{}
+\pretocmd{\endtheindex}{\end{multicols*}}{}{}
+
+% making the index
+\makeindex

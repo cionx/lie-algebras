@@ -1,0 +1,29 @@
+% counter for everything
+\newcounter{everything}[section]
+
+% theorem-like environemnts
+\theoremstyle{definition}
+\newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
+\newtheorem*{claim*}{Claim} % unnumbered version
+\newtheorem{construction}[everything]{Construction}
+\newtheorem{convention}[everything]{Convention}
+\newtheorem{corollary}[everything]{Corollary}
+\newtheorem{definition}[everything]{Definition}
+\newtheorem{example}[everything]{Example}
+\newtheorem{examples}[everything]{Examples}
+\newtheorem{fluff}[everything]{}
+\newtheorem{lemma}[everything]{Lemma}
+\newtheorem{proposition}[everything]{Proposition}
+\newtheorem{recall}[everything]{Recall}
+\newtheorem{remark}[everything]{Remark}
+\newtheorem{theorem}[everything]{Theorem}
+\newtheorem{warning}[everything]{Warning}
+
+% printing of counters
+\renewcommand{\theeverything}{\thesection.\arabic{everything}}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\theclaim}{\arabic{claim}}
+
+
+
+

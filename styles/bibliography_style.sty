@@ -1,0 +1,15 @@
+% add the bibliography to the table of contents
+% for KOMA-Script classes
+\KOMAoptions{bibliography = totoc}
+
+% file for the bibliography,
+% relative to the main file
+\bibliography{bibliography.bib}
+
+% always insert pp. after pagetotal,
+% even if it isn’t recognized as a number by biblatex
+\DeclareFieldFormat[book]{pagetotal}{#1~\ppno}
+
+% no unplaned surprises with \cite
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}

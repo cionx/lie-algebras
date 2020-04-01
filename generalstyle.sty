@@ -1,486 +1,124 @@
-%%%%% PACKAGES
+%%%%% LOADING PACKAGES
+%%%%% NO CONFIGURATION YET (IF POSSIBLE)
 
+% for testing purposes only
+% should be removed for proper use
+\usepackage{lipsum}
 
-\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex} % bibliography
-\usepackage{gitinfo2} % including git information on the title page
-\usepackage[original]{imakeidx} % for the index, load before hyperref
+% colors (load before gitinfo2)
+\usepackage[dvipsnames]{xcolor}
 
-% % OLD FONT CONFIGURATION:
-% % using EB Garamond as the mainfont, with ebgaramond-maths for maths
-% % (don’t confuse ebgaramond-maths with garamond-math)
-% % set EB Garamond after including ebgaramand-maths
-% \usepackage[cmintegrals,cmbraces]{newtxmath}
-% \usepackage{ebgaramond-maths}
-% \setmainfont[RawFeature={+calt}]{EB Garamond} % add Numbers=Lining for non-old numbers
-% % import the partial symbol from newtxmath
-% \DeclareSymbolFont{ntxletters}{OML}{ntxmi}{m}{it}
-% \SetSymbolFont{ntxletters}{bold}{OML}{ntxmi}{b}{it}
-% \re@DeclareMathSymbol{\partial}{\mathord}{ntxletters}{"40}
-% \let\openbox\undefined
-% % TODO: take greek letters from another font
+% git informations in the document
+\usepackage{gitinfo2}
 
-\usepackage{appendix}   % the appendix
-\usepackage{csquotes}   % automagically the right quotation marks
-\usepackage[ignoredisplayed]{enumitem}  % for better enumerates
-\usepackage{luatexbase} % fix for microtype, see https://tex.stackexchange.com/questions/476740/
-\usepackage{microtype}  % microtypography
-\usepackage[automark, headsepline, autooneside=false]{scrlayer-scrpage}  % header design
+% changing the main font
+\usepackage{fontspec}
+
+% better microtypography
+\usepackage{microtype}
+
+% header design
+\usepackage[automark]{scrlayer-scrpage}
+
+% capital first letters at paragraph beginnings
+\usepackage{lettrine}
+\usepackage{marginnote}
+
+% better enumerates
+\usepackage{enumitem}
+
+% bibliography
+\usepackage[backend=biber, style=alphabetic, dateabbrev=false, urldate=long]{biblatex}
+
+% index
+\usepackage[original]{imakeidx}
+\usepackage{etoolbox,multicol}
+
+% handeling of lists as arguments
 \usepackage{listofitems}
 
-\usepackage{mathtools, amssymb, amsthm} % general math stuff
-% \usepackage{arydshln}   % allowing dashed lines in arrays
-\usepackage{extarrows}  % \xlongequal
-% \usepackage{stmaryrd}   % \mapsfrom
-\usepackage{tikz-cd} % commutative diagrams
+% quotation marks
+\usepackage{csquotes}
+
+% math stuff
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{extarrows}
+\usepackage{amsthm}
+\usepackage{tikz-cd}
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
 \usetikzlibrary{calc}
 \usetikzlibrary{shapes}
 
+% changing the math font
+% has to be loaded after mathtools and amssymb
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}, partial = upright]{unicode-math}
 
+% referencing and hyperlinking
+% load hyperref after everything else
+% except for cleveref
+\usepackage{hyperref}
+\usepackage[capitalise,noabbrev]{cleveref}
 
-\usepackage[colorlinks=true]{hyperref} % hyperlinks, load after (nearly) everything
-
-% the following are to be loaded after hyperref
-\usepackage[symbols, sort=use, style=longheader]{glossaries-extra} % list of symbols
-\usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing
-
-
-
-
-
-%%% FONTS
-\usepackage[silent]{fontspec}
-\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math} % has to be loaded after mathtools and amssymb
-\setmainfont[Numbers=Lining]{EB Garamond}
-\setmathfont{TeX Gyre Termes Math}
-\setmathfont[range=\mathup/{num,latin,Latin},Numbers=Lining]{EBGaramond12-Regular}
-\setmathfont[range=\mathit/{latin,Latin}]{EBGaramond12-Italic}
-\setmathfont[range=\mathit/{greek,Greek},Scale=MatchLowercase]{TeX Gyre Pagella Math}
-\setmathfont[range=\mathbb,Scale=MatchUppercase]{TeX Gyre Schola Math}
-\setmathfont[range=\mathcal,Scale=MatchUppercase]{Latin Modern Math}
-\setmathfont[range=\mathfrak,Scale=MatchUppercase]{Asana Math}
-\setmathfont[range={}]{EBGaramond12-Italic}
-
-% fixes a problem with unicode math and \xmapsto
-% see https://tex.stackexchange.com/questions/439649/xmapsto-shows-a-7-at-the-beginning-of-the-arrow
-%\makeatletter
-%\renewcommand{\xmapsto}[2][]{\mathrel{\mathpalette\xmapsto@{{#1}{#2}}}}
-%\newcommand{\xmapsto@}[2]{\xmapsto@@{#1}#2}
-%\newcommand{\xmapsto@@}[3]{%
-%  \begingroup
-%  \sbox\z@{$\m@th#1\mathop{}\limits_{\;#2\;}^{\;#3\;}$}%
-%  \mathop{\Uhextensible width \wd\z@ 0 "27FC}_{#2}^{#3}%
-%  \endgroup
-%}
-%\makeatother
-
-
-
-%%%%% CONFIGURATION & STYLE
-  
-% the file containing the references for biblatex
-\bibliography{references.bib}
-% no unplaned surprises with \cite
-\DeclareFieldFormat{postnote}{#1}
-\DeclareFieldFormat{multipostnote}{#1}
-
-% index and glossary
-\makeindex
-\makenoidxglossaries
-\renewcommand*{\glspostdescription}{\dotfill}
-
-% big penalties to prevent thingsk
-\binoppenalty=\maxdimen         % breaking of binary operators
-\relpenalty=\maxdimen           % breaking of relation symbols
-\widowpenalty=\maxdimen         % widows
-\displaywidowpenalty=\maxdimen  % orphans
-
-
-% fonts for titlepage
-\setkomafont{publishers}{\normalsize}
- 
-% header design with scrlayer-scrpage
-\ihead{\leftmark}
-\chead{}
-\ohead{\rightmark}
-
-% more space for page numbers in the toc, default is 1.55
-\renewcommand{\@pnumwidth}{2em}
-
-% dont number subsubsections
-\setcounter{secnumdepth}{1}
-
-% colours for hyperref
-\hypersetup{
-    colorlinks,
-    linkcolor={green!35!black},
-    citecolor={blue!50!black},
-    urlcolor={blue!80!black}
-}
-
-% changing the tikzcdarrow tips to fit the math font
-% \tikzcdset{arrow style=math font}
-
-% definition of new counters and changes of already existing ones
-\newcounter{everything}[section]  % to be used for all kind of math enviroments
-
-% theorem-like enviroments
-\theoremstyle{definition}
-\newtheorem{claim}{Claim}[everything] % numbered version, numbering is only local
-\newtheorem*{claim*}{Claim} % unnumbered version
-\newtheorem{construction}[everything]{Construction}
-\newtheorem{convention}[everything]{Convention}
-\newtheorem{corollary}[everything]{Corollary}
-\newtheorem{definition}[everything]{Definition}
-\newtheorem{example}[everything]{Example}
-\newtheorem{examples}[everything]{Examples}
-\newtheorem{fluff}[everything]{}
-\newtheorem{lemma}[everything]{Lemma}
-\newtheorem{proposition}[everything]{Proposition}
-\newtheorem{recall}[everything]{Recall}
-\newtheorem{remark}[everything]{Remark}
-\newtheorem{theorem}[everything]{Theorem}
-\newtheorem{warning}[everything]{Warning}
-
-% printing of counter numbers
-\renewcommand{\theeverything}{\thesection.\arabic{everything}}
-\renewcommand{\theequation}{\arabic{equation}}
-\renewcommand{\theclaim}{\arabic{claim}}
-
-\renewcommand{\qedsymbol}{$\blacksquare$}
-
-% style of enumerating lists
-\setlist[enumerate, 1]{leftmargin=*, align=left, label=\arabic*)}
-\setlist[enumerate, 2]{leftmargin=*, align=left, label=\alph*)}
-\setlist[description, 1]{leftmargin=\labelwidth, font=\normalfont\itshape}
-\setlist[description, 2]{leftmargin=\labelwidth, font=\normalfont\itshape}
-\setlist[itemize, 1]{leftmargin=*}
-\setlist[itemize, 2]{leftmargin=*,label={\textopenbullet}}
-
-% different kinds of lists
-\newlist{equivalenceslist}{enumerate}{2}
-\setlist[equivalenceslist,1]{label=\roman*)}  %TODO: left align
-\newlist{implicationlist}{description}{1}
-\setlist[implicationlist,1]{leftmargin=\labelwidth, font=\normalfont}
-
-% text shortcuts
-\newcommand{\defemph}{\emph}
-
-% text shortcuts, mostly involving nobreakdash
-\newcommand{\action}[1]{#1\nobreakdash-action}
-\newcommand{\adnilpotent}{$\ad$\nobreakdash-nilpotent}
-\newcommand{\adsemisimple}{$\ad$\nobreakdash-semisimple}
-\newcommand{\algebra}[1]{#1\nobreakdash-algebra}
-\newcommand{\algebras}[1]{#1\nobreakdash-algebras}
-\newcommand{\basis}[1]{#1\nobreakdash-basis}
-\newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
-\newcommand{\derivation}[1]{#1\nobreakdash-derivation}
-\newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
-\newcommand{\fold}[1]{#1\nobreakdash-fold}
-\newcommand{\gon}[1]{#1\nobreakdash-gon}
-\newcommand{\graded}[1]{#1\nobreakdash-graded}
-\newcommand{\grading}[1]{#1\nobreakdash-grading}
-\newcommand{\gradings}[1]{#1\nobreakdash-gradings}
-\newcommand{\howmanyth}[1]{#1\nobreakdash-th}
-\newcommand{\invariance}[1]{#1\nobreakdash-invariance}
-\newcommand{\invariant}[1]{#1\nobreakdash-invariant}
-\newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
-\newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
-\newcommand{\linear}[1]{#1\nobreakdash-linear}
-\newcommand{\matrices}[1]{#1\nobreakdash-matrices}
-\newcommand{\many}[1]{#1\nobreakdash-many}
-\newcommand{\module}[1]{#1\nobreakdash-module}
-\newcommand{\modules}[1]{#1\nobreakdash-modules}
-\newcommand{\onedimensional}{one\nobreakdash-dimensional}
-\newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
-\newcommand{\representation}[1]{#1\nobreakdash-representation}
-\newcommand{\representations}[1]{#1\nobreakdash-representations}
-\newcommand{\rootsystem}[1]{#1\nobreakdash-root system}
-\newcommand{\rootsystems}[1]{#1\nobreakdash-root systems}
-\newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
-\newcommand{\submodule}[1]{#1\nobreakdash-submodule}
-\newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
-\newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentation}
-\newcommand{\threedimensional}{three\nobreakdash-dimensional}
-\newcommand{\fourdimensional}{four\nobreakdash-dimensional}
-\newcommand{\twococycle}{$2$\nobreakdash-cocycle}
-\newcommand{\twococycles}{$2$\nobreakdash-cocycles}
-\newcommand{\twodimensional}{two\nobreakdash-dimensional}
-\newcommand{\ua}{universal enveloping algebra}
-\newcommand{\uas}{universal enveloping algebras}
-\newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
-\newcommand{\vectorspaces}[1]{#1\nobreakdash-vector spaces}
-\newcommand{\weightspace}[1]{#1\nobreakdash-weight space}
-\newcommand{\weightvector}[1]{#1\nobreakdash-weight vector}
-
-% hacks
-\newcommand{\spacing}{\,}
+% list of symbols
+% needs to be loaded after hyperref
+\usepackage{tabu}
+\usepackage[symbols, sort = use]{glossaries-extra}
 
 
 
 
-%%%%% MATH STUFF
 
-% numbers and fields
-\newcommand{\Natural}{\mathbb{N}}
-\newcommand{\Integer}{\mathbb{Z}}
-\newcommand{\Rational}{\mathbb{Q}}
-\newcommand{\Real}{\mathbb{R}}
-\newcommand{\Complex}{\mathbb{C}}
-\newcommand{\Field}{\mathbb{F}}
-\newcommand{\kf}{\mathbf{k}}
-\newcommand{\Lf}{\mathbf{L}}
+%%%%% CONFIGURATION
 
-% lie algebras
-\newcommand{\blie}{\mathfrak{b}}
-\newcommand{\clie}{\mathfrak{c}}
-\newcommand{\dlie}{\mathfrak{d}}
-\newcommand{\glie}{\mathfrak{g}}
-\newcommand{\hlie}{\mathfrak{h}}
-\newcommand{\klie}{\mathfrak{k}}
-\newcommand{\gllie}{\mathfrak{gl}}
-\newcommand{\rlie}{\mathfrak{r}}
-\newcommand{\sllie}{\mathfrak{sl}}
-\newcommand{\tlie}{\mathfrak{t}}
-\newcommand{\nlie}{\mathfrak{n}}
-\newcommand{\looplie}{\mathcal{L}}
+% options for the class
+\usepackage{styles/class_style}
 
-% categories
-\newcommand{\catname}[1]{\mathbf{#1}}
-\newcommand{\catC}{\mathcal{C}}
-\newcommand{\catA}{\mathcal{A}}
-\newcommand{\cAlg}[1]{#1\text{-}\catname{Alg}}
-\newcommand{\cCAlg}[1]{#1\text{-}\catname{CAlg}}
-\newcommand{\cfAlg}[1]{#1\text{-}\catname{fAlg}}
-\newcommand{\cgAlg}[1]{#1\text{-}\catname{gAlg}}
-\newcommand{\cLie}[1]{#1\text{-}\catname{Lie}}
-\newcommand{\cMod}[1]{#1\text{-}\catname{Mod}}
-\newcommand{\cMon}{\catname{Mon}}
-\newcommand{\cRep}[1]{#1\text{-}\catname{Rep}}
-\newcommand{\cRoot}[1]{#1\text{-}\catname{Root}}
-\newcommand{\cSet}{\catname{Set}}
-\newcommand{\cVect}[1]{#1\text{-}\catname{Vect}}
+% changing the fonts
+\usepackage{styles/font_style}
 
-% root systems
-\newcommand{\rootfont}{\mathrm}
-\newcommand{\rootA}{\rootfont{A}}
-\newcommand{\rootB}{\rootfont{B}}
-\newcommand{\rootC}{\rootfont{C}}
-\newcommand{\rootD}{\rootfont{D}}
-\newcommand{\rootG}{\rootfont{G}}
+% spacing and line breaks
+\usepackage{styles/spacing_style}
 
-% spaces and sets
-\newcommand{\Aff}{\mathbb{A}}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\BF}{BF}
-\DeclareMathOperator{\centerlie}{Z}
-\DeclareMathOperator{\Der}{Der}
-\newcommand{\dihedral}{\mathrm{D}}
-\DeclareMathOperator{\End}{End}
-\newcommand{\Exterior}{\bigwedge}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\irr}{L}
-\DeclareMathOperator{\Mat}{M}
-\DeclareMathOperator{\normallie}{N}
-\DeclareMathOperator{\rad}{rad}
-\DeclareMathOperator{\Symm}{S}
-\DeclareMathOperator{\symm}{S}
-\DeclareMathOperator{\Tensor}{T}
-\DeclareMathOperator{\Univ}{U}
-\DeclareMathOperator{\verma}{M}
-\DeclareMathOperator{\Weyl}{W}
+% configuration of hyperref
+\usepackage{styles/reference_style}
 
-% functions
-\DeclareMathOperator{\ad}{ad}
-\DeclareMathOperator{\can}{can}
-\DeclareMathOperator{\card}{card}
-\DeclareMathOperator{\ringchar}{char}
-\DeclareMathOperator{\diag}{diag}
-\NewDocumentCommand{\gr}{O{}}{
-  {\operatorname{gr}}{}_{#1}  % hell again
-}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\sign}{sgn}
-\DeclareMathOperator{\tr}{tr}
+% header (and foot) design
+\usepackage{styles/header_style}
 
-% relations and operators
-\newcommand{\defined}{\coloneqq}
-\newcommand{\defines}{\eqqcolon}
-\newcommand{\dotcup}{\mathrel{\mathaccent\cdot\cup}}
-\newcommand{\inclusion}{\hookrightarrow}
-\newcommand{\ideal}{\trianglelefteq}
-\newcommand{\tensor}{\otimes}
+% title page style, including information
+\usepackage{styles/titlepage_style}
 
-% arrows
-\newcommand{\longonetoone}{\longleftrightarrow}
-\newcommand{\longto}{\longrightarrow}
-\newcommand{\xto}{\xrightarrow}
-\newcommand{\xlongto}[1]{\xlongrightarrow{\;#1\;}}
+% toc style changes
+\usepackage{styles/toc_style}
 
-% delimiters
-\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\bil}{\langle}{\rangle}
-\DeclarePairedDelimiter{\size}{\lvert}{\rvert}
-\DeclarePairedDelimiter{\inner}{(}{)}
-\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
-\DeclarePairedDelimiter{\pair}{\langle}{\rangle}
-\NewDocumentCommand{\restrict}{smm}{
-  \IfBooleanTF{#1}
-    {\left. {#2} \middle|_{#3} \right.}
-    {#2|_{#3}}
-}
-\NewDocumentCommand{\suchthat}{so}{
-  \IfValueTF{#2}
-  {
-    \,#2|\,
-  }
-  {
-    \IfBooleanTF{#1}
-    {
-      \,\middle|\,
-    }
-    {
-      \mathrel{|}
-    }
-  }
-}
+% configuration of the bibliography
+\usepackage{styles/bibliography_style}
 
-% binary operations and relations
-\newcommand{\dcup}{\amalg}
-\newcommand{\bigdcup}{\coprod}
+% configuration of the list of symbols
+\usepackage{styles/symbols_style}
 
-% decorations
-\RenewDocumentCommand{\check}{sm}{
-  \IfBooleanTF{#1}
-  {#2^{\vee}\!}
-  {#2^{\vee}}
-}
-\NewDocumentCommand{\dcheck}{sm}{
-  \IfBooleanTF{#1}
-  {#2^{\vee\vee}\!}
-  {#2^{\vee\vee}}
-}
-\newcommand{\class}{\overline}
-\DeclarePairedDelimiter{\gen}{\langle}{\rangle}
-\newcommand{\induced}{\overline}
-\newcommand{\op}{\mathrm{op}}
-\newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
+% configuration of the index
+\usepackage{styles/index_style}
 
-% shortcuts
-\newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
-\newcommand{\mc}[1]{\mathcal{#1}}
+% configuration of lists
+\usepackage{styles/lists_style}
 
+% creating the list of lectures and
+% defining the command \nextlecture
+\usepackage{styles/lecture_counter_style}
 
-%%%%% COMPLICATED STUFF
+% defining theorem-like environments
+\usepackage{styles/theorems_style}
 
-\NewDocumentCommand{\sldiagram}{soomo}{
-  \begingroup
-  % basic scaling of the image
-  \newcommand{\basescale}{0.7}
-  % read given dimensions, check if dimensions of different kind are given
-  \setsepchar{\\/,} % seperate first by \\ then the sublists by ,
-  \readlist{\dimensionlist}{#4}
-  \newcommand{\maxtypes}{\listlen\dimensionlist[]}
-  \newcommand{\maxcolumn}{\listlen\dimensionlist[1]}  % assumed to be the same for all types
-  \vcenter{\hbox{
-    % if no additional scaling set then use basescale
-    % if only first is set regard as global scaling
-    % if both are set regard as separate x-scaling and y-scaling
-    \IfValueTF{#2}
-    {
-      \IfValueTF{#3}
-      {
-        \begin{tikzpicture}[xscale = #2 * \basescale, yscale = #3 * \basescale]
-      }
-      {
-        \begin{tikzpicture}[scale = #2 * \basescale]
-      }
-      }
-      {
-        \begin{tikzpicture}[scale = \basescale]
-      }
-        % draw baseline and dot, deping on star
-        \IfBooleanTF{#1}
-        {
-          \draw (-0.5, 0) -- (\maxcolumn + 1.5, 0);
-          \draw (0,-0.5) node {$\dots$};
-          \draw (\maxcolumn+1,-0.5) node {$\dots$};
-        }
-        {
-          \draw (0.5, 0) -- (\maxcolumn + 0.5, 0);
-        }
-        % place labels
-        % check first if custom label are specified (assumed to have the same number of arguments as number of dimensions)
-        % otherwise use standard ones (assumes an odd number of columns)
-        \IfValueTF{#5}
-        {
-          \readlist{\labellist}{#5}
-          \foreach \i in {1, ..., \maxcolumn}
-          {
-            \draw (\i, -0.5) node {$\labellist[1,\i]$};
-          }
-        }
-        {
-          \foreach \i in {1, ..., \maxcolumn}
-          {
-            \pgfmathtruncatemacro{\currentweight}{\i - 0.5*\maxcolumn - 0.5}
-            \draw (\i, -0.4) node {$\currentweight$};
-          }
-        }
-%       place symbols (circles by standard)
-        \edef\startheight{0}
-        \foreach \i in {1, ..., \maxcolumn}
-        {
-          \xdef\startheight{0}
-          \foreach \t in {1, ..., \maxtypes}
-          {
-            \newcommand{\newheight}{\dimensionlist[\t,\i]}
-            \ifnum \newheight > 0
-              \ifnum \t = 1
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[circle, inner sep=\basescale*1mm, draw, fill=black] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-              \ifnum \t = 2
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[diamond, inner sep=\basescale*0.8mm, draw, fill=green!55!black] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-              \ifnum \t = 3
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[regular polygon, regular polygon sides = 3, draw, inner sep=\basescale*0.55mm, fill=red] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-              \ifnum \t = 4
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[star, inner sep=\basescale*0.7mm, draw, fill=yellow!85!black] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-            \fi
-            \pgfmathparse{\startheight+\newheight}
-            \xdef\startheight{\pgfmathresult}
-          }
-        }
-        \end{tikzpicture}
-  }}
-  \endgroup
-}
+% defining mathematical stuff
+\usepackage{styles/mathematics_style}
 
+% configuration for tikz(cd)
+\usepackage{styles/tikz_style}
 
-
-
-%%%%% GLOSSARY LIST
-% glossary uses macros defined above
-% input at the very end
-
-\input{glossarylist}
+% configuration for diagrams
+\usepackage{styles/diagrams_style}
 
 
 
