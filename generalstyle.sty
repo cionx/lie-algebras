@@ -41,7 +41,7 @@
 \usepackage[colorlinks=true]{hyperref} % hyperlinks, load after (nearly) everything
 
 % the following are to be loaded after hyperref
-\usepackage[symbols, sort=use, style=long3col]{glossaries-extra} % list of symbols
+\usepackage[symbols, sort=use, style=longheader]{glossaries-extra} % list of symbols
 \usepackage[capitalise,noabbrev]{cleveref}  % smarter referencing
 
 
@@ -61,7 +61,18 @@
 \setmathfont[range=\mathfrak,Scale=MatchUppercase]{Asana Math}
 \setmathfont[range={}]{EBGaramond12-Italic}
 
-
+% fixes a problem with unicode math and \xmapsto
+% see https://tex.stackexchange.com/questions/439649/xmapsto-shows-a-7-at-the-beginning-of-the-arrow
+%\makeatletter
+%\renewcommand{\xmapsto}[2][]{\mathrel{\mathpalette\xmapsto@{{#1}{#2}}}}
+%\newcommand{\xmapsto@}[2]{\xmapsto@@{#1}#2}
+%\newcommand{\xmapsto@@}[3]{%
+%  \begingroup
+%  \sbox\z@{$\m@th#1\mathop{}\limits_{\;#2\;}^{\;#3\;}$}%
+%  \mathop{\Uhextensible width \wd\z@ 0 "27FC}_{#2}^{#3}%
+%  \endgroup
+%}
+%\makeatother
 
 
 
@@ -76,6 +87,7 @@
 % index and glossary
 \makeindex
 \makenoidxglossaries
+\renewcommand*{\glspostdescription}{\dotfill}
 
 % big penalties to prevent thingsk
 \binoppenalty=\maxdimen         % breaking of binary operators
@@ -165,6 +177,7 @@
 \newcommand{\derivation}[1]{#1\nobreakdash-derivation}
 \newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
 \newcommand{\fold}[1]{#1\nobreakdash-fold}
+\newcommand{\gon}[1]{#1\nobreakdash-gon}
 \newcommand{\graded}[1]{#1\nobreakdash-graded}
 \newcommand{\grading}[1]{#1\nobreakdash-grading}
 \newcommand{\gradings}[1]{#1\nobreakdash-gradings}
@@ -182,11 +195,14 @@
 \newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
 \newcommand{\representation}[1]{#1\nobreakdash-representation}
 \newcommand{\representations}[1]{#1\nobreakdash-representations}
+\newcommand{\rootsystem}[1]{#1\nobreakdash-root system}
+\newcommand{\rootsystems}[1]{#1\nobreakdash-root systems}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
 \newcommand{\submodule}[1]{#1\nobreakdash-submodule}
 \newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
 \newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentation}
 \newcommand{\threedimensional}{three\nobreakdash-dimensional}
+\newcommand{\fourdimensional}{four\nobreakdash-dimensional}
 \newcommand{\twococycle}{$2$\nobreakdash-cocycle}
 \newcommand{\twococycles}{$2$\nobreakdash-cocycles}
 \newcommand{\twodimensional}{two\nobreakdash-dimensional}
@@ -241,8 +257,17 @@
 \newcommand{\cMod}[1]{#1\text{-}\catname{Mod}}
 \newcommand{\cMon}{\catname{Mon}}
 \newcommand{\cRep}[1]{#1\text{-}\catname{Rep}}
+\newcommand{\cRoot}[1]{#1\text{-}\catname{Root}}
 \newcommand{\cSet}{\catname{Set}}
 \newcommand{\cVect}[1]{#1\text{-}\catname{Vect}}
+
+% root systems
+\newcommand{\rootfont}{\mathrm}
+\newcommand{\rootA}{\rootfont{A}}
+\newcommand{\rootB}{\rootfont{B}}
+\newcommand{\rootC}{\rootfont{C}}
+\newcommand{\rootD}{\rootfont{D}}
+\newcommand{\rootG}{\rootfont{G}}
 
 % spaces and sets
 \newcommand{\Aff}{\mathbb{A}}
@@ -250,6 +275,7 @@
 \DeclareMathOperator{\BF}{BF}
 \DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Der}{Der}
+\newcommand{\dihedral}{\mathrm{D}}
 \DeclareMathOperator{\End}{End}
 \newcommand{\Exterior}{\bigwedge}
 \DeclareMathOperator{\GL}{GL}
@@ -260,6 +286,7 @@
 \DeclareMathOperator{\normallie}{N}
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\Symm}{S}
+\DeclareMathOperator{\symm}{S}
 \DeclareMathOperator{\Tensor}{T}
 \DeclareMathOperator{\Univ}{U}
 \DeclareMathOperator{\verma}{M}
@@ -296,6 +323,7 @@
 % delimiters
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\bil}{\langle}{\rangle}
+\DeclarePairedDelimiter{\size}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\inner}{(}{)}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
@@ -304,10 +332,20 @@
     {\left. {#2} \middle|_{#3} \right.}
     {#2|_{#3}}
 }
-\NewDocumentCommand{\suchthat}{s}{
-  \IfBooleanTF{#1}
-    {\,\middle|\,}
-    {\mathrel{|}}
+\NewDocumentCommand{\suchthat}{so}{
+  \IfValueTF{#2}
+  {
+    \,#2|\,
+  }
+  {
+    \IfBooleanTF{#1}
+    {
+      \,\middle|\,
+    }
+    {
+      \mathrel{|}
+    }
+  }
 }
 
 % binary operations and relations
