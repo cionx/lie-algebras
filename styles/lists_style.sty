@@ -5,9 +5,14 @@
 \setlist[enumerate]   { wide          = 0pt,
                         leftmargin    = *,
                         listparindent = \parindent,
-                        parsep        = 0pt }
-\setlist[enumerate, 1]{ label         = {\arabic*.} }
-\setlist[enumerate, 2]{ label         = {\alph*.} }
+                        parsep        = 0pt
+                      }
+\setlist[enumerate, 1]{ label         = {\arabic*.},
+                        ref           = {\arabic*}
+                      }
+\setlist[enumerate, 2]{ label         = {\alph*.},
+                        ref           = {\alph*}
+                      }
 
 
 \setlist[itemize]    { wide          = 0pt,
@@ -33,15 +38,18 @@
 \newlist{description*}{description}{2}
 
 
-\setlist[enumerate*]   {  wide          = 0pt,
+\setlist[enumerate*]    { wide          = 0pt,
                           leftmargin    = *,
                           labelindent   = \parindent,
                           listparindent = \parindent,
-                          parsep        = 0pt }
-\setlist[enumerate*, 1]{  label         = {\arabic*.},
-                          ref           = {\arabic*} }
-\setlist[enumerate*, 2]{  label         = {\alph*.},
-                          ref           = {\alph*} }
+                          parsep        = 0pt
+                        }
+\setlist[enumerate*, 1] { label         = {\arabic*.},
+                          ref           = {\arabic*}
+                        }
+\setlist[enumerate*, 2] { label         = {\alph*.},
+                          ref           = {\alph*}
+                        }
 
 
 \setlist[itemize*]     {  wide          = 0pt,
@@ -63,17 +71,27 @@
 % lists for equivalences (statement) and implications (proof)
 
 \newlist{equivalenceslist}{enumerate}{2}
+\newlist{equivalenceslist*}{enumerate}{2}
 \newlist{implicationlist}{description}{2}
 
 
 \setlist[equivalenceslist]  {   wide          = 0pt,
                                 leftmargin    = *,
-                                labelindent   = \parindent,
                                 listparindent = \parindent,
                                 parsep        = 0pt }
 \setlist[equivalenceslist,1]  { label = {\roman*.},
                                 ref   = {\roman*} }
 \setlist[equivalenceslist,2]  { label = {\alph*.},
+                                ref   = {\alph*} }
+
+\setlist[equivalenceslist*] {   wide          = 0pt,
+                                leftmargin    = *,
+                                labelindent   = \parindent,
+                                listparindent = \parindent,
+                                parsep        = 0pt }
+\setlist[equivalenceslist*,1] { label = {\roman*.},
+                                ref   = {\roman*} }
+\setlist[equivalenceslist*,2] { label = {\alph*.},
                                 ref   = {\alph*} }
 
 \setlist[implicationlist] {     wide          = 0pt,

@@ -1,4 +1,4 @@
-\section{Lie Algebras}
+\chapter{Lie~Algebras}
 
 
 % TODO: Examples for Derivations
@@ -6,7 +6,7 @@
 %       abelian Lie algebras
 %       Example where algebra and Lie algebra derivations differ (commutative algebras)
 
-% TODO: Every derivation of a semisimple Lie algebra is inne
+% TODO: Every derivation of a semisimple Lie algebra is inner
 
 % TODO: solvable Lie algebras are never ss (unless 0)
 
@@ -16,56 +16,68 @@
 %       Show that they are in general semisimple
 %       Show via root space decomposition that they are simple
 
-% TODO: sl_n(k) simple
-%       Show this by considering the root space decomposition of gl_n(k)
-%       to show that the only ideals are sl_n(k) and scalar matrices
+% TODO: sl(n, k) simple
+%       Show this by considering the root space decomposition of gl(n, k)
+%       to show that the only ideals are sl(n, k) and scalar matrices
 %       then use that sl_n = [gl_n, gl_n] is a characteristic ideal,
 %       or because sl_n is a direct summand
-
-% TODO: Copy all the stuff from the current lecture.
 
 % TODO: Example: Construct some strange looking Lie algebras as semidirect products.
 
 % TODO: When is a semidirect product semisimple?
 
-\subsection{Definition and Examples}
+
+
+
+
+\section{Definition and Examples}
 
 
 \begin{definition}
   Let~$\glie$ be a vector space over some field~$\kf$.
   A~{\bilinear{$\kf$}} map
   \[
-    \gls*{lie bracket}
+    [-,-]\glsadd{lie bracket}
     \colon
     \glie \times \glie
     \to
     \glie
   \]
-  is a \defemph{Lie~bracket}\index{Lie!bracket} if it satisfies the following two conditions:
+  is a \defemph{Lie~bracket}\index{Lie!bracket} if it satisfies the following two conditions.
   \begin{enumerate}
     \item
-    $[-, -]$ is \defemph{alternating}\index{alternating}, i.e.~$[x,x] = 0$ for every~$x \in \glie$.
+    $[-, -]$ is alternating\index{alternating}, i.e.~$[x,x] = 0$ for every~$x \in \glie$.
     \item
     $[-, -]$ satisfies the \defemph{Jacobi identity}\index{Jacobi identity}
     \[
       [x,[y,z]] + [y,[z,x]] + [z,[x,y]]
       =
       0
+      \qquad
+      \text{for all~$x, y, z \in \glie$.}
     \]
-    for all~$x,y,z \in \glie$.
   \end{enumerate}
   A~{\vectorspace{$\kf$}}~$\glie$ together with a Lie~bracket~$[-,-]$ is a~\defemph{\liealgebra{$\kf$}}\index{Lie!algebra}.
 \end{definition}
 
 
 \begin{remark}
-  A Lie~bracket~$[-, -]$ on a vector space~$\glie$ is always antisymmetric, i.e.~$[y,x] = -[x,y]$ for all~$x,y \in \glie$, because
+  A Lie~bracket~$[-, -]$ on a vector space~$\glie$ is always antisymmetric, i.e.
+  \[
+    [y,x] = -[x,y]
+    \qquad
+    \text{for all~$x, y \in \glie$,}
+  \]
+  because
   \[
     0
     =
     [x+y, x+y]
     =
-    [x,x] + [x,y] + [y,x] + [y,y]
+      \underbrace{ [x,x] }_{= 0}
+    + [x,y]
+    + [y,x]
+    + \underbrace{ [y,y] }_{= 0}
     =
     [x,y] + [y,x] \,.
   \]
@@ -73,130 +85,247 @@
 
 
 \begin{remark}
-  By using the antisymmetry of the Lie~bracket the Jacobi identity\index{Jacobi identity} can be rewritten as
+  The Jacobi identity\index{Jacobi identity} can be rewritten as
   \[
     [x,[y,z]]
     =
     [[x,y],z] + [y,[x,z]]
+    \qquad
+    \text{for all~$x, y, z \in \glie$}
   \]
-  for all~$x, y, z \in \glie$.
+  by using the antisymmetry of the Lie~bracket.
 \end{remark}
 
+
+\begin{remark}
+  One can more generally define the notion of an~\liealgebra{$A$}, where~$A$ is any commutative ring.
+  Such a Lie~algebra consists of an~\module{$A$}~$\glie$ together with an~\bilinear{$A$} map~$[-,-] \colon \glie \times \glie \to \glie$ that is alternating and satisfies the Jacobi identity.
+\end{remark}
+
+
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      A~\defemph{\enquote{\algebra{$\kf$}}}\index{\enquote{$k$-algebra}} is a~\vectorspace{$\kf$}~$A$ together wtih a bilinear map~$A \times A \to A$.
+      This map is the \defemph{multiplication} of~$A$.
+    \item
+      A~\defemph{\algebra{$\kf$}}\index{k-algebra@$k$-algebra} is an~\enquote{\algebra{$\kf$}} that is both associative and unital.
+  \end{enumerate}
+\end{definition}
 
 \begin{examples}
   \label{examples for lie algebras}
   \leavevmode
   \begin{enumerate}
     \item
-      Any vector space~$\glie$ becomes a Lie~algebra via~$[x,y] = 0$ for all~$x,y \in \glie$.
-    \item
-      Any \emph{associative}~{\algebra{$\kf$}}~$A$ becomes a~{\liealgebra{$\kf$}} via~$[a,b] \defined ab - ba$ for all~$a, b \in A$.
-      Then~$[-, -]$ is alternating and it follows from the associativity of the multiplication of~$A$ that
+      Any associative \enquote{\algebra{$\kf$}}~$A$ becomes a~{\liealgebra{$\kf$}} via
+      \[
+        [a,b]
+        \defined
+        ab - ba
+        \qquad
+        \text{for all~$a, b \in A$.}
+      \]
+      Indeed, this map~$[-, -] \colon A \times A \to A$ is bilinear and alternating, and it follows from the associativity of the multiplication of~$A$ that
       \begin{align*}
          {}&  [a,[b,c]] + [b,[c,a]] + [c,[a,b]] \\
         ={}&  [a, (bc-cb)] + [b, (ca-ac)] + [c, (ab-ba)] \\
         ={}&  a(bc-cb)-(bc-cb)a + b(ca-ac) - (ca-ac)b + c(ab-ba) - (ab-ba)c \\
-        ={}&  abc - acb - bca + cba + bca - bac - cab + acb + cab - cba - abc + bac \\
+        ={}&  \underbracket{abc}_{1}
+              - \underbracket{acb}_{2}
+              - \underbracket{bca}_{3}
+              + \underbracket{cba}_{4}
+              + \underbracket{bca}_{3}
+              - \underbracket{bac}_{5}
+              - \underbracket{cab}_{6}
+              + \underbracket{acb}_{2}
+              + \underbracket{cab}_{6}
+              - \underbracket{cba}_{4}
+              - \underbracket{abc}_{1}
+              + \underbracket{bac}_{5} \\
         ={}&  0
       \end{align*}
       for all~$a, b, c \in A$.
-      The element~$[a,b]$ is the \defemph{commutator}\index{commutator} of~$a$ and~$b$.
-    
-      The following two are important examples of this construction:
+      The element~$[a,b]$ of~$A$ is the \defemph{commutator}\index{commutator} of the two elements~$a$ and~$b$.
+      It holds that~$[a, b] = 0$ if and only if the elements~$a$ and~$b$ commute.
+
+      Let us emphazise some special cases of this general construction.
       \begin{enumerate}
         \item
-          The~{\algebra{$\kf$}} of~($n \times n$)-matrices~$\Mat_n(\kf)$ becomes a Lie~algebra via
+          The~{\algebra{$\kf$}} of~($n \times n$)-matrices,~$\Mat(n, \kf)$, becomes a Lie~algebra via
           \[
             [A,B]
             \defined
             AB - BA
+            \qquad
+            \text{for all~$A, B \in \Mat(n, \kf)$.}
           \]
-          for all~$A, B \in \Mat_n(\kf)$.
-          This Lie~algebra is called the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} and is denoted by~\gls*{general lie matrix}.
+          This Lie~algebra is the \defemph{general linear Lie~algebra}\index{general linear Lie algebra}, and it is denoted by~$\gllie(n, \kf)$\glsadd{general lie matrix}.
         \item
-          More generally for any~{\vectorspace{$\kf$}} the~{\algebra{$\kf$}}~$\End_k(V)$ becomes a Lie~algebra via
+          For any~{\vectorspace{$\kf$}}~$V$ the~{\algebra{$\kf$}}~$\End_{\kf}(V)$ becomes a Lie~algebra via
           \[
             [\phi_1, \phi_2]
             \defined
             \phi_1 \circ \phi_2 - \phi_2 \circ \phi_1
+            \qquad
+            \text{for all~$\phi_1, \phi_2 \in \End_{\kf}(V)$.}
           \]
-          for all~$\phi_1, \phi_2 \in \End_k$.
-          This Lie~algebra is called the \defemph{general linear Lie~algebra of~$V$}\index{general linear Lie algebra} and is denoted by~\gls*{general lie endomorphism}.
-      \item
-        The \defemph{Heisenberg Lie~algebra}\index{Heisenberg Lie algebra}\index{Lie algebra!Heisenberg} consists of a~{\vectorspace{$\kf$}} with basis~$P_1, \dotsc, P_n, Q_1, \dotsc, Q_n, C$ together with the Lie~bracket~$[-,-]$ satisfying the relations
-        \begin{itemize}
-          \item
-            $[P_i, P_j] = 0$ and~$[Q_i, Q_j] = 0$ for all~$i, j = 1, \dotsc, n$,
-          \item
-            $[P_i, C] = [Q_i, C] = 0$ for all~$i = 1, \dotsc, n$,
-          \item
-            $[P_i, Q_j] = \delta_{ij} C$ for all~$i,j = 1, \dotsc, n$.
-        \end{itemize}
-        We exhibit in \cref{examples for representations} a faithful representation of the Heisenberg Lie~algebra, which shows in particular that~$[-,-]$ is indeed a Lie~bracket.
-    \end{enumerate}
+          This Lie~algebra is the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} of~$V$, and it is denoted by~\gls*{general lie endomorphism}.
+      \end{enumerate}
+    \item
+      The \defemph{Heisenberg Lie~algebra}\index{Heisenberg Lie algebra}\index{Lie algebra!Heisenberg}~$\Hlie$ consists of the~\dimensional{$(2n+1)$}~{\vectorspace{$\kf$}} with basis
+      \[
+        P_1 \,, \dotsc \,, P_n \,,
+        \quad
+        Q_1 \,, \dotsc \,, Q_n \,,
+        \quad
+        C
+      \]
+      together with the Lie~bracket~$[-,-]$ that is given on these basis elements by
+      \begin{itemize}
+        \item
+          $[P_i, P_j] = 0$ and~$[Q_i, Q_j] = 0$ for all~$i, j = 1, \dotsc, n$,
+        \item
+          $[P_i, C] = [Q_i, C] = 0$ for every~$i = 1, \dotsc, n$,
+        \item
+          $[P_i, Q_j] = \delta_{ij} C$ for all~$i,j = 1, \dotsc, n$.
+      \end{itemize}
+      In \cref{examples for representations} we will realize~$\Hlie$ as a Lie~subalgebra of~$\gllie(V)$ for a suitable~\vectorspace{$\kf$}~$V$.
+      This will in particular show that~$\Hlie$ is indeed a Lie~algebra.
   \end{enumerate}
 \end{examples}
 
 
 \begin{recall}
-  For calculations in~$\gllie_n(\kf)$ it is often useful to remember that
+  For calculations in~$\gllie(n, \kf)$ it is often useful to remember that
   \[
     E_{ij} E_{kl}
     =
-    \begin{cases}
-      E_{il}  & \text{if~$j = k$} \,, \\
-      0       & \text{otherwise}  \,,
-    \end{cases}
+    \begin{cases*}
+      E_{il}  & if~$j = k$, \\
+      0       & otherwise,
+    \end{cases*}
   \]
-  where~$E_{ij}$ with~$1 \leq i,j \leq n$ denotes the standard basis of~$\gllie_n(\kf)$.
+  where the matrices~$E_{ij}$ with~$i,j = 1, \dotsc, n$ are the standard basis matrices of~$\gllie(n, \kf)$.
   One may think about the matrix~$E_{ij}$ as \enquote{going from~$j$ to~$i$}.
-  The composition~$E_{ij} E_{kl}$ does then \enquote{go from~$l$ to~$i$} if the positions~$j$ and~$k$ fit together;
-  if they do not fit, then the composition is simply zero.
+  The composition~$E_{ij} E_{kl}$ does then \enquote{go from~$l$ to~$i$} if the positions~$j$ and~$k$ match, and if they don’t fit, then this composition vanishes.
   
   This intuition can be formalized by observing that
   \[
     E_{ij} e_k
     =
-    \begin{cases}
-      e_i & \text{if~$j = k$} \,, \\
-      0   & \text{otherwise}  \,.
-    \end{cases}
+    \begin{cases*}
+      e_i & if~$j = k$, \\
+      0   & otherwise,
+    \end{cases*}
   \]
-  This means that the matrix~$E_{ij}$ maps one of the standard basis vectors~$e_1, \dotsc, e_n$ (namely~$e_j$) to another standard basis vector (namely~$e_i$), but filters out all other standard basis vectors.
+  where~$e_1, \dotsc, e_n$ denotes the standard basis vectors of~$\kf^n$.
+  The above formula tells us that the matrix~$E_{ij}$ maps one of the standard basis vectors (namely~$e_j$) to another standard basis vector (namely~$e_i$), but filters out all other standard basis vectors.
 \end{recall}
 
 
 \begin{remark}[Pre-Lie~algebras]
-  Suppose that more generally~$A$ is a vector space together with a bilinear multiplication map~$A \times A \to A$,~$(a,b) \mapsto ab$.
-  We can then define a bilinear bracket~$[-,-]$ on~$A$ via~$[a,b] \defined ab-ba$.
-  We have just seen that if the multiplication of~$A$ is associative then the associated bracket is a Lie~bracket.
-  But the associativity of~$A$ is not needed for~$[-,-]$ to be a Lie~bracket, weaker conditions suffice.
+  Let~$A$ be an~\enquote{\algebra{$\kf$}}.
+  Even if we don’t require the multiplication of~$A$ to be associative, we can still define a bilinear bracket~$[-,-]$ on~$A$ via
+  \[
+    [a,b]
+    \defined
+    ab-ba
+    \qquad
+    \text{for all~$a, b \in A$.}
+  \]
+  This bracket~$[-,-]$ is alternating.
+  We have seen in \cref{examples for lie algebras} that it satisfies the Jacobi identity if the multiplication of~$A$ is associative, and is then a Lie~bracket.
+  But the converse does not hold true:
+  it may happen that~$[-,-]$ is a Lie~bracket even though~$A$ is not associative.
   
   One important example of this are \defemph{pre-Lie~algebras}\index{pre-Lie algebra}:
-  We say that~$A$ is a pre-Lie algebra if the multiplication of~$A$ satisfies the condition
-  \[
+  We say that~$A$ is a pre-Lie~algebra if its multiplication satisfies the condition
+  \begin{equation}
+    \label{abstract equation for pre-lie algebra}
     [L_a, L_b]
     =
     L_{[a,b]}
-  \]
-  for all~$a, b \in A$, where the left hand side is the endomorphism commutator~$[L_a, L_b] = L_a L_b - L_b L_a$ and where we denote for every~$a \in A$ by~$L_a \colon A \to A$ the left multiplication~$x \mapsto ax$.
-  Writing out the above condition means that
+    \qquad
+    \text{for all~$a, b \in A$,}
+  \end{equation}
+  where the left hand side is the endomorphism commutator~$[L_a, L_b] = L_a L_b - L_b L_a$, and where we denote for every element~$a$ of~$A$ by~$L_a$ the left multiplication with~$a$, i.e.\ the map
   \[
+    L_a
+    \colon
+    A
+    \to
+    A \,,
+    \quad
+    x
+    \mapsto
+    ax \,.
+  \]
+  Writing out the condition~\eqref{abstract equation for pre-lie algebra} yields the equivalent condition
+  \begin{equation}
+    \label{pre lie algebra condition written out}
     a(bc) - b(ac)
     =
     (ab-ba)c
-  \]
-  for all~$a, b, c \in A$, or equivalently
+    \qquad
+    \text{for all~$a, b, c \in A$,}
+  \end{equation}
+  or equivalently the condition
   \[
     a(bc) - (ab)c
     =
     b(ac) - (ba)c
+    \qquad
+    \text{for all~$a, b, c \in A$.}
   \]
+  If~$A$ is a pre-Lie~algebra then the resulting commutator bracket~$[-,-]$ on~$A$ is still a Lie~bracket, even if~$A$ itself is not associative.
+  Indeed, the Bracket~$[-,-]$ alternating and it follows from the characterization~\eqref{pre lie algebra condition written out} of a pre-Lie~algebra that it also satisfies the Jacobi identity, because
+  \begin{align*}
+    {}&
+    [a, [b,c] ] + [b, [c, a]] + [c, [a, b]]
+    \\
+    ={}&
+    a (bc - cb) - (bc - cb) a
+    + b (ca - ac) - (ca - ac) b
+    + c (ab - ba) - (ab - ba) c
+    \\
+    ={}&
+    a (bc) - a (cb) - (bc - cb) a
+    + b (ca) - b (ac) - (ca - ac) b
+    + c (ab) - c (ba) - (ab - ba) c
+    \\
+    ={}&
+    \underbracket{a (bc)}_{1}
+    - \underbracket{a (cb)}_{2}
+    - \underbracket{b (ca)}_{3}
+    - \underbracket{c (ba)}_{4}
+    + \underbracket{b (ca)}_{3}
+    - \underbracket{b (ac)}_{5}
+    - \underbracket{c (ab)}_{6}
+    - \underbracket{a (cb)}_{2}
+    \\
+    {}&
+    + \underbracket{c (ab)}_{6}
+    - \underbracket{c (ba)}_{4}
+    - \underbracket{a (bc)}_{1}
+    - \underbracket{b (ac)}_{5}
+    \\
+    ={}&
+    0
+  \end{align*}
   for all~$a, b, c \in A$.
-  If~$A$ is a pre-Lie~algebra then it still follows that the commutator bracket~$[-,-]$ of~$A$ is a Lie~bracket.
-  We note that every associative algebra is a pre-Lie~algebra, and hence that the Lie~algebra structure on an associative algebra comes from its pre-Lie~algebra structure.
-  
- Pre-Lie~algebras was first introduced by Gerstenhaber and we refer to~\cite{gerstenhaber} to see this concept in action.
+
+  Every associative \enquote{algebra} is in particular a pre-Lie~algebra, and thus we see that the Lie~algebra structure on an associative \enquote{algebra} actually comes from its pre-Lie~algebra structure.
+  The situation is hence as follows:
+  \[
+    \text{associative \enquote{algebra}}
+    \to
+    \text{pre-Lie~algebra}
+    \to
+    \text{Lie~algebra}
+  \]
+ Pre-Lie~algebras were first introduced by Gerstenhaber and we refer to~\cite{gerstenhaber} to see this concept in action.
 \end{remark}
 
 
@@ -204,35 +333,53 @@
   Let~$\glie$ be a~{\liealgebra{$\kf$}}.
   \begin{enumerate}
     \item
-      A \defemph{Lie~subalgebra}\index{Lie!subalgebra} of~$\glie$ is a~{\linear{$\kf$}} subspace~$\hlie \subseteq \glie$ such that~$[x,y] \in \hlie$ for all~$x, y \in \hlie$.
+      A \defemph{Lie~subalgebra}\index{Lie!subalgebra} of~$\glie$ is a~{\linear{$\kf$}} subspace~$\hlie$ of~$\glie$ such that
+      \[
+        [x,y] \in \hlie
+        \qquad
+        \text{for all~$x, y \in \hlie$.}
+      \]
     \item
-      A \defemph{Lie~ideal}\index{Lie!ideal}, or simply~\defemph{ideal} of~$\glie$ is a~{\linear{$\kf$}} subspace~$I$ of~$\glie$ such that~$[x,y] \in I$ for all~$x \in \glie$ and~$y \in I$.
-      That~$I$ is an ideal in~$\glie$ is denoted by~$I \mathrel{\gls*{lie ideal}} \glie$.
+      A \defemph{Lie~ideal}\index{Lie!ideal}, or simply~\defemph{ideal} of~$\glie$ is a~{\linear{$\kf$}} subspace~$I$ of~$\glie$ such that
+      \[
+        [x,y] \in I
+        \qquad
+        \text{for all~$x \in \glie$,~$y \in I$.}
+      \]
+      That~$I$ is an ideal in~$\glie$ is denoted by~$I \ideal \glie$\glsadd{lie ideal}.
   \end{enumerate}
 \end{definition}
 
 
 \begin{remark}
-  It is not necessary to distinguish between left ideals or right ideals in a Lie~algebra because the Lie~bracket is antisymmetric.
+  \label{on the notion of ideals}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      It is not necessary to distinguish between left ideals, right ideals and two-sided ideals in~$\glie$ because the Lie~bracket of~$\glie$ is antisymmetric.
+    \item
+      Every ideal in~$\glie$ is in particular a Lie~subalgebra of~$\glie$.
+      This is different to the setting of rings%
+      \footnote{
+        We consider only unital rings, unless otherwise specified.
+      }, where a proper ideal is never a subring.
+      Lie~algebras do instead behave more like groups, where a normal subgroup is in particular a subgroup.
+  \end{enumerate}
 \end{remark}
 
 
 \begin{remark}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      For a Lie~algebra~$\glie$ and a subalgebra~$\hlie \subseteq \glie$ it follows that~$\hlie$ becomes a Lie~algebra by restricting the Lie~bracket of~$\glie$ to~$\hlie$.
-    \item
-      Every ideal in~$\glie$ is also a subalgebra of~$\glie$.
-  \end{enumerate}
+  Let~$\glie$ be a Lie~algebra.
+  Every Lie~subalgebra~$\hlie$ of~$\glie$ becomes a Lie~algebra in its own right by restricting the Lie~bracket of~$\glie$ to~$\hlie$.
+  It follows in particular that every ideal in~$\glie$ is again a Lie~algebra in its own right.
 \end{remark}
 
 
 \begin{definition}
   Let~$\glie$ be a Lie~algebra.
-  The \defemph{center}\index{center} of~$\glie$ is
+  The \defemph{center}\index{center} of~$\glie$ is the set
   \[
-    \gls*{center}
+    \centerlie(\glie)\glsadd{center}
     \defined
     \{
       x \in \glie
@@ -243,8 +390,15 @@
 \end{definition}
 
 
+\begin{proposition}
+  For any Lie~algebra~$\glie$ its center~$\centerlie(\glie)$ is an ideal in~$\glie$.
+  \qed
+\end{proposition}
+
+
 \begin{definition}
-  For a Lie-algebra~$\glie$ over some field~$\kf$ and all subsets~$X, Y \subseteq \glie$ the subspace
+  Let~$\glie$ be a~\liealgebra{$\kf$}.
+  For any two subsets~$X$,~$Y$ of~$\glie$ the linear subspace of~$\glie$ given by
   \[
     \gls*{commutator space}
     \defined
@@ -259,42 +413,48 @@
 \end{definition}
 
 
-\begin{lemma}
-  For any Lie~algebra~$\glie$ its center~$\centerlie(\glie)$ is an ideal in~$\glie$.
-  \qed
-\end{lemma}
-
-
 \begin{definition}
   A Lie~algebra~$\glie$ is \defemph{abelian}\index{abelian} if~$[x,y] = 0$ for all~$x, y \in \glie$.
 \end{definition}
 
 
-\begin{remark}
-  Note that a Lie~algebra~$\glie$ is abelian if and only if~$\centerlie(\glie) = \glie$, if and only if~$[\glie, \glie] = 0$.
-\end{remark}
+\begin{proposition}
+  For any Lie~algebra~$\glie$ the following three conditions are equivalent.
+  \begin{equivalenceslist}
+    \item
+      $\glie$ is abelian.
+    \item
+      $\centerlie(\glie) = \glie$.
+    \item
+      $[\glie, \glie] = 0$.
+    \qed
+  \end{equivalenceslist}
+\end{proposition}
 
 
-\begin{example}
+\begin{examples}
   \leavevmode
   \begin{enumerate}
     \item
       A~{\algebra{$\kf$}}~$A$ is commutative if and only if it is abelian as a Lie~algebra.
     \item
-      In a Lie~algebra~$\glie$ any element~$x \in \glie$ spans a {\onedimensional} abelian Lie~subalgebra of~$\glie$.
+      In any Lie~algebra~$\glie$ every element~$x$ of~$\glie$ spans a {\onedimensional} abelian Lie~subalgebra of~$\glie$, given by~$\gen{x}_{\kf} = \{ \lambda x \suchthat \lambda \in \kf \}$.
+    \item
+      Every vector space~$\glie$ can be made into an abelian Lie~algebra is precisely one way, namely by setting~$[x, y] \defined 0$ for all~$x, y \in \glie$.
   \end{enumerate}
-\end{example}
+\end{examples}
 
 
-\begin{lemma}
+\begin{proposition}
+  \label{construction of new ideals}
   Let~$\glie$ be a Lie~algebra.
   \begin{enumerate}
     \item
-    If~$I_\lambda$,~$\lambda \in \Lambda$ is a collection of ideals of~$\glie$ then their intersection~$\bigcap_{\lambda \in \Lambda} I_\lambda$ and their sum~$\sum_{\lambda \in \Lambda} I_\lambda$ are again ideals in~$\glie$.
+    If~$I_\lambda$ with~$\lambda \in \Lambda$ is a collection of ideals of~$\glie$ then their intersection~$\bigcap_{\lambda \in \Lambda} I_\lambda$ and their sum~$\sum_{\lambda \in \Lambda} I_\lambda$ are again ideals in~$\glie$.
     \item
-    If~$I$ and~$J$ are ideals in~$\glie$ then their commutator~$[I,J]$ is again an ideal in~$\glie$.
+    If~$I$ and~$J$ are two ideals in~$\glie$ then their commutator~$[I,J]$ is again an ideal in~$\glie$.
   \end{enumerate}
-\end{lemma}
+\end{proposition}
 
 
 \begin{proof}
@@ -303,8 +463,8 @@
     \item
       This follows from direct calculation.
     \item
-      As the commutator~$[I,J]$ is spanned by the elements~$[y,z]$ with~$y \in I$ and~$z \in J$ it sufficies to show that~$[x,[y,z]] \in [I,J]$ for all~$x \in \glie$,~$y \in I$ and~$z \in J$.
-      This follows from~$I, J \ideal \glie$ and the Jacobi identity because
+      It sufficies to show that~$[x,[y,z]] \in [I,J]$ for all~$x \in \glie$,~$y \in I$ and~$z \in J$, because the commutator space~$[I,J]$ is spanned by the elements~$[y,z]$ with~$y \in I$ and~$z \in J$ .
+      By using the Jacobi identity and that~$I$,~$J$ are ideals of~$\glie$ we find that
       \[
         [x,[y,z]]
         =
@@ -312,18 +472,31 @@
         \subseteq
         [I, z] + [y, J]
         \subseteq
-        [I, J] + [\spacing J, I]
+        [I, J] + [J, I]
         =
         [I,J] \,.
       \]
-      Here we use that~$[\spacing J,I] = -[I,J] = [I,J]$ by the antisymmetry of the Lie bracket~$[-,-]$.
+      Here we use for the last equality that~$[J,I] = -[I,J] = [I,J]$ by the antisymmetry of the Lie~bracket.
    \qedhere
  \end{enumerate}
 \end{proof}
 
 
+\begin{example}
+  Any Lie~algebra~$\glie$ is an ideal of itself.
+  It thus follows from \cref{construction of new ideals} that the commutator space
+  \[
+    [\glie, \glie]
+    =
+    \gen{ [x,y] \suchthat x, y \in \glie }
+  \]
+  is again an ideal in~$\glie$.
+  This is the \defemph{commutator ideal}\index{commutator!ideal} of~$\glie$.
+\end{example}
+
+
 \begin{definition}
-  A Lie~algebra~$\glie$ is~\defemph{linear}\index{linear} if~$\glie$ is a Lie~subalgebra of~$\gllie(V)$ for some finite dimensional vector space~$V$, or a Lie~subalgebra of~$\gllie_n(\kf)$ for some~$n$.
+  A Lie~algebra~$\glie$ is~\defemph{linear}\index{linear} if it is a Lie~subalgebra of~$\gllie(V)$ for some finite-dimensional vector space~$V$, or a Lie~subalgebra of~$\gllie(n, \kf)$ for some~$n$.
 \end{definition}
 
 
@@ -331,25 +504,24 @@
   \leavevmode
   \begin{enumerate}
     \item
-      Let~$\glie \defined \gllie_n(\kf)$.
+      Let~$\glie \defined \gllie(n, \kf)$.
       Then
       \[
-        \gls*{special lie matrix}
+        \sllie(n, \kf)
         \defined
         \{
-          A \in \glie
+          A \in \gllie(n, \kf)
         \suchthat
-          \tr A = 0
+          \tr(A) = 0
         \}
+        \glsadd{special lie matrix}
       \]
-      is an ideal in~$\glie$, namely
+      is an ideal in~$\glie$, namely the commutator ideal~$[\glie, \glie]$.
+      Indeed, we have for all~$A, B \in \glie$ that
       \[
-        \sllie_n(\kf)
-        =
-        [\glie,\glie]  \,.
+        \tr(AB) = \tr(BA)
       \]
-        
-      Indeed, we have for all~$A, B \in \glie$ that~$\tr(AB) = \tr(BA)$ and hence
+      and therefore
       \[
           \tr( [A,B] )
         = \tr(AB-BA)
@@ -357,47 +529,47 @@
         = \tr(AB) - \tr(AB)
         = 0  \,.
       \]
-      This shows that~$[\glie, \glie] \subseteq \sllie_n(\kf)$.
-      Observe on the other hand that~$\sllie_n(\kf)$ has a basis given by the matrices~$E_{ij}$ with~$1 \leq i \neq j \leq n$ together with the matrices~$E_{11} - E_{ii}$ with~$i = 2, \dotsc, n$.
-      Each of these matrices is given as a commutator, namely
+      This shows that the commutator ideal~$[\glie, \glie]$ is contained~$\sllie(n, \kf)$.
+      We observe on the other hand that the matrix space~$\sllie(n, \kf)$ has a basis given by the matrices~$E_{ij}$ for~$1 \leq i \neq j \leq n$ together with the matrices~$E_{11} - E_{ii}$ for~$i = 2, \dotsc, n$.
+      Each of these matrices is a commutator, namely
       \[
-          E_{ij}
+          [E_{ij}, E_{jj}]
           =
           E_{ij} E_{jj} - \underbrace{ E_{jj} E_{ij} }_{=0}
           =
-          [E_{ij}, E_{jj}]
+          E_{ij}
       \]
       for~$1 \leq i \neq j \leq n$ and
       \[
-        E_{11} - E_{ii}
+        [E_{1i}, E_{i1}]
         =
         E_{1i} E_{i1} - E_{i1} E_{1i}
         =
-        [E_{1i}, E_{i1}]
+        E_{11} - E_{ii}
       \]
       for~$i = 2, \dotsc, n$.
-      Therefore~$\sllie_n(\kf) \subseteq [\glie, \glie]$.
+      This shows that~$\sllie(n, \kf)$ is contained in the commutator Ideal~$[\glie, \glie]$.
       
-      The Lie~algebra~$\sllie_n(\kf)$ is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra}.
-      
-      If~$V$ is any finite dimensional~{\vectorspace{$\kf$}} then
+      The Lie~algebra~$\sllie(n, \kf)$ is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra}.
+    \item
+      If~$V$ is any finite-dimensional~{\vectorspace{$\kf$}} then
       \[
-        \gls*{special lie endomorphism}
+        \sllie(V)
         \defined
         [\gllie(V), \gllie(V)]
         =
         \{
           f \in \gllie(V)
         \suchthat
-          \tr(\spacing f) = 0
+          \tr(f) = 0
         \}
+        \glsadd{special lie endomorphism}
       \]
       is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra} of~$V$.
-   
     \item
-      The upper triangular matrices\index{upper triangular matrices}\index{triangular matrices!upper}
+      The set of upper triangular matrices\index{upper triangular matrices}\index{triangular matrices!upper}, given by
       \[
-        \gls*{triangular lie matrix}
+        \tlie(n, \kf)
         \defined
         \left\{
           \begin{pmatrix}
@@ -423,15 +595,16 @@
           \end{pmatrix}
         \suchthat*
           \text{$a_{ij} \in \kf$ for all~$1 \leq i \leq j \leq n$}
-        \right\}
+        \right\} \,,
+        \glsadd{triangular lie matrix}
       \]
-      form a Lie~subalgebra of~$\gllie_n(\kf)$.
-      This holds because the space of upper triangular matrices is a~{\subalgebra{$\kf$}} of~$\Mat_n(\kf)$, and are hence closed under the commutator~$[A,B] = AB - BA$.
+      is a Lie~subalgebra of~$\gllie(n, \kf)$.
+      This holds because the set~$\tlie(n, \kf)$ is a~{\subalgebra{$\kf$}} of~$\Mat(n, \kf)$, and hence closed under the commutator bracket~$[A,B] = AB - BA$.
    
     \item
-      The strictly upper triangular matrices\index{stricly upper triangular matrices}\index{triangular matrices!strictly upper}
+      The set of strictly upper triangular matrices\index{stricly upper triangular matrices}\index{triangular matrices!strictly upper}
       \[
-        \gls*{strictly triangular lie matrix}
+        \nlie(n, \kf)
         \defined
         \left\{
           \begin{pmatrix}
@@ -458,26 +631,28 @@
         \suchthat*
           \text{$a_{ij} \in \kf$ for all~$1 \leq i < j \leq n$}
         \right\}
+        \glsadd{strictly triangular lie matrix}
       \]
-      form a Lie~subalgebra of~$\tlie_n(\kf)$ and therefore also of~$\gllie_n(\kf)$.
-      The space~$\nlie_n(\kf)$ is even an ideal in~$\tlie_n(\kf)$, namely~$\nlie_n(\kf) = [\tlie_n(\kf), \tlie_n(\kf)]$:
+      is a Lie~subalgebra of~$\tlie(n, \kf)$, and therefore also a Lie~subalgebra of~$\gllie(n, \kf)$.
+      The space~$\nlie(n, \kf)$ is even an ideal in~$\tlie(n, \kf)$, namely the commutator ideal~$[\tlie(n, \kf), \tlie(n, \kf)]$.
     
-      For any two matrices~$A, B \in \tlie_n(\kf)$ their products~$AB$ and~$BA$ are again upper triangular and both products have the same diagonal entries.
-      The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix.
-      Hence~$[\tlie_n(\kf), \tlie_n(\kf)] \subseteq \nlie_n(\kf)$.
-      We know on the other hand that~$\nlie_n(\kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$, and each of those matrices can be written as a commutator
+      Indeed, for any two upper triangular matrices~$A$,~$B$ their two products~$AB$ and~$BA$ are again upper triangular, and both products have the same diagonal entries.
+      The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix, which shows that the commutator ideal~$[\tlie(n, \kf), \tlie(n, \kf)]$ is contained in~$\nlie(n, \kf)$.
+      We know on the other hand that~$\nlie(n, \kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$.
+      Each of those matrices can be written as a commutator, namely as
       \[
-        E_{ij}
+        [E_{ii}, E_{ij}]
         =
         E_{ii} E_{ij} - \underbrace{ E_{ij} E_{ii} }_{= 0}
+        =
+        E_{ij} \,,
       \]
-      with~$E_{ii}, E_{ij} \in \tlie_n(\kf)$.
-      Therefore~$\nlie_n(\kf) \subseteq \tlie_n(\kf)$.
-      
+      with both~$E_{ii}$ and~$E_{ij}$ being elements of~$\tlie(n, \kf)$.
+      This shows that~$\nlie(n, \kf)$ is contained in the commutator ideal~$[\tlie(n, \kf), \tlie(n, \kf)]$.
     \item
-      The diagonal matrices
+      The set of diagonal matrices
       \[
-        \dlie_n(\kf)
+        \dlie(n, \kf)
         =
         \left\{
           \begin{pmatrix}
@@ -497,15 +672,15 @@
           d_1, \dotsc, d_n \in \kf
         \right\}
       \]
-      form an~{\dimensional{$n$}} abelian Lie~subalgebra of~$\gllie_n(\kf)$.
-      A basis of~$\dlie_n(\kf)$ is given by the matrices~$E_{ii}$ with~$i = 1, \dotsc, n$.
+      is an~{\dimensional{$n$}} abelian Lie~subalgebra of~$\gllie(n, \kf)$.
+      A basis of~$\dlie(n, \kf)$ is given by the matrices~$E_{ii}$ with~$i = 1, \dotsc, n$.
   \end{enumerate}
 \end{examples}
 
 
 \begin{remark}
-  The Lie~algebra~$\sllie_2(\kf)$ will play a crucial role for our understanding of semisimple Lie~algebras.
-  We already observe from the above discussion that~$\sllie_2(\kf)$ has a basis given by
+  The Lie~algebra~$\sllie(2,\kf)$ will play a crucial role in the second part of these notes.
+  We have already observed in the above discussion that~$\sllie(2,\kf)$ has a basis given by the three matrices
   \[
     e
     \defined
@@ -528,7 +703,7 @@
       1 & 0
     \end{pmatrix} \,.
   \]
-  A straightforward calculation shows that the Lie~bracket~$[-,-]$ of~$\sllie_2(\kf)$ is on these basis elements given by
+  The Lie~bracket~$[-,-]$ of~$\sllie(2, \kf)$ is on these basis elements given by
   \[
     [h, e]
     =
@@ -536,208 +711,460 @@
     \qquad
     [h, f]
     =
-    -2 \spacing f \,,
+    -2 f \,,
     \qquad
     [e,f]
     =
     h \,.
   \]
-  We will come back to~$\sllie_2(\kf)$ and the properties of this basis later on.
+  We will see these relations quite a lot later on.
 \end{remark}
 
 
+\begin{fluff}
+  The above basis of~$\sllie(2, \kf)$ is so important that we give it a special name.
+\end{fluff}
+
+
 \begin{definition}
-  If~$\glie$ is a Lie~algebra and~$U \subseteq \glie$ any linear subspace then
-  \[
-    \gls*{normalizer}
-    \defined
-    \{
-      x \in \glie
-    \suchthat
-      \text{$[x,y] \in U$ for every~$y \in U$}
-    \}
+ Let~$\kf$ be any field.
+ The basis
+ \[
+    e\glsadd{standard basis e}
+    =
+    \begin{pmatrix}
+      0 & 1 \\
+      0 & 0
+    \end{pmatrix} \,,
+    \qquad
+    h\glsadd{standard basis h}
+    =
+    \begin{pmatrix*}[r]
+      1 &  0  \\
+      0 & -1
+    \end{pmatrix*}  \,,
+    \qquad
+    f\glsadd{standard basis f}
+    =
+    \begin{pmatrix}
+      0 & 0 \\
+      1 & 0
+    \end{pmatrix} \,.
   \]
-  is the \defemph{normalizer}\index{normalizer} of~$U$ in~$\glie$, and
-  \[
-    \gls*{centralizer of space}
-    \defined
-    \{
-      x \in \glie
-    \suchthat
-      \text{$[x,y] = 0$ for every~$y \in U$}
-    \}
-  \]
-  is the \defemph{centralizer}\index{centralizer} of~$U$ in~$\glie$.
-  For a single element~$x \in \glie$ the \defemph{centralizer}\index{centralizer} of~$x$ in~$\glie$ is
-  \[
-    \gls*{centralizer of element}
-    \defined
-    \{
-      y \in \glie
-    \suchthat
-      [x,y] = 0
-    \} \,.
-  \]
+  of the Lie~algebra~$\sllie(2, \kf)$ is its \defemph{standard basis}\index{standard basis}.
 \end{definition}
 
 
-\begin{lemma}
- Let~$\glie$ be a Lie~algebra and~$U \subseteq \glie$ a linear subspace.
- Then both the normalizer~$\normallie_{\glie}(U)$ and the centralizer~$\centerlie_{\glie}(U)$ are Lie~subalgebras of~$\glie$.
- If~$x \in \glie$ is any element then the centralizer~$\centerlie_{\glie}(x)$ is a Lie~subalgebra of~$\glie$.
-\end{lemma}
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      Let~$U$ be a linear subspace of~$\glie$.
+      The set
+      \[
+        \gls*{normalizer}
+        \defined
+        \{
+          x \in \glie
+        \suchthat
+          \text{$[x,y] \in U$ for every~$y \in U$}
+        \}
+      \]
+      is the \defemph{normalizer}\index{normalizer} of~$U$ in~$\glie$, and the set
+      \[
+        \gls*{centralizer of space}
+        \defined
+        \{
+          x \in \glie
+        \suchthat
+          \text{$[x,y] = 0$ for every~$y \in U$}
+        \}
+      \]
+      is the \defemph{centralizer}\index{centralizer} of~$U$ in~$\glie$.
+    \item
+      For any element~$x$ of~$\glie$ its \defemph{centralizer}\index{centralizer} is the set
+      \[
+        \gls*{centralizer of element}
+        \defined
+        \{
+          y \in \glie
+        \suchthat
+          {}
+          [x,y] = 0
+        \} \,.
+      \]
+  \end{enumerate}
+\end{definition}
+
+
+\begin{proposition}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$U$ be a linear subspace of~$\glie$.
+  \begin{enumerate}
+    \item
+      The normalizer~$\normallie_{\glie}(U)$ is a Lie~subalgebras of~$\glie$.
+    \item
+      The linear subspace~$U$ of~$\glie$ is a Lie~subalgebra if and only if its normalizer~$\normallie_{\glie}(U)$ is all of~$\glie$.
+    \item
+      The centralizer~$\centerlie_{\glie}(U)$ is an ideal of the normalizer~$\normallie_{\glie}(U)$, and a Lie~subalgebra of~$\glie$.
+  \end{enumerate}
+  Let~$x$ be an element of~$\glie$.
+  \begin{enumerate}[resume*]
+    \item
+      The centralizer~$\centerlie_{\glie}(x)$ is a Lie~subalgebra of~$\glie$.
+ \end{enumerate}
+\end{proposition}
 
 
 \begin{proof}
- If~$x, y \in \normallie_{\glie}(U)$ then it follows for every~$z \in U$ from the Jacobi~identity that
- \[
-  [[x,y], z]
-  =
-  - [z, [x,y]]
-  =
-  - [[z,x], y] - [x, [z,y]
-  \in
-  - [U, y] - [x, U]
-  \subseteq
-  - U - U
-  =
-  U
- \]
- and therefore~$[x,y] \in \normallie_{\glie}(U)$.
- In the same way it follows for all~$x, y \in \glie$ and~$z \in U$ that
- \[
-  [[x,y], z]
-  =
-  - [[z,x], y] - [x, [z,y]]
-  =
-  - [0, y] - [x, 0]
-  =
-  0
- \]
- and therefore~$[x,y] \in \centerlie_{\glie}(U)$.
- 
- The span~$\kf x$ of any~$x \in \glie$ is a linear subspace of~$\glie$ with~$\centerlie_{\glie}(x) = \centerlie_{\glie}(\kf x)$.
- Hence~$\centerlie_{\glie}(x)$ is a Lie~subalgebra of~$\glie$, as shown above.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$x$,~$y$ be two elements of~$\normallie_{\glie}(U)$.
+      It follows for every element~$z$ of~$U$ from the Jacobi~identity that
+      \[
+        [[x,y], z]
+        =
+        - [z, [x,y]]
+        =
+        - [[z,x], y] - [x, [z,y]
+        \in
+        - [U, y] - [x, U]
+        \subseteq
+        - U - U
+        =
+        U \,.
+      \]
+      This shows that the commutator~$[x,y]$ is again contained in~$\normallie_{\glie}(U)$.
+    \item
+      This follows immediately from the definitions.
+    \item
+      Let~$x$ be any element of the normalizer~$\normallie_{\glie}(U)$ and let~$y$ be any element of the centralizer~$\centerlie_{\glie}(U)$.
+      We need to show that the commutator~$[x,y]$ is again contained in the centralizer~$\centerlie_{\glie}(U)$.
+      In other words, we have to show that
+      \[
+        [[x,y],z] = 0
+        \qquad
+        \text{for every~$z \in U$.}
+      \]
+      It follows from the choice of~$x$ that the commutator~$[x,z]$ is again contained in~$U$, and it thus follows from the choice of~$y$ that both~$[[x,z],y] = 0$ and~$[y,z] = 0$.
+      We now find with some help from the Jacobi identity that
+      \[
+        [[x,y], z]
+        =
+        -[z, [x,y]]
+        =
+        -[[z, x], y] - [x, [z, y]]
+        =
+        [[x,z], y] + [x, [y, z]]
+        =
+        0 \,.
+      \]
+      This shows that the centralizer~$\centerlie_{\glie}(U)$ is indeed an ideal of the normalizer~$\normallie_{\glie}(U)$.
+
+      It follows from this that~$\centerlie_{\glie}(U)$ is a Lie~subalgebra of~$\normallie_{\glie}(U)$, und therefore also a Lie~subalgebra of~$\glie$.
+    \item 
+      The linear span~$\kf x$ is a linear subspace of~$\glie$ with~$\centerlie_{\glie}(x) = \centerlie_{\glie}(\kf x)$.
+      It therefore follows from the previous assertion that~$\centerlie_{\glie}(x)$ is a Lie~subalgebra of~$\glie$.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
-\begin{remark}
- Let~$\glie$ be a Lie~algebra and~$L \subseteq \glie$ a linear subspace.
- Then~$L$ is a Lie~subalgebra of~$\glie$ if and only if~$L \subseteq \normallie_{\glie}(L)$.
- Then~$L$ is not only contained in~$\normallie_{\glie}(L)$ but~$\normallie_{\glie}(L)$ is the maximal Lie~subalgebra of~$\glie$ that contains~$L$ as an ideal.
- As a special case of this, we find that~$L$ is an ideal in~$\glie$ if and only if~$\normallie_{\glie}(L) = \glie$.
-\end{remark}
 
 
 
+\section{New Lie~Algebras From Old Ones}
 
 
-\subsection{New Lie~Algebras From Old Ones}
+\begin{proposition}
+  \label{construction of product lie algebra}
+  Let~$\glie_{\lambda}$ with~$\lambda \in \Lambda$ be a family of Lie~algebras.
+  Then the mapping
+  \[
+    \bigl[ (x_\lambda)_\lambda, (y_\lambda)_\lambda \bigr]
+    \defined
+    ( [x_\lambda, y_\lambda] )_\lambda
+    \qquad
+    \text{for all~$(x_\lambda)_\lambda, (y_\lambda)_\lambda \in \prod_{\lambda \in \Lambda} \glie_\lambda$}
+  \]
+  is a Lie~bracket on the vector space~$\prod_{\lambda \in \Lambda} \glie_\lambda$.
+  \qed
+\end{proposition}
 
 
 \begin{definition}
-  Let~$\glie$ and~$\hlie$ be Lie~algebras over the same field~$\kf$.
-  Then the \,\defemph{product}\index{product} of~$\glie$ and~$\hlie$ is the~{\vectorspace{$\kf$}}~$\gls*{product of lie algebras}$ together with the Lie~bracket
-  \[
-    [(x,y), (x',y')]
-    \defined
-    ([x, x'], [y, y'])
-  \]
-  for all~$(x,y), (x',y') \in \glie \times \hlie$.
+  In the situation of \cref{construction of product lie algebra} the resulting Lie~algebra~$\prod_{\lambda \in \Lambda} \glie_\lambda$\glsadd{product of lie algebras} is the \defemph{(direct) product} of the Lie~algebras~$\glie_\lambda$.
 \end{definition}
 
 
-\begin{lemma}
+\begin{proposition}
+  \label{construction of direct sum of lie algebras}
+  Let~$\glie_\lambda$ with~$\lambda \in \Lambda$ be a family of Lie~algebras.
+  Then the direct sum~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ is a Lie~subalgebra of the product~$\prod_{\lambda \in \Lambda} \glie_\lambda$.
+  Is does therefore inherit the structure of a Lie~algebra from~$\prod_{\lambda \in \Lambda} \glie_\lambda$.
+\end{proposition}
+
+
+\begin{proof}
+  Let~$(x_\lambda)_\lambda$ and~$(y_\lambda)_\lambda$ be two elements of~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+  Then there exist only finitely many indices~$\lambda \in \Lambda$ for which one of the vectors~$x_\lambda$ or~$y_\lambda$ does not vanish.
+  There hence exist only finitely many indices~$\lambda \in \Lambda$ for which~$[x_\lambda, y_\lambda]$ does not vanish.
+  This shows that~$[ (x_\lambda)_\lambda, (y_\lambda)_\lambda ]$ is again contained in~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+\end{proof}
+
+
+\begin{definition}
+  In the situation of \cref{construction of direct sum of lie algebras} the resulting Lie~algebra~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ is the \defemph{external direct sum}\glsadd{direct sum of lie algebras} of the Lie~algebras~$\glie_\lambda$.
+\end{definition}
+
+
+\begin{proposition}
   \label{construction of quotient lie algebra}
-  Let~$\glie$ be a Lie~algebra and let~$I$ an ideal in~$\glie$.
-  Then the quotient vector space~$\glie/I$ inherits from~$\glie$ the structure of a Lie~algebra via
+  Let~$\glie$ be a Lie~algebra and let~$I$ an ideal of~$\glie$.
+  Then the quotient vector space~$\glie/I$ inherits from~$\glie$ the structure of a Lie~algebra via the bracket
   \[
     [x+I, y+I]
     \defined
     [x,y] + I
+    \qquad
+    \text{for all~$x, y \in \glie$.}
   \]
-  for all~$x, y \in \glie$.
-\end{lemma}
+\end{proposition}
 
 
 \begin{proof}
   The bilinear map~$[-,-]$ on~$\glie/I$ is well-defined:
-  If~$x, y, x', y' \in \glie$ with both~$x+I = x'+I$ and~$y+I = y'+I$ then~$x-x' \in I$ and~$y-y' \in I$ and thus
+  suppose that ~$x$,~$y$,~$x'$,~$y'$ are elements of~$\glie$ such that both~$x$ and~$x'$, as well as~$y$ and~$y'$ represent the same element of~$\glie / I$.
+  Then~$x - x' \in I$ and~$y - y' \in I$ and thus
   \begin{align*}
     [x,y] + I
     &=
-    [x' + (x-x'), y' + (y-y')] + I \\
+    [x' + (x-x'), y' + (y-y')]
+    \\
     &=
     [x',y']
     + \underbrace{[x', y-y']}_{\in I}
     + \underbrace{[x-x', y']}_{\in I}
-    + \underbrace{[x-x', y-y']}_{\in I}
-    + I
-    \\
-    &=
-    [x', y'] + I  \,.
+    + \underbrace{[x-x', y-y']}_{\in I} \,.
   \end{align*}
-  The additional requirements for a Lie~bracket can be checked on representatives, for which they hold because~$\glie$ is a Lie~algebra.
+  This shows that the difference~$[x, y] - [x', y']$ is again contained in~$I$, which means that~$[x, y]$ and~$[x', y']$ represent the same element of~$\glie / I$.
+  
+  It remains to show that the bracket~$[-,-]$ on~$\glie / I$ is bilinear, alternating, and satisfies the Jacobi identity.
+  But these properties are inherited from the bracket of~$\glie$, as they can be checked on representatives for the elements of~$\glie / I$.
 \end{proof}
 
 
 \begin{definition}
-  The Lie algebra~$\gls*{quotient lie algebra}$ from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient! Lie algebra}\index{Lie algebra!quotient} of~$\glie$ by~$I$.
+  The Lie~algebra~$\glie / I$\glsadd{quotient lie algebra} from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient! Lie algebra}\index{Lie algebra!quotient} of~$\glie$ by~$I$.
 \end{definition}
 
 
-\begin{lemma}
+\begin{example}
+  Let~$\glie$ be a Lie~algebra.
+  If~$I$ is any ideal of~$\glie$ then the quotient~$\glie / I$ is abelian if and only if~$I$ contains the commutator ideal~$[\glie, \glie]$.
+  This holds because
+  \begin{align*}
+    {}&
+    \text{$\glie / I$ is abelian}
+    \\
+    \iff{}&
+    \text{$[ \class{x}, \class{y}] = 0$ for all~$x, y \in \glie$}
+    \\
+    \iff{}&
+    \text{$\class{[x,y]} = 0$ for all~$x, y \in \glie$}
+    \\
+    \iff{}&
+    \text{$[x,y] \in I$ for all~$x, y \in \glie$}
+    \\
+    \iff{}&
+    [\glie, \glie] \subseteq I \,.
+  \end{align*}
+\end{example}
+
+
+\begin{proposition}
   \label{quasi extension of scalars for lie algebras}
-  Let~$\glie$ be a Lie~algebra over a field~$\kf$ and let~$A$ be an associative, commutative~{\algebra{$\kf$}}.
-  Then~$A \tensor_\kf \glie$ is again a Lie~algebra over~$\kf$ via
+  \index{extension!of scalars}
+  Let~$\glie$ be a Lie~algebra over a field~$\kf$ and let~$A$ be an commutative~{\algebra{$\kf$}}.
+  (This entails that~$A$ is associative and unital.)
+  \begin{enumerate}
+    \item
+      The tensor product~$A \tensor_{\kf} \glie$ becomes an~\liealgebra{$A$} via the bracket
+      \begin{alignat*}{2}
+        [a \tensor x, b \tensor y]
+        &\defined
+        (ab) \tensor [x,y]
+        &\qquad
+        &\text{for all simple tensors~$a \tensor x, b \tensor y \in A \tensor_{\kf} \glie$.}
+    \intertext{
+    \item
+      The tensor product~$\glie \tensor_{\kf} A$ becomes an~\liealgebra{$A$} via the bracket
+    }
+        [x \tensor a, y \tensor b]
+        &\defined
+        [x,y] \tensor (ab)
+        &\qquad
+        &\text{for all simple tensors~$x \tensor a, y \tensor b \in \glie \tensor_{\kf} A$.}
+      \end{alignat*}
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  We prove only the first assertion, as the second one can be shown in the same way.
+
+  The Lie~bracket of~$\glie$ is~\bilinear{$\kf$} and can therefore be regarded as a~\linear{$\kf$} map
+  \[
+    l \colon \glie \tensor_{\kf} \glie \to \glie \,.
+  \]
+  By the functoriality of the extension of scalars we now get an induced~\linear{$A$} map
+  \[
+    \id_A \tensor l
+    \colon
+    A \tensor_{\kf} \glie \tensor_{\kf} \glie
+    \to
+    A \tensor_{\kf} \glie \,,
+  \]
+  which maps any simple tensor~$a \tensor x \tensor y$ onto the simple tensor~$a \tensor [x,y]$.
+  We now recall that there exists a unique isomorphism of~\modules{$A$}
+  \[
+    A \tensor_{\kf} \glie \tensor_{\kf} \glie
+    \cong
+    ( A \tensor_{\kf} \glie ) \tensor_A ( A \tensor_{\kf} \glie )
+  \]
+  under which a simple tensor~$a \tensor x \tensor b \tensor y$ of the right hand side corresponds to the simple tensor~$(ab) \tensor x \tensor y$ of the left hand side.
+  By considering the composition
+  \[
+    (A \tensor_{\kf} \glie) \tensor_A (A \tensor_{\kf} \glie)
+    \to
+    A \otimes_{\kf} \glie \otimes_{\kf} \glie
+    \xto{\id_A \otimes l}
+    A \tensor_{\kf} \glie
+  \]
+  we get altogether an~{\linear{$A$}} map
+  \[
+    (A \tensor_{\kf} \glie) \tensor_A (A \tensor_{\kf} \glie)
+    \to
+    A \tensor_{\kf} \glie
+  \]
+  which maps any simple tensor~$a \tensor x \tensor b \tensor y$ onto the the simple tensor~$(ab) \tensor [x,y]$.
+  We may reinterpret this~\linear{$A$} map as an~\bilinear{$A$} map
+  \[
+    [-,-]
+    \colon
+    (A \tensor_{\kf} \glie) \times (A \tensor_{\kf} \glie)
+    \to
+    A \tensor_{\kf} \glie
+  \]
+  that is given on (pairs of) simple tensors by
   \[
     [a \tensor x, b \tensor y]
     =
-    (ab) \tensor [x,y]
+    (ab) \tensor [x,y] \,.
   \]
-  for all simple tensors~$a \tensor x, b \tensor y \in A \tensor_\kf \glie$.
-  Similarly~$\glie \tensor_k A$ carries the structure of a~{\liealgebra{$\kf$}} via
+  This~\bilinear{$A$} map is precisely the desired bracket.
+
+  It remains to show this bracket~$[-,-]$ on~$A \tensor_{\kf} \glie$ is already a Lie~bracket.
+  For this we need to show that it is alternating and that it satisfies the Jacobi identity.
+
+  To see that it is alternating let~$t$ be an elements of~$A \tensor_{\kf} \glie$.
+  We may write this element as sums of simple tensors, say~$t = \sum_{i=1}^n a_i \tensor x_i$.
+  We can then compute the commutator~$[t, t]$ as
   \[
-    [x \tensor a, y \tensor b]
+    [t, t]
     =
-    [x,y] \tensor (ab)
+    \Biggl[
+      \sum_{i=1}^n a_i \tensor x_i,
+      \sum_{j=1}^n a_j \tensor x_j
+    \Biggr]
+    =
+    \sum_{i, j = 1}^n
+    [ a_i \tensor x_i, a_j \tensor x_j ]
+    =
+    \sum_{i, j = 1}^n
+    ( a_i a_j ) \tensor [ x_i, x_j ] \,.
   \]
-  for all simple tensors~$x \tensor a, y \tensor b \in \glie \tensor A$.
-  \qed
-\end{lemma}
+  The summands for~$i = j$ vanish since in this case~$[x_i, x_j] = [x_i, x_i] = 0$.
+  For~$i \neq j$ the two occuring summands~$(a_i a_j) \tensor [x_i, x_j]$ and~$(a_j a_i) \tensor [x_j, x_i]$ cancel each other because~$a_i a_j = a_j a_i$ while~$[x_i, x_j] = -[x_j, x_i]$.
+  Thus overall~$[t, t] = 0$.
+  This shows that the bracket~$[-,-]$ on~$A \tensor_{\kf} \glie$ is alternating.
+
+  It remains to show that the bracket on~$A \tensor_{\kf} \glie$ satisfies the Jacobi identity.
+  We hence want to show that the map
+  \begin{gather*}
+    J
+    \colon
+    (A \tensor_{\kf} \glie) \times (A \tensor_{\kf} \glie) \times (A \tensor_{\kf} \glie)
+    \to
+    (A \tensor_{\kf} \glie)
+  \shortintertext{given by}
+    (t, u, v)
+    \mapsto
+    [t, [u, v]] + [u, [v, t]] + [v, [t, u]]
+  \end{gather*}
+  is the zero map.
+  The map~$J$ is~\trilinear{$A$} by the~\bilinearity{$A$} of the bracket~$[-,-]$ on~$A \tensor_{\kf} \glie$.
+  It hence sufficies to show that the map~$J$ is zero on an~\linear{$A$} generating set of~$A \tensor_{\kf} \glie$.
+  Such a generating set is given by the simple tensors~$1 \tensor x$ with~$x \in \glie$.
+  We find for these generators that
+  \begin{align*}
+    {}&
+    J(1 \tensor x, 1 \tensor y, 1 \tensor z)
+    \\
+    ={}&
+      [1 \tensor x, [1 \tensor y, 1 \tensor z]]
+    + [1 \tensor y, [1 \tensor z, 1 \tensor x]]
+    + [1 \tensor z, [1 \tensor x, 1 \tensor y]]
+    \\
+    ={}&
+    1 \tensor \bigl( [x, [y, z]] + [y, [z, x]] + [z, [x, y]] \bigr)
+    \\
+    ={}&
+    1 \tensor 0
+    \\
+    ={}&
+    0
+  \end{align*}
+  for all~$x, y, z \in \glie$ by the Jacobi identity for~$\glie$.
+  This shows that~$J = 0$, as desired.
+\end{proof}
 
 
 \begin{example}
-  \index{extension of scalars}
-  If~$\Lf/\kf$ is a field extension and~$\glie$ a Lie~algebra over~$\kf$, then~$\Lf \tensor_\kf \glie$ is a Lie~algebra over~$\kf$ via
+  \index{extension!of scalars}
+  Let~$\Lf/\kf$ be a field extension and let~$\glie$ be a Lie~algebra over~$\kf$.
+  Then the tensor product~$\Lf \tensor_{\kf} \glie$ is an~\liealgebra{$\Lf$}, via the Lie~bracket that is given by
   \[
     [\lambda \tensor x, \mu \tensor y]
     = 
     (\lambda \mu) \tensor [x,y]
+    \qquad
+    \text{for all simple tensor~$\lambda \tensor x, \mu \tensor y \in \Lf \tensor_{\kf} \glie$.}
   \]
-  for all simple tensor~$\lambda \tensor x, \mu \tensor y \in \Lf \tensor_\kf \glie$.
-  But~$\Lf \tensor_\kf \glie$ also carries the structure of an {\vectorspace{$\Lf$}} via extension of scalars, i.e.\ via
+  We can moreover regard~$\glie$ as an~\liesubalgebra{$\kf$} of~$\Lf \tensor_{\kf} \glie$ via the inclusion
   \[
-    \lambda \cdot (\mu \tensor x)
-    =
-    (\lambda \mu) \tensor x
+    \glie
+    \to
+    \Lf \tensor_{\kf} \glie \,,
+    \quad
+    x
+    \mapsto
+    1 \tensor x \,.
   \]
-  for all scalars~$\lambda \in \Lf$ and simple tensors~$\mu \tensor x \in \Lf \tensor_\kf \glie$.
-  The Lie~bracket~$[-,-]$ is not only~{\bilinear{$\kf$}} but already~{\bilinear{$\Lf$}}, so that the {\liealgebra{$\kf$}} structure of~$\Lf \tensor_\kf \glie$ can be extended to an~{\liealgebra{$\Lf$}} structure.
-  (Note that the validity of the Jacobi identity does not depend on the ground field.)
 \end{example}
 
 
-\begin{definition}
-  Let~$\glie$ be a Lie~algebra and let~$\kf[t, t^{-1}]$ be the algebra of Laurant polynomials over~$\kf$.
+\begin{example}
+  Let~$\glie$ be a Lie~algebra and let~$\kf[t, t^{-1}]$ be the~\algebra{$\kf$} of Laurant polynomials over~$\kf$.
   Then
   \[
     \gls*{loop lie algebra}
     \defined
-    \glie \tensor_\kf \kf[t, t^{-1}]
+    \glie \tensor_{\kf} \kf[t, t^{-1}]
   \]
-  with the Lie~bracket as in Lemma~\ref{quasi extension of scalars for lie algebras} is the \defemph{loop \textup(Lie\textup)~algebra}\index{loop Lie algebra} of~$\glie$.
-\end{definition}
+  with the Lie~bracket as in~\cref{quasi extension of scalars for lie algebras} is the \defemph{loop \textup(Lie\textup)~algebra}\index{loop Lie algebra} of~$\glie$.
+\end{example}
  
  
 % \begin{example}
@@ -777,7 +1204,7 @@
 %   for all~$x, y \in \glie$ and~$\lambda, \mu \in \kf$.
 %   Note that the element~$c$ is central in~$\widetilde{\glie}$ in the sense that~$[x,c] = 0$ for all~$x \in \glie$.
 %   
-%   Take for example~$\glie \defined \gllie_n(\kf)$.
+%   Take for example~$\glie \defined \gllie(n, \kf)$.
 %   We can then define a symmetric bilinear form~$(-,-)_{\tr}$ on~$\glie$ via
 %   \[
 %     (A,B)_{\tr}
@@ -802,12 +1229,12 @@
 %     \Res\left( \frac{\partial a}{\partial t}, b \right) \,.
 %   \]
 %   The bilinear form~$\kappa$ is also antisymmetric:
-%   Let~$a = x \tensor t^i$ and~$b = y \tensor t^{\spacing j}$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
+%   Let~$a = x \tensor t^i$ and~$b = y \tensor t^{j}$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
 %   Then
 %   \begin{align*}
-%     \kappa(x \tensor t^i, y \tensor t^{\spacing j})
+%     \kappa(x \tensor t^i, y \tensor t^{j})
 %     &=
-%     \Res(i x \tensor t^{i-1}, y \tensor t^{\spacing j})
+%     \Res(i x \tensor t^{i-1}, y \tensor t^{j})
 %     \\
 %     &= 
 %     \Res(i t^{i+j-1} (x,y)_{\tr})
@@ -820,16 +1247,16 @@
 %   \end{align*}
 %   In the same way we find that
 %   \[
-%     \kappa(y \tensor t^{\spacing j}, x \tensor t^i)
+%     \kappa(y \tensor t^{j}, x \tensor t^i)
 %     =
 %     \begin{cases}
-%       \spacing  j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
-%       \spacing              0 & \text{otherwise}  \,.
+%        j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
+%                    0 & \text{otherwise}  \,.
 %     \end{cases}
 %   \]
 %   Since~$(\cdot,\cdot)_{\tr}$ is symmetric we find that
 %   \begin{align*}
-%     \kappa(x \tensor t^i, y \tensor t^{\spacing j})
+%     \kappa(x \tensor t^i, y \tensor t^{j})
 %     &=
 %     \begin{cases}
 %     i (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
@@ -841,7 +1268,7 @@
 %                   0 & \text{otherwise}  \,,
 %     \end{cases} \\
 %     &=
-%     -\kappa(y \tensor t^{\spacing j}, x \tensor t^i) \,.
+%     -\kappa(y \tensor t^{j}, x \tensor t^i) \,.
 %   \end{align*}
 % \end{example}
 % 
@@ -852,85 +1279,154 @@
 
 
 \begin{recall}
-  If~$A$ is any kind of~{\algebra{$\kf$}} --- not necessarily associative or unital --- with multiplication~$\cdot$ then one can form the \defemph{opposite algebra}\index{opposite!algebra}~\gls*{opposite algebra} of~$A$:
-  It has the same underlying~{\vectorspace{$\kf$}} as~$A$ but with multiplication~$*$ given by
+  If~$A$ is a~\enquote{\algebra{$\kf$}} then we can form the \defemph{opposite \enquote{algebra}}\index{opposite!algebra}~$A^{\op}$\glsadd{opposite algebra} of~$A$.
+
+  The \enquote{algebras}~$A$ and~$A^{\op}$ have the same underlying~\vectorspace{$\kf$}.
+  For every element~$a$ of~$A$ the corresponding element of~$A^{\op}$ (which is just~$a$ itself) is denoted by~$a^{\op}$.
+  The multplication on~$A^{\op}$ is given by
   \[
-    a * b
+    a^{\op} \cdot b^{\op}
     \defined
-    b \cdot a
+    (b \cdot a)^{\op}
+    \qquad
+    \text{for all~$a, b \in A$.}
   \]
-  for all~$a, b \in A^{\op}$.
-  Then~$(A^{\op})^{\op} = A$.
-  It holds that~$A$ is associative if and only if~$A^{\op}$ is associative, and an element~$1 \in A$ is a multiplicative neutral element for the multiplication~$\cdot$ if and only if it is a multiplicative neutral element for the multiplication~$*$.
-  Hence~$A$ is an associative unital~{\algebra{$\kf$}} if and only if~$A^{\op}$ is one.
+  It holds that~$(A^{\op})^{\op} = A$.
+
+  The \enquote{algebra}~$A$ is associative if and only if its oppositie \enquote{algebra}~$A^{\op}$ is associative, and an element~$1$ of~$A$ is a multiplicative neutral element of~$A$ if and only if~$1^{\op}$ is a multiplicative neutral element of~$A^{\op}$.
+  It follows that~$A$ is a~{\algebra{$\kf$}} if and only if~$A^{\op}$ is one.
 \end{recall}
 
 
-\begin{lemma}
-  If~$(\glie, [-,-])$ is a~{\liealgebra{$\kf$}} then the bilinear map~$[-,-]^{\op} \colon \glie \times \glie \to \glie$ given by
+\begin{proposition}
+  If~$\glie$ is a~\liealgebra{$\kf$} with Lie~bracket~$[-,-]$ then the opposite \enquote{algebra}~$\glie^{\op}$, whose bracket is given by
   \[
-    [x,y]^{\op}
-    \defined
-    [y,x]
+    [x^\op, y^\op]
     =
-    -[x,y]
+    [y,x]^{\op}
+    =
+    -[x,y]^{\op}
+    \qquad
+    \text{for all~$x, y \in \glie$,}
   \]
-  for all~$x, y \in \glie$ is again a Lie~bracket on~$\glie$.
+  is again a Lie~algebra.
   \qed
-\end{lemma}
+\end{proposition}
 
 
 \begin{definition}
-  For a Lie~algebra~$(\glie, [-,-])$ its \defemph{opposite Lie~algebra}\index{opposite!Lie-algebra} is given by~$(\glie^{\op}, [-,-]^{\op})$ with the same underlying vector space~$\glie^{\op} = \glie$ and the Lie~bracket~$[x,y]^{\op} = [y,x] = -[x,y]$ for all~$x, y \in \glie$.
-  The opposite Lie~algebra of a Lie~algebra~$\glie$ is denoted by~\gls{opposite lie algebra}.
+  Let~$\glie$ be a Lie algebra.
+  The Lie algebra~$\glie^{\op}$\glsadd{opposite lie algebra} is the \defemph{opposite Lie~algebra}\index{opposite!Lie-algebra} of~$\glie$.
 \end{definition}
 
 
 
 
 
-\subsection{Homomorphisms of Lie~Algebras}
+\section{Homomorphisms of Lie~Algebras}
+
+
+
+\subsection{Definition and Basic Examples}
 
 
 \begin{definition}
- Given Lie~algebras~$\glie$ and~$\hlie$ over the same field~$\kf$ a \defemph{homomorphism of Lie~algebras}~$\glie \to \hlie$\index{homomorphism!of Lie algebras} is a~{\linear{$\kf$}} map~$f \colon \glie \to \hlie$ such that for all~$x, y \in \glie$,
+  Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+  A~\linear{$\kf$} map~$\varphi \colon \glie \to \hlie$ is a \defemph{homomorphism of Lie~algebras}\index{homomorphism!of Lie algebras} if it satisfies the condition
  \[
-  f([x,y])
-  =
-  [\spacing f(x),f(y)]  \,.
+   \varphi([x,y])
+   =
+   [\varphi(x), \varphi(y)]
+   \qquad
+   \text{for all~$x, y \in \glie$.}
  \]
 \end{definition}
 
 
-\begin{examples}
-  \label{homomorphisms of lie algebras}
+\begin{proposition}
+  Let~$\varphi \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
+  \begin{enumerate}
+    \item
+      The image of~$\varphi$ is a Lie~subalgebra of~$\hlie$.
+    \item
+      The kernel of~$\varphi$ is an ideal of~$\glie$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
   \leavevmode
   \begin{enumerate}
     \item
-      For any Lie~algebra~$\glie$ the identity~$\id_{\glie} \colon \glie \to \glie$ is a Lie~algebra homomorphism.
-    \item
-      Given Lie~algebras~$\glie$,~$\hlie$ and~$\klie$ and Lie~algebra homomorphisms~$f \colon \glie \to \hlie$ and~$g \colon \hlie \to \klie$ the composition~$g \circ f \colon \glie \to \klie$ is again a homomorphism of Lie~algebras.
-    \item
-      If~$\glie$ is a Lie~algebra and~$\hlie$ is a Lie~subalgebra of~$\glie$ then the inclusion~$\hlie \inclusion \glie$ is a homomorphism of Lie~algebras.
-    \item
-      Given two abelian Lie~algebras~$\glie$ and~$\hlie$ any linear map~$\glie \to \hlie$ is already a homomorphism of Lie~algebras.
-    \item
-      Let~$\glie$ be a Lie~algebra.
-      Then for every~$x \in \glie$ let
+      The image of~$\varphi$ is a linear subspace of~$\hlie$ because~$\varphi$ is linear.
+      For any two element~$y_1$,~$y_2$ of~$\im(\varphi)$ there exists elements~$x_1$,~$x_2$ of~$\glie$ with~$y_1 = \varphi(x_1)$ and~$y_2 = \varphi(x_2)$.
+      We have
       \[
-        \gls*{adjoint representation}(x)
+        [y_1, y_2]
+        =
+        [ \varphi(x_1), \varphi(x_2) ]
+        =
+        \varphi( [x_1, x_2] ) \,,
+      \]
+      which shows that the commutator~$[y_1, y_2]$ is again contained in the image of~$\varphi$.
+    \item
+      The kernel of~$\varphi$ is a linear subspace of~$\glie$ because~$\varphi$ is linear.
+      Let~$x$ by any element of~$\glie$ and let~$y$ any element of~$\ker(\varphi)$.
+      We have
+      \[
+        \varphi( [x, y] )
+        =
+        [ \varphi(x), \varphi(y) ]
+        =
+        [ \varphi(x), 0 ]
+        =
+        0 \,,
+      \]
+      which shows that the commutator~$[x, y]$ is again contained in the kernel of~$\varphi$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{examples}
+  \label{homomorphisms of lie algebras}
+  Let~$\glie$,~$\hlie$,~$\klie$ be Lie~algebras over the same field~$\kf$.
+  \begin{enumerate}
+    \item
+      \label{identity is a homomorphism of lie algebras}
+      The identity~$\id_{\glie} \colon \glie \to \glie$ is a homomorphism of Lie~algebras.
+    \item
+      \label{composite of homomorphisms of lie algebras}
+      If~$\varphi \colon \glie \to \hlie$ and~$\psi \colon \hlie \to \klie$ are two composable homomorphsims of Lie~algebras then their composite~$\psi \circ \varphi \colon \glie \to \klie$ is again a homomorphism of Lie~algebras.
+    \item
+      If~$\hlie$ is a Lie~subalgebra of~$\glie$ then the inclusion~$\hlie \to \glie$ is a homomorphism of Lie~algebras.
+    \item
+      Suppose that~$\glie$ and~$\hlie$ are both abelian.
+      Then any~\linear{$\kf$} map~$\glie \to \hlie$ is already a homomorphism of Lie~algebras.
+    \item
+      For every element~$x$ of~$\glie$ let~$\ad(x)$\glsadd{adjoint representation} denote the map
+      \[
+        \ad(x)
         \colon
         \glie
         \to
         \glie \,,
         \qquad
-        \ad(x)(y)
-        \defined
-        [x,y]
+        y
+        \mapsto
+        [x,y] \,.
+        \index{adjoint representation}
       \]
-      for every~$y \in \glie$.\index{adjoint representation}
-      Then the map~$\ad \colon \glie \to \gllie(\glie)$ is a homomorphism of Lie~algebras.
-      This follows from the Jacobi~identity because for all~$x,y,z \in \glie$
+      It follows from the bilinearity of the Lie~bracket of~$\glie$ that this describes a~\linear{$\kf$} map
+      \[
+        \ad
+        \colon
+        \glie
+        \to
+        \gllie(\glie) \,.
+      \]
+      It follows from the Jacobi identity that the map~$\ad$ is already a homomorphism of Lie~algebras.
+      Indeed, we have for all element~$x$,~$y$,~$z$ of~$\glie$ that
       \begin{align*}
           \ad([x,y])(z)
           &=
@@ -949,281 +1445,181 @@
           \ad(x)\ad(y)(z) - \ad(y)\ad(x)(z)
           \\
           &=
-          [\ad(x), \ad(y)](z) \,.
+          [\ad(x), \ad(y)](z) \,,
       \end{align*}
+      and therefore~$\ad([x,y]) = [ \ad(x), \ad(y) ]$.
     \item
-    If~$A$ and~$B$ are associative~{\algebras{$\kf$}} then any homomorphism of~{\algebras{$\kf$}}~$f \colon A \to B$ is also a homomorphism of Lie~algebras because
-    \[
-      f([a,b])
-      =
-      f(ab - ba)
-      =
-      f(a)f(b) - f(b)f(a)
-      =
-      [\spacing f(a), f(b)]
-    \]
-    for all~$a, b \in A$.
-  \item
-    Let~$\glie$ be a Lie~algebra over an arbitary field~$\kf$.
-    If~$\phi \colon \sllie_2(\kf) \to \glie$ is a homomorphism of Lie~algebras then the images
-    \[
-      E \defined \phi(e)  \,,
-      \qquad
-      H \defined \phi(h)  \,,
-      \qquad
-      F \defined \phi(\spacing f)
-    \]
-    satisfy the relations
-    \[
-      [H, E] = 2E  \,,
-      \qquad
-      [H, F] = -2F  \,,
-      \qquad
-      [E, F] = H \,.
-    \]
-    On the other hand every such triple~$(E', H', F')$ of elements satisfying the above relations (with~$X$ replaced by~$X'$ for~$X \in \{ E, H, F \}$) gives rise to a unique homomorphism of Lie~algebras~$\phi' \colon \sllie_2(\kf) \to \glie$ that is given by
-    \[
-      \phi'(e) = E' \,,
-      \qquad
-      \phi'(h) = H' \,,
-      \qquad
-      \phi'(f) = F' \,.
-    \]
-   
-    Hence there is a bijection between Lie~algebra homomorphisms~$\sllie_2(\kf) \to \glie$ and triples as above.
-%     Such triples will play an important part later on.
+      \label{algebra homomorphisms are lie algebra homomorphisms}
+      If~$A$ and~$B$ are two associative~{\algebras{$\kf$}} then every homomorphism of~{\algebras{$\kf$}}
+      \[
+        \varphi \colon A \to B
+      \]
+      is also a homomorphism of Lie~algebras.
+      Indeed, we have for all elements~$a$,~$b$ of~$A$ that
+      \[
+        \varphi([a,b])
+        =
+        \varphi(ab - ba)
+        =
+        \varphi(a) \varphi(b) - \varphi(b) \varphi(a)
+        =
+        [\varphi(a), \varphi(b)] \,.
+      \]
+    \item
+      Let~$\glie$ be a Lie~algebra over an arbitary field~$\kf$.
+      If~$\varphi \colon \sllie(2, \kf) \to \glie$ is a homomorphism of Lie~algebras then the images
+      \[
+        E \defined \varphi(e)  \,,
+        \qquad
+        H \defined \varphi(h)  \,,
+        \qquad
+        F \defined \varphi(f)
+      \]
+      satisfy the relations
+      \begin{equation}
+        \label{relations for sl2 tripel}
+        [H, E] = 2E  \,,
+        \qquad
+        [H, F] = -2F  \,,
+        \qquad
+        [E, F] = H \,.
+      \end{equation}
+      On the other hand, every such triple~$(E', H', F')$ of elements of~$\glie$ satisfying the above relations (with~$X$ replaced by~$X'$ for~$X \in \{ E, H, F \}$) gives rise to a unique homomorphism of Lie~algebras~$\varphi' \colon \sllie(2, \kf) \to \glie$, which is given by
+      \[
+        \varphi'(e) = E' \,,
+        \qquad
+        \varphi'(h) = H' \,,
+        \qquad
+        \varphi'(f) = F' \,.
+      \] 
+      These two constructions are mutually inverse.
+      We have thus constructed a bijection
+      \begin{align*}
+        \left\{
+          \begin{tabular}{c}
+            homomorphisms of \\
+            Lie~algebras~$\phi \colon \sllie(2, \kf) \to \glie$
+          \end{tabular}
+        \right\}
+        &\to
+        \left\{
+          \begin{tabular}{c}
+            triples $(E, H, F)$ of elements of~$\glie$ \\
+            which satisfy the relations~\eqref{relations for sl2 tripel}
+          \end{tabular}
+        \right\} \,,
+        \\
+        \varphi
+        &\mapsto
+        \bigl( \varphi(e), \varphi(h), \varphi(f) \bigr) \,.
+      \end{align*}
+  %     Such triples will play an important role later on.
   \end{enumerate}
 \end{examples}
 
 
-\begin{lemma}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      If~$\glie$ and~$\hlie$ are Lie~algebras over the same field~$\kf$ then the canonical projections
-      \begin{align*}
-        p
-        \colon
-        \glie \times \hlie
-        \to
-        \glie,
-        \quad
-        (x,y)
-        \mapsto
-        x
-      \shortintertext{and}
-        q
-        \colon
-        \glie \times \hlie
-        \to
-        \hlie,
-        \quad
-        (x,y)
-        \mapsto
-        y
-      \end{align*}
-      are homomorphisms of Lie-algebras.
-    \item
-      If~$\glie$ is a Lie~algebra and~$I$ an ideal in~$\glie$ then the canonical projection~$\pi \colon \glie \to \glie/I$ given by~$x \mapsto x+I$ is a homomorphism of Lie~algebras.
-    \qed
-  \end{enumerate}
-\end{lemma}
-
-
-\begin{example}
-  \label{homomorphism out of a product}
-  Let~$\glie$ and~$\hlie$ be two Lie~algebras.
-  
-  The inclusions~$i \colon \glie \to \glie \times \hlie$ and~$j \colon \hlie \to \glie \times \hlie$ are injective Lie~algebra homomorphisms.
-  We can therefore regard~$\glie$ and~$\hlie$ as Lie~subalgebras of~$\glie \times \hlie$.
-  Note that~$\glie$ and~$\hlie$ commute with each other in~$\glie \times \hlie$ because
+\begin{remark}
+  It follows from part~\ref{identity is a homomorphism of lie algebras} and part~\ref{composite of homomorphisms of lie algebras} of \cref{homomorphisms of lie algebras} that~\liealgebras{$\kf$} form a category, which we will denote by
   \[
-    [i(x), j(y)]
-    =
-    [(x,0), (0,y)]
-    =
-    ( [x,0], [0,y] )
-    =
-    0
+    \cLie{\kf} \,.
   \]
-  for all~$x \in \glie$ and~$y \in \hlie$.
-
-  The product~$\glie \times \hlie$ is under the above identification the direct sum of~$\glie$ and~$\hlie$ as vector spaces.
-  We therefore find that for any other~{\vectorspace{$\kf$}}~$V$ there is a {\onetoone} correspondence
-  \begin{align*}
-    \{ \text{{\linear{$\kf$}} maps~$f \colon \glie \times \hlie \to V$} \}
-    &\longonetoone
+  The class of objects of~$\cLie{\kf}$ is the class of~\liealgebras{$\kf$}.
+  For any two Lie~algebras~$\glie$,~$\hlie$ over~$\kf$ we have
+  \[
+    \Hom_{\cLie{\kf}}(\glie, \hlie)
+    =
     \{
-      (\phi, \psi)
-    \suchthat
-      \text{{\linear{$\kf$}} maps~$\phi \colon \glie \to V$ and~$\psi \colon \hlie \to V$}
-    \} \,,
-    \\
-    f
-    &\longmapsto
-    (\spacing f \circ i, f \circ j)  \,,
-    \\
-    \biggl( (\spacing g,h) \mapsto \phi(\spacing g) + \psi(h) \biggr)
-    &\longmapsfrom
-    (\psi, \psi)  \,.
-  \end{align*}
-  Here may think about the compositions~$f \circ i$ and~$f \circ j$ as the restrictions of~$f$ to~$\glie$ and~$\hlie$.
-  
-  If~$\klie$ is another Lie~algebra then we see that for any Lie~algebra homomorphism~$f \colon \glie \times \hlie \to \klie$ the corresponding restrictions~$\phi = f \circ i$ and~$\psi = f \circ j$ are again Lie~algebra homomorphisms (because~$i$ and~$j$ are Lie~algebra homomorphisms).
-  These two restrictions have the properties that their images in~$\klie$ commute with each other, because~$\glie$ and~$\hlie$ commute with each other in~$\glie \times \hlie$.
-  More explicitely,
-  \[
-    [\phi(x), \psi(y)]
-    =
-    [\spacing f(i(x)), f(\spacing j(x))]
-    =
-    f( [i(x), j(x)] )
-    =
-    f( 0 )
-    =
-    0 \,.
+      \text{homomorphisms of Lie algebras~$\textstyle \glie \to \hlie$} 
+    \} \,.
   \]
-  
-  If on the other hand~$\phi \colon \glie \to \klie$ and~$\psi \colon \glie \to \klie$ are two Lie~algebra homomorphisms whose images commute with each other then the resulting linear map~$f \colon \glie \times \hlie \to \klie$ given by~$f((x,y)) = \phi(x) + \psi(y)$ is again a Lie~algebra homomorphism because
-  \begin{align*}
-    {}&
-    [\spacing f((x_1, y_1)), f((x_2, y_2)) ]
-    \\
-    ={}&
-    [ \phi(x_1) + \psi(y_1), \phi(x_2) + \psi(y_2) ]
-    \\
-    ={}&
-      \underbrace{ [ \phi(x_1), \phi(x_2) ] }_{= \phi([x_1, x_2])}
-    + \underbrace{ [ \phi(x_1), \psi(y_2) ] }_{= 0}
-    + \underbrace{ [ \psi(y_1), \phi(x_2) ] }_{= 0}
-    + \underbrace{ [ \psi(y_1), \psi(y_2) ] }_{= \psi([y_1, y_2])}
-    \\
-    ={}&
-    \phi( [x_1, x_2] ) + \psi( [y_1, y_2] )
-    \\
-    ={}&
-    f( ([x_1, x_2], [y_1, y_2]) )
-    \\
-    ={}&
-    f( [(x_1, y_1), (x_2, y_2)] )
-  \end{align*}
-  for all~$(x_1, y_1), (x_2, y_2) \in \glie \times \hlie$.
-  It follows that the previous {\onetoone} correspondce restricts to a {\onetoone} correspondence
-  \begin{align*}
-    \left\{
-      \begin{tabular}{@{}c@{}}
-        Lie~algebra homomorphisms \\
-        $f \colon \glie \times \hlie \to \klie$
-      \end{tabular}
-    \right\}
-    &\longonetoone
-    \left\{
-      (\phi, \psi)
-    \suchthat*
-      \begin{tabular}{@{}c@{}}
-        Lie~algebra homomorphisms \\
-        $\phi \colon \glie \to \klie$ and~$\psi \colon \hlie \to \klie$ \\
-        whose images commute with each other
-      \end{tabular}
-    \right\}
-  \end{align*}
-\end{example}
+  The composition of morphisms in~$\cLie{\kf}$ is the usual composition of functions.
+  The identity of an object in~$\cLie{\kf}$ is the usual identity function.
+
+  We have a forgetful functor
+  \[
+    \cLie{\kf}
+    \to
+    \cVect{\kf}
+  \]
+  which assigns to every~\liealgebra{$\kf$} its underlying~\vectorspace{$\kf$}.
+  It follows from part~\ref{algebra homomorphisms are lie algebra homomorphisms} of \cref{homomorphisms of lie algebras} that we also have a forgetful functor
+  \[
+    \cAlg{\kf}
+    \to
+    \cLie{\kf} \,.
+  \]
+  The forgetful functor~$\cAlg{\kf} \to \cVect{\kf}$ is the composite of the forgetful functors~$\cAlg{\kf} \to \cLie{\kf}$ and~$\cLie{\kf} \to \cVect{\kf}$.
+\end{remark}
 
 
-\begin{definition}
- Let~$\glie, \hlie$ be Lie~algebras over the same field~$\kf$.
- A homomorphism of Lie~algebras~$f \colon \glie \to \hlie$ is an~\defemph{isomorphism of Lie~algebras}\index{isomorphism!of Lie algebras} if~$f$~is bijective.
-\end{definition}
-
-
-\begin{lemma}
- If~$f \colon \glie \to \hlie$ is an isomorphism of~{\liealgebras{$\kf$}}, then the~{\linear{$\kf$}} map~$f^{-1} \colon \hlie \to \glie$ is again a homomorphism of Lie~algebras and therefore also an isomorphism.
-\end{lemma}
+\begin{proposition}
+  \label{inverse of homomorphism of lie algebras is again a homomorphism of lie algebras}
+  Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} and let~$\varphi$ be a bijective homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+  The set-theoretic inverse map~$\varphi^{-1}$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\glie$.
+\end{proposition}
 
 
 \begin{proof}
- We find that
- \begin{align*}
-  f^{-1}( [x,y] )
-  &=
-  f^{-1}( [\spacing f(\spacing f^{-1}(x)), f(\spacing f^{-1}(y)) ] ) \\
-  &=
-  f^{-1}(\spacing f( [\spacing f^{-1}(x), f^{-1}(y)] )) \\
-  &=
-  [\spacing f^{-1}(x), f^{-1}(y)]
- \end{align*}
- for all~$x, y \in \hlie$.
+  The inverse~$\varphi^{-1}$ is~\linear{$\kf$} because the original map~$\varphi$ is~\linear{$\kf$}.
+  We also have
+  \[
+    \varphi^{-1}( [x,y] )
+    =
+    \varphi^{-1}( [ \varphi(\varphi^{-1}(x)), \varphi(\varphi^{-1}(y)) ] )
+    =
+    \varphi^{-1}( \varphi( [ \varphi^{-1}(x), \varphi^{-1}(y) ] ) )
+    =
+    [ \varphi^{-1}(x), \varphi^{-1}(y) ]
+  \]
+  for any two elements~$x$,~$y$ of~$\hlie$.
+  This shows that~$\varphi^{-1}$ is a homomorphism of Lie~algebras.
 \end{proof}
 
 
 \begin{remark}
- It follows that Lie~algebras over the same field~$\kf$ together with homomorphisms of Lie~algebras and their usual composition form a category, that will be denoted by~$\cLie{\kf}$.
- An isomorphism of~{\liealgebras{$\kf$}} is then the same as an isomorphism in the category~$\cLie{\kf}$.
+  We have the notion of an \defemph{isomorphism of Lie~algebras}\index{isomorphism!of Lie algebras} because \liealgebras{$\kf$} form a category.
+  More explicitely, a homomorphism of Lie~algebras~$\varphi \colon \glie \to \hlie$ is an isomorphism if and only if there exists a homomorphism of Lie~algebras~$\psi \colon \hlie \to \glie$ with both~$\psi \circ \varphi = \id_{\glie}$ and~$\varphi \circ \psi = \id_{\hlie}$.
+
+  We can now give a reinterpretation of \cref{inverse of homomorphism of lie algebras is again a homomorphism of lie algebras}:
+  a homomorphism of Lie~algebras is an isomorphism of Lie~algebras if and only if it is bijective.
 \end{remark}
 
 
-\begin{example}
-  \label{direct sum of ideals}
-  If~$I$ and~$J$ are two Lie~algebra over the same field~$\kf$ then their product~$I \times J$ contains the linear subspaces~$I' \defined I \times 0$ and~$J' \defined 0 \times J$ as ideals.
-  These ideals are isomorphic to~$I$ and~$J$ as Lie~algebras via the isomorphisms
-  \begin{align*}
-    I
-    \to
-    I'  \,,
-    \quad
-    x
-    \mapsto
-    (x,0) \,,
-  \\
-    J
-    \to
-    J'  \,,
-    \quad
-    y
-    \mapsto
-    (0,y) \,.
-  \end{align*}
-  
-  Let on the other hand~$\glie$ be a Lie~algebra and let~$I$ and~$J$ be two ideals in~$\glie$ such that~$\glie = I \oplus J$ as vector spaces.
-  It then follows for all~$x \in I$ and~$y \in J$ that~$[x,y] \in I$ because~$x \in I$ but also~$[x,y] \in J$ because~$y \in J$.
-  Hence~$[x,y] \in I \cap J = 0$.
-  The vector space isomorphism
-  \[
-    I \times J
-    \to
-    \glie \,,
-    \quad
-    (x,y)
-    \mapsto
-    x+y
-  \]
-  is therefore an isomorphism of Lie~algebras.
+\begin{example}[Classification of abelian Lie~algebras]
+  Let~$\kf$ be any field.
+
+  Two abelian~{\liealgebras{$\kf$}} are isomorphic (as Lie~algebras) if and only if they are isomorphic as~{\vectorspaces{$\kf$}}, because every vector space isomorphism between them is already an isomorphism of Lie~algebras.
+  It follows that there exists up to isomorphism precisely one abelian~{\liealgebra{$\kf$}} of each dimension.
 \end{example}
 
 
-\begin{example}[Classification of one- and two-dimensional Lie~algebras]
+\begin{example}[Classification of one- and {\twodimensional} Lie~algebras]
   Let~$\kf$ be any field.
+  We can classify the {\onedimensional} and {\twodimensional}~\liealgebras{$\kf$} up to isomorphism by hand.
   
-  Two finite dimensional abelian~{\liealgebras{$\kf$}} are isomorphic (as Lie~algebras) if and only if they are isomorphic as~{\vectorspaces{$\kf$}}, because every vector space isomorphism between them is already a Lie~algebra isomorphism.
-  There hence exists for every~$n \geq 0$ up to isomorphism precisely one abelian~{\liealgebra{$\kf$}} of dimension~$n$.
-  
-  If~$\glie$ is a~{\onedimensional} Lie~algebra over~$\kf$ then the Lie~bracket of~$\glie$ is zero because it is alternating, so that~$\glie$ is abelian.
-  Hence there is up to isomorphism precisely one {\onedimensional} Lie~algebra over~$\kf$, as seen above.
-  
-  We have also seen that there exist precisely one {\twodimensional} abelian~{\liealgebra{$\kf$}} up to isomorphism.
-  We claim that there also exists precisely none non-abelian {\twodimensional}~{\liealgebra{$\kf$}} up to isomorphism:
-  
-  Suppose that~$\glie$ is a {\twodimensional}, non-abelian Lie~algebra over~$\kf$.
-  Let~$\tilde{x}$,~$\tilde{y}$ be a basis of~$\glie$.
-  We have~$[\glie,\glie] \neq 0$ because~$\glie$ is non-abelian, and~$[\glie, \glie]$ is spanned by the single element~$[\tilde{x}, \tilde{y}]$ because the Lie~bracket is alternating.
-  Hence~$[\glie, \glie] = \gen{ [\tilde{x}, \tilde{y}] }_\kf$ with~$[\tilde{x}, \tilde{y}] \neq 0$.
-  Let~$x \defined [\tilde{x},\tilde{y}]$ and~$y \in \glie$ such that~$x$,~$y$ is a basis of~$\glie$.
-  Then~$[x,y] \neq 0$ because~$\glie$ is non-abelian, and~$[x,y] \in \kf x$.
-  By rescaling~$y$ it can be assumed that~$[x,y] = x$.
- This shows that~$\glie$ is up to isomorphism the unique {\twodimensional} non-abelian Lie~algebra over~$\kf$.
+  If~$\glie$ is a~{\onedimensional}~\liealgebra{$\kf$} then the Lie~bracket of~$\glie$ is zero because it is alternating, so~$\glie$ is abelian.
+  It follows that there exists up to isomorphism precisely one one-dimensional~\liealgebra{$\kf$}, namely the abelian one.
  
-  Such a Lie~algebra also exists.
-  It can be realized as a subalgebra of~$\gllie_2(\kf)$ by choosing
+  For the {\twodimensional} Lie algebras we have already seen that there exists up to isomorphism precisely one abelian one.
+  We will now also show that there exists up to isomorphism precisely one non-abelian one.
+  
+  Suppose first that~$\glie$ is any {\twodimensional}, non-abelian~\liealgebra{$\kf$}.
+  Let~$\tilde{x}$,~$\tilde{y}$ be a basis of~$\glie$.
+  We have~$[\glie, \glie] \neq 0$ because~$\glie$ is non-abelian, and~$[\glie, \glie]$ is spanned by the single element~$[\tilde{x}, \tilde{y}]$ because the Lie~bracket is alternating.
+  Hence~$[\glie, \glie] = \gen{ [\tilde{x}, \tilde{y}] }_{\kf}$ with~$[\tilde{x}, \tilde{y}] \neq 0$.
+
+  Let~$x \defined [\tilde{x},\tilde{y}]$ and let~$y$ be some element of~$\glie$ that is linearly independent to~$x$.
+  Then~$x$,~$y$ is again a basis of~$\glie$.
+  We have~$[x,y] \neq 0$ because~$\glie$ is non-abelian, and~$[x,y] \in [\glie, \glie] = \kf x$.
+  By rescaling the basis vector~$y$ we may therefore assume that~$[x,y] = x$.
+
+  We have shown that any two-dimensional, non-abelian Lie~algebra admits a basis~$x$,~$y$ on which its Lie~bracket has a specific form, namely
+  \[
+    [x,y] = x \,.
+  \]
+  This shows that there is up to isomorphism at most one such Lie~algebra.
+ 
+  To show the existence of a two-dimensional, non-abelian Lie~algebra we consider the two matrices
   \[
     x
     \defined
@@ -1243,7 +1639,7 @@
     =
     E_{22}  \,.
   \]
-  A direct calculation shows that indeed
+  A direct calculation shows that
   \[
     [x,y]
     =
@@ -1257,108 +1653,550 @@
     =
     x \,.
   \]
-  Hence there exist up to isomorphism precisely two {\twodimensional} Lie~algebras over~$\kf$, one of which is abelian and the other non-abelian.
+  The linear subspace of~$\gllie(2, \kf)$ which is spanned by~$x$,~$y$ is therefore a Lie~subalgebra of~$\gllie(2, \kf)$.
+  It is two-dimensional because the two matrices~$x$,~$y$ are linearly independent, and it is non-abelian because~$x$,~$y$ do not commute with each other (since~$[x,y] \neq 0$).
+
+  We have altogether shown that up to isomorphism there are precisely two {\twodimensional} Lie~algebras over~$\kf$.
+  One of them is abelian, and the other one admits a basis~$x$,~$y$ with~$[x,y] = x$.
 \end{example}
 
-% 
-% \begin{lemma}
-%   Let~$\glie$ be a Lie~algebra.
-%   Every element~$x \in \glie$ can be regarded as an element~$x^{\op} \in \glie^{\op}$, resulting in a map~$i \colon \glie \to \glie^{\op}$.
-% \end{lemma}
+\begin{example}[Three-dimensional Lie~algebras]
+  \label{infinitely many three-dimensional lie algebras}
+  The number of three-dimensional Lie~algebras over a field~$\kf$ depends on the cardinality of~$\kf$.
 
+  If the field~$\kf$ is finite then there exist up to isomorphism only finitely many {\threedimensional} Lie~algebras:
+  Every such Lie~algebra is isomorphic to the vector space~$\kf^3$ together with a suitable Lie~bracket~$[-,-] \colon \kf^3 \times \kf^3 \to \kf^3$.
+  But there exist only finitely many Lie~brackets on~$\kf^3$ because~$\kf^3$ is finite.
 
-\begin{recall}
-  Let~$A$ and~$B$ be two~{\algebras{$\kf$}} that are not necessarily associative or unital.
-  Then a map~$f \colon A \to B$ is an \defemph{anti-homomorphism}\index{antihomomorphism!of k-algebras} if it is~{\linear{$\kf$}} with~$f(ab) = f(b)f(a)$ for all~$a, b \in A$.
-  A map~$A \to B$ is an antihomomorphism if any only if it is a homomorphism~$A^{\op} \to B$, if and only if it is a homomorphism~$A \to B^{\op}$.
-\end{recall}
+  If the field~$\kf$ is infinite then there exist up to isomorphism inifinitely many Lie~algebras over~$\kf$.
+  We show this by constructing a family of Lie~algebras~$\glie_\tau$ with~$\tau \in \kf$, such that~$\glie_\tau$ and~$\glie_\upsilon$ are isomorphic if and only if~$\tau = \upsilon$ or~$\tau \upsilon = 1$.
 
-
-\begin{definition}
-  A map~$f \colon \glie \to \hlie$ between~{\liealgebras{$\kf$}}~$\glie$ and~$\hlie$ is an \defemph{anti-homomorphism} of~{\liealgebras{$\kf$}} if it is~{\linear{$\kf$}} with~$f([x,y]) = [\spacing f(x), f(y)]$ for all~$x, y \in \glie$.
-\end{definition}
-
-
-\begin{lemma}
-  \label{antihomomorphisms correspond to opposite homomorphisms}
-  For a map~$\glie \to \hlie$ between two~{\liealgebras{$\kf$}}~$\glie$ and~$\hlie$ the following conditions are equivalent:
-  \begin{equivalenceslist}
-    \item
-      $f \colon \glie \to \hlie$ is an anti-homomorphism of Lie~algebras.
-    \item
-      $f \colon \glie^{\op} \to \hlie$ is a homomorphism of Lie~algebras.
-    \item
-      $f \colon \glie \to \hlie^{\op}$ is a homomorphism of Lie~algebras.
-    \item
-      $f \colon \glie^{\op} \to \hlie^{\op}$ is an anti-homomorphism of Lie~algebras.
-      \qed
-  \end{equivalenceslist}
-\end{lemma}
-
-
-\begin{lemma}
-  \label{lie algebra isomorphic to its opposite}
-  Every Lie~algebra~$\glie$ is isomorphic to its opposite Lie~algebra~$\glie^{\op}$ via the map
+  The Lie~algebra~$\glie_\tau$ is given by a the vector space with basis~$t$,~$x$,~$y$ together with the Lie~bracket given by
   \[
+    [t, x] = x \,,
+    \quad
+    [t, y] = \tau y \,,
+    \quad
+    [x, y] = 0 \,.
+  \]
+  Such a Lie~algebra exists since it can be realized as the Lie~subalgebra of~$\gllie(3, \kf)$ which is spanned by the three matrices
+  \[
+    t
+    =
+    \begin{pmatrix}
+      0 &   &       \\
+        & 1 &       \\
+        &   & \tau
+    \end{pmatrix} \,,
+    \qquad
+    x
+    =
+    E_{21} 
+    =
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      1 & 0 & 0 \\
+      0 & 0 & 0
+    \end{pmatrix} \,,
+    \qquad
+    y
+    =
+    E_{31}
+    =
+    \begin{pmatrix}
+      0 & 0 & 0 \\
+      0 & 0 & 0 \\
+      1 & 0 & 0
+    \end{pmatrix} \,.
+  \]
+
+  We first note that for~$\tau \neq 0$ we can replace the basis~$t$,~$x$,~$y$ of~$\glie_\tau$ by the slighty rescaled basis~$t'$,~$x'$,~$y'$ that is given by
+  \[
+    t' \defined \frac{t}{\tau} \,,
+    \quad
+    x' \defined x \,,
+    \quad
+    y' \defined y \,.
+  \]
+  The Lie~bracket of~$\glie_\tau$ is on this rescaled basis given by the relations
+  \[
+    [t', x'] = \frac{1}{\tau} x' \,,
+    \quad
+    [t', y'] = y' \,,
+    \quad
+    [y', x'] = 0 \,.
+  \]
+  We find from these relations that the unique linear map~$\varphi \colon \glie_{\tau} \to \glie_{\tau^{-1}}$ given by
+  \[
+    \varphi(t') = t \,,
+    \quad
+    \varphi(x') = y \,,
+    \quad
+    \varphi(y') = x
+  \]
+  is an isomorphism of Lie~algebras.
+  This shows that~$\glie_{\tau}$ is isomorphic to~$\glie_{\upsilon}$ if~$\upsilon = \tau^{-1}$, i.e.\ if~$\tau \upsilon = 1$.
+  
+  Let on the other hand~$\glie \defined \glie_\tau$ for some~$\tau \in \glie$.
+  The commutator space~$[\glie, \glie]$ is given by~$\gen{x, y}$ if~$\tau \neq 0$ and by~$\gen{x}$ if~$\tau = 0$.
+  We can hence distinguish the case~$\tau = 0$ from all the other cases by considering the dimension of~$[\glie, \glie]$.
+
+  To further distinguish the cases~$\tau \neq 0$ let~$t'$ be some element of~$\glie$ that does not belong to the commutator space~$[\glie, \glie] = \gen{x,y}$.
+  Then~$t' = \alpha t + \beta x + \gamma y$ for some coefficients~$\alpha, \beta, \gamma \in \kf$ with~$\alpha \neq 0$.
+  We consider the endomorphism
+  \[
+    \ad(t')
+    =
+    [t', -]
+    \colon
     \glie
     \to
-    \glie^{\op}\,,
-    \quad
-    x
-    \mapsto
-    -x  \,.
+    \glie \,.
   \]
-\end{lemma}
+  With respect to the basis~$t$,~$x$,~$y$ of~$\glie$ we have
+  \[
+    \ad(t)
+    \equiv
+    \begin{pmatrix}
+      0 & 0 & 0     \\
+      0 & 1 & 0     \\
+      0 & 0 & \tau
+    \end{pmatrix} \,,
+    \quad
+    \ad(x)
+    \equiv
+    \begin{pmatrix*}[r]
+       0  & 0 & 0 \\
+      -1  & 0 & 0 \\
+       0  & 0 & 0
+    \end{pmatrix*} \,,
+    \quad
+    \ad(y)
+    \equiv
+    \begin{pmatrix}
+      0     & 0 & 0 \\
+      0     & 0 & 0 \\
+      -\tau & 0 & 0
+    \end{pmatrix}
+  \]
+  and therefore
+  \begin{align*}
+    \ad(t')
+    &=
+    \ad(\alpha t + \beta x + \gamma y)
+    \\
+    &=
+    \alpha \ad(t) + \beta \ad(x) + \gamma \ad(y)
+    \\
+    &\equiv
+    \alpha
+    \begin{pmatrix}
+      0 & 0 & 0     \\
+      0 & 1 & 0     \\
+      0 & 0 & \tau
+    \end{pmatrix}
+    +
+    \beta
+    \begin{pmatrix*}[r]
+       0  & 0 & 0 \\
+      -1  & 0 & 0 \\
+       0  & 0 & 0
+    \end{pmatrix*}
+    +
+    \gamma
+    \begin{pmatrix}
+      0     & 0 & 0 \\
+      0     & 0 & 0 \\
+      -\tau & 0 & 0
+    \end{pmatrix}
+    \\
+    &=
+    \begin{pmatrix}
+       0          & 0       & 0           \\
+      -\beta      & \alpha  & 0           \\
+      -\gamma\tau & 0       & \alpha \tau
+    \end{pmatrix} \,.
+  \end{align*}
+  The eigenvalues of~$\ad(t')$ are thus given by~$0$,~$\alpha$,~$\alpha \tau$.
+  We find in particular that the quotients of the two non-zero eigenvalues of~$\ad(t')$ are given by~$\tau$ and~$1 / \tau$.
+
+  The above calculations shows how the set~$\{ \tau, 1 / \tau \}$ can be reconstructed from the Lie~algebra~$\glie = \glie_\tau$:
+  the values~$\tau$ and~$1/\tau$ are precisely the quotients of the nonzero eigenvalues of~$\ad(t')$ where~$t'$ is any element of~$\glie$ not contained in~$[\glie, \glie]$.
+  It follows that for~$\glie_\tau$ and~$\glie_\upsilon$ to be isomorphic we need that~$\{ \tau , 1/\tau \} = \{ \upsilon, 1/\upsilon \}$.
+  This means that~$\tau = \upsilon$ or~$\tau = 1 / \upsilon$, i.e.~$\tau \upsilon = 1$.
+\end{example}
+
+
+
+\subsection{Homomorphisms Involving Products of Lie~Algebras}
+
+
+\begin{proposition}
+  \label{products of lie algebras}
+  Let~$\glie_\lambda$ with~$\lambda \in \Lambda$ be a family of~\liealgebras{$\kf$}.
+  \begin{enumerate}
+    \item
+      The canonical projection
+      \[
+       \pi_\mu
+       \colon
+       \prod_{\lambda \in \Lambda} \glie_\lambda
+       \to
+       \glie_\mu \,,
+       \quad
+       ( x_\lambda )_\lambda
+       \mapsto
+       x_\mu
+      \]
+      is for every index~$\mu \in \Lambda$ a homomorphism of Lie~algebras.
+    \item
+      Let~$\hlie$ be another~\liealgebra{$\kf$}.
+      A map~$\varphi \colon \hlie \to \prod_{\lambda \in \Lambda} \glie$ is a homomorphism of Lie algebras if and only if it is a homomorphisms of Lie algebras in each coordinate, i.e.\ if and only if for every index~$\mu \in \Lambda$ the composite~$\pi_\mu \circ \varphi \colon \hlie \to \glie_\mu$ is a homomorphism of Lie~algebras.
+    \qed
+  \end{enumerate}
+\end{proposition}
 
 
 \begin{proof}
-  The map~$\varphi \colon \glie \to \glie$,~$x \mapsto -x$ is an anti-homomorphism of Lie~algebras because
-  \[
-    \varphi([x,y])
-    =
-    -[x,y]
-    =
-    [y,x]
-    =
-    [-y,-x]
-    =
-    [\varphi(y), \varphi(x)]
-  \]
-  for all~$x, y \in \glie$.
-  It is hence a homomorphism of Lie~algebras~$\glie \to \glie^{\op}$.
-  It is also bijective.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      This holds because the Lie~algebra structure on~$\prod_{\lambda \in \Lambda} \glie_{\lambda}$ is defined componentwise.
+    \item
+      If~$\varphi$ is a homomorphism of Lie~algebras then the composite~$\pi_\mu \circ \varphi$ is for every index~$\mu \in \Lambda$ again a homomorphism of Lie~algebras because the projection~$\pi_\mu$ is a homomorphism of Lie~algebras.
+
+      Suppose on the other hand that each composite~$\pi_\lambda \circ \varphi$ is a homomorphism of Lie~algebras.
+      We have for any two element~$x$,~$y$ of~$\hlie$ and for every index~$\mu \in \Lambda$ the equalities
+      \begin{align*}
+        \pi_\mu\bigl( \varphi( [ x, y ] ) \bigr)
+        &=
+        (\pi_\mu \circ \varphi)( [x, y] )
+        \\
+        &=
+        [ (\pi_\mu \circ \varphi)(x), (\pi_\mu \circ \varphi)(y) ]
+        \\
+        &=
+        [ \pi_\mu( \varphi(x) ), \pi_\mu( \varphi(y) ) ]
+        \\
+        &=
+        \pi_\mu\bigl( [\varphi(x), \varphi(y)] \bigr) \,,
+      \end{align*}
+      and thus altogether
+      \[
+        \varphi( [x,y] ) = [ \varphi(x), \varphi(y) ] \,.
+      \]
+      This shows that the linear map~$\varphi$ is a homomorphism of Lie~algebras.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
-\begin{proposition}[Homomorphism theorem]
-  \index{homomorphism theorem!for Lie algebras}
-  Let~$\glie$ and~$\hlie$ be Lie~algebras and let~$f \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
+\begin{remark}
+  \Cref{products of lie algebras} asserts that the category~$\cLie{\kf}$ has all (small) products.
+
+  Given three~\liealgebras{$\kf$}~$\glie$,~$\hlie_1$,~$\hlie_2$ and two homomorphisms of Lie~algebras
+  \[
+    f_1 \colon \glie \to \hlie_1 \,,
+    \quad
+    f_2 \colon \glie \to \hlie_2
+  \]
+  one can also verify that the set
+  \[
+    \{
+      x \in \glie
+    \suchthat
+      f_1(x) = f_2(x)
+    \}
+  \]
+  is a Lie~subalgebra of~$\glie$.
+  This then shows that the category~$\cLie{\kf}$ has (binary) equalizers.
+
+  Together this shows that the category~$\cLie{\kf}$ has all (small) limits, i.e.\ it is complete.
+  We will see later that~$\cLie{\kf}$ is also cocomplete.
+  % TODO: Add a reference to the position, once it is written.
+\end{remark}
+
+
+\subsection{Homomorphisms Involving Direct Sums of Lie~Algebras}
+
+
+\begin{example}[Homomorphisms out of direct sums]
+  \label{homomorphism out of direct sum}
+  Let~$\glie_\lambda$ with~$\lambda \in \Lambda$ be a family of~\liealgebras{$\kf$}.
+  For every index~$\mu \in \Lambda$ we have a~\linear{$\kf$}, injective map
+  \[
+    \iota_\mu
+    \colon
+    \glie_\mu
+    \to
+    \bigoplus_{\lambda \in \Lambda} \glie_\lambda \,,
+  \]
+  which is given by
+  \[
+    \iota_\mu(x)
+    =
+    (y_\lambda)_\lambda
+    \quad\text{with}\quad
+    y_\lambda
+    =
+    \begin{cases*}
+      x & if~$\lambda = \mu$, \\
+      0 & otherwise,
+    \end{cases*}
+    \qquad
+    \text{for every~$\lambda \in \Lambda$.}
+  \]
+  These inclusions are homomorphisms of Lie~algebras.
+  We can therefore regard every Lie~algebra~$\glie_\mu$ as a Lie~subalgebra of the direct sum~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+
+  Let~$\hlie$ be another~\liealgebra{$\kf$}.
+  We have a {\onetoonetext} correspondence
+  \begin{align*}
+    \left\{
+      \begin{tabular}{c}
+        \linear{$\kf$} maps \\
+        $\varphi \colon \bigoplus_{\lambda \in \Lambda} \glie_\lambda \to \hlie$
+      \end{tabular}
+    \right\}
+    &\onetoone
+    \left\{
+      (\varphi_\lambda)_\lambda
+    \suchthat*
+      \begin{tabular}{@{}c@{}}
+        \linear{$\kf$} maps\\
+        $\varphi_\lambda \colon \glie_\lambda \to \hlie$
+      \end{tabular}
+    \right\}
+  \intertext{which is given by}
+    \SwapAboveDisplaySkip
+    \varphi
+    &\mapsto
+    (\varphi \circ \iota_\lambda)_\lambda \,,
+    \\
+    \biggl(
+      (x_\lambda)_\lambda
+      \mapsto
+      \sum_{\lambda \in \Lambda}
+      \varphi_\lambda(x_\lambda)
+    \biggr)
+    &\mapsfrom
+    (\varphi_\lambda)_\lambda \,.
+  \end{align*}
+  We may think about the composite~$\varphi \circ \iota_\lambda$ as the restriction of~$\varphi$ to~$\glie_\lambda$, when~$\glie_\lambda$ is regarded as a Lie~subalgebra of~$\glie$ via the inclusion~$\iota_\lambda$.
+
+  If a~\linear{$\kf$} map~$\varphi$ from~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ to~$\hlie$ is a homomorphism of Lie~algebras, then each composite~$\varphi \circ \iota_\mu$ is a homomorphism of Lie~algebras from~$\glie_\mu$ to~$\hlie$, because the inclusions~$\iota_\mu$ are homomorphism of Lie~algebras.
+  We note that the Lie~algebras~$\glie_\mu$ -- when regarded as Lie~subalgebras of~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ via the inclusions~$\iota_\mu$ -- commute with each other, in the sense that
+  \[
+    [ \iota_\mu(x), \iota_\kappa(y) ] = 0
+    \qquad
+    \text{for all~$\mu \neq \kappa$ and~$x \in \glie_\mu$,~$y \in \glie_\kappa$.}
+  \]
+  It follows that the images of the composites~$\varphi \circ \iota_\lambda$ commute with each other, because
+  \[
+    [
+      (\varphi \circ \iota_\mu)(x),
+      (\varphi \circ \iota_\kappa)(y)
+    ]
+    =
+    \varphi( [\iota_\mu(x), \iota_\kappa(y)] )
+    =
+    \varphi(0)
+    =
+    0
+  \]
+  for all indices~$\mu \neq \kappa$ and elements~$x \in \glie_\mu$,~$y \in \glie_\kappa$.
+
+  Suppose on the other hand that~$\varphi_\lambda \colon \glie_\lambda \to \hlie$ with~$\lambda \in \Lambda$ are homomorphisms of Lie~algebras whose images commute with each other.
+  Let~$\varphi$ be the~\linear{$\kf$} from~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ to~$\hlie$ corresponding to the maps~$\varphi_\lambda$.
+  More explicitely, we have
+  \[
+    \varphi( (x_\lambda)_\lambda )
+    =
+    \sum_{\lambda \in \Lambda}
+    \varphi_\lambda(x_\lambda)
+    \qquad
+    \text{for every~$(x_\lambda)_\lambda \in \bigoplus_{\lambda \in \Lambda} \glie_\lambda$.}
+  \]
+  Then the map~$\varphi$ is again a homomorphism of Lie~algebras.
+  Indeed, let~$(x_\lambda)_\lambda$ and~$(y_\lambda)_\lambda$ be two elements of~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+  We have on the one hand
+  \begin{align*}
+    [
+      \varphi( (x_\lambda)_\lambda ),
+      \varphi( (y_\lambda)_\lambda )
+    ]
+    &=
+    \Biggl[
+      \sum_{\lambda \in \Lambda}
+      \varphi_\lambda( x_\lambda ) ,
+      \sum_{\mu \in \Lambda}
+      \varphi_\mu( y_\mu )
+    \Biggr]
+    \\
+    &=
+    \sum_{\lambda, \mu \in \Lambda}
+    \underbrace{
+      [ \varphi_\lambda( x_\lambda ) , \varphi_\mu( y_\mu ) ]
+    }_{
+      \text{$= 0$ for~$\lambda \neq \mu$}
+    }
+    \\
+    &=
+    \sum_{\lambda \in \Lambda} [ \varphi_\lambda( x_\lambda ), \varphi_\lambda( y_\lambda ) ]
+    \\
+    &=
+    \sum_{\lambda \in \Lambda} \varphi_\lambda( [ x_\lambda , y_\lambda ] ) \,,
+  \end{align*}
+  and on the other hand we have
+  \[
+    \varphi\bigl( [ (x_\lambda)_\lambda, (y_\lambda)_\lambda ] \bigr)
+    =
+    \varphi\bigl( ( [x_\lambda, y_\lambda] )_\lambda \bigr)
+    =
+    \sum_{\lambda_1}^n \varphi_\lambda( [ x_\lambda, y_\lambda ] ) \,.
+  \]
+  This shows that~$\varphi$ is indeed a homomorphism of Lie~algebras.
+
+  It follows from the above assertions that the previous {\onetoonetext} correspondce restricts to a {\onetoonetext} correspondence
+  \begin{align*}
+    \left\{
+      \begin{tabular}{c}
+        Lie~algebra \\
+        homomorphisms \\
+        $\varphi \colon \bigoplus_{\lambda \in \Lambda} \glie_\lambda \to \hlie$
+      \end{tabular}
+    \right\}
+    &\onetoone
+    \left\{
+      (\varphi_\lambda)_\lambda
+    \suchthat*
+      \begin{tabular}{@{}c@{}}
+        Lie~algebra homomorphisms \\
+        $\varphi_\lambda \colon \glie_\lambda \to \hlie$ whose images \\
+        commute with each other
+      \end{tabular}
+    \right\} \,.
+  \end{align*}
+\end{example}
+
+
+\begin{example}
+  \label{direct sum of ideals}
+%  If~$I$ and~$J$ are two Lie~algebra over the same field~$\kf$ then their product~$I \times J$ contains the linear subspaces~$I' \defined I \times 0$ and~$J' \defined 0 \times J$ as ideals.
+%  These ideals are isomorphic to~$I$ and~$J$ as Lie~algebras via the isomorphisms
+%  \begin{alignat*}{2}
+%    I
+%    &\to
+%    I'  \,,
+%    &
+%    \quad
+%    x
+%    &\mapsto
+%    (x,0) \,,
+%    \\
+%    J
+%    &\to
+%    J'  \,,
+%    &
+%    \quad
+%    y
+%    &\mapsto
+%    (0,y) \,.
+%  \end{alignat*}
+  Let~$\glie$ be a~{\liealgebra{$\kf$}} and let~$I_\lambda$ with~$\lambda \in \Lambda$ be a family of ideals of~$\glie$ such that
+  \[
+    \glie
+    =
+    \bigoplus_{\lambda \in \Lambda}
+    I_\lambda
+  \]
+  as vector spaces.
+  It then follows for any two distinct indices~$\mu$,~$\kappa$ that~$[I_\mu, I_\kappa] = 0$.
+  Indeed, we have for all~$x \in I_\mu$ and~$y \in I_\kappa$ that~$[x,y] \in I_\mu$ because~$I_\mu$ is an ideal, but also~$[x,y] \in I_\kappa$ because~$I_\kappa$ is an ideal.
+  Hence~$[x,y]$ is contained in~$I_\mu \cap I_\kappa$.
+  But~$I_\mu \cap I_\kappa = 0$, so~$[x,y] = 0$.
+  The isomorphism of vector spaces
+  \[
+    \bigoplus_{\lambda \in \Lambda}
+    I_\lambda
+    \to
+    \glie \,,
+    \quad
+    (x_\lambda)_\lambda
+    \mapsto
+    \sum_{\lambda \in \Lambda} x_\lambda
+  \]
+  is therefore an isomorphism of Lie~algebras.
+
+  Let~$\hlie$ be another~\liealgebra{$\kf$}.
+  It now follows from \cref{homomorphism out of direct sum} that a homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$\hlie$ is \enquote{the same} as a collection of Lie~algebra homomorphisms~$\varphi_\lambda$ from~$I_\lambda$ to~$\hlie_\lambda$ with~$\lambda \in \Lambda$, such that the images of~$\varphi_\mu$ and~$\varphi_\kappa$ commute for any two distinct indices~$\mu$ and~$\kappa$.
+\end{example}
+
+
+\begin{definition}
+  In the situation of \cref{direct sum of ideals} the Lie~algebra~$\glie$ is the \defemph{internal direct sum} the Lie~subalgebras~$I_\lambda$.
+\end{definition}
+
+
+\subsection{Homomorphisms Involving Quotients of Lie~Algebras}
+
+
+\begin{theorem}[Homomorphism theorem]
+  Let~$\glie$ be a Lie~algebra and let~$I$ be an ideal in~$\glie$.
   \begin{enumerate}
     \item
-      The kernel~$\ker f$ is an ideal in~$\glie$.
+      The canonical projection
+      \[
+        \pi
+        \colon
+        \glie
+        \to
+        \glie/I \,,
+        \quad
+        x
+        \mapsto
+        \class{x}
+      \]
+      is a homomorphism of Lie~algebras.
+  \end{enumerate}
+  Let~$\hlie$ be another Lie~algebra.
+  \begin{enumerate}[resume*]
     \item
-      The image~$\im f$ is a Lie~subalgebra of~$\hlie$.
+      Let~$\psi \colon \glie/I \to \hlie$ be a homomorphism of Lie~algebras.
+      The composite~$\psi \circ \pi \colon \glie \to \hlie$ is a homomorphism of Lie~algebras with~$I \subseteq \ker(\psi \circ \pi)$.
     \item
-      If~$I$ is any ideal in~$\glie$ with~$\ker f \subseteq I$ then there exists a unique homomorphism of Lie~algebras~$\induced{f} \colon \glie/I \to \hlie$ that makes the triangular diagram
+      Let~$\varphi \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
+      The homomorphism~$\varphi$ factors through a homomorphism of Lie~algebras~$\psi \colon \glie/I \to \hlie$ that makes the diagram
       \[
         \begin{tikzcd}
           \glie
-          \arrow{r}[above]{f}
+          \arrow{r}[above]{\varphi}
           \arrow{d}[left]{\pi}
           &
           \hlie
           \\
           \glie/I
-          \arrow[dashed]{ur}[below right]{\tilde{f}}
+          \arrow[dashed]{ur}[below right]{\psi}
           &
           {}
         \end{tikzcd}
       \]
-      commute.
-      It holds that~$\ker \induced{f} = {\ker f}/I$ and~$\im \induced{f} = \im f$.
-      \qed
+      commute if and only if~$I \subseteq \ker(\varphi)$.
+      The homomorphism~$\psi$ is unique and it is given by
+      \[
+        \psi( \class{x} )
+        =
+        \varphi(x)
+        \qquad
+        \text{for every~$x \in \glie$.}
+      \]
+      Its image and kernel are given by~$\im(\psi) = \im(\varphi)$ and~$\ker(\psi) = \ker(\varphi)/I$.
+    \qed
   \end{enumerate}
-\end{proposition}
+\end{theorem}
+
+
+%TODO: Add a proof.
 
 
 \begin{corollary}[Isomorphism theorems]
@@ -1366,33 +2204,34 @@
   Let~$\glie$ be a Lie~algebra.
   \begin{enumerate}
     \item
-      Any homomorphism of Lie~algebras~$f \colon \glie \to \hlie$ induces a well-defined isomorphism of Lie~algebras
+      Let~$\varphi \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
+      The homomorphism~$\varphi$ induces a well-defined isomorphism of Lie~algebras
       \[
-        \induced{f}
+        \psi
         \colon
-        \glie/{\ker f}
+        \glie / {\ker(\varphi)}
         \to
-        \im(\spacing f)  \,,
+        \im(\varphi)  \,,
         \quad
         \class{x}
         \mapsto
-        \class{f(x)}  \,.
+        \class{\varphi(x)} \,.
       \]
     \item
-      If~$I$ and~$J$ are two ideals in~$\glie$ with~$I \subseteq J$ then~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
+      If~$I$ and~$J$ are two ideals in~$\glie$ with~$I \subseteq J$ then the quotient~$J/I$ is an ideal in~$\glie/I$ and the natural isomorphism of vector spaces
       \[
-        (\glie/I) / (\spacing J/I)
+        (\glie/I) / (J/I)
         \to
         \glie/I \,,
         \quad
-        \class{x}
+        \class{ \,\class{x}\, }
         \mapsto
         \class{x}
       \]
       is already a natural isomorphism of Lie~algebras.
     \item
       Let~$\hlie$ is a Lie~subalgebra of~$\glie$ and let~$I$ is an ideal in~$\glie$.
-      Then~$\hlie + I$ is a Lie~subalgebra of~$\glie$ that contains~$I$, and~$\hlie \cap I$ is an ideal in~$\hlie$.
+      Then the sume~$\hlie + I$ is a Lie~subalgebra of~$\glie$ that contains the ideal~$I$, and the intersection~$\hlie \cap I$ is an ideal in~$\hlie$.
       The natural isomorphism of vector spaces
       \begin{gather*}
         \hlie/(\hlie \cap I)
@@ -1410,67 +2249,70 @@
 
 
 \begin{corollary}
-  It holds for any Lie~algebra~$\glie$ that~$\glie/{\centerlie(\glie)} \cong \ad(\glie)$, which is a Lie~subalgebra~$\gllie(\gllie)$.
+  It holds for any Lie~algebra~$\glie$ that~$\glie/{\centerlie(\glie)} \cong \ad(\glie)$, with~$\ad(\glie)$ being a Lie~subalgebra~$\gllie(\glie)$.
 \end{corollary}
 
 
 \begin{proof}
   The center~$\centerlie(\glie)$ is precisely the kernel of the Lie~algebra homomorphism~$\ad \colon \glie \to \gllie(\glie)$.
+  The assertion does therefore follow from the first isomorphism theorem.
 \end{proof}
 
 
 \begin{remark}
-  The Lie~subalgebra~$\ad(\glie)$ of~$\gllie(\glie)$ is the canonical way of associating to a Lie~algebra~$\glie$ a linear Lie~algebra.
-  We will see later on that questions about~$\glie$ can sometimes be reduced to~$\ad(\glie)$, to which we can then apply linear algebra.
+  The Lie~subalgebra~$\ad(\glie)$ of~$\gllie(\glie)$ is the canonical way of associating to the Lie~algebra~$\glie$ a linear Lie~algebra.
+  We will later see that questions about the original Lie~algebra~$\glie$ can sometimes be reduced to the case of the linear Lie~algebra~$\ad(\glie)$, for which we can then apply linear algebra.
 \end{remark}
 
 
-\begin{remark}
-  For a Lie~algebra~$\glie$ the ideal~$[\glie,\glie]$ is the minimal ideal inside~$\glie$ such that~$\glie/[\glie,\glie]$ is abelian.
-  Any homomorphism of Lie~algebras~$\glie \to \hlie$ into an abelian Lie~algebra~$\hlie$ factorizes through a unique homomorphism of Lie~algebras~$\glie/[\glie, \glie] \to \hlie$.
+\begin{example}
+  Let~$\glie$ be a~\liealgebra{$\kf$} and let~$\hlie$ be an abelian~\liealgebra{$\kf$}.
+  If~$\varphi \colon \glie \to \hlie$ is any homomorphism of Lie~algebras then the image of~$\varphi$ is a Lie~subalgebra of~$\glie$, which is then again abelian.
+  It follows from the isomorphism~$\im(\varphi) \cong \glie / {\ker(\varphi)}$ that the quotiont~$\glie / {\ker(\varphi)}$ is abelian.
+  The ideal~$\ker(\varphi)$ must therefore contain the commutator ideal~$[\glie, \glie]$.
+  The homomorphism~$\varphi$ does therefore factor through a homomorphism~$\glie / [\glie, \glie] \to \hlie$, and this construction gives a bijection
   \[
-    \begin{tikzcd}[column sep = small]
-      \glie
-      \arrow{rr}
-      \arrow{dr}
-      &
-      {}
-      &
-      \hlie
-      \\
-      {}
-      &
-      \glie/[\glie,\glie]
-      \arrow[dashed]{ur}
-      &
-      {}
-    \end{tikzcd}
+    \left\{
+      \begin{tabular}{c}
+        homomorphisms of \\
+        Lie~algebras~$\glie \to \hlie$
+      \end{tabular}
+    \right\}
+    \onetoone
+    \left\{
+      \begin{tabular}{c}
+        homomorphisms of \\
+        Lie~algebras $\glie/[\glie, \glie] \to \hlie$
+      \end{tabular}
+    \right\} \,.
   \]
-\end{remark}
+\end{example}
+
+
+%\begin{lemma}
+%  \label{homomorphisms respect commutators of sets}
+%  If~$\varphi \colon \glie \to \hlie$ is a homomorphism of Lie~algebras then
+%  \[
+%    \varphi([X,Y])
+%    =
+%    [\varphi(X), \varphi(Y)]
+%  \]
+%  for any two subsets~$X$,~$Y$ of~$\glie$.
+%  \qed
+%\end{lemma}
 
 
 \begin{lemma}
-  \label{homomorphisms respect commutators of sets}
-  If~$f \colon \glie \to \hlie$ is a homomorphism of Lie~algebras then
-  \[
-    f([X,Y])
-    =
-    [\spacing f(X), f(Y)]
-  \]
-  for any two subsets~$X, Y \subseteq \glie$.
-  \qed
-\end{lemma}
-
-
-\begin{lemma}
-  Let~$f \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
+  Let~$\varphi \colon \glie \to \hlie$ be a homomorphism of Lie~algebras.
   \begin{enumerate}
     \item
-      If~$\klie$ is a Lie~subalgebra of~$\hlie$ then the preimage~$f^{-1}(\klie)$ is a Lie~subalgebra of~$\glie$.
+      If~$\klie$ is a Lie~subalgebra of~$\hlie$ then the preimage~$\varphi^{-1}(\klie)$ is a Lie~subalgebra of~$\glie$.
     \item
-      If~$\klie$ is a Lie~subalgebra of~$\glie$ then the image~$f(\klie)$ is a Lie~subalgebra of~$\hlie$.
+      If~$\klie$ is a Lie~subalgebra of~$\glie$ then the image~$\varphi(\klie)$ is a Lie~subalgebra of~$\hlie$.
     \item
-      If~$I$ is an ideal in~$\hlie$ then the preimage~$f^{-1}(I)$ is an ideal in~$\glie$.
+      If~$I$ is an ideal of~$\hlie$ then the preimage~$\varphi^{-1}(I)$ is an ideal of~$\glie$.
+    \item
+      If the homomorphism~$\varphi$ is surjective and~$I$ is an ideal of~$\glie$ then the image~$\varphi(I)$ is an ideal of~$\hlie$.
     \qed
   \end{enumerate}
 \end{lemma}
@@ -1478,65 +2320,216 @@
 
 \begin{proposition}[Correspondence theorem]
   \label{correspondence theorem!for Lie algebras}
-  Let~$I$ be an ideal in a Lie~algebra~$\glie$ and let~$\pi \colon \glie \to \hlie$ denote the canonical projection.
-  If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains~$I$ then quotient~$\hlie/I$ is a Lie~subalgebra of of~$\glie/I$.
-  This construction induces a {\onetoone} correspondence
+  Let~$I$ be an ideal of a Lie~algebra~$\glie$ and let
+  \[
+    \pi \colon \glie \to \glie / I
+  \] denote the canonical projection.
+  If~$\hlie$ is a Lie~subalgebra of~$\glie$ that contains the ideal~$I$ then quotient~$\hlie/I$ is a Lie~subalgebra of of~$\glie/I$.
+  This construction induces a {\onetoonetext} correspondence
   \begin{align*}
     \{ \text{Lie~subalgebras~$\hlie$ of~$\glie$ containing~$I$} \}
     &\longleftrightarrow
     \{ \text{Lie~subalgebras~$\klie$ of~$\glie/I$} \} \,,
     \\
     \hlie
-    &\longmapsto
+    &\mapsto
     \hlie/I \,,
     \\
     \pi^{-1}(\klie)
-    &\longmapsfrom
+    &\mapsfrom
     \klie \,.
   \end{align*}
-  This correspondence restricts to a {\onetoone} correspondence
+  This correspondence restricts to a {\onetoonetext} correspondence
   \begin{align*}
     \{ \text{Lie~ideals~$J$ in~$\glie$} \}
     &\longleftrightarrow
     \{ \text{Lie~ideals~$K$ in~$\glie/I$} \} \,,
     \\
     J
-    &\longmapsto
+    &\mapsto
     J/I \,,
     \\
     \pi^{-1}(K)
-    &\longmapsfrom
+    &\mapsfrom
     K \,.
   \end{align*}
-  If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(\spacing J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
+  If~$J$ is an ideal in~$\glie$ containing~$I$ then for the associated ideal~$J/I$ in~$\glie/I$ the quotients~$(\glie/I)/(J/I)$ and~$\glie/J$ stay isomorphic via the third isomorphism theorem.
   \qed
 \end{proposition}
 
 
 
+\subsection{Antihomomorphisms}
 
 
-\subsection{Derivations}
+% 
+% \begin{lemma}
+%   Let~$\glie$ be a Lie~algebra.
+%   Every element~$x \in \glie$ can be regarded as an element~$x^{\op} \in \glie^{\op}$, resulting in a map~$i \colon \glie \to \glie^{\op}$.
+% \end{lemma}
+
+
+\begin{recall}
+  Let~$A$ and~$B$ be two~\enquote{\algebras{$\kf$}}.
+  A map~$\varphi \colon A \to B$ is an \defemph{anti-homomorphism}\index{anti-homomorphism!of $k$-algebras} if it is~{\linear{$\kf$}} and satisfies the condition
+  \[
+    \varphi(ab)
+    =
+    \varphi(b) \varphi(a)
+    \qquad
+    \text{for all~$a, b \in A$.}
+  \]
+  It holds that a map from~$A$ to~$B$ is an anti-homomorphism if any only if it is a homomorphism from~$A^{\op}$ to~$B$, if and only if it is a homomorphism from~$A$ to~$B^{\op}$.
+
+  An anti-homomorphism~$\varphi$ from~$A$ to~$B$ is an \defemph{anti-isomorphism}\index{anti-isomorphism!of $k$-algebras} if there exists another anti-homomorphism~$\psi$ from~$B$ to~$A$ with both~$\psi \circ \varphi = \id_A$ and~$\varphi \circ \psi = \id_B$.
+  It holds that a map from~$A$ to~$B$ is an anti-isomorphism if and only if it is an isomorphism from~$A^{\op}$ to~$B$, if and only if it is an isomorphism from~$A$ to~$B^{\op}$, if and only if it is bijective.
+\end{recall}
 
 
 \begin{definition}
-  Let~$A$ be a~{\algebra{$\kf$}} that is not necessarily unitary of even associative.
-  A \defemph{derivation of~$A$}\index{derivation} is a~{\linear{$\kf$}} map~$\delta \colon A \to A$ such that
+  A map~$\varphi \colon \glie \to \hlie$ between~{\liealgebras{$\kf$}}~$\glie$ and~$\hlie$ is an \defemph{anti-homomorphism} of~{\liealgebras{$\kf$}} if it is~{\linear{$\kf$}} and satisfies the condition
+  \[
+    \varphi([x,y]) = [\varphi(y), \varphi(x)]
+    \qquad
+    \text{for all~$x, y \in \glie$.}
+  \]
+\end{definition}
+
+
+\begin{proposition}
+  \label{antihomomorphisms correspond to opposite homomorphisms}
+  For a map~$\varphi \colon \glie \to \hlie$ between two~{\liealgebras{$\kf$}}~$\glie$ and~$\hlie$ the following four conditions are equivalent:
+  \begin{equivalenceslist}
+    \item
+      $\varphi$ is an anti-homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+    \item
+      $\varphi$ is a homomorphism of Lie~algebras from~$\glie^{\op}$ to~$\hlie$.
+    \item
+      $\varphi$ is a homomorphism of Lie~algebras from~$\glie$ to~$\hlie^{\op}$.
+    \item
+      $\varphi$ is an anti-homomorphism of Lie~algebras from~$\glie^{\op}$ to~$\hlie^{\op}$.
+      \qed
+  \end{equivalenceslist}
+\end{proposition}
+
+
+\begin{corollary}
+  \label{onetoone correspondence for antihomomorphism}
+  We have for any two~\liealgebras{$\kf$}~$\glie$ and~$\hlie$ a {\onetoonetext} correspondence given by
+  \begin{align*}
+    \left\{
+      \begin{tabular}{c}
+        anti-homomorphisms \\
+        of Lie~algebras~$\glie \to \hlie$
+      \end{tabular} 
+    \right\}
+    &\onetoone
+    \left\{
+      \begin{tabular}{c}
+        homomorphisms \\
+        of Lie~algebras~$\glie^{\op} \to \hlie$
+      \end{tabular}
+    \right\} \,,
+    \\
+    \varphi
+    &\onetoone
+    \varphi \,.
+  \end{align*}
+  \qed
+\end{corollary}
+
+
+\begin{proposition}
+  \label{lie algebra isomorphic to its opposite}
+  Every Lie~algebra~$\glie$ is isomorphic to its opposite Lie~algebra~$\glie^{\op}$ via the map
+  \[
+    \glie
+    \to
+    \glie^{\op}\,,
+    \quad
+    x
+    \mapsto
+    -x^{\op}  \,.
+  \]
+\end{proposition}
+
+
+\begin{proof}
+  The map~$\varphi \colon \glie \to \glie^{\op}$,~$x \mapsto -x^{\op}$ is linear, and it is an anti-homomorphism of Lie~algebras because
+  \[
+    \varphi([x, y])
+    =
+    -[x,y]^{\op}
+    =
+    [ x^{\op}, y^{\op} ]
+    =
+    [ -x^{\op}, -y^{\op} ]
+    =
+    [ \varphi(x), \varphi(y) ]
+  \]
+  for all~$x, y \in \glie$.
+  It is also bijective, and thus an isomorphism of Lie~algebras.
+\end{proof}
+
+
+\begin{corollary}
+  We have for any two~\liealgebras{$\kf$}~$\glie$ and~$\hlie$ a {\onetoonetext} correspondence given by
+  \begin{align*}
+    \left\{
+      \begin{tabular}{c}
+        anti-homomorphisms \\
+        of Lie~algebras~$\glie \to \hlie$
+      \end{tabular} 
+    \right\}
+    &\onetoone
+    \left\{
+      \begin{tabular}{c}
+        homomorphisms \\
+        of Lie~algebras~$\glie \to \hlie$
+      \end{tabular}
+    \right\} \,,
+    \\
+    \varphi
+    &\mapsto
+    -\varphi \,,
+    \\
+    -\varphi
+    &\mapsfrom
+    \varphi \,.
+  \end{align*}
+\end{corollary}
+
+
+\begin{proof}
+  This is a combination of \cref{onetoone correspondence for antihomomorphism} and \cref{lie algebra isomorphic to its opposite}.
+\end{proof}
+
+
+
+
+
+\section{Derivations}
+
+
+\begin{definition}
+  Let~$A$ be a~\enquote{\algebra{$\kf$}}.
+  A \defemph{derivation}\index{derivation} of~$A$ is a~{\linear{$\kf$}} map~$\delta \colon A \to A$ such that
   \[
     \delta(ab)
     =
     \delta(a) b + a \delta(b)
+    \qquad
+    \text{for all~$a, b \in A$.}
   \]
-  for all~$a, b \in A$.
-  We set
+  The set of derivations of~$A$ is denoted by
   \[
-    \gls*{derivations}
+    \Der(A)\glsadd{derivations}
     \defined
     \{
       \delta
       \colon
       A
-      \to
+      \textstyle\to
       A
     \suchthat
       \text{$\delta$ is a derivation of~$A$}
@@ -1545,24 +2538,321 @@
 \end{definition}
 
 
+\begin{proposition}
+  Let~$A$ be a~\enquote{\algebra{$\kf$}}.
+  The space of derivations~$\Der(A)$ is a Lie~subalgebra of~$\gllie(A)$.
+\end{proposition}
+
+
+\begin{proof}
+  For any two element~$a$,~$b$ of~$A$ the auxiliary map
+  \[
+    h_{ab}
+    \colon
+    \gllie(A) \,,
+    \quad
+    \delta
+    \mapsto
+    \delta(ab) - \delta(a)b - a \delta(b)
+  \]
+  is linear.
+  It follows that
+  \[
+    \Der(A)
+    =
+    \bigcap_{a, b \in A}
+    \ker( h_{ab} )
+  \]
+  is a linear subspace of~$\gllie(A)$.
+  If~$\delta_1$ and~$\delta_2$ are any two derivations of~$A$ then
+  \[
+    \delta_1( \delta_2(ab) )
+    =
+    \delta_1( \delta_2(a) b + a \delta_2(b) )
+    =
+    \delta_1(\delta_2(a)) + \delta_2(a) \delta_1(b)
+    + \delta_1(a) \delta_2(b) + a \delta_1( \delta_2(b) )
+  \]
+  for all~$a, b \in A$, and therefore
+  \begin{align*}
+    [\delta_1, \delta_2](ab)
+    &=
+    (\delta_1 \delta_2 - \delta_2 \delta_1)(ab)
+    \\
+    &=
+    \delta_1( \delta_2(ab) ) - \delta_2( \delta_1(ab) )
+    \\
+    &=
+    \delta_1(\delta_2(a)) b + a \delta_1(\delta_2(b))
+    - \delta_2(\delta_1(a)) b - a \delta_2(\delta_1(b))
+    \\
+    &=
+    (\delta_1 \delta_2 - \delta_2 \delta_1)(a) b
+    + a (\delta_1 \delta_2 - \delta_2 \delta_1)(b)
+    \\
+    &=
+    [\delta_1, \delta_2](a) b + a [\delta_1, \delta_2](b) \,.
+  \end{align*}
+  This shows that the commutator~$[\delta_1, \delta_2]$ of any two derivations~$\delta_1$ and~$\delta_2$ of~$A$ is again such a derivation.
+  This means that the linear subspace~$\Der(A)$ of~$\gllie(A)$ is indeed a Lie~subalgebra.
+\end{proof}
+
+
 \begin{remark}
-  The space of derivations~$\Der(A)$ is a~{\linear{$\kf$}} subspace of~$\End_\kf(A)$.
+  \label{derivations made explicit}
+  Let us unravel the definition of a derivation in some special cases.
+  \begin{enumerate}
+    \item
+      Let~$\glie$ be a Lie~algebra.
+      A derivation of~$\glie$ is a vector space endomorphism~$\delta$ of~$\glie$ such that
+      \[
+        \delta([x,y])
+        =
+        [\delta(x), y] + [x, \delta(y)]
+        \qquad
+        \text{for all~$x, y \in \glie$.}
+      \]
+    \item
+      Let~$A$ be a commutative~\algebra{$\kf$}.
+      A derivation of~$A$ is a vector space endomorphism~$\delta$ of~$A$ such that
+      \[
+        \delta(ab)
+        =
+        \delta(a) b + a \delta(b)
+        \qquad
+        \text{for all~$a, b \in A$}.
+      \]
+      The~\vectorspace{$\kf$}~$\End_{\kf}(A)$ becomes an~\module{$A$} via the scalar multiplication
+      \[
+        (a \cdot \phi)(b)
+        \defined
+        a \cdot \phi(b)
+        \qquad
+        \text{for all~$a, b \in A$,~$\phi \in \gllie(A)$.}
+      \]
+      It follows from the commutativity of~$A$ that~$\Der(A)$ is an~\submodule{$A$} of~$\End_{\kf}(A)$, because
+      \begin{align*}
+        (a \delta)(b c)
+        &=
+        a \delta(b c)
+        \\
+        &=
+        a ( \delta(b) c + b \delta(c) )
+        \\
+        &=
+        a \delta(b) c + a b \delta(c)
+        \\
+        &=
+        a \delta(b) + b a \delta(c)
+        \\
+        &=
+        (a \delta)(b) + b (a \delta)(c)
+      \end{align*}
+      for all~$a, b, c \in A$ and~$\delta \in \Der(A)$.
+  \end{enumerate}
 \end{remark}
 
 
 \begin{example}
-  Let~$A$ be a~{\algebra{$\kf$}} (as above).
-  It follows from direct calculation that for all derivations~$\delta, \delta' \in \Der(A)$ their commutator~$[\delta, \delta'] = \delta \circ \delta' - \delta' \circ \delta$ is again a derivation.
-  Hence~$\Der(A)$ is a Lie~subalgebra of~$\gllie(A)$.
+  Let~$\glie$ be an abelian Lie~algebra.
+  Every~\linear{$\kf$} endomorphism~$\delta$ of~$\glie$ is already a derivation of~$\glie$ because
+  \[
+    \delta([x,y])
+    =
+    0
+    =
+    [0, y] + [x, 0]
+    =
+    [\delta(x), y] + [x, \delta(y)]
+  \]
+  for all~$x, y \in \glie$.
+  We thus have~$\Der(\glie) = \gllie(\glie)$.
 \end{example}
 
 
 \begin{lemma}
-\label{lie algebras act adjoint by derivations}
-  Let~$\glie$ be a Lie~algebra.
-  Then for any~$x \in \glie$ the map
+  \label{about the kernel of a derivation}
+  Let~$A$ be an~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$A$.
+  \begin{enumerate}
+    \item
+      If~$A$ is unital then~$\delta(1) = 0$.
+    \item
+      The set~$A' \defined \{ a \in A \suchthat \delta(a) = 0 \}$ is a subalgebra of~$A$.
+      If~$A$ is unital then~$A'$ is a unital subalgebra, in the sense that~$1 \in A'$.
+  \end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      It holds that
+      \[
+        \delta(1)
+        =
+        \delta(1 \cdot 1)
+        =
+        \delta(1) \cdot 1 + 1 \cdot \delta(1)
+        =
+        \delta(1) + \delta(1) \,.
+      \]
+      By subtracting~$\delta(1)$ from both sides of this equation we find that~$\delta(1) = 0$.
+    \item
+      The set~$A'$ is a subalgebra of~$A$ because the derivation~$\delta$ is~\linear{$\kf$}.
+      It holds for all~$a, b \in A'$ that
+      \[
+        \delta(ab)
+        =
+        \delta(a) b + a \delta(b)
+        =
+        0 \cdot a + b \cdot 0
+        =
+        0 \,,
+      \]
+      and thus~$ab \in A'$.
+      If~$A$ is unital then it follows from the previous assertion that~$\delta(1) = 0$ and thus~$1 \in A'$.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{corollary}
+  \label{dervation is uniquely determined by algebra generators}
+  Let~$A$ be a~\algebra{$\kf$} and let~$\delta_1$ and~$\delta_2$ be two derivations of~$A$.
+  Let~$X$ be an algebra generating set of~$A$ and suppose that~$\delta_1(x) = \delta_2(x)$ for every element~$x$ of~$X$.
+  Then already~$\delta_1 = \delta_2$.
+\end{corollary}
+
+
+\begin{proof}
+  The difference~$\delta \defined \delta_1 - \delta_2$ is again a derivation of~$A$.
+  It follows from \cref{about the kernel of a derivation} that the set
   \[
-    \gls*{adjoint representation}(x)
+    A'
+    \defined
+    \{
+      a \in A
+    \suchthat
+      \delta_1(a) = \delta_2(a)
+    \}
+    =
+    \{
+      a \in A
+    \suchthat
+      \delta(a) = 0
+    \}
+    =
+    \ker(\delta)
+  \]
+  is a subalgebra of~$A$.
+  This subalgebra contains by assumption the algebra generating set~$X$ of~$A$.
+  This means that~$A' = A$ and thus~$\delta_1 = \delta_2$.
+\end{proof}
+
+
+\begin{example}
+  \label{derivations of commutative polynomial algebra}
+  We consider the commutative~\algebra{$\kf$}~$A \defined \kf[x_1, \dotsc, x_n]$.
+  The partial derivative function
+  \[
+    \dd{x_i}
+    \colon
+    A
+    \to
+    A
+  \]
+  with~$i = 1, \dotsc, n$ satisfy the product rule
+  \[
+    \dd[(fg)]{x_i}
+    =
+    \dd[f]{x_i} g + f \dd[g]{x_i} \,,
+  \]
+  which means that each~$\dd{x_i}$ is a derivation of~$A$.
+  It follows from \cref{derivations made explicit} that for all polynomials~$f_1, \dotsc, f_n$ the~\linear{$A$} combination
+  \[
+    \delta
+    \defined
+    f_1 \dd{x_1} + \dotsb + f_n \dd{x_n}
+  \]
+  is again a derivation of~$A$.
+  We note that this derivation~$\delta$ is given on the algebra generators~$x_1, \dotsc, x_n$ of~$A$ by
+  \[
+    \delta(x_i)
+    =
+    \sum_{j=1}^n f_j \dd{x_i}{x_j}
+    =
+    \sum_{j=1}^n f_j \delta_{ij}
+    =
+    f_i
+  \]
+  for every~$i = 1, \dotsc, n$.
+  This shows in particular that the polynomials~$f_1, \dotsc, f_n$ are uniquely determined by the derivation~$\delta$, from which it follows that the derivations~$\dd{x_1}, \dotsc, \dd{x_n}$ are linearly independent over~$A$.
+
+  Suppose now that~$\delta$ is any derivation of~$A$.
+  For every index~$i = 1, \dotsc, n$ let
+  \[
+    f_i \defined \delta(x_i) \,,
+  \]
+  and let overall~$\delta'$ be the derivation of~$A$ given by
+  \[
+    \delta'
+    \defined
+    f_1 \dd{x_1} + \dotsb + f_n \dd{x_n} \,.
+  \]
+  It follows from the above calculations that
+  \[
+    \delta'(x_i) = f_i = \delta(x_i)
+    \qquad
+    \text{for all~$i = 1, \dotsc, n$.}
+  \]
+  According to \cref{dervation is uniquely determined by algebra generators} this shows that already~$\delta = \delta'$.
+  We have thus shown that the derivations~$\dd{x_1}, \dotsc, \dd{x_n}$ form an~\generating{$A$} set of~$\Der(A)$.
+
+  We have altogether shown that~$\Der(A)$ is free as an~\module{$A$} with basis given by the partial derivative functions~$\dd{x_1}, \dotsc, \dd{x_n}$.
+\end{example}
+
+
+\begin{remark}
+  For an~\algebra{$\kf$}~$A$ we consider the derivations of~$A$ as an algebra as well as the derivations of~$A$ as a Lie~algebra.
+  These two notions do not need to coincide.
+  Let us be more precise:
+
+  Every dervation~$\delta$ of~$A$ as an algebra is also a derivation of~$A$ as a Lie~algebra, because
+  \begin{align*}
+    \delta([a,b])
+    &=
+    \delta(ab - ba)
+    \\
+    &=
+    \delta(ab) - \delta(ba)
+    \\
+    &=
+    ( \delta(a) b + a \delta(b) ) - ( \delta(b) a + b \delta(a) )
+    \\
+    &=
+    \delta(a) b - b \delta(a) + a \delta(b) - \delta(b) a
+    \\
+    &=
+    [\delta(a), b] + [a, \delta(b)]
+  \end{align*}
+  for all~$a, b \in A$.
+
+  But not every derivation of~$A$ as a Lie~algebra also needs to be a derivation of~$A$ as an algebra.
+  To see this we can consider the case that~$A$ is commutative and nonzero.
+  Then~$A$ is abelian as a Lie~algebra and thus every vector space endomorphism of~$A$ is already a derivation of~$A$ as a Lie~algebra.
+  But every derivation~$\delta$ of~$A$ as an algebra must satisfy the condition~$\delta(1) = 0$.
+  So~$\delta = \id_A$ is a derivation of~$A$ as a Lie~algebra, but not a derivation of~$A$ as an algebra.
+\end{remark}
+
+
+\begin{proposition}
+  \label{lie algebras act adjoint by derivations}
+  \index{adjoint representation}
+  Let~$\glie$ be a Lie~algebra.
+  The map
+  \[
+    \ad(x)\glsadd{adjoint representation}
     \colon
     \glie
     \to
@@ -1572,12 +2862,13 @@
     \mapsto
     [x,y]
   \]
-  is a derivation of~$\glie$.\index{adjoint representation}
-\end{lemma}
+  is for every element~$x$ of~$\glie$ a derivation of~$\glie$.
+\end{proposition}
 
 
 \begin{proof}
-  By the Jacobi identity
+  The map~$\ad$ is linear by the bilinearity of the Lie~bracket of~$\glie$.
+  It follows from the Jacobi identity that
   \[
     \ad(x)([y,z])
     =
@@ -1591,106 +2882,557 @@
 \end{proof}
 
 
+\begin{corollary}
+  Let~$\glie$ be a Lie algebra.
+  The map
+  \[
+    \ad
+    \colon
+    \glie
+    \to
+    \Der(\glie) \,,
+    \quad
+    x
+    \mapsto
+    \ad(x)
+  \]
+  is a well-defined homomorphism of Lie~algebras.
+\end{corollary}
+
+
+\begin{proof}
+  We have seen in \cref{homomorphisms of lie algebras} that the map~$\ad' \colon \glie \to \gllie(\glie)$ given by~$x \mapsto \ad(x)$ is a homomorphism of Lie~algebras.
+  We have also seen in \cref{lie algebras act adjoint by derivations} that the image of this homomorphism is already contained in the Lie~subalgebra~$\Der(\glie)$ of~$\gllie(\glie)$.
+  It follows that~$\ad'$ restricts to the claimed homomorphism.
+\end{proof}
+
+
 \begin{definition}
  Let~$\glie$ be a Lie~algebra.
- A derivation of~$\glie$ is \defemph{inner}\index{inner derivation}\index{derivation!inner} if it is of the form~$\ad(x)$ for some~$x \in \glie$.
+ A derivation of~$\glie$ is \defemph{inner}\index{inner derivation}\index{derivation!inner} if it is of the form~$\ad(x)$ for some element~$x$ of~$\glie$.
 \end{definition}
 
 
 \begin{lemma}
   \label{commutator of any derivation and inner derivation}
   Let~$\glie$ be a Lie~algebra.
-  If~$x \in \glie$ and~$\delta \in \Der(\glie)$ then~$[\delta, \ad(x)] = \ad(\delta(x))$.
+  If~$x$ is any element of~$\glie$ and~$\delta$ is some derivation of~$\glie$ then
+  \[
+    [\delta, \ad(x)] = \ad(\delta(x)) \,.
+  \]
 \end{lemma}
 
 
 \begin{proof}
- We have that
- \begin{align*}
-  [\delta, \ad(x)](y)
-  &= 
-  (\delta \ad(x) - \ad(x) \delta(x))(y)
-  \\
-  &=
-  \delta([x,y]) - [x,\delta(y)]
-  \\
-  &=
-  [\delta(x),y] + [x,\delta(y)] - [x,\delta(y)]
-  \\
-  &=
-  [\delta(x),y]
-  \\
-  &=
-  \ad(\delta(x))(y)
- \end{align*}
- for every~$y \in \glie$.
+  We have
+  \begin{align*}
+    \SwapAboveDisplaySkip
+    [\delta, \ad(x)](y)
+    &= 
+    (\delta \ad(x) - \ad(x) \delta(x))(y)
+    \\
+    &=
+    \delta([x,y]) - [x,\delta(y)]
+    \\
+    &=
+    [\delta(x),y] + [x,\delta(y)] - [x,\delta(y)]
+    \\
+    &=
+    [\delta(x),y]
+    \\
+    &=
+    \ad(\delta(x))(y)
+  \end{align*}
+  for every~$y \in \glie$, and thus~$[\delta, \ad(x)] = \ad(\delta(x))$.
 \end{proof}
 
 
 \begin{corollary}
   \label{inner derivations are an ideal}
-  The inner derivations of a Lie~algebra~$\glie$ form an ideal inside the Lie~algebra~$\Der(\glie)$.
+  The inner derivations of a Lie~algebra~$\glie$ form an ideal inside~$\Der(\glie)$.
 \end{corollary}
 
+
 \begin{proof}
-  That the image~$\ad(\glie)$ is a~{\linear{$\kf$}} subspace of~$\Der(A)$ follows from the linearity of the map~$\ad$.
-  That~$\ad(\glie)$ is already an ideal in~$\Der(A)$ follows from \cref{commutator of any derivation and inner derivation}.
+  It follows from the linearity of the map~$\ad \colon \glie \to \Der(A)$ that the image~$\ad(\glie)$ is a linear subspace of~$\Der(A)$.
+  That~$\ad(\glie)$ is already an ideal of~$\Der(A)$ follows from \cref{commutator of any derivation and inner derivation}.
 \end{proof}
 
 
-
-
-
-\subsection{Simple Lie~Algebras}
-
-
-\begin{definition}
- A Lie~algebra~$\glie$ is \defemph{simple}\index{simple!Lie algebra}\index{Lie!algebra!simple} if it is non-abelian, nonzero and contains no ideals apart from~$0$ and~$\glie$ itself.
-\end{definition}
-
-
 \begin{remark}
-  A Lie~algebra is simple if and only if it is non-abelian and contains precisely two ideals.
+  If one thinks about Lie algebras as \enquote{derived} versions of (Lie) groups, then derivations are derived versions of automorphisms, and inner derivations are derived versions of inner automorphisms.
+  We can therefore extend the comparision between groups and Lie~algebras from \cref{on the notion of ideals} to \cref{correspondence between groups and lie algebras}.
+  \begin{table}
+    \centering
+    \begin{tabular}{ll}
+      \toprule
+      group theory
+      &
+      Lie~algebra theory
+      \\
+      \midrule
+      subgroup
+      &
+      Lie~subalgebra
+      \\
+      normal subgroup
+      &
+      Lie~ideal
+      \\
+      automorphism
+      &
+      derivation
+      \\
+      inner automorphism
+      &
+      inner derivations
+      \\
+      \bottomrule
+    \end{tabular}
+    \caption{Correspondence between groups and Lie~algebras.}
+    \label{correspondence between groups and lie algebras}
+  \end{table}
+
+  That the inner dervivations of a Lie algebra~$\glie$ form an ideal inside the Lie~algebra~$\Der(\glie)$ correspondence to the group theoretic statement, that the inner automorphisms of a group~$G$ form a normal subgroup of the automorphism group~$\Aut(G)$.
+  Moreover, the center of~$\glie$ is precisely the kernel of the Lie~algebra homomorphism~$\ad \colon \glie \to \Der(\glie)$, just the center of~$G$ is precisely the kernel of the group homomorphism~$G \to \Aut(G)$.
 \end{remark}
 
 
+
+\subsection{Inner Automorphisms}
+
+
+\begin{recall}
+  Let~$V$ be a~\vectorspace{$\kf$} where~$\kf$ if a field of characteristic zero.
+  Let~$f$ be a nilpotent endomorphism of~$V$.
+  Then
+  \[
+    \exp(f)
+    \defined
+    \sum_{n=0}^\infty
+    \frac{f^n}{n!}
+  \]
+  is again a well-defined endomorphism of~$V$.
+  If~$\alpha$ is an automorphism of~$V$ then the conjugate~$\alpha f \alpha^{-1}$ is again nilpotent, and
+  \[
+    \exp( \alpha f \alpha^{-1} )
+    =
+    \sum_{n=0}^\infty
+    \frac{ (\alpha f \alpha^{-1})^n }{n!}
+    =
+    \sum_{n=0}^\infty
+    \frac{ \alpha f^n \alpha^{-1} }{n!}
+    =
+    \alpha
+    \Biggl(
+      \sum_{n=0}^\infty
+      \frac{f^n}{n!}
+    \Biggr)
+    \alpha^{-1}
+    =
+    \alpha \exp(f) \alpha^{-1} \,.
+  \]
+
+  Let now~$g$ be another nilpotent endomorphism of~$V$ and suppose that the endomorphisms~$f$ and~$g$ commute.
+  Then the sum~$f + g$ is again nilpotent.
+  To be more precise, we have
+  \[
+    (f + g)^n
+    =
+    \sum_{k=0}^n
+    \binom{n}{k}
+    f^k g^{n-k}
+  \]
+  for every exponent~$n \in \Natural$.
+  If~$f^{n'} = 0$ and~$g^{n''} = 0$ then by choosing~$n > n' + n''$ we find that~$f^k = 0$ or~$g^{n-k} = 0$ for every~$k = 0, \dotsc, n$, and thus~$(f + g)^n = 0$.
+
+  We can therefore also consider the endomorphism~$\exp(f + g)$, and it follows from the commutativity of~$f$ and~$g$ that 
+  \begingroup
+  \allowdisplaybreaks
+  \begin{align*}
+    \exp(f + g)
+    &=
+    \sum_{n=0}^\infty
+    \frac{(f + g)^n}{n!}
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \frac{1}{n!}
+    \sum_{k=0}^n
+    \binom{n}{k}
+    f^k g^{n-k}
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \sum_{k=0}^n
+    \frac{f^k g^{n-k}}{k!(n-k)!}
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \sum_{k + l = n}
+    \frac{f^k g^l}{k! l!}
+    \\
+    &=
+    \sum_{k, l = 0}^\infty
+    \frac{f^k g^l}{k! l!}
+    \\
+    &=
+    \Biggl(
+      \sum_{k=0}^\infty
+      \frac{f^k}{k!}
+    \Biggr)
+    \Biggl(
+      \sum_{l=0}^\infty
+      \frac{g^l}{l!}
+    \Biggr)
+    \\
+    &=
+    \exp(f) \exp(g) \,.
+  \end{align*}
+  \endgroup
+  It follows in particular for~$g = -f$ that
+  \[
+    \exp(f) \exp(-f) = \exp(f - f) = \exp(0) = \id_V \,,
+  \]
+  and similarly that~$\exp(-f) \exp(f) = \id_V$.
+  This shows that~$\exp(f)$ is already a vector space automorphism of~$V$, with~$\exp(f)^{-1} = \exp(-f)$.
+\end{recall}
+
+
 \begin{lemma}
- Let~$\glie$ be a simple Lie~algebra.
- Then~$[\glie, \glie] = \glie$ and~$\centerlie(\glie) = 0$.
+  Let~$A$ be a~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$A$.
+  Then
+  \[
+    \delta^n(ab)
+    =
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \delta^k(a) \delta^{n-k}(b)
+    \qquad
+    \text{for all~$n \in \Natural$,~$a, b \in A$.}
+  \]
 \end{lemma}
 
 
 \begin{proof}
- The Lie~algebra~$\glie$ is non-abelian because it is simple.
- Hence~$[\glie, \glie] \neq 0$ and~$\centerlie(\glie) \neq \glie$.
- As both~$[\glie, \glie]$ and~$\centerlie(\glie)$ are ideals in~$\glie$ it follows that~$[\glie, \glie] = \glie$ and~$\centerlie(\glie) = 0$ because~$\glie$ is simple.
+  We prove the formula by induction.
+  It holds for~$n = 0$.
+  If the formula holds for some exponent~$n$ then it also holds for the exponent~$n + 1$ because
+  \begingroup
+  \allowdisplaybreaks
+  \begin{align*}
+    \delta^{n+1}(ab)
+    &=
+    \delta( \delta^n(ab) )
+    \\
+    &=
+    \delta
+    \Biggl(
+      \sum_{k=0}^n
+      \binom{n}{k}
+      \delta^k(a) \delta^{n-k}(b)
+    \Biggr)
+    \\
+    &=
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \delta
+    \bigl(
+      \delta^k(a) \delta^{n-k}(b)
+    \bigr)
+    \\
+    &=
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \bigl(
+      \delta^{k+1}(a) \delta^{n-k}(b)
+      +
+      \delta^k(a) \delta^{n+1-k}(b)
+    \bigr)
+    \\
+    &=
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \delta^{k+1}(a) \delta^{n-k}(b)
+    +
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \delta^k(a) \delta^{n+1-k}(b)
+    \\
+    &=
+    \sum_{k=1}^{n+1}
+    \binom{n}{k-1}
+    \delta^{k}(a) \delta^{n+1-k}(b)
+    +
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \delta^k(a) \delta^{n+1-k}(b)
+    \\
+    &=
+    \delta^{n+1}(a) b
+    +
+    \sum_{k=1}^n
+    \binom{n}{k-1}
+    \delta^{k}(a) \delta^{n+1-k}(b)
+    +
+    \sum_{k=1}^n
+    \binom{n}{k}
+    \delta^k(a) \delta^{n+1-k}(b)
+    +
+    a \delta^{n+1}(b)
+    \\
+    &=
+    \delta^{n+1}(a) b
+    +
+    \sum_{k=1}^n
+    \Biggl(
+      \binom{n}{k-1}
+      +
+      \binom{n}{k}
+    \Biggr)
+    \delta^k(a) \delta^{n+1-k}(b)
+    +
+    a \delta^{n+1}(b)
+    \\
+    &=
+    \delta^{n+1}(a) b
+    +
+    \sum_{k=1}^n
+    \binom{n+1}{k}
+    \delta^k(a) \delta^{n+1-k}(b)
+    +
+    a \delta^{n+1}(b)
+    \\
+    &=
+    \sum_{k=0}^{n+1}
+    \binom{n+1}{k}
+    \delta^k(a) \delta^{n+1-k}(b) \,.
+  \end{align*}
+  \endgroup
+  This proves the formula.
 \end{proof}
 
 
+\begin{proposition}
+  \label{exponential of derivation is automorphism}
+  Let~$A$ be a~\enquote{\algebra{$\kf$}} where~$\kf$ is a field of characteristic zero and let~$\delta$ be a nilpotent derivation of~$A$.
+  Then
+  \[
+    \alpha
+    \defined
+    \exp(\delta)
+    =
+    \sum_{n=0}^\infty \frac{\delta^n}{n!}
+  \]
+  is an algebra automorphism of~$A$.
+\end{proposition}
+
+
+\begin{proof}
+  We have for any two element~$a$,~$b$ of~$A$ that
+  \begingroup
+  \allowdisplaybreaks
+  \begin{align*}
+    \alpha(ab)
+    &=
+    \sum_{n=0}^\infty
+    \frac{\delta^n}{n!}(ab)
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \frac{1}{n!}
+    \delta^n(ab)
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \frac{1}{n!}
+    \sum_{k=0}^n
+    \binom{n}{k}
+    \delta^k(a) \delta^{n-k}(b)
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \sum_{k=0}^n
+    \frac{\delta^k(a) \delta^{n-k}(b)}{k! (n-k)!}
+    \\
+    &=
+    \sum_{n=0}^\infty
+    \sum_{k+l=n}
+    \frac{\delta^k(a) \delta^{n-k}(b)}{k! l!}
+    \\
+    &=
+    \sum_{k,l = 0}^\infty
+    \frac{\delta^k(a) \delta^{n-k}(b)}{k! l!}
+    \\
+    &=
+    \Biggl(
+      \sum_{k=0}^\infty
+      \frac{\delta^k(a)}{k!}
+    \Biggr)
+    \Biggl(
+      \sum_{l=0}^\infty
+      \frac{\delta^l(b)}{l!}
+    \Biggr)
+    \\
+    &=
+    \Biggl(
+      \sum_{k=0}^\infty
+      \frac{\delta^k}{k!}
+    \Biggr)
+    (a)
+    \Biggl(
+      \sum_{l=0}^\infty
+      \frac{\delta^l}{l!}
+    \Biggr)
+    (b)
+    \\
+    &=
+    \alpha(a) \alpha(b) \,. 
+  \end{align*}
+  \endgroup
+  This shows that~$\alpha$ preserves multiplication.
+  It is also a vector space automorphism.
+  Together this shows that~$\alpha$ is an algebra automorphism.
+\end{proof}
+
+
+\begin{corollary}
+  Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+  Let~$x$ be an element of~$\glie$ such that~$\ad(x)$ is nilpotent.
+  Then~$\exp(\ad(x))$ is a Lie~algebra automorphism of~$\glie$.
+\end{corollary}
+
+
+\begin{proof}
+  We have seen in \cref{lie algebras act adjoint by derivations} that~$\ad(x)$ is a derivation of~$\glie$.
+  The assertion thus follows from \cref{exponential of derivation is automorphism}.
+\end{proof}
+
+
+\begin{definition}
+  Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+  \begin{enumerate}
+    \item
+      The group of \defemph{inner automorphisms}\index{inner!automorphism}\index{automorphism!inner} of~$\glie$ is the subgroup of~$\Aut_{\Lie}(\glie)$ which is generated by all automorphism of the form~$\exp(\ad(x))$ where~$x$ is any element of~$\glie$ for which~$\ad(x)$ is nilpotent.
+      The group of inner automorphisms of~$\glie$ is denoted by~$\Inn(\glie)$.
+    \item
+      The elements of~$\Inn(\glie)$ are the \defemph{inner automorphisms}\index{inner!automorphism}\index{automorphism!inner} of~$\glie$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+  \label{adjoint and automorphisms}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$x$ be any element of~$\glie$ and let~$\alpha$ be an automorphism of~$\glie$.
+  Then
+  \[
+    \ad(\alpha(x))
+    =
+    \alpha \circ \ad(x) \circ \alpha^{-1} \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  We have for every element~$y$ of~$\glie$ that
+  \[
+    \ad(\alpha(x))(\alpha(y))
+    =
+    [\alpha(x), \alpha(y)]
+    =
+    \alpha( [x,y] )
+    =
+    \alpha( \ad(x)(y) )
+  \]
+  and therefore overall
+  \[
+    \ad(\alpha(x)) \circ \alpha
+    =
+    \alpha \circ \ad(x) \,.
+  \]
+  Composing both sides of this equation with~$\alpha^{-1}$ proves the assertion.
+\end{proof}
+
+
+\begin{lemma}
+  \label{conjugation of inner automorphism}
+  Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+  Let~$x$ be any element of~$\glie$ for which~$\ad(x)$ is nilpotent, and let~$\alpha$ be any automorphism of~$\glie$.
+  Then~$\ad(\alpha(x))$ is again nilpotent and
+  \[
+    \alpha \exp(\ad(x)) \alpha^{-1}
+    =
+    \exp( \alpha(x) ) \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  It follows from \cref{adjoint and automorphisms} that the endomorphism~$\ad(\alpha(x)) = \alpha \ad(x) \alpha^{-1}$ is a conjugate of the nilpotent endomorphism~$\ad(x)$, and thus again nilpotent.
+  We also find that
+  \[
+    \exp( \ad(\alpha(x)) )
+    =
+    \exp( \alpha \ad(x) \alpha^{-1} )
+    =
+    \alpha \exp(\ad(x)) \alpha^{-1} \,,
+  \]
+  as desired.
+\end{proof}
+
+
+\begin{proposition}
+  Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+  Then~$\Inn(\glie)$ is a normal subgroup of~$\Aut_{\Lie}(\glie)$.
+\end{proposition}
+
+
+\begin{proof}
+  The group~$\Inn(\glie)$ is generated by the set of automorphisms
+  \[
+    \{
+      \exp(\ad(x))
+    \suchthat
+      \text{$x \in \glie$ such that~$\ad(x)$ is nilpotent}
+    \} \,.
+  \]
+  It follows from \cref{conjugation of inner automorphism} that this generating set is closed under the conjugation by any automorphism of~$\glie$.
+  It follows that~$\Inn(\glie)$ is also closed under this conjugation.
+\end{proof}
+
+
+
+
+
+\section{Simple Lie~Algebras}
+
+
+\begin{definition}
+ A Lie~algebra~$\glie$ is \defemph{simple}\index{simple!Lie algebra}\index{Lie!algebra!simple} if it is non-abelian and contains no ideals apart from~$0$ and~$\glie$ itself.
+\end{definition}
+
+
 \begin{remark}
-  If~$\glie$ is a finite dimensional simple Lie~algebra then~$\glie$ is isomorphic to the Lie~subalgebra~$\im \ad = \ad(\glie)$ of~$\gllie(\glie)$ because~$\ker \ad = \centerlie(\ad) = 0$.
-  (We have seen in \cref{homomorphisms of lie algebras} that~$\ad$ is a Lie algebra homomorphism.)
-  The Lie~algebra~$\glie$ is hence isomorphic to a linear Lie~algebra.
-  
-  A famous theorem by Ado --- which we will attempt to prove in this lecture --- states that this conclusion does actually hold for every finite dimensional Lie algebra:
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Any simple Lie~algebra is in particular nonzero.
+    \item
+      A Lie~algebra is simple if and only if it is non-abelian and contains precisely two ideals.
+  \end{enumerate}
 \end{remark}
-
-
-\begin{theorem}[Ado]
-  \index{Ado’s theorem}
-  Every finite dimensional Lie~algebra~$\glie$ is isomorphic to a linear Lie~algebra.
-\end{theorem}
 
 
 \begin{examples}
   \leavevmode
   \begin{enumerate}
     \item
-      The Lie~algebra~$\gllie_n(\kf)$ is never simple because~$[\gllie_n(\kf), \gllie_n(\kf)] = \sllie_n(\kf) \neq \gllie_n(\kf)$ for~$n \geq 1$, and~$\gllie_n(\kf) = 0$ for~$n = 0$.
+      The Lie~algebra~$\gllie(n, \kf)$ isn’t simple.
+      For~$n = 0$ it is zero, for~$n = 1$ it is abelian, and for~$n \geq 1$ it contains~$\sllie(n,\kf)$ as a nonzero, proper ideal.
     \item
-      The Lie~algebra~$\glie \defined \sllie_2(\kf)$ is simple if and only if~$\ringchar \kf \neq 2$:
-      
-      Consider the basis~$(e,h,f)$ of~$\sllie_2(\kf)$ consisting of the matrices
+      The Lie~algebra~$\glie \defined \sllie(2, \kf)$ is simple if and only if~$\ringchar \kf \neq 2$
+      To prove this we consider the standard basis
       \[
         e
         =
@@ -1704,83 +3446,131 @@
         \begin{pmatrix*}[r]
           1 &  0  \\
           0 & -1
-        \end{pmatrix*},
+        \end{pmatrix*} \,,
         \qquad
         f
         =
         \begin{pmatrix}
           0 & 0 \\
           1 & 0
-        \end{pmatrix} \,.
+        \end{pmatrix}
       \]
-      Then
+      of~$\sllie(2 \kf)$, on which the Lie~bracket of~$\sllie(2, \kf)$ is given by the relations
       \[
         [h,e] = 2e  \,,
         \qquad
-        [h,f] = -2 \spacing f \,,
+        [h,f] = -2 f \,,
         \qquad
         [e,f] = h \,.
       \]
       
-      If~$\ringchar \kf = 2$ then the element~$h$ spans a {\onedimensional} ideal whence~$\sllie_2(\kf)$ is not simple.
+      If~$\ringchar(\kf) = 2$ then the element~$h$ spans a {\onedimensional} ideal, which then shows that~$\sllie_2(\kf)$ is not simple.
       
-      For the case~$\ringchar \kf \neq 2$ let~$I$ be a nonzero ideal in~$\sllie_2(\kf)$ and let~$x \in I$ with~$x \neq 0$.
-      Then we may write~$x = \alpha e + \beta h + \gamma f$ for some scalar~$\alpha, \beta, \gamma \in \kf$.
+      Let us consider in the following the case~$\ringchar(\kf) \neq 2$.
+      Let~$I$ be a nonzero ideal in~$\sllie_2(\kf)$ and let~$x$ be some nonzero element of~$I$.
+      We may write the element~$x$ as a linear combination
+      \[
+        x = \alpha e + \beta h + \gamma f
+      \]
+      for some scalar~$\alpha, \beta, \gamma \in \kf$.
       It follows that
       \[
         [e,x]
         =
-        -2 \beta e + \gamma h
+        -2 \beta e + \gamma h \,,
         \qquad \text{and thus}\qquad
         [e,[e,x]]
         =
         -2 \gamma e \,.
       \]
-      with~$[e,x] \in I$ and~$[e,[e,x]] \in I$.
+      Both~$[e,x]$ and~$[e,[e,x]]$ are again contained in~$I$ because~$I$ is an ideal.
+
+      It now follows that the ideal~$I$ contains the basis vector~$e$:
+      If~$\gamma \neq 0$ then it follows from the equality~$[e,[e,x]] = -2 \gamma e$ that
+      \[
+        e
+        =
+        - \frac{ [e,[e,x]] }{ 2\gamma } \,.
+      \]
+      If~$\gamma = 0$ but~$\beta \neq 0$ then it follows from the equality$[e,x] = -2 \beta e$ that
+      \[
+        e
+        =
+        -\frac{ [e,x] }{ 2\beta } \,.
+      \]
+      And if both~$\beta = 0$ and~$\gamma = 0$ then it follows that~$\alpha$ must be nonzero because~$x$ is nonzero, and it then follows from the equality~$x = \alpha e$ that
+      \[
+        e = \frac{x}{\alpha} \,.
+      \]
+      In each case we find that~$e$ is contained in~$I$, because the elements~$x$,~$[e,x]$ and~$[e,[e,x]]$ are contained in~$I$.
       
-      It follows that the ideal~$I$ contains the basis vector~$e$:
-      If~$\gamma \neq 0$ then~$e \in I$ since~$[e,[e,x]] = -2 \gamma e$;
-      if~$\gamma = 0$ but~$\beta \neq 0$ then~$e \in I$ because~$[e,x] = -2 \beta e$;
-      and if~$\beta = \gamma = 0$ then it follows from~$x \neq 0$ that~$\alpha \neq 0$ and hence~$e \in I$ because~$x = \alpha e$.
-      
-      It now follows from the above relations that not only~$h = [e,f] \in I$ but also~$f = -[h,f]/2 \in I$.
-      We have found altogether that the ideals~$I$ contains all three basis vectors, and thus~$I = \sllie_2(\kf)$
+      It now further follows that both~$h = [e,f]$ and~$f = -[h,f]/2$ are again contained in~$I$.
+      We have thus altogether found that the ideals~$I$ contains all three standard basis vectors of~$\sllie(2 \kf)$, and must therefore equal~$\sllie(2, \kf)$.
   \end{enumerate}
 \end{examples}
 
 
-\begin{definition}
- Let~$\kf$ be any field.
- The basis
- \[
-    \gls*{standard basis e}
-    =
-    \begin{pmatrix}
-      0 & 1 \\
-      0 & 0
-    \end{pmatrix} \,,
-    \qquad
-    \gls*{standard basis h}
-    =
-    \begin{pmatrix*}[r]
-      1 &  0  \\
-      0 & -1
-    \end{pmatrix*}  \,,
-    \qquad
-    \gls*{standard basis f}
-    =
-    \begin{pmatrix}
-      0 & 0 \\
-      1 & 0
-    \end{pmatrix} \,.
-  \]
-  of the Lie~algebra~$\sllie_2(\kf)$ is its \defemph{standard basis}\index{standard basis}.
-\end{definition}
+\begin{proposition}
+  \label{commutator and center of simple}
+  Let~$\glie$ be a simple Lie~algebra.
+  Then~$[\glie, \glie] = \glie$ and~$\centerlie(\glie) = 0$.
+\end{proposition}
+
+
+\begin{proof}
+  The Lie~algebra~$\glie$ is nonabelian because it is simple.
+  We therefore find that the commutator ideal~$[\glie, \glie]$ is a nonzero ideal of~$\glie$, and we also find that the center~$\centerlie(\glie)$ is a proper ideal of~$\glie$.
+  But~$\glie$ admits by assumption only two ideals, namely the zero ideal and itself.
+  It therefore follows that~$[\glie, \glie] = \glie$ and~$\centerlie(\glie) = 0$.
+\end{proof}
 
 
 \begin{remark}
- If~$\ringchar \kf = 0$ then the Lie algebras~$\sllie_n(\kf)$ are simple for all~$n \geq 2$.
+  If~$\kf$ is a field of characteristic zero then the Lie~algebra~$\sllie(n, \kf)$ is simple for every~$n \geq 2$.
+  We will prove this later on, after we have introduced the idea of a root space decomposition.
+  % TODO: Add a proof of this using root spaces.
 \end{remark}
+
+
+\begin{corollary}
+  \label{ad is injective for simple}
+  Let~$\glie$ be a simple Lie~algebra.
+  Then the homomorphism of Lie~algebras
+  \[
+    \ad
+    \colon
+    \glie
+    \to
+    \gllie(\glie)
+  \]
+  is injective.
+\end{corollary}
+
+\begin{proof}
+  The kernel of~$\glie$ is precisely the center of~$\glie$, which vanishes by \cref{commutator and center of simple}.
+\end{proof}
+
+\begin{corollary}
+  Every finite-dimensional, simple Lie~algebra is isomorphic to a linear Lie~algebra.
+\end{corollary}
+
+\begin{proof}
+  Let~$\glie$ be a simple Lie~algebra.
+  It follows from \cref{ad is injective for simple} that~$\glie$ is isomorphic to the linear Lie algebra~$\ad(\glie)$.
+\end{proof}
+
+
+\begin{fluff}
+  A famous theorem due to Ado -- which we will not attempt to prove in this lecture -- states that this conclusion does actually hold for every finite-dimensional Lie~algebra.
+\end{fluff}
+
+
+\begin{theorem}[Ado, first version]
+  \index{Ado’s theorem}
+  Every finite-dimensional Lie~algebra is isomorphic to a linear Lie~algebra.
+\end{theorem}
+
+
 
 
 

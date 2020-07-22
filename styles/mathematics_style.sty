@@ -1,5 +1,5 @@
 % text formatting
-\newcommand{\defemph}{\emph}
+\newcommand{\defemph}{\textbf}
 
 
 
@@ -11,9 +11,12 @@
 \newcommand{\algebras}[1]{#1\nobreakdash-algebras}
 \newcommand{\basis}[1]{#1\nobreakdash-basis}
 \newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
+\newcommand{\bilinearity}[1]{#1\nobreakdash-\hspace{0pt}bilinearity}
+\newcommand{\cocycle}[1]{#1\nobreakdash-cocycle}
 \newcommand{\derivation}[1]{#1\nobreakdash-derivation}
-\newcommand{\dimensional}[1]{#1\nobreakdash-dimensional}
+\newcommand{\dimensional}[1]{#1\nobreakdash-\hspace{0pt}dimensional}
 \newcommand{\fold}[1]{#1\nobreakdash-fold}
+\newcommand{\generating}[1]{#1\nobreakdash-\hspace{0pt}generating}
 \newcommand{\gon}[1]{#1\nobreakdash-gon}
 \newcommand{\graded}[1]{#1\nobreakdash-graded}
 \newcommand{\grading}[1]{#1\nobreakdash-grading}
@@ -23,26 +26,30 @@
 \newcommand{\invariant}[1]{#1\nobreakdash-invariant}
 \newcommand{\liealgebra}[1]{#1\nobreakdash-Lie~algebra}
 \newcommand{\liealgebras}[1]{#1\nobreakdash-Lie~algebras}
+\newcommand{\liesubalgebra}[1]{#1\nobreakdash-Lie~subalgebra}
 \newcommand{\linear}[1]{#1\nobreakdash-linear}
 \newcommand{\matrices}[1]{#1\nobreakdash-matrices}
 \newcommand{\many}[1]{#1\nobreakdash-many}
 \newcommand{\module}[1]{#1\nobreakdash-module}
 \newcommand{\modules}[1]{#1\nobreakdash-modules}
-\newcommand{\onedimensional}{one\nobreakdash-dimensional}
-\newcommand{\onetoone}{one\nobreakdash-to\nobreakdash-one}
-\newcommand{\representation}[1]{#1\nobreakdash-representation}
-\newcommand{\representations}[1]{#1\nobreakdash-representations}
+\newcommand{\multilinear}[1]{#1\nobreakdash-multilinear}
+\newcommand{\onedimensional}{one\nobreakdash-\hspace{0pt}dimensional}
+\newcommand{\onetoonetext}{one\nobreakdash-to\nobreakdash-one}
+\newcommand{\representation}[1]{#1\nobreakdash-\hspace{0pt}representation}
+\newcommand{\representations}[1]{#1\nobreakdash-\hspace{0pt}representations}
 \newcommand{\rootsystem}[1]{#1\nobreakdash-root system}
 \newcommand{\rootsystems}[1]{#1\nobreakdash-root systems}
+\newcommand{\spaces}[1]{#1\nobreakdash-spaces}
 \newcommand{\subalgebra}[1]{#1\nobreakdash-subalgebra}
 \newcommand{\submodule}[1]{#1\nobreakdash-submodule}
-\newcommand{\subrepresentation}[1]{#1\nobreakdash-subrepresentation}
-\newcommand{\subrepresentations}[1]{#1\nobreakdash-subrepresentation}
-\newcommand{\threedimensional}{three\nobreakdash-dimensional}
-\newcommand{\fourdimensional}{four\nobreakdash-dimensional}
+\newcommand{\subrepresentation}[1]{#1\nobreakdash-\hspace{0pt}subrepresentation}
+\newcommand{\subrepresentations}[1]{#1\nobreakdash-\hspace{0pt}subrepresentation}
+\newcommand{\threedimensional}{three\nobreakdash-\hspace{0pt}dimensional}
+\newcommand{\fourdimensional}{four\nobreakdash-\hspace{0pt}dimensional}
+\newcommand{\trilinear}[1]{#1\nobreakdash-trilinear}
 \newcommand{\twococycle}{$2$\nobreakdash-cocycle}
 \newcommand{\twococycles}{$2$\nobreakdash-cocycles}
-\newcommand{\twodimensional}{two\nobreakdash-dimensional}
+\newcommand{\twodimensional}{two\nobreakdash-\hspace{0pt}dimensional}
 \newcommand{\ua}{universal enveloping algebra}
 \newcommand{\uas}{universal enveloping algebras}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
@@ -53,10 +60,47 @@
 
 
 % arrows
-\newcommand{\longonetoone}{\longleftrightarrow}
-\newcommand{\longto}{\longrightarrow}
-\newcommand{\xto}{\xrightarrow}
-\newcommand{\xlongto}[1]{\xrightarrow{\;#1\;}}
+\renewcommand{\to}{
+  \mathchoice
+  {\longrightarrow}
+  {\rightarrow}
+  {\rightarrow}
+  {\rightarrow}
+}
+\AtBeginDocument{
+  \let\oldmapsto\mapsto
+  \renewcommand{\mapsto}{
+    \mathchoice
+    {\longmapsto}
+    {\oldmapsto}
+    {\oldmapsto}
+    {\oldmapsto}
+  }
+}
+\AtBeginDocument{
+  \let\oldmapsfrom\mapsfrom
+  \renewcommand{\mapsfrom}{
+    \mathchoice
+    {\longmapsfrom}
+    {\oldmapsfrom}
+    {\oldmapsfrom}
+    {\oldmapsfrom}
+  }
+}
+\newcommand{\onetoone}{
+  \mathchoice
+  {\longleftrightarrow}
+  {\leftrightarrow}
+  {\leftrightarrow}
+  {\leftrightarrow}
+}
+\newcommand{\xto}[1]{
+  \mathchoice
+  {\xrightarrow{\enspace #1 \enspace}}
+  {\xrightarrow{#1}}
+  {\xrightarrow{#1}}
+  {\xrightarrow{#1}}
+}
 
 
 
@@ -67,8 +111,8 @@
 \newcommand{\Real}{\mathbb{R}}
 \newcommand{\Complex}{\mathbb{C}}
 \newcommand{\Field}{\mathbb{F}}
-\newcommand{\kf}{\mathbf{k}}
-\newcommand{\Lf}{\mathbf{L}}
+\newcommand{\kf}{\mathbb{k}}
+\newcommand{\Lf}{\mathbb{L}}
 
 
 
@@ -95,6 +139,7 @@
 \newcommand{\clie}{\mathfrak{c}}
 \newcommand{\dlie}{\mathfrak{d}}
 \newcommand{\glie}{\mathfrak{g}}
+\newcommand{\Hlie}{\mathfrak{H}}
 \newcommand{\hlie}{\mathfrak{h}}
 \newcommand{\klie}{\mathfrak{k}}
 \newcommand{\gllie}{\mathfrak{gl}}
@@ -118,17 +163,20 @@
 
 % spaces and sets
 \newcommand{\Aff}{\mathbb{A}}
+\DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\BF}{BF}
 \DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Der}{Der}
 \newcommand{\dihedral}{\mathrm{D}}
 \DeclareMathOperator{\End}{End}
-\newcommand{\Exterior}{\bigwedge}
+\DeclareMathOperator{\Exterior}{\bigwedge}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\irr}{L}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Maps}{Maps}
 \DeclareMathOperator{\Mat}{M}
 \DeclareMathOperator{\normallie}{N}
 \DeclareMathOperator{\rad}{rad}
@@ -150,14 +198,20 @@
 \NewDocumentCommand{\gr}{O{}}{
   {\operatorname{gr}}{}_{#1}  % hell again
 }
-\DeclareMathOperator{\id}{id}
+\newcommand{\id}{\mathrm{id}}
 \DeclareMathOperator{\Res}{Res}
 \DeclareMathOperator{\sign}{sgn}
 \DeclareMathOperator{\tr}{tr}
 
 
 
+% special elements
+\newcommand{\Id}{\mathbb{1}}
+
+
+
 % relations and operators
+\newcommand{\act}{\mathbin{.}}
 \newcommand{\bigdcup}{\coprod}
 \newcommand{\defined}{\coloneqq}
 \newcommand{\defines}{\eqqcolon}
@@ -192,13 +246,22 @@
   {#2^{\vee\vee}}
 }
 \newcommand{\class}{\overline}
+\newcommand{\cyc}{\mathrm{cyc}}
+\newcommand{\ext}{\mathrm{ext}}
 \newcommand{\induced}{\overline}
+\newcommand{\Lie}{\mathrm{Lie}}
 \newcommand{\op}{\mathrm{op}}
 
 
 
 % shortcuts
-\newcommand{\dd}[1]{\frac{\text{d}}{\text{d}#1}}
+\NewDocumentCommand{\dd}{ O{} m }{
+  \mathchoice
+  {\frac{\partial #1}{\partial #2}}
+  {\partial #1 / \partial #2}
+  {\partial #1 / \partial #2}
+  {\partial #1 / \partial #2}
+}
 \newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
 
