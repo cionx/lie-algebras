@@ -38,12 +38,12 @@
 %         \sum_{m \in M} a_m f(m) \,.
 %       \]
 %       On the other hand every algebra homomorphism~$\kf[M] \to A$ restricts to a monoid homomorphism~$M \to A^-$.
-%       This construction results in a {\onetoone} correspondence
+%       This construction results in a {\onetoonetext} correspondence
 %       \[
 %         \{
 %           \text{monoid homomorphisms~$M \to A^-$}
 %         \}
-%         \longonetoone
+%         \onetoone
 %         \{
 %           \text{algebra homomorphisms~$\kf[M] \to A$}
 %         \}  \,.
@@ -228,18 +228,18 @@
             f(v_1) \dotsm f(v_d)
           \]
           for all~$d \geq 0$ and simple tensors~$v_1 \tensor \dotsb \tensor v_d \in V^{\tensor d}$.
-          This construction results in a {\onetoone} correspondence
+          This construction results in a {\onetoonetext} correspondence
           \begin{align*}
             \{ \text{\linear{$\kf$} maps~$V \to A$} \}
-            &\longonetoone
+            &\onetoone
             \{ \text{algebra homomorphisms~$\Tensor(V) \to A$} \} \,,
             \\
             f
-            &\longmapsto
+            &\mapsto
             f^+ \,,
             \\
             \restrict{F}{V}
-            &\longmapsfrom
+            &\mapsfrom
             F \,.
           \end{align*}
           Hence~$(\Tensor(V), i)$ is the \enquote{universal way} of mapping the vector space~$V$ into a~{\algebra{$\kf$}}.
@@ -402,7 +402,7 @@
           \]
           shows that the identity~$\id_{\Tensor(V)}$ satifies the defining property of the induced algebra homomorphism~$(\id_V)_*$.
         \item
-          It holds for all linear maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(\spacing g \circ f)_* = g_* \circ f_*$.
+          It holds for all linear maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(g \circ f)_* = g_* \circ f_*$.
           Indeed, it follows from the commutativity of the diagram
           \[
             \begin{tikzcd}
@@ -445,7 +445,7 @@
             \end{tikzcd}
           \]
           commutes.
-          This shows that the composition~$g_* \circ f_*$ satisfies the defining property of the induced algebra homomorphism~$(\spacing g \circ f)_*$.
+          This shows that the composition~$g_* \circ f_*$ satisfies the defining property of the induced algebra homomorphism~$(g \circ f)_*$.
       \end{itemize}
       
       This shows that the assignment~$V \mapsto \Tensor(V)$ extends to a (covariant) functor~$\Tensor \colon \cVect{\kf} \to \cAlg{\kf}$.
@@ -599,7 +599,7 @@
         =
         v_1 \dotsm v_p v_{p+1} \dotsm v_{p+q}
       \]
-      for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^{\spacing p}(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$.
+      for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^{p}(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$.
       By identifying~$\Symm^0(V)$ with the ground field~$\kf$ this makes~$\Symm(V)$ into an associative~{\algebra{$\kf$}}.
       This is already a commutative~{\algebra{$\kf$}} because
       \begin{align*}
@@ -613,7 +613,7 @@
         &=
         (v_{p+1} \dotsm v_{p+q}) \cdot (v_1 \dotsm v_p)
       \end{align*}
-      for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^{\spacing p}(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$. 
+      for all~$p, q \geq 0$ and all simple symmetric tensors~$v_1 \dotsm v_p \in \Symm^{p}(V)$ and~$v_{p+1}, \dotsc, v_{p+q} \in \Symm^q(V)$. 
       We can identify~$V = \Symm^1(V)$ with the corresponding direct summand of~$\Symm(V)$, and more generally every symmetric power~$\Symm^d(V)$ with the corresponding direct summand of~$\Symm(V)$.
       The algebra~$\Symm(V)$ thus consists of linear combinations of simple symmetric tensors.
       
@@ -642,18 +642,18 @@
         f(v_1) \dotsm f(v_d)
       \]
       for all~$d \geq 0$ and simple symmetric tensors~$v_1, \dotsc, v_d \in V$.
-      This construction results in a {\onetoone} correspondence
+      This construction results in a {\onetoonetext} correspondence
       \begin{align*}
         \{ \text{\linear{$\kf$} maps~$V \to A$} \}
-        &\longonetoone
+        &\onetoone
         \{ \text{algebra homomorphisms~$\Symm(V) \to A$} \} \,,
         \\
         f
-        &\longmapsto
+        &\mapsto
         f^+ \,,
         \\
         \restrict{F}{V}
-        &\longmapsfrom
+        &\mapsfrom
         F \,.
       \end{align*}
       
@@ -717,7 +717,7 @@
         \end{tikzcd}
       \]
       commmute.
-      It holds that~$(\id_V)_* = \id_{\Symm(V)}$ and it holds for all composable~{\linear{$\kf$}} maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(\spacing g \circ f)_* = g_* \circ f_*$.
+      It holds that~$(\id_V)_* = \id_{\Symm(V)}$ and it holds for all composable~{\linear{$\kf$}} maps~$f \colon U \to V$ and~$g \colon V \to W$ that~$(g \circ f)_* = g_* \circ f_*$.
       This construction promotes the assignment~$V \mapsto \Symm(V)$ to a (covariant) functor~$\Symm \colon \cVect{\kf} \to \cCAlg{\kf}$, where~$\cCAlg{\kf}$ denotes the category of commutative~{\algebras{$\kf$}}.
       
     \item[Description via a basis]
@@ -939,8 +939,8 @@
   It thus follows from a similar argumentation as for the symmetric algebra that~$\Exterior(V) \cong \Tensor(V)/I$ for the two-sided ideal~$I$ in~$\Tensor(V)$ generated by all~$v \tensor v$ with~$v \in V$.
   
   
-  If~$V$ is finite dimensional then the exterior algebra~$\Exterior(V)$ is again finite dimensional, namely with~$\dim \Exterior(V) = 2^{\dim V}$.
-  This is different to both the tensor algebra~$\Tensor(V)$ and symmetric algebra~$\Symm(V)$, which are infinite dimensional whenever~$V \neq 0$.
+  If~$V$ is finite-dimensional then the exterior algebra~$\Exterior(V)$ is again finite-dimensional, namely with~$\dim \Exterior(V) = 2^{\dim V}$.
+  This is different to both the tensor algebra~$\Tensor(V)$ and symmetric algebra~$\Symm(V)$, which are infinite-dimensional whenever~$V \neq 0$.
 \end{remark}
 
 

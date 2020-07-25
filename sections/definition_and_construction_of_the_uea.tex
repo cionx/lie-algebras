@@ -161,7 +161,7 @@
       $\rho \colon \glie \to \gllie(V)$
     \end{tabular}
     \right\}
-    &\longonetoone
+    &\onetoone
     \left\{
     \begin{tabular}{@{}c@{}}
       $\Univ(\glie)$-module structures \\
@@ -170,14 +170,14 @@
     \right\}  \,,
     \\
     \rho
-    &\longmapsto
+    &\mapsto
     \hat{\rho} \,,
     \\
     \theta \circ \iota
-    &\longmapsfrom
+    &\mapsfrom
     \theta  \,,
   \end{align*}
-  constitute a {\onetoone} correspondence,~where $\hat{\rho} \colon \Univ(\glie) \to \End_{\kf}(V)$ is the unique~\algebra{$\kf$} homomorphism induced by the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(V)$ via the universal property of the~{\ua}~$\Univ(\glie)$.
+  constitute a {\onetoonetext} correspondence,~where $\hat{\rho} \colon \Univ(\glie) \to \End_{\kf}(V)$ is the unique~\algebra{$\kf$} homomorphism induced by the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(V)$ via the universal property of the~{\ua}~$\Univ(\glie)$.
   \qed
 \end{proposition}
 
@@ -419,8 +419,8 @@
   We know find on the other hand that~{\algebra{$\kf$}} homomorphisms~$\Tensor(V)/I \to A$ correspond to algebra homomorphisms~$\Tensor(V) \to A$ that annihilate~$I$, with the algebra homorphisms~$\Tensor(V) \to A$ corresponding to~{\linear{$\kf$}} maps~$\glie \to A$.
   A linear map~$f \colon \glie \to A$ is a homorphism of Lie~algebras if and only if
   \[
-      f(x) \spacing f(y)
-    - f(y) \spacing f(x)
+      f(x) f(y)
+    - f(y) f(x)
     - f([x,y])
     =
     0 \,,

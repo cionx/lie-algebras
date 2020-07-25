@@ -20,6 +20,9 @@
 % header design
 \usepackage[automark]{scrlayer-scrpage}
 
+% chapter titles
+\usepackage{pgfornament}
+
 % capital first letters at paragraph beginnings
 \usepackage{lettrine}
 \usepackage{marginnote}
@@ -45,13 +48,13 @@
 
 % math stuff
 \usepackage{mathtools}
-\usepackage{amssymb}
 \usepackage{extarrows}
 \usepackage{amsthm}
 \usepackage{tikz-cd}
 \usetikzlibrary{positioning} % for better positioning of nodes relative to each other
 \usetikzlibrary{calc}
 \usetikzlibrary{shapes}
+
 
 % changing the math font
 % has to be loaded after mathtools and amssymb
@@ -94,6 +97,9 @@
 
 % toc style changes
 \usepackage{styles/toc_style}
+
+% chapter title design
+\usepackage{styles/chapterhead}
 
 % configuration of the bibliography
 \usepackage{styles/bibliography_style}

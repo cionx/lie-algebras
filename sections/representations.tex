@@ -151,7 +151,7 @@
 
 \begin{theorem}[Ado, second version]
   \index{Ado’s theorem}
-  Every finite-dimensional Lie~algebra admits a finite-dimensional faithful representation.
+  Every finite-dimensional Lie~algebra admits a finite-\hspace{0pt}dimensional, faithful representation.
 \end{theorem}
 
 
@@ -658,7 +658,7 @@
         + v \tensor ([x,y] \act w) \,.
       \end{align*}
     \item
-      We find all elements~$x$,~$y$ of~$\glie$, every element~$f$ of~$\Hom(V,W)$ and every vector~$v$ of~$V$ that
+      We find all elements~$x$,~$y$ of~$\glie$, every element~$f$ of~$\Hom_{\kf}(V,W)$ and every vector~$v$ of~$V$ that
       \begin{align*}
         (x \act y \act \phi - y \act x \act \phi)(v)
         &=
@@ -697,8 +697,8 @@
         [x,y] \act v \,.
       \]
     \item
-      The action of~$\glie$ on~$V$ and the trivial action of~$\glie$ on~$\kf$ induce an action of~$\glie$ on~$V^* = \Hom(V, \kf)$, making it into a representation of~$\glie$.
-      This action is precisely the given one.
+      The action of~$\glie$ on~$V$ together with the trivial action of~$\glie$ on~$\kf$ induce an action of~$\glie$ on~$V^*$ as seen above, because~$V^* = \Hom_{\kf}(V, \kf)$.
+      This induced action is precisely the desired one.
     \qedhere
   \end{enumerate}
 \end{proof}
@@ -715,9 +715,9 @@
     \to
     \End_{\kf}(V^*) \,,
     \quad
-    \phi
+    h
     \mapsto
-    \phi^*
+    h^*
   \]
   is in particular an anti-homomorphism of Lie~algebras from~$\gllie(V)$ to~$\gllie(V^*)$.
   The resulting composition
@@ -731,35 +731,35 @@
   is again an anti-homorphism of Lie~algebras.
   This anti-homomorphism corresponds to a a right action of~$\glie$ on~$V^*$ given by
   \[
-    \phi \act x
+    \varphi \act x
     \defined
-    \rho(x)^*(\phi)
+    \rho(x)^*(\varphi)
     =
-    \phi \circ \rho(x)
+    \varphi \circ \rho(x)
     \qquad
     \text{for all~$x \in \glie$,~$\phi \in V^*$.}
   \]
   This action can more explicitely be rewritten as
   \[
-    (\phi \act x)(v)
+    (\varphi \act x)(v)
     =
-    \phi(x \act v)
+    \varphi(x \act v)
     \qquad
     \text{for all~$x \in \glie$,~$\phi \in V^*$,~$v \in V$.}
   \]
   This right action of~$\glie$ on~$V^*$ corresponds to a left action of~$\glie$ on~$V$ via the formula
   \[
-    x \act \phi
+    x \act \varphi
     \defined
-    -\phi \act x
+    -\varphi \act x
     \qquad
     \text{for all~$x \in \glie$,~$\phi \in V^*$.}
   \]
   This left action can more explicitely be rewritten as
   \[
-    (x \act \phi)(v)
+    (x \act \varphi)(v)
     =
-    -\phi(x \act v)
+    -\varphi(x \act v)
     \qquad
     \text{for all~$x \in \glie$,~$\phi \in V^*$,~$v \in V$.}
   \]
@@ -851,12 +851,6 @@
 % TODO: Explain connection to representations of groups.
 
 
-\begin{lemma}
-  The space of invariants~$V^{\glie}$ is for every representation~$V$ of~$\glie$ the uniquely maximal trivial subrepresentation of~$V$.
-  \qed
-\end{lemma}
-
-
 \begin{example}
   Let~$\glie$ be a Lie~algebra.
   The space of invariants of the adjoint representation of~$\glie$ is given by
@@ -887,6 +881,48 @@
     \centerlie(\glie) \,.
   \end{align*}
 \end{example}
+
+
+\begin{proposition}
+  Let~$\glie$ be a Lie~algebra.
+  \begin{enumerate}
+    \item
+      Let~$V$ be a representation of~$\glie$.
+      The space of invariants~$V^{\glie}$ is the largest trivial subrepresentation of~$V$.
+    \item
+      Let~$V$ and~$W$ be two representations of~$\glie$ and let~$f$ be a homomorphism of representations from~$V$ to~$W$.
+      Then~$f$ restricts to a homomorphism of representations from~$V^{\glie}$ to~$W^{\glie}$.
+    \qed
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{remark}
+  \label{invariants are right adjoint}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$\Tcat$ be the full sucategory of~$\cRep{\glie}$ whose objects are the trivial~\representations{$\glie$}.
+  (This category is isomorphic to~$\cVect{\kf}$.)
+  Let~$T$ be the inclusion functor from~$\Tcat$ to~$\cRep{\kf}$.
+
+  We have a functor~$(-)^{\glie}$ from~$\cRep{\glie}$ to~$\Tcat$.
+  This functor assigns to each~\representation{$\glie$}~$V$ its space of invariants~$V^{\glie}$.
+  To each homomorphism of representations~$f$ from~$V$ to~$W$ it assigns the restriction of~$f$ to a homomorphism of representations from~$V^{\glie}$ to~$W^{\glie}$.
+
+  If~$V$ is any trivial~\representation{$\glie$} and~$W$ is any~\representation{$\glie$} then the inclusion~$i$ from~$W^{\glie}$ to~$W$ is a homomorphism of representations, and it induces an isomorphism of vector spaces
+  \[
+    i_*
+    \colon
+    \Hom_{\glie}(V, W^{\glie})
+    \to
+    \Hom_{\glie}(V, W) \,,
+    \quad
+    f
+    \mapsto
+    i \circ f \,.
+  \]
+  This isomorphism is natural in both~$V$ and~$W$.
+  The functor~$(-)^{\glie}$ is therefore right adjoint to the inclusion functor~$T$.
+\end{remark}
 
 
 \begin{example}[Quotient representations]
@@ -1247,7 +1283,7 @@
 \begin{remark}
   \label{homomorphisms of representations as invariants}
   Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$.
-  A linear map~$f$ from~$V$ to~$W$ is a homomorphism of representations if and only if it is invariant under the induced action of~$\glie$ on~$\Hom(V,W)$.
+  A linear map~$f$ from~$V$ to~$W$ is a homomorphism of representations if and only if it is invariant under the induced action of~$\glie$ on~$\Hom_{\kf}(V,W)$.
   Indeed, we have that
   \begin{align*}
         {}& \text{$f$ is a homomorphism}  \\
@@ -1293,9 +1329,9 @@
         \to
         V^* \,,
         \quad
-        \phi
+        h
         \mapsto
-        \phi \circ f
+        h \circ f
       \]
       is again a homomorphism of representations.
     \item
@@ -1309,9 +1345,9 @@
         \Hom_{\kf}(U,W) \,,
         &
         \quad
-        \phi
+        h
         &\mapsto
-        \phi \circ f 
+        h \circ f 
       \intertext{is again a homomorphism of representations, and for every homomomorphism of representation~$g$ from~$V$ to~$W$ the linear map}
         g_*
         \colon
@@ -1320,9 +1356,9 @@
         \Hom_{\kf}(U,W) \,,
         &
         \quad
-        \phi
+        h
         &\mapsto
-        g \circ \phi
+        g \circ h
       \end{alignat*}
       is again a homomorphisms of representations.
     \item
@@ -1335,9 +1371,9 @@
         \to
         \Hom_{\kf}(V,W) \,,
         \quad
-        \phi \tensor w
+        \varphi \tensor w
         \mapsto
-        (v \mapsto \phi(v) w)
+        (v \mapsto \varphi(v) w)
       \]
       is a natural homomorphism of representations.
       If one (or both) of the representations~$V$ and~$W$ is finite-dimensional then~$\Phi_1$ is already a natural isomorphism of representations.
@@ -1457,7 +1493,7 @@
     \item
       The canonical projction
       \[
-        \pi
+        p
         \colon
         V
         \to
@@ -1473,7 +1509,7 @@
   \begin{enumerate}[resume*]
     \item
       Let~$g$ be a homomorphism of representations from~$V/U$ to~$W$.
-      The composite~$g \circ \pi$ is a homomorphism of representations from~$V$ to~$W$ with~$U \subseteq \ker(g \circ \pi)$.
+      The composite~$g \circ p$ is a homomorphism of representations from~$V$ to~$W$ with~$U \subseteq \ker(g \circ \pi)$.
     \item
       Let~$f$ be a homomorphism of representations from~$V$ to~$W$.
       The homomorphism~$f$ factors through a homomorphism of representations~$g$ from~$V/U$ to~$W$ that makes the diagram
@@ -1481,7 +1517,7 @@
         \begin{tikzcd}
           V
           \arrow{r}[above]{f}
-          \arrow{d}[left]{\pi}
+          \arrow{d}[left]{p}
           &
           W
           \\
@@ -1565,7 +1601,7 @@
 \begin{proposition}[Correspondence theorem]
   \label{correspondence theorem!for representations}
   Let~$V$ be a represenation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
-  Let~$\pi$ the canonical projection from~$V$ to~$V/U$.
+  Let~$p$ the canonical projection from~$V$ to~$V/U$.
   
   If~$W$ is a subrepresentation of~$V$ which contains~$U$ then the quotient~$W/U$ is a subrepresentation of~$V/U$.
   This construction results in a {\onetoonetext} correspondence
@@ -1578,7 +1614,7 @@
     &\mapsto
     W/U \,,
     \\
-    \pi^{-1}(W')
+    p^{-1}(W')
     &\mapsfrom
     W'  \,.
   \end{align*}

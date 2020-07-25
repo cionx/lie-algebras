@@ -1,0 +1,13 @@
+% chapter larger large and on the right
+\renewcommand{\chapterformat}{%
+  \raggedleft
+  \resizebox{2em}{!}{\thechapter}
+}
+
+\addtokomafont{chapter}{\Huge}
+
+% dirty hack to have chapter title and chapter number on (roughly) the same height
+\RedeclareSectionCommand[innerskip = -1.21em]{chapter}
+
+% increase the distance after the chapter title
+\RedeclareSectionCommand[afterskip = 4em]{chapter}

@@ -6,22 +6,30 @@
 
 
 
-\includeonly{sections/basics}
+\includeonly{
+  sections/conventions,
+  sections/lie_algebras,
+  sections/representations,
+  sections/extensions,
+  sections/lie_algebra_cohomology,
+  sections/universal_enveloping_algebra
+}
 \begin{document}
 
 \frontmatter
   \maketitle
   \include{sections/preface}
   \tableofcontents
+  \include{sections/conventions}
 
 \mainmatter
-  % TODO: notations
   \part{General Theory}
-  \input{sections/lie_algebras}
-  \input{sections/representations}
-  \input{sections/extensions}
-  \include{sections/nilpotency_and_solvability}
+  \include{sections/lie_algebras}
+  \include{sections/representations}
+  \include{sections/extensions}
+  \include{sections/lie_algebra_cohomology}
   \include{sections/universal_enveloping_algebra}
+  \include{sections/nilpotency_and_solvability}
   \part{Semisimple Lie~Algebras}
   \include{sections/semisimple_lie_algebras}
   \include{sections/roots_and_reflections}

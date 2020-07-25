@@ -12,7 +12,11 @@
 \newcommand{\basis}[1]{#1\nobreakdash-basis}
 \newcommand{\bilinear}[1]{#1\nobreakdash-bilinear}
 \newcommand{\bilinearity}[1]{#1\nobreakdash-\hspace{0pt}bilinearity}
+\newcommand{\boundaries}[1]{#1\nobreakdash-\hspace{0pt}boundaries}
+\newcommand{\coboundaries}[1]{#1\nobreakdash-\hspace{0pt}coboundaries}
 \newcommand{\cocycle}[1]{#1\nobreakdash-cocycle}
+\newcommand{\cocycles}[1]{#1\nobreakdash-cocycles}
+\newcommand{\cycles}[1]{#1\nobreakdash-cycles}
 \newcommand{\derivation}[1]{#1\nobreakdash-derivation}
 \newcommand{\dimensional}[1]{#1\nobreakdash-\hspace{0pt}dimensional}
 \newcommand{\fold}[1]{#1\nobreakdash-fold}
@@ -67,6 +71,13 @@
   {\rightarrow}
   {\rightarrow}
 }
+\newcommand{\from}{
+  \mathchoice
+  {\longleftarrow}
+  {\leftarrow}
+  {\leftarrow}
+  {\leftarrow}
+}
 \AtBeginDocument{
   \let\oldmapsto\mapsto
   \renewcommand{\mapsto}{
@@ -101,6 +112,13 @@
   {\xrightarrow{#1}}
   {\xrightarrow{#1}}
 }
+\newcommand{\xfrom}[1]{
+  \mathchoice
+  {\xleftarrow{\enspace #1 \enspace}}
+  {\xleftarrow{#1}}
+  {\xleftarrow{#1}}
+  {\xleftarrow{#1}}
+}
 
 
 
@@ -112,14 +130,17 @@
 \newcommand{\Complex}{\mathbb{C}}
 \newcommand{\Field}{\mathbb{F}}
 \newcommand{\kf}{\mathbb{k}}
+\newcommand{\Kf}{\mathbb{K}}
 \newcommand{\Lf}{\mathbb{L}}
 
 
 
 % categories
-\newcommand{\catname}[1]{\mathbf{#1}}
-\newcommand{\catC}{\mathcal{C}}
-\newcommand{\catA}{\mathcal{A}}
+\newcommand{\catname}{\mathbf}
+\newcommand{\catfont}{\mathcal}
+\newcommand{\Acat}{\catfont{A}}
+\newcommand{\Ccat}{\catfont{C}}
+\newcommand{\Tcat}{\catfont{T}}
 \newcommand{\cAlg}[1]{#1\text{-}\catname{Alg}}
 \newcommand{\cCAlg}[1]{#1\text{-}\catname{CAlg}}
 \newcommand{\cfAlg}[1]{#1\text{-}\catname{fAlg}}
@@ -166,19 +187,26 @@
 \DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\BF}{BF}
+\DeclareMathOperator{\Boundary}{B}
 \DeclareMathOperator{\centerlie}{Z}
+\DeclareMathOperator{\Chain}{C}
+\DeclareMathOperator{\Cycle}{Z}
 \DeclareMathOperator{\Der}{Der}
 \newcommand{\dihedral}{\mathrm{D}}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Exterior}{\bigwedge}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Homology}{H}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\irr}{L}
-\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\InnAut}{InnAut}
+\DeclareMathOperator{\InnDer}{InnDer}
 \DeclareMathOperator{\Maps}{Maps}
 \DeclareMathOperator{\Mat}{M}
 \DeclareMathOperator{\normallie}{N}
+\DeclareMathOperator{\OutAut}{OutAut}
+\DeclareMathOperator{\OutDer}{OutDer}
 \DeclareMathOperator{\rad}{rad}
 \DeclareMathOperator{\Symm}{S}
 \DeclareMathOperator{\symm}{S}
@@ -193,6 +221,7 @@
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\can}{can}
 \DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\ev}{ev}
 \DeclareMathOperator{\ringchar}{char}
 \DeclareMathOperator{\diag}{diag}
 \NewDocumentCommand{\gr}{O{}}{
@@ -245,6 +274,7 @@
   {#2^{\vee\vee}\!}
   {#2^{\vee\vee}}
 }
+\newcommand{\ab}{\mathrm{ab}}
 \newcommand{\class}{\overline}
 \newcommand{\cyc}{\mathrm{cyc}}
 \newcommand{\ext}{\mathrm{ext}}
@@ -252,6 +282,9 @@
 \newcommand{\Lie}{\mathrm{Lie}}
 \newcommand{\op}{\mathrm{op}}
 
+% larger bullet
+\let\oldbullet\bullet
+\renewcommand{\bullet}{{\scalebox{1.15}{\oldbullet}}}
 
 
 % shortcuts

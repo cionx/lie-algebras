@@ -1,4 +1,4 @@
-\subsection{Filtered \texorpdfstring{$\kf$}{k}-Algebras}
+\section{Filtered \texorpdfstring{$\kf$}{k}-Algebras}
 
 
 \begin{definition}
@@ -12,7 +12,7 @@
     \subseteq
     \dotsb
   \]
-  of linear subspaces of~$A$ such that~$A = \bigcup_{i \geq 0} A_{(i)}$ and~$A_{(i)} A_{(\spacing j)} \subseteq A_{(i+j)}$ for all~$i,j \geq 0$, as well as~$1 \in A_{(0)}$.
+  of linear subspaces of~$A$ such that~$A = \bigcup_{i \geq 0} A_{(i)}$ and~$A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ for all~$i,j \geq 0$, as well as~$1 \in A_{(0)}$.
   A \defemph{filtered~\algebra{$\kf$}} is a~\algebra{$\kf$}~$A$ together with a filtration of~$A$.
 \end{definition}
 
@@ -26,7 +26,7 @@
       The parts of the filtration will then be denoted by~$A_{(i)}$ with~$i \geq 0$.
     \item
       If~$A$ is a filtered~{\algebra{$\kf$}} then we set~$A_{(-i)} \defined 0$ for all~$i < 0$ for convenience.
-      The relation~$A_{(i)} A_{(\spacing j)} \subseteq A_{(i+j)}$ with~$i,j \geq 0$ then extends to all~$i, j \in \Integer$.
+      The relation~$A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ with~$i,j \geq 0$ then extends to all~$i, j \in \Integer$.
   \end{enumerate}
 \end{remark}
 
@@ -53,7 +53,7 @@
   This shows that filtered~\algebras{$\kf$} together with homomorphisms of filtered~\algebras{$\kf$} between them form a category, which we will denote by~\gls*{filtered algebras}.
   \begin{enumerate}[resume]
     \item
-      A homomorphism of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ is hence an isomorphism if and only if there exists a homomorphism of filtered~{\algebras{$\kf$}}~$g \colon B \to A$ with~$f {} g = \id_B$ and~$g \spacing f = \id_A$.
+      A homomorphism of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ is hence an isomorphism if and only if there exists a homomorphism of filtered~{\algebras{$\kf$}}~$g \colon B \to A$ with~$f {} g = \id_B$ and~$g f = \id_A$.
   \end{enumerate}
 \end{remark}
 
@@ -146,7 +146,7 @@
         \subseteq
         \dotsb
       \]
-      be a filtration of~$M$, i.e.\ it holds that~$M = \bigcup_{i \geq 0} M_{(i)}$ with~$M_{(i)} M_{(\spacing j)} \subseteq M_{(i+j)}$ for all~$i, j \geq 0$ and~$1 \in M_{(0)}$.
+      be a filtration of~$M$, i.e.\ it holds that~$M = \bigcup_{i \geq 0} M_{(i)}$ with~$M_{(i)} M_{(j)} \subseteq M_{(i+j)}$ for all~$i, j \geq 0$ and~$1 \in M_{(0)}$.
       Then the monoid algebra~$A \defined \kf[M]$ inherits a filtration given by
       \[
         A_{(i)}
@@ -159,7 +159,7 @@
       Let~$G$ be a group with generating set~$S$.
       The length of an element~$g \in G$ with respect to the generating set~$S$ is given by
       \[
-        l_S(\spacing g)
+        l_S(g)
         =
         \min
         \{
@@ -170,9 +170,9 @@
       \]
       The length function is subadditive in the sense that
       \[
-        l_S(\spacing gh)
+        l_S(gh)
         \leq
-        l_S(\spacing g) + l_S(h)
+        l_S(g) + l_S(h)
       \]
       for all~$g, h \in G$.
       For every~$i \geq 0$ let
@@ -180,14 +180,14 @@
         G_{(i)}
         \defined
         \{
-          \spacing g \in G
+          g \in G
         \suchthat
-          l_S(\spacing g) \leq i
+          l_S(g) \leq i
         \}  \,,
       \]
       which is the ball of length~$i$.
       These subsets given a filtration of~$G$.
-      That~$G_{(i)} G_{(\spacing j)} \subseteq G_{(i+j)}$ for all~$i, j \geq 0$ follows from the subadditivity of the length function~$l_S$.
+      That~$G_{(i)} G_{(j)} \subseteq G_{(i+j)}$ for all~$i, j \geq 0$ follows from the subadditivity of the length function~$l_S$.
       We hence get for the group algebra~$A \defined \kf[G]$ a filtration given by
       \[
         A_{(i)}
@@ -197,7 +197,7 @@
         \gen{
           g \in G
         \suchthat
-          l_S(\spacing g) \leq i
+          l_S(g) \leq i
         }_{\kf} \,.
       \]
   \end{enumerate}
@@ -238,7 +238,7 @@
 \end{example}
 
 
-\subsubsection{The Associated Graded Algebra}
+\subsection{The Associated Graded Algebra}
 
 
 \begin{definition}
@@ -255,7 +255,7 @@
 \begin{proof}
   Suppose first that that~$x$ and~$y$ are equal up to smaller degree.
   Let~$x$ be of degree~$i$ and let~$y$ be of degree~$j$ with~$i \geq j$.
-  Then~$x - y \in A_{(\spacing j)}$ and thus~$x = x' + (x- x') \in A_{(\spacing j)}$.
+  Then~$x - y \in A_{(j)}$ and thus~$x = x' + (x- x') \in A_{(j)}$.
   Hence~$i \leq j$ and thus~$i = j$.  
   If now~$x = y$ then~$x - y = 0 \in A_{(i-1)}$.
   (Recall for the case~$i = 0$ that~$A_{(-1)} = 0$.)
@@ -377,7 +377,7 @@
   where we use the convention~$A_{(-1)} = 0$ from \cref{filtration conventions}.
   We denote the residue class of~$x \in A_{(i)}$ in~$\gr[i](A)$ by~$[x]_i$.
   
-  For all~$i, j \geq 0$ the multiplication~$A \times A \to A$ restricts to a bilinear map~$A_{(i)} \times A_{(\spacing j)} \to A_{(i+j)}$ that in turn induces a well-defined bilinear map
+  For all~$i, j \geq 0$ the multiplication~$A \times A \to A$ restricts to a bilinear map~$A_{(i)} \times A_{(j)} \to A_{(i+j)}$ that in turn induces a well-defined bilinear map
   \[
     \mu_{i,j}
     \colon
@@ -390,7 +390,7 @@
     [xy]_{i+j}  \,.
   \]
   We will write~$[x]_i \cdot [y]_j$ or just~$[x]_i [y]_j$ instead of~$\mu_{i,j}([x]_i, [y]_j)$.
-  To see that the multipliction~$\mu_{i,j}$ is well-defined let~$x, x' \in A_{(i)}$ and~$y, y' \in A_{(\spacing j)}$ with~$x - x ' \in A_{(i-1)}$ and~$y - y' \in A_{(\spacing j-1)}$.
+  To see that the multipliction~$\mu_{i,j}$ is well-defined let~$x, x' \in A_{(i)}$ and~$y, y' \in A_{(j)}$ with~$x - x ' \in A_{(i-1)}$ and~$y - y' \in A_{(j-1)}$.
   Then
   \begin{align*}
     x y
@@ -401,7 +401,7 @@
     x' y' + (x - x') y' + x' (y - y') + (x - x')(y - y')
     \\
     &\in
-    x' y' + A_{(i-1)} A_{(\spacing j)} + A_{(i)} A_{(\spacing j-1)} + A_{(i-1)} A_{(\spacing j-1)}
+    x' y' + A_{(i-1)} A_{(j)} + A_{(i)} A_{(j-1)} + A_{(i-1)} A_{(j-1)}
     \\
     &\subseteq
     x' y' + A_{(i+j-1)} + A_{(i+j-1)} + A_{(i+j-2)}
@@ -449,8 +449,8 @@
   \begin{enumerate}
     \item
       To every element~$x \in A$ we can associate an element in~$\gr(A)$:
-      We observe that if~$x$ is of degree~$i \geq 0$ then the residue class~$[x]_j$ is not defined for~$j < i$ because~$x \notin A_{(\spacing j)}$, whereas it is defined for all~$j \geq i$.
-      But for~$j > i$ we find that~$[x]_j = 0$ because~$x_i \in A_{(i)} \subseteq A_{(\spacing j-1)}$.
+      We observe that if~$x$ is of degree~$i \geq 0$ then the residue class~$[x]_j$ is not defined for~$j < i$ because~$x \notin A_{(j)}$, whereas it is defined for all~$j \geq i$.
+      But for~$j > i$ we find that~$[x]_j = 0$ because~$x_i \in A_{(i)} \subseteq A_{(j-1)}$.
       Hence the only interesting residue class associated to~$x$ is~$[x]_i$;
       we note that~$[x]_i \neq 0$ because~$x \notin A_{(i-1)}$.
     \item
@@ -543,7 +543,7 @@
     \suchthat
       1 \leq j \leq i,
       z_k \in \{x, y\}
-    }_\kf
+    }_{\kf}
     =
     \gen{
       \text{words in~$x$,~$y$ of length~$\leq i$}
@@ -659,7 +659,7 @@
       &=
       [x^k y^{l+1}]_{j+1}
     \end{align*}
-    where we used that~$x y^k = y^k x + k y^{k-1}$ and that~$[z]_{j+1} = 0$ for all~$z \in A_{(\spacing j)}$.
+    where we used that~$x y^k = y^k x + k y^{k-1}$ and that~$[z]_{j+1} = 0$ for all~$z \in A_{(j)}$.
     It follows for the general case that
     \begin{align*}
       {}&
@@ -854,7 +854,7 @@
 \begin{construction}
   If~$f \colon A \to B$ is a homomorphism of filtered~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction~$f_{(i)}$ induces a linear map
   \[
-    \gr[i](\spacing f)
+    \gr[i](f)
     \colon
     \gr[i](A)
     \to
@@ -862,33 +862,33 @@
     \quad
     [x]_i
     \mapsto
-    [\spacing f(x)]_i  \,.
+    [f(x)]_i  \,.
   \]
   These linear maps come together to form a linear map
   \[
-    \gr(\spacing f)
+    \gr(f)
     \colon
     \gr(A)
     \to
     \gr(B)  \,.
   \]
-  This map is already an algebra homomorphism because~$\gr(\spacing f)([1]_0) = [\spacing f(1)]_0 = [1]_0$ and
+  This map is already an algebra homomorphism because~$\gr(f)([1]_0) = [f(1)]_0 = [1]_0$ and
   \begin{align*}
-    \gr(\spacing f)( [x]_i [y]_j )
+    \gr(f)( [x]_i [y]_j )
     =
-    \gr(\spacing f)( [xy]_{i+j} )
+    \gr(f)( [xy]_{i+j} )
     =
-    [\spacing f(xy)]_{i+j}
+    [f(xy)]_{i+j}
     =
-    [\spacing f(x) f(y)]_{i+j}
+    [f(x) f(y)]_{i+j}
     &=
-    [\spacing f(x)]_i [\spacing f(y)]_j
+    [f(x)]_i [f(y)]_j
     \\
     &=
-    \gr(\spacing f)([x]_i) \gr(\spacing f)([y]_j) \,.
+    \gr(f)([x]_i) \gr(f)([y]_j) \,.
   \end{align*}
   for all~$i, j \geq 0$ and all~$[x]_i \in \gr[i](A)$ and~$[y]_j \in \gr[j](A)$.  
-  It holds for every filtered~{\algebra{$\kf$}}~$A$ that~$\gr(\id_A) = \id_{\gr(A)}$ and for all homomorphisms of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ and~$g \colon B \to C$ that~$\gr(\spacing g \circ f) = \gr(\spacing g) \circ \gr(\spacing f)$.
+  It holds for every filtered~{\algebra{$\kf$}}~$A$ that~$\gr(\id_A) = \id_{\gr(A)}$ and for all homomorphisms of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ and~$g \colon B \to C$ that~$\gr(g \circ f) = \gr(g) \circ \gr(f)$.
   
   We have hence constructed a functor~$\gr \colon \cfAlg{\kf} \to \cgAlg{\kf}$.
 \end{construction}
@@ -1042,14 +1042,14 @@
       The mapping
       \begin{align*}
         \{ \text{ideals in~$A$} \}
-        &\longto
+        &\to
         \{ \text{graded ideals in~$\gr(A)$} \}  \,,
         \\
         I
-        &\longmapsto
+        &\mapsto
         \gr(I)
       \end{align*}
-      is order preserving, i.e.\ if~$I \subseteq J$ then also~$\gr(I) \subseteq \gr(\spacing J)$, and if~$I$ is strictly contained in~$J$ then~$\gr(I)$ is also strictly contained in~$\gr(\spacing J)$.
+      is order preserving, i.e.\ if~$I \subseteq J$ then also~$\gr(I) \subseteq \gr(J)$, and if~$I$ is strictly contained in~$J$ then~$\gr(I)$ is also strictly contained in~$\gr(J)$.
   \end{enumerate}
 \end{proposition}
 
@@ -1091,12 +1091,12 @@
       This means that~$x - \sum_{s \in S} a_s s \in A_{(\deg(x)-1)}$.
       We can now procced by induction to express this difference as a linear combination of~$S$.
     \item
-      If~$I \subseteq J$ then~$\gr[i](I) \subseteq \gr[i](\spacing J)$ for every~$i \geq 0$ and hence~$\gr(I) \subseteq \gr(\spacing J)$.
-      It remains to show for~$I \subseteq J$ with~$\gr(I) = \gr(\spacing J)$ already~$I = J$.
+      If~$I \subseteq J$ then~$\gr[i](I) \subseteq \gr[i](J)$ for every~$i \geq 0$ and hence~$\gr(I) \subseteq \gr(J)$.
+      It remains to show for~$I \subseteq J$ with~$\gr(I) = \gr(J)$ already~$I = J$.
       The ideal~$\gr(I)$ is homogeneous and thus generated by homogeneous elements.
       There hence exists some subset~$S \subseteq I$ such that~$\gr(I)$ is generated by~$[s]_{\deg(s)}$ for~$s \in S$.
       (Here we use that the homogeneous elements of~$\gr(I)$ are precisely those of the form~$[x]_{\deg(x)}$ for~$x \in I$.)
-      It follows from~$\gr(I) = \gr(\spacing J)$ and part~\ref*{pulling back generating set from graded ideal} that~$S$ is a generating set of both~$I$ and~$J$.
+      It follows from~$\gr(I) = \gr(J)$ and part~\ref*{pulling back generating set from graded ideal} that~$S$ is a generating set of both~$I$ and~$J$.
       Therefore~$I = J$.
     \qedhere
   \end{enumerate}

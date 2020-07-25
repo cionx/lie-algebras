@@ -107,7 +107,7 @@
   \leavevmode
   \begin{enumerate}
     \item
-      A~\defemph{\enquote{\algebra{$\kf$}}}\index{\enquote{$k$-algebra}} is a~\vectorspace{$\kf$}~$A$ together wtih a bilinear map~$A \times A \to A$.
+      A~\defemph{\enquote{\algebra{$\kf$}}}\index{\enquote{$k$-algebra}} is a~\vectorspace{$\kf$}~$A$ together with a bilinear map~$A \times A \to A$.
       This map is the \defemph{multiplication} of~$A$.
     \item
       A~\defemph{\algebra{$\kf$}}\index{k-algebra@$k$-algebra} is an~\enquote{\algebra{$\kf$}} that is both associative and unital.
@@ -165,31 +165,31 @@
         \item
           For any~{\vectorspace{$\kf$}}~$V$ the~{\algebra{$\kf$}}~$\End_{\kf}(V)$ becomes a Lie~algebra via
           \[
-            [\phi_1, \phi_2]
+            [f, g]
             \defined
-            \phi_1 \circ \phi_2 - \phi_2 \circ \phi_1
+            f \circ g - g \circ f
             \qquad
-            \text{for all~$\phi_1, \phi_2 \in \End_{\kf}(V)$.}
+            \text{for all~$f, g \in \End_{\kf}(V)$.}
           \]
-          This Lie~algebra is the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} of~$V$, and it is denoted by~\gls*{general lie endomorphism}.
+          This Lie~algebra is the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} of~$V$, and it is denoted by~$\gllie(V)$\glsadd{general lie endomorphism}.
       \end{enumerate}
     \item
       The \defemph{Heisenberg Lie~algebra}\index{Heisenberg Lie algebra}\index{Lie algebra!Heisenberg}~$\Hlie$ consists of the~\dimensional{$(2n+1)$}~{\vectorspace{$\kf$}} with basis
       \[
-        P_1 \,, \dotsc \,, P_n \,,
+        p_1 \,, \dotsc \,, p_n \,,
         \quad
-        Q_1 \,, \dotsc \,, Q_n \,,
+        q_1 \,, \dotsc \,, q_n \,,
         \quad
-        C
+        c
       \]
       together with the Lie~bracket~$[-,-]$ that is given on these basis elements by
       \begin{itemize}
         \item
-          $[P_i, P_j] = 0$ and~$[Q_i, Q_j] = 0$ for all~$i, j = 1, \dotsc, n$,
+          $[p_i, p_j] = 0$ and~$[c_i, c_j] = 0$ for all~$i, j = 1, \dotsc, n$,
         \item
-          $[P_i, C] = [Q_i, C] = 0$ for every~$i = 1, \dotsc, n$,
+          $[p_i, c], [p_i, c] = 0$ for every~$i = 1, \dotsc, n$,
         \item
-          $[P_i, Q_j] = \delta_{ij} C$ for all~$i,j = 1, \dotsc, n$.
+          $[p_i, q_j] = \delta_{ij} c$ for all~$i,j = 1, \dotsc, n$.
       \end{itemize}
       In \cref{examples for representations} we will realize~$\Hlie$ as a Lie~subalgebra of~$\gllie(V)$ for a suitable~\vectorspace{$\kf$}~$V$.
       This will in particular show that~$\Hlie$ is indeed a Lie~algebra.
@@ -244,15 +244,15 @@
   We say that~$A$ is a pre-Lie~algebra if its multiplication satisfies the condition
   \begin{equation}
     \label{abstract equation for pre-lie algebra}
-    [L_a, L_b]
+    [l_a, l_b]
     =
-    L_{[a,b]}
+    l_{[a,b]}
     \qquad
     \text{for all~$a, b \in A$,}
   \end{equation}
-  where the left hand side is the endomorphism commutator~$[L_a, L_b] = L_a L_b - L_b L_a$, and where we denote for every element~$a$ of~$A$ by~$L_a$ the left multiplication with~$a$, i.e.\ the map
+  where the left hand side is the endomorphism commutator~$[l_a, l_b] = l_a l_b - l_b l_a$, and where we denote for every element~$a$ of~$A$ by~$l_a$ the left multiplication with~$a$, i.e.\ the map
   \[
-    L_a
+    l_a
     \colon
     A
     \to
@@ -924,9 +924,9 @@
   Let~$\glie$ be a Lie~algebra and let~$I$ an ideal of~$\glie$.
   Then the quotient vector space~$\glie/I$ inherits from~$\glie$ the structure of a Lie~algebra via the bracket
   \[
-    [x+I, y+I]
+    [\class{x}, \class{y}]
     \defined
-    [x,y] + I
+    \class{ [x,y] }
     \qquad
     \text{for all~$x, y \in \glie$.}
   \]
@@ -1133,20 +1133,20 @@
 
 \begin{example}
   \index{extension!of scalars}
-  Let~$\Lf/\kf$ be a field extension and let~$\glie$ be a Lie~algebra over~$\kf$.
-  Then the tensor product~$\Lf \tensor_{\kf} \glie$ is an~\liealgebra{$\Lf$}, via the Lie~bracket that is given by
+  Let~$\Kf/\kf$ be a field extension and let~$\glie$ be a Lie~algebra over~$\kf$.
+  Then the tensor product~$\Kf \tensor_{\kf} \glie$ is an~\liealgebra{$\Kf$}, via the Lie~bracket that is given by
   \[
     [\lambda \tensor x, \mu \tensor y]
     = 
     (\lambda \mu) \tensor [x,y]
     \qquad
-    \text{for all simple tensor~$\lambda \tensor x, \mu \tensor y \in \Lf \tensor_{\kf} \glie$.}
+    \text{for all simple tensor~$\lambda \tensor x, \mu \tensor y \in \Kf \tensor_{\kf} \glie$.}
   \]
-  We can moreover regard~$\glie$ as an~\liesubalgebra{$\kf$} of~$\Lf \tensor_{\kf} \glie$ via the inclusion
+  We can moreover regard~$\glie$ as an~\liesubalgebra{$\kf$} of~$\Kf \tensor_{\kf} \glie$ via the inclusion
   \[
     \glie
     \to
-    \Lf \tensor_{\kf} \glie \,,
+    \Kf \tensor_{\kf} \glie \,,
     \quad
     x
     \mapsto
@@ -1282,7 +1282,8 @@
   If~$A$ is a~\enquote{\algebra{$\kf$}} then we can form the \defemph{opposite \enquote{algebra}}\index{opposite!algebra}~$A^{\op}$\glsadd{opposite algebra} of~$A$.
 
   The \enquote{algebras}~$A$ and~$A^{\op}$ have the same underlying~\vectorspace{$\kf$}.
-  For every element~$a$ of~$A$ the corresponding element of~$A^{\op}$ (which is just~$a$ itself) is denoted by~$a^{\op}$.
+  If we want to regard an element~$a$ of~$A$ as an element of~$A^{\op}$ then we write~$a^{\op}$ instead.
+  (So~$a = a^{\op}$ but~$a$ lives in~$A$ while~$a^{\op}$ lives in~$A^{\op}$.)
   The multplication on~$A^{\op}$ is given by
   \[
     a^{\op} \cdot b^{\op}
@@ -1293,7 +1294,7 @@
   \]
   It holds that~$(A^{\op})^{\op} = A$.
 
-  The \enquote{algebra}~$A$ is associative if and only if its oppositie \enquote{algebra}~$A^{\op}$ is associative, and an element~$1$ of~$A$ is a multiplicative neutral element of~$A$ if and only if~$1^{\op}$ is a multiplicative neutral element of~$A^{\op}$.
+  The \enquote{algebra}~$A$ is associative if and only if its opposite \enquote{algebra}~$A^{\op}$ is associative, and an element~$1$ of~$A$ is a multiplicative neutral element of~$A$ if and only if~$1^{\op}$ is a multiplicative neutral element of~$A^{\op}$.
   It follows that~$A$ is a~{\algebra{$\kf$}} if and only if~$A^{\op}$ is one.
 \end{recall}
 
@@ -1332,7 +1333,7 @@
 
 \begin{definition}
   Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
-  A~\linear{$\kf$} map~$\varphi \colon \glie \to \hlie$ is a \defemph{homomorphism of Lie~algebras}\index{homomorphism!of Lie algebras} if it satisfies the condition
+  A~\linear{$\kf$} map~$\varphi$ from~$\glie$ to~$\hlie$ is a \defemph{homomorphism of Lie~algebras}\index{homomorphism!of Lie algebras} if it satisfies the condition
  \[
    \varphi([x,y])
    =
@@ -1394,17 +1395,17 @@
   \begin{enumerate}
     \item
       \label{identity is a homomorphism of lie algebras}
-      The identity~$\id_{\glie} \colon \glie \to \glie$ is a homomorphism of Lie~algebras.
+      The identity map~$\id_{\glie}$ from~$\glie$ to~$\glie$ is a homomorphism of Lie~algebras.
     \item
       \label{composite of homomorphisms of lie algebras}
-      If~$\varphi \colon \glie \to \hlie$ and~$\psi \colon \hlie \to \klie$ are two composable homomorphsims of Lie~algebras then their composite~$\psi \circ \varphi \colon \glie \to \klie$ is again a homomorphism of Lie~algebras.
+      If~$\varphi$ is a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$ and~$\psi$ is a homomorphism from~$\hlie$ to~$\klie$ then their composite~$\psi \circ \varphi$ is again a homomorphism of Lie~algebras from~$\glie$ to~$\klie$.
     \item
-      If~$\hlie$ is a Lie~subalgebra of~$\glie$ then the inclusion~$\hlie \to \glie$ is a homomorphism of Lie~algebras.
+      If~$\hlie$ is a Lie~subalgebra of~$\glie$ then the inclusion map from~$\hlie$ to~$\glie$ is a homomorphism of Lie~algebras.
     \item
-      Suppose that~$\glie$ and~$\hlie$ are both abelian.
-      Then any~\linear{$\kf$} map~$\glie \to \hlie$ is already a homomorphism of Lie~algebras.
+      Suppose that the Lie algebra~$\glie$ and~$\hlie$ are both abelian.
+      Then any~\linear{$\kf$} map from~$\glie$ to~$\hlie$ is already a homomorphism of Lie~algebras.
     \item
-      For every element~$x$ of~$\glie$ let~$\ad(x)$\glsadd{adjoint representation} denote the map
+      For every element~$x$ of~$\glie$ let
       \[
         \ad(x)
         \colon
@@ -1450,24 +1451,20 @@
       and therefore~$\ad([x,y]) = [ \ad(x), \ad(y) ]$.
     \item
       \label{algebra homomorphisms are lie algebra homomorphisms}
-      If~$A$ and~$B$ are two associative~{\algebras{$\kf$}} then every homomorphism of~{\algebras{$\kf$}}
-      \[
-        \varphi \colon A \to B
-      \]
-      is also a homomorphism of Lie~algebras.
+      If~$A$ and~$B$ are two associative~{\algebras{$\kf$}} then every homomorphism of~{\algebras{$\kf$}}~$\Phi$ from~$A$ to~$B$ is also a homomorphism of Lie~algebras.
       Indeed, we have for all elements~$a$,~$b$ of~$A$ that
       \[
-        \varphi([a,b])
+        \Phi([a,b])
         =
-        \varphi(ab - ba)
+        \Phi(ab - ba)
         =
-        \varphi(a) \varphi(b) - \varphi(b) \varphi(a)
+        \Phi(a) \Phi(b) - \Phi(b) \Phi(a)
         =
-        [\varphi(a), \varphi(b)] \,.
+        [\Phi(a), \Phi(b)] \,.
       \]
     \item
       Let~$\glie$ be a Lie~algebra over an arbitary field~$\kf$.
-      If~$\varphi \colon \sllie(2, \kf) \to \glie$ is a homomorphism of Lie~algebras then the images
+      If~$\varphi$ is a homomorphism of Lie~algebras from~$\sllie(2, \kf)$ to~$\glie$ the the images
       \[
         E \defined \varphi(e)  \,,
         \qquad
@@ -1475,7 +1472,7 @@
         \qquad
         F \defined \varphi(f)
       \]
-      satisfy the relations
+      satisfy the commutator relations
       \begin{equation}
         \label{relations for sl2 tripel}
         [H, E] = 2E  \,,
@@ -1484,7 +1481,7 @@
         \qquad
         [E, F] = H \,.
       \end{equation}
-      On the other hand, every such triple~$(E', H', F')$ of elements of~$\glie$ satisfying the above relations (with~$X$ replaced by~$X'$ for~$X \in \{ E, H, F \}$) gives rise to a unique homomorphism of Lie~algebras~$\varphi' \colon \sllie(2, \kf) \to \glie$, which is given by
+      Conversely, every such triple~$(E', H', F')$ of elements of~$\glie$ satisfying the above commutator relations (with~$X$ replaced by~$X'$ for~$X \in \{ E, H, F \}$) gives rise to a unique homomorphism of Lie~algebras~$\varphi'$ from~$\sllie(2, \kf)$ to~$\glie$ which is given by
       \[
         \varphi'(e) = E' \,,
         \qquad
@@ -1498,7 +1495,7 @@
         \left\{
           \begin{tabular}{c}
             homomorphisms of \\
-            Lie~algebras~$\phi \colon \sllie(2, \kf) \to \glie$
+            Lie~algebras~$\varphi \colon \sllie(2, \kf) \to \glie$
           \end{tabular}
         \right\}
         &\to
@@ -1524,7 +1521,7 @@
     \cLie{\kf} \,.
   \]
   The class of objects of~$\cLie{\kf}$ is the class of~\liealgebras{$\kf$}.
-  For any two Lie~algebras~$\glie$,~$\hlie$ over~$\kf$ we have
+  For any two Lie~algebras~$\glie$ and~$\hlie$ over~$\kf$ we have
   \[
     \Hom_{\cLie{\kf}}(\glie, \hlie)
     =
@@ -1548,7 +1545,7 @@
     \to
     \cLie{\kf} \,.
   \]
-  The forgetful functor~$\cAlg{\kf} \to \cVect{\kf}$ is the composite of the forgetful functors~$\cAlg{\kf} \to \cLie{\kf}$ and~$\cLie{\kf} \to \cVect{\kf}$.
+  The forgetful functor from~$\cAlg{\kf}$ to~$\cVect{\kf}$ is the composite of the forgetful functor from~$\cAlg{\kf}$ to~$\cLie{\kf}$ and the forgetful functor from~$\cLie{\kf}$ to~$\cVect{\kf}$.
 \end{remark}
 
 
@@ -1578,7 +1575,7 @@
 
 \begin{remark}
   We have the notion of an \defemph{isomorphism of Lie~algebras}\index{isomorphism!of Lie algebras} because \liealgebras{$\kf$} form a category.
-  More explicitely, a homomorphism of Lie~algebras~$\varphi \colon \glie \to \hlie$ is an isomorphism if and only if there exists a homomorphism of Lie~algebras~$\psi \colon \hlie \to \glie$ with both~$\psi \circ \varphi = \id_{\glie}$ and~$\varphi \circ \psi = \id_{\hlie}$.
+  More explicitely, a homomorphism of Lie~algebras~$\varphi$ from a Lie~algebra~$\glie$ to a Lie algebra~$\hlie$ is an isomorphism (of Lie~algebras) if and only if there exists a homomorphism of Lie~algebras~$\psi$ from~$\hlie$ to~$\glie$ such that~$\psi \circ \varphi = \id_{\glie}$ and~$\varphi \circ \psi = \id_{\hlie}$.
 
   We can now give a reinterpretation of \cref{inverse of homomorphism of lie algebras is again a homomorphism of lie algebras}:
   a homomorphism of Lie~algebras is an isomorphism of Lie~algebras if and only if it is bijective.
@@ -1606,12 +1603,14 @@
   Suppose first that~$\glie$ is any {\twodimensional}, non-abelian~\liealgebra{$\kf$}.
   Let~$\tilde{x}$,~$\tilde{y}$ be a basis of~$\glie$.
   We have~$[\glie, \glie] \neq 0$ because~$\glie$ is non-abelian, and~$[\glie, \glie]$ is spanned by the single element~$[\tilde{x}, \tilde{y}]$ because the Lie~bracket is alternating.
-  Hence~$[\glie, \glie] = \gen{ [\tilde{x}, \tilde{y}] }_{\kf}$ with~$[\tilde{x}, \tilde{y}] \neq 0$.
+  Hence~$[\glie, \glie] = \gen{ [\tilde{x}, \tilde{y}] }_{\kf}$ with~$[\tilde{x}, \tilde{y}]$ being nonzero.
 
   Let~$x \defined [\tilde{x},\tilde{y}]$ and let~$y$ be some element of~$\glie$ that is linearly independent to~$x$.
   Then~$x$,~$y$ is again a basis of~$\glie$.
-  We have~$[x,y] \neq 0$ because~$\glie$ is non-abelian, and~$[x,y] \in [\glie, \glie] = \kf x$.
-  By rescaling the basis vector~$y$ we may therefore assume that~$[x,y] = x$.
+  The commutator~$[x,y]$ is nonzero because~$\glie$ is non-abelian.
+  This commutator is also contained in the linear subspace~$[\glie, \glie]$, which is spanned by~$x$.
+  The element~$[x,y]$ is thus a nonzero multiple of~$x$.
+  By rescaling the basis vector~$y$ we may therefore assume that~$[x,y]$ equals~$x$.
 
   We have shown that any two-dimensional, non-abelian Lie~algebra admits a basis~$x$,~$y$ on which its Lie~bracket has a specific form, namely
   \[
@@ -2266,6 +2265,7 @@
 
 
 \begin{example}
+  \label{universal property of abelianization}
   Let~$\glie$ be a~\liealgebra{$\kf$} and let~$\hlie$ be an abelian~\liealgebra{$\kf$}.
   If~$\varphi \colon \glie \to \hlie$ is any homomorphism of Lie~algebras then the image of~$\varphi$ is a Lie~subalgebra of~$\glie$, which is then again abelian.
   It follows from the isomorphism~$\im(\varphi) \cong \glie / {\ker(\varphi)}$ that the quotiont~$\glie / {\ker(\varphi)}$ is abelian.
@@ -2287,6 +2287,13 @@
     \right\} \,.
   \]
 \end{example}
+
+
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra.
+  The quotient Lie~algebra~$\glie / [\glie, \glie]$ from \cref{universal property of abelianization} is the \defemph{abelianization} of~$\glie$.
+  It is denoted by~$\glie^{\ab}$.
+\end{definition}
 
 
 %\begin{lemma}
@@ -2508,10 +2515,15 @@
 
 
 
-\section{Derivations}
+\section{Derivations and Automorphisms}
+
+
+
+\subsection{Derivations and Inner Derivations}
 
 
 \begin{definition}
+  \label{definition of derivations}
   Let~$A$ be a~\enquote{\algebra{$\kf$}}.
   A \defemph{derivation}\index{derivation} of~$A$ is a~{\linear{$\kf$}} map~$\delta \colon A \to A$ such that
   \[
@@ -2908,8 +2920,10 @@
 
 
 \begin{definition}
+  \label{definition of inner derivations}
  Let~$\glie$ be a Lie~algebra.
  A derivation of~$\glie$ is \defemph{inner}\index{inner derivation}\index{derivation!inner} if it is of the form~$\ad(x)$ for some element~$x$ of~$\glie$.
+ The set of inner derivations of~$\glie$ is denoted by~$\InnDer(\glie)$.
 \end{definition}
 
 
@@ -2954,9 +2968,16 @@
 
 
 \begin{proof}
-  It follows from the linearity of the map~$\ad \colon \glie \to \Der(A)$ that the image~$\ad(\glie)$ is a linear subspace of~$\Der(A)$.
-  That~$\ad(\glie)$ is already an ideal of~$\Der(A)$ follows from \cref{commutator of any derivation and inner derivation}.
+  It follows from the linearity of the map~$\ad \colon \glie \to \Der(A)$ that~$\InnDer(\glie)$ is a linear subspace of~$\Der(\glie)$.
+  That~$\InnDer(\glie)$ is already an ideal of~$\Der(\glie)$ follows from \cref{commutator of any derivation and inner derivation}.
 \end{proof}
+
+
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra.
+  The quotient Lie~algebra~$\Der(\glie) / {\InnDer(\glie)}$ is the Lie~algebra of \defemph{outer derivations} of~$\glie$.
+  It is denoted by~$\OutDer(\glie)$.
+\end{definition}
 
 
 \begin{remark}
@@ -2986,6 +3007,10 @@
       inner automorphism
       &
       inner derivations
+      \\
+      outer automorphism
+      &
+      outer derivation
       \\
       \bottomrule
     \end{tabular}
@@ -3313,10 +3338,12 @@
   Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
   \begin{enumerate}
     \item
-      The group of \defemph{inner automorphisms}\index{inner!automorphism}\index{automorphism!inner} of~$\glie$ is the subgroup of~$\Aut_{\Lie}(\glie)$ which is generated by all automorphism of the form~$\exp(\ad(x))$ where~$x$ is any element of~$\glie$ for which~$\ad(x)$ is nilpotent.
-      The group of inner automorphisms of~$\glie$ is denoted by~$\Inn(\glie)$.
+      The group of Lie~algebra automorphisms of~$\glie$ is denoted by~$\Aut(\glie)$.
     \item
-      The elements of~$\Inn(\glie)$ are the \defemph{inner automorphisms}\index{inner!automorphism}\index{automorphism!inner} of~$\glie$.
+      The group of \defemph{inner automorphisms}\index{inner!automorphism}\index{automorphism!inner} of~$\glie$ is the subgroup of~$\Aut(\glie)$ which is generated by all automorphism of the form~$\exp(\ad(x))$ where~$x$ is any element of~$\glie$ for which~$\ad(x)$ is nilpotent.
+      The group of inner automorphisms of~$\glie$ is denoted by~$\InnAut(\glie)$.
+    \item
+      The elements of~$\InnAut(\glie)$ are the \defemph{inner automorphisms}\index{inner!automorphism}\index{automorphism!inner} of~$\glie$.
   \end{enumerate}
 \end{definition}
 
@@ -3384,12 +3411,12 @@
 
 \begin{proposition}
   Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
-  Then~$\Inn(\glie)$ is a normal subgroup of~$\Aut_{\Lie}(\glie)$.
+  Then the subgroup~$\InnAut(\glie)$ of~$\Aut(\glie)$ is a normal.
 \end{proposition}
 
 
 \begin{proof}
-  The group~$\Inn(\glie)$ is generated by the set of automorphisms
+  The group~$\InnAut(\glie)$ is generated by the set of automorphisms
   \[
     \{
       \exp(\ad(x))
@@ -3398,8 +3425,15 @@
     \} \,.
   \]
   It follows from \cref{conjugation of inner automorphism} that this generating set is closed under the conjugation by any automorphism of~$\glie$.
-  It follows that~$\Inn(\glie)$ is also closed under this conjugation.
+  It follows that~$\InnAut(\glie)$ is also closed under this conjugation.
 \end{proof}
+
+
+\begin{definition}
+  Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+  The quotient group~$\Aut(\glie) / {\InnAut(\glie)}$ is the group of \defemph{outer automorphisms} of~$\glie$.
+  It is denoted by~$\OutAut(\glie)$.
+\end{definition}
 
 
 

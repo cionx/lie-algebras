@@ -75,11 +75,11 @@
   More explicitely the map~$\glie \to \glie^{\op}$,~$x \mapsto x$ is an anti-isomorphism of Lie~algebras and hence the composition
   \[
     \glie
-    \xlongto{x \mapsto x}
+    \xto{x \mapsto x}
     \glie^{\op}
-    \longto
+    \to
     \Univ(\glie^{\op})
-    \xlongto{x \mapsto x}
+    \xto{x \mapsto x}
     \Univ(\glie^{\op})^{\op}
   \]
   is again a homomorphism of Lie~algebras (as both~$\glie \to \glie^{\op}$ and~$\Univ(\glie^{\op}) \to \Univ(\glie^{\op})^{\op}$ are anti-homomorphisms).
@@ -104,11 +104,11 @@
   One the other hand the composition
   \[
     \glie^{\op}
-    \xlongto{x \mapsto x}
+    \xto{x \mapsto x}
     \glie
-    \longto
+    \to
     \Univ(\glie)
-    \xlongto{x \mapsto x}
+    \xto{x \mapsto x}
     \Univ(\glie)^{\op}
   \]
   is a homomorphism of Lie~algebras and so induces an algebra homomorphism~$\psi \colon \Univ(\glie^{\op}) \to \Univ(\glie)^{\op}$.
@@ -265,7 +265,7 @@
   \end{align*}
   for all simple tensors~$a \tensor b \in A \tensor B$.
   
-  These constructions are mutually inverse and hence result in a {\onetoone} correspondence
+  These constructions are mutually inverse and hence result in a {\onetoonetext} correspondence
   \begin{align*}
     \left\{
       \begin{tabular}{@{}c@{}}
@@ -273,7 +273,7 @@
         $f \colon A \tensor B \to C$
       \end{tabular}
     \right\}
-    &\longonetoone
+    &\onetoone
     \left\{
       (\phi, \psi)
     \suchthat*
@@ -285,11 +285,11 @@
     \right\}  \,,
     \\
     f
-    &\longmapsto
-    (\spacing f \circ i, f \circ j)  \,,
+    &\mapsto
+    (f \circ i, f \circ j)  \,,
     \\
     \biggl( a \tensor b \mapsto \phi(a)\psi(b) \biggr)
-    &\longmapsfrom
+    &\mapsfrom
     (\phi, \psi)  \,.
   \end{align*}
 \end{recall}
@@ -749,7 +749,7 @@
         \end{tikzcd}
       \]
       commute.
-      It holds for every set~$X$ that~$(\id_X)_* = \id_{F(X)}$ and it holds for all composable maps of sets~$f \colon X \to Y$ and~$g \colon Y \to Z$ that~$(\spacing g \circ f)_* = g_* \circ f_*$.
+      It holds for every set~$X$ that~$(\id_X)_* = \id_{F(X)}$ and it holds for all composable maps of sets~$f \colon X \to Y$ and~$g \colon Y \to Z$ that~$(g \circ f)_* = g_* \circ f_*$.
       We therefore get a functor~$F \colon \cSet \to \cLie{\kf}$.
       
       The universal property of the free Lie~algebra states that the functor~$F$ is left adjoint to the forgetful functor~$\cLie{\kf} \to \cSet$.

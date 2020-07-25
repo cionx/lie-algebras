@@ -5,11 +5,13 @@
 % pagenumber in bold
 %\addtokomafont{pagenumber}{\bfseries}
 
+% even pages, header
 \lehead{\pagemark}
-\rohead{\pagemark}
-
-\lohead{\upshape{\headmark}}
 \rehead{\upshape{\headmark}}
+
+% odd pages, header
+\rohead{\pagemark}
+\lohead{\upshape{\headmark}}
 
 % make foot empty
 \ofoot{}

@@ -1,5 +1,5 @@
 % counter for everything
-\newcounter{everything}[section]
+\newcounter{everything}[chapter]
 
 % theorem-like environemnts
 \theoremstyle{definition}
@@ -20,7 +20,7 @@
 \newtheorem{warning}[everything]{Warning}
 
 % printing of counters
-\renewcommand{\theeverything}{\thesection.\arabic{everything}}
+\renewcommand{\theeverything}{\thechapter.\arabic{everything}}
 \renewcommand{\theequation}{\arabic{equation}}
 \renewcommand{\theclaim}{\arabic{claim}}
 

@@ -1,16 +1,14 @@
-\chapter{The Universal Enveloping Algebra}
+\chapter[The Universal Enveloping Algebra]{The Universal Enveloping \texorpdfstring{\\}{} Algebra}
+\label{universal enveloping algebra}
 
 
 \begin{convention}
-  For this section we fix the following conventions:
+  For this \lcnamecref{universal enveloping algebra} we fix the following conventions.
   
-  We fix an arbitrary field~$\kf$.
-  By a~{\algebra{$\kf$}} we always mean an associative and unitary one, and homomorphisms of~{\algebras{$\kf$}} have to respect the units.
-  The resulting category of~{\algebras{$\kf$}} with homomorphisms of~{\algebra{$\kf$}} between them will be denoted by~$\cAlg{\kf}$.
-  All Lie~algebras considered will have~$\kf$ as their ground field, unless otherwise stated.
-  
-  If~$A$ is a~{\algebra{$\kf$}} then by an~\defemph{\module{$A$}}\index{module} we mean a left unitial~{\module{$A$}}.
-  The resulting category of~{\modules{$A$}} is denoted by~\gls*{module category}.
+  The field~$\kf$ is arbitrary.
+  We denote by~{\algebras{$\kf$}} the category~\algebras{$\kf$}.
+  If~$A$ is a~{\algebra{$\kf$}} then by an~\defemph{\module{$A$}}\index{module} we mean a left, unitial~{\module{$A$}}.
+  The resulting category of~{\modules{$A$}} is denoted by~$\cMod{A}$.
 \end{convention}
 
 % 
@@ -38,14 +36,22 @@
 % \end{fluff}
 % 
 
-\begin{lemma}[Yoneda for~{\algebras{$\kf$}}]
+\begin{proposition}[Yoneda for~{\algebras{$\kf$}}]
   \label{yoneda lemma very weak version}
   Let~$A$ and~$B$ be two~{\algebras{$\kf$}}.
   \begin{enumerate}
     \item
-      If~$\varphi \colon A \to B$ is a homomorphism of~{\algebras{$\kf$}} then~$\varphi$ induces for every other~{\algebra{$\kf$}}~$T$ a map~$\varphi^*_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ given by~$h \mapsto h \circ \varphi$.%
-      \footnote{The letter~\enquote{$T$} is choosen because~$T$ is a \enquote{test object}.}
-      These induced maps are compatible in the sense that for any two~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$f \colon T \to U$ the following square diagram commutes:
+      If~$\Phi$ is a homomorphism of~{\algebras{$\kf$}} from~$A$ to~$B$ then~$\Phi$ induces for every other~{\algebra{$\kf$}}~$T$ a map
+      \[
+        \Phi^*_T
+        \colon
+        \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T) \,,
+        \quad
+        \Psi
+        \mapsto
+        \Psi \circ \Phi \,.
+      \]
+      These induced maps are compatible in the sense that for any two~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$f$ from~$T$ to~$U$ the following square diagram commutes.
       \[
         \begin{tikzcd}
           \Hom_{\cAlg{\kf}}(B,T)
@@ -64,7 +70,15 @@
       If~$\varphi$ is an isomorphism then the induced map~$\varphi^*_T$ is for every~{\algebra{$\kf$}}~$T$ a bijection.
     \item
       \label{natural homomorphisms}
-      Let conversely~$(\eta_T)_T$ be a family of maps~$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ where~$T$ runs through all~{\algebra{$\kf$}} such that these maps are compatible in the sense that for all~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$f \colon T \to U$ the square diagram
+      Let conversely~$(\eta_T)_T$ be a family of maps
+      \[
+        \eta_T
+        \colon
+        \Hom_{\cAlg{\kf}}(B,T)
+        \to
+        \Hom_{\cAlg{\kf}}(A,T)
+      \]
+      where~$T$ runs through the class of~{\algebras{$\kf$}}, such that for all~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$f$ from~$T$ to~$U$ the square diagram
       \begin{equation}
         \label{natural square}
         \begin{tikzcd}
@@ -82,11 +96,11 @@
         \end{tikzcd}
       \end{equation}
       commutes.
-      Then there exists an algebra homomorphism~$\varphi \colon A \to B$ such that~$\eta_T = \varphi^*_T$ for every~{\algebra{$\kf$}}~$T$.
-      The homomorphism~$\varphi$ is unique and given by~$\varphi = \eta_B(\id_B)$.
+      Then there exists an algebra homomorphism~$\varphi$ from~$A$ to~$B$ such that~$\eta_T = \varphi^*_T$ for every~{\algebra{$\kf$}}~$T$.
+      This homomorphism~$\varphi$ is unique and it is given by~$\varphi = \eta_B(\id_B)$.
     \item
       \label{onetoone correspondence morphisms and natural trans}
-      The above constructions give a {\onetoone} correspondence
+      The above constructions give a {\onetoonetext} correspondence
       \begin{align*}
         \left\{
           \begin{tabular}{@{}c@{}}
@@ -94,26 +108,27 @@
             $\varphi \colon A \to B$
           \end{tabular}
         \right\}
-        &\longonetoone
+        &\onetoone
         \left\{
           \begin{tabular}{@{}c@{}}
             families~$(\eta_T)_T$ of maps \\
             $\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ \\
-            satisfying~\eqref{natural square} for every algebra homo.~$f \colon T \to U$
+            such that the square diagram~\eqref{natural square} commutes \\
+            for every algebra homomorphism~$f \colon T \to U$
           \end{tabular}
         \right\}  \,,
       \\
         \varphi
-        &\longmapsto
+        &\mapsto
         (\varphi^*_T)_T \,,
       \\
         \eta_B(\id_B)
-        &\longmapsfrom
+        &\mapsfrom
         (\eta_T)_T  \,.
       \end{align*}
     \item
-      If in part~\ref*{natural homomorphisms} every map~$\eta_T$ is bijective then the corresponding algebra homomorphism~$\varphi \colon A \to B$ is bijective.
-      The {\onetoone} correspondence from part~\ref*{onetoone correspondence morphisms and natural trans} hence restricts to a {\onetoone} correspondence.
+      If in part~\ref*{natural homomorphisms} every map~$\eta_T$ is bijective then the corresponding algebra homomorphism~$\varphi$ is bijective.
+      The {\onetoonetext} correspondence from part~\ref*{onetoone correspondence morphisms and natural trans} therefore restricts to a {\onetoonetext} correspondence.
       \[
         \left\{
           \begin{tabular}{@{}c@{}}
@@ -121,25 +136,26 @@
             $\varphi \colon A \to B$
           \end{tabular}
         \right\}
-        \longonetoone
+        \onetoone
         \left\{
           \begin{tabular}{@{}c@{}}
             families~$(\eta_T)_T$ of bijections \\
             $\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ \\
-            satisfying~\eqref{natural square} for every algebra homo.~$f \colon T \to U$
+            such that the square diagram~\eqref{natural square} commutes \\
+            for every algebra homomorphism~$f \colon T \to U$
           \end{tabular}
         \right\}  \,.
       \]
   \end{enumerate}
-\end{lemma}
+\end{proposition}
 
 
 \begin{proof}
   \leavevmode
   \begin{enumerate}
     \item
-      The maps~$\eta_T$ are well-defined because the composition of algebra homomorphism is again an algebra homomorphism.
-      The square diagram~\eqref{natural square} commutes because for every~$ \in \Hom_{\cAlg{\kf}}(B,T)$,
+      The maps~$\eta_T$ are well-defined because the composite of two algebra homomorphism is again an algebra homomorphism.
+      The square diagram~\eqref{natural square} commutes because
       \[
         f_*( \varphi^*_T( h ) )
         =
@@ -147,15 +163,22 @@
         =
         f \circ h \circ \varphi
         =
-        \varphi^*_U(\spacing f \circ h)
+        \varphi^*_U(f \circ h)
         =
-        \varphi^*_U(\spacing f_*(h))  \,.
+        \varphi^*_U(f_*(h))
       \]
+      for all~$h \in \Hom_{\cAlg{\kf}}(B,T)$.
     \item
-      To see the claimed uniqueness of~$\varphi$ we observe that~$\eta_B(\id_B) = \varphi^*_B(\id_B) = \id_B \circ \varphi = \varphi$.
-      To show the existence of~$\varphi$ we set~$\varphi \defined \eta_B(\id_B)$.
-      Then~$\varphi \in \Hom_{\cAlg{\kf}}(A,B)$.
-      If~$T$ is any~{\algebra{$\kf$}} then it follows for every~$f \in \Hom_{\cAlg{\kf}}(B,T)$ from the commutativity of the square diagram
+      Suppose first that there exists a homorphism of algebras~$\varphi$ from~$A$ to~$B$ with~$(\eta_T)_T = (\varphi^*_T)_T$.
+      Then
+      \[
+        \eta_B(\id_B) = \varphi^*_B(\id_B) = \id_B \circ \varphi = \varphi \,.
+      \]
+      This shows the uniqueness of~$\varphi$.
+
+      To show the existence of the desired homomorphism~$\varphi$ we set~$\varphi \defined \eta_B(\id_B)$.
+      Then~$\varphi$ is an element of~$\Hom_{\cAlg{\kf}}(A,B)$, and thus a homomorphism of algebras from~$A$ to~$B$.
+      If~$T$ is any~{\algebra{$\kf$}} then it follows for every element~$f$ of~$\Hom_{\cAlg{\kf}}(B,T)$ from the commutativity of the square diagram
       \[
         \begin{tikzcd}
           \Hom_{\cAlg{\kf}}(B,B)
@@ -163,7 +186,7 @@
           \arrow{d}[left]{f_*}
           &
           \Hom_{\cAlg{\kf}}(A,B)
-          \arrow{d}[right]{\spacing f_*}
+          \arrow{d}[right]{f_*}
           \\
           \Hom_{\cAlg{\kf}}(B,T)
           \arrow{r}[below]{\eta_T}
@@ -173,11 +196,11 @@
       \]
       that
       \[
-        \eta_T(\spacing f)
+        \eta_T(f)
         =
-        \eta_T(\spacing f \circ \id_B)
+        \eta_T(f \circ \id_B)
         =
-        \eta_T(\spacing f_*(\id_B))
+        \eta_T(f_*(\id_B))
         =
         f_*(\eta_B(\id_B))
         =
@@ -186,7 +209,14 @@
         f \circ \varphi \,.
       \]
     \item
-      If~$\varphi \colon A \to B$ is any algebra homomorphism then~$\varphi^*_B(\id_B) = \id_B \circ \varphi = \varphi$.
+      If~$\varphi$ is a algebra homomorphism from~$A$ to~$B$ then
+      \[
+        \varphi^*_B(\id_B)
+        =
+        \id_B \circ \varphi
+        =
+        \varphi \,.
+      \]
       Together with part~\ref*{onetoone correspondence morphisms and natural trans} this shows that both constructions are inverse to each other.
     \item
       If~$\varphi$ is an isomorphism then~$\varphi^*_T$ is bijective for every~{\algebra{$\kf$}} because the maps~$\varphi^*_T$ and~$(\varphi^{-1})^*_T$ are mutually inverse.
@@ -199,7 +229,7 @@
           \arrow{d}[left]{f_*}
           &
           \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{d}[right]{\spacing f_*}
+          \arrow{d}[right]{f_*}
           \\
           \Hom_{\cAlg{\kf}}(A,U)
           \arrow{r}[below]{ (\varphi^*_U)^{-1} }
@@ -255,7 +285,7 @@
 %           \arrow{d}[left]{f_*}
 %           &
 %           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{d}[right]{\spacing f_*}
+%           \arrow{d}[right]{f_*}
 %           \\
 %           \Hom_{\cAlg{\kf}}(A,U)
 %           \arrow{r}[below]{(\psi \circ \varphi)^*_U}
@@ -272,7 +302,7 @@
 %           \arrow{d}[left]{f_*}
 %           &
 %           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{d}[right]{\spacing f_*}
+%           \arrow{d}[right]{f_*}
 %           \\
 %           \Hom_{\cAlg{\kf}}(A,U)
 %           \arrow{r}[below]{(\id_A)^*_U}
