@@ -14,25 +14,25 @@
   Let~$\glie$ be a~{\liealgebra{$\kf$}}.
   \begin{enumerate}
     \item
-      A \defemph{representation}\index{representation}~$(V, \rho)$ of~$\glie$ is a~{\vectorspace{$\kf$}}~$V$ together with a homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(V)$.
+      A \defemph{representation}\index{representation}~$(M, \rho)$ of~$\glie$ is a~{\vectorspace{$\kf$}}~$M$ together with a homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$.
     \item
-      The \defemph{dimension}\index{representation!dimension}\index{dimension of a representation} of a representation~$(V, \rho)$ is the dimension of its underlying vector space~$V$.
+      The \defemph{dimension}\index{representation!dimension}\index{dimension of a representation} of a representation~$(M, \rho)$ is the dimension of its underlying vector space~$M$.
     \item
-      A representation~$(V, \rho)$ is~\defemph{faithful}\index{faithful}\index{representation!faithful} if the homomorphism~$\rho$ is injective.
+      A representation~$(M, \rho)$ is~\defemph{faithful}\index{faithful}\index{representation!faithful} if the homomorphism~$\rho$ is injective.
     \item
-      An \defemph{action} of~$\glie$ on a vector space~$V$ is a bilinear map
+      An \defemph{action} of~$\glie$ on a vector space~$M$ is a bilinear map
       \[
-        \glie \times V \to V \,,
+        \glie \times M \to M \,,
         \quad
-        (x,v) \mapsto x \act v
+        (x,m) \mapsto x \act m
       \]
       such that
       \[
-        x \act (y \act v) - y \act (x \act v)
+        x \act (y \act m) - y \act (x \act m)
         =
-        [x,y]
+        [x,y] \act m
         \qquad
-        \text{for all~$x, y \in \glie$,~$v \in V$.}
+        \text{for all~$x, y \in \glie$,~$m \in M$.}
       \]
   \end{enumerate}
 \end{definition}
@@ -40,27 +40,27 @@
 
 \begin{proposition}
   \label{correspodence between representations and actions}
-  Let~$\glie$ be a~\liealgebra{$\kf$} and let~$V$ be a~\vectorspace{$\kf$}.
+  Let~$\glie$ be a~\liealgebra{$\kf$} and let~$M$ be a~\vectorspace{$\kf$}.
   \begin{enumerate}
     \item
-      If~$\rho \colon \glie \to \gllie(V)$ is a homomorphism of Lie~algebras then the formula
+      If~$\rho$ is a homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$ then the formula
       \[
-        x \act v \defined \rho(x)(v)
+        x \act m \defined \rho(x)(m)
         \qquad
-        \text{for all~$x \in \glie$,~$v \in V$}
+        \text{for all~$x \in \glie$,~$m \in M$}
       \]
-      defines an action of~$\glie$ on~$V$.
+      defines an action of~$\glie$ on~$M$.
     \item
-      Suppose on the other hand that~$\glie$ acts on~$V$.
+      Suppose on the other hand that~$\glie$ acts on~$M$.
       Then for every element~$x$ of~$\glie$ the map
       \[
-        \rho(x) \colon V \to V \,,
+        \rho(x) \colon M \to M \,,
         \quad
-        v \mapsto x \act v
+        m \mapsto x \act m
       \]
       is~\linear{$\kf$}, and the resulting map
       \[
-        \rho \colon \glie \to \gllie(V)
+        \rho \colon \glie \to \gllie(M)
       \]
       is a homomorphism of Lie algebras.
     \item
@@ -70,12 +70,12 @@
           \begin{tabular}{@{}c@{}}
             homomorphism of
             \\
-            Lie~algebras~$\glie \to \gllie(V)$
+            Lie~algebras~$\glie \to \gllie(M)$
           \end{tabular}
         \right\}
         \onetoone
         \{
-          \text{actions of~$\glie$ on~$V$}
+          \text{actions of~$\glie$ on~$M$}
         \} \,.
       \]
   \end{enumerate}
@@ -87,13 +87,13 @@
   \[
     \alpha
     \colon
-    \glie \times V
+    \glie \times M
     \to
-    V \,,
+    M \,,
     \quad
-    (x,v)
+    (x,m)
     \mapsto
-    x \act v
+    x \act m
   \]
   and the corresponding map
   \[
@@ -101,46 +101,46 @@
     \colon
     \glie
     \to
-    \Maps(V,V)
+    \Maps(M,M)
   \]
   given by
   \begin{equation}
     \label{action and homomorphism formula}
-    \rho(x)(v) = x \act v
+    \rho(x)(m) = x \act m
     \qquad
-    \text{for all~$x \in \glie$,~$v \in V$.}
+    \text{for all~$x \in \glie$,~$m \in M$.}
   \end{equation}
-  The linearity of~$\alpha$ in the second argument is equivalent to~$\rho$ taking values in~$\gllie(V)$.
+  The linearity of~$\alpha$ in the second argument is equivalent to~$\rho$ taking values in~$\gllie(M)$.
   The additional linearity of~$\alpha$ in the first argument is equivalent to~$\rho$ being linear.
-  That~$\rho$ is a homomorphism of Lie~algebras (when corestricted to a map into~$\gllie(V)$) is equivalent to the condition
+  That~$\rho$ is a homomorphism of Lie~algebras (when corestricted to a map into~$\gllie(M)$) is equivalent to the condition
   \[
-    x \act (y \act v) - y \act (x \act v)
+    x \act (y \act m) - y \act (x \act m)
     =
-    [x,y] \act v
+    [x,y] \act m
     \qquad
-    \text{for all~$x, y \in \glie$,~$v \in V$.}
+    \text{for all~$x, y \in \glie$,~$m \in M$.}
   \]
-  This shows overall that~$\alpha$ is an action of~$\glie$ on~$V$ if and only if the map~$\rho$ gives a homomorphism of Lie~algebras~$\glie \to \gllie(V)$ (by corestriction).
+  This shows overall that~$\alpha$ is an action of~$\glie$ on~$M$ if and only if the map~$\rho$ gives a homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$ (by corestriction).
   That both constructions are mutually inverse follows from the formula~\eqref{action and homomorphism formula}.
 \end{proof}
 
 
 \begin{fluff}
   Let~$\glie$ be a~\liealgebra{$\kf$}.
-  According to \cref{correspodence between representations and actions} we can equivalently characterize a representation of~$\glie$ as a~\vectorspace{$\kf$} together with an action of~$\glie$ on~$V$.
+  According to \cref{correspodence between representations and actions} we can equivalently characterize a representation of~$\glie$ as a~\vectorspace{$\kf$} together with an action of~$\glie$ on~$M$.
   In the following we will most often work with this alternative characterization of representations via actions, but we will feel free to use the original definition whenever it is useful to do so.
 \end{fluff}
 
 
 %\begin{remark}
-%  If~$(x_i)_{i \in I}$ is a basis of a Lie~algebra~$\glie$ then for a~{\linear{$\kf$}}~$\rho \colon \glie \to \gllie(V)$ to be a homomorphism of Lie~algebras it sufficies that~$\rho([x_i,x_j])= [\rho(x_i), \rho(x_j)]$ for all~$i, j \in I$.
+%  If~$(x_i)_{i \in I}$ is a basis of a Lie~algebra~$\glie$ then for a~{\linear{$\kf$}}~$\rho \colon \glie \to \gllie(M)$ to be a homomorphism of Lie~algebras it sufficies that~$\rho([x_i,x_j])= [\rho(x_i), \rho(x_j)]$ for all~$i, j \in I$.
 %  It therefore sufficies to check condition~\eqref{representation via action} for basis elements, i.e.\ it sufficies to check that
 %  \[
 %    x_i.(x_j.v) - x_j.(x_i.v)
 %    = 
 %    [x_i, x_j].v
 %  \]
-%  for all~$i, j \in I$ and~$v \in V$.
+%  for all~$i, j \in I$ and~$m \in M$.
 %\end{remark}
 
 
@@ -160,15 +160,15 @@
   \leavevmode
   \begin{enumerate}
     \item 
-      Let~$\glie$ be a Lie~subalgebra of~$\gllie(V)$ for some vector space~$V$.
-      Then the inclusion~$\glie \to \gllie(V)$ is a homomorphism of Lie~algebras, which makes~$V$ into a faithful representation of~$\glie$.
-      The corresponding action of~$\glie$ on~$V$ is given by
+      Let~$\glie$ be a Lie~subalgebra of~$\gllie(M)$ for some vector space~$M$.
+      Then the inclusion map from~$\glie$ to~$\gllie(M)$ is a homomorphism of Lie~algebras, which makes~$M$ into a faithful representation of~$\glie$.
+      The corresponding action of~$\glie$ on~$M$ is given by
       \[
-        x \act v
+        x \act m
         =
-        x(v)
+        x(m)
         \qquad
-        \text{for all~$x \in \glie$,~$v \in V$.}
+        \text{for all~$x \in \glie$,~$m \in M$.}
       \]
       This representation is the \defemph{natural representation}\index{natural representation}\index{representation!natural} of~$\glie$.
     \item
@@ -180,25 +180,25 @@
       is a homomorphism of Lie~algebras, which makes~$\kf^n$ into a faithful representation of~$\gllie$.
       The corresponding action of~$\glie$ on~$\kf^n$ is given by
       \[
-        x \act v
+        x \act m
         =
-        x \cdot v
+        x \cdot m
         \qquad
-        \text{for all~$x \in \glie$,~$v \in \kf^n$.}
+        \text{for all~$x \in \glie$,~$m \in \kf^n$.}
       \]
       This representation is the the \defemph{natural representation}\index{natural representation}\index{representation!natural} of~$\glie$.
     \item
-      Let~$V \defined \kf[x_1, \dotsc, x_n]$ and let~$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c$ be the endomorphisms of~$V$ given as follows:
-      $p_i \defined \dd{x_i}$ is the~{\howmanyth{$i$}} partial derivate,~$q_i$ is the multiplication with the variable~$x_i$, and~$c \defined \id_V$ is the identiy function.
+      Let~$M$ be the polynomial algebra~$\kf[x_1, \dotsc, x_n]$ and let~$p'_1, \dotsc, p'_n, q'_1, \dotsc, q'_n, c$ be the endomorphisms of~$M$ given as follows:
+      $p'_i \defined \dd{x_i}$ is the~{\howmanyth{$i$}} partial derivate map,~$q'_i$ is the multiplication with the variable~$x_i$, and~$c' \defined \id_M$ is the identity function.
       These endomorphisms are linearly independent and satisfy the relations
-      \begin{itemize}
+      \begin{itemize*}
         \item
-          $[p_i, p_j] = 0$ and $[q_i, q_j] = 0$ for all~$i, j = 1, \dotsc, n$,
+          $[p'_i, p'_j] = 0$ and $[q'_i, q'_j] = 0$ for all~$i, j = 1, \dotsc, n$,
         \item
-          $[p_i, c] = 0$ and~$[q_i, 0] = 0$ for every~$i = 1, \dotsc, n$,
+          $[p'_i, c'] = 0$ and~$[q'_i, 0] = 0$ for every~$i = 1, \dotsc, n$,
         \item
-          $[p_i, q_j] = \delta_{ij} c$ for all~$i, j = 1, \dotsc, n$.
-      \end{itemize}
+          $[p'_i, q'_j] = \delta_{ij} c$ for all~$i, j = 1, \dotsc, n$.
+      \end{itemize*}
       These relations are that of the Heisenberg Lie~algebra~$\Hlie$ from \cref{examples for lie algebras}.
       The unique linear map
       \[
@@ -206,25 +206,25 @@
         \colon
         \Hlie
         \to
-        \gllie(V)
+        \gllie(M)
       \]
-      that is given on the basis~$P_1, \dotsc, P_n, Q_1, \dotsc, Q_n, C$ of~$\Hlie$ by
+      that is given on the basis~$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c$ of~$\Hlie$ by
       \[
-        \rho(P_i) \defined p_i \,,
+        \rho(p_i) \defined p'_i \,,
         \quad
-        \rho(Q_i) \defined q_i \,,
+        \rho(p_i) \defined q'_i \,,
         \quad
-        \rho(C) \defined c
+        \rho(c) \defined c'
       \]
       is therefore a homomorphism of Lie~algebras.
-      We have thus constructed a representation of~$\Hlie$ on~$V = \kf[x_1, \dotsc, x_n]$.
-      Moreover, the elements~$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c$ of~$\gllie(V)$ are linearly independent, so~$\rho$ is injective.
+      We have thus constructed a representation of~$\Hlie$ on~$M = \kf[x_1, \dotsc, x_n]$.
+      Moreover, the elements~$p'_1, \dotsc, p'_n, q'_1, \dotsc, q'_n, c'$ of~$\gllie(M)$ are linearly independent, so~$\rho$ is injective.
       The constructed representation is therefore faifthul.
 
-      This also shows that~$\Hlie$ is indeed a Lie~algebra, as it can be realized as a Lie~subalgebra of~$\gllie(V)$.
+      This also shows that~$\Hlie$ is indeed a Lie~algebra, as it can be realized as a Lie~subalgebra of~$\gllie(M)$.
     \item
-      Let~$\glie \defined \sllie(2, \kf)$ for any field~$\kf$.
-      Then the polynomial ring~$\kf[x,y]$ becomes a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(\kf[x,y])$ given by
+      Let~$\glie \defined \sllie(2, \kf)$.
+      Then the polynomial ring~$\kf[x,y]$ becomes a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(\kf[x,y])$ given by
       \[
         \rho(e) = y \dd{x} \,,
         \qquad
@@ -295,18 +295,18 @@
       \end{gather*}
       for all~$n, m \geq 0$.
     \item
-      Then polynomial ring in one variable~$\kf[x]$ is a representation of~$\sllie(2, \kf)$ via the homomorphism of Lie~algebras~$\rho \colon \sllie(2, \kf) \to \gllie(\kf[x])$ given by
+      Then polynomial ring in one variable~$\kf[x]$ is a representation of~$\sllie(2, \kf)$ via the homomorphism of Lie~algebras~$\rho$ from~$\sllie(2, \kf)$ to~$\gllie(\kf[x])$ that is given by
       \[
         \rho(e)
-        =
+        \defined
         \dd{x} \,,
         \qquad
         \rho(h)
-        =
+        \defined
         -2x\dd{x} \,,
         \qquad
         \rho(f)
-        =
+        \defined
         -\dd{x} \,,
       \]
       on the standard basis~$e$,~$h$,~$f$ of~$\sllie(2, \kf)$.
@@ -332,7 +332,7 @@
         = 2n x^{n-1}
         = 2e \act x^n
         = [h,e] \act x^n \,,
-      \shortintertext{and}
+      \intertext{and}
         h \act f \act x^n - f \act h \act x^n
         = 2n(n+1) x^{n+1} - 2 n^2 x^{n+1}
         = 2n x^{n+1}
@@ -341,31 +341,37 @@
       \end{gather*}
       for every~$n \geq 0$.
     \item
-      If~$\rho \colon \glie \to \gllie(V)$ is a representation of a Lie~algebra~$\glie$ and~$\phi \colon \hlie \to \glie$ a homomorphism of Lie~algebras then via the composition~$\rho \circ \phi \colon \hlie \to \gllie(V)$ the vector space~$V$ becomes a representation of~$\hlie$.
-      This representation comes from the action of~$\hlie$ on~$V$ given by
+      Let~$M$ be a representation of~$\glie$ with corresponding homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$.
+      Let~$\varphi$ be a homomorphism of Lie~algebras from~$\hlie$ to~$\glie$.
+      Then the composite~$\rho \circ \varphi$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\gllie(M)$, which makes the vector space~$M$ into a representation of~$\hlie$.
+      The corresponding action of~$\hlie$ on~$M$ is given by
       \[
-        x \act v = \phi(x).v
+        x \act m = \varphi(x) \act m
         \qquad
-        \text{for all~$x \in \hlie$,~$v \in V$,}
+        \text{for all~$x \in \hlie$,~$m \in M$,}
       \]
-      where the right hand side denotes the action of~$\glie$ on~$V$ corresponding to the representation~$\rho$.
+      where the right hand side denotes the action of~$\glie$ on~$M$ corresponding to the representation~$\rho$.
     \item
-      Let~$A$ be a~\algebra{$\kf$} and let~$V$ be a left~\module{$A$}.
-      Then~$V$ is also a representation of~$A$ as a Lie~algebra because
+      Let~$A$ be a~\algebra{$\kf$} and let~$M$ be a left~\module{$A$}.
+      Then~$M$ is also a representation of~$A$ as a Lie~algebra because
       \[
-        [a,b] \act v
+        [a,b] \act m
         =
-        (ab - ba) \act v
+        (ab - ba) \act m
         =
-        (ab - ba)v
+        (ab - ba)m
         =
-        abv - bav
+        abm - bam
         =
-        a \act (b \act v) - b \act (a \act v)
+        a \act (b \act m) - b \act (a \act m)
       \]
-      for all elements~$a$,~$b$ of~$A$ and every element~$v$ of~$V$.
+      for all~$a, b \in A$,~$m \in M$.
     \item
-      The map~$\ad \colon \glie \to \gllie(\glie)$ is a homomorphism of Lie~algebras and hence a representation of~$\glie$.
+      The adjoint map
+      \[
+        \ad \colon \glie \to \gllie(\glie)
+      \]
+      is a homomorphism of Lie~algebras, which makes~$\glie$ into a representation of~$\glie$.
   \end{enumerate}
 \end{examples}
 
@@ -392,31 +398,31 @@
 
 \begin{remark}
   It follows together with \cref{lie algebras act adjoint by derivations} that every Lie~algebras~$\glie$ acts on itself via derivations of itself through the adjoint representation.
-  The author suspects that this is where much of the structure of Lie~algebras comes from, and why the Jacobi identity is of interest.
+  The author suspects that this is where much of the structure of Lie~algebras comes from.
 \end{remark}
 
 
 \begin{remark}
   \label{right representations}
-  Let~$\glie$ be a~{\liealgebra{$\kf$}} and let~$V$ be a~\vectorspace{$\kf$}.
-  A \defemph{right action}\index{action!right}\index{right action} of~$\glie$ on~$V$ is a~{\bilinear{$\kf$}} map
+  Let~$\glie$ be a~{\liealgebra{$\kf$}} and let~$M$ be a~\vectorspace{$\kf$}.
+  A \defemph{right action}\index{action!right}\index{right action} of~$\glie$ on~$M$ is a~{\bilinear{$\kf$}} map
   \[
-    V \times \glie
+    M \times \glie
     \to
-    V \,,
+    M \,,
     \quad
-    (v,x)
+    (m,x)
     \mapsto
-    v \act x
+    m \act x
   \]
   such that
   \begin{equation}
     \label{right action}
-    (v \act x) \act y - (v \act y) \act x
+    (m \act x) \act y - (m \act y) \act x
     =
-    v \act [x,y]
+    m \act [x,y]
     \qquad
-    \text{for all~$x, y \in \glie$,~$v \in V$.}
+    \text{for all~$x, y \in \glie$,~$m \in M$.}
   \end{equation}
   The actions that we have considered so far are \defemph{left actions}\index{action!left}\index{left action}.
   It turns out that both concepts are equivalent, as we will now explain.
@@ -424,13 +430,13 @@
   We first note that \cref{correspodence between representations and actions} can be generalized to right actions:
   a map
   \[
-    V \times \glie
+    M \times \glie
     \to
-    V \,,
+    M \,,
     \quad
-    (v,x)
+    (m,x)
     \mapsto
-    v \act x
+    m \act x
   \]
   is a right action if and only if the map
   \[
@@ -438,36 +444,36 @@
     \colon
     \glie
     \to
-    \gllie(V)
+    \gllie(M)
   \]
   given by
   \[
-    \rho(x)(v)
+    \rho(x)(m)
     \defined
-    v \act x
+    m \act x
     \qquad
-    \text{for all~$x \in \glie$,~$v \in V$}
+    \text{for all~$x \in \glie$,~$m \in M$}
   \]
   is an anti-homomorphism of Lie~algebras.
-  This means that~$\rho$ is a homomorphism of Lie~algebras from~$\glie^{\op}$ to~$\gllie(V)$.
-  Such a homomorphism does in turn correspond to a left action of~$\glie^{\op}$ on~$V$ via
+  This means that~$\rho$ is a homomorphism of Lie~algebras from~$\glie^{\op}$ to~$\gllie(M)$.
+  Such a homomorphism does in turn correspond to a left action of~$\glie^{\op}$ on~$M$ via
   \[
-    x^{\op} \act v
+    x^{\op} \act m
     \defined
-    v \act x
+    m \act x
     \qquad
-    \text{for all~$x \in \glie$,~$v \in V$.}
+    \text{for all~$x \in \glie$,~$m \in M$.}
   \]
   We have thus found {\onetoonetext} correspondences between the following concepts.
   \begin{equivalenceslist*}
     \item
-      Right actions of~$\glie$ on~$V$.
+      Right actions of~$\glie$ on~$M$.
     \item
-      Left actions of~$\glie^{\op}$ on~$V$.
+      Left actions of~$\glie^{\op}$ on~$M$.
     \item
-      Anti-homomorphisms of Lie~algebras from~$\glie$ to~$\gllie(V)$.
+      Anti-homomorphisms of Lie~algebras from~$\glie$ to~$\gllie(M)$.
     \item
-      Homomorphisms of Lie~algebras from~$\glie^{\op}$ to~$\gllie(V)$.
+      Homomorphisms of Lie~algebras from~$\glie^{\op}$ to~$\gllie(M)$.
   \end{equivalenceslist*}
   We now recall \cref{lie algebra isomorphic to its opposite}, which states that the map
   \[
@@ -480,31 +486,31 @@
     -x^{\op}
   \]
   is an isomorphism of Lie~algebras.
-  By using this isomorphism we can now translate between right actions of~$\glie$ on~$V$, left actions of~$\glie^{\op}$ on~$V$, and then left actions of~$\glie$ on~$V$.
+  By using this isomorphism we can now translate between right actions of~$\glie$ on~$M$, left actions of~$\glie^{\op}$ on~$M$, and then left actions of~$\glie$ on~$M$.
 
-  More explicitely, if~$\glie$ acts on the vector space~$V$ from the right via
+  More explicitely, if~$\glie$ acts on the vector space~$M$ from the right via
   \[
-    V \times \glie
+    M \times \glie
     \to
-    V \,,
+    M \,,
     \quad
-    (v,x)
+    (m,x)
     \mapsto
-    v \act x
+    m \act x
     \qquad
-    \text{for all~$x \in \glie$,~$v \in V$,}
+    \text{for all~$x \in \glie$,~$m \in M$,}
   \]
-  then~$\glie$ acts on~$V$ from the left via
+  then~$\glie$ acts on~$M$ from the left via
   \[
-    x \act v
+    x \act m
     \defined
-    -v \act x
+    -m \act x
     \qquad
-    \text{for all~$x \in \glie$,~$v \in V$.}
+    \text{for all~$x \in \glie$,~$m \in M$.}
   \]
 
   In the following we will sometimes encounter constructions which turn left actions into right actions.
-  We are now able to reinterpret these right actions as left actions.
+  We are now able to translate these right actions back into left actions.
   In this way we only have to deal with left actions.
 \end{remark}
 
@@ -520,76 +526,76 @@
   Let~$\glie$ be a Lie~algebra over an arbitrary field~$\kf$.
   \begin{enumerate}
     \item
-      Let~$V_\lambda$ with~$\lambda \in \Lambda$ be a collection of representations of~$\glie$.
-      Then the product~$\prod_{\lambda \in \Lambda} V_\lambda$ becomes again a representation of~$\glie$ via the action given by
+      Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+      Then the product~$\prod_{\lambda \in \Lambda} M_\lambda$ becomes again a representation of~$\glie$ via the action given by
       \[
-        x \act (v_\lambda)_\lambda
+        x \act (m_\lambda)_\lambda
         \defined
-        ( x \act v_\lambda )_\lambda
+        ( x \act m_\lambda )_\lambda
         \qquad
-        \text{for all~$x \in \glie$,~$(v_\lambda)_\lambda \in \prod_{\lambda \in \Lambda} V_\lambda$.}
+        \text{for all~$x \in \glie$,~$(m_\lambda)_\lambda \in \prod_{\lambda \in \Lambda} M_\lambda$.}
       \]
     \item
-      Let~$V_\lambda$ with~$\lambda \in \Lambda$ be a collection of representations of~$\glie$.
-      Then the direct sum~$\bigoplus_{\lambda \in \Lambda} V_\lambda$ becomes again a representation of~$\glie$ via the action given by
+      Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+      Then the direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$ becomes again a representation of~$\glie$ via the action given by
       \[
-        x \act (v_\lambda)_\lambda
+        x \act (m_\lambda)_\lambda
         \defined
-        ( x \act v_\lambda )_\lambda
+        ( x \act m_\lambda )_\lambda
         \qquad
-        \text{for all~$x \in \glie$,~$(v_\lambda)_\lambda \in \bigoplus_{\lambda \in \Lambda} V_\lambda$.}
+        \text{for all~$x \in \glie$,~$(m_\lambda)_\lambda \in \bigoplus_{\lambda \in \Lambda} M_\lambda$.}
       \]
     \item
-      If~$V$ and~$W$ are two representations of~$\glie$ then their tensor product~$V \tensor W$ becomes again a representation of~$\glie$ via the action
+      If~$M$ and~$N$ are two representations of~$\glie$ then their tensor product~$M \tensor N$ becomes again a representation of~$\glie$ via the action
       \[
-        x \act (v \tensor w)
+        x \act (m \tensor n)
         \defined
-        (x \act v) \tensor w + v \tensor (x \act w)
+        (x \act m) \tensor n + m \tensor (x \act n)
         \qquad
-        \text{for all~$x \in \glie$,~$v \in V$,~$w \in W$.}
+        \text{for all~$x \in \glie$,~$m \in M$,~$n \in N$.}
       \]
-      Let more generall~$V_1, \dotsc, V_n$ be a finite collection of representations of~$\glie$.
-      Then their tensor product~$V_1 \tensor \dotsb \tensor V_n$ becomes again a representation of~$\glie$ via the action
+      Let more generally~$M_1, \dotsc, M_r$ be a finite collection of representations of~$\glie$.
+      Then their tensor product~$M_1 \tensor \dotsb \tensor M_r$ becomes again a representation of~$\glie$ via the action
       \[
-        x \act (v_1 \tensor \dotsb \tensor v_n)
+        x \act (m_1 \tensor \dotsb \tensor m_r)
         \defined
-        \sum_{i=1}^n
-                v_1
+        \sum_{i=1}^r
+                m_1
         \tensor \dotsb
-        \tensor v_{i-1}
-        \tensor (x.v_i)
-        \tensor v_{i+1}
+        \tensor m_{i-1}
+        \tensor (x \act m_i)
+        \tensor m_{i+1}
         \tensor \dotsb
-        \tensor v_n
+        \tensor m_r
       \]
-      for every~$x \in \glie$ and all~$v_i \in V_i$ for~$i = 1, \dotsc, n$.
+      for all~$x \in \glie$ and all~$m_i \in M_i$ for~$i = 1, \dotsc, r$.
     \item
-      Let~$V$ and~$W$ be two representations of~$\glie$.
-      The vector space~$\Hom_{\kf}(V,W)$ becomes again a representation of~$\glie$ via the action
+      Let~$M$ and~$N$ be two representations of~$\glie$.
+      The vector space~$\Hom_{\kf}(M,N)$ becomes again a representation of~$\glie$ via the action
       \[
-        (x \act f)(v)
+        (x \act f)(m)
         \defined
-        x \act f(v) - f(x \act v)
+        x \act f(m) - f(x \act m)
       \]
-      for all~$x \in \glie$,~$f \in \Hom_{\kf}(V,W)$ and~$v \in V$.
+      for all~$x \in \glie$,~$f \in \Hom_{\kf}(M,N)$,~$m \in M$.
     \item
-      Every~{\vectorspace{$\kf$}}~$V$ becomes a representation of~$\glie$ via the \defemph{trivial action}\index{trivial!action} given by
+      Every~{\vectorspace{$\kf$}}~$M$ becomes a representation of~$\glie$ via the \defemph{trivial action}\index{trivial!action} given by
       \[
-        x \act v
+        x \act m
         \defined
         0
         \qquad
-        \text{for all~$x \in \glie$ and~$v \in V$.}
+        \text{for all~$x \in \glie$ and~$m \in M$.}
       \]
     \item
-      Let~$V$ be a representation of~$\glie$.
-      The dual space~$V^*$ becomes again a representation of~$\glie$ via the action
+      Let~$M$ be a representation of~$\glie$.
+      The dual space~$M^*$ becomes again a representation of~$\glie$ via the action
       \[
-        (x \act \varphi)(v)
+        (x \act \varphi)(m)
         \defined
-        - \varphi(x \act v)
+        - \varphi(x \act m)
         \qquad
-        \text{for all~$x \in \glie$,~$\varphi \in V^*$,~$v \in V$.}
+        \text{for all~$x \in \glie$,~$\varphi \in M^*$,~$m \in M$.}
       \]
   \end{enumerate}
 \end{proposition}
@@ -599,105 +605,105 @@
   \leavevmode
   \begin{enumerate}
     \item
-      We have for all elements~$x$,~$y$ of~$\glie$ and every element~$(v_\lambda)_\lambda$ of~$\prod_{\lambda \in \Lambda} V_\lambda$ that
+      We have for all elements~$x$,~$y$ of~$\glie$ and every element~$(m_\lambda)_\lambda$ of~$\prod_{\lambda \in \Lambda} M_\lambda$ that
       \begin{align*}
-        x \act y \act (v_\lambda)_\lambda
-        - y \act x \act (v_\lambda)_\lambda
+        x \act y \act (m_\lambda)_\lambda
+        - y \act x \act (m_\lambda)_\lambda
         &=
-        (x \act y \act v_\lambda)_\lambda
-        - (y \act x \act v_\lambda)_\lambda
+        (x \act y \act m_\lambda)_\lambda
+        - (y \act x \act m_\lambda)_\lambda
         \\
         &=
-        (x \act y \act v_\lambda - y \act x \act v_\lambda)_\lambda
+        (x \act y \act m_\lambda - y \act x \act m_\lambda)_\lambda
         \\
         &=
-        ([x,y] \act v_\lambda)_\lambda
+        ([x,y] \act m_\lambda)_\lambda
         \\
         &=
-        [x,y] \act (v_\lambda)_\lambda \,.
+        [x,y] \act (m_\lambda)_\lambda \,.
       \end{align*}
     \item
-      That the given formula gives an action of~$\glie$ on the direct sum~$\bigoplus_{\lambda \in \Lambda} V_\lambda$ follows from the same calculation as for the product~$\prod_{\lambda \in \Lambda} V_\lambda$.
+      That the given formula gives an action of~$\glie$ on the direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$ follows from the same calculation as for the product~$\prod_{\lambda \in \Lambda} M_\lambda$.
     \item
-      It sufficies by induction to consider the case~$n = 2$, i.e.\ the tensor product~$V \tensor W$.
-      We find in this case for every element~$x$ of~$\glie$, every element~$v$ of~$V$ and every element~$w$ of~$W$ that
+      It sufficies by induction to consider the case~$r = 2$, i.e. the binary tensor product~$M \tensor N$.
+      We find in this case for every element~$x$ of~$\glie$, every element~$m$ of~$M$ and every element~$n$ of~$n$ that
       \begin{align*}
-        x \act y \act (v \tensor w)
+        x \act y \act (m \tensor n)
         &=
-        x \act ( (y \act v) \tensor w
-        + v \tensor (y \act w) )
+        x \act ( (y \act m) \tensor n
+        + m \tensor (y \act n) )
         \\
         &=
-        x \act ( (y \act v) \tensor w)
-        + x \act (v \tensor (y \act w) )
+        x \act ( (y \act m) \tensor n)
+        + x \act (m \tensor (y \act n) )
         \\
         &=
-        (x \act y \act v) \tensor w
-        + (y \act v) \tensor (x \act w)
-        + (x \act v) \tensor (y \act w)
-        + v \tensor (x \act y \act w)
+        (x \act y \act m) \tensor n
+        + (y \act m) \tensor (x \act n)
+        + (x \act m) \tensor (y \act n)
+        + m \tensor (x \act y \act n)
       \end{align*}
       and therefore
       \begin{align*}
         {}&
-        x \act y \act (v \tensor w)
-        - y \act x \act (v \tensor w)
+        x \act y \act (m \tensor n)
+        - y \act x \act (m \tensor n)
         \\
         ={}&
-        (x \act y \act v) \tensor w
-        + v \tensor (x \act y \act w)
-        - (y \act x \act v) \tensor w
-        - v \tensor (y \act x \act w)
+        (x \act y \act m) \tensor n
+        + m \tensor (x \act y \act n)
+        - (y \act x \act m) \tensor n
+        - m \tensor (y \act x \act n)
         \\
         ={}&
-        (x \act y \act v - y \act x \act v) \tensor w
-        + v \tensor (x \act y \act w - y \act x \act w)
+        (x \act y \act m - y \act x \act m) \tensor n
+        + m \tensor (x \act y \act n - y \act x \act n)
         \\
         ={}&
-        ([x,y] \act v) \tensor w
-        + v \tensor ([x,y] \act w) \,.
+        ([x,y] \act m) \tensor n
+        + m \tensor ([x,y] \act n) \,.
       \end{align*}
     \item
-      We find all elements~$x$,~$y$ of~$\glie$, every element~$f$ of~$\Hom_{\kf}(V,W)$ and every vector~$v$ of~$V$ that
+      We find all elements~$x$,~$y$ of~$\glie$, every element~$f$ of~$\Hom_{\kf}(M, N)$ and every element~$m$ of~$M$ that
       \begin{align*}
-        (x \act y \act \phi - y \act x \act \phi)(v)
+        (x \act y \act f - y \act x \act f)(m)
         &=
-        (x \act y \act \phi)(v) - (y \act x \act \phi)(v)
+        (x \act y \act f)(m) - (y \act x \act f)(m)
         \\
         &=
-        -(y \act \phi)(x.v) + (x \act \phi(y.v)
+        -(y \act f)(x \act m) + (x \act f(y \act m)
         \\
         &=
-        \phi(y \act x \act v) - \phi(x \act y \act v)
+        f(y \act x \act m) - f(x \act y \act m)
         \\
         &=
-        -\phi(x \act y \act v - y \act x \act v)
+        -f(x \act y \act m - y \act x \act m)
         \\
         &=
-        -\varphi([x,y] \act v)
+        -f([x,y] \act m)
         \\
         &=
-        ([x.y] \act \varphi)(v)  \,,
+        ([x,y] \act f)(m)  \,,
       \end{align*}
       and therefore
       \[
-        x \act y \act \phi - y \act x \act \phi
+        x \act y \act f - y \act x \act f
         =
-        [x,y] \act \phi \,.
+        [x,y] \act f \,.
       \]
     \item
-      It holds for all element~$x$,~$y$ of~$\glie$ and every vector~$v$ of~$V$ that
+      It holds for all element~$x$,~$y$ of~$\glie$ and every element~$m$ of~$M$ that
       \[
-        x \act y \act v - y \act x \act v
+        x \act y \act m - y \act x \act m
         =
         0 - 0
         =
         0
         =
-        [x,y] \act v \,.
+        [x,y] \act m \,.
       \]
     \item
-      The action of~$\glie$ on~$V$ together with the trivial action of~$\glie$ on~$\kf$ induce an action of~$\glie$ on~$V^*$ as seen above, because~$V^* = \Hom_{\kf}(V, \kf)$.
+      The action of~$\glie$ on~$M$ together with the trivial action of~$\glie$ on~$\kf$ induce an action of~$\glie$ on~$M^*$ as seen above, because~$M^* = \Hom_{\kf}(M, \kf)$.
       This induced action is precisely the desired one.
     \qedhere
   \end{enumerate}
@@ -705,82 +711,78 @@
 
 
 \begin{remark}
-  Let~$V$ be a representation of~$\glie$.
-  The action of~$\glie$ on the dual space~$V^*$ can also be explained in a more systematic way, as we will now explain.
+  Let~$M$ be a representation of~$\glie$.
+  The action of~$\glie$ on the dual space~$M^*$ can also be explained in a more systematic way, as we will now explain.
 
-  Let~$\rho \colon \glie \to \gllie(V)$ be the homomorphism of Lie~algebras corresponding to the given representation.
+  Let~$\rho \colon \glie \to \gllie(M)$ be the homomorphism of Lie~algebras corresponding to the given representation.
   The algebra anti-homomorphism
   \[
-    \End_{\kf}(V)
+    \End_{\kf}(M)
     \to
-    \End_{\kf}(V^*) \,,
+    \End_{\kf}(M^*) \,,
     \quad
-    h
+    f
     \mapsto
-    h^*
+    f^*
   \]
-  is in particular an anti-homomorphism of Lie~algebras from~$\gllie(V)$ to~$\gllie(V^*)$.
+  is in particular an anti-homomorphism of Lie~algebras from~$\gllie(M)$ to~$\gllie(M^*)$.
   The resulting composition
   \[
     \glie
     \xto{\rho}
-    \gllie(V)
+    \gllie(M)
     \to
-    \gllie(V^*)
+    \gllie(M^*)
   \]
   is again an anti-homorphism of Lie~algebras.
-  This anti-homomorphism corresponds to a a right action of~$\glie$ on~$V^*$ given by
+  This anti-homomorphism corresponds to a right action of~$\glie$ on~$M^*$ given by
   \[
     \varphi \act x
     \defined
     \rho(x)^*(\varphi)
     =
     \varphi \circ \rho(x)
-    \qquad
-    \text{for all~$x \in \glie$,~$\phi \in V^*$.}
   \]
+  for all~$x \in \glie$,~$\varphi \in M^*$.
   This action can more explicitely be rewritten as
   \[
-    (\varphi \act x)(v)
+    (\varphi \act x)(m)
     =
-    \varphi(x \act v)
-    \qquad
-    \text{for all~$x \in \glie$,~$\phi \in V^*$,~$v \in V$.}
+    \varphi(x \act m)
   \]
-  This right action of~$\glie$ on~$V^*$ corresponds to a left action of~$\glie$ on~$V$ via the formula
+  for all~$x \in \glie$,~$\varphi \in M^*$,~$m \in M$.
+  This right action of~$\glie$ on~$M^*$ corresponds to a left action of~$\glie$ on~$M$ via the formula
   \[
     x \act \varphi
     \defined
     -\varphi \act x
-    \qquad
-    \text{for all~$x \in \glie$,~$\phi \in V^*$.}
   \]
+  for all~$x \in \glie$,~$\varphi \in M^*$.
   This left action can more explicitely be rewritten as
   \[
-    (x \act \varphi)(v)
+    (x \act \varphi)(m)
     =
-    -\varphi(x \act v)
-    \qquad
-    \text{for all~$x \in \glie$,~$\phi \in V^*$,~$v \in V$.}
+    -\varphi(x \act m)
   \]
-  This is precisely the action of~$\glie$ on~$V^*$ which we have seen in \cref{new representations from old ones}.
+  for all~$x \in \glie$,~$\varphi \in M^*$,~$m \in M$.
+  This is precisely the action of~$\glie$ on~$M^*$ which we have seen in \cref{new representations from old ones}.
 \end{remark}
 
 
 \begin{definition}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$.
-  A \defemph{subrepresentation} of~$V$ is a linear subpace~$U$ of~$V$ such that
+  Let~$M$ be a representation of a Lie~algebra~$\glie$.
+  A \defemph{subrepresentation} of~$M$ is a linear subpace~$N$ of~$M$ such that
   \[
-    x \act u \in U
+    x \act n \in N
     \qquad
-    \text{for all~$x \in \glie$,~$u \in U$.}
+    \text{for all~$x \in \glie$,~$u \in N$.}
   \]
 \end{definition}
 
 
 \begin{remark}
-  Let~$(V, \rho)$ be a representation of a Lie~algebra~$\glie$.
-  A linear subspace~$U$ of~$V$ is a subrepresentation if and only if~$U$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, in the sense that~$\rho(x)(U) \subseteq U$.
+  Let~$(M, \rho)$ be a representation of a Lie~algebra~$\glie$.
+  A linear subspace~$N$ of~$M$ is a subrepresentation if and only if~$N$ is~{\invariant{$\rho(x)$}} for every element~$x$ of~$\glie$, in the sense that~$\rho(x)(N) \subseteq N$.
 \end{remark}
 
 
@@ -788,32 +790,32 @@
   Let~$\glie$ be a Lie~algebra.
   \begin{enumerate}
     \item
-      Let~$V$ be a representation of~$\glie$.
-      The linear subspaces~$0$ and~$V$ are subrepresentations of~$V$.%
+      Let~$M$ be a representation of~$\glie$.
+      The linear subspaces~$0$ and~$M$ are subrepresentations of~$M$.%
     \footnote{
       These two subrepresentations are often called the \defemph{trivial} ones.
-      We will abstain from doing so, as we have already defined the notion of a trivial representation in \cref{trivial representations}.
+      We will abstain from doing so because we will define the notion of a trivial representation in \cref{trivial representations}.
     }
     \item
-      Let~$V$ be a representation of~$\glie$.
-      Let~$U_\lambda$ with~$\lambda \in \lambda$ be a collection of subrepresentations~$U_\lambda$ of~$V$.
-      Then both the intersection~$\bigcap_{\lambda \in \Lambda} U_\lambda$ and the sum~$\sum_{\lambda \in \Lambda} U_\lambda$ are again subrepresentations of~$V$.
+      Let~$M$ be a representation of~$\glie$.
+      Let~$N_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of subrepresentations~$N_\lambda$ of~$M$.
+      Then both the intersection~$\bigcap_{\lambda \in \Lambda} N_\lambda$ and the sum~$\sum_{\lambda \in \Lambda} N_\lambda$ are again subrepresentations of~$M$.
     \item
-      Let~$V_\lambda$ with~$\lambda \in \Lambda$ be a collection of representations of~$\glie$.
-      The direct sum~$\bigoplus_{\lambda \in \Lambda} V_\lambda$ is a subrepresentation of the product~$\prod_{\lambda \in \Lambda} V_\lambda$.
+      Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+      The direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$ is a subrepresentation of the product~$\prod_{\lambda \in \Lambda} M_\lambda$.
     \item
       The subrepresentations of the adjoint representation of~$\glie$ are precisely the ideals of~$\glie$.
     \item
-      Let~$V$ be any representation of~$\glie$.
-      The the linear subspace~$\glie V$ of~$V$ given by
+      Let~$M$ be any representation of~$\glie$.
+      The the linear subspace~$\glie M$ of~$M$ given by
       \[
-        \glie V
+        \glie M
         \defined
         \gen{
-          x \act v
+          x \act m
           \suchthat
           x \in \glie,
-          v \in V
+          m \in M
         }_{\kf}
       \]
       is a subrepresentation of~$\glie$.
@@ -823,25 +825,25 @@
 
 \begin{definition}
   \label{trivial representations}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$.
   \begin{enumerate}
     \item
-      The representation~$V$ is \defemph{trivial}\index{trivial!representation} if every element~$x$ of~$\glie$ acts by multiplication with zero on~$V$.
+      The representation~$M$ is \defemph{trivial}\index{trivial!representation} if every element~$x$ of~$\glie$ acts by multiplication with zero on~$M$.
     \item
-      An element~$v$ of~$V$ is \defemph{\invariant{$\glie$}}\index{invariants}, or simply~\defemph{invariant}, if
+      An element~$m$ of~$M$ is \defemph{\invariant{$\glie$}}\index{invariants}, or simply~\defemph{invariant}, if
       \[
-        x \act v = 0
+        x \act m = 0
         \qquad
-        \text{for every~$x \in \glie$.}
+        \text{for all~$x \in \glie$.}
       \]
-      The set of invariants of~$V$ is denoted by
+      The set of invariants of~$M$ is denoted by
       \[
-        V^{\glie}\glsadd{invariants}
+        M^{\glie}\glsadd{invariants}
         \defined
         \{
-          v \in V
+          m \in M
         \suchthat
-          \text{$x \act v = 0$ for every~$x \in \glie$}
+          \text{$x \act m = 0$ for every~$x \in \glie$}
         \}  \,.
       \]
   \end{enumerate}  
@@ -860,21 +862,21 @@
     \{
       y \in \glie
     \suchthat
-      \text{$x \act y = 0$ for every~$x \in \glie$}
+      \text{$x \act y = 0$ for all~$x \in \glie$}
     \}
     \\
     &=
     \{
       y \in \glie
     \suchthat
-      \text{$\ad(x)(y) = 0$ for every~$x \in \glie$}
+      \text{$\ad(x)(y) = 0$ for all~$x \in \glie$}
     \}
     \\
     &=
     \{
       y \in \glie
     \suchthat
-      \text{$[x,y] = 0$ for every~$x \in \glie$}
+      \text{$[x,y] = 0$ for all~$x \in \glie$}
     \}
     \\
     &=
@@ -885,82 +887,69 @@
 
 \begin{proposition}
   Let~$\glie$ be a Lie~algebra.
-  \begin{enumerate}
-    \item
-      Let~$V$ be a representation of~$\glie$.
-      The space of invariants~$V^{\glie}$ is the largest trivial subrepresentation of~$V$.
-    \item
-      Let~$V$ and~$W$ be two representations of~$\glie$ and let~$f$ be a homomorphism of representations from~$V$ to~$W$.
-      Then~$f$ restricts to a homomorphism of representations from~$V^{\glie}$ to~$W^{\glie}$.
-    \qed
-  \end{enumerate}
+  Let~$M$ be a representation of~$\glie$.
+  The space of invariants~$M^{\glie}$ is the largest trivial subrepresentation of~$M$.
 \end{proposition}
-
-
-\begin{remark}
-  \label{invariants are right adjoint}
-  Let~$\glie$ be a Lie~algebra.
-  Let~$\Tcat$ be the full sucategory of~$\cRep{\glie}$ whose objects are the trivial~\representations{$\glie$}.
-  (This category is isomorphic to~$\cVect{\kf}$.)
-  Let~$T$ be the inclusion functor from~$\Tcat$ to~$\cRep{\kf}$.
-
-  We have a functor~$(-)^{\glie}$ from~$\cRep{\glie}$ to~$\Tcat$.
-  This functor assigns to each~\representation{$\glie$}~$V$ its space of invariants~$V^{\glie}$.
-  To each homomorphism of representations~$f$ from~$V$ to~$W$ it assigns the restriction of~$f$ to a homomorphism of representations from~$V^{\glie}$ to~$W^{\glie}$.
-
-  If~$V$ is any trivial~\representation{$\glie$} and~$W$ is any~\representation{$\glie$} then the inclusion~$i$ from~$W^{\glie}$ to~$W$ is a homomorphism of representations, and it induces an isomorphism of vector spaces
-  \[
-    i_*
-    \colon
-    \Hom_{\glie}(V, W^{\glie})
-    \to
-    \Hom_{\glie}(V, W) \,,
-    \quad
-    f
-    \mapsto
-    i \circ f \,.
-  \]
-  This isomorphism is natural in both~$V$ and~$W$.
-  The functor~$(-)^{\glie}$ is therefore right adjoint to the inclusion functor~$T$.
-\end{remark}
 
 
 \begin{example}[Quotient representations]
   \label{quotient representation}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
-  The quotient vector space~$V/U$ inherits from~$V$ the structure of a~{\representation{$\glie$}} via the action of~$\glie$ on~$V/U$ given by
+  Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+  The quotient vector space~$M/N$ inherits from~$M$ the structure of a~{\representation{$\glie$}} via the action of~$\glie$ on~$M/N$ given by
   \[
-    x \act \class{v}
+    x \act \class{m}
     \defined
-    \class{x \act v}
+    \class{x \act m}
     \qquad
-    \text{for all~$x \in \glie$,~$v \in V$}.
+    \text{for all~$x \in \glie$,~$m \in M$}.
   \]
-  Indeed, we have for any two element~$x$,~$y$ of~$\glie$ every vector~$\class{v}$ of~$V$ that
+
+  Indeed, if two elements~$m_1$ and~$m_2$ of~$M$ result in the same element of~$M/N$ then the difference~$m_1 - m_2$ is contained in the subrepresentation~$N$.
+  The difference
   \[
-    [x,y] \act \class{v}
+    x \act m_1 - x \act m_2
     =
-    \class{[x,y] \act v}
-    =
-    \class{x \act (y \act v) - y \act (x \act v)}
-    =
-    \class{x \act (y \act v)} - \class{y \act (x \act v)}
-    =
-    x \act (y \act \class{v}) - y \act (x \act \class{v}) \,.
+    x \act (m_1 - m_2)
   \]
+  is again contained in~$N$ whence the element~$x \act m_1$ and~$x \act m_2$ become equal in~$M/N$.
+  We have thus a well-defined bilinear map
+  \[
+    \glie \times (M / N)
+    \to
+    M / N \,,
+    \quad
+    (x, \class{m})
+    \mapsto
+    \class{x \act m} \,.
+  \]
+  This is an action of~$\glie$ on~$M$ because we have for any two element~$x$,~$y$ of~$\glie$ and every element~$m$ of~$M$ that
+  \begin{align*}
+    [x,y] \act \class{m}
+    &=
+    \class{[x,y] \act m}
+    \\
+    &=
+    \class{x \act (y \act m) - y \act (x \act m)}
+    \\
+    &=
+    \class{x \act (y \act m)} - \class{y \act (x \act m)}
+    \\
+    &=
+    x \act (y \act \class{m}) - y \act (x \act \class{m}) \,.
+  \end{align*}
   
-  Alternatively, let~$\rho \colon \glie \to \gllie(V)$ be the Lie~algebra homomorphism corresponding to the action of~$\glie$ on~$V$.
-  Then the linear subspace~$U$ of~$V$ is~{\invariant{$\rho(x)$}} for every~$x \in \glie$, and hence the endomorphism~$\rho(x)$ induces an endomorphism
+  Alternatively, let~$\rho$ be the Lie~algebra homomorphism from~$\glie$ to~$\gllie(M)$ corresponding to the action of~$\glie$ on~$M$.
+  Then the linear subspace~$N$ of~$M$ is~{\invariant{$\rho(x)$}} for all~$x \in \glie$, wence the endomorphism~$\rho(x)$ induces an endomorphism
   \[
     \induced{\rho(x)}
     \colon
-    V/U
+    M/N
     \to
-    V/U \,,
+    M/N \,,
     \quad
     \class{v}
     \mapsto
-    \class{\rho(x)(v)}
+    \class{\rho(x)(m)}
   \]
   for every element~$x$ of~$\glie$.
   The resulting map
@@ -969,13 +958,13 @@
     \colon
     \glie
     \to
-    \gllie(V/U) \,,
+    \gllie(M/N) \,,
     \quad
     x
     \mapsto
     \induced{\rho(x)}
   \]
-  given is again a homomorphism of Lie~algebras because
+  is again a homomorphism of Lie~algebras because
   \[
     \induced{\rho}([x,y])
     =
@@ -992,32 +981,32 @@
 
 
 \begin{definition}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
-  The representation~$V/U$\glsadd{quotient representation} from \cref{quotient representation} is the \defemph{quotient representation}\index{quotient!representations}\index{representation!quotient} of~$V$ by~$U$.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+  The representation~$M/N$\glsadd{quotient representation} from \cref{quotient representation} is the \defemph{quotient representation}\index{quotient!representations}\index{representation!quotient} of~$M$ by~$N$.
 \end{definition}
 
 
 \begin{lemma}
-  Let~$\glie$ be a Lie~algebra, let~$V$ be a representation of~$\glie$, and let~$d$ be a natural number.
+  Let~$\glie$ be a Lie~algebra, let~$M$ be a representation of~$\glie$, and let~$d$ be a natural number.
   \begin{enumerate}
     \item
-      The exterior power~$\Exterior^d(V)$ becomes a representation of~$\glie$ via the action
+      The exterior power~$\Exterior^d(M)$ becomes a representation of~$\glie$ via the action
       \[
-        x \act (v_1 \wedge \dotsb \wedge v_d)
+        x \act (m_1 \wedge \dotsb \wedge m_d)
         \defined
         \sum_{i=1}^d
-        v_1 \wedge \dotsb \wedge v_{i-1} \wedge (x \act v_i) \wedge v_{i+1} \wedge \dotsb \wedge v_d
+        m_1 \wedge \dotsb \wedge m_{i-1} \wedge (x \act m_i) \wedge m_{i+1} \wedge \dotsb \wedge m_d
       \]
-      for every element~$x$ of~$\glie$ and all vectors~$v_1, \dotsc, v_n$ of~$V$.
+      for all~$x \in \glie$,~$m_1, \dotsc, m_d \in M$.
     \item
-      The symmetric power~$\Symm^d(V)$ becomes a representation of~$\glie$ via the action
+      The symmetric power~$\Symm^d(M)$ becomes a representation of~$\glie$ via the action
       \[
-        x \act (v_1 \dotsm v_d)
+        x \act (m_1 \dotsm m_d)
         \defined
         \sum_{i=1}^d
-        v_1 \dotsm v_{i-1} (x \act v_i) v_{i+1} \dotsm v_d
+        m_1 \dotsm m_{i-1} (x \act m_i) m_{i+1} \dotsm m_d
       \]
-      for every element~$x$ of~$\glie$ and all vectors~$v_1, \dotsc, v_n$ of~$V$.
+      for every element~$x$ of~$\glie$ and all vectors~$m_1, \dotsc, m_n$ of~$M$.
   \end{enumerate}
 \end{lemma}
 
@@ -1026,111 +1015,109 @@
   \leavevmode
   \begin{enumerate}
     \item
-      The exterior power~$\Exterior^d(V)$ is given by~$\Exterior^d(V) = V^{\tensor d} / U$ where the linear suspace~$U$ of~$V^{\tensor d}$ is given by
+      The exterior power~$\Exterior^d(M)$ is given by~$\Exterior^d(M) = M^{\tensor d} / N$ where the linear suspace~$N$ of~$M^{\tensor d}$ is given by
       \[
-        U
+        N
         =
         \gen{
-          v_1 \tensor \dotsb \tensor v_d
+          m_1 \tensor \dotsb \tensor m_d
         \suchthat
-          \text{$v_1, \dotsc, v_d \in V$,~$v_i = v_j$ for some~$i \neq j$}
+          \text{$m_1, \dotsc, m_d \in M$,~$m_i = m_j$ for some~$i \neq j$}
         }_{\kf} \,.
       \]
-      It sufficies to show that~$U$ is a subrepresentation of~$V^{\tensor d}$.
-      To see this let~$v_1 \tensor \dotsb \tensor v_d$ be a simple tensor in~$V^{\otimes d}$ with~$v_i = v_j$ for some~$i < j$.
+      It sufficies to show that~$N$ is a subrepresentation of~$M^{\tensor d}$.
+      To see this let~$m_1 \tensor \dotsb \tensor m_d$ be a simple tensor in~$M^{\otimes d}$ with~$m_i = m_j$ for some~$i < j$.
       It holds for every element~$x$ of~$\glie$ that
       \[
-        x \act (v_1 \tensor \dotsb \tensor v_d)
+        x \act (m_1 \tensor \dotsb \tensor m_d)
         =
-        \sum_{k=1}^d v_1
-        \tensor \dotsb \tensor v_{k-1}
-        \tensor (x \act v_k)
-        \tensor v_{k+1} \tensor \dotsb \tensor v_d  \,.
+        \sum_{k=1}^d m_1
+        \tensor \dotsb \tensor m_{k-1}
+        \tensor (x \act m_k)
+        \tensor m_{k+1} \tensor \dotsb \tensor m_d  \,.
       \]
-      The summands for~$k \neq i,j$ are again contained in~$U$ as the tensor factors in the~{\howmanyth{$i$}} and~{\howmanyth{$j$}} place remain unchanged.
-      With the vector~$w \defined v_i = v_j$ the two remaining summands may be rewritten as
+      The summands for~$k \neq i,j$ are again contained in~$N$ as the tensor factors in the~{\howmanyth{$i$}} and~{\howmanyth{$j$}} place remain unchanged.
+      With the vector~$n \defined m_i = m_j$ the two remaining summands may be rewritten as
       \begin{align*}
         {}&
-          v_1 \tensor \dotsb
-          \tensor (x \act w)
+          m_1 \tensor \dotsb
+          \tensor (x \act n)
           \tensor \dotsb
-          \tensor w
-          \tensor \dotsb \tensor v_d
+          \tensor n
+          \tensor \dotsb \tensor m_d
         \\
         {}&
-        + v_1 \tensor \dotsb
-          \tensor w
+        + m_1 \tensor \dotsb
+          \tensor n
           \tensor \dotsb
-          \tensor (x \act w)
-          \tensor \dotsb \tensor v_d
+          \tensor (x \act n)
+          \tensor \dotsb \tensor m_d
         \\
         ={}&
-          v_1 \tensor \dotsb
-          \tensor (x \act w + w)
+          m_1 \tensor \dotsb
+          \tensor ( (x \act n) + n )
           \tensor \dotsb
-          \tensor (x \act w + w)
-          \tensor \dotsb \tensor v_d
+          \tensor ( (x \act n) + n )
+          \tensor \dotsb \tensor m_d
         \\
         {}&
-        - v_1 \tensor \dotsb
-          \tensor (x \act w)
+        - m_1 \tensor \dotsb
+          \tensor (x \act n)
           \tensor \dotsb
-          \tensor (x \act w)
-          \tensor \dotsb \tensor v_d
+          \tensor (x \act n)
+          \tensor \dotsb \tensor m_d
         \\
         {}&
-        - v_1 \tensor \dotsb
-          \tensor w
+        - m_1 \tensor \dotsb
+          \tensor n
           \tensor \dotsb
-          \tensor w
-          \tensor \dotsb \tensor v_d  \,.
+          \tensor n
+          \tensor \dotsb \tensor m_d  \,.
       \end{align*}
-      This term is again contained in~$U$.
-      This shows altogether that~$U$ is indeed a subrepresentation of~$V^{\tensor d}$.
+      This term is again contained in~$N$.
+      This shows altogether that~$N$ is indeed a subrepresentation of~$M^{\tensor d}$.
     \item
-      Similarly to before we have to show that the linear subspace~$U$ of~$V^{\tensor d}$ given by
+      Similarly to before we have to show that the linear subspace~$N$ of~$M^{\tensor d}$ given by
       \[
-        U
+        N
         \defined
         \gen{
-          v_1 \tensor \dotsb \tensor v_d
-          - v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)}
+          m_1 \tensor \dotsb \tensor m_d
+          - m_{\sigma(1)} \tensor \dotsb \tensor m_{\sigma(d)}
         \suchthat
-          v_1, \dotsc, v_d \in V
+          m_1, \dotsc, m_d \in M
         }_{\kf}
       \]
-      is a subrepresentation of~$V^{\tensor d}$.
-      We denote the permutation action of the symmetric group~$\Symm_d$ on the tensor power~$V^{\tensor d}$ from the right by
+      is a subrepresentation of~$M^{\tensor d}$.
+      We denote the permutation action of the symmetric group~$\Symm_d$ on the tensor power~$M^{\tensor d}$ from the right by
       \[
         t \act \sigma
-        \qquad
-        \text{for all~$\sigma \in \symm_d$,~$t \in V^{\tensor d}$.}
       \]
+      for all~$\sigma \in \symm_d$,~$t \in M^{\tensor d}$.
       This action is on simple tensors given by
       \[
-        (v_1 \tensor \dotsb \tensor v_d) \act \sigma
+        (m_1 \tensor \dotsb \tensor m_d) \act \sigma
         =
-        v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(d)}
-        \qquad
-        \text{for all~$\sigma \in \symm_d$,~$v_1, \dotsc, v_d \in V$.}
+        m_{\sigma(1)} \tensor \dotsb \tensor m_{\sigma(d)}
       \]
-      We fix any element~$x$ of~$\glie$ and denote for every position~$i = 1, \dotsc, n$ by
+      for all~$\sigma \in \symm_d$,~$m_1, \dotsc, m_d \in M$.
+      We fix any element~$x$ of~$\glie$ and denote for all~$i = 1, \dotsc, n$ by
       \[
         X_i
         \colon
-        V^{\tensor d}
+        M^{\tensor d}
         \to
-        V^{\tensor d}
+        M^{\tensor d}
       \]
       the linear map that is given on simple tensors by
       \[
-        X_i(v_1 \tensor \dotsb \tensor v_d)
+        X_i(m_1 \tensor \dotsb \tensor m_d)
         =
-        v_1 \tensor \dotsb \tensor v_{i-1}
-        \tensor (x \act v_i)
-        \tensor v_{i+1} \tensor \dotsb \tensor v_d
+        m_1 \tensor \dotsb \tensor m_{i-1}
+        \tensor (x \act m_i)
+        \tensor m_{i+1} \tensor \dotsb \tensor m_d
       \]
-      for all vectors~$v_1, \dotsc, v_d$ of~$V$.
+      for all~$m_1, \dotsc, m_d$ of~$M$.
       
       We observe the relation
       \begin{equation}
@@ -1138,26 +1125,25 @@
         X_i( t \act \sigma )
         =
         X_{\sigma(i)}(t) \act \sigma
-        \qquad
-        \text{for all~$\sigma \in \symm_d$ and~$i = 1, \dotsc, n$}.
       \end{equation}
-      Indeed, let us consider a simple tensor~$t = v_1 \tensor \dotsb \tensor v_n$ in~$V^{\otimes d}$, and the modified simple tensor
+      for all~$\sigma \in \symm_d$,~$i = 1, \dotsc, n$.
+      Indeed, let us consider a simple tensor~$t = m_1 \tensor \dotsb \tensor m_n$ in~$M^{\otimes d}$, and the modified simple tensor
       \[
         t'
         \defined
         X_i( t \act \sigma) \act \sigma^{-1} \,.
       \]
-      The simple tensor~$t'$ arises from the simple tensor~$t$ by first permuting the tensor factors according to~$\sigma$, then letting~$x$ act on the currently~\howmanyth{$i$} tensor factor, namely on~$v_{\sigma(i)}$, and then undoing the permutation of the tensor factors.
-      We find that the simple tensors~$t$ and~$t'$ agree, except that in~$t'$ the tensor factor~$v_{\sigma(i)}$ has been acted upon by~$x$.
+      The simple tensor~$t'$ arises from the simple tensor~$t$ by first permuting the tensor factors according to~$\sigma$, then letting~$x$ act on the currently~\howmanyth{$i$} tensor factor, namely on~$m_{\sigma(i)}$, and then undoing the permutation of the tensor factors.
+      We find that the simple tensors~$t$ and~$t'$ agree, except that in~$t'$ the tensor factor~$m_{\sigma(i)}$ has been acted upon by~$x$.
       In other words, we have
       \[
         t' = X_{\sigma(i)}(t) \,.
       \]
       This shows the equality~\eqref{interplay of permutation and multiplication} for simple tensors.
-      It then also holds for arbitrary tensors, i.e. for elements of~$V^{\tensor d}$.
+      It then also holds for arbitrary tensors, i.e. for elements of~$M^{\tensor d}$.
       
       
-      It follows for every element~$t$ of~$V^{\tensor d}$ that
+      It follows for every element~$t$ of~$M^{\tensor d}$ that
       \begin{align*}
         x \act ( t - t \act \sigma )
         &=
@@ -1175,8 +1161,8 @@
         &=
         \sum_{i=1}^n \biggl( X_i(t) - X_i(t) \act \sigma \biggr) \,.
       \end{align*}
-      The summands~$X_i(t) - X_i(t) \act \sigma$ are again contained in~$U$.
-      We have therefore shown that the linear subspace~$U$ is indeed a subrepresentation of~$V^{\tensor d}$.
+      The summands~$X_i(t) - X_i(t) \act \sigma$ are again contained in~$N$.
+      We have therefore shown that the linear subspace~$N$ is indeed a subrepresentation of~$M^{\tensor d}$.
     \qedhere
   \end{enumerate}
 \end{proof}
@@ -1190,115 +1176,163 @@
 
 
 \begin{definition}
-  Let~$V$ und~$W$ be two representations of a~{\liealgebra{$\kf$}}~$\glie$.
+  Let~$M$ und~$N$ be two representations of a~{\liealgebra{$\kf$}}~$\glie$.
   \begin{enumerate}
     \item
-      A~{\linear{$\kf$}} map~$f$ from~$V$ to~$W$ is a \defemph{homomorphism of representations}\index{homomorphism!of representations} if it satisfies the condition
+      A~{\linear{$\kf$}} map~$f$ from~$M$ to~$N$ is a \defemph{homomorphism of representations}\index{homomorphism!of representations} if it satisfies the condition
       \[
-        f(x \act v) = x \act f(v)
+        f(x \act m) = x \act f(m)
         \qquad
-        \text{for all~$x \in \glie$,~$v \in V$.}
+        \text{for all~$x \in \glie$,~$m \in M$.}
       \]
     \item
-      The space of homomorphism from~$V$ to~$W$ is denoted by~$\Hom_{\glie}(V,W)$\glsadd{rep homo}, and for~$V = W$ by~$\End_{\glie}(V)$\glsadd{rep endo}.
+      The space of homomorphism from~$M$ to~$N$ is denoted by~$\Hom_{\glie}(M,N)$\glsadd{rep homo}, and for~$N = M$ by~$\End_{\glie}(M)$\glsadd{rep endo}.
   \end{enumerate}
 \end{definition}
 
 
 \begin{remark}
-  Let~$U$,~$V$,~$W$ be representations of a Lie~algebra~$\glie$ over~$\kf$.
+  Let~$M$,~$N$,~$P$ be representations of a Lie~algebra~$\glie$ over~$\kf$.
   \begin{enumerate}
     \item
-      Let~$\rho_V \colon \glie \to \gllie(V)$ and~$\rho_W \colon \glie \to \gllie(W)$ be the homomorphism of Lie algebras corresponding to the representations~$V$ and~$W$.
-      A~{\linear{$\kf$}} map~$f$ from~$V$ to~$W$ is a homomorphism of representations if and only if
+      Let
       \[
-        f \circ \rho_V(x)
+        \rho_M
+        \colon
+        \glie
+        \to
+        \gllie(M) \,,
+        \quad
+        \rho_N
+        \colon
+        \glie
+        \to
+        \gllie(N)
+      \]
+      be the homomorphism of Lie algebras that correspond to the representations~$M$ and~$N$.
+      A~{\linear{$\kf$}} map~$f$ from~$M$ to~$N$ is a homomorphism of representations if and only if
+      \[
+        f \circ \rho_M(x)
         =
-        \rho_W(x) \circ f
+        \rho_N(x) \circ f
         \qquad
         \text{for all~$x \in \glie$,}
       \]
       i.e.\ if and only if the square diagram
       \[
         \begin{tikzcd}[column sep = large]
-          V
-          \arrow{r}[above]{\rho_V(x)}
+          M
+          \arrow{r}[above]{\rho_M(x)}
           \arrow{d}[left]{f}
           &
-          V
+          M
           \arrow{d}[right]{f}
           \\
-          W
-          \arrow{r}[above]{\rho_W(x)}
+          N
+          \arrow{r}[above]{\rho_N(x)}
           &
-          W
+          N
         \end{tikzcd}
       \]
       commutes for every element~$x$ of~$\glie$.
     \item
-      The identity~$\id_V \colon V \to V$ is a homomorphism of the representation~$V$.
+      The identity map~$\id_M$ is a homomorphism of the representation~$M$.
     \item
-      If~$f \colon U \to V$ and~$g \colon V \to W$ are two composable homomorphism of representations then their composite~$g \circ f$ is a homomorphism of representations from~$U$ to~$V$.
+      If~$f$ is a homomorphism of representations from~$M$ to~$N$ and~$g$ is a homomorphism of representations from~$N$ to~$P$ then the composite~$g \circ f$ is a homomorphism of representations from~$M$ to~$P$.
     \item
-      Let~$f$,~$g$ be two homomorphisms of representations from~$V$ to~$W$.
-      Their sum~$f + g$ is again a homomorphism of representations, and for every scalar~$\lambda$ of~$\kf$ the map~$\lambda f$ is again a homomorphism of representations.
-      This means that~$\Hom_{\glie}(V,W)$ is a~{\linear{$\kf$}} subspace of~$\Hom_{\kf}(V,W)$.
+      Let~$f$ and~$g$ be two homomorphisms of representations from~$M$ to~$N$.
+      Their sum~$f + g$ is again a homomorphism of representations, and for every scalar~$\lambda$ in~$\kf$ the map~$\lambda f$ is again a homomorphism of representations.
+      This means that~$\Hom_{\glie}(M,N)$ is a~{\linear{$\kf$}} subspace of~$\Hom_{\kf}(M,N)$.
     \item
       The above observations show that the representations of~$\glie$ together with the homomorphisms of representations between them form a~(\linear{$\kf$}) category.
       We will denote this category by~$\cRep{\glie}$\glsadd{representation category}.
 
       The class of objects of~$\cRep{\glie}$ is given by the class of representations of~$\glie$.
-      The~\spaces{$\Hom$} of~$\cRep{\glie}$ are given by~$\Hom_{\cRep{\glie}}(V, W) = \Hom_{\glie}(V,W)$ for any two representations~$V$,~$W$ of~$\glie$.
+      The~\spaces{$\Hom$} of~$\cRep{\glie}$ are given by~$\Hom_{\cRep{\glie}}(M, N) = \Hom_{\glie}(M,N)$ for any two representations~$M$,~$N$ of~$\glie$.
       The composition of morphisms in~$\cRep{\glie}$ is the usual composition of functions.
-      The identity morphism of any represenation~$V$ of~$\glie$ is the usual identity function.
+      The identity morphism of any represenation~$M$ of~$\glie$ is the usual identity function.
     \item
       The notions of an \defemph{isomorphism}\index{isomorphism!of representations} \defemph{monomorphism}\index{monomorphism of representations}, \defemph{epimorphism}\index{epimorphism of representations}, \defemph{endomorphism}\index{endomorphism of representations} and \defemph{automorphism}\index{automorphism of representations} are defined in the usual category-theoretic way.
     \item
-      If~$f$ is a bijective homomorphism of representations from~$V$ to~$W$ then its inverse~$f^{-1}$ is again a homomorphism of representations.
+      If~$f$ is a bijective homomorphism of representations from~$M$ to~$N$ then its inverse~$f^{-1}$ is again a homomorphism of representations.
       Indeed, we have
       \[
-        f^{-1}(x \act v)
+        f^{-1}(x \act m)
         =
-        f^{-1}(x \act f(f^{-1}(v)))
+        f^{-1}(x \act f(f^{-1}(m)))
         =
-        f^{-1}(f(x \act f^{-1}(v)))
+        f^{-1}(f(x \act f^{-1}(m)))
         =
-        x \act f^{-1}(v)
+        x \act f^{-1}(m)
       \]
-      for all~$x \in \glie$ and~$v \in V$. 
+      for all~$x \in \glie$,~$m \in M$. 
       This shows that a homomorphism of representations is an isomorphism if and only if it bijective.
     \item
-      One can show in the usual way by using kernels and cokernels -- which are again representations, as we will see below -- that the epimorphisms of representations are precisely the surjective homomorphisms and the monomorphisms of representations are precisely the injective homomorphisms.
+      One can show in the usual way by using kernels and cokernels -- which are again representations, as we will see below -- that the epimorphisms of representations are precisely the surjective homomorphisms, and the monomorphisms of representations are precisely the injective homomorphisms.
   \end{enumerate}
 \end{remark}
 
 
 \begin{lemma}
-  Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$ let~$f$ be a homomorphism of representations from~$V$ to~$W$.
-  Then the kernel of~$f$ is a subrepresentation of~$V$ while the image of~$f$ is a subrepresentation~$W$.
+  Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+  Then the kernel of~$f$ is a subrepresentation of~$M$ while the image of~$f$ is a subrepresentation~$N$.
   \qed
 \end{lemma}
 
 
 \begin{remark}
   \label{homomorphisms of representations as invariants}
-  Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$.
-  A linear map~$f$ from~$V$ to~$W$ is a homomorphism of representations if and only if it is invariant under the induced action of~$\glie$ on~$\Hom_{\kf}(V,W)$.
+  Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$.
+  A linear map~$f$ from~$M$ to~$N$ is a homomorphism of representations if and only if it is invariant under the induced action of~$\glie$ on~$\Hom_{\kf}(M,N)$.
   Indeed, we have that
   \begin{align*}
         {}& \text{$f$ is a homomorphism}  \\
-    \iff{}& \text{$f(x \act v) = x \act f(v)$ for all~$x \in \glie$,~$v \in V$}  \\
-    \iff{}& \text{$f(x \act v) - x \act f(v) = 0$ for all~$x \in \glie$,~$v \in V$}  \\
-    \iff{}& \text{$(x \act f)(v) = 0$ for all~$x \in \glie$,~$v \in V$} \\
-    \iff{}& \text{$x \act f = 0$ for every~$x \in \glie$}  \\
+    \iff{}& \text{$f(x \act m) = x \act f(m)$ for all~$x \in \glie$,~$m \in M$}  \\
+    \iff{}& \text{$f(x \act m) - x \act f(m) = 0$ for all~$x \in \glie$,~$m \in M$}  \\
+    \iff{}& \text{$(x \act f)(m) = 0$ for all~$x \in \glie$,~$m \in M$} \\
+    \iff{}& \text{$x \act f = 0$ for all~$x \in \glie$}  \\
     \iff{}& \text{$f$ is invariant.}
   \end{align*}
-  This means overall that
+  This shows overall that
   \[
-    \Hom_{\glie}(V,W)
+    \Hom_{\glie}(M,N)
     =
-    \Hom_{\kf}(V,W)^{\glie} \,.
+    \Hom_{\kf}(M,N)^{\glie} \,.
   \]
+\end{remark}
+
+
+\begin{proposition} 
+  Let~$M$ and~$N$ be two representations of~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+  Then~$f$ restricts to a homomorphism of representations from~$M^{\glie}$ to~$N^{\glie}$.
+\end{proposition}
+
+
+\begin{remark}
+  \label{invariants are right adjoint}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$\Tcat$ be the full sucategory of~$\cRep{\glie}$ whose objects are the trivial~\representations{$\glie$}.
+  (This category is isomorphic to~$\cVect{\kf}$.)
+  Let~$T$ be the inclusion functor from~$\Tcat$ to~$\cRep{\kf}$.
+
+  We have a functor~$(-)^{\glie}$ from~$\cRep{\glie}$ to~$\Tcat$.
+  This functor assigns to each~\representation{$\glie$}~$M$ its space of invariants~$M^{\glie}$.
+  To each homomorphism of representations~$f$ from~$M$ to~$N$ it assigns the restriction of~$f$ to a homomorphism of representations from~$M^{\glie}$ to~$N^{\glie}$.
+
+  If~$M$ is any trivial~\representation{$\glie$} and~$N$ is any~\representation{$\glie$} then the inclusion~$i$ from~$N^{\glie}$ to~$N$ is a homomorphism of representations, and it induces an isomorphism of vector spaces
+  \[
+    i_*
+    \colon
+    \Hom_{\glie}(M, N^{\glie})
+    \to
+    \Hom_{\glie}(M, N) \,,
+    \quad
+    f
+    \mapsto
+    i \circ f \,.
+  \]
+  This isomorphism is natural in both~$M$ and~$N$.
+  The functor~$(-)^{\glie}$ is therefore right adjoint to the inclusion functor~$T$.
 \end{remark}
 
 
@@ -1307,178 +1341,180 @@
   Let~$\glie$ be a Lie algebra.
  \begin{enumerate}
     \item
-      Let~$V$ be a representation of~$\glie$.
+      Let~$M$ be a representation of~$\glie$.
       The natural isomorphism of vector spaces
       \[
-        \kf \tensor V
+        \kf \tensor M
         \to
-        V \,,
+        M \,,
         \quad
-        \lambda \tensor v
+        \lambda \tensor m
         \mapsto
-        \lambda v
+        \lambda m
       \]
       is already a natural isomorphism of representations.
     \item
-      Let~$V$ and~$W$ be two representations of~$\glie$.
-      For every homomorphism of representations~$f$ from~$V$ to~$W$ the dual linear map
+      Let~$M$ be a representation of~$\glie$.
+      The natural isomorphism of vector spaces
+      \[
+        \Hom_{\kf}( \kf, M )
+        \to
+        M \,,
+        \quad
+        f
+        \mapsto
+        f(1)
+      \]
+      is already a natural isomorphism of representations.
+    \item
+      Let~$M$ and~$N$ be two representations of~$\glie$.
+      For every homomorphism of representations~$f$ from~$M$ to~$N$ the dual linear map
       \[
         f^*
         \colon
-        W^*
+        N^*
         \to
-        V^* \,,
+        M^* \,,
         \quad
-        h
+        \varphi
         \mapsto
-        h \circ f
+        \varphi \circ f
       \]
       is again a homomorphism of representations.
     \item
-      Let more generally~$U$,~$V$,~$W$ be three representations of~$\glie$.
-      For every homomorphism of representations~$f$ from~$U$ to~$V$ the linear map
+      Let more generally~$M$,~$N$,~$P$ be three representations of~$\glie$.
+      For every homomorphism of representations~$f$ from~$M$ to~$N$ the linear map
       \begin{alignat*}{2}
         f^*
         \colon
-        \Hom_{\kf}(V,W)
+        \Hom_{\kf}(N,P)
         &\to
-        \Hom_{\kf}(U,W) \,,
+        \Hom_{\kf}(M,P) \,,
         &
         \quad
-        h
+        g
         &\mapsto
-        h \circ f 
-      \intertext{is again a homomorphism of representations, and for every homomomorphism of representation~$g$ from~$V$ to~$W$ the linear map}
-        g_*
+        g \circ f 
+      \intertext{is again a homomorphism of representations, and the linear map}
+        f_*
         \colon
-        \Hom_{\kf}(U,V)
+        \Hom_{\kf}(P,M)
         &\to
-        \Hom_{\kf}(U,W) \,,
+        \Hom_{\kf}(P,N) \,,
         &
         \quad
-        h
+        g
         &\mapsto
-        g \circ h
+        f \circ g
       \end{alignat*}
       is again a homomorphisms of representations.
     \item
-      Let~$V$ and~$W$ be two representations of~$\glie$.
+      Let~$M$ and~$N$ be two representations of~$\glie$.
       The natural linear map
       \[
-        \Phi_1
-        \colon
-        V^* \tensor W
+        M^* \tensor N
         \to
-        \Hom_{\kf}(V,W) \,,
+        \Hom_{\kf}(M,N) \,,
         \quad
         \varphi \tensor w
         \mapsto
-        (v \mapsto \varphi(v) w)
+        (m \mapsto \varphi(m) w)
       \]
       is a natural homomorphism of representations.
-      If one (or both) of the representations~$V$ and~$W$ is finite-dimensional then~$\Phi_1$ is already a natural isomorphism of representations.
+      If one (or both) of the representations~$M$ and~$N$ is finite-dimensional then this natural homomorphism is already a natural isomorphism.
     \item
-      Let~$V^1_1, \dotsc, V^1_{n_1}$ up to~$V^t_1, \dotsc, V^t_{n_t}$ be finitely many collections of finitely many representations of~$\glie$.
+      Let~$M^1_1, \dotsc, M^1_{r_1}$ up to~$M^s_1, \dotsc, M^s_{r_s}$ be finitely many collections of finitely many representations of~$\glie$.
       The natural isomorphism of vector spaces
       \begin{align*}
-        \Phi_2
-        \colon
         \bigl(
-          V^1_1 \tensor \dotsb \tensor V^1_{n_1}
+          M^1_1 \tensor \dotsb \tensor M^1_{r_1}
         \bigr)
         \tensor
         \dotsb
         \tensor
         \bigl(
-          V^t_1 \tensor \dotsb \tensor V^t_{n_t}
+          M^s_1 \tensor \dotsb \tensor M^s_{r_s}
         \bigr)
         &\to
-        V^1_1 \tensor \dotsb \tensor V^t_{n_t}
+        M^1_1 \tensor \dotsb \tensor M^s_{r_s}
       \shortintertext{given by}
-        (v^1_1 \tensor \dotsb \tensor v^1_{n_1})
+        (m^1_1 \tensor \dotsb \tensor m^1_{r_1})
         \tensor
         \dotsb
         \tensor
-        (v^t_1 \tensor \dotsb \tensor v^t_{n_t})
+        (m^s_1 \tensor \dotsb \tensor m^s_{r_s})
         &\mapsto
-        v^1_1 \tensor \dotsb \tensor v^t_{n_t}
+        m^1_1 \tensor \dotsb \tensor m^s_{r_s}
       \end{align*}
-      for all~$v^i_j \in V$ is already a natural isomorphism of representations.
+      for all~$m^i_j \in M^i_j$ is already a natural isomorphism of representations.
     \item
-      Let~$V_\lambda$ with~$\lambda \in \Lambda$ be a collection of representations of~$\glie$ and let~$W$ be another representations of~$\glie$.
+      Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$ and let~$N$ be another representation of~$\glie$.
       The natural isomorphism of vector spaces
-      \begin{align*}
-        \Phi_4
-        \colon
+      \begin{alignat*}{2}
         \Biggl(
           \bigoplus_{\lambda \in \Lambda}
-          V_\lambda
+          M_\lambda
         \Biggr)
         \tensor
-        W
+        N
         &\to
         \bigoplus_{\lambda \in \Lambda}
-        (V_\lambda \tensor W) \,,
-        \\
-        (v_\lambda)_\lambda \tensor w
+        ( M_\lambda \tensor N ) \,,
+        &\qquad
+        (m_\lambda)_\lambda \tensor n
         &\mapsto
-        (v_\lambda \tensor w)_\lambda
-      \end{align*}
+        (m_\lambda \tensor n)_\lambda
+      \intertext{
       is already a natural isomorphism of representations.
-
-      Let similarly~$V$ be a representation of~$\glie$ and let~$W_\lambda$ with~$\lambda \in \Lambda$ be a collection of representations of~$\glie$.
+      Let similarly~$M$ be a representation of~$\glie$ and let~$N_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
       Then the natural isomorphism of vector spaces
-      \begin{align*}
-        \Phi_5
-        \colon
-        V
+      }
+        M
         \tensor
         \Biggl(
           \bigoplus_{\lambda \in \Lambda}
-          W_\lambda
+          N_\lambda
         \Biggr)
         &\to
         \bigoplus_{\lambda \in \Lambda}
-        V \tensor W_\lambda \,,
-        \\
-        v \tensor (w_\lambda)_\lambda
-        \mapsto
-        (v \tensor w_\lambda)_\lambda
-      \end{align*}
+        ( M \tensor N_\lambda ) \,,
+        &\qquad
+        m \tensor (n_\lambda)_\lambda
+        &\mapsto
+        (m \tensor n_\lambda)_\lambda
+      \end{alignat*}
       is already a natural isomorphism of representations.
     \item
-      Let~$V_1, \dotsc, V_n$ be representations of~$\glie$ and let~$\sigma \in \symm_n$ be any permuation.
+      Let~$M_1, \dotsc, M_r$ be representations of~$\glie$ and let~$\sigma \in \symm_r$ be any permuation.
       The natural isomorphism of vector spaces
       \begin{align*}
-        \Phi_6
-        \colon 
-        V_1 \tensor \dotsb \tensor V_n
+        M_1 \tensor \dotsb \tensor M_r
         &\to
-        V_{\sigma(1)} \tensor \dotsb \tensor V_{\sigma(n)} \,,
+        M_{\sigma(1)} \tensor \dotsb \tensor M_{\sigma(r)} \,,
         \\
-        v_1 \tensor \dotsb \tensor v_n
+        m_1 \tensor \dotsb \tensor m_r
         &\mapsto
-        v_{\sigma(1)} \tensor \dotsb \tensor v_{\sigma(n)}
+        m_{\sigma(1)} \tensor \dotsb \tensor m_{\sigma(r)}
       \end{align*}
       is already a natural isomorphism of representations.
     \item
-      Let~$V_1, \dotsc, V_n$ and~$W_1, \dotsc, W_n$ be representations of~$\glie$.
-      For every index~$i = 1, \dotsc, n$ let
+      Let~$M_1, \dotsc, M_r$ and~$N_1, \dotsc, N_r$ be representations of~$\glie$.
+      For all~$i = 1, \dotsc, n$ let
       \[
-        f_i \colon V_i \to W_i
+        f_i \colon M_i \to N_i
       \]
       be a homomorphisms of representations.
       Then the linear map
       \begin{align*}
-        f_1 \tensor \dotsb \tensor f_n
+        f_1 \tensor \dotsb \tensor f_r
         \colon
-        V_1 \tensor \dotsb \tensor V_n
+        M_1 \tensor \dotsb \tensor M_r
         &\to
-        W_1 \tensor \dotsb \tensor W_n \,,
+        N_1 \tensor \dotsb \tensor N_r \,,
         \\
-        v_1 \tensor \dotsb \tensor v_n
+        m_1 \tensor \dotsb \tensor m_n
         &\mapsto
-        f(v_1) \tensor \dotsb \tensor f(v_n)
+        f(m_1) \tensor \dotsb \tensor f(m_n)
       \end{align*}
       is again a homomorphism of representations.
     \qed
@@ -1486,55 +1522,201 @@
 \end{proposition}
 
 
+\begin{proposition}
+  \label{checking enriched tensor hom adjunction}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$M$,~$N$ and~$P$ be representations of~$\glie$.
+  \begin{enumerate}
+    \item
+      The natural isomorphism of vector spaces
+      \[
+        f
+        \colon
+        \Hom_{\kf}( M \otimes_{\kf} N, P )
+        \cong
+        \Hom_{\kf}( M, \Hom_{\kf}(N, P) )
+      \]
+      is already a natural isomorphism of representations.
+    \item
+      The above isomorphism restricts to a natural isomorphism of vector spaces
+      \[
+        \Hom_{\glie}( M \otimes_{\kf} N, P )
+        \cong
+        \Hom_{\glie}( M, \Hom_{\kf}(N, P) ) \,.
+      \]
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have
+      \begin{align*}
+        f( (x \act \beta) )(m)(n)
+        &=
+        (x \act \beta)(m \otimes n)
+        \\
+        &=
+        x \act \beta(m \otimes n)
+        - \beta( x \act (m \otimes n) )
+        \\
+        &=
+        x \act \beta(m \otimes n)
+        - \beta( (x \act m) \otimes n )
+        - \beta( m \otimes (x \act n) )
+      \end{align*}
+      as well es
+      \begin{align*}
+        ( x \act f(\beta) )(m)(n)
+        &=
+        ( x \act f(\beta)(m) - f(\beta)(x \act m) )(n)
+        \\
+        &=
+        ( x \act f(\beta)(m) )(n)
+        - f(\beta)(x \act m)(n)
+        \\
+        &=
+        x \act f(\beta)(m)(n)
+        - f(\beta)(m)(x \act n)
+        - f(\beta)(x \act m)(n)
+        \\
+        &=
+        x \act \beta(m \otimes n)
+        - \beta( m \otimes (x \act n) )
+        - \beta( (x \act m) \otimes n )
+      \end{align*}
+      for all~$x \in \glie$,~$\beta \in \Hom_{\kf}(M \otimes N, P)$,~$m \in M$,~$n \in N$.
+    \item
+      By applying~$(-)^{\glie}$ to the isomorphism
+      \[ 
+        \Hom_{\kf}( M \otimes_{\kf} N, P )
+        \cong
+        \Hom_{\kf}( M, \Hom_{\kf}(N, P) )
+      \]
+      we get a restricted isomorphism
+      \[ 
+        \Hom_{\glie}( M \otimes_{\kf} N, P )
+        \cong
+        \Hom_{\glie}( M, \Hom_{\kf}(N, P) ) \,
+      \]
+      as desired.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+  \label{enriched tensor hom adjunction}
+  It follows from \cref{checking enriched tensor hom adjunction} that for any representation~$M$ of~$\glie$ the functor
+  \[
+    (-) \otimes_{\kf} M
+    \colon
+    \cRep{\glie}
+    \to
+    \cRep{\glie}
+  \]
+  is left adjoint to the functor
+  \[
+    \Hom_{\kf}(M, -)
+    \colon
+    \cRep{\glie}
+    \to
+    \cRep{\glie} \,.
+  \]
+\end{remark}
+
+
+\begin{corollary}
+  \label{invariants via internal hom}
+  Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+  The map
+  \[
+    \Hom_{\glie}(\kf, M)
+    \to
+    M^{\glie} \,,
+    \quad
+    f
+    \mapsto
+    f(1)
+  \]
+  is a well-defined isomorphism of vector spaces.
+\end{corollary}
+
+
+\begin{proof}
+  The isomorphism of vector spaces
+  \[
+    \Hom_{\kf}(\kf, M)
+    \to
+    M \,,
+    \quad
+    f
+    \mapsto
+    f(1)
+  \]
+  is already an isomorphism of representations and thus restricts to an isomorphism
+  \[
+    \Hom_{\glie}(\kf, M)
+    =
+    \Hom_{\glie}(\kf, M)^{\glie}
+    \to
+    M^{\glie} \,,
+  \]
+  as desired.
+\end{proof}
+
+
 \begin{proposition}[Homomorphism theorem]
   \label{homomorphism theorem!for representations}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
   \begin{enumerate}
     \item
       The canonical projction
       \[
         p
         \colon
-        V
+        M
         \to
-        V/U \,,
+        M/N \,,
         \quad
-        v
+        m
         \mapsto
-        \class{v}
+        \class{m}
       \]
       is a homomorphism of representations. 
   \end{enumerate}
-  Let~$W$ be another representation of~$\glie$.
+  Let~$N$ be another representation of~$\glie$.
   \begin{enumerate}[resume*]
     \item
-      Let~$g$ be a homomorphism of representations from~$V/U$ to~$W$.
-      The composite~$g \circ p$ is a homomorphism of representations from~$V$ to~$W$ with~$U \subseteq \ker(g \circ \pi)$.
+      Let~$g$ be a homomorphism of representations from~$M/N$ to~$N$.
+      The composite~$g \circ p$ is a homomorphism of representations from~$M$ to~$N$ with~$N \subseteq \ker(g \circ \pi)$.
     \item
-      Let~$f$ be a homomorphism of representations from~$V$ to~$W$.
-      The homomorphism~$f$ factors through a homomorphism of representations~$g$ from~$V/U$ to~$W$ that makes the diagram
+      Let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+      The homomorphism~$f$ factors through a homomorphism of representations~$g$ from~$M/N$ to~$N$ that makes the diagram
       \[
         \begin{tikzcd}
-          V
+          M
           \arrow{r}[above]{f}
           \arrow{d}[left]{p}
           &
-          W
+          N
           \\
-          V/U
+          M/N
           \arrow[dashed]{ur}[below right]{g}
           &
           {}
         \end{tikzcd}
       \]
-      commute if and only if~$U \subseteq \ker(f)$.
+      commute if and only if~$N \subseteq \ker(f)$.
       The homomorphism~$g$ is unique and it is given by
       \[
-        g(\class{v}) = f(v)
+        g(\class{m}) = f(m)
         \qquad
-        \text{for every~$v \in V$.}
+        \text{for every~$m \in M$.}
       \]
-      Its image and kernel are given by~$\im(g) = \im(f)$ and~$\ker(g) = \ker(f)/U$.
+      Its image and kernel are given by~$\im(g) = \im(f)$ and~$\ker(g) = \ker(f)/N$.
     \qed
   \end{enumerate}
 \end{proposition}
@@ -1542,44 +1724,44 @@
 
 \begin{corollary}[Isomorphism theorems]
   \index{isomorphism theorems!for representations}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$.
   \begin{enumerate}
     \item
-      Let~$W$ be another representation of~$\glie$ and let~$f$ be a homomorphism of representations from~$V$ to~$W$.
+      Let~$N$ be another representation of~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
       The homomorphism~$f$ induces a unique well-defined isomorphism of representations
       \[
-        V/{\ker(f)}
+        M/{\ker(f)}
         \to
         \im(f) \,,
         \quad
-        \class{v}
+        \class{m}
         \mapsto
-        f(v)  \,.
+        f(m)  \,.
       \]
     \item
-      Let~$U$ and~$W$ be two subrepresentations of~$V$ such that~$U$ is contained in~$W$.
-      Then~$W/U$ is a subrepresentation of~$V/U$ and the natural isomorphism of vector spaces
+      Let~$N$ and~$P$ be two subrepresentations of~$M$ such that~$N$ is contained in~$P$.
+      Then~$N/P$ is a subrepresentation of~$M/P$ and the natural isomorphism of vector spaces
       \[
-        (V/U) / (W/U)
+        (M/P) / (N/P)
         \to
-        V/W \,,
+        M/N \,,
         \quad
-        \class{v}
+        \class{\class{m}}
         \mapsto
-        \class{v}
+        \class{m}
       \]
       is already a natural isomorphism of representations.
     \item
-      Let~$U$ and~$W$ be subrepresentations of~$V$.
-      Then~$W$ is a subrepresentation of the sum~$U+W$, the intersection~$U \cap W$ is a subrepresentation of~$U$, and the natural isomorphism of vector spaces
+      Let~$N$ and~$P$ be subrepresentations of~$M$.
+      Then~$P$ is a subrepresentation of the sum~$N+P$, the intersection~$N \cap P$ is a subrepresentation of~$P$, and the natural isomorphism of vector spaces
       \[
-        U/(U \cap W)
+        N/(N \cap P)
         \to
-        (U + W)/W  \,,
+        (N + P)/P  \,,
         \quad
-        \class{u}
+        \class{n}
         \mapsto
-        \class{u}
+        \class{n}
       \]
       is already a natural isomorphism of representations.
   \end{enumerate}
@@ -1587,12 +1769,12 @@
 
 
 \begin{lemma}
-  Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$V$ to~$W$.
+  Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
   \begin{enumerate}
     \item
-      If~$U$ is a subrepresentation of~$V$ then the image~$f(U)$ is a subrepresentation of~$W$.
+      If~$P$ is a subrepresentation of~$M$ then the image~$f(P)$ is a subrepresentation of~$N$.
     \item
-      If~$U$ is a subrepresentation of~$V$ then the preimage~$f^{-1}(U)$ is a subrepresentation of~$W$.
+      If~$P$ is a subrepresentation of~$N$ then the preimage~$f^{-1}(P)$ is a subrepresentation of~$M$.
     \qed
   \end{enumerate}
 \end{lemma}
@@ -1600,25 +1782,33 @@
 
 \begin{proposition}[Correspondence theorem]
   \label{correspondence theorem!for representations}
-  Let~$V$ be a represenation of a Lie~algebra~$\glie$ and let~$U$ be a subrepresentation of~$V$.
-  Let~$p$ the canonical projection from~$V$ to~$V/U$.
-  
-  If~$W$ is a subrepresentation of~$V$ which contains~$U$ then the quotient~$W/U$ is a subrepresentation of~$V/U$.
-  This construction results in a {\onetoonetext} correspondence
-  \begin{align*}
-    \{ \text{subrepresentations~$W$ of~$V$which~$U$} \}
-    &\longleftrightarrow
-    \{ \text{subrepresentations of~$V/U$} \}  \,,
-    \\
-    W
-    &\mapsto
-    W/U \,,
-    \\
-    p^{-1}(W')
-    &\mapsfrom
-    W'  \,.
-  \end{align*}
-  If~$W$ is a subrepresentation of~$V$ containing~$U$ then it holds for the associated subrepresentation~$W/U$ of~$V/U$ that~$(V/U)/(W/U) \cong V/W$.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+  Let~$p$ the canonical projection from~$M$ to~$M/N$.
+  \begin{enumerate}
+    \item
+      If~$P$ is a subrepresentation of~$M$ which contains~$N$ then the quotient~$P/N$ is a subrepresentation of~$M/N$.
+      This construction results in a {\onetoonetext} correspondence
+      \begin{align*}
+        \begin{tabular}{@{}c@{}}
+          subrepresentations~$P$ of~$M$ \\
+          which contain~$N$
+        \end{tabular}
+        &\longleftrightarrow
+        \{ \text{subrepresentations of~$M/N$} \}  \,,
+        \\
+        P
+        &\mapsto
+        P/N \,,
+        \\
+        p^{-1}(Q)
+        &\mapsfrom
+        Q  \,.
+      \end{align*}
+    \item
+      Let~$P$ be a subrepresentation of~$M$ containing~$N$.
+      Then it holds for the corresponding subrepresentation~$P/N$ of~$M/N$ that~$(M/N) / (P/N) \cong M/P$ by the third isomorphism theorem.
+    \qed
+  \end{enumerate}
 \end{proposition}
 
 
@@ -1629,19 +1819,19 @@
 
 
 \begin{definition}
-  Let~$V$ be a representation of a Lie~algebra~$\glie$.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$.
   \begin{enumerate}
     \item
-      The representation~$V$ is \defemph{irreducible}\index{irreducible representation}\index{representation!irreducible} or \defemph{simple}\index{simple!representation}\index{representation!simple} if it is nonzero and its only subrepresentations are~$0$ and itself.
+      The representation~$M$ is \defemph{irreducible}\index{irreducible representation}\index{representation!irreducible} or \defemph{simple}\index{simple!representation}\index{representation!simple} if it is nonzero and its only subrepresentations are~$0$ and itself.
     \item
-      The representation~$V$ is \defemph{indecomposable}\index{indecomposable representation}\index{representation!indecomposable} if it is nonzero and it does not admit any decomposition~$V = U_1 \oplus U_2$ into subrepresentations~$U_1$ and~$U_2$ apart from the two decompositions~$V = V \oplus 0$ and~$V = 0 \oplus V$.
-      If~$V$ is not indecomposable then it is \defemph{decomposable}\index{decomposable representation}\index{representation!decomposable}
+      The representation~$M$ is \defemph{indecomposable}\index{indecomposable representation}\index{representation!indecomposable} if it is nonzero and it does not admit any decomposition~$M = N_1 \oplus N_2$ into subrepresentations~$N_1$ and~$N_2$ apart from the two decompositions~$M = M \oplus 0$ and~$M = 0 \oplus M$.
+      If~$M$ is not indecomposable then it is \defemph{decomposable}\index{decomposable representation}\index{representation!decomposable}
     \item
-      The representation~$V$ is~\defemph{completely reducible}\index{completely reducible representation}\index{representation!completely reducible} or~\defemph{semisimple}\index{semisimple!representation}\index{representation!semisimple} if it admits a decomposition
+      The representation~$M$ is~\defemph{completely reducible}\index{completely reducible representation}\index{representation!completely reducible} or~\defemph{semisimple}\index{semisimple!representation}\index{representation!semisimple} if it admits a decomposition
       \[
-        V = \bigoplus_{i \in I} U_i
+        M = \bigoplus_{i \in I} N_i
       \]
-      into irreducible subrepresentations~$U_i$.
+      into irreducible subrepresentations~$N_i$.
   \end{enumerate}
 \end{definition}
 
@@ -1670,21 +1860,21 @@
 
 
 \begin{proposition}[Characterization of semisimple representations]
-  Let~$V$ be a representation of a Lie~algebra~$\glie$.
-  The following conditions on~$V$ are equivalent.
+  Let~$M$ be a representation of a Lie~algebra~$\glie$.
+  The following conditions on~$M$ are equivalent.
   \begin{equivalenceslist}
     \item
-      The representation~$V$ is semisimple, i.e.~$V$ admits a decomposition~$V = \bigoplus_{i \in I} U_i$ into some irreducible subrepresentations~$U_i$ of~$V$.
+      The representation~$M$ is semisimple, i.e.~$M$ admits a decomposition~$M = \bigoplus_{i \in I} N_i$ into some irreducible subrepresentations~$N_i$ of~$M$.
     \item
-      The representation~$V$ can be written as a (not necessarily direct) sum~$V = \sum_{i \in I} U_i$ for some irreducible subrepresentations~$U_i$ of~$V$.
+      The representation~$M$ can be written as a (not necessarily direct) sum~$M = \sum_{i \in I} N_i$ for some irreducible subrepresentations~$N_i$ of~$M$.
     \item
-      Every subrepresentation~$U$ of~$V$ admits a direct complement, i.e.\ there exists a subrepresentation~$W$ of~$V$ with~$V = U \oplus W$.
+      Every subrepresentation~$N$ of~$M$ admits a direct complement, i.e.\ there exists a subrepresentation~$P$ of~$M$ with~$M = N \oplus P$.
   \end{equivalenceslist}
 \end{proposition}
 
 
 \begin{proof}
-  The proof is the same as for semisimple modules over a~\algebra{$\kf$}, which we won’t repeat here.
+  The proof is the same as for semisimple modules over a ring, which we won’t repeat here.
 \end{proof}
 
 
@@ -1705,7 +1895,7 @@
       Any nonzero finite-dimensional representation of~$\glie$ contains an irreducible subrepresentation.
       Indeed, we can take any subrepresentation of minimal nonzero dimension.
     \item
-      There exists a finite-dimensional irreducible representation~$V$ for~$\glie$.
+      There exists a finite-dimensional irreducible representation~$M$ for~$\glie$.
       Here we can take the one-dimensional trivial representation.
   \end{enumerate}
 \end{remark}
@@ -1713,20 +1903,20 @@
 
 \begin{proposition}[Schur]
   \index{Schur’s Lemma}
-  Let~$V$ and~$W$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$V$ to~$W$.
+  Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
   \begin{enumerate}
     \item
-      If~$V$ is irreducible then either~$f$ is injective or~$f = 0$, but not both.
+      If~$M$ is irreducible then either~$f$ is injective or~$f = 0$, but not both.
     \item
-      If~$W$ is irreducible then either~$f$ is surjective or~$f = 0$, but not both.
+      If~$N$ is irreducible then either~$f$ is surjective or~$f = 0$, but not both.
     \item
-      If both~$V$ and~$W$ are irreducible then either~$f$ is bijective or~$f = 0$, but not both.
+      If both~$M$ and~$N$ are irreducible then either~$f$ is bijective or~$f = 0$, but not both.
     \item
-      If~$V$ is irreducible then the endomorphism algebra~$\End_{\glie}(V)$ is a skew field extension of~$\kf$.
+      If~$M$ is irreducible then the endomorphism algebra~$\End_{\glie}(M)$ is a skew field extension of~$\kf$.
     \item
       Let~$\kf$ be algebraically closed.
-      If~$V$ is both finite-dimensional and irreducible then every endomorphism~$f$ of~$V$ is of the form~$f = \lambda \id_V$ for some scalar~$\lambda$ in~$\kf$.
-      In other words,~$\End_{\glie}(V) = \kf$.
+      If~$M$ is both finite-dimensional and irreducible then every endomorphism~$f$ of~$M$ is of the form~$f = \lambda \id_M$ for some scalar~$\lambda$ in~$\kf$.
+      Thus~$\End_{\glie}(M) = \kf$.
   \end{enumerate}
 \end{proposition}
 
@@ -1735,19 +1925,19 @@
   \leavevmode
   \begin{enumerate}
     \item
-      The kernel of~$f$ is a subrepresentation of~$V$ and so either~$\ker(f) = 0$ or~$\ker(f) = V$, but not both because~$V$ is nonzero.
+      The kernel of~$f$ is a subrepresentation of~$M$ and so either~$\ker(f) = 0$ or~$\ker(f) = M$, but not both because~$M$ is nonzero.
     \item
-      The image of~$f$ is a subrepresentation of~$W$ and so either~$\im(f) = W$ or~$\im(f) = 0$, but not both because~$W$ is nonzero.
+      The image of~$f$ is a subrepresentation of~$N$ and so either~$\im(f) = N$ or~$\im(f) = 0$, but not both because~$N$ is nonzero.
     \item
       This is a combination of the previous two statements.
     \item
       This is a reformulation of the previous statement.
-      We only need to observe that the algebra~$\End_{\glie}(V)$ is nonzero because~$V$ is nonzero, and thus~$\id_V$ is nonzero.
+      We only need to observe that the algebra~$\End_{\glie}(M)$ is nonzero because~$M$ is nonzero, and thus~$\id_M$ is nonzero.
     \item
-      It follows from the finite-dimensionality of~$V$ that the endomorphism algebra~$\End_{\glie}(V)$ is finite-dimensional.
-      It also follows from the irreducibility of~$V$ that~$\End_{\glie}(V)$ is a skew field extension of~$\kf$.
-      We thus find that~$\End_{\glie}(V)$ is a finite-dimensional skew field extension of~$\kf$.
-      It now follows that~$\End_{\glie}(V) = \kf$ because~$\kf$ is algebraically closed.
+      It follows from the finite-dimensionality of~$M$ that the endomorphism algebra~$\End_{\glie}(M)$ is finite-dimensional.
+      It also follows from the irreducibility of~$M$ that~$\End_{\glie}(M)$ is a skew field extension of~$\kf$.
+      We thus find that~$\End_{\glie}(M)$ is a finite-dimensional skew field extension of~$\kf$.
+      It now follows that~$\End_{\glie}(M) = \kf$ because~$\kf$ is algebraically closed.
     \qedhere
   \end{enumerate}
 \end{proof}

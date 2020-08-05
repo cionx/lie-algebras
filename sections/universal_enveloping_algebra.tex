@@ -41,7 +41,8 @@
   Let~$A$ and~$B$ be two~{\algebras{$\kf$}}.
   \begin{enumerate}
     \item
-      If~$\Phi$ is a homomorphism of~{\algebras{$\kf$}} from~$A$ to~$B$ then~$\Phi$ induces for every other~{\algebra{$\kf$}}~$T$ a map
+      Let~$\Phi$ be a homomorphism of~{\algebras{$\kf$}} from~$A$ to~$B$.
+      This homomorphism induces for every other~{\algebra{$\kf$}}~$T$ a map
       \[
         \Phi^*_T
         \colon
@@ -51,23 +52,23 @@
         \mapsto
         \Psi \circ \Phi \,.
       \]
-      These induced maps are compatible in the sense that for any two~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$f$ from~$T$ to~$U$ the following square diagram commutes.
+      These induced maps are compatible in the sense that for any two~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$\Psi$ from~$T$ to~$U$ the following square diagram commutes.
       \[
         \begin{tikzcd}
           \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{r}[above]{\varphi^*_T}
-          \arrow{d}[left]{f_*}
+          \arrow{r}[above]{\Phi^*_T}
+          \arrow{d}[left]{\Psi_*}
           &
           \Hom_{\cAlg{\kf}}(A,T)
-          \arrow{d}[right]{f_*}
+          \arrow{d}[right]{\Psi_*}
           \\
           \Hom_{\cAlg{\kf}}(B,U)
-          \arrow{r}[below]{\varphi^*_U}
+          \arrow{r}[below]{\Phi^*_U}
           &
           \Hom_{\cAlg{\kf}}(A,U)
         \end{tikzcd}
       \]
-      If~$\varphi$ is an isomorphism then the induced map~$\varphi^*_T$ is for every~{\algebra{$\kf$}}~$T$ a bijection.
+      If~$\Phi$ is an isomorphism then the induced map~$\Phi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
     \item
       \label{natural homomorphisms}
       Let conversely~$(\eta_T)_T$ be a family of maps
@@ -78,16 +79,16 @@
         \to
         \Hom_{\cAlg{\kf}}(A,T)
       \]
-      where~$T$ runs through the class of~{\algebras{$\kf$}}, such that for all~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$f$ from~$T$ to~$U$ the square diagram
+      where~$T$ runs through the class of~{\algebras{$\kf$}}, and suppose that for all~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$\Psi$ from~$T$ to~$U$ the square diagram
       \begin{equation}
         \label{natural square}
         \begin{tikzcd}
           \Hom_{\cAlg{\kf}}(B,T)
           \arrow{r}[above]{\eta_T}
-          \arrow{d}[left]{f_*}
+          \arrow{d}[left]{\Psi_*}
           &
           \Hom_{\cAlg{\kf}}(A,T)
-          \arrow{d}[right]{f_*}
+          \arrow{d}[right]{\Psi_*}
           \\
           \Hom_{\cAlg{\kf}}(B,U)
           \arrow{r}[below]{\eta_U}
@@ -96,8 +97,8 @@
         \end{tikzcd}
       \end{equation}
       commutes.
-      Then there exists an algebra homomorphism~$\varphi$ from~$A$ to~$B$ such that~$\eta_T = \varphi^*_T$ for every~{\algebra{$\kf$}}~$T$.
-      This homomorphism~$\varphi$ is unique and it is given by~$\varphi = \eta_B(\id_B)$.
+      Then there exists an algebra homomorphism~$\Phi$ from~$A$ to~$B$ such that~$\eta_T = \Phi^*_T$ for every~{\algebra{$\kf$}}~$T$.
+      This homomorphism~$\Phi$ is unique and it is given by~$\Phi = \eta_B(\id_B)$.
     \item
       \label{onetoone correspondence morphisms and natural trans}
       The above constructions give a {\onetoonetext} correspondence
@@ -105,7 +106,7 @@
         \left\{
           \begin{tabular}{@{}c@{}}
             algebra homomorphism \\
-            $\varphi \colon A \to B$
+            $\Phi \colon A \to B$
           \end{tabular}
         \right\}
         &\onetoone
@@ -118,22 +119,22 @@
           \end{tabular}
         \right\}  \,,
       \\
-        \varphi
+        \Phi
         &\mapsto
-        (\varphi^*_T)_T \,,
+        (\Phi^*_T)_T \,,
       \\
         \eta_B(\id_B)
         &\mapsfrom
         (\eta_T)_T  \,.
       \end{align*}
     \item
-      If in part~\ref*{natural homomorphisms} every map~$\eta_T$ is bijective then the corresponding algebra homomorphism~$\varphi$ is bijective.
+      If in part~\ref*{natural homomorphisms} every map~$\eta_T$ is bijective then the corresponding algebra homomorphism~$\Phi$ is bijective.
       The {\onetoonetext} correspondence from part~\ref*{onetoone correspondence morphisms and natural trans} therefore restricts to a {\onetoonetext} correspondence.
       \[
         \left\{
           \begin{tabular}{@{}c@{}}
             algebra isomorphism \\
-            $\varphi \colon A \to B$
+            $\Phi \colon A \to B$
           \end{tabular}
         \right\}
         \onetoone
@@ -157,36 +158,42 @@
       The maps~$\eta_T$ are well-defined because the composite of two algebra homomorphism is again an algebra homomorphism.
       The square diagram~\eqref{natural square} commutes because
       \[
-        f_*( \varphi^*_T( h ) )
+        \Psi_*( \Phi^*_T( \Theta ) )
         =
-        f_* (h \circ \varphi)
+        \Psi_* (\Theta \circ \Phi)
         =
-        f \circ h \circ \varphi
+        \Psi \circ \Theta \circ \Phi
         =
-        \varphi^*_U(f \circ h)
+        \Phi^*_U(\Psi \circ \Theta)
         =
-        \varphi^*_U(f_*(h))
+        \Phi^*_U(\Psi_*(\Theta))
       \]
-      for all~$h \in \Hom_{\cAlg{\kf}}(B,T)$.
+      for all~$\Theta \in \Hom_{\cAlg{\kf}}(B,T)$.
     \item
-      Suppose first that there exists a homorphism of algebras~$\varphi$ from~$A$ to~$B$ with~$(\eta_T)_T = (\varphi^*_T)_T$.
+      Suppose first that there exists a homorphism of algebras~$\Phi$ from~$A$ to~$B$ with~$(\eta_T)_T = (\Phi^*_T)_T$.
       Then
       \[
-        \eta_B(\id_B) = \varphi^*_B(\id_B) = \id_B \circ \varphi = \varphi \,.
+        \eta_B(\id_B)
+        =
+        \Phi^*_B(\id_B)
+        =
+        \id_B \circ \Phi
+        =
+        \Phi \,.
       \]
-      This shows the uniqueness of~$\varphi$.
+      This shows the uniqueness of~$\Phi$.
 
-      To show the existence of the desired homomorphism~$\varphi$ we set~$\varphi \defined \eta_B(\id_B)$.
-      Then~$\varphi$ is an element of~$\Hom_{\cAlg{\kf}}(A,B)$, and thus a homomorphism of algebras from~$A$ to~$B$.
-      If~$T$ is any~{\algebra{$\kf$}} then it follows for every element~$f$ of~$\Hom_{\cAlg{\kf}}(B,T)$ from the commutativity of the square diagram
+      To show the existence of the desired homomorphism~$\Phi$ we set~$\Phi \defined \eta_B(\id_B)$.
+      This is an element of~$\Hom_{\cAlg{\kf}}(A,B)$, and thus a homomorphism of algebras from~$A$ to~$B$.
+      If~$T$ is any~{\algebra{$\kf$}} then it follows for every element~$\Psi$ of~$\Hom_{\cAlg{\kf}}(B,T)$ from the commutativity of the square diagram
       \[
         \begin{tikzcd}
           \Hom_{\cAlg{\kf}}(B,B)
           \arrow{r}[above]{\eta_B}
-          \arrow{d}[left]{f_*}
+          \arrow{d}[left]{\Psi_*}
           &
           \Hom_{\cAlg{\kf}}(A,B)
-          \arrow{d}[right]{f_*}
+          \arrow{d}[right]{\Psi_*}
           \\
           \Hom_{\cAlg{\kf}}(B,T)
           \arrow{r}[below]{\eta_T}
@@ -196,56 +203,57 @@
       \]
       that
       \[
-        \eta_T(f)
+        \eta_T(\Psi)
         =
-        \eta_T(f \circ \id_B)
+        \eta_T(\Psi \circ \id_B)
         =
-        \eta_T(f_*(\id_B))
+        \eta_T(\Psi_*(\id_B))
         =
-        f_*(\eta_B(\id_B))
+        \Psi_*(\eta_B(\id_B))
         =
-        f_*(\varphi)
+        \Psi_*(\Phi)
         =
-        f \circ \varphi \,.
+        \Psi \circ \Phi \,.
       \]
     \item
-      If~$\varphi$ is a algebra homomorphism from~$A$ to~$B$ then
+      If~$\Phi$ is a algebra homomorphism from~$A$ to~$B$ then
       \[
-        \varphi^*_B(\id_B)
+        \Phi^*_B(\id_B)
         =
-        \id_B \circ \varphi
+        \id_B \circ \Phi
         =
-        \varphi \,.
+        \Phi \,.
       \]
       Together with part~\ref*{onetoone correspondence morphisms and natural trans} this shows that both constructions are inverse to each other.
     \item
-      If~$\varphi$ is an isomorphism then~$\varphi^*_T$ is bijective for every~{\algebra{$\kf$}} because the maps~$\varphi^*_T$ and~$(\varphi^{-1})^*_T$ are mutually inverse.
-      Suppose on the other hand that~$\varphi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
-      Then the family~$( (\varphi^*_T)^{-1} )_T$ makes for every algebra homomorphism~$f \colon T \to U$ the square diagram
+      If the homomorphism~$\Phi$ is an isomorphism then the map~$\Phi^*_T$ is bijective for every~{\algebra{$\kf$}} because the two maps~$\Phi^*_T$ and~$(\Phi^{-1})^*_T$ are mutually inverse.
+
+      Suppose on the other hand that the map~$\Phi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
+      Then the family~$( (\Phi^*_T)^{-1} )_T$ makes for every algebra homomorphism~$\Psi$ from~$T$ to~$U$ the square diagram
       \[
         \begin{tikzcd}[column sep = large]
           \Hom_{\cAlg{\kf}}(A,T)
-          \arrow{r}[above]{ (\varphi^*_T)^{-1} }
-          \arrow{d}[left]{f_*}
+          \arrow{r}[above]{ (\Phi^*_T)^{-1} }
+          \arrow{d}[left]{\Psi_*}
           &
           \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{d}[right]{f_*}
+          \arrow{d}[right]{\Psi_*}
           \\
           \Hom_{\cAlg{\kf}}(A,U)
-          \arrow{r}[below]{ (\varphi^*_U)^{-1} }
+          \arrow{r}[below]{ (\Phi^*_U)^{-1} }
           &
           \Hom_{\cAlg{\kf}}(B,U)
         \end{tikzcd}
       \]
       commute.
-      There hence exists by part~\ref*{natural homomorphisms} a (unique) algebra homomorphism~$\psi \colon B \to A$ for which~$(\varphi^*_T)^{-1} = \psi^*_T$ for every~{\algebra{$\kf$}}~$T$.
-      We find for the composition~$\psi \varphi \colon A \to A$ that
+      There hence exists by part~\ref*{natural homomorphisms} a (unique) algebra homomorphism~$\Theta$ from~$B$ to~$A$ for which~$(\Phi^*_T)^{-1}$ equals~$\Theta^*_T$ for every~{\algebra{$\kf$}}~$T$.
+      We find for the composition~$\Theta \circ \Phi$ that
       \[
-        (\psi \circ \varphi)^*_T
+        (\Theta \circ \Phi)^*_T
         =
-        \varphi^*_T \circ \psi^*_T
+        \Phi^*_T \circ \Theta^*_T
         =
-        \varphi^*_T \circ (\varphi^*_T)^{-1}
+        \Phi^*_T \circ (\Phi^*_T)^{-1}
         =
         \id_{\Hom_{\cAlg{\kf}}(A,T)}
         =
@@ -311,16 +319,16 @@
 %         \end{tikzcd}
 %       \]
 %       also commutes.
-      Hence~$\psi \circ \varphi = \id_A$ by the uniqueness in part~\ref*{natural homomorphisms}.
-      We find in the same way that also~$\varphi \circ \psi = \id_B$.
-      This shows that~$\varphi$ and~$\psi$ are mutually inverse isomorphisms.
+      Hence~$\Theta \circ \Phi = \id_A$ by the uniqueness in part~\ref*{natural homomorphisms}.
+      We find in the same way that also~$\Phi \circ \Theta = \id_B$.
+      This shows that~$\Phi$ and~$\Theta$ are mutually inverse isomorphisms.
     \qedhere
   \end{enumerate}
 \end{proof}
 
 
 \begin{definition}
-  A family~$(\eta_T)_T$ of maps~$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$, where~$A$ and~$B$ are two~{\algebras{$\kf$}} and~$T$ ranges over all~{\algebras{$\kf$}}, is \defemph{natural}\index{natural} if the square diagram~\eqref{natural square} commutes for every algebra homomorphisms~$f \colon A \to B$.
+  A family~$(\eta_T)_T$ of maps~$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$, where~$A$ and~$B$ are two~{\algebras{$\kf$}} and~$T$ ranges over all~{\algebras{$\kf$}}, is \defemph{natural}\index{natural} if the square diagram~\eqref{natural square} commutes for ever homomorphism of algebras~$\Psi$ from~$A$ to~$B$.
 \end{definition}
 
 
@@ -333,11 +341,13 @@
 
 \input{sections/tensor_algebra_and_symmetric_algebra}
 \input{sections/definition_and_construction_of_the_uea}
-\input{sections/the_pbw_theorem}
+\input{sections/examples_for_uea}
 
 
 % TODO: Hopf algebra structure
 %       Explain this also via hopf objects (applying U to a Hopf object in Lie(k) gives a Hopf algebra)
+
+
 
 
 

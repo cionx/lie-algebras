@@ -16,10 +16,12 @@
 \newcommand{\coboundaries}[1]{#1\nobreakdash-\hspace{0pt}coboundaries}
 \newcommand{\cocycle}[1]{#1\nobreakdash-cocycle}
 \newcommand{\cocycles}[1]{#1\nobreakdash-cocycles}
+\newcommand{\cycle}[1]{#1\nobreakdash-cycle}
 \newcommand{\cycles}[1]{#1\nobreakdash-cycles}
 \newcommand{\derivation}[1]{#1\nobreakdash-derivation}
 \newcommand{\dimensional}[1]{#1\nobreakdash-\hspace{0pt}dimensional}
 \newcommand{\fold}[1]{#1\nobreakdash-fold}
+\newcommand{\functor}[1]{#1\nobreakdash-functor}
 \newcommand{\generating}[1]{#1\nobreakdash-\hspace{0pt}generating}
 \newcommand{\gon}[1]{#1\nobreakdash-gon}
 \newcommand{\graded}[1]{#1\nobreakdash-graded}
@@ -139,6 +141,7 @@
 \newcommand{\catname}{\mathbf}
 \newcommand{\catfont}{\mathcal}
 \newcommand{\Acat}{\catfont{A}}
+\newcommand{\Bcat}{\catfont{B}}
 \newcommand{\Ccat}{\catfont{C}}
 \newcommand{\Tcat}{\catfont{T}}
 \newcommand{\cAlg}[1]{#1\text{-}\catname{Alg}}
@@ -159,6 +162,7 @@
 \newcommand{\blie}{\mathfrak{b}}
 \newcommand{\clie}{\mathfrak{c}}
 \newcommand{\dlie}{\mathfrak{d}}
+\newcommand{\elie}{\mathfrak{e}}
 \newcommand{\glie}{\mathfrak{g}}
 \newcommand{\Hlie}{\mathfrak{H}}
 \newcommand{\hlie}{\mathfrak{h}}
@@ -183,10 +187,12 @@
 
 
 % spaces and sets
+\newcommand{\AbEx}{\mathcal{A}}
 \newcommand{\Aff}{\mathbb{A}}
 \DeclareMathOperator{\Alt}{Alt}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\BF}{BF}
+\newcommand{\bigast}{\raisebox{-0.9ex}{\scalebox{3}{\ast}}}
 \DeclareMathOperator{\Boundary}{B}
 \DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Chain}{C}
@@ -194,6 +200,7 @@
 \DeclareMathOperator{\Der}{Der}
 \newcommand{\dihedral}{\mathrm{D}}
 \DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Exterior}{\bigwedge}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\Hom}{Hom}
@@ -211,13 +218,14 @@
 \DeclareMathOperator{\Symm}{S}
 \DeclareMathOperator{\symm}{S}
 \DeclareMathOperator{\Tensor}{T}
+\DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Univ}{U}
 \DeclareMathOperator{\verma}{M}
 \DeclareMathOperator{\Weyl}{W}
 
 
 
-% functions
+% functions and functors
 \DeclareMathOperator{\ad}{ad}
 \DeclareMathOperator{\can}{can}
 \DeclareMathOperator{\card}{card}
@@ -229,6 +237,7 @@
 }
 \newcommand{\id}{\mathrm{id}}
 \DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Right}{R}
 \DeclareMathOperator{\sign}{sgn}
 \DeclareMathOperator{\tr}{tr}
 
@@ -247,7 +256,7 @@
 \newcommand{\dcup}{\amalg}
 \newcommand{\dotcup}{\mathrel{\mathaccent\cdot\cup}}
 \newcommand{\inclusion}{\hookrightarrow}
-\newcommand{\ideal}{\trianglelefteq}
+\newcommand{\subideal}{\trianglelefteq}
 \newcommand{\tensor}{\otimes}
 
 
@@ -255,8 +264,10 @@
 % delimiters and decoration
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\bil}{\langle}{\rangle}
+\DeclarePairedDelimiter{\fclass}{\lbrack}{\rbrack}
 \DeclarePairedDelimiter{\gen}{\langle}{\rangle}
-\DeclarePairedDelimiter{\inner}{(}{)}
+\DeclarePairedDelimiter{\ideal}{\lparen}{\rparen}
+\DeclarePairedDelimiter{\inner}{\lparen}{\rparen}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
 \DeclarePairedDelimiter{\pair}{\langle}{\rangle}
 \DeclarePairedDelimiter{\size}{\lvert}{\rvert}
@@ -295,6 +306,7 @@
   {\partial #1 / \partial #2}
   {\partial #1 / \partial #2}
 }
+\newcommand{\del}{\partial}
 \newcommand{\mc}[1]{\mathcal{#1}}
 \newcommand{\vect}[1]{\begin{pmatrix}#1\end{pmatrix}}
 

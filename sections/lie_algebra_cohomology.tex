@@ -14,57 +14,39 @@
 \section{Calculations}
 
 \begin{recall}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      A \defemph{chain complex} of vector spaces consists of a sequence of vector spaces~$(X_n)_{n \in \Integer}$ together with a linear map~$d_n$ from~$X_n$ to~$X_{n-1}$ for every index~$n \in \Integer$ such that~$d_{n-1} \circ d_n = 0$ for every~$n \in \Integer$.
-      Such a chain complex can be graphically depicted as a diagram
-      \[
-        \dotsb
-        \from
-        X_{n-2}
-        \xfrom{d_{n-1}}
-        X_{n-1}
-        \xfrom{d_n}
-        X_n
-        \xfrom{d_{n+1}}
-        X_{n+1}
-        \from
-        \dotsb
-      \]
-      We often denote such a chain complex~$( (X_n)_{n \in \Integer}, (d_n)_{n \in \Integer} )$ as~$(X_\bullet, d_\bullet)$, or simply as~$X_\bullet$.
+  A \defemph{chain complex} of vector spaces consists of a sequence of vector spaces~$(X_n)_{n \in \Integer}$ together with a linear map~$d_n$ from~$X_n$ to~$X_{n-1}$ for every index~$n \in \Integer$ such that~$d_{n-1} \circ d_n = 0$ for every~$n \in \Integer$.
+  Such a chain complex can be graphically depicted as a diagram
+  \[
+    \dotsb
+    \from
+    X_{n-2}
+    \xfrom{d_{n-1}}
+    X_{n-1}
+    \xfrom{d_n}
+    X_n
+    \xfrom{d_{n+1}}
+    X_{n+1}
+    \from
+    \dotsb
+  \]
+  We often denote such a chain complex~$( (X_n)_{n \in \Integer}, (d_n)_{n \in \Integer} )$ as~$(X_\bullet, d_\bullet)$, or simply as~$X_\bullet$.
 
-      A \defemph{cochain complex} of vector spaces consists of a sequence of vector spaces~$(X^n)_{n \in \Integer}$ together with a linear map~$d^n$ from~$X^n$ to~$X^{n+1}$ for every index~$n \in \Integer$ such that~$d^{n+1} \circ d^n = 0$ for every~$n \in \Integer$.
-      Such a cochain complex can be graphically depicted as a diagram
-      \[
-        \dotsb
-        \to
-        X^{n-1}
-        \xto{d^{n-1}}
-        X^n
-        \xto{d^n}
-        X^{n+1}
-        \xto{d^{n+1}}
-        X^{n+2}
-        \to
-        \dotsb
-      \]
-      We often denote such a cochain complex~$( (X^n)_{n \in \Integer}, (d^n)_{n \in \Integer} )$ as~$(X^\bullet, d^\bullet)$, or simply as~$X^\bullet$.
-    \item
-      Let~$X_\bullet = ( (X_n)_{n \in \Integer}, (d_n)_{n \in \Integer} )$ be a chain complex and let~$n$ be some integer.
-      The linear subspace~$\ker(d_n)$ of~$X_n$ is denoted by~$\Cycle_n(X_\bullet)$ and its elements are the~\defemph{\cycles{$n$}} of~$X_\bullet$.
-      The linear subspace~$\im(d_{n+1})$ of~$X_n$ is denoted by~$\Boundary_n(X_\bullet)$ and its elements are the~\defemph{\boundaries{$n$}} of~$X_\bullet$.
-      It follows from the condition~$d_n \circ d_{n+1} = 0$ that~$\Boundary_n(X_\bullet)$ is a linear subspace of~$\Cycle_n(X_\bullet)$.
-      The quotient vector space~$\Cycle_n(X_\bullet) / {\Boundary_n(X_\bullet)}$ is the~\defemph{\howmanyth{$n$} homology} of~$X_\bullet$.
-      It is denoted by~$\Homology_n(X_\bullet)$.
-
-      Let~$X^\bullet = ( (X^n)_{n \in \Integer}, (d^n)_{n \in \Integer} )$ be a cochain complex and let~$n$ be some integer.
-      The linear subspace~$\ker(d^n)$ of~$X^n$ is denoted by~$\Cycle^n(X^\bullet)$ and its elements are the~\defemph{\cocycles{$n$}} of~$X$.
-      The linear subspace~$\im(d^{n-1})$ of~$X^n$ is denoted by~$\Boundary^n(X^\bullet)$ and its elements are the~\defemph{\coboundaries{$n$}} of~$X$.
-      It follows from the condition~$d^n \circ d^{n-1} = 0$ that~$\Boundary^n(X^\bullet)$ is a linear subspace of~$\Cycle^n(X^\bullet)$.
-      The quotient vector space~$\Cycle^n(X^\bullet) / {\Boundary^n(X^\bullet)}$ is the~\defemph{\howmanyth{$n$} cohomology} of~$X$.
-      It is denoted by~$\Homology^n(X^\bullet)$.
-  \end{enumerate}
+  A \defemph{cochain complex} of vector spaces consists of a sequence of vector spaces~$(X^n)_{n \in \Integer}$ together with a linear map~$d^n$ from~$X^n$ to~$X^{n+1}$ for every index~$n \in \Integer$ such that~$d^{n+1} \circ d^n = 0$ for every~$n \in \Integer$.
+  Such a cochain complex can be graphically depicted as a diagram
+  \[
+    \dotsb
+    \to
+    X^{n-1}
+    \xto{d^{n-1}}
+    X^n
+    \xto{d^n}
+    X^{n+1}
+    \xto{d^{n+1}}
+    X^{n+2}
+    \to
+    \dotsb
+  \]
+  We often denote such a cochain complex~$( (X^n)_{n \in \Integer}, (d^n)_{n \in \Integer} )$ as~$(X^\bullet, d^\bullet)$, or simply as~$X^\bullet$.
 \end{recall}
 
 
@@ -364,7 +346,7 @@
         (-1)^{i+1}
         x_i \act \omega(x_1, \dotsc, \widehat{x_i}, \dotsc, x_{n+1})
       \end{align*}
-      for all~$x_1, \dotsc, x_{n+1} \in \glie$ and~$m \in M$.
+      for all~$x_1, \dotsc, x_{n+1} \in \glie$,~$m \in M$.
     \item
       Together with the maps~$d_n \defined 0$ for every~$n < 0$ these maps satisfy the identity~$d^{n+1} \circ d^n = 0$ for every integer~$n$.
   \end{enumerate}
@@ -833,7 +815,7 @@
       \[
         d_{n-1} \circ d_n = 0
       \]
-      for~$n \in \Integer$ by induction over~$n$.
+      for all~$n \in \Integer$ by induction over~$n$.
       The identity holds for~$n \leq 1$ because then~$d_{n-1} = 0$.
       It also holds for~$n = 2$ because
       \begin{align*}
@@ -854,7 +836,7 @@
         &=
         0
       \end{align*}
-      for any two elements~$x_1$,~$x_2$ of~$\glie$ and every element~$m$ of~$M$.%
+      for all~$x_1, x_2 \in \glie$,~$m \in M$.%
       \footnote{
         It should be noted that the condition~$d_1 \circ d_2 = 0$ is satisfied precisely because~$M$ is a representation of~$\glie$.
       }
@@ -864,12 +846,12 @@
         =
         0
       \]
-      for every element~$x$ of~$\glie$, every element~$t$ of~$\Exterior^{n-1}(\glie)$ and every element~$m$ of~$M$.
+      for all~$x \in \glie$,~$t \in \Exterior^{n-1}(\glie)$,~$m \in M$.
       It hence sufficies to show that
       \[
         d_{n-1} \circ d_n \circ \sigma_{n-1}^x = 0 \,.
       \]
-      for every element~$x$ of~$\glie$.
+      for all~$x \in \glie$.
       We have
       \begin{align*}
         d_{n-1} \circ d_n \circ \sigma_{n-1}^x
@@ -926,7 +908,7 @@
         (-1)^{i+1}
         x_i \act \omega(x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1})
       \end{align*}
-      for all elements~$x_1, \dotsc, x_{n+1}$ of~$\glie$.
+      for all~$x_1, \dotsc, x_n \in \glie$.
       This map is multilinear.
       We claim that is it also alternating.
       To show this we assume that~$x_r = x_s$ for some indices~$r$,~$s$ with~$1 \leq r < s \leq n+1$.
@@ -1065,7 +1047,7 @@
         =
         \ev_{\omega(t)}
       \]
-      for every element~$t$ of~$\Exterior^k(\glie)$.
+      for all$t \in \Exterior^k(\glie)$.
       The corresponding element~$\omega_3$ of~$( \Exterior^k(\glie) \otimes M^* )^*$ is given by
       \[
         \omega_3(t \otimes \varphi)
@@ -1076,7 +1058,7 @@
         =
         \varphi(\omega(t))
       \]
-      for all~$t \in \Exterior^k(\glie)$ and~$\varphi \in M^*$.
+      for all~$t \in \Exterior^k(\glie)$,~$\varphi \in M^*$.
       Instead of~$\omega_3$ we write~$\overline{\omega}$.
       We have thus seen that the linear inclusion
       \[
@@ -1092,7 +1074,7 @@
         =
         \varphi(\omega(t))
       \]
-      for all~$t \in \Exterior^k(\glie)$ and~$\varphi \in M^*$.
+      for all~$t \in \Exterior^k(\glie)$,~$\varphi \in M^*$.
 
       In this notation our claim becomes
       \begin{equation}
@@ -1191,17 +1173,38 @@
         ={}&
         \overline{ d^n(\omega) } (x_1 \wedge \dotsb \wedge x_n \otimes \varphi)
       \end{align*}
-      for all~$x_1, \dotsc, x_n \in \glie$ and~$\varphi \in M^*$.
+      for all~$x_1, \dotsc, x_n \in \glie$,~$\varphi \in M^*$.
       It now follows from the identity~$d_{n+1} \circ d_{n+2} = 0$ by dualizing that~$d_{n+2}^* \circ d_{n+1}^* = 0$, and thus~$d^{n+1} \circ d^n = 0$ by restriction.
     \qedhere
   \end{enumerate}
 \end{proof}
 
 
+\begin{remark}
+  The above proof is motivated by \cite[\S 3.1]{kumar_lie_cohomology}.
+\end{remark}
+
+
 
 
 
 \section{Definitions and Basic Properties}
+
+\begin{recall}
+  Let~$X_\bullet = ( (X_n)_{n \in \Integer}, (d_n)_{n \in \Integer} )$ be a chain complex and let~$n$ be some integer.
+  The linear subspace~$\ker(d_n)$ of~$X_n$ is denoted by~$\Cycle_n(X_\bullet)$ and its elements are the~\defemph{\cycles{$n$}} of~$X_\bullet$.
+  The linear subspace~$\im(d_{n+1})$ of~$X_n$ is denoted by~$\Boundary_n(X_\bullet)$ and its elements are the~\defemph{\boundaries{$n$}} of~$X_\bullet$.
+  It follows from the condition~$d_n \circ d_{n+1} = 0$ that~$\Boundary_n(X_\bullet)$ is a linear subspace of~$\Cycle_n(X_\bullet)$.
+  The quotient vector space~$\Cycle_n(X_\bullet) / {\Boundary_n(X_\bullet)}$ is the~\defemph{\howmanyth{$n$} homology} of~$X_\bullet$.
+  It is denoted by~$\Homology_n(X_\bullet)$.
+
+  Let~$X^\bullet = ( (X^n)_{n \in \Integer}, (d^n)_{n \in \Integer} )$ be a cochain complex and let~$n$ be some integer.
+  The linear subspace~$\ker(d^n)$ of~$X^n$ is denoted by~$\Cycle^n(X^\bullet)$ and its elements are the~\defemph{\cocycles{$n$}} of~$X$.
+  The linear subspace~$\im(d^{n-1})$ of~$X^n$ is denoted by~$\Boundary^n(X^\bullet)$ and its elements are the~\defemph{\coboundaries{$n$}} of~$X$.
+  It follows from the condition~$d^n \circ d^{n-1} = 0$ that~$\Boundary^n(X^\bullet)$ is a linear subspace of~$\Cycle^n(X^\bullet)$.
+  The quotient vector space~$\Cycle^n(X^\bullet) / {\Boundary^n(X^\bullet)}$ is the~\defemph{\howmanyth{$n$} cohomology} of~$X$.
+  It is denoted by~$\Homology^n(X^\bullet)$.
+\end{recall}
 
 
 \begin{definition}
@@ -1505,7 +1508,7 @@
         ={}&
         d^n( f^n(\omega) )(x_1, \dotsc, x_{n+1})
       \end{align*}
-      for all~$\omega \in \Chain^n(\glie, M)$ and~$x_1, \dotsc, x_n \in \glie$.
+      for all~$\omega \in \Chain^n(\glie, M)$,~$x_1, \dotsc, x_n \in \glie$.
     \qedhere
   \end{enumerate}
 \end{proof}
@@ -2130,6 +2133,40 @@
 
 
 
+\subsection{Cohomology and Homopology in Large Degrees}
+
+\begin{fluff}
+  Let~$\glie$ be a finite-dimensional Lie~algebra.
+  Then~$\Exterior^n(\glie) = 0$ whenever~$n > \dim(\glie)$.
+  It follows for every representation~$M$ of~$\glie$ that
+  \[
+    \Chain_n(\glie, M)
+    =
+    \Exterior^n(\glie) \otimes M
+    =
+    0
+  \]
+  and
+  \[
+    \Chain^n(\glie, M)
+    =
+    \Alt^n(\glie, M)
+    \cong
+    \Hom_{\kf}\Bigl( \Exterior^n(\glie), M \Bigr)
+    =
+    0
+  \]
+  for all~$n > \dim(\glie)$, and thus
+  \[
+    \Homology_n(\glie, M) = 0
+    \quad\text{and}\quad
+    \Homology^n(\glie, M) = 0
+  \]
+  for all~$n > \dim(\glie)$.
+\end{fluff}
+
+
+
 \subsection{Zeroth Cohomology}
 
 \begin{fluff}
@@ -2351,9 +2388,8 @@
     \delta( [x,y] )
     =
     x \act \delta(y) - y \act \delta(x)
-    \qquad
-    \text{for all~$x, y \in \glie$.}
   \]
+  for all~$x, y \in \glie$.
   The set of derivations of~$M$ is denoted by~$\Der(\glie, M)$.
 \end{definition}
 
@@ -2541,7 +2577,7 @@
     - x_1 \act \varphi(x_2)
     + x_2 \act \varphi(x_1)
   \]
-  for all~$\varphi \in \Hom_{\kf}(\glie, M)$ and~$x_1, x_2 \in \glie$.
+  for all~$\varphi \in \Hom_{\kf}(\glie, M)$,~$x_1, x_2 \in \glie$.
 
   We see from these explicit descriptions that an element~$\delta$ of~$\Hom_{\kf}(\glie, M)$ is a one-cocoycle if and only if is satisfies the identity
   \[
@@ -2577,6 +2613,22 @@
   \]
 \end{fluff}
 
+
+\begin{example}
+  Let~$\glie$ be a Lie~algebra and let~$M$ be a trivial representation of~$\glie$.
+  A linear map~$\delta$ from~$\glie$ to~$M$ is a derivation if and only if it vanishes on the commutator~$[\glie, \glie]$.
+  The only inner derivation of~$M$ is the zero map.
+  It follows that
+  \[
+    \OutDer(\glie, M)
+    \cong
+    \Der(\glie, M)
+    \cong
+    \Hom_{\kf}( \glie / [\glie, \glie], M )
+    =
+    \Hom_{\kf}( \glie^{\ab},  M ) \,.
+  \]
+\end{example}
 
 
 
@@ -2750,33 +2802,86 @@
 \subsection{Second Cohomology}
 
 
+%\begin{fluff}
+%  Let~$\hlie$ be a Lie~algebra and let~$I$ be an abelian Lie~algebra.
+%  We may equivalently regard~$I$ simply as a vector space, or equivalently as a trivial representation of~$\hlie$.
+%
+%  An element~$\kappa$ of~$\Chain^2(\hlie, I) = \Alt^2(\hlie, I)$ is a cocycle if and only if it satisfies the identity
+%  \[
+%    \kappa([x_1, x_2], x_3) - \kappa([x_1, x_3], x_2) + \kappa(x_1, [x_2, x_3])
+%    =
+%    0
+%  \]
+%  for all~$x_1, x_2, x_3 \in \hlie$.
+%  We have seen in \cref{structure of central extensions} that this means that~$\kappa$ defines a central extension of~$\hlie$ by~$I$.
+%
+%  A two-coycle~$\omega$ is a coboundary if and only if there exists an element~$\varphi$ of~$\Alt^1(\hlie, I)$, i.e. of~$\Hom_{\kf}(\hlie, I)$, such that
+%  \[
+%    \omega(x_1, x_2)
+%    =
+%    -\varphi([x_1, x_2])
+%  \]
+%  for all~$x_1, x_2 \in \hlie$.
+%  It follows from \cref{structure of central extensions} that two two-coycles~$\kappa_1$ und~$\kappa_2$ define equivalent central extensions if and only if their difference~$\kappa_1 - \kappa_2$ is a two-coboundary.
+%  
+%  We find overall that~$\Homology^2(\hlie, I)$ is in {\onetoonetext} correspondence with the equivalence classes of central extensions of~$\hlie$ by~$I$.
+%\end{fluff}
+
+
 \begin{fluff}
-  Let~$\hlie$ be a Lie~algebra and let~$I$ be an abelian Lie~algebra.
-  We may equivalently regard~$I$ simply as a vector space, or equivalently as a trivial representation of~$\hlie$.
+  Let~$\hlie$ be a Lie~algebra and let~$M$ be a representation of~$M$.
+  Let~$\AbEx(\hlie, M)$ be the corresponding class of abelian extensions of~$\hlie$ as in \cref{structure of abelian extensions}.
 
   An element~$\kappa$ of~$\Chain^2(\hlie, I) = \Alt^2(\hlie, I)$ is a cocycle if and only if it satisfies the identity
-  \[
-    \kappa([x_1, x_2], x_3) - \kappa([x_1, x_3], x_2) + \kappa(x_1, [x_2, x_3])
-    =
+  \begin{align*}
     0
-  \]
+    ={}&
+    - \kappa([x_1, x_2], x_3)
+    + \kappa([x_1, x_3], x_2)
+    - \kappa([x_2, x_3], x_1)
+    \\
+    {}&
+    + x_1 \act \kappa(x_2, x_3)
+    - x_2 \act \kappa(x_1, x_3)
+    + x_3 \act \kappa(x_1, x_2)
+  \end{align*}
+  for all~$x_1, x_2, x_3 \in \hlie$, or equivalently
+  \begin{align*}
+    {}&
+    \kappa([x_1, x_2], x_3)
+    + \kappa([x_2, x_3], x_1)
+    + \kappa([x_3, x_1], x_2)
+    \\
+    ={}&
+    x_1 \act \kappa(x_2, x_3)
+    + x_2 \act \kappa(x_3, x_1)
+    + x_3 \act \kappa(x_1, x_2)
+  \end{align*}
   for all~$x_1, x_2, x_3 \in \hlie$.
-  We have seen in \cref{structure of central extensions} that this means that~$\kappa$ defines a central extension of~$\hlie$ by~$I$.
+  It follows from \cref{structure of abelian extensions} that every such two-coycle~$\kappa$ defines an abelian extension of~$\hlie$ contained in~$\AbEx(\hlie, M)$, and that every extension in~$\AbEx(\hlie, M)$ is of this form up to equivalence.
 
-  A two-coycle~$\omega$ is a coboundary if and only if there exists an element~$\varphi$ of~$\Alt^1(\hlie, I)$, i.e. of~$\Hom_{\kf}(\hlie, I)$, such that
+  A two-coycle~$\omega$ is a coboundary if and only if there exists an element~$\varphi$ of~$\Alt^1(\hlie, I)$, i.e an element of~$\Hom_{\kf}(\hlie, I)$, such that
   \[
     \omega(x_1, x_2)
     =
-    -\varphi([x_1, x_2])
+    x_1 \act \varphi(x_2)
+    - x_2 \act \varphi(x_1)
+    - \varphi( [x_1, x_2] )
   \]
   for all~$x_1, x_2 \in \hlie$.
-  It follows from \cref{structure of central extensions} that two two-coycles~$\kappa_1$ und~$\kappa_2$ define equivalent central extensions if and only if their difference~$\kappa_1 - \kappa_2$ is a two-coboundary.
-  
-  We find overall that~$\Homology^2(\hlie, I)$ is in {\onetoonetext} correspondence with the equivalence classes of central extensions of~$\hlie$ by~$I$.
+  It follows from \cref{structure of abelian extensions} that two two-cocycles~$\kappa_1$ and~$\kappa_2$ define equivalent abelian extensions if and only if their difference~$\kappa_1 - \kappa_2$ is a two-coboundary.
+
+  We have overall constructed a {\onetoonetext} correspondence between~$\Homology^2(\hlie, M)$ and the set of equivalence classes of extensionse in~$\AbEx(\hlie, M)$.
+
+  We have also seen in \cref{each class of abelian extensions contains precisely one split extension} that the zero element of~$\Homology^2(\hlie, M)$ corresponds to the unique equivalence classes of split extensions in~$\AbEx(\hlie, M)$.
 \end{fluff}
 
 
-
+\begin{fluff}
+  As a special case of the above disclussion let~$\hlie$ be a Lie~algebra and let~$I$ be an abelian Lie~algebra.
+  We may regard~$I$ as a trivial representation of~$\hlie$.
+  We then have a {\onetoonetext} correspondence between~$\Homology^2(\hlie, I)$ and the set of equivalence classes of central extensions of~$\hlie$ by~$I$.
+\end{fluff}
 
 
 

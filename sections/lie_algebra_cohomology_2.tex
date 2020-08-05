@@ -1,0 +1,2187 @@
+\chapter{Lie Algebra (Co)homology II}
+\label{lie algebra cohomology again}
+
+
+
+
+
+\section{The Koszul Resolution}
+\label{koszul resolution}
+
+\begin{convention}
+  We fix for this \lcnamecref{koszul resolution} a Lie~algebra~$\glie$.
+  For every natural number~$n$ we regard~$\Univ(\glie) \otimes_{\kf} \Exterior^n(\glie)$ as an~\module{$\Univ(\glie)$} via extension of scalars, i.e. via the multiplication given by
+  \[
+    x \cdot (y \otimes t)
+    =
+    (xy) \otimes y
+  \]
+  for all~$x, y \in \Univ(\glie)$,~$t \in \Exterior^n(\glie)$.
+\end{convention}
+
+
+\begin{lemma}
+  \label{extension of scalars is free}
+  The module~$\Univ(\glie) \otimes_{\kf} \Exterior^n(\glie)$ is free for all~$n \geq 0$.
+\end{lemma}
+
+
+\begin{proof}
+  The exterior power~$\Exterior^n(\glie)$ is free as a~\module{$\kf$}.
+  The extension of scalars~$\Univ(\glie) \otimes_{\kf} \Exterior^n(\glie)$ is therefore free as a~\module{$\Univ(\glie)$}.
+\end{proof}
+
+
+\begin{recall}
+  Let~$A$ be a~\algebra{$\kf$} and let~$M$ be an~\module{$A$}.
+  A \defemph{resolution} of~$M$ is an exact sequence of the form
+  \[
+    \dotsb
+    \to
+    M_2
+    \xto{d_2}
+    M_1
+    \xto{d_1}
+    M_0
+    \xto{\varepsilon}
+    M
+    \to
+    0 \,.
+  \]
+  Such a resolution is \defemph{free} if the modules~$M_i$ are free for all~$i \geq 1$.
+\end{recall}
+
+
+\begin{proposition}
+  \label{construction of koszul differential}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      There exists for every natural number~$n$ with~$n \geq 1$ a unique linear map
+      \[
+        d_n
+        \colon
+        \Univ(\glie) \otimes_{\kf} \Exterior^n(\glie)
+        \to
+        \Univ(\glie) \otimes_{\kf} \Exterior^{n-1}(\glie)
+      \]
+      given by
+      \begin{align*}
+        d_n( y \otimes x_1 \wedge \dotsb \wedge x_n )   
+        ={}&
+        \sum_{1 \leq i < j \leq n}
+        (-1)^{i+j}
+        y \otimes [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+        \\
+        {}&
+        +
+        \sum_{i=1}^n
+        (-1)^{i+1}
+        (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{ x_i } \wedge \dotsb \wedge x_n
+      \end{align*}
+      for all~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$.
+    \item
+      These maps are homomorphism of~\modules{$\Univ(\glie)$}.
+    \item
+      These maps satisfy the condition~$d_{n-1} \circ d_n = 0$ for all~$n \geq 2$.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  The have a right~\module{$\Univ(\glie)$} structure on~$\Univ(\glie)$ given by right multiplication.
+  This module structure corresponds to a right action of~$\glie$ on~$\Univ(\glie)$ given by
+  \[
+    y \act x
+    =
+    yx
+  \]
+  for all~$x \in \glie$,~$y \in \Univ(\glie)$.
+  This right action corresponds to a left action given by
+  \[
+    x \act y
+    =
+    -yx
+  \]
+  for all~$y \in \glie$,~$y \in \Univ(\glie)$.
+  We have in this way made~$\Univ(\glie)$ into a representation of~$\glie$.
+
+  We can thus form the Lie algebra chain complex~$\Chain_\bullet(\glie, \Univ(\glie))$, given by the vector spaces
+  \[
+    \Chain_n(\glie, \Univ(\glie))
+    =
+    \Exterior^n(\glie) \otimes_{\kf} \Univ(\glie)
+  \]
+  for all~$n \geq 0$, and the differentials
+  \[
+    \widetilde{d_n}
+    \colon
+    \Exterior^n(\glie) \otimes_{\kf} \Univ(\glie)
+    \to
+    \Exterior^{n-1}(\glie) \otimes_{\kf} \Univ(\glie)
+  \]
+  given by
+  \begin{align*}
+    \widetilde{d_n}( x_1 \wedge \dotsb \wedge x_n \otimes y )
+    ={}&
+    \sum_{1 \leq i < j \leq n}
+    (-1)^{i+j}
+    [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \otimes y
+    \\
+    {}&
+    +
+    \sum_{i=1}^n (-1)^i x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \otimes (x_i \act y)
+  \end{align*}
+  for all~$x_1, \dotsc x_n \in \glie$,~$y \in \Univ(\glie)$.
+  By using the isomorphism of vector spaces
+  \[
+    \Exterior^n(\glie) \otimes_{\kf} \Univ(\glie)
+    \cong
+    \Univ(\glie) \otimes_{\kf} \Exterior^n(\glie)
+  \]
+  and the formula~$x \act y = -yx$ for all~$x \in \glie$,~$y \in \Univ(\glie)$ we arrive at a chain complex as described. 
+
+  It remains to check that the maps~$d_n$ are homomorphisms of~\modules{$\Univ(\glie)$}.
+  This holds because
+  \begin{align*}
+    \SwapAboveDisplaySkip
+    {}&
+    d_n(x \cdot (y \otimes x_1 \wedge \dotsb \wedge x_n) )
+    \\
+    ={}&
+    d_n( (xy) \otimes x_1 \wedge \dotsb \wedge x_n )
+    \\
+    ={}&
+    \sum_{1 \leq i < j \leq n}
+    (-1)^{i+j}
+    (xy) \otimes [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+    \\
+    {}&
+    +
+    \sum_{i=1}^n
+    (-1)^{i+1}
+    (x y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{ x_i } \wedge \dotsb \wedge x_n
+    \\
+    ={}&
+    x
+    \cdot
+    \Biggl(
+    \sum_{1 \leq i  j \leq n}
+      (-1)^{i+j}
+      y \otimes [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+    \\
+    {}&
+    \phantom{
+      x \cdot
+      \Biggl(
+    }
+      +
+      \sum_{i=1}^n
+      (-1)^{i+1}
+      (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{ x_i } \wedge \dotsb \wedge x_n
+    \Biggr)
+    \\
+    ={}&
+    x \cdot d_n(y \otimes x_1 \wedge \dotsb \wedge x_n)
+  \end{align*}
+  for all~$x \in \glie$,~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$.
+\end{proof}
+
+
+\begin{fluff}
+  We use in the following the identifications
+  \[
+    \Univ(\glie) \otimes_{\kf} \Exterior^0(\glie)
+    \cong
+    \Univ(\glie) \otimes_{\kf} \kf
+    \cong
+    \Univ(\glie)
+  \]
+  and
+  \[
+    \Univ(\glie) \otimes_{\kf} \Exterior^1(\glie)
+    \cong
+    \Univ(\glie) \otimes \glie \,.
+  \]
+  We regard~$\kf$ as a trivial representation of~$\glie$ and thus an a~\module{$\Univ(\glie)$}.
+\end{fluff}
+
+
+\begin{theorem}
+  \label{koszul is a free resolution}
+  \leavevmode
+  The sequence
+  \begin{equation}
+    \label{koszul complex written out}
+    \dotsb
+    \to
+    \Univ(\glie) \otimes_{\kf} \Exterior^2(\glie)
+    \xto{d_2}
+    \Univ(\glie) \otimes_{\kf} \glie
+    \xto{d_1}
+    \Univ(\glie)
+    \xto{\varepsilon}
+    \kf
+    \to
+    0
+  \end{equation}
+  is a free resolution of~$\kf$ as an~\module{$\Univ(\glie)$}, where~$\varepsilon$ denotes the counit of~$\Univ(\glie)$.
+\end{theorem}
+
+
+\begin{definition}
+  The free resolution from \cref{koszul is a free resolution} is the \defemph{Koszul resolution} or \defemph{Chevalley--Eilenberg-complex} of~$\glie$.
+\end{definition}
+
+
+\begin{fluff}
+  We will spend the rest of this \lcnamecref{koszul resolution} on proving \cref{koszul is a free resolution}.
+  The presented proof is taken from \cite[IV.6]{knapp}.
+  The reader who is familiar with spectral sequences may also check out the proof in \cite[Theorem~7.2.2]{weibel_homological_algebra}.
+
+  We will proceed in four steps.
+  We first prove \cref{koszul is a free resolution} under the assumption that the Lie~algebra~$\glie$ is abelian and finite-dimensional.
+  Then we prove \cref{koszul is a free resolution} under the assumption that~$\glie$ is abelian, but possibly infinite-dimensional.
+  Finally we prove \cref{koszul is a free resolution} without restriction on~$\glie$.
+\end{fluff}
+
+
+\begin{proof}[Proof of \cref{koszul is a free resolution}, general part]
+  It follows from~\cref{construction of koszul differential} that~$d_{n-1} \circ d_n = 0$ for all~$n \geq 2$.
+  The map~$d_1$ is given by
+  \[
+    d_1( y \otimes x )
+    =
+    yx
+  \]
+  for all~$y \in \Univ(\glie)$,~$x \in \glie$.
+  It follows from~\cref{augumentation ideal is spanned by monomials} that the image of~$d_1$ is the augumentation ideal of~$\Univ(\glie)$ and thus the kernel of~$\varepsilon$.
+  This shows the exactness at~$\Univ(\glie)$.
+  The given sequence is moreover exact at~$\kf$ because the map~$d_0$ is surjective, since~$\kf$ is one-dimensional and the image~$d_0(1)$ is nonzero.
+
+  This shows that the given sequence is a chain complexe, which is exact at~$\Univ(\glie)$ and~$\kf$.
+
+  The terms~$\Univ(\glie) \otimes_{\kf} \Exterior^n(\glie)$ with~$n \geq 0$ are free~\modules{$\Univ(\glie)$} according to \cref{extension of scalars is free}.
+
+  The maps~$d_n$ for~$n \geq 1$ are homomorphism of~\modules{$\Univ(\glie)$} according to \cref{construction of koszul differential}.
+  The counit~$\varepsilon$ is also a homomorphism of~\modules{$\Univ(\glie)$}.
+  Indeed, every element~$x$ of~$\Univ(\glie)$ acts on~$\kf$ by multiplication with the scalar~$\varepsilon(x)$, whence
+  \[
+    \varepsilon(x \cdot y)
+    =
+    \varepsilon(x) \cdot \varepsilon(y)
+    =
+    x \cdot \varphi(y)
+  \]
+  for all~$y \in \Univ(\glie)$.
+
+  It remains to check the exactness of the given complex at~$\Univ(\glie) \otimes \Exterior^n(\glie)$ for~$n \geq 1$.
+\end{proof}
+
+
+\begin{recall}
+  \label{exactness in ses of chain complex}
+  Let
+  \[
+    0 \to X_\bullet \to Y_\bullet \to Z_\bullet \to 0
+  \]
+  be a short exact sequence of chain complexes.
+  If the chain complexes~$X_\bullet$ and~$Z_\bullet$ are exact (i.e. they are exact sequences) then the chain complex~$Y_\bullet$ is also a chain complex.
+  Indeed, in the resulting long exact homology sequence
+  \[
+    \dotsb
+    \to
+    \Homology_{n+1}(Z_\bullet)
+    \to
+    \Homology_n(X_\bullet)
+    \to
+    \Homology_n(Y_\bullet)
+    \to
+    \Homology_n(Z_\bullet)
+    \to
+    \Homology_{n-1}(X_\bullet)
+    \to
+    \dotsb
+  \]
+  both~$\Homology_n(X_\bullet)$ and~$\Homology_n(Z_\bullet)$ vanish for all~$n \in \Integer$.
+  It then follows from the exactness of this sequence that also~$\Homology_n(Y_\bullet)$ vanishes for all~$n \in \Integer$.
+\end{recall}
+
+
+\begin{recall}
+  Let~$X_\bullet$ be a chain complex and let~$Y_\bullet$ be a subcomplex of~$X_\bullet$.
+  We can then form the quotient chain complex~$X_\bullet / Y_\bullet$.
+  This chain complex is given by the vector spaces~$X_n / Y_n$ for all~$n \in \Integer$.
+  The differentials of~$X_\bullet / Y_\bullet$ are given by the unique linear maps that make the diagrams
+  \[
+    \begin{tikzcd}
+      X_n
+      \arrow{d}
+      \arrow{r}[above]{d_n}
+      &
+      X_{n-1}
+      \arrow{d}
+      \\
+      Y_n
+      \arrow{r}[above]{d_n}
+      \arrow{d}
+      &
+      Y_{n-1}
+      \arrow{d}
+      \\
+      X_n / Y_n
+      \arrow[dashed]{r}
+      &
+      X_{n-1} / Y_{n-1}
+    \end{tikzcd}
+  \]
+  commute for all~$n \in \Integer$.
+  The above chain complexes fit into a short exact sequence
+  \[
+    0
+    \to
+    Y_\bullet
+    \to
+    X_\bullet
+    \to
+    X_\bullet / Y_\bullet
+    \to
+    0 \,.
+  \]
+\end{recall}
+
+
+\begin{proof}[Proof of \cref{koszul is a free resolution}, first part]
+  Suppose that the Lie~algebra~$\glie$ is abelian and finite-dimensional.
+  The maps~$d_n$ are given by
+  \[
+    d_n( y \otimes x_1 \wedge \dotsb \wedge x_n )
+    =
+    \sum_{i=1}^n
+    (-1)^{i+1}
+    (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n
+  \]
+  for all~$n \geq 1$,~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$ because~$\glie$ is abelian.
+
+  Let~$u_1, \dotsc, u_N$ be a basis of~$\glie$.
+  The universal enveloping algebra~$\Univ(\glie)$ isomorphic to the symmetric algebra~$\Symm(\glie)$ because~$\glie$ is abelian.
+  The algebra~$\Univ\glie)$ thus isomorphic to the polynomial algebra~$\kf[u_1, \dotsc, u_N]$.
+  We show the exactness of the given chain complex~\eqref{koszul complex written out} by induction over~$N$.
+  For~$N = 0$ we have~$\Univ(\glie) = 0$ and is chain complex is given by
+  \[
+    \dotsb
+    \to
+    0
+    \to
+    0
+    \to
+    \kf
+    \xto{\id}
+    \kf
+    \to
+    0 \,.
+  \]
+  This sequence is exact, showing the base case.
+
+  For~$N \geq 1$ we use that we have already shown~\eqref{koszul complex written out} to be a chain complex.
+  To show that this chain complex is exact we consider for every~$k = 0, \dotsc, n$ the ideal
+  \[
+    J_k
+    \defined
+    \ideal{u_1, \dotsc, u_k}
+  \]
+  of~$\Univ(\glie)$, and the linear subspaces~$V(n,k)$ of~$\Univ(\glie) \otimes \Exterior^n(\glie)$ given by
+  \[
+    V(n,k)
+    \defined
+    \Univ(\glie) \otimes \Exterior^n(u_1, \dotsc, u_k)  \,,
+  \]
+  where we use the abbrevaiton~$\Exterior^n(u_1, \dotsc, u_k)$ for~$\Exterior^n( \gen{u_1, \dotsc, u_k}_{\kf} )$.
+  We have
+  \[
+    d_n( V(n, k) )
+    \subseteq
+    V(n-1, k)
+  \]
+  for all~$n \geq 1$,~$k = 0, \dotsc, n$.
+  We thus have for every~$k$ a sequence~$X^{(k)}_\bullet$ given by
+  \[
+    \dotsb
+    \to
+    V(3,k)
+    \xto{d_{3,k}}
+    V(2,k)
+    \xto{d_{2,k}}
+    V(1,k)
+    \xto{d_{1,k}}
+    \Univ(\glie)
+    \xto{\varepsilon_k}
+    \Univ(\glie) / J_k
+    \to
+    0 \,,
+  \]
+  where~$\Univ(\glie) = V(0,k)$ and~$\varepsilon$ denotes the quotient homomorphism.
+  We will show that~$X^{(k)}_\bullet$ is exact for all~$k = 0, \dotsc, n$.
+  For~$k = n$ this then shows the exactness of~\eqref{koszul complex written out}.
+
+  We already know that~\eqref{koszul complex written out} is a chain complex.
+  It follows for~$X^{(k)}_\bullet$ that we have~$d_{n-1,k} \circ d_{n,k} = 0$ for all~$n \geq 2$.
+  We have~$V(1,k) = \Univ(\glie) \otimes \gen{u_1, \dotsc, u_k}_{\kf}$.
+  The image of this space under~$d_{1,k}$ is precisely the ideal of~$\Univ(\glie)$ generated by~$u_1, \dotsc, u_k$, i.e. the ideal~$J_k$, which in turn is precisely the kernel of~$\varepsilon_k$.
+  The sequence~$X^{(k)}_\bullet$ is thus exact at~$\Univ(\glie)$.
+  The projection~$\varepsilon$ is surjective, which shows the exactness of~$X^{(k)}_\bullet$ at~$\Univ(\glie) / J_k$.
+  For the exactness of~$X^{(k)}_\bullet$ it hence sufficies to show the exactness of the chain complex~$Y^{(k)}_\bullet$ given by
+  \[
+    \dotsb
+    \to
+    V(3,k)
+    \xto{d_{3,k}}
+    V(2,k)
+    \xto{d_{2,k}}
+    V(1,k)
+    \xto{d_{1,k}}
+    J_k
+    \to
+    0 \,.
+  \]
+  We show this exactness by induction over~$k$.
+
+  The complex~$Y^{(0)}_\bullet$ is the zero chain complex, which is exact.
+  Suppose now that~$k \geq 1$.
+  The complex~$Y^{(k-1)}_\bullet$ is exact by induction hypothesis.
+  We note that the chain complex~$Y^{(k-1)}_\bullet$ is a subcomplex of~$Y^{(k)}_\bullet$.
+  We will show in the following that the quotient complex~$Y^{(k)}_\bullet / Y^{(k-1)}_\bullet$ is exact.
+  It then follows from~\cref{exactness in ses of chain complex} that the complex~$Y^{(k)}_\bullet$ is also exact.
+
+  The quotient complex~$Y^{(k)}_\bullet / Y^{(k-1)}_\bullet$ is of the form
+  \[
+    \dotsb
+    \to
+    V(2,k) / V(2, k-1)
+    \xto{\induced{d_{2,k}}}
+    V(1,k) / V(1, k-1)
+    \xto{\induced{d_{1,k}}}
+    J_k / J_{k-1}
+    \to
+    0
+  \]
+
+  We have
+  \begin{align*}
+    V(n,k) / V(n, k-1)
+    &=
+    \Bigl( \Univ(\glie) \otimes \Exterior^n( u_1, \dotsc, u_k ) \Bigr)
+    \mathbin{\big/}
+    \Bigl( \Univ(\glie) \otimes \Exterior^n( u_1, \dotsc, u_{k-1} ) \Bigr)
+    \\
+    &\cong
+    \Univ(\glie)
+    \otimes
+    \Bigl(
+      \Exterior^n( u_1, \dotsc, u_k )
+      \mathbin{\big/}
+      \Exterior^n( u_1, \dotsc, u_{k-1} )
+    \Bigr) \,.
+  \end{align*}
+  The exterior power~$\Exterior^n( u_1, \dotsc, u_k )$ has the simple wedges
+  \[
+    u_{i_1} \wedge \dotsb \wedge u_{i_n}
+    \qquad
+    \text{with~$1 \leq i_1 < \dotsb < i_n \leq k$}
+  \]
+  as a basis.
+  Those simple wedges with~$1 \leq i_1 < \dotsb < i_n \leq k-1$ form a basis of~$\Exterior^n( u_1, \dotsc, u_{k-1} )$.
+  The quotient~$\Exterior^n(u_1, \dotsc, u_k) \mathbin{/} \Exterior^n(u_1, \dotsc, u_{k-1})$ does therefore have the residue classes
+  \[
+    \class{ u_{i_1} \wedge \dotsb \wedge u_{i_{n-1}} \wedge u_k }
+    \qquad
+    \text{with~$1 \leq i_1 < \dotsb < i_{n-1} \leq k-1$}
+  \]
+  as a basis.
+  We can therefore identify the quotient~$\Exterior^n(u_1, \dotsc, u_k) \mathbin{/} \Exterior^n(u_1, \dotsc, u_{k-1})$ with the exterior power~$\Exterior^{n-1}(u_1, \dotsc, u_{k-1})$ via the isomorphism
+  \[
+    \Exterior^{n-1}(u_1, \dotsc, u_{k-1})
+    \to
+    \Exterior^n(u_1, \dotsc, u_k)
+    \mathbin{\big/}
+    \Exterior^n(u_1, \dotsc, u_{k-1}) \,,
+    \quad
+    t
+    \mapsto
+    \class{ t \wedge u_k } \,.
+  \]
+  We thus have
+  \[
+    V(n, k) / V(n, k-1)
+    \cong
+    V(n-1, k-1)
+  \]
+  for all~$n \geq 1$, and such an isomorphism~$f_n$ from~$V(n-1,k-1)$ to~$V(n,k) / V(n, k-1)$ is given by
+  \[
+    f_{n-1}
+    \colon
+    V(n-1, k-1)
+    \to
+    V(n,k) / V(n,k-1) \,,
+    \quad
+    y \otimes t
+    \mapsto
+    \class{ y \otimes (t \wedge u_k) }
+  \]
+  for all~$y \in \Univ(\glie)$,~$t \in \Exterior^{n-1}(u_1, \dotsc, u_{k-1})$.
+
+  We note for the quotient~$J_k / J_{k-1}$ that the ideal~$J_k$ has as a basis all those monomials which contain at least one of the variables~$u_1, \dotsc, u_k$, and that~$J_{k-1}$ has as a basis all those monomials which contain at least on of the variables~$u_1, \dotsc, u_{k-1}$.
+  The quotient~$J_k / J_{k-1}$ does therefore have a basis given by all those monomials which contain the variable~$u_k$ but not the variables~$u_1, \dotsc, u_{k-1}$.
+  We can thus identify the quotient~$J_k / J_{k-1}$ on the level of vector spaces with the ideal~$\ideal{u_k}_{\kf[u_k, \dotsc, u_N]}$.
+  This ideal we can identify with~$\kf[u_k, \dotsc, u_N]$ via the multiplicaiton with~$u_k$.
+  But algebra~$\kf[u_k, \dotsc, u_N]$ is the quotient~$\Univ(\glie) / J_{k-1}$.
+  We have thus overall an isomorphism of vector spaces
+  \[
+    f_{-1}
+    \colon
+    \Univ(\glie) / J_{k-1}
+    \to
+    J_k / J_{k-1} \,,
+    \quad
+    \class{y}
+    \mapsto
+    \class{y u_k} \,.
+  \]
+
+  We have now the following diagram.
+  \[
+    \begin{tikzcd}[row sep = large]
+      \dotsb
+      \arrow{r}
+      &
+      V(2, k) / V(2, k-1)
+      \arrow{r}[above]{\induced{d_{2,k}}}
+      &
+      V(1, k) / V(1, k-1)
+      \arrow{r}[above]{\induced{d_{1,k}}}
+      &
+      J_k / J_{k-1}
+      \arrow{r}
+      &
+      0
+      \\
+      \dotsb
+      \arrow{r}
+      &
+      V(1,k-1)
+      \arrow{u}[right]{f_1}
+      \arrow{r}[above]{d_{1,k-1}}
+      &
+      V(0,k-1)
+      \arrow{u}[right]{f_0}
+      \arrow{r}[above]{\varepsilon_{k-1}}
+      &
+      \Univ(\glie) / J_{k-1}
+      \arrow{u}[right]{f_{-1}}
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  The lower row is the chain complex~$X^{(k-1)}_\bullet$, which is exact by induction hypothesis.
+  The vertical arrows are isomorphisms.
+  To conclude the exactness of the upper row it sufficies to show that this diagram commutes.
+  We have
+  \begin{align*}
+    {}&
+    \induced{d_{n,k}}( f_{n-1}( y \otimes x_1 \wedge \dotsb \wedge x_{n-1} ) )
+    \\
+    ={}&
+    \induced{d_{n,k}}\bigl( \class{ y \otimes x_1 \wedge \dotsb \wedge x_{n-1} \wedge u_k} \bigr)
+    \\
+    ={}&
+    \sum_{i=1}^{n-1}
+    (-1)^{i+1} \class{ (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \wedge u_k }
+    + (-1)^{n+1} \underbrace{ \class{ (y u_k) \otimes x_1 \wedge \dotsb \wedge x_{n-1} } }_{=0}
+    \\
+    ={}&
+    \sum_{i=1}^{n-1}
+    (-1)^{i+1} \class{ (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \wedge u_k }
+    \\
+    ={}&
+    f_{n-2}
+    \Biggl(
+      \sum_{i=1}^{n-1}
+      (-1)^{i+1}
+      (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1}
+    \Biggr)
+    \\
+    ={}&
+    f_{n-2}( d_{n-1,k-1}( y \otimes x_1 \wedge \dotsb \wedge x_{n-1} ) )
+  \end{align*}
+  for all~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_{n-1} \in \gen{u_1, \dotsc, u_{k-1}}$.
+  This shows the commutativity of all squares except for the rightmost one.
+  For the commutativity of this last square we calculate that
+  \[
+    \induced{d_{1,k}}( f_0( y ) )
+    =
+    \induced{d_{1,k}}\bigl( \class{ y \otimes u_k } \bigr)
+    =
+    \class{ y u_k }
+    =
+    f_{-1}( \class{y} )
+    =
+    f_{-1}( \varepsilon_{k-1}( y ) )
+  \]
+  for all~$y \in \Univ(\glie)$.
+\end{proof}
+
+
+\begin{recall}
+  Let~$X^{(i)}_\bullet$ with~$i \in I$ be a directed family of chain complexes.
+  More explicitely, each~$X^{(i)}_\bullet$ is a chain complex, and for any two element~$i$,~$j$ of~$I$ there exists another element~$k$ of~$I$ such that both~$X^{(i)}_\bullet$ and~$X^{(j)}_\bullet$ are subcomplexes of~$X^{(k)}_\bullet$.
+  \begin{enumerate}
+    \item
+      It follows for every integer~$n$ that the family of vector spaces~$X^{(i)}_n$ with~$i \in I$ is directed.
+      The union~$Y_n \defined \bigcup_{i \in I} X^{(i)}_n$ does therefore inherits the structure of a vector space from the~$X^{(i)}_n$.
+      Moreover, the differentials~$d^{(i)}_n \colon X^{(i)}_n \to X^{(i)}_{n-1}$ assemble into a unique linear map~$d_n$ from~$X_n$ to~$X_{n-1}$, such that the restriction of~$d_n$ to~$X^{(i)}_n$ is~$d^{(i)}_n$ for every~$i \in I$.
+      
+      These maps satisfy the condition~$d_{n-1} \circ d_n = 0$ for every integer~$n$.
+      Indeed, there exists for every element~$x$ of~$X_n$ some index~$i$ such that~$x$ is contained in~$X^{(i)}_n$.
+      Then~$d_n(x) = d^{(i)}_n(x)$, and this element is contained in~$X^{(i)}_{n-1}$.
+      Thus
+      \[
+        d_{n-1}( d_n( x ) )
+        =
+        d_{n-1}( d^{(i)}_n( x ) )
+        =
+        d^{(i)}_{n-1}( d^{(i)}_n( x ) )
+        =
+        0 \,.
+      \]
+
+      We have thus constructed a chain complex~$X_{\bullet}$ such that each~$X^{(i)}_\bullet$ is a subcomplex of~$X_\bullet$.
+      We denote this complex by~$\bigcup_{i \in I} X^{(i)}_\bullet$.
+    \item
+      If each complex~$X^{(i)}_\bullet$ is exact then the complex~$X_\bullet$ is again exact.
+      Indeed, let~$x$ be a~\cycle{$n$} of~$X_\bullet$.
+      The element~$x$ is contained in~$X^{(i)}_\bullet$ for some index~$i$.
+      Then
+      \[
+        0
+        =
+        d_n(x)
+        =
+        d^{(i)}_n(x)
+      \]
+      whence the element~$x$ is an~\cycle{$n$} in~$X^{(i)}_\bullet$.
+      It follows from the exactness of~$X^{(i)}_\bullet$ that there exists an element~$y$ of~$X^{(i)}_{n+1}$ with~$x = d^{(i)}_{n+1}(y)$.
+      Thus
+      \[
+        x
+        =
+        d^{(i)}_{n+1}( y )
+        =
+        d_{n+1}(y) \,.
+      \]
+      This shows the exactness of~$X_\bullet$.
+  \end{enumerate}
+\end{recall}
+
+
+\begin{proof}[Proof of \cref{koszul is a free resolution}, second part]
+  Suppose now that~$\glie$ is an abelian Lie~algebra of arbitrary dimension.
+  Let~$(u_\lambda)_{\lambda \in \Lambda}$ be a basis of~$\glie$.
+  For every subset~$I$ of~$\Lambda$ let~$\glie_I$ be linear subspace of~$\glie$ with basis~$(u_i)_{i \in I}$.
+  This subspace inherts from~$\glie$ the structure of an abelian Lie~algebra.
+  Let~$X^{(I)}_\bullet$ denote the Koszul complex of~$\glie_I$.
+
+  Let~$\mathcal{I}$ denote the set of finite subsets of~$\Lambda$.
+  We have already seen that the complex~$X^{(I)}_\bullet$ is exact for all~$I \in \mathcal{I}$.
+  If~$I$ and~$J$ are two elements of~$\mathcal{I}$ then there exists a third element~$K$ of~$\mathcal{I}$ which contains both~$I$ and~$J$ (e.g.~$K = I \cup J$).
+  Then the complexes~$X^{(I)}_\bullet$ and~$X^{(J)}_\bullet$ are both subcomplexes of~$X^{(K)}_\bullet$.
+  This shows that the family of complexes~$X^{(I)}_\bullet$ with~$I \in \mathcal{I}$ is directed.
+
+  The directed union~$\bigcup_{I \in \mathcal{I}} X^{(I)}_\bullet$ is thus again an exact complex.
+  But this union is the Koszul complex of~$\glie$.
+\end{proof}
+
+
+\begin{lemma}
+  \label{kernel of restricted counit}
+  Let~$\varepsilon$ be the counit of~$\glie$.
+  For all~$p \geq 0$ the kernel of the restriction of~$\varepsilon$ to~$\Univ(\glie)_{(p)}$ is spanned as a vector space by all those monomials~$x_1 \dotsm x_n$ with~$1 \leq n \leq p$,~$x_1, \dotsc, x_n \in \glie$.
+\end{lemma}
+
+
+\begin{proof}
+  Let~$\varepsilon_p$ be the restriction of~$\varepsilon$ to~$\Univ(\glie)_{(p)}$.
+  Let~$U$ be the span of the proposed vector space generating set of~$\ker(\varepsilon_p)$.
+
+  We know that the vector space~$\Univ(\glie)_{(p)}$ is spanned by the monomials
+  \[
+    x_1 \dotsm x_n
+    \qquad
+    \text{with~$0 \leq n \leq p$,~$x_1, \dotsc, x_n \in \glie$.}
+  \]
+  We know from \cref{augumentation ideal is spanned by monomials} that all those monomials with~$n \geq 1$ are contained in~$\ker(\varepsilon_p)$.
+  We therefore know that~$U$ is contained in~$\ker(\varepsilon_p)$ and that the codimension of~$U$ in~$\Univ(\glie)_{(p)}$ is at most one.
+  But the codimension of~$\ker(\varepsilon_p)$ in~$\Univ(\glie)_{(p)}$ is precisely one.
+  The inclusion~$U \subseteq \ker( \varepsilon_p )$ is therefore an equality.
+\end{proof}
+
+
+\begin{recall}
+  \label{restricting decompositions}
+  Let~$V$ be a vector space.
+  Let~$U$ and~$W$ be two linear subspaces of~$V$ such that~$U$ is contained in~$W$.
+  If~$C$ is a direct complement for~$U$ in~$V$ then~$C \cap W$ is a direct complement vor~$U$ in~$W$.
+\end{recall}
+
+
+\begin{lemma}
+  \label{decomposition for restricted counit}
+  Let~$\varepsilon$ be the counit of~$\Univ(\glie)$ and let~$\varepsilon_p$ be the restriction of~$\varepsilon$ to~$\Univ(\glie)_{(p)}$.
+  Then
+  \[
+    \Univ(\glie)_{(p)}
+    =
+    \kf \oplus \ker(\varepsilon_p) \,.
+  \]
+\end{lemma}
+
+
+\begin{proof}
+  We have the decomposition~$\Univ(\glie) = \kf \oplus \ker(\varepsilon)$ by \cref{decomposition for augumented algebra}.
+  The direct summand~$\kf$ is contained in~$\Univ(\glie)_{(p)}$.
+  It therefore follows~\cref{restricting decompositions} that~$\Univ(\glie)_{(p)} = \kf \oplus \ker(\varepsilon_p)$ because~$\ker(\varepsilon_p) = \ker(\varepsilon) \cap \Univ(\glie)_{(p)}$.
+\end{proof}
+
+
+\begin{recall}
+  Let~$X^{(i)}_\bullet$ with~$i \in I$ be a family of chain complexes.
+  For every integer~$n$ let
+  \[
+    X_n \defined \bigoplus_{i \in I} X^{(i)}_n
+  \]
+  and let~$d_n \defined \bigoplus_{i \in I} d^{(i)}_n$.
+  This defines a chain complex~$X_\bullet$ because
+  \[
+    d_{n-1} \circ d_n
+    =
+    \bigoplus_{i \in I} d^{(i)}_{n-1}
+    \circ
+    \bigoplus_{i \in I} d^{(i)}_n
+    =
+    \bigoplus_{i \in I} \Bigl( d^{(i)}_{n-1} \circ d^{(i)}_n \Bigr)
+    =
+    \bigoplus_{i \in I} 0
+    =
+    0
+  \]
+  for all~$n \in \Integer$.
+  For this chain complex~$X_\bullet$ we have
+  \[
+    \Cycle_n( X_\bullet )
+    =
+    \ker\biggl( \bigoplus_{i \in I} d^{(i)}_n \biggr)
+    =
+    \bigoplus_{i \in I} \ker\Bigl( d^{(i)}_n \Bigr)
+    =
+    \bigoplus_{i \in I} \Cycle_n\Bigl( X^{(i)}_\bullet \Bigr)
+  \]
+  and similarly
+  \[
+    \Boundary_n( X_\bullet )
+    =
+    \im\biggl( \bigoplus_{i \in I} d^{(i)}_{n+1} \biggr)
+    =
+    \bigoplus_{i \in I} \im\Bigl( d^{(i)}_{n+1} \Bigr)
+    =
+    \bigoplus_{i \in I} \Boundary_n\Bigl( X^{(i)}_\bullet \Bigr) \,.
+  \]
+  It follows that
+  \begin{align*}
+    \Homology_n( X_\bullet )
+    &=
+    \Cycle_n( X_\bullet ) / \Boundary_n( X_\bullet )
+    \\
+    &=
+    \biggl(
+      \bigoplus_{i \in I} \Cycle_n\Bigl( X^{(i)}_\bullet \Bigr)
+    \biggr)
+    \Big/
+    \biggl(
+      \bigoplus_{i \in I} \Boundary_n\Bigl( X^{(i)}_\bullet \Bigr)
+    \biggr)
+    \\
+    &\cong
+    \bigoplus_{i \in I}
+    \bigl(
+      \Cycle_n( X_\bullet ) / \Boundary_( X_\bullet )
+    \bigr)
+    \\
+    &=
+    \bigoplus_{i \in I} \Homology_n( X_\bullet ) \,.
+  \end{align*}
+  It follows from this that the chain complex~$X_\bullet$ is exact if and only if the chain complex~$X^{(i)}_\bullet$ is exact for all~$i \in I$.
+\end{recall}
+
+
+\begin{proof}[Proof of \cref{koszul is a free resolution}, third part]
+  Suppose now that~$\glie$ is an arbitrary Lie~algebra.
+  For every natural number~$p$ let
+  \[
+    V(n,p)
+    \defined
+    \Univ(\glie)_{(p-n)} \otimes \Exterior^n(\glie)
+  \]
+  for all~$n \geq 0$.
+  The differentials of the Kozsul complex satisfy
+  \[
+    d_n( V(n,p) )
+    \subseteq
+    V(n-1,p)
+  \]
+  for all~$n \geq 1$.
+  The Koszul complex for~$\glie$ therefore restricts for all~$p \geq 0$ to a complex~$X^{(p)}_\bullet$ given by
+  \[
+    \dotsb
+    \to
+    V(3,p)
+    \xto{d_{3,p}}
+    V(2,p)
+    \xto{d_{2,p}}
+    V(1,p)
+    \xto{d_{1,p}}
+    \Univ(\glie)_{(p)}
+    \xto{\varepsilon_p}
+    \kf
+    \to
+    0 \,,
+  \]
+  where~$V(0,p) = \Univ(\glie)_{(p)}$. 
+  If~$p \leq q$ then~$X^{(p)}_\bullet$ is a subcomplex of~$X^{(q)}_\bullet$.
+  It follows that the family of complexes~$X^{(p)}_\bullet$ with~$p \geq 0$ is directed, and the union~$\bigcup_{p \geq 0} X^{(p)}_\bullet$ is the Koszul complex of~$\glie$.
+  (One may think about the complexes~$X^{(p)}_\bullet$ as a filtration of the Koszul complex.)
+  We show in the following that the complex~$X^{(p)}_\bullet$ is exact for all~$p \geq 0$.
+  It then follows that the Koszul complex is also exact, since it is the union~$\bigcup_{p \geq 0} X^{(p)}_\bullet$.
+
+  We note that the restriction~$\varepsilon_p$ from~$\Univ(\glie)_{(p)}$ to~$\kf$ is surjective for all~$p \geq 0$.
+  The complex~$X^{(p)}_\bullet$ is therefore exact at~$\kf$ for all~$p \geq 0$.
+  We also know from \cref{kernel of restricted counit} that the kernel of~$\varepsilon_p$ is spanned by the monomials~$x_1 \dotsm x_n$ with~$1 \leq n \leq p$,~$x_1, \dotsc, x_n \in \glie$.
+  This is precisely the image of~$V(1,p) = \Univ(\glie)_{(p-1)} \otimes \glie$ under~$d_{1,p}$, since~$d_{1,p}$ is given by
+  \[
+    d_{1,p}( y \otimes x )
+    =
+    y x
+  \]
+  for all~$y \in \Univ(\glie)_{(p-1)}$,~$x \in \glie$.
+  The complex~$X^{(p)}_\bullet$ is thus also exact at~$\Univ(\glie)_{(p)}$.
+
+  To prove the exactness of~$X^{(p)}_\bullet$ it now sufficies to show the exactness of the chain complex~$Y^{(p)}_\bullet$ given by
+  \[
+    \dotsb
+    \to
+    V(3,p)
+    \xto{d_{3,p}}
+    V(2,p)
+    \xto{d_{2,p}}
+    V(1,p)
+    \xto{d_{1,p}}
+    \ker( \varepsilon_p )
+    \to
+    0 \,.
+  \]
+  We show this exactness by induction over~$p$.
+  The chain complex~$Y^{(0)}_\bullet$ is the zero complex, which is exact.
+  This takes care of the base case.
+
+  Let now~$p \geq 1$.
+  We note that the chain complex~$Y^{(p-1)}_\bullet$ is a subcomplex of~$Y^{(p)}_\bullet$.
+  The chain complex~$Y^{(p-1)}_\bullet$ is exact by induction hypothesis.
+  We show in the following that the quotient chain complex~$Y^{(p)}_\bullet / Y^{(p-1)}_\bullet$ is also exact.
+  It then follows from \cref{exactness in ses of chain complex} that~$Y^{(p)}_\bullet$ is exact, as desired.
+
+  The quotient~$Y^{(p)}_\bullet / Y^{(p-1)}_\bullet$ is given by
+  \[
+    \dotsb
+    \to
+    V(2,p) / V(2, p-1)
+    \xto{\induced{d_{2,p}}}
+    V(1,p) / V(1, p-1)
+    \xto{\induced{d_{1,p}}}
+    \ker(\varepsilon_p) / {\ker(\varepsilon_{p-1})}
+    \to
+    0 \,.
+  \]
+  The differentials of this chain complex are given by
+  \begin{align*}
+    {}&
+    \induced{d_{n,p}}( \class{y \otimes x_1 \wedge \dotsb \wedge x_n} )
+    \\
+    ={}&
+    \sum_{1 \leq i < j \leq n}
+    (-1)^{i+j}
+    \,
+    \underbrace{
+      \class{
+        y \otimes [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+      }
+    }_{=0}
+    \\
+    {}&
+    +
+    \sum_{i=1}^n
+    (-1)^{i+1}
+    \,
+    \class{ (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n }
+    \\
+    ={}&
+    \sum_{i=1}^n
+    (-1)^{i+1}
+    \,
+    \class{ (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n }
+  \end{align*}
+  for all~$y \in \Univ(\glie)_{(p-n)}$,~$x_1, \dotsc, x_n \in \glie$.
+  We used above that the term
+  \[
+    y \otimes [x_i,x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+  \]
+  is contained in~$\Univ(\glie)_{(p-n)} \otimes \Exterior^{n-1}(\glie) = V(n-1,p-1)$ and thus vanishes in~$V(n-1,p) / V(n-1, p-1)$.
+  We can also compute the terms of~$Y^{(p)}_\bullet / Y^{(p-1)}_\bullet$.
+  We have
+  \begin{align*}
+    V(n, p) / V(n, p-1)
+    &=
+    \Bigl(
+      \Univ(\glie)_{(p-n)} \otimes \Exterior^n(\glie)
+    \Bigr)
+    \big/
+    \Bigl(
+      \Univ(\glie)_{(p-n-1)} \otimes \Exterior^n(\glie)
+    \Bigr)
+    \\
+    &\cong
+    \bigl(
+      \Univ(\glie)_{(p-n)} / \Univ(\glie)_{(p-n-1)}
+    \bigr)
+    \otimes
+    \Exterior^n(\glie)
+    \\
+    &=
+    \gr[p-n]( \Univ(\glie) )
+    \otimes
+    \Exterior^n(\glie)
+  \end{align*}
+  for all~$n \geq 1$.
+  This isomorphism of vector spaces is explicitely given by
+  \begin{align*}
+    f_n
+    \colon
+    V(n, p) / V(n, p-1)
+    &\to
+    \gr[p-n]( \Univ(\glie) )
+    \otimes
+    \Exterior^n(\glie) \,,
+    \\
+    \class{ y \otimes x_1 \wedge \dotsb \wedge x_n }
+    &\mapsto
+    \fclass{ y }_p \otimes x_1 \wedge \dotsb \wedge x_n
+  \end{align*}
+  for all~$y \in \Univ(\glie)_{(p-n)}$,~$x_1, \dotsc, x_n \in \glie$.
+  We also have
+  \begin{align*}
+    \ker(\varepsilon_p)
+    /
+    {\ker(\varepsilon_{p-1})}
+    &\cong
+    (\ker(\varepsilon_p) \oplus \kf)
+    /
+    (\ker(\varepsilon_{p-1}) \oplus \kf)
+    \\
+    &=
+    \Univ(\glie)_{(p)} / \Univ(\glie)_{(p-1})
+    \\
+    &=
+    \gr[p-n]( \Univ(\glie) ) \,.
+  \end{align*}
+  This isomorphism of vector spaces is explicitely given by
+  \[
+    f_0
+    \colon
+    \ker(\varepsilon_p) / {\ker(\varepsilon_{p-1})}
+    \to
+    \gr[p]( \Univ(\glie) ) \,,
+    \quad
+    \class{y}
+    \mapsto
+    \fclass{ y }_p
+  \]
+  for all~$y \in \ker(\varepsilon_p)$.
+  We have~$\ker(\varepsilon_p) / \ker(\varepsilon_{p-1}) \cong \Univ(\glie)_{(p)} / \Univ(\glie)_{(p-1)}$, and the formula for~$f_0$ is the same as for~$f_n$ with~$n \geq 1$.
+  In other words, we have
+  \[
+    f_n( \class{ y \otimes x_1 \wedge \dotsb \wedge x_n } )
+    =
+    \fclass{ y }_{p-n} \otimes x_1 \wedge \dotsb \wedge x_n
+  \]
+  for all~$n \geq 0$,~$y \in \Univ(\glie)_{(p-n)}$,~$x_1, \dotsc, x_n \in \glie$.
+
+  We have now a commutative diagram
+  \[
+    \begin{tikzcd}
+      \dotsb
+      \arrow{r}
+      &[-1em]
+      V(2,p) / V(2, p-1)
+      \arrow{r}[above]{\induced{d_{2,p}}}
+      \arrow{d}[right]{f_2}
+      &
+      V(1,p) / V(1, p-1)
+      \arrow{r}[above]{\induced{d_{1,p}}}
+      \arrow{d}[right]{f_1}
+      &
+      \ker(\varepsilon_p) / {\ker(\varepsilon_{p-1})}
+      \arrow{r}
+      \arrow{d}[right]{f_0}
+      &[-1em]
+      0
+      \\
+      \dotsb
+      \arrow{r}
+      &
+      \gr[p-2]( \Univ(\glie) ) \otimes \Exterior^2(\glie)
+      \arrow{r}[above]{\del_{2,p}}
+      &
+      \gr[p-1]( \Univ(\glie) ) \otimes \glie
+      \arrow{r}[above]{\del_{1,p}}
+      &
+      \gr[p]( \Univ(\glie) )
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  for suitable linear maps~$\del_{n,p}$ with~$n \geq 1$.
+  The vertical maps are isomorphism of vector spaces.
+  The lower row is thus again a chain complex, and it is isomorphic to the upper row as chain complexes.
+  We denote this lower row by~$Z^{(p)}_\bullet$.
+  We calculate the differentials~$\del_{n,p}$ of~$Z^{(p)}_\bullet$ as
+  \begin{align*}
+    {}&
+    \del_{n,p}( \fclass{ y }_{p-n} \otimes x_1 \wedge \dotsb \wedge x_n )
+    \\
+    ={}&
+    \del_{n,p}\Bigl( f_n\Bigl( \class{ y \otimes x_1 \wedge \dotsb \wedge x_n } \Bigr) \Bigr) 
+    \\
+    ={}&
+    f_{n-1}\Bigl( \induced{d_{n,p}}\Bigl( \class{ y \otimes x_1 \wedge \dotsb \wedge x_n } \Bigr) \Bigr)
+    \\
+    ={}&
+    f_{n-1}
+    \Biggl(
+      \sum_{i=1}^n
+      (-1)^{i+1}
+      \,
+      \class{ (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n }
+    \Biggr)
+    \\
+    ={}&
+    \sum_{i=1}^n
+    (-1)^{i+1}
+    \fclass{ y x_i }_{p-n+1} \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n
+  \end{align*}
+  for all~$y \in \Univ(\glie)_{(p-n)}$,~$x_1, \dotsc, x_n \in \glie$.
+  This means in the space case of~$n = 1$ that
+  \[
+    \del_{1,p}( \fclass{ y }_{p-1} \otimes x )
+    =
+    \fclass{ yx }_p
+  \]
+  for all~$y \in \Univ(\glie)_{(p-1)}$,~$x \in \glie$.
+  To show the desired exactness of~$Y^{(p)}_\bullet / Y^{(p-1)}_\bullet$ we show the exactness of~$Z^{(p)}_\bullet$.
+
+  Let~$\hlie$ be the abelian Lie~algebra that has the same underlying vector space of~$\hlie$.
+  According to the abstract version of the PBW theorem we may identify the associated graded algebra~$\gr( \Univ(\glie) )$ with the symmetric algebra~$\Symm(\glie)$ as graded algebras.
+  Then
+  \[
+    \gr(\Univ(\glie))
+    =
+    \Symm(\glie)
+    =
+    \Symm(\hlie)
+    =
+    \Univ(\hlie)
+  \]
+  as graded algebra, because~$\hlie$ is abelian.
+  We have already seen that the Koszul complex~$K_\bullet$ of~$\hlie$, given by
+  \[
+    \dotsb
+    \to
+    \Symm(\hlie) \otimes \Exterior^2(\hlie)
+    \xto{d_2}
+    \Symm(\hlie) \otimes \hlie
+    \xto{d_1}
+    \Symm(\hlie)
+    \xto{\varepsilon}
+    \kf
+    \to
+    0 \,,
+  \]
+  is exact, where the differentials of this chain complex are given by
+  \[
+    d_n( y \otimes x_1 \wedge \dotsb \wedge x_n)
+    =
+    \sum_{i=1}^n
+    (-1)^{i+1} (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \,.
+  \]
+  The grading~$\Symm(\hlie) = \bigoplus_{d \geq 0} \Symm^d(\hlie)$ induces for all~$n \geq 0$ a grading on~$\Symm(\hlie) \otimes \Exterior^n(\hlie)$ such that the degree~$q$ part of~$\Symm(\hlie) \otimes \Exterior^n(\hlie)$ is given by~$\Symm^{q-n}(\hlie) \otimes \Exterior^n(\hlie)$ (where~$S^d(\hlie) = 0$ for all~$d < 0$).
+  We also have a grading on~$\kf$ given by~$\kf_0 = \kf$ and~$\kf_q = 0$ for all~$q > 1$.
+  The differentials of the Koszul complex respect these gradings, in these sense that we have for every~$q$ a restricted chain complex~$K^{(q)}_\bullet$ given by
+  \[
+    \dotsb
+    \to
+    \Symm^{q-2}(\hlie) \otimes \Exterior^2(\hlie)
+    \xto{d_{2,q}}
+    \Symm^{q-1}(\hlie) \otimes \hlie
+    \xto{d_{1,q}}
+    \Symm^q(\hlie)
+    \xto{\varepsilon_q}
+    \kf_q
+    \to
+    0 \,,
+  \]
+  We have conversely~$K_\bullet = \bigoplus_{q \geq 0} K^{(q)}_\bullet$.
+  The exactness of the Koszul complex~$K_\bullet$ shows that each subcomplex~$K^{(q)}_\bullet$ is again exact.
+  We find for~$q = p$ that the exact chain complex~$K^{(p)}_\bullet$ is given by
+  \[
+    \dotsb
+    \to
+    \Symm^{p-2}(\hlie) \otimes \Exterior^2(\hlie)
+    \xto{d_{2,p}}
+    \Symm^{p-1}(\hlie) \otimes \hlie
+    \xto{d_{1,p}}
+    \Symm^p(\hlie)
+    \xto{\varepsilon_p}
+    0
+    \to
+    0 \,,
+  \]
+  because~$p \geq 0$ and thus~$\kf_p = 0$.
+
+  We have now
+  \[
+    \gr[d](\Univ(\glie))
+    =
+    \gr(\Univ(\glie))_d
+    =
+    \Symm(\glie)_d
+    =
+    \Symm(\hlie)_d
+    =
+    \Symm^d(\hlie)
+  \]
+  for all~$d \geq 0$ and thus
+  \[
+    \gr[d]( \Univ(\glie) ) \otimes \Exterior^n(\glie)
+    =
+    \Symm^d( \hlie ) \otimes \Exterior^n(\hlie)
+  \]
+  for all~$d \geq 0$,~$n \geq 0$.
+  We have therefore the diagram
+  \[
+    \begin{tikzcd}
+      \dotsb
+      \arrow{r}
+      &
+      \gr[p-2]( \Univ(\glie) ) \otimes \Exterior^2(\glie)
+      \arrow{r}[above]{\del_{2,p}}
+      \arrow[equal]{d}
+      &
+      \gr[p-1]( \Univ(\glie) ) \otimes \glie
+      \arrow{r}[above]{\del_{1,p}}
+      \arrow[equal]{d}
+      &
+      \gr[p]( \Univ(\glie) )
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      0
+      \\
+      \dotsb
+      \arrow{r}
+      &
+      \Symm^{p-2}( \Univ(\hlie) ) \otimes \Exterior^2(\hlie)
+      \arrow{r}[above]{d_{2,p}}
+      &
+      \Symm^{p-1}( \Univ(\hlie) ) \otimes \hlie
+      \arrow{r}[above]{d_{1,p}}
+      &
+      \Symm^p( \Univ(\hlie) )
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  We know from the explicit formulas for~$\delta_{n,p}$ and~$d_{n,p}$ that this diagram commutes.
+  The lower row is the exact complex~$K^{(p)}_\bullet$.
+  It thus follows that the upper row also commutes.
+\end{proof}
+
+
+\begin{fluff}
+  We also have a Koszul resolution as right modules.
+  For this we regard~$\Exterior(\glie) \otimes_{\kf} \Univ(\glie)$ as a right~\module{$\Univ(\glie)$} via extension of scalars, i.e. via
+  \[
+    (t \otimes y) \cdot x
+    =
+    t \otimes (yx)
+  \]
+  for all~$t \in \Exterior^n(\glie)$,~$y, x \in \Univ(\glie)$.
+\end{fluff}
+
+
+\begin{corollary}[Koszul resolution for right modules]
+  \label{right koszul is a free resolution}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      There exists for every~$n \geq 1$ a unique linear map
+      \[
+        \del_n
+        \colon
+        \Exterior^n(\glie) \otimes_{\kf} \Univ(\glie)
+        \to
+        \Exterior^{n-1}(\glie) \otimes_{\kf} \Univ(\glie)
+      \]
+      given by
+      \begin{align*}
+        \del_n( x_1 \wedge \dotsb \wedge x_n \otimes y )
+        ={}&
+        \sum_{1 \leq i < j \leq n}
+        (-1)^{i+j}
+        [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+        \otimes y
+        \\
+        {}&
+        +
+        \sum_{i=1}^n
+        (-1)^i
+        x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \otimes (x_i y)
+      \end{align*}
+      for all~$x_1, \dotsc, x_n \in \glie$,~$y \in \Univ(\glie)$.
+    \item
+      The maps~$\del_n$ for~$n \geq 1$ are homomorphisms of right~\modules{$\Univ(\glie)$}.
+    \item
+      The sequence
+      \[
+        \dotsb
+        \to
+        \Exterior^2(\glie) \otimes \Univ(\glie)
+        \xto{\del_2}
+        \glie \otimes_{\kf} \Univ(\glie)
+        \xto{\del_1}
+        \Univ(\glie)
+        \xto{\varepsilon}
+        \kf
+        \to
+        0
+      \]
+      is a free resolution of~$\kf$ as a right~\module{$\Univ(\glie)$}, where~$\varepsilon$ denotes the counit of~$\Univ(\glie)$.
+  \end{enumerate}
+\end{corollary}
+
+
+\begin{proof}
+  The existence and uniqueness of the maps~$d_n$ can be shown as in \cref{construction of koszul differential}.
+  That these maps are homomorphisms of~\modules{$\Univ(\glie)$} can also be shown as in \cref{construction of koszul differential}.
+
+  To show the exactness of the given sequence we consider the Koszul complex of~$\glie^{\op}$, given by
+  \[
+    \dotsb
+    \to
+    \Univ(\glie) \otimes \Exterior^2(\glie)
+    \xto{d_2}
+    \Univ(\glie) \otimes \glie
+    \xto{d_1}
+    \Univ(\glie)
+    \xto{\varepsilon}
+    \kf
+    \to
+    0 \,.
+  \]
+  The anti-isomorphism of Lie~algebras
+  \[
+    \varphi
+    \colon
+    \glie
+    \to
+    \glie
+    \quad
+    x
+    \mapsto
+    - x
+  \]
+  extends to an anti-isomorphism of algebras
+  \[
+    \Phi
+    \colon
+    \Univ(\glie)
+    \to
+    \Univ(\glie)\,.
+  \]
+  We have for all~$n \geq 0$ an induced isomorphism of vector spaces
+  \[
+    f_n
+    \coloneqq
+    \Phi \otimes \id
+    \colon
+    \Univ(\glie) \otimes \Exterior^n(\glie)
+    \to
+    \Univ(\glie) \otimes \Exterior^n(\glie) \,.
+  \]
+  We get from this a commutative diagram
+  \[
+    \begin{tikzcd}[row sep = large]
+      \dotsb
+      \arrow{r}
+      &
+      \Univ(\glie) \otimes \Exterior^2(\glie)
+      \arrow{r}[above]{\del'_2}
+      \arrow{d}[right]{f_2}
+      &
+      \Univ(\glie) \otimes \glie
+      \arrow{r}[above]{\del'_1}
+      \arrow{d}[right]{f_1}
+      &
+      \Univ(\glie)
+      \arrow{r}[above]{\varepsilon'}
+      \arrow{d}[right]{f_0}
+      &
+      \kf
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      0
+      \\
+      \dotsb
+      \arrow{r}
+      &
+      \Univ(\glie) \otimes \Exterior^2(\glie)
+      \arrow{r}[above]{d_2}
+      &
+      \Univ(\glie) \otimes \glie
+      \arrow{r}[above]{d_1}
+      &
+      \Univ(\glie)
+      \arrow{r}[above]{\varepsilon}
+      &
+      \kf
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  for suitable linear maps~$\del'_n$ and~$\varepsilon'$.
+  The lower row is exact and the vertical linear maps are isomorphisms, so the upper row is exact.
+  We can explicitely calculate the maps in the upper row.
+  We note that
+  \[
+    \Phi(y) \cdot x
+    =
+    - \Phi(y) \cdot \varphi(x)
+    =
+    - \Phi(y) \cdot \Phi(x)
+    =
+    - \Phi(x y)
+  \]
+  for all~$y \in \Univ(\glie)$,~$x \in \glie$, and thus
+  \begin{align*}
+    {}&
+    f_{n-1}( \del'_n( y \otimes x_1 \wedge \dotsb \wedge x_n ) )
+    \\
+    ={}&
+    d_n( f_n( y \otimes x_1 \wedge \dotsb \wedge x_n ) )
+    \\
+    ={}&
+    d_n( \Phi(y) \otimes x_1 \wedge \dotsb \wedge x_n )
+    \\
+    ={}&
+    \sum_{1 \leq i < j \leq n}
+    (-1)^{i+j}
+    \Phi(y) \otimes
+    [x_i, x_j] \wedge
+    x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+    \\
+    {}&
+    +
+    \sum_{i=1}^n
+    (-1)^{i+1}
+    ( \Phi(y) \cdot x_i )
+    \otimes
+    x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n
+    \\
+    ={}&
+    \sum_{1 \leq i < j \leq n}
+    (-1)^{i+j}
+    \Phi(y) \otimes
+    [x_i, x_j] \wedge
+    x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+    \\
+    {}&
+    +
+    \sum_{i=1}^n
+    (-1)^i
+    \Phi(x_i y)
+    \otimes
+    x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n
+    \\
+    ={}&
+    f_{n-1}
+    \Biggl(
+      \sum_{1 \leq i < j \leq n}
+      (-1)^{i+j}
+      y \otimes
+      [x_i, x_j] \wedge
+      x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+    \\
+      {}&
+      \phantom{ f_{n-1} \Biggl( }
+      +
+      \sum_{i=1}^n
+      (-1)^i
+      (x_i y)
+      \otimes
+      x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n
+    \Biggr)
+  \end{align*}
+  for all~$n \geq 1$,~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$.
+  This shows that
+  \begin{align*}
+    \del'_n( y \otimes x_1 \wedge \dotsb \wedge x_n )
+    ={}&
+    \sum_{1 \leq i < j \leq n}
+    (-1)^{i+j}
+    y \otimes
+    [x_i, x_j] \wedge
+    x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+    \\
+    {}&
+    +
+    \sum_{i=1}^n
+    (-1)^i
+    (x_i y)
+    \otimes
+    x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n
+  \end{align*}
+  for all~$n \geq 1$,~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$.
+  The map~$\varepsilon'$ is the composite of the homomorphism of algebras~$\varepsilon$ and the anti-homomorphism of algebras~$\Phi = f_0$.
+  It follows that~$\varepsilon'$ is an anti-homomorphism of algebras from~$\Univ(\glie)$ to~$\kf$.
+  But the algebra~$\kf$ is commutaitve, so~$\varepsilon'$ is a homomorphism of algebras.
+  Moreover, we have
+  \[
+    \varepsilon'(x)
+    =
+    \varepsilon( \Phi(x) )
+    =
+    \varepsilon( \varphi(x) )
+    =
+    \varepsilon( -x )
+    =
+    - \varepsilon(x)
+    =
+    0
+  \]
+  for all~$x \in \glie$.
+  This shows that~$\varepsilon'$ is the antipode of~$\Univ(\glie)$, i.e.~$\varepsilon' = \varepsilon$.
+  
+  It follows from these calculations that the diagram
+  \[
+    \begin{tikzcd}[row sep = large]
+      \dotsb
+      \arrow{r}
+      &
+      \Univ(\glie) \otimes \Exterior^2(\glie)
+      \arrow{r}[above]{\del'_2}
+      \arrow{d}[right]{t_2}
+      &
+      \Univ(\glie) \otimes \glie
+      \arrow{r}[above]{\del'_1}
+      \arrow{d}[right]{t_1}
+      &
+      \Univ(\glie)
+      \arrow{r}[above]{\varepsilon'}
+      \arrow{d}[right]{t_0}
+      &
+      \kf
+      \arrow{r}
+      \arrow[equal]{d}
+      &
+      0
+      \\
+      \dotsb
+      \arrow{r}
+      &
+      \Exterior^2(\glie) \otimes \Univ(\glie)
+      \arrow{r}[above]{\del_2}
+      &
+      \glie \otimes \Univ(\glie)
+      \arrow{r}[above]{\del_1}
+      &
+      \Univ(\glie)
+      \arrow{r}[above]{\varepsilon}
+      &
+      \kf
+      \arrow{r}
+      &
+      0
+    \end{tikzcd}
+  \]
+  commutes, where~$t_n$ denotes the twist map for all~$n \geq 0$.
+  It follows from the exactness of the upper row that the lower row is also exact.
+\end{proof}
+
+
+
+
+\section{Consequences of the Koszul Resolution}
+
+\begin{fluff}
+  With help of the Koszul complex we can now give an alternative description of Lie algebra homology and Lie algebra cohomology.
+\end{fluff}
+
+
+\begin{construction}
+  \label{lie algebra homology and cohomology via koszul complex}
+  Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+  \begin{enumerate}
+    \item
+      Let
+      \[
+        \dotsb
+        \to
+        \Exterior^2(\glie) \otimes_{\kf} \Univ(\glie)
+        \xto{d_2}
+        \glie \otimes_{\kf} \Univ(\glie)
+        \xto{d_1}
+        \Univ(\glie)
+        \xto{\varepsilon}
+        \kf
+        \to
+        0
+      \]
+      be the right Koszul resolution of~$\glie$.
+      By removing the term~$\kf$ from this resolution we get the chain complex
+      \begin{equation}
+        \label{shortened right koszul resolution}
+        \dotsb
+        \to
+        \Exterior^2(\glie) \otimes_{\kf} \Univ(\glie)
+        \xto{d_2}
+        \glie \otimes_{\kf} \Univ(\glie)
+        \xto{d_1}
+        \Univ(\glie)
+        \to
+        0
+      \end{equation}
+      We can then apply the functor~$(-) \otimes_{\Univ(\glie)} M$ to~\eqref{shortened koszul resolution} to get a new chain complex given by
+      \[
+        \dotsb
+        \to
+        \Exterior^2(\glie) \otimes_{\kf} \Univ(\glie) \otimes_{\Univ(\glie)} M
+        \xto{d_2 \otimes \id}
+        \glie \otimes_{\kf} \Univ(\glie) \otimes_{\Univ(\glie)} M
+        \xto{d_1 \otimes \id}
+        \Univ(\glie) \otimes_{\Univ(\glie)} M
+        \to
+        0
+      \]
+      The differentials of this chain complex are given by
+      \begin{align*}
+        {}&
+        (d_n \otimes \id)(x_1 \wedge \dotsb \wedge x_n \otimes y \otimes m)
+        \\
+        ={}&
+        \sum_{1 \leq i < j \leq n}
+        (-1)^{i+j}
+        [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+        \otimes y \otimes m
+        \\
+        {}&
+        +
+        \sum_{i=1}^n
+        (-1)^i
+        x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \otimes (x_i y) \otimes m \,.
+      \end{align*}
+      We can simplify this chain complex by using the isomorphism
+      \begin{equation}
+        \label{isomorphism for triple tensor product}
+        \Exterior^n(\glie) \otimes_{\kf} \Univ(\glie) \otimes_{\Univ(\glie)} M
+        \cong
+        \Exterior^n(\glie) \otimes_{\kf} M
+      \end{equation}
+      which is given by
+      \[
+        t \otimes y \otimes m
+        \mapsto
+        t \otimes (y \cdot m)
+      \]
+      for all~$t \in \Exterior^n(\glie)$,~$y \in \Univ(\glie)$,~$m \in M$.
+      We arrive at a chain complex
+      \[
+        \dotsb
+        \to
+        \Exterior^2(\glie) \otimes_{\kf} M
+        \xto{\del_2}
+        \glie \otimes_{\kf} M
+        \xto{\del_1}
+        M
+        \to
+        0 \,.
+      \]
+      To compute the differentials for this chain complex we take the above formula for~$d_n \otimes \id$, and apply the isomorphism~\eqref{isomorphism for triple tensor product}, and then set~$y  = 1$.
+      We find that
+      \begin{align*}
+        {}&
+        \del_n(x_1 \wedge \dotsb \wedge x_n \otimes m)
+        \\
+        ={}&
+        \sum_{1 \leq i < j \leq n}
+        (-1)^{i+j}
+        [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+        \otimes m
+        \\
+        {}&
+        +
+        \sum_{i=1}^n
+        (-1)^i
+        x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \otimes (x_i \cdot m) \,.
+      \end{align*}
+      for all~$m \in M$,~$x_1, \dotsc, x_n \in \glie$.
+      We have thus constructed the Lie algebra chain complex~$\Chain_\bullet(\glie, M)$ from the Koszul resolution.
+    \item
+      Let
+      \[
+        \dotsb
+        \to
+        \Univ(\glie) \otimes_{\kf} \Exterior^2(\glie)
+        \xto{d_2}
+        \Univ(\glie) \otimes_{\kf} \glie
+        \xto{d_1}
+        \Univ(\glie)
+        \xto{\varepsilon}
+        \kf
+        \to
+        0
+      \]
+      be the Koszul resolution of~$\glie$.
+      By removing the term~$\kf$ from this resolution we get the chain complex
+      \begin{equation}
+        \label{shortened koszul resolution}
+        \dotsb
+        \to
+        \Univ(\glie) \otimes_{\kf} \Exterior^2(\glie)
+        \xto{d_2}
+        \Univ(\glie) \otimes_{\kf} \glie
+        \xto{d_1}
+        \Univ(\glie)
+        \to
+        0
+      \end{equation}
+      We can also apply the functor~$\Hom_{\Univ(\glie)}(-, M)$ to the chain complex~\eqref{shortened koszul resolution} to arrive at a cochain complex
+      \begin{align*}
+        0
+        \to
+        \Hom_{\Univ(\glie)}( \Univ(\glie), M )
+        &\xto{d_1^*}
+        \Hom_{\Univ(\glie)}( \Univ(\glie) \otimes_{\kf} \glie, M )
+        \\
+        &\xto{d_2^*}
+        \Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes_{\kf} \Exterior^2(\glie), M \Bigr)
+        \\
+        &\xto{d_3^*}
+        \Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes_{\kf} \Exterior^3(\glie), M \Bigr)
+        \to
+        \dotsb
+      \end{align*}
+      The differential of this cochain complex is given by
+      \begin{align*}
+        d_n^*(f)( y \otimes x_1 \wedge \dotsb \wedge x_n )
+        ={}&
+        f( d_n(y \otimes x_1 \wedge \dotsb \wedge x_n) )
+        \\
+        ={}&
+        \sum_{1 \leq i < j \leq n}
+        (-1)^{i+1}
+        f
+        (
+          y \otimes
+          [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+        )
+        \\
+        {}&
+        +
+        \sum_{i=1}^n
+        (-1)^{i+1}
+        f( (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n )
+      \end{align*}
+      for all~$f \in \Hom( \Univ(\glie) \otimes_{\kf} \Exterior^{n-1}(\glie), M )$,~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$.
+      We have by the universal property of the extension of scalars an isomorphism of vector spaces
+      \[
+        \Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes \Exterior^n( \glie, M ) \Bigr)
+        \cong
+        \Hom_{\kf}\Bigl( \Exterior^n(\glie), M \Bigr)
+      \]
+      for all~$n \geq 0$, given by
+      \begin{align*}
+        f
+        &\mapsto
+        \bigl( t \mapsto f(1 \otimes t) \bigr) \,, \\
+        \bigl( y \otimes t \mapsto y \cdot g(t) \bigr)
+        &\mapsfrom
+        g \,.
+      \end{align*}
+      The above cochain complex is thus isomorphic to the cochain complex given by
+      \[
+        0
+        \to
+        \Hom_{\kf}( \kf, M )
+        \xto{\del_0}
+        \Hom_{\kf}( \glie, M )
+        \xto{\del_1}
+        \Hom_{\kf}\Bigl( \Exterior^2(\glie), M \Bigr)
+        \to
+        \dotsb
+      \]
+      with differentials given by
+      \begin{align*}
+        \del_n(f)(x_1 \wedge \dotsb \wedge x_{n+1})
+        ={}&
+        \sum_{1 \leq i < j \leq n+1}
+        (-1)^{i+1}
+        f
+        (
+          [x_i, x_j] \wedge
+          x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1}
+        )
+        \\
+        {}&
+        +
+        \sum_{i=1}^{n+1}
+        (-1)^{i+1}
+        x_i \cdot f( \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} )
+      \end{align*}
+      for all~$f \in \Hom_{\kf}( \Exterior^n(\glie), M )$,~$x_1, \dotsc, x_{n+1} \in \glie$.
+
+      By further identifying~$\Hom_{\kf}( \Exterior^n(\glie), M )$ with~$\Alt^n(\glie, M)$ for all~$n \geq 0$ we arrive at the Lie algebra cochain complex~$\Chain^\bullet(\glie, M)$.
+  \end{enumerate}
+\end{construction}
+
+
+\begin{proposition}
+  \label{invariant and coinvariants via hom and tensor}
+  Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+  \begin{enumerate}
+    \item
+      The map
+      \[
+        \Hom_{\Univ(\glie)}(\kf, M)
+        \to
+        M^{\glie} \,,
+        \quad
+        f
+        \mapsto
+        f(1)
+      \]
+      is a well-defined isomorphism of vector spaces.
+    \item
+      The map
+      \[
+        \kf \otimes_{\Univ(\glie)} M
+        \to
+        M_{\glie} \,,
+        \quad
+        1 \otimes m
+        \mapsto
+        \class{ m }
+      \]
+      is a well-defined isomorphism of vector spaces.
+  \end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      We have already seen this in \cref{invariants via internal hom}.
+    \item
+      The counit~$\varepsilon$ of~$\Univ(\glie)$ induces an isomorphism of~\module{$\Univ(\glie)$}
+      \[
+        \Univ(\glie) / I
+        \to
+        \kf \,,
+        \quad
+        \class{x}
+        \mapsto
+        \varepsilon(x)
+      \]
+      where~$I$ is the augumentation ideal of~$\Univ(\glie)$.
+      It follows that
+      \[
+        \kf \otimes_{\Univ(\glie)} M
+        \cong
+        ( \Univ(\glie) / I ) \otimes_{\Univ(\glie)} M
+        \cong
+        M / I M \,,
+      \]
+      and this isomorphism is given by
+      \[
+        1 \otimes m
+        =
+        \varepsilon(1) \otimes m
+        \mapsto
+        \class{1} \otimes m
+        \mapsto
+        \class{ 1 \cdot m }
+        =
+        \class{ m } \,.
+      \]
+      The augumentation ideal~$I$ is generated by~$\glie$ as a left ideal of~$\Univ(\glie)$, whence
+      \[
+        M / I M
+        =
+        M / \ideal{\glie} M
+        =
+        M / \glie M
+        =
+        M_{\glie} \,.
+      \]
+      We have altogether shown the claimed isomorphism.
+    \qedhere
+  \end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+  \label{invariants and coinvariants via hom and tensor as functors}
+  The isomorphisms from \cref{invariant and coinvariants via hom and tensor} are natural in~$M$ and thus assemble into isomorphisms of functors
+  \[
+    (-)^{\glie}
+    \cong
+    \Hom_{\Univ(\glie)}( \kf, - ) \,,
+    \quad
+    (-)_{\glie}
+    \cong
+    \kf \otimes_{\Univ(\glie)} (-) \,.
+  \]
+\end{remark}
+
+
+\begin{fluff}
+  Let~$\glie$ be a Lie~algebra.
+  The Koszul complex of~$\glie$ is a free, and thus projective, resolution of~$\kf$ as a left~\module{$\Univ(\glie)$}.
+  We can therefore use this resolution to compute the right derived functors~$\Ext_{\Univ(\glie)}^n(\kf, -)$ with~$n \geq 0$.
+  We can similarly use the right Koszul resolution to compute the left derived functors~$\cramped{\Tor^{\Univ(\glie)}_n(\kf, -)}$ with~$n \geq 0$.
+  We see from \cref{lie algebra homology and cohomology via koszul complex} that the result of these computations are precisely the Lie algebra cohomology of~$\glie$ and Lie algebra homology of~$\Univ(\glie)$.
+  We thus have
+  \[
+    \Homology_n(\glie, -)
+    \cong
+    \Tor^{\Univ(\glie)}_n(\kf, -)
+    \quad\text{and}\quad
+    \Homology^n(\glie, -)
+    \cong
+    \Ext^n_{\Univ(\glie)}(\kf, -)
+  \]
+  for all~$n \geq 0$.
+  In other words, the Lie algebra cohomology of~$\glie$ is given by the right derived functors of~$\Hom_{\glie}(\kf, -)$, and the Lie algebra homology of~$\glie$ is given by the left derived functors of~$\kf \otimes_{\Univ(\glie)} (-)$.
+  It follows from \cref{invariants and coinvariants via hom and tensor as functors} that the Lie algebra cohomology of~$\glie$ is given by the right derived functors of~$(-)^{\glie}$, and the Lie~algebra homology of~$\glie$ is given by the left derived functors of~$(-)_{\glie}$.
+\end{fluff}
+
+
+\begin{proposition}
+  Let~$\glie$ be a Lie~algebra and let~$I$ be the augumentation ideal of~$\glie$.
+  Let~$M$ be a representation of~$\glie$.
+  Then the map
+  \[
+    R
+    \colon
+    \Hom_{\Univ(\glie)}(I, M)
+    \to
+    \Der(\glie, M) \,,
+    \quad
+    d
+    \mapsto
+    \restrict{d}{\glie}
+  \]
+  is an isomorphism of vector spaces.
+\end{proposition}
+
+
+\begin{proof}
+  We first note that the augumentation ideal~$I$ is a~\submodule{$\Univ(\glie)$} of~$\Univ(\glie)$.
+  It therefore makes sense to consider~$\Hom_{\Univ(\glie)}(I, M)$.
+
+  We know from the exactness of the Koszul complex that we have an exact sequence
+  \[
+    \Univ(\glie) \otimes \Exterior^2(\glie)
+    \xto{d_2}
+    \Univ(\glie) \otimes \glie
+    \xto{d_1}
+    I
+    \to
+    0 \,.
+  \]
+  This sequence is right-exact, so we may apply the contravariant~\functor{$\Hom$}~$\Hom_{\Univ(\glie),-}$ to get the left-exact sequence of vector spaces
+  \[
+    0
+    \to
+    \Hom_{\Univ(\glie)}(I, M)
+    \xto{d_1^*}
+    \Hom_{\Univ(\glie)}( \Univ(\glie) \otimes \glie, M )
+    \xto{d_2^*}
+    \Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes \Exterior^2(\glie), M \Bigr)
+  \]
+  We have by the universal property of the extension of scalars a linear {\onetoonetext} correspondence
+  \begin{align*}
+    \Hom_{\Univ(\glie)}( \Univ(\glie) \otimes \glie, M )
+    &\onetoone
+    \Hom_{\kf}( \glie, M ) \,,
+    \\
+    f
+    &\mapsto
+    \bigl( x \mapsto f(1 \otimes x) \bigr) \,,
+    \\
+    \bigl( \induced{g} \colon y \otimes x \mapsto y \cdot g(x) \bigr)
+    &\mapsfrom
+    g \,.
+  \end{align*}
+  Under this isomorphism we get the exact sequence
+  \begin{equation}
+    \label{left exact sequence for derivations}
+    0
+    \to
+    \Hom_{\Univ(\glie)}(I, M)
+    \xto{\del_1}
+    \Hom_{\kf}( \glie, M )
+    \xto{\del_2}
+    \Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes \Exterior^2(\glie), M \Bigr) \,.
+  \end{equation}
+  
+  We have
+  \[
+    \delta_1(f)(x)
+    =
+    d_1^*(f)(1 \otimes x)
+    =
+    f( d_1(1 \otimes x) )
+    =
+    f(1 \cdot x)
+    =
+    f(x) \,.
+  \]
+  In other words~$\delta_1$ is precisely the restriction map~$R$.
+  It follows from the left-exactness of the sequence~\eqref{left exact sequence for derivations} that the restriction map~$R$ identifiey~$\Hom_{\Univ(\glie)}(I, M)$ with a certain linear subspace of~$\Hom_{\kf}(\glie, M)$, namely the kernel of~$\del_2$.
+
+  We also have
+  \begin{align*}
+    \del_2(g)(y \otimes x_1 \wedge x_2)
+    &=
+    d_2^*(\induced{g})(y \otimes x_1 \wedge x_2)
+    \\
+    &=
+    \induced{g}( d_2( y \otimes x_1 \wedge x_2 ) )
+    \\
+    &=
+    \induced{g}
+    (
+      - y \otimes [x_1, x_2]
+      + (y x_1) \otimes x_2
+      - (y x_2) \otimes x_1
+    )
+    \\
+    &=
+    - y \cdot g([x_1, x_2])
+    + (y x_1) \cdot g(x_2)
+    + (y x_2) \cdot g(x_1)
+    \\
+    &=
+    - y \cdot g([x_1, x_2])
+    + y \cdot x_1 \cdot g(x_2)
+    - y \cdot x_2 \cdot g(x_1)
+    \\
+    &=
+    y \cdot
+    (
+      x_1 \cdot g(x_2) - x_2 \cdot g(x_1) - g([x_1, x_2])
+    ) 
+  \end{align*}
+  for all~$g \in \Hom_{\kf}(\glie, M)$,~$y \in \Univ(\glie)$,~$x_1, x_2 \in \glie$.
+  It follows that~$g$ is contained in the kernel of~$\del_2$ if and only if
+  \[
+    x_1 \cdot g(x_2) - x_2 \cdot g(x_1)
+    =
+    g([x_1, x_2])
+  \]
+  for all~$x_1, x_2 \in \glie$, i.e. if and only if~$g$ is a derivation from~$\glie$ to~$M$.
+  We thus find that the kernel of~$\del_2$ is the space of derivations from~$\glie$ to~$M$.
+
+  We have altogether shown that the restriction map~$R$ identifies the space of homomorphisms~$\Hom_{\Univ(\glie)}(I, M)$ with the space of derivations~$\Der(\glie, M)$.
+\end{proof}
+
+
+\begin{proof}[Second proof]
+  We first note that the augumentation ideal~$I$ is a~\submodule{$\Univ(\glie)$} of~$\Univ(\glie)$.
+  It therefore makes sense to consider~$\Hom_{\Univ(\glie)}(I, M)$.
+  Now we calculate for every homomorphisms of~\modules{$\Univ(\glie)$}~$d$ from~$I$ to~$M$ that
+  \[
+    d([x,y])
+    =
+    d(xy - yx)
+    =
+    d(xy) - d(yx)
+    =
+    x \cdot d(y) - y \cdot d(x)
+  \]
+  for all~$x, y \in \glie$.
+  The restriction~$\restrict{d}{\glie}$ is therefore a derivation from~$\glie$ to~$M$.
+  The map~$R$ is therefore well-defined.
+  It is also linear.
+
+  We first want to show that every derivation~$\delta$ from~$\glie$ to~$M$ extends to a homomorphism of~\modules{$\Univ(\glie)$} from~$I$ to~$M$.
+  We know from the exactness of the Koszul complex that we have an exact sequence
+  \[
+    \Univ(\glie) \otimes \Exterior^2(\glie)
+    \xto{d_2}
+    \Univ(\glie) \otimes \glie
+    \xto{d_1}
+    I
+    \to
+    0 \,.
+  \]
+  It follows from the universal property of the extension of scalars that the derivation~$\delta$ -- which is in particular a linear map - extends to a homomorphism of~\modules{$\Univ(\glie)$}~$d'$ from~$\Univ(\glie) \otimes \glie$ to~$M$ given by
+  \[
+    d'(y \otimes x)
+    =
+    y \cdot \delta(x)
+  \]
+  for all~$y \in \Univ(\glie)$,~$x \in \glie$.
+  This homomorphism~$d'$ vanishes on the image of~$d_2$ because
+  \begin{align*}
+    d'( d_2(y \otimes x_1 \wedge x_2) )
+    &=
+    d'
+    (
+      - y \otimes [x_1, x_2]
+      + (y x_1) \otimes x_2
+      - (y x_2) \otimes x_1
+    )
+    \\
+    &=
+    - y \cdot \delta([x_1, x_2])
+    + (y x_1) \cdot \delta(x_2)
+    - (y x_2) \cdot \delta(x_1)
+    \\
+    &=
+    - y \cdot \delta([x_1, x_2])
+    + y \cdot x_1 \cdot \delta(x_2)
+    - y \cdot x_2 \cdot \delta(x_1)
+    \\
+    &=
+    y \cdot
+    (
+      x_1 \cdot \delta(x_2)
+      - x_2 \cdot \delta(x_1)
+      - \delta([x_1, x_2])
+    )
+    \\
+    &=
+    y \cdot 0
+    \\
+    &=
+    0
+  \end{align*}
+  where we have used that~$\delta([x_1, x_2]) = x_1 \cdot \delta(x_2) - x_2 \cdot \delta(x_1)$ because~$\delta$ is a derivation.
+  It follows that~$d'$ factors through a homomorphism of~\modules{$\Univ(\glie)$} from~$I$ to~$M$.
+  This homomorphism satisfies
+  \[
+    d(x)
+    =
+    d( d_1(1 \otimes x) )
+    =
+    d'( 1 \otimes x )
+    =
+    1 \cdot \delta(x)
+    =
+    \delta(x)
+  \]
+  for all~$x \in \glie$.
+  It is therefore an extension of~$\delta$.
+  This shows the surjectivity of~$R$.
+
+  It follows from \cref{augumentation ideal is spanned by monomials} that the augumentaiton ideal~$I$ is generated by~$\glie$ as an ideal, and thus as a~\module{$\Univ(\glie)$}.
+  Every homomorphism of~\modules{$\Univ(\glie)$}~$d$ from~$I$ to~$M$ is therefore uniquely determined by its restriction~$\restrict{d}{\glie}$.
+  This shows the injectivity of~$R$.
+\end{proof}
+
+
+\begin{recall}
+  \label{homological algebra for pulling out an exact functor}
+  Let~$\Acat$,~$\Bcat$ and~$\Ccat$ be three abelian categories such that the categories~$\Acat$ and~$\Bcat$ admit enough injectives.
+  Let~$F$ be an exact functor from~$\Acat$ to~$\Bcat$ which maps injectives to injectives.
+  Let~$G$ be a left exact functor from~$\Bcat$ to~$\Ccat$.
+  Then the composite~$G \circ F$ is again left exact and for all~$n \geq 0$,
+  \[
+    \Right^n (G \circ F)
+    \cong
+    (\Right^n G) \circ F \,.
+  \]
+  
+  Indeed, by precomposing the~\functor{$\delta$}~$\Right^\bullet G$ with the exact functor~$F$ we get again a~\functor{$\delta$}, which one might denote by~$(\Right^\bullet G) \circ F$.
+  Every injective object of~$\Acat$ is mapped by~$F$ to an injective object of~$\Bcat$, which is then annihilated by~$\Right^n G$ for every~$n \geq 1$.
+  This shows that the functors~$(\Right^n G) \circ F$ for~$n \geq 1$ annihilate all injective objects of~$\Acat$.
+  The~\functor{$\delta$}~$(\Right^\bullet G) \circ F$ is therefore universal.
+  We also have~$(\Right^0 G) \circ F \cong G \circ F$ because~$\Right^0 G \cong G$.
+  We thus find that the universal~\functor{$\delta$}~$(\Right^\bullet G) \circ F$ is the right derived functor of~$G \circ F$.
+\end{recall}
+
+
+\begin{proposition}
+  Let~$\glie$ be a Lie~algebra and let~$M$,~$N$ be two representations of~$\glie$.
+  Then
+  \[
+    \Ext_{\Univ(\glie)}^n(M, N)
+    \cong
+    \Homology^n(\glie, \Hom_{\kf}(M, N)) \,.
+  \]
+\end{proposition}
+
+
+\begin{proof}
+  The functor~$\Hom_{\kf}(M, -)$ exact.
+  It also maps injecitves to injectives because right adjoint to the exact functor~$(-) \otimes_{\kf} M$ by \cref{enriched tensor hom adjunction}.
+  It follows from \cref{homological algebra for pulling out an exact functor} that
+  \begin{align*}
+    \Ext_{\Univ(\glie)}^n(M, -)
+    &\cong
+    \Right^n \Hom_{\Univ(\glie)}(M, -)
+    \\
+    &=
+    \Right^n \Hom_{\kf}(M, -)^{\glie}
+    \\
+    &=
+    \Right^n \bigl( (-)^{\glie} \circ \Hom_{\kf}(M, -) \bigr)
+    \\
+    &\cong
+    \Right^n\bigl( (-)^{\glie} \bigr) \circ \Hom_{\kf}(M, -)
+    \\
+    &\cong
+    \Homology^n(\glie, -) \circ \Hom_{\kf}(M, -)
+    \\
+    &=
+    \Homology^n(\glie, \Hom_{\kf}(M, -)) \,.
+  \end{align*}
+  This proves the assertion.
+\end{proof}
+
+
+
+
+

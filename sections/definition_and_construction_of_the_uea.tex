@@ -1,14 +1,16 @@
-\section{Definition and Construction of the UEA}
+\section{Universal Enveloping Algebra}
 
 
 
 
 
-\subsection{Definition and Functoriality}
+\subsection{Definition}
 
 
 \begin{definition}
-  A \defemph{universal enveloping algebra}\index{universal enveloping algebra} of a Lie~algebra~$\glie$ is a~\algebra{$\kf$}~\gls*{universal enveloping algebra} together with a homomorphism of Lie~algebras~$\iota \colon \glie \to \Univ(\glie)$ such that for every other~{\algebra{$\kf$}}~$A$ and homomorphism of Lie~algebras~$\phi \colon \glie \to A$ there exists a unique homomorphism of~\algebras{$\kf$}~$\Phi \colon \Univ(\glie) \to A$ that makes the triangular diagram
+  Let~$\glie$ be a~\liealgebra{$\kf$}.
+  A \defemph{universal enveloping algebra}\index{universal enveloping algebra} of~$\glie$ is a~\algebra{$\kf$}~$\Univ(\glie)$\glsadd{universal enveloping algebra} together with a homomorphism of Lie~algebras~$\iota$ from~$\glie$ to~$\Univ(\glie)$ such that the following universal property holds:
+  for every~{\algebra{$\kf$}}~$A$ and every homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$A$ there exists a unique homomorphism of~\algebras{$\kf$}~$\Phi$  from~$\Univ(\glie)$ to~$A$ that makes the triangular diagram
   \[
     \begin{tikzcd}
       \glie
@@ -23,14 +25,14 @@
       {}
     \end{tikzcd}
   \]
-  commute, i.e.\ such that~$\phi = \Phi \circ \iota$.
+  commute, i.e.\ such that~$\varphi = \Phi \circ \iota$.
 \end{definition}
 
 
 \begin{remark}[Uniqueness of universal enveloping algebras]
   \label{uniqueness of universal enveloping algebras}
-  Suppose that a Lie~algebra~$\glie$ admits two {\uas}~$(\Univ(\glie)_1, \iota_1)$ and~$(\Univ(\glie)_2, \iota_2)$.
-  Then there exists unique algebra homomorphisms~$\phi \colon \Univ(\glie)_1 \to \Univ(\glie)_2$ and~$\psi \colon \Univ(\glie)_2 \to \Univ(\glie)_1$ that make the triangular diagrams
+  Let~$\glie$ be a Lie algebra and suppose that~$(\Univ(\glie)_1, \iota_1)$ and~$(\Univ(\glie)_2, \iota_2)$ are two~{\uas} of~$\glie$.
+  Then there exist unique algebra homomorphisms~$\Phi$ from~$\Univ(\glie)_1$ to~$\Univ(\glie)_2$ and~$\Psi$ from~$\Univ(\glie)_2$ to~$\Univ(\glie)_1$ that make the triangular diagrams
   \[
     \begin{tikzcd}[column sep = small]
       {}
@@ -42,7 +44,7 @@
       {}
       \\
       \Univ(\glie)_1
-      \arrow[dashed]{rr}[below]{\phi}
+      \arrow[dashed]{rr}[below]{\Phi}
       &
       {}
       &
@@ -53,13 +55,13 @@
       {}
       &
       \glie
-      \arrow{dl}[above left]{\iota_1}
-      \arrow{dr}[above right]{\iota_2}
+      \arrow{dl}[above left]{\iota_2}
+      \arrow{dr}[above right]{\iota_1}
       &
       {}
       \\
       \Univ(\glie)_2
-      \arrow[dashed]{rr}[below]{\phi}
+      \arrow[dashed]{rr}[below]{\Psi}
       &
       {}
       &
@@ -67,7 +69,7 @@
     \end{tikzcd}
   \]
   commute.
-  It follows that the compositions~$\phi \circ \psi \colon \Univ(\glie)_1 \to \Univ(\glie)_1$ and~$\psi \circ \phi \colon \Univ(\glie)_2 \to \Univ(\glie)_2$ make the triangular diagrams
+  It follows that the composites~$\Psi \circ \Phi$ and~$\Phi \circ \Psi$ make the triangle diagrams
   \[
     \begin{tikzcd}[column sep = small]
       {}
@@ -79,7 +81,7 @@
       {}
       \\
       \Univ(\glie)_1
-      \arrow[dashed]{rr}[below]{\psi \circ \phi}
+      \arrow[dashed]{rr}[below]{\Psi \circ \Phi}
       &
       {}
       &
@@ -96,21 +98,23 @@
       {}
       \\
       \Univ(\glie)_2
-      \arrow[dashed]{rr}[below]{\phi \circ \psi}
+      \arrow[dashed]{rr}[below]{\Phi \circ \Psi}
       &
       {}
       &
       \Univ(\glie)_2
     \end{tikzcd}
   \]
-  commutes.
-  The algebra homomorphisms~$\phi \circ \psi$ and~$\psi \circ \phi$ are unique with this property by the universal property of the {\uas}~$(\Univ(\glie)_1, \iota_1)$ and~$(\Univ(\glie)_2, \iota_2)$.
+  commute.
+
+  The algebra homomorphisms~$\Phi \circ \Psi$ and~$\Psi \circ \Phi$ are unique with this property by the universal properties of the {\uas}~$(\Univ(\glie)_1, \iota_1)$ and~$(\Univ(\glie)_2, \iota_2)$.
   But the identities~$\id_{\Univ(\glie)_1}$ and~$\id_{\Univ(\glie)_2}$ also makes these diagrams commute.
-  We thus find that~$\psi \circ \phi = \id_{\Univ(\glie)_1}$ and~$\phi \circ \psi = \id_{\Univ(\glie)_2}$, so that~$\phi$ and~$\psi$ are mutually inverse isomorphisms of~{\algebras{$\kf$}}.
+  We thus find that the composite~$\Psi \circ \Phi$ equals~$\id_{\Univ(\glie)_1}$ and the composite~$\Phi \circ \Psi$ equals~$\id_{\Univ(\glie)_2}$.
+  The homomorphisms~$\Phi$ and~$\Psi$ are therefore mutually inverse isomorphisms.
   
-  This shows that the {\ua} (if it exists) is \enquote{unique up to unique isomorphisms}.
+  This shows that a {\ua} of~$\glie$ is unique up to unique isomorphism.
   We will therefore talk about \emph{the} {\ua} of~$\glie$.
-  We will often also surpress the algebra homorphism~$\iota \colon \glie \to \Univ(\glie)$ from our notation.
+  We will often also surpress the algebra homorphism~$\iota$ from~$\glie$ to~$\Univ(\glie)$ from our notation.
 \end{remark}
 
 
@@ -149,48 +153,496 @@
 % \end{remark}
 
 
-\begin{proposition}
-  \label{representations are modules}
-  Let~$V$ be a~{\vectorspace{$\kf$}}.
-  Let~$\glie$ be a Lie~algebra and let~$\iota \colon \glie \to \Univ(\glie)$ be the canonical Lie~algebra homomorphism.
-  Then the assignments
-  \begin{align*}
-    \left\{
-    \begin{tabular}{@{}c@{}}
-      representations of~$\glie$, \\
-      $\rho \colon \glie \to \gllie(V)$
-    \end{tabular}
-    \right\}
-    &\onetoone
-    \left\{
-    \begin{tabular}{@{}c@{}}
-      $\Univ(\glie)$-module structures \\
-      $\theta \colon \Univ(\glie) \to \End_{\kf}(V)$
-    \end{tabular}
-    \right\}  \,,
-    \\
-    \rho
-    &\mapsto
-    \hat{\rho} \,,
-    \\
-    \theta \circ \iota
-    &\mapsfrom
-    \theta  \,,
-  \end{align*}
-  constitute a {\onetoonetext} correspondence,~where $\hat{\rho} \colon \Univ(\glie) \to \End_{\kf}(V)$ is the unique~\algebra{$\kf$} homomorphism induced by the homomorphism of Lie~algebras~$\rho \colon \glie \to \gllie(V)$ via the universal property of the~{\ua}~$\Univ(\glie)$.
-  \qed
+
+\subsection{Construction}
+
+
+\begin{fluff}
+  Let~$\glie$ be a Lie~algebra.
+  We will in the following show that the {\ua} of~$\glie$ exists.
+  For this we will first conclude from the universal property of~$\Univ(\glie)$ that we should be able to construct~$\Univ(\glie)$ as a certain quotient algebra of the tensor algebra~$\Tensor(\glie)$.
+  We then show that this quotient does indeed have the correct universal property.
+
+  Suppose that~$\glie$ admits a universal enveloping algebra~$\Univ(\glie)$ and let~$\iota$ be the canonical homomorphism of Lie~algebras from~$\glie$ to~$\Univ(\glie)$.
+  We first observe that the algebra~$\Univ(\glie)$ is generated by the image of~$\iota$.
+
+  Indeed, let~$U$ be the subalgebra of~$\Univ(\glie)$ which is generated by the image of~$\iota$, and let~$\iota'$ be the restriction of~$\iota$ to a homomorphism of Lie~algebras from~$\glie$ to~$U$.
+  For every~{\algebra{$\kf$}}~$A$ and every Lie~algebra homomorphism~$\varphi$ from~$\glie$ to~$A$ the induced homomorphism of algebras~$\Phi$ from~$\Univ(\glie)$ to~$A$ restricts to an homomorphism of algebras~$\Phi'$ from~$U$ to~$A$.
+  This homomorphism~$\Phi'$ makes the triangular diagram
+  \[
+    \begin{tikzcd}
+      \glie
+      \arrow{r}[above]{\varphi}
+      \arrow{d}[left]{\iota'}
+      &
+      A
+      \\
+      U
+      \arrow[dashed]{ur}[below right]{\Phi'}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  commute.
+  The homomorphism~$\Phi'$ is unique with this property because the algebra~$U$ is generated by the image of~$\iota'$, and the composite~$\Phi \circ \iota'$ equals the fixed homomorphism of Lie~algebras~$\varphi$.
+  This shows that the algebra~$U$ together with the homomorphism of Lie~algebras~$\iota'$ is again a {\ua} for~$\glie$.
+  
+  It follows from the uniqueness of the {\ua} of~$\glie$, as discussed in \cref{uniqueness of universal enveloping algebras}, that there exists a unique homomorphism of algebras~$\Iota$ from~$U$ to~$\Univ(\glie)$ that makes the triangular diagram
+  \[
+    \begin{tikzcd}[column sep = small]
+      {}
+      &
+      \glie
+      \arrow{dl}[above left]{\iota'}
+      \arrow{dr}[above right]{\iota}
+      &
+      {}
+      \\
+      U
+      \arrow[dashed]{rr}[below]{\Iota}
+      &
+      {}
+      &
+      \Univ(\glie)
+    \end{tikzcd}
+  \]
+  commute, and that this homomorphism is already an isomorphism.
+  The homomorphism~$\Iota$ is the inclusion map from~$U$ to~$\Univ(\glie)$ because this is a homomorphism of algebras from~$U$ to~$\Univ(\glie)$ which makes the above triangular diagram commute.
+  We have thus found that the inclusion map from~$U$ to~$\Univ(\glie)$ is an isomorphism of algebras, whence~$U$ equals~$\Univ(\glie)$.
+
+  We now apply the universal property of the tensor algebra~$\Tensor(\glie)$ to the linear map~$\iota$.
+  We find that there exists a unique homomorphism of algebras~$\Phi'$ from~$\Tensor(\glie)$ to~$\Univ(\glie)$ that makes the triangular diagram
+  \[
+    \begin{tikzcd}[column sep = small]
+      {}
+      &
+      \glie
+      \arrow{dl}
+      \arrow{dr}[above right]{\iota}
+      &
+      {}
+      \\
+      \Tensor(\glie)
+      \arrow[dashed]{rr}[below]{\Phi'}
+      &
+      {}
+      &
+      \Univ(\glie)
+    \end{tikzcd}
+  \]
+  commute.
+  The homomorphism~$\Phi'$ is surjective because~$\Univ(\glie)$ is generated by the image of~$\iota$ as an algebra.
+  It follows that~$\Phi'$ induces an isomorphism of algebras
+  \[
+    \Psi
+    \colon
+    \Tensor(\glie) / I
+    \to
+    \Univ(\glie)
+  \]
+  where the ideal~$I$ is the kernel of~$\Phi'$.
+  This isomorphism makes the resulting diagram
+   \[
+    \begin{tikzcd}[column sep = small]
+      {}
+      &
+      \glie
+      \arrow[bend right]{dl}
+      \arrow[bend left]{ddr}[above right]{\iota}
+      &
+      {}
+      \\
+      \Tensor(\glie)
+      \arrow[bend left]{drr}[below left]{\Phi}
+      \arrow{d}
+      &
+      {}
+      &
+      {}
+      \\
+      \Tensor(\glie)/I
+      \arrow[dashed]{rr}[below]{\Psi}
+      &
+      {}
+      &
+      \Univ(\glie)
+    \end{tikzcd}
+  \]
+  commute.
+ 
+  Let~$A$ be another~\algebra{$\kf$}.
+  Every linear map~$g$ from~$\glie$ to~$A$ factors through a homomorphism of algebras~$\Psi'$ from~$\Tensor(\glie)$ to~$A$.
+  It follows from the above isomorphism~$\Phi$ between~$\Tensor(\glie) / I$ and~$\Univ(\glie)$ that the homomorphism~$\Psi'$ factors trough a homorphism from~$\Tensor(\glie) / I$ to~$A$ if and only if the linear map~$g$ is a homomorphism of Lie~algebras.
+
+  That~$g$ is a homomorphism of Lie~algebras means that
+  \[
+    g(x) g(y) - g(y) g(x) - g([x,y]) = 0
+  \]
+  for all~$x, y \in \glie$.
+  This is equivalent to the condition
+  \[
+    \Psi(x) \Psi(y) - \Psi(y) \Psi(x) - \Psi([x,y]_{\glie})
+    =
+    0
+  \]
+  for all~$x, y \in \glie$, and further äquivalent to the condition
+  \[
+    \Psi( xy - yx - [x,y]_{\glie} )
+    =
+    0
+  \]
+  for all~$x, y \in \glie$.
+
+  We have now seen that an algebra homomorphism~$\Psi$ from~$\Tensor(\glie)$ to some~\algebra{$\kf$}~$A$ factors trough the quotient~$\Tensor(\glie)/I$ if and only if~$\Psi$ annihilates all those elements of~$\Tensor(\glie)$ that are of the form~$xy - yx - [x,y]_{\glie}$ with~$x$,~$y$ in~$\glie$.
+  This means that the ideal~$I$ needs to be generated by those elements.
+  
+  We have now altogether seen that the universal enveloping algebra~$\Univ(\glie)$ needs to be constructable as the quotient of the tensor algebra~$\Tensor(\glie)$ by the ideal~$I$ which is generated by all those elements of the form~$x y - y x - [x,y]_{\glie}$ with~$x$,~$y$ in~$\glie$.
+  We will conversely show in the following \lcnamecref{existence of uea} that this construction will indeed give us the universal enveloping algebra.
+\end{fluff}
+
+
+\begin{proposition}[Existence of the universal enveloping algebra]
+  \label{existence of uea}
+  Let~$\glie$ be a Lie~algebra.
+  Let~$\Tensor(\glie)$ be the tensor algebra of the underlying vector space of~$\glie$ and let~$I$ the two-sided ideal of~$\Tensor(\glie)$ generated by all the elements $x y - y x - [x,y]_{\glie}$ with~$x$,~$y$ in~$\glie$.
+  The quotient algebra~$U \defined T(\glie)/I$ together with the~{\linear{$\kf$}} map
+  \[
+    \iota
+    \colon
+    \glie
+    \to
+    \Univ(\glie) \,,
+    \quad
+    x
+    \mapsto
+    \class{x}
+  \]
+  is a {\ua} for~$\glie$.
 \end{proposition}
 
 
+\begin{proof}
+  The map~$\iota$ is~{\linear{$\kf$}} and it compatible with the Lie brackets because
+  \[
+    [\iota(x), \iota(y)]
+    =
+    [\class{x}, \class{y}]
+    =
+    \class{x} \, \class{y} - \class{y} \, \class{x}
+    =
+    \class{x y - y x}
+    =
+    \class{[x,y]_{\glie}}
+    =
+    \iota([x,y]_{\glie}) \,.
+  \]
+  for all~$x, y \in \glie$.
+  Given any~\algebra{$\kf$}~$A$ and Lie algebra homomorphism~$\varphi$ from~$\glie$ to~$A$ there exists a unique homorphism of~\algebras{$\kf$}~$\Phi'$ from~$\Tensor(\glie)$ to~$A$ that makes the triangular diagram
+  \[
+    \begin{tikzcd}
+      \glie
+      \arrow{r}[above]{\varphi}
+      \arrow{d}
+      &
+      A
+      \\
+      \Tensor(V)
+      \arrow[dashed]{ur}[below right]{\Phi'}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  commute.
+  The homomorphism~$\Phi'$ is given by~$\Phi'(x) = \varphi(x)$ for all~$x \in \glie$.
+  It follows that
+  \begin{align*}
+    \Phi'(x y - y x)
+    &=
+    \Phi'(x) \Phi'(y) - \Phi'(y) \Phi'(x)
+    \\
+    &=
+    \varphi(x) \varphi(y) - \varphi(y) \varphi(x)
+    \\
+    &=
+    [ \varphi(x), \varphi(y) ]
+    \\
+    &=
+    \varphi( [x,y]_{\glie} )
+    \\
+    &=
+    \Phi'( [x,y]_{\glie} )
+  \end{align*}
+  for all~$x, y \in \glie$.
+  The ideal~$I$ is therefore contained in the kernel of the homomorphism~$\Phi'$.
+  It follows that there exists a unique homomorphism of algebras~$\Phi$ from~$U$ to~$A$ that makes the diagram
+  \[
+    \begin{tikzcd}
+      \glie
+      \arrow{r}[above]{\varphi}
+      \arrow{d}
+      &
+      A
+      \\
+      \Tensor(\glie)
+      \arrow[bend right= 20]{ur}[above left]{\Phi'}
+      \arrow{d}[left]{\pi}
+      &
+      {}
+      \\
+      U
+      \arrow[dashed, bend right = 30]{uur}[below right]{\Phi}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  commute, where~$\Pi$ denotes the canonical projection from~$\Tensor(V)$ to~$\Tensor(V)/I$.
+  We may add the homomorphism of Lie~algebras~$\iota$ to this diagram.
+  We then arrive at the following commutative diagram.
+  \[
+    \begin{tikzcd}
+      \glie
+      \arrow{r}[above]{\varphi}
+      \arrow{d}
+      \arrow[bend right = 55]{dd}[left]{\iota}
+      &
+      A
+      \\
+      \Tensor(\glie)
+      \arrow[bend right= 20]{ur}[above left]{\Phi'}
+      \arrow{d}[left]{\pi}
+      &
+      {}
+      \\
+      U
+      \arrow[bend right = 30]{uur}[below right]{\Phi}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  We have in particular the following commutative subdiagram.
+  \[
+    \begin{tikzcd}
+      \glie
+      \arrow{r}[above]{\varphi}
+      \arrow{d}[left]{i}
+      &
+      A
+      \\
+      U
+      \arrow{ur}[below right]{\Phi}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  We have thus shown that every homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$A$ extends to a homomorphism of algebra~$\Phi$ from~$U$ to~$A$ .
+  The algebra~$U$ is generated by the image of~$\iota$ whence the homomorphism of algebras~$\Phi$ is unique with this property.
+\end{proof}
+
+
 \begin{remark}
-  \leavevmode
+  The above proof may be summarized by observing that we have bijections
+  \begin{align*}
+    {}&
+    \{ \textstyle\text{algebra homomorphisms~$\Phi \colon \Tensor(\glie)/I \to A$} \}
+    \\
+    \cong{}&
+    \{ \text{algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with~$\Phi'(I) = 0$} \}
+    \\
+    \cong{}&
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with  \\
+        $\Phi'(x y - y x - [x,y]_{\glie}) = 0$ for all~$x, y \in \glie$
+      \end{tabular}
+    \right\}
+    \\
+    \cong{}&
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with  \\
+        $\Phi'(x) \Phi'(y) - \Phi'(y) \Phi'(x) - \Phi'([x,y]_{\glie}) = 0$ for all~$x, y \in \glie$
+      \end{tabular}
+    \right\}
+    \\
+    \cong{}&
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with  \\
+        $\Phi'(x) \Phi'(y) - \Phi'(y) \Phi'(x) = \Phi'([x,y]_{\glie})$ for all~$x, y \in \glie$
+      \end{tabular}
+    \right\}
+    \\
+    \cong{}&
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        {\linear{$\kf$}} maps~$\varphi \colon \glie \to A$ with  \\
+        $\varphi(x) \varphi(y) - \varphi(y) \varphi(x) = \varphi([x,y])$ for all~$x, y \in \glie$
+      \end{tabular}
+    \right\}
+    \\
+    \cong{}&
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        {\linear{$\kf$}} maps~$\varphi \colon \glie \to A$ with  \\
+        $[\varphi(x), \varphi(y)] = \varphi([x,y])$ for all~$x, y \in \glie$ 
+      \end{tabular}
+    \right\}
+    \\
+    ={}&
+    \{ \textstyle\text{Lie~algebra homomorphisms~$\varphi \colon \glie \to A$} \} \,,
+  \end{align*}
+  and that these bijections are natural in~$A$.
+  This shows that the~{\algebra{$\kf$}}~$\Tensor(\glie)/I$ represents the right kind of functor.
+  We can also see that the identity of~$\Tensor(\glie)/I$ corresponds under the above bijections (for~$A = \Tensor(\glie)/I$) to the map~$\iota$ from~$\glie$ to~$\Tensor(\glie)/I$.
+\end{remark}
+
+
+
+\subsection{Properties}
+
+\subsubsection{Anti-Homomorphisms}
+
+\begin{proposition}
+  Let~$\glie$ be a Lie~algebra, let~$\iota$ be the canonical homomorphism of Lie~algebras from~$\glie$ to~$\Univ(\glie)$ and let~$A$ be a~\algebra{$\kf$}.
+  We have a well-defined {\onetoonetext} correspondence given by
+  \begin{align*}
+    \SwapAboveDisplaySkip
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        anti-homomorphisms \\
+        of Lie~algebras
+        $\varphi \colon \glie \to A$
+      \end{tabular}
+    \right\}
+    &\onetoone
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        anti-homomorphisms \\
+        of algebras
+        $\Phi \colon \Univ(\glie) \to A$
+      \end{tabular}
+    \right\} \,,
+    \\
+    \Phi \circ \iota
+    &\mapsfrom
+    \Phi \,.
+  \end{align*}
+\end{proposition}
+
+\begin{proof}
+  We have {\onetoonetext} correspondence given by
+  \begin{align*}
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        homomorphisms \\
+        of Lie~algebras
+        $\varphi \colon \glie \to A^{\op}$
+      \end{tabular}
+    \right\}
+    &\onetoone
+    \left\{
+      \begin{tabular}{@{}c@{}}
+        homomorphisms \\
+        of algebras
+        $\Phi \colon \Univ(\glie) \to A^{\op}$
+      \end{tabular}
+    \right\} \,,
+    \\
+    \Phi \circ \iota
+    &\mapsfrom
+    \Phi \,.
+  \end{align*}
+  An anti-homomorphism of Lie~algebras from~$\glie$ to~$A$ is the same as a homomorphim of Lie~algebras from~$\glie$ to~$A^{\op}$, and an anti-homomorphism of algebras from~$\Univ(\glie)$ to~$A$ is the same as a homomorphism of algebras from~$\Univ(\glie)$ to~$A^{\op}$.
+\end{proof}
+
+\subsubsection{Representations and Modules}
+
+\begin{proposition}
+  \label{representations are modules}
+  Let~$M$ be a~{\vectorspace{$\kf$}} and let~$\glie$ be a Lie~algebra.
+  Let~$\Univ(\glie)$ be the universal enveloping algebra of~$\glie$ and let~$\iota$ be the canonical homorphism of Lie~algebras from~$\glie$ to~$\Univ(\glie)$.
   \begin{enumerate}
     \item
-      \Cref{representations are modules} shows that representations of~$\glie$ are the same as~{\modules{$\Univ(\glie)$}}.
-      The categories~$\cRep{\glie}$ and~$\cMod{\Univ(\glie)}$ are hence isomorphic.
+      For every homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$ let~$\widehat{\rho}$ denote the corresponding homomorphism of algebras from~$\Univ(\glie)$ to~$\End_{\kf}(M)$.
+      Then the assignments
+      \begin{align*}
+        \left\{
+        \begin{tabular}{@{}c@{}}
+          representations \\
+          $\rho \colon \glie \to \gllie(M)$
+        \end{tabular}
+        \right\}
+        &\onetoone
+        \left\{
+        \begin{tabular}{@{}c@{}}
+          $\Univ(\glie)$-module structures \\
+          $\Rho \colon \Univ(\glie) \to \End_{\kf}(M)$
+        \end{tabular}
+        \right\}  \,,
+        \\
+        \rho
+        &\mapsto
+        \widehat{\rho} \,,
+        \\
+        \Rho \circ \iota
+        &\mapsfrom
+        \Rho  \,,
+      \end{align*}
+      constitute a {\onetoonetext} correspondence.
     \item
-      A representation~$V$ of~$\glie$ is completely reducible if and only if it is semisimple as an~{\module{$\Univ(\glie)$}}.
+      For every anti-homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$ let~$\widehat{\rho}$ denote the corresponding anti-homomorphism of algebras from~$\Univ(\glie)$ to~$\End_{\kf}(M)$.
+      Then the assignments
+      \begin{align*}
+        \left\{
+        \begin{tabular}{@{}c@{}}
+          right representations \\
+          $\rho \colon \glie \to \gllie(M)$
+        \end{tabular}
+        \right\}
+        &\onetoone
+        \left\{
+        \begin{tabular}{@{}c@{}}
+          right $\Univ(\glie)$-module structures \\
+          $\Rho \colon \Univ(\glie) \to \End_{\kf}(M)$
+        \end{tabular}
+        \right\}  \,,
+        \\
+        \rho
+        &\mapsto
+        \widehat{\rho} \,,
+        \\
+        \Rho \circ \iota
+        &\mapsfrom
+        \Rho  \,,
+      \end{align*}
+      constitute a {\onetoonetext} correspondence.
   \end{enumerate}
+\end{proposition}
+
+\begin{fluff}
+  Let~$\glie$ be a Lie~algebra.
+  If~$M$ is a left~\module{$\Univ(\glie)$} then the corresponding act of~$\glie$ on~$M$ is given by
+  \[
+    x \act m
+    =
+    \class{x} \cdot m
+  \]
+  for all~$x \in \glie$,~$m \in M$.
+  Similarly, if~$M$ is a right~\module{$\Univ(\glie)$} then the corresponding right action of~$\glie$ on~$M$ is given by
+  \[
+    m \act x
+    =
+    m \cdot \class{x}
+  \]
+  for all~$x \in \glie$,~$m \in M$.
+\end{fluff}
+
+\subsubsection{Functoriality}
+
+\begin{remark}
+  Let~$\glie$ be a Lie~algebra with universal enveloping algebra~$\Univ(\glie)$.
+  \Cref{representations are modules} shows that representations of~$\glie$ are the same as~{\modules{$\Univ(\glie)$}}.
+  We get from this correspondence an isomorphism of categories between~$\cRep{\glie}$ and~$\cMod{\Univ(\glie)}$.
 \end{remark}
 
 
@@ -199,30 +651,30 @@
   Let~$\glie$,~$\hlie$ and~$\klie$ be Lie~algebras.
   \begin{enumerate}
     \item
-      For every homomorphism of Lie~algebras~$\phi \colon \glie \to \hlie$ there exists a unique induced homomorphism of~\algebras{$\kf$}~$\phi^* \colon \Univ(\glie) \to \Univ(\hlie)$ that makes the following square diagram commute:
+      For every homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$\hlie$ there exists a unique homomorphism of algebras~$\Univ(\varphi)$ from~$\Univ(\glie)$ to~$\Univ(\hlie)$ that makes the following square diagram commute.
       \[
         \begin{tikzcd}[column sep = large]
           \glie
-          \arrow{r}[above]{\phi}
-          \arrow{d}
+          \arrow{r}[above]{\varphi}
+          \arrow{d}[left]{\iota_{\glie}}
           &
           \hlie
-          \arrow{d}
+          \arrow{d}[right]{\iota_{\hlie}}
           \\
           \Univ(\glie)
-          \arrow[dashed]{r}[below]{\phi_*}
+          \arrow[dashed]{r}[below]{\Univ(\varphi)}
           &
           \Univ(\hlie)
         \end{tikzcd}
       \]
     \item
-      It holds that~$(\id_{\glie})_* = \id_{\Univ(\glie)}$.
+      It holds that~$\Univ(\glie) = \id_{\Univ(\glie)}$.
     \item
-      It holds for all composable homomorphisms of Lie~algebras~$\phi \colon \glie \to \hlie$ and~$\psi \colon \hlie \to \klie$ that
+      It holds for all composable homomorphisms of Lie~algebras~$\varphi$ from~$\glie$ to~$\hlie$ and~$\psi$ from~$\hlie$ to~$\klie$ that
       \[
-        (\psi \circ \phi)_*
+        \Univ( \psi \circ \varphi )
         =
-        \psi_* \circ \phi_* \,.
+        \Univ( \psi ) \circ \Univ( \varphi ) \,.
       \]
   \end{enumerate}
 \end{lemma}
@@ -232,7 +684,8 @@
   \leavevmode
   \begin{enumerate}
     \item
-      This follows from the universal property of the universal enveloping algebra~$\Univ(\glie)$ by applying it to the composition~$\glie \to \hlie \to \Univ(\hlie)$.
+      The composite~$\iota_{\hlie} \circ \varphi$ is a homomorphism of Lie~algebras from~$\glie$ to~$\Univ(\hlie)$.
+      By the universal property of the universal enveloping algebra~$\Univ(\glie)$ there exists a unique homomorphism of algebras~$\Univ(\varphi)$ from~$\Univ(\glie)$ to~$\Univ(\hlie)$ with~$\Univ(\varphi) \circ \iota_{\glie} = \iota_{\hlie} \circ \varphi$.
     \item
       The square diagram
       \[
@@ -250,14 +703,14 @@
           \Univ(\glie)
         \end{tikzcd}
       \]
-      commutes, which shows that~$\id_{\Univ(\glie)}$ satisfies the defining property of the induced algebra homomorphism~$(\id_{\glie})_*$.
+      commutes, which shows that the identity homomorphism~$\id_{\Univ(\glie)}$ satisfies the defining property of the induced algebra homomorphism~$\Univ( \id_{\glie} )$.
     \item
       We have the following commutative diagram:
       \[
         \begin{tikzcd}[column sep = large]
           \glie
-          \arrow[dashed, bend left = 40]{rr}[above]{\psi \circ \phi}
-          \arrow{r}[above]{\phi}
+          \arrow[dashed, bend left = 40]{rr}[above]{\psi \circ \varphi}
+          \arrow{r}[above]{\varphi}
           \arrow{d}
           &
           \hlie
@@ -268,11 +721,11 @@
           \arrow{d}
           \\
           \Univ(\glie)
-          \arrow{r}[below]{\phi_*}
-          \arrow[dashed, bend right = 40]{rr}[below]{\psi_* \circ \phi_*}
+          \arrow{r}[below]{\Univ(\varphi)}
+          \arrow[dashed, bend right = 40]{rr}[below]{\Univ(\psi) \circ \Univ(\varphi)}
           &
           \Univ(\hlie)
-          \arrow{r}[below]{\psi_*}
+          \arrow{r}[below]{\Univ(\psi)}
           &
           \Univ(\klie)
         \end{tikzcd}
@@ -281,339 +734,268 @@
       \[
         \begin{tikzcd}[column sep = huge]
           \glie
-          \arrow{r}[above]{\psi \circ \phi}
+          \arrow{r}[above]{\psi \circ \varphi}
           \arrow{d}
           &
           \klie
           \arrow{d}
           \\
           \Univ(\glie)
-          \arrow[dashed]{r}[below]{\psi_* \circ \phi_*}
+          \arrow[dashed]{r}[below]{\Univ(\psi) \circ \Univ(\varphi)}
           &
           \Univ(\klie)
         \end{tikzcd}
       \]
-      shows that~$\psi_* \circ \phi_*$ satisfies the defining property of the induced algebra homomorphism~$(\psi \circ \phi)_*$.
+      shows that the composite~$\Univ(\psi) \circ \Univ(\varphi)$ satisfies the defining property of the induced algebra homomorphism~$\Univ(\psi \circ \varphi)$.
     \qedhere
   \end{enumerate}
 \end{proof}
 
 
-
-
-
-\subsection{Construction of the Universal Enveloping Algebra}
-
-
 \begin{remark}
-  \Cref{functoriality of universal enveloping algebra} shows that the assignment~$\glie \mapsto \Univ(\glie)$ of a Lie~algebra~$\glie$ to its universal eveloping algebra~$\Univ(\glie)$ can be extended to a (covariant) functor~$\Univ \colon \cLie{\kf} \to \cAlg{\kf}$.
-  The universal property of the {\ua} states that the functor~$\Univ$ is left adjoint to the forgetful functor~$\cAlg{\kf} \to \cLie{\kf}$ that assigns to each~{\algebra{$\kf$}} its underlying Lie~algebra.
+  \Cref{functoriality of universal enveloping algebra} shows that the assignment~$\glie \mapsto \Univ(\glie)$ of a Lie~algebra~$\glie$ to its universal eveloping algebra~$\Univ(\glie)$ can be extended to a (covariant) functor~$\Univ$ from~$\cLie{\kf}$ to~$\cAlg{\kf}$.
+  The universal property of the {\ua} states that the functor~$\Univ$ is left adjoint to the forgetful functor from~$\cAlg{\kf}$ to~$\cLie{\kf}$, which assigns to each~{\algebra{$\kf$}} its underlying Lie~algebra.
 \end{remark}
 
+\subsubsection{Derivations}
 
-\begin{remark}
+\begin{proposition}
+  \label{extending derivation to universal enveloping algebra}
   Let~$\glie$ be a Lie~algebra.
-  It follows from the universal propery of the {\ua} that~$\Univ(\glie)$ is generated by the image of the canonical homomorphism~$\iota \colon \glie \to \Univ(\glie)$:
-  
-  Indeed, let~$U$ be the subalgebra of~$\Univ(\glie)$ that is generated by the image of~$\iota$, and let~$i \colon \glie \to U$ be the restriction of~$\iota$.
-  Then for every~{\algebra{$\kf$}}~$A$ and every Lie~algebra homomorphism~$\phi \colon \glie \to A$ the induced algebra homomorphism~$\Phi' \colon \Univ(\glie) \to A$ restricts to an algebra homomorphism~$\Phi \colon U \to A$ that makes the triangular diagram
+  Every derivation of~$\glie$ extends uniquely to an extension of~$\Univ(\glie)$.
+  More explicitely, there exists for every Lie~algebra derivation~$\delta$ of~$\glie$ a unique algebra derivation~$\Delta$ of~$\Univ(\glie)$ such that the following square diagram commutes.
   \[
     \begin{tikzcd}
       \glie
-      \arrow{r}[above]{\phi}
-      \arrow{d}[left]{j}
-      &
-      A
-      \\
-      U
-      \arrow[dashed]{ur}[below right]{\Phi}
-      &
-      {}
-    \end{tikzcd}
-  \]
-  commute.
-  The homomorphism~$\Phi$ is unique with this property because it is uniquely determined by the restriction~$\Phi \circ j = \phi$, since~$U$ is generated by the image of~$j$.
-  This shows that~$(U, j)$ is again a {\ua} for~$\glie$.
-  
-  It follows from the uniqueness of the {\ua}, as discussed in \cref{uniqueness of universal enveloping algebras}, that the unique algebra homomorphism~$i \colon U \to \Univ(\glie)$ that makes the triangular diagram
-  \[
-    \begin{tikzcd}[column sep = small]
-      {}
-      &
-      \glie
-      \arrow{dl}[above left]{j}
-      \arrow{dr}[above right]{\iota}
-      &
-      {}
-      \\
-      U
-      \arrow[dashed]{rr}[below]{i}
-      &
-      {}
-      &
-      \Univ(\glie)
-    \end{tikzcd}
-  \]
-  commute is already an isomorphism.
-  This homomorphism is necessarily the inclusion of~$U$ into~$\Univ(\glie)$, and that it is an isomorphism means that already~$U = \Univ(\glie)$.
-  
-  The canonical homomorphism~$\iota \colon \glie \to \Univ(\glie)$ is in particular~{\linear{$\kf$}} and hence induces an algebra homomorphism~$\phi \colon \Tensor(\glie) \to \Univ(\glie)$ that makes the triangular diagram
-  \[
-    \begin{tikzcd}[column sep = small]
-      {}
-      &
-      \glie
-      \arrow{dl}
-      \arrow{dr}[above right]{\iota}
-      &
-      {}
-      \\
-      \Tensor(\glie)
-      \arrow[dashed]{rr}[below]{\phi}
-      &
-      {}
-      &
-      \Univ(\glie)
-    \end{tikzcd}
-  \]
-  commute.
-  That~$\Univ(\glie)$ is generated by the image of~$\iota$ means that~$\phi$ is surjective.
-  Therefore~$\phi$ induces an algebra isomorphism
-  \[
-    \Phi
-    \colon
-    \Tensor(\glie)/I
-    \to
-    \Univ(\glie)
-  \]
-  for~$I = \ker \phi$, that makes the resulting diagram
-   \[
-    \begin{tikzcd}[column sep = small]
-      {}
-      &
-      \glie
-      \arrow[bend right]{dl}
-      \arrow[bend left]{ddr}[above right]{\iota}
-      &
-      {}
-      \\
-      \Tensor(\glie)
-      \arrow[bend left]{drr}[below left]{\phi}
+      \arrow{r}[above]{\delta}
       \arrow{d}
       &
-      {}
-      &
-      {}
+      \glie
+      \arrow{d}
       \\
-      \Tensor(\glie)/I
-      \arrow[dashed]{rr}[below]{\Phi}
-      &
-      {}
-      &
       \Univ(\glie)
+      \arrow[dashed]{r}[above]{\Delta}
+      &
+      \Univ(\glie) \,.
     \end{tikzcd}
   \]
-  commute.
-  
-  If~$A$ is any other~{\algebra{$\kf$}} then we know on the one hand that algebra homorphisms~$\Univ(\glie) \to A$ correspond to Lie~algebra homomorphisms~$\glie \to A$.
-  We know find on the other hand that~{\algebra{$\kf$}} homomorphisms~$\Tensor(V)/I \to A$ correspond to algebra homomorphisms~$\Tensor(V) \to A$ that annihilate~$I$, with the algebra homorphisms~$\Tensor(V) \to A$ corresponding to~{\linear{$\kf$}} maps~$\glie \to A$.
-  A linear map~$f \colon \glie \to A$ is a homorphism of Lie~algebras if and only if
-  \[
-      f(x) f(y)
-    - f(y) f(x)
-    - f([x,y])
-    =
-    0 \,,
-  \]
-  so it seems reasonable to assume that the corresponding ideal~$I$ of~$\Tensor(V)$ ought to be given by
-  \[
-    I
-    =
-    (x \tensor y - y \tensor x - [x,y] \suchthat x, y \in \glie)
-  \]
-  We will now show that this is indeed the case.
-\end{remark}
-
-
-\begin{proposition}[Existence of the universal enveloping algebra]
-  Let~$\glie$ be a Lie~algebra.
-  Let~$\Tensor(\glie)$ be the tensor algebra of the underlying vector space of~$\glie$ and let~$I$ the two-sided ideal in~$\Tensor(\glie)$ generated by the elements $x \tensor y - y \tensor x - [x,y]$ with~$x,y \in \glie$.
-  The the quotient algebra~$U \defined T(\glie)/I$ together with the~{\linear{$\kf$}} map
-  \[
-    i
-    \colon
-    \glie
-    \to
-    \Univ(\glie) \,,
-    \quad
-    x
-    \mapsto
-    \class{x}
-  \]
-  is a {\ua} for~$\glie$.
 \end{proposition}
 
 
+\begin{lemma}
+  \label{translating between derivations and homomorphisms}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A$ be a~\algebra{$\kf$} and let~$B$ be the~\algebra{$\kf$}
+      \[
+        B
+        \defined
+        \begin{pmatrix}
+          A & A \\
+          0 & A
+        \end{pmatrix} \,.
+      \]
+      A map~$\Delta$ from~$A$ to~$A$ is a derivation of~$A$ if and only if the map
+      \[
+        \Phi
+        \colon
+        A
+        \to
+        B \,,
+        \quad
+        a
+        \mapsto
+        \begin{pmatrix}
+          a & \Delta(a) \\
+          0 & a
+        \end{pmatrix}
+      \]
+      is a homomorphism of algebras.
+    \item
+      Let~$\glie$ be a Lie~algebra and let
+      \[
+        B
+        \defined
+        \begin{pmatrix}
+          \Univ(\glie)  & \Univ(\glie)  \\
+          0             & \Univ(\glie)
+        \end{pmatrix} \,.
+      \]
+      A map~$\delta$ from~$\glie$ to~$B$ is a derivation of~$\glie$ if and only if the map
+      \[
+        \varphi
+        \colon
+        \glie
+        \to
+        B \,,
+        \quad
+        x
+        \mapsto
+        \begin{pmatrix}
+          x & x \\
+          0 & x
+        \end{pmatrix}
+      \]
+      is a homomorphism of Lie~algebras
+  \end{enumerate}
+\end{lemma}
+
+
 \begin{proof}
-  The map~$i$ is~{\linear{$\kf$}} and it compatible with the Lie brackets because
-  \[
-    [i(x), i(y)]
-    =
-    [\class{x}, \class{y}]
-    =
-    \class{x} \, \class{y} - \class{y} \, \class{x}
-    =
-    \class{x \tensor y - y \tensor x}
-    =
-    \class{[x,y]}
-    =
-    i([x,y]) \,.
-  \]
-  Given any~{\algebra{$\kf$}}~$A$ and Lie algebra homomorphism~$\phi \colon \glie \to A$ there exists a unique homorphism of~{\algebras{$\kf$}}~$\Phi' \colon \Tensor(\glie) \to A$ that makes the triangular diagram
-  \[
-    \begin{tikzcd}
-      \glie
-      \arrow{r}[above]{\phi}
-      \arrow{d}[left]{\iota}
-      &
-      A
-      \\
-      \Tensor(V)
-      \arrow[dashed]{ur}[below right]{\Phi'}
-      &
-      {}
-    \end{tikzcd}
-  \]
-  commute, where~$\iota \colon \glie \to \Tensor(\glie)$ is the inclusion.
-  The homomorphism~$\Phi'$ is given by~$\Phi'(x) = \phi(x)$ for every~$x \in \glie$.
-  It follows that
-  \begin{align*}
-    \Phi'(x \tensor y - y \tensor x)
-    &=
-    \Phi'(x \tensor y) - \Phi'(y \tensor x)
-    \\
-    &=
-    \Phi'(x) \Phi'(y) - \Phi'(y) \Phi'(x)
-    \\
-    &=
-    \phi(x) \phi(y) - \phi(y) \phi(x)
-    \\
-    &=
-    [\phi(x), \phi(y)]
-    \\
-    &=
-    \phi([x,y])
-    \\
-    &=
-    \Phi'([x,y])
-  \end{align*}
-  for all~$x, y \in \glie$, so that the ideal~$I$ is contained in the kernel of~$\Phi'$.
-  It follows that there exists a unique algebra homomorphism~$\Phi \colon \Tensor(\glie)/I \to A$ that makes the triangular diagram
-  \[
-    \begin{tikzcd}
-      \glie
-      \arrow{r}[above]{\phi}
-      \arrow{d}[left]{\iota}
-      \arrow[bend right = 55]{dd}[left]{i}
-      &
-      A
-      \\
-      \Tensor(\glie)
-      \arrow[bend right= 20]{ur}[above left]{\Phi'}
-      \arrow{d}[left]{\pi}
-      &
-      {}
-      \\
-      \Tensor(\glie)/I
-      \arrow[dashed, bend right = 30]{uur}[below right]{\Phi}
-      &
-      {}
-    \end{tikzcd}
-  \]
-  commute, where~$\pi \colon \Tensor(V) \to \Tensor(V)/I$ denotes the canonical projection.
-  Then the subdiagram
-  \[
-    \begin{tikzcd}
-      \glie
-      \arrow{r}[above]{\phi}
-      \arrow{d}[left]{i}
-      &
-      A
-      \\
-      \Tensor(\glie)/I
-      \arrow{ur}[below right]{\Phi}
-      &
-      {}
-    \end{tikzcd}
-  \]
-  commutes.
-  That~$\Phi$ is unique with this property follows from the uniqueness of~$\Phi'$.
+  \leavevmode
+  \begin{enumerate}
+    \item
+      The map~$\Phi$ is linear if and only if the map~$\Delta$ is linear.
+      We have
+      \[
+        \Phi(a) \cdot \Phi(b)
+        =
+        \begin{pmatrix}
+          a & \Delta(a) \\
+          0 & a
+        \end{pmatrix}
+        \begin{pmatrix}
+          b & \Delta(b) \\
+          0 & b
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+          ab  & \Delta(a) b + a \Delta(b)
+          0   & ab
+        \end{pmatrix}
+      \]
+      for all~$a, b \in A$.
+      The map~$\Phi$ is thus multiplicaitve if and only if~$\Delta(ab) = \Delta(a) b + a \Delta(b)$ for all~$a, b \in A$.
+      If~$\Delta$ is a derivation then we also have~$\Delta(1) = 0$ and thus~$\Phi(1) = 1$.
+      This shows altogether that~$\Delta$ is a derivation if and only if~$\Phi$ is a homomorphism of algebras.
+    \item
+      We have
+      \begin{align*}
+        [ \varphi(x), \varphi(y) ]
+        &=
+        \Biggl[
+          \begin{pmatrix}
+            x & \delta(x) \\
+            0 & x
+          \end{pmatrix},
+          \begin{pmatrix}
+            y & \delta(y) \\
+            0 & y
+          \end{pmatrix}
+        \Biggr]
+        \\
+        &=
+        \begin{pmatrix}
+          x & \delta(x) \\
+          0 & x
+        \end{pmatrix}
+        \begin{pmatrix}
+          y & \delta(y) \\
+          0 & y
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+          y & \delta(y) \\
+          0 & y
+        \end{pmatrix}
+        \begin{pmatrix}
+          x & \delta(x) \\
+          0 & x
+        \end{pmatrix}
+        \\
+        &=
+        \begin{pmatrix}
+          xy  & x \delta(y) + \delta(x) y \\
+          0   & xy
+        \end{pmatrix}
+        -
+        \begin{pmatrix}
+          yx  & y \delta(x) + \delta(y) x \\
+          0   & yx
+        \end{pmatrix}
+        \\
+        &=
+        \begin{pmatrix}
+          xy - yx & \delta(x) y - y \delta(x) + x \delta(y) - \delta(y) x \\
+          0       & xy - yx
+        \end{pmatrix}
+        \\
+        &=
+        \begin{pmatrix}
+          [x,y] & [\delta(x), y] + [x, \delta(y)] \\
+          0     & [x,y]
+        \end{pmatrix}
+      \end{align*}
+      for all~$x, y \in \glie$.
+      It follows that the map~$\varphi$ is a homomorphism of Lie~algebras if and only if~$\delta([x,y]) = [\delta(x), y] + [x, \delta(y)]$ for all~$x, y \in \glie$, i.e. if and only if the map~$\delta$ is a derivation of~$\glie$.
+    \qedhere
+  \end{enumerate}
 \end{proof}
 
 
-\begin{remark}
-  The above proof may be reorganized by observing that we have bijections
-  \begin{align*}
-    {}&
-    \{ \text{algebra homomorphisms~$\Phi \colon \Tensor(\glie)/I \to A$} \}
-    \\
-    \cong{}&
-    \{ \text{algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with~$\Phi'(I) = 0$} \}
-    \\
-    \cong{}&
-    \left\{
-      \begin{tabular}{@{}c@{}}
-        algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with  \\
-        $\Phi'(x \tensor y - y \tensor x - [x,y]) = 0$ for all~$x, y \in \glie$
-      \end{tabular}
-    \right\}
-    \\
-    \cong{}&
-    \left\{
-      \begin{tabular}{@{}c@{}}
-        algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with  \\
-        $\Phi'(x) \Phi'(y) - \Phi'(y) \Phi'(x) - \Phi'([x,y]) = 0$ for all~$x, y \in \glie$
-      \end{tabular}
-    \right\}
-    \\
-    \cong{}&
-    \left\{
-      \begin{tabular}{@{}c@{}}
-        algebra homomorphisms~$\Phi' \colon \Tensor(\glie) \to A$ with  \\
-        $\Phi'(x) \Phi'(y) - \Phi'(y) \Phi'(x) = \Phi'([x,y])$ for all~$x, y \in \glie$
-      \end{tabular}
-    \right\}
-    \\
-    \cong{}&
-    \left\{
-      \begin{tabular}{@{}c@{}}
-        {\linear{$\kf$}} maps~$\phi \colon \glie \to A$ with  \\
-        $\phi(x) \phi(y) - \phi(y) \phi(x) = \phi([x,y])$ for all~$x, y \in \glie$
-      \end{tabular}
-    \right\}
-    \\
-    \cong{}&
-    \left\{
-      \begin{tabular}{@{}c@{}}
-        {\linear{$\kf$}} maps~$\phi \colon \glie \to A$ with  \\
-        $[\phi(x), \phi(y)] = \phi([x,y])$ for all~$x, y \in \glie$ 
-      \end{tabular}
-    \right\}
-    \\
-    ={}&
-    \{ \text{Lie~algebra homomorphisms~$\phi \colon \glie \to A$} \}
-  \end{align*}
-  that are natural in~$A$.
-  This shows that the~{\algebra{$\kf$}}~$\Tensor(\glie)/I$ represented the right kind of functor.
-  We can also see that the identity~$\Tensor(\glie)/I \to \Tensor(\glie)/I$ corresponds under the above bijections to the map~$\iota \colon \glie \to \Tensor(\glie)/I$ as desired.
-\end{remark}
+\begin{proof}[Proof of \cref{extending derivation to universal enveloping algebra}]
+  The uniqueness of~$\Delta$ follows from \cref{dervation is uniquely determined by algebra generators} because~$\glie$ generates the algebra~$\Univ(\glie)$.
 
-
-
-
-
-\input{sections/examples_for_uea}
-
-
+  Let~$B$ be the~\algebra{$\kf$} given by
+  \[
+    B
+    \defined
+    \begin{pmatrix}
+      \Univ(\glie)  & \Univ(\glie) \\
+      0             & \Univ(\glie)
+    \end{pmatrix} \,.
+  \]
+  It follows from \cref{translating between derivations and homomorphisms} that the map
+  \[
+    \varphi
+    \colon
+    \glie
+    \to
+    A \,,
+    \quad
+    x
+    \mapsto
+    \begin{pmatrix}
+      x & \delta(x) \\
+      0 & x
+    \end{pmatrix}
+  \]
+  is a homomorphism of Lie~algebras because~$\delta$ is a derivation of~$\glie$.
+  It follows from the universal property of the universal enveloping algebra~$\Univ(\glie)$ that the homomorphism of Lie~algebras~$\varphi$ extends uniquely to a homomorphism of algebras~$\Phi$ from~$\Univ(\glie)$ to~$B$.
+  This homomorphism~$\Phi$ is of the form
+  \[
+    \Phi(x)
+    =
+    \begin{pmatrix}
+      \Phi_1(x) & \Delta(x) \\
+      0         & \Phi_2(x)
+    \end{pmatrix}
+  \]
+  for all~$x \in \Univ(\glie)$ for some unique linear mape
+  \[
+    \Phi_1, \Phi_2, \Delta
+    \colon
+    \Univ(\glie)
+    \to
+    \Univ(\glie) \,.
+  \]
+  The maps~$\Phi_1$ and~$\Phi_2$ are homomorphisms of algebras because~$\Phi$ is a homomorphism of algebras.
+  They satisfy the equalities~$\Phi_1(x) = \varphi(x) = x$ and~$\Phi_2(x) = \varphi(x) = x$ for all~$x \in \glie$.
+  It follows that~$\Phi_1(x) = x$ and~~$\Phi_2(x) = x$ for all~$x \in \Univ(\glie)$ because~$\glie$ generates~$\Univ(\glie)$ as an algebra.
+  The homomorphism~$\Phi$ is thus of the form
+  \[
+    \Phi(x)
+    =
+    \begin{pmatrix}
+      x & \Delta(x) \\
+      0 & x
+    \end{pmatrix}
+  \]
+  for all~$x \in \glie$.
+  It follows from \cref{translating between derivations and homomorphisms} that the linear map~$\Delta$ is an algebra derivation of~$\Univ(\glie)$.
+  This darivation satisfies the equality~$\Delta(x) = \delta(x)$ for all~$x \in \glie$ because~$\Phi$ is an extension of~$\varphi$.
+  In other words,~$\Delta$ is an extension of~$\delta$.
+\end{proof}
 
 

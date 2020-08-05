@@ -27,6 +27,10 @@
                         listparindent = \parindent,
                         parsep        = 0pt }
 
+\renewcommand{\descriptionlabel}[1]{%
+  \hspace\labelsep \upshape\bfseries #1.%
+}
+
 
 
 
@@ -61,8 +65,12 @@
 \setlist[itemize*, 2]  {  label         = {\textopenbullet} }
 
 
-\setlist[description*]{ listparindent = \parindent,
-                        parsep        = 0pt }
+\setlist[description*]{ 
+                        leftmargin    = \parindent,
+                        labelindent   = \parindent,
+                        listparindent = \parindent,
+                        parsep        = 0pt
+                      }
 
 
 

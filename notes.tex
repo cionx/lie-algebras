@@ -7,12 +7,15 @@
 
 
 \includeonly{
-  sections/conventions,
-  sections/lie_algebras,
-  sections/representations,
-  sections/extensions,
-  sections/lie_algebra_cohomology,
-  sections/universal_enveloping_algebra
+  %sections/conventions,
+  %sections/lie_algebras,
+  %sections/representations,
+  %sections/extensions,
+  %sections/lie_algebra_cohomology,
+  %sections/universal_enveloping_algebra,
+  %sections/the_pbw_theorem,
+  %sections/lie_algebra_cohomology_2,
+  sections/nilpotency_and_solvability
 }
 \begin{document}
 
@@ -29,17 +32,20 @@
   \include{sections/extensions}
   \include{sections/lie_algebra_cohomology}
   \include{sections/universal_enveloping_algebra}
-  \include{sections/nilpotency_and_solvability}
+  \include{sections/the_pbw_theorem}
+  \include{sections/lie_algebra_cohomology_2}
   \part{Semisimple Lie~Algebras}
+  \include{sections/nilpotency_and_solvability}
   \include{sections/semisimple_lie_algebras}
   \include{sections/roots_and_reflections}
 
 % \appendix
 % \include{sections/appendix}
 \backmatter
+  \emergencystretch = 1em % less overfull hboxes
   \printbibliography
-  \printnoidxglossary[title = {List of Symbols}, type = symbols]
-  \printindex
+%  \printnoidxglossary[title = {List of Symbols}, type = symbols]
+%  \printindex
 
 \end{document}
 

@@ -1,8 +1,12 @@
 \section{Filtered \texorpdfstring{$\kf$}{k}-Algebras}
 
 
+
+\subsection{Definition}
+
 \begin{definition}
-  A \defemph{filtration}\index{filtration} of a~\algebra{$\kf$}~$A$ is an increasing sequence
+  Let~$A$ be a~\algebra{$\kf$}.
+  A \defemph{filtration}\index{filtration} of~$A$ is an increasing sequence
   \[
     A_{(0)}
     \subseteq
@@ -12,7 +16,7 @@
     \subseteq
     \dotsb
   \]
-  of linear subspaces of~$A$ such that~$A = \bigcup_{i \geq 0} A_{(i)}$ and~$A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ for all~$i,j \geq 0$, as well as~$1 \in A_{(0)}$.
+  of linear subspaces of~$A$ such that~$A = \bigcup_{p \geq 0} A_{(p)}$ and~$A_{(p)} A_{(q)} \subseteq A_{(p+q)}$ for all~$p, q \geq 0$, as well as~$1 \in A_{(0)}$.
   A \defemph{filtered~\algebra{$\kf$}} is a~\algebra{$\kf$}~$A$ together with a filtration of~$A$.
 \end{definition}
 
@@ -22,11 +26,11 @@
   \leavevmode
   \begin{enumerate}
     \item
-      We will just say that~\enquote{$A$ is a filtered algebra} without mentioning the filtration explicitely.
-      The parts of the filtration will then be denoted by~$A_{(i)}$ with~$i \geq 0$.
+      We often say that~\enquote{$A$ is a filtered algebra} without explicitely mentioning the filtration.
+      The parts of the filtration will then be denoted by~$A_{(p)}$.
     \item
-      If~$A$ is a filtered~{\algebra{$\kf$}} then we set~$A_{(-i)} \defined 0$ for all~$i < 0$ for convenience.
-      The relation~$A_{(i)} A_{(j)} \subseteq A_{(i+j)}$ with~$i,j \geq 0$ then extends to all~$i, j \in \Integer$.
+      If~$A$ is a filtered~{\algebra{$\kf$}} then we set~$A_{(-p)} \defined 0$ for all~$p < 0$ for convenience.
+      The relation~$A_{(p)} A_{(q)} \subseteq A_{(p+q)}$ does then holds for all~$p, q \in \Integer$.
   \end{enumerate}
 \end{remark}
 
@@ -35,9 +39,10 @@
   Let~$A$ and~$B$ be two filtered~\algebras{$\kf$}.
   \begin{enumerate}
     \item
-      A~\defemph{homomorphism of filtered~\algebras{$\kf$}}~$A \to B$ is a homomorphism of the underlying~{\algebras{$\kf$}} such that~$f(A_{(i)}) \subseteq B_{(i)}$ for every~$i \geq 0$.
+      A~\defemph{homomorphism of filtered algebras} from~$A$ to~$B$ is a homomorphism of algebras~$\Phi$ from~$A$ to~$B$ such that~$\Phi( A_{(p)} ) \subseteq B_{(p)}$ for all~$p \geq 0$.
     \item
-      If~$f \colon A \to B$ is a homomorphism of filtered~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction of~$f$ to a linear map~$A_{(i)} \to B_{(i)}$ is denoted by~$f_{(i)}$.
+      Let~$\Phi$ be a homomorphism of filtered algebras from~$A$ to~$B$.
+      Then the restiction of~$\Phi$ to a linear map from~$A_{(p)}$ to~$B_{(p)}$ is denoted by~$\Phi_{(p)}$ for all~$p \geq 0$.
   \end{enumerate}
 \end{definition}
 
@@ -46,22 +51,25 @@
   Let~$A$,~$B$ and~$C$ be filtered~\algebras{$\kf$}.
   \begin{enumerate}
     \item
-      The identity~$\id_A \colon A \to A$ is a homomorphism of filtered~\algebras{$\kf$}.
+      The identity map~$\id_A$ is a homomorphism of filtered algebras from~$A$ to~$A$.
     \item
-      If~$f \colon A \to B$ and~$g \colon B \to C$ are homomorphisms of filtered~\algebras{$\kf$} then their composition~$g \circ f \colon A \to C$ is again a homomorphism of filtered~\algebras{$\kf$}.
+      Let~$\Phi$ be a homomorphism of filtered algebras from~$A$ to~$B$ and let~$\Psi$ be a homomorphisms of filtered~\algebras{$\kf$} from~$B$ to~$C$.
+      Their composite~$\Psi \circ \Phi$ is a homomorphism of filtered algebras from~$A$ to~$C$.
   \end{enumerate}
-  This shows that filtered~\algebras{$\kf$} together with homomorphisms of filtered~\algebras{$\kf$} between them form a category, which we will denote by~\gls*{filtered algebras}.
+  This shows that filtered~\algebras{$\kf$} together with homomorphisms of filtered algebras between them form a category.
+  We will denote this category by~$\cfAlg{\kf}$\glsadd{filtered algebras}.
   \begin{enumerate}[resume]
     \item
-      A homomorphism of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ is hence an isomorphism if and only if there exists a homomorphism of filtered~{\algebras{$\kf$}}~$g \colon B \to A$ with~$f {} g = \id_B$ and~$g f = \id_A$.
+      A homomorphism of filtered algebras~$\Phi$ from~$A$ to~$B$ is an isomorphism if and only if there exists a homomorphism of filtered algebras~$\Psi$ from~$B$ to~$A$ with~$\Psi \circ \Phi = \id_A$ and~$\Phi \circ \Psi = \id_B$.
   \end{enumerate}
 \end{remark}
 
 
 \begin{warning}
   Let~$A$ and~$B$ be two filtered~{\algebras{$\kf$}}.
-  A bijective homomorphism of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ is not necessarily an isomorphism of filtered~{\algebras{$\kf$}}.
-  Indeed, take any~{\algebra{$\kf$}}~$A$ with~$\kf \neq A$.
+  A bijective homomorphism of filtered algebra~$\Phi$ from $A$ to~$B$ is not necessarily an isomorphism of filtered algebras.
+  
+  Indeed, let~$A$ be some~\algebra{$\kf$} with~$A \neq \kf$.
   We can endow~$A$ with a filtration
   \[
     A_{(0)}
@@ -87,11 +95,13 @@
     =
     A
     =
+    A
+    =
     \dotsb
   \]
   which results in a filtered~{\algebra{$\kf$}}~$B_2$.
-  Then the identity~$\id_A \colon A \to A$  results in a bijective homomorphism of filtered~{\algebras{$\kf$}}~$B_1 \to B_2$.
-  But this is not an isomorphism of filtered~{\algebras{$\kf$}} because the inverse~$B_2 \to B_1$ does not respect the filtrations.
+  The identity~$\id_A$ is a bijective homomorphism of filtered~algebras from~$B_1$ to~$B_2$.
+  But this is not an isomorphism of filtered algebras because its set-theoretic inverse, which is just~$\id_A$ again, does not map the filtration of~$B_2$ into the filtration of~$B_1$.
 \end{warning}
 
 
@@ -99,40 +109,47 @@
   \leavevmode
   \begin{enumerate}
     \item
-      Any grading~$A = \bigoplus_{i \geq 0} A_i$ of a~{\algebra{$\kf$}}~$A$ results in a filtration~$A = \bigcup_{i \geq 0} A_{(i)}$ given by
+      Let~$A$ be a~\algebra{$\kf$}.
+      Any grading~$A = \bigoplus_{p \geq 0} A_p$ of~$A$ results in a filtration~$A = \bigcup_{p \geq 0} A_{(p)}$ of~$A$ given by
       \[
-        A_{(i)}
+        A_{(p)}
         =
-        \bigoplus_{j \geq i} A_j
+        \bigoplus_{q \leq p} A_q
       \]
-      for every~$i \geq 0$.
+      for all~$p \geq 0$.
       We can therefore regard every graded~{\algebra{$\kf$}} as a filtered~{\algebra{$\kf$}}.
-      Every homomorphism of graded~{\algebras{$\kf$}}~$f \colon A \to B$ is then also a homomorphism of filtered \algebras{$\kf$}.
-      This construction gives us a forgetful functor~$\cgAlg{\kf} \to \cfAlg{\kf}$.
+      Every homomorphism of graded algebras is then also a hommorphism of filtered algebras.
+      This construction gives us therefore a forgetful functor from~$\cgAlg{\kf}$ to~$\cfAlg{\kf}$.
     \item 
-      If~$A$ is a filtered algebra and~$I$ is any two-sided ideal in~$A$ then the quotient algebra~$A/I$ inherits from~$A$ a filtration given by~$(A/I)_{(i)} \defined \pi(A_{(i)})$ for every~$i \geq 0$.
-      Here~$\pi \colon A \to A/I$ denotes the canonical projection.
+      Let~$A$ be a filtered algebra, let~$I$ is a two-sided ideal in~$A$ andl let~$\Pi$ be the canonical quotient homomorphism from~$A$ to~$A/I$.
+      The quotient algebra~$A/I$ inherits from~$A$ a filtration given by~$(A/I)_{(p)} \defined \Pi(A_{(p)})$ for all~$p \geq 0$.
   \end{enumerate}
 \end{remark}
 
 
 \begin{examples}
+  \label{examples for filtered algebras}
   \leavevmode
   \begin{enumerate}
     \item
-      If~$V$ is any vector space then the tensor algebra~$\Tensor(V)$, the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ admit gradings as explained in \cref{examples of graded algebras} and hence also induced filtrations.
+      Let~$V$ be a vector space.
+      The tensor algebra~$\Tensor(V)$, the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ admit gradings as explained in \cref{examples for graded algebras}.
+      They can hence be endowed with the resulting filtrations.
     \item
-      If~$\glie$ is a Lie algebra then its universal enveloping algebra~$\Univ(\glie)$ inherits from the tensor algebra~$\Tensor(\glie)$ a filtration~$\Univ(\glie) = \bigcup_{i \geq 0} \Univ(\glie)_{(i)}$ with terms
+      Let~$\glie$ be a Lie~algebra.
+      The universal enveloping algebra~$\Univ(\glie)$ inherits from the tensor algebra~$\Tensor(\glie)$ a filtration~$\Univ(\glie) = \bigcup_{p \geq 0} \Univ(\glie)_{(p)}$.
+      This filtration is given by
       \[
-        \Univ(\glie)_{(i)}
+        \Univ(\glie)_{(p)}
         =
         \gen{
-          \class{x_1 \dotsm x_j}
+          \class{x_1 \dotsm x_q}
         \suchthat
-          j \leq i,
-          x_1, \dotsc, x_j \in \glie
-        }_{\kf} \,.
+          q \leq p,
+          x_1, \dotsc, x_q \in \glie
+        }_{\kf}
       \]
+      for all~$p \geq 0$.
     \item
       Let~$M$ be a multiplicative monoid and let
       \[
@@ -146,66 +163,74 @@
         \subseteq
         \dotsb
       \]
-      be a filtration of~$M$, i.e.\ it holds that~$M = \bigcup_{i \geq 0} M_{(i)}$ with~$M_{(i)} M_{(j)} \subseteq M_{(i+j)}$ for all~$i, j \geq 0$ and~$1 \in M_{(0)}$.
-      Then the monoid algebra~$A \defined \kf[M]$ inherits a filtration given by
+      be a filtration of~$M$, i.e. it holds that~$M = \bigcup_{p \geq 0} M_{(p)}$ with~$M_{(p)} M_{(q)} \subseteq M_{(p+q)}$ for all~$p, q \geq 0$, and~$1 \in M_{(0)}$.
+      The monoid algebra~$A \defined \kf[M]$ inherits a filtration given by
       \[
-        A_{(i)}
+        A_{(p)}
         =
-        \gen{ M_{(i)} }_{\kf}
+        \gen{ M_{(p)} }_{\kf}
       \]
-      for all~$i \geq 0$.
+      for all~$p \geq 0$.
     \item
-      Let us give a special case of the previous example:
-      Let~$G$ be a group with generating set~$S$.
-      The length of an element~$g \in G$ with respect to the generating set~$S$ is given by
+      Let us give a special case of the previous example.
+
+      Let~$G$ be a group and let~$S$ be a generating set of~$G$.
+      The \defemph{length} of an element~$g$ of~$G$ with respect to the generating set~$S$ is given by
       \[
-        l_S(g)
-        =
+        \ell_S(g)
+        \defined
         \min
-        \{
-          n \in \Natural
-        \suchthat
-          \text{there exist~$s_1, \dotsc, s_n \in S$ with~$g = s_1^{\pm 1} \dotsm s_n^{\pm 1}$}
-        \}  \,.
+        \left\{
+          n \geq 0
+        \suchthat*
+          \begin{tabular}{@{}c@{}}
+            there exist~$s_1, \dotsc, s_n \in S$ \\
+            and~$\varepsilon_1, \dots, \varepsilon_n \in \{1 -1\}$ \\
+            with~$g = s_1^{\varepsilon_1} \dotsm s_n^{\varepsilon_n}$
+          \end{tabular}
+        \right\}  \,.
       \]
       The length function is subadditive in the sense that
       \[
-        l_S(gh)
+        \ell_S(gh)
         \leq
-        l_S(g) + l_S(h)
+        \ell_S(g) + \ell_S(h)
       \]
       for all~$g, h \in G$.
-      For every~$i \geq 0$ let
+      For all~$p \geq 0$ let
       \[
-        G_{(i)}
+        G_{(p)}
         \defined
         \{
           g \in G
         \suchthat
-          l_S(g) \leq i
-        \}  \,,
+          \ell_S(g) \leq p
+        \}  \,.
       \]
-      which is the ball of length~$i$.
-      These subsets given a filtration of~$G$.
-      That~$G_{(i)} G_{(j)} \subseteq G_{(i+j)}$ for all~$i, j \geq 0$ follows from the subadditivity of the length function~$l_S$.
-      We hence get for the group algebra~$A \defined \kf[G]$ a filtration given by
+      This is the ball of radius~$p$ with respect to the generating set~$S$.
+      These subsets given a filtration of the group~$G$.
+      The condition~$G_{(p)} G_{(q)} \subseteq G_{(p + q)}$ for all~$p, q \geq 0$ follows from the subadditivity of the length function~$\ell_S$.
+      It follows that the group algebra~$\kf[G]$ inherits a filtration given by
       \[
-        A_{(i)}
+        \kf[G]_{(p)}
         \defined
-        \gen{ G_{(i)} }_{\kf}
+        \gen{ G_{(p)} }_{\kf}
         =
         \gen{
           g \in G
         \suchthat
-          l_S(g) \leq i
-        }_{\kf} \,.
+          \ell_S(g) \leq p
+        }_{\kf} 
       \]
+      for all~$p \geq 0$.
   \end{enumerate}
 \end{examples}
 
 
 \begin{definition}
-  The \defemph{degree}\index{degree!filtration} of an element~$x \in A$ is the minimal~$i \geq 0$ with~$x \in A_{(i)}$, and this degree is denoted by~$\deg(x)$.
+  Let~$A$ be a filtered algebra.
+  The \defemph{degree}\index{degree!filtration} of an element~$x$ of~$A$ is the minimal natural number~$p$ for which the element~$x$ is contained~$A_{(p)}$.
+  This degree is denoted by~$\deg(x)$.
 \end{definition}
 
 
@@ -214,9 +239,9 @@
   \begin{enumerate}
     \item
       Let~$A \defined \kf[t]$ be the polynomial ring in one variable.
-      The standard grading~$\kf[t] = \bigoplus_{i \geq 0} \kf t^i$ gives a filtration
+      The standard grading~$\kf[t] = \bigoplus_{i \geq 0} \kf t^i$ gives the filtration
       \[
-        A_0
+        A_{(0)}
         =
         \kf
         =
@@ -230,50 +255,59 @@
         \subseteq
         \dotsb
       \]
-      of~$A$.
-      The degree of a nonzero polynomial~$p \in A$ with respect to this filtration is the usual degree of a polynomial.
+      The degree of a nonzero polynomial with respect to this filtration is the usual degree of a polynomial.
     \item
-      If more generally~$A$ is any graded algebra with associated filtration then the degree of any nonzero element~$x \in A$ with homogeneous decomposition~$x = \sum_{i \geq 0} x_i$ is the largest index~$i$ with~$x_i \neq 0$.
+      Let more generall~$A$ be a graded algebra with associated filtration.
+      Then the degree of a nonzero element~$x$ of~$A$ with homogeneous decomposition~$x = \sum_{p \geq 0} x_p$ is the maximal natural number~$p$ for which the homogeneous component~$x_p$ is nonzero.
   \end{enumerate}
 \end{example}
 
 
+
 \subsection{The Associated Graded Algebra}
 
+\subsubsection{Construction}
 
 \begin{definition}
-  Two elements~$x$ and~$y$ of a filtered~{\algebra{$\kf$}}~$A$ are \defemph{equal up to smaller degree}\index{equal up to smaller degree}\index{up to smaller degree}\index{degree!up to smaller} if~$x = y$ or their difference~$x - y$ is of degree strictly smaller than both~$x$ and~$y$.
+  Let~$A$ be filtered algebra.
+  Two elements~$x$ and~$y$ ~$A$ are \defemph{equal up to smaller degree}\index{equal up to smaller degree}\index{up to smaller degree}\index{degree!up to smaller} if either~$x = y$ or~$\deg(x-y) < \deg(x), \deg(y)$.
 \end{definition}
 
 
-\begin{lemma}
-  Let~$A$ be a filtered algebra.
-  Two elements~$x, y \in A$ are equal up to smaller degree if and only if they have the same degree~$i \geq 0$ and~$x - y \in A_{(i-1)}$.
-\end{lemma}
+\begin{proposition}
+  Let~$A$ be a filtered algebra and let~$x$ and~$y$ be two elements of~$A$.
+  The elements~$x$ and~$y$ are equal up to smaller degree if and only if they have the same degree~$d$ and their difference~$x - y$ is contained in~$A_{(d-1)}$.
+\end{proposition}
 
 
 \begin{proof}
-  Suppose first that that~$x$ and~$y$ are equal up to smaller degree.
-  Let~$x$ be of degree~$i$ and let~$y$ be of degree~$j$ with~$i \geq j$.
-  Then~$x - y \in A_{(j)}$ and thus~$x = x' + (x- x') \in A_{(j)}$.
-  Hence~$i \leq j$ and thus~$i = j$.  
-  If now~$x = y$ then~$x - y = 0 \in A_{(i-1)}$.
-  (Recall for the case~$i = 0$ that~$A_{(-1)} = 0$.)
-  Otherwise~$x - y \in A_{(k)}$ for some~$0 \leq k < i$ and hence~$x - y \in A_{(k)}$.
-  
-  If on the other hand~$x$ and~$y$ have the same degree~$i \geq 0$ with~$x - y \in A_{(i-1)}$ then~$x = y$ or the degree of~$x - y$ is at most~$i-1$ and hence strictly smaller than~$i$.
-  This means that~$x$ and~$y$ are equal up to smaller degree.
+  Suppose first that that the elements~$x$ and~$y$ are equal up to smaller degree.
+  Let~$x$ be of degree~$d$ and let~$y$ be of degree~$d'$ with~$d \geq d'$.
+  If~$x = y$ then~$d = d'$ and the difference~$x - y = 0$ is contained in~$A_{(d-1)}$.
+
+  Suppose now in addition that~$x \neq y$.
+  Then by assumption~$\deg(x - y) < \deg(y) = d'$.
+  It follows that the difference~$x - y$ is contained in~$A_{(d')}$.
+  But the element~$y$ is also contained in~$A_{(d')}$.
+  It follows that~$x = (x-y) + y$ is contained in~$A_{(d')}$.
+  Therefore~$d' \leq d$ by choice of~$d$, and thus~$d = d'$.
+  It also follows from the condition~$\deg(x-y) < \deg(x) = d$ that the difference~$x-y$ is contained in~$A_{(d-1)}$.
+ 
+  Suppose now on the other hand that the two elements~$x$ and~$y$ have the same degree~$d$ and that their difference~$x - y$ is contained in~$A_{(d-1)}$.
+  If~$d = 0$ then~$A_{(d-1)} = A_{-1} = 0$ and it follws that~$x = y$.
+  If~$d > 0$ then~$d-1$ is a natural number and it follows from the condition~$x - y \in A_{(d-1)}$ that~$\deg(x-y) < d = \deg(x), \deg(y)$.
 \end{proof}
 
 
 \begin{corollary}
-  If~$A$ is a filtered~{\algebra{$\kf$}} then \enquote{being equal up to smaller degree} is an equivalence relation on~$A$.
-  The equivalence class of an element~$x \in A$ of degree~$i$ is given by the coset~$x + A_{(i-1)}$.
+  Let~$A$ be a filtered~\algebra{$\kf$}.
+  The notion of \enquote{being equal up to smaller degree} is an equivalence relation on~$A$.
+  The equivalence class of an element~$x$ of~$A$ of degree~$d$ is given by the coset~$x + A_{(d-1)}$.
   \qed
 \end{corollary}
 
 
-\begin{remark}
+\begin{fluff}
   Let~$A$ be a filtered~{\algebra{$\kf$}} and let~$\sim$ be the equivalence relation \enquote{equal up to smaller degree} on~$A$.
   
   When calculating in~$A$ we sometimes want to replace an element~$x \in A$ by another element~$x' \in A$ that is equal to~$x$ up to smaller degree, while hoping that the result ouf our calculation also stays the same up to smaller degree.
@@ -292,39 +326,22 @@
     \qquad
     \lambda x \sim \lambda x'
   \end{equation}
-  for all elements~$x, x', y, y' \in A$ with~$x \sim x'$ and~$y \sim y'$ and scalars~$\lambda \in \kf$.
-  This would then mean that the quotient set~$A/{\sim}$ inherits from~$A$ the structure of a~{\algebra{$\kf$}}, allowing us do calculations \enquote{up to smaller degree} by switching from~$A$ to~$A/{\sim}$.
+  for all elements~$x$,~$x'$~$y$,~$y'$ of~$A$ with~$x \sim x'$ and~$y \sim y'$ and all scalars~$\lambda$ in~$\kf$.
+  This would then mean that the quotient set~$A/{\sim}$ inherits from~$A$ the structure of a~{\algebra{$\kf$}}, which would allow us to do calculations \enquote{up to smaller degree} by switching from~$A$ to~$A/{\sim}$.
   
-  But alas the properties~\eqref{wanted compatibility} do not hold in general:%
-  \footnote{The equivalence relation~$\sim$ is actually compatible with scalar multiplication:
-  Suppose that~$x, x' \in A$ are two element that are equal up to smaller degree, so that~$x$ and~$x'$ are of the same degree~$i$ and~$x - x' \in A_{(i-1)}$.
-  If~$\lambda = 0$ then~$\lambda x = 0 = \lambda x'$ and hence~$\lambda x \sim \lambda x'$.
-  If~$\lambda \neq 0$ then it follows from~$x \in A_{(i)}$ and~$x \notin A_{(i-1)}$ that also~$\lambda x \in A_{(i)}$ and~$\lambda x' \notin A_{(i-1)}$.
-  This means that the element~$\lambda x$ is again of degree~$i$.
-  We find in the same way that~$\lambda x'$ is again of degree~$i$.
-  We moverover have~$\lambda x - \lambda x' = \lambda (x-x') \in A_{(i-1)}$ because~$x - x' \in A_{(i-1)}$.
-  Altogether this shows that~$\lambda x \sim \lambda x'$.}
+  But alas the properties~\eqref{wanted compatibility} do not hold in general.%
   \begin{itemize}
     \item
-      Suppose that~$x$ and~$x'$ are of degree~$i$ whereas~$y$ and~$y'$ are of degree~$j$.
-      We would like to argue that~$x + y$ and~$x' + y'$ have the same degree~$\max(i,j)$ and that their difference
-      \[
-        (x + y) - (x' + y')
-        =
-        (x - x') + (y + y')
-      \]
-      has degree at most~$\max(i-1,j-1)$ and hence strictly smaller than~$i+j$.
-      But this argumentation doesn’t work because the sums~$x+y$ and~$x'+y'$ may have smaller degree than~$i+j$, which would mean that the difference~$(x + y) - (x' + y')$ may have too large of a degree.
-      
-      As a counterexample we can take the polynomial ring~$A = \kf[t]$ wih the filtration induced by the standard grading~$A = \bigoplus_{i \geq 0} \kf t^i$.
-      Then~$x = t$ and~$x' = t+1$ are the equal to smaller degree but for~$y = -t$ the sums~$x + y = 0$ and~$x' + y' = 1$ are not equal up to smaller degree.
-      
-      This shows that the equivalence relation~$\sim$ is not necessarily compatible with addition.
+      The equivalence relation~$\sim$ is not necessarily compatible with addition.
+
+      As a counterexample we can take for~$A$ the polynomial algebra~$\kf[t]$ wih the filtration induced by the standard grading~$A = \bigoplus_{d \geq 0} \gen{ t^d }_{\kf}$.
+      We can the consider the elements~$x = t$ and~$x' = t+1$ as well as the elements~$y, y' = -t$.
+      Then~$x$ and~$x'$ are equal up to smaller degree and~$y$ and~$y'$ are equal, but~$x + y = 0$ and~$x' + y' = 1$ are not equal up to smaller degree.
     \item
       The equivalence relation~$\sim$ also hasn’t to be compatible with multiplication.
       
-      We take on~$\kf[t]$ the standard grading~$\kf[t] = \bigoplus_{i \geq 0} \kf t^i$.
-      The ideal~$(t^2)$ is homogeneous, and the quotient~$A \defined \kf[t]/(t^2)$ therefore inherits a grading given by
+      We take on the~\algebra{$\kf$}~$\kf[t]$ the standard grading~$\kf[t] = \bigoplus_{d \geq 0} \gen{ t^d }_{\kf}$.
+      The ideal~$\ideal{I}$ of~$\kf[t]$ is homogeneous, whence the quotient~$A \defined \kf[t] / \ideal{ t^2 }$ inherits a grading given by
       \[
         A
         =
@@ -344,8 +361,6 @@
         =
         \kf
         \subsetneq
-        (t)/t^2
-        \subsetneq
         A
         =
         A
@@ -354,43 +369,62 @@
         =
         \dotsb
       \]
-      The elements~$x = t$ and~$x' = t+1$ are equal up to smaller degree but for~$y = y' = t$ the two products~$xy = 0$ and~$x' y' = t$ are not equal up to smaller degree.
+      The two elements~$x = t$ and~$x' = t+1$ are equal up to smaller degree but for~$y, y' = t$ the two products~$xy = 0$ and~$x' y' = t$ are not equal up to smaller degree.
+    \item
+      The equivalence relation~$\sim$ is actually compatible with scalar multiplication.
+
+      Suppose that~$x$ and~$x'$ are two element of~$A$ that are equal up to smaller degree.
+      This means that~$x$ and~$x'$ are of the same degree~$d$ and that th difference~$x - x'$ is contained in~$A_{(d-1)}$.
+      For~$\lambda = 0$ we have~$\lambda x = 0 = \lambda x'$ and hence~$\lambda x \sim \lambda x'$.
+      For~$\lambda \neq 0$ we observe that~$x$ is contained in~$A_{(d')}$ for some~$d' \geq 0$ if and only if~$\lambda x$ is contained in~$A_{(d')}$, and similar for~$x'$.
+      We thus find that~$\lambda x$ and~$\lambda x'$ have tha same degrees as~$x$ as~$x'$, and thus the same degree.
+      The difference~$\lambda x - \lambda x' = \lambda (x - x')$ is contained in~$A_{(d-1)}$ because~$x - x'$ is contained in~$A_{(d-1)}$.
   \end{itemize}
-  We can also argue more abstractly that this approach to \enquote{working with elements up to smaller degree} cannot work:
-  We would have~$A/{\sim} = A/I$ for the then two-sided ideal~$I = \{x \in A \suchthat x \sim 0\}$.
+
+  We can also argue in a more abstract way why the set~$A / {\sim}$ can in general not inherit the structure of a~\algebra{$\kf$} from~$A$.
+  We would otherwise have~$A/{\sim} = A/I$ for a two-sided ideal~$I$ of~$A$, which would be given by~$I = \{x \in A \suchthat x \sim 0\}$.
   But the only element that is equal to~$0$ up to smaller degree is~$0$ itself.
-  Hence~$I = 0$ and we would have that~$A = A/{\sim}$, meaning that no two elements~$x, y \in A$ with~$x \neq y$ could be equal up to smaller degree.
-  
-  The following construction gives us a way to circumvent these problems and to calculate \enquote{up to smaller degree} in a rigorous way:
-\end{remark}
+  Hence~$I = 0$ and we would have that~$A/{\sim} = A / I = A / 0 = A$.
+  This would mean that~$\sim$ is the trivial equivalence relation.
+\end{fluff}
+
+
+\begin{fluff}
+  The following construction gives us a way to circumvent these above problems and to calculate with elements of~$A$ \enquote{up to smaller degree} in a rigorous way.
+\end{fluff}
 
 
 \begin{construction}[The associated graded algebra]
   \label{construction of associated graded}
-  To every filtered~{\algebra{$\kf$}}~$A$ we can associate a graded~{\algebra{$\kf$}} as follows:
-  For every~$i \geq 0$ let
+  To every filtered~{\algebra{$\kf$}}~$A$ we can associate a graded~{\algebra{$\kf$}} as follows.
+
+  For every~$p \geq 0$ let
   \[
-    \gr[i](A)
+    \gr[p](A)
     \defined
-    A_{(i)} / A_{(i-1)}
+    A_{(p)} / A_{(p-1)}
   \]
   where we use the convention~$A_{(-1)} = 0$ from \cref{filtration conventions}.
-  We denote the residue class of~$x \in A_{(i)}$ in~$\gr[i](A)$ by~$[x]_i$.
+  We denote the residue class of an element~$x$ of~$A_{(p)}$ in~$\gr[p](A)$ by~$\fclass{x}_p$.
   
-  For all~$i, j \geq 0$ the multiplication~$A \times A \to A$ restricts to a bilinear map~$A_{(i)} \times A_{(j)} \to A_{(i+j)}$ that in turn induces a well-defined bilinear map
+  The multiplication of~$A$ restricts for any two natural numbers~$p$,~$q$ to a bilinear map
   \[
-    \mu_{i,j}
-    \colon
-    \gr[i](A) \times \gr[j](A)
-    \to
-    \gr[i+j](A) \,,
-    \quad
-    ([x]_i, [y]_j)
-    \mapsto
-    [xy]_{i+j}  \,.
+    A_{(p)} \times A_{(q)} \to A_{(p+q)} \,,
   \]
-  We will write~$[x]_i \cdot [y]_j$ or just~$[x]_i [y]_j$ instead of~$\mu_{i,j}([x]_i, [y]_j)$.
-  To see that the multipliction~$\mu_{i,j}$ is well-defined let~$x, x' \in A_{(i)}$ and~$y, y' \in A_{(j)}$ with~$x - x ' \in A_{(i-1)}$ and~$y - y' \in A_{(j-1)}$.
+  which in turn induces a well-defined bilinear map
+  \[
+    \mu_{p,q}
+    \colon
+    \gr[p](A) \times \gr[q](A)
+    \to
+    \gr[p+q](A) \,,
+    \quad
+    (\fclass{x}_p, \fclass{y}_q)
+    \mapsto
+    \fclass{xy}_{p+q}  \,.
+  \]
+  We will write~$\fclass{x}_p \cdot \fclass{y}_q$ or just~$\fclass{x}_p \fclass{y}_q$ instead of~$\mu_{p,q}(\fclass{x}_p, \fclass{y}_q)$.
+  To see that the multipliction map~$\mu_{p,q}$ is well-defined let~$x$,~$x'$ be elements of~$A_{(p)}$ and let~$y$,~$y'$ be elements of~$A_{(q)}$ such that~$x - x ' \in A_{(p-1)}$ and~$y - y' \in A_{(q-1)}$.
   Then
   \begin{align*}
     x y
@@ -401,32 +435,32 @@
     x' y' + (x - x') y' + x' (y - y') + (x - x')(y - y')
     \\
     &\in
-    x' y' + A_{(i-1)} A_{(j)} + A_{(i)} A_{(j-1)} + A_{(i-1)} A_{(j-1)}
+    x' y' + A_{(p-1)} A_{(q)} + A_{(p)} A_{(q-1)} + A_{(p-1)} A_{(q-1)}
     \\
     &\subseteq
-    x' y' + A_{(i+j-1)} + A_{(i+j-1)} + A_{(i+j-2)}
+    x' y' + A_{(p+q-1)} + A_{(p+q-1)} + A_{(p+q-2)}
     \\
     &\subseteq
-    x' y' + A_{(i+j-1)}
+    x' y' + A_{(p+q-1)} \,,
   \end{align*}
-  and hence~$[xy]_{i+j} = [x'y']_{i+j}$.
+  and hence~$\fclass{xy}_{p+q} = \fclass{x'y'}_{p+q}$.
   
-  The element~$[1]_0 \in \gr[0](A)$ satisfies~$[1]_0 \cdot [x]_i = [x]_i$ for all~$i \geq 0$ and every~$[x]_i \in \gr[i](A)$, and the multiplications~$\mu_{i,j}$ are relatively associative in the sense that
+  The element~$[1]_0$ of~$\gr[0](A)$ satisfies the property~$[1]_0 \cdot \fclass{x}_p = \fclass{x}_p$ for all~$p \geq 0$,~$\fclass{x}_p \in \gr[p](A)$, and the multiplications~$\mu_{p,q}$ are relatively associative in the sense that
   \[
-    [x]_i \cdot ([y]_j \cdot [z]_k)
+    \fclass{x}_p \cdot (\fclass{y}_q \cdot [z]_r)
     =
-    [xyz]_{i+j+k}
+    [xyz]_{p+q+r}
     =
-    ([x]_i \cdot [y]_j) \cdot [z]_k
+    (\fclass{x}_p \cdot \fclass{y}_q) \cdot [z]_r
   \]
-  for all~$i, j, k \geq 0$ and~$[x]_i \in \gr[i](A)$,~$[y]_j \in \gr[j](A)$ and~$[z]_k \in \gr[k](A)$.
+  for all~$p, q, r \geq 0$,~$\fclass{x}_p \in \gr[p](A)$,~$\fclass{y}_q \in \gr[q](A)$ and~$[z]_r \in \gr[r](A)$.
   It follows from \cref{external description of graded algebras} that on the direct sum
   \[
     \gr(A)
     \defined
-    \bigoplus_{i \geq 0} \gr[i](A)
+    \bigoplus_{p \geq 0} \gr[p](A)
   \]
-  the multiplications~$\mu_{i,j}$ assemble into a single multiplication
+  the partial multiplications~$\mu_{p,q}$ assemble into a single multiplication
   \[
     \mu
     \colon
@@ -434,7 +468,7 @@
     \to
     \gr(A)
   \]
-  that makes~$\gr(A)$ into a graded~{\algebra{$\kf$}}.
+  which makes~$\gr(A)$ into a graded~{\algebra{$\kf$}}.
   The multiplicative neutral element of~$\gr(A)$ is given by~$[1]_0$.
 \end{construction}
 
@@ -444,31 +478,48 @@
 \end{definition}
 
 
-\begin{remark}
+\begin{fluff}
   Let~$A$ be a filtered algebra.
   \begin{enumerate}
     \item
-      To every element~$x \in A$ we can associate an element in~$\gr(A)$:
-      We observe that if~$x$ is of degree~$i \geq 0$ then the residue class~$[x]_j$ is not defined for~$j < i$ because~$x \notin A_{(j)}$, whereas it is defined for all~$j \geq i$.
-      But for~$j > i$ we find that~$[x]_j = 0$ because~$x_i \in A_{(i)} \subseteq A_{(j-1)}$.
-      Hence the only interesting residue class associated to~$x$ is~$[x]_i$;
-      we note that~$[x]_i \neq 0$ because~$x \notin A_{(i-1)}$.
+      To every element~$x$ of~$A$ we can associate an element in~$\gr(A)$ as follows.
+
+      We observe that if~$x$ is of degree~$d$ then the residue class~$\fclass{x}_p$ is not defined for~$p < d$ because~$x$ is not contained in~$A_{(q)}$, whereas this residue class is defined for all~$p \geq d$.
+      But for~$p > d$ we find that~$\fclass{x}_p = 0$ because the element~$x_p$ is contained in~$A_{(p-1)}$.
+      The only interesting residue class associated to~$x$ is therefore~$\fclass{x}_p$.
+      We also note that this residue class~$\fclass{x}_p$ is nonzero if~$x$ is nonzero, because then~$x$ is not contained in~$A_{(p-1)}$.
     \item
-      We observe that two elements~$x, y \in A$ give the same associated element in~$\gr(A)$ if and only if~$x$ and~$y$ are equal up to smaller degree.
-      To show this we denote by~$\gamma \colon A \to \gr(A)$ the function that maps every~$x \in A$ to the associated element of~$\gr(A)$.
+      We observe that two elements~$x$ and~$y$ of~$A$ give the same associated element in~$\gr(A)$ if and only if~$x$ and~$y$ are equal up to smaller degree.
+      To show this we denote by~$\gamma$ the set-theoretic function from~$A$ to~$\gr(A)$ that maps ever every element~$x$ of~$A$ to the associated element of~$\gr(A)$.
       
-      Suppose first that~$x$ and~$y$ are equal up to smaller degree.
-      Then~$x$ and~$y$ are of the same degree~$i$ and~$x - y \in A_{(i-1)}$.
-      Hence~$\gamma(x) = [x]_i = [y]_i = \gamma(y)$.
+      Suppose first that the elements~$x$ and~$y$ are equal up to smaller degree.
+      Then~$x$ and~$y$ are of the same degree~$d$ and the difference~$x - y$ is containted in~$A_{(d-1)}$.
+      Hence
+      \[
+        \gamma(x) = \fclass{x}_d = \fclass{y}_d = \gamma(y) \,.
+      \]
       
-      Suppose now that~$x$ and~$y$ are not equal up to smaller degree, where~$x$ is of degree~$i$ and that~$y$ is of degree~$j$.
-      If~$i \neq j$ then~$\gamma(x) = [x]_i \neq [y]_j = \gamma(y)$ because the terms~$[x]_i$ or~$[y]_j$ live in different homogeneous degrees and at least one of them is nonzero.
-      If~$i = j$ then~$x - y \notin A_{(i-1)}$ and hence~$\gamma(x) = [x]_i \neq [y]_i = \gamma(y)$.
+      Suppose now that~$\gamma(x) = \gamma(y)$.
+      If the elements~$x$ and~$y$ had different degrees then~$\gamma(x)$ and~$\gamma(y)$ would be contained in different homogeneous parts of~$\gr(A)$.
+      This would contradict the assumption~$\gamma(x) = \gamma(y)$.
+      The elements~$x$ and~$y$ are thus of the same degree~$d$.
+      In now further follows from the equality
+      \[
+        \fclass{x}_d
+        =
+        \gamma(x)
+        =
+        \gamma(y)
+        =
+        \fclass{y}_d
+      \]
+      that~$\fclass{x - y}_d = 0$ and thus~$x - y \in A_{(d-1)}$.
+      This shows that~$x$ and~$y$ are equal up to smaller degree.
     \item
-      Observe that the image of~$\gamma$ consists precisely of the homogeneous elements of~$\gr(A)$.
-      If~$x \in A$ has degree~$i$ then~$[x]_i$ is homogeneous of degree~$i$ (or at least for~$x$ nonzero).
+      We observe that the image of the map~$\gamma$ consists precisely of the homogeneous elements of~$\gr(A)$.
+      If an element~$x$ of~$A$ has degree~$d$ then the associated element~$\fclass{x}_d$ is homogeneous of degree~$d$.
   \end{enumerate}
-\end{remark}
+\end{fluff}
 
 
 \begin{warning}
@@ -476,485 +527,131 @@
   Let~$A$ be a filtered~{\algebra{$\kf$}}
   \begin{enumerate}
     \item
-      The map~$\gamma \colon A \to \gr(A)$ that assigns to each element~$x \in A$ the corresponding element of~$\gr(A)$ is in no way a homomorphism.
+      The map~$\gamma$ from~$A$ to~$\gr(A)$ which assigns to each element~$x$ of~$A$ the corresponding element of~$\gr(A)$ is very much not a homomorphism.
       It is in general neither multiplicative nor additive.
     \item
       \label{generators of associated graded part}
-      If~$x_i$,~$i \in I$ is a generating set for the algebra~$A$ then the associated elements of~$\gr(A)$ do not have to form a generating set for~$\gr(A)$.
+      Suppose that~$x_i$ with~$i$ in~$I$ is a generating set for the algebra~$A$.
+      Then the associated elements~$\gamma(x_i)$ of~$\gr(A)$ do not have to form a generating set for~$\gr(A)$.
+      We will give an explicit counterexample in~\cref{converse to warning about generating set for the associated graded}.
   \end{enumerate}
 \end{warning}
 
 
 \begin{remark}
-  Let~$A$ be a filtered algebra with finite algebra generating set~$x_1, \dotsc, x_n$ such that the generator~$x_i$ is of degree~$d_i$.
-  Then the associated elements in~$\gr(A)$ form a set of algebra generators of~$\gr(A)$ if and only if the generators~$x_1, \dotsc, x_n$ are compatible with the filtration of~$A$ in the sense that for every~$i \geq 0$ the linear subspace~$A_{(i)}$ is spanned by all those monomials~$x_{i_1} \dotsm x_{i_p}$ with~$d_{i_1} + \dotsb + d_{i_p} \leq i$.
-  See \cite{associated_generated} for more details on this.
+  Let~$A$ be a filtered algebra with finite algebra generating set~$x_1, \dotsc, x_n$ such that each generator~$x_i$ is of degree~$d_i$.
+  Then the associated elements in~$\gr(A)$ form a set of algebra generators of~$\gr(A)$ if and only if the generators~$x_1, \dotsc, x_n$ are compatible with the filtration of~$A$ in the sense that for every~$p \geq 0$ the linear subspace~$A_{(p)}$ of~$A$ is spanned by all those monomials~$x_{i_1} \dotsm x_{i_r}$ with~$r \geq 0$,~$d_{i_r} + \dotsb + d_{i_r} \leq p$.
+  We refer to \cite{associated_generated} for more details on this.
 \end{remark}
 
-
-\begin{example}[Weyl algebra]
-  \label{weyl algebra}
-  We consider the \defemph{Weyl~algebra}\index{algebra!Weyl}\index{Weyl!algebra}
-  \[
-    A
-    \defined
-    \kf\gen{X, Y}/(YX - XY - 1) \,.%
-    \footnote{The algebra~$A$ is isomorphic to the subalgebra of~$\End_{\kf}(\kf[t])$ generated by the endomorphisms~$x$ and~$y$ that are given by~$x(p(t)) = t p(t)$ and~$y(p(t)) = p'(t)$.
-  These endomorphisms satsify the relations~$yx - xy - \id = 0$ by the product rule.}
-  \]
-  We denote the residue classes of~$X$ and~$Y$ in~$A$ by~$x$ and~$y$.
-  Then~$yx = xy + 1$, which one may think about as a rewriting rule for words in~$x$ and~$y$.
-  It follows from induction that
-  \[
-    y x^n
-    =
-    x^n y + n x^{n-1}
-  \]
-  for all~$n \geq 0$ and thus
-  \[
-    y p(x)
-    =
-    p(x) y + p'(x)
-  \]
-  for every polynomial~$p$.
-  
-  The~{\algebra{$\kf$}}~$T \defined \kf\gen{X, Y}$ carries a unique grading with~$X$ and~$Y$ in degree~$1$.
-  The resulting filtration of~$T$ is given by
-  \[
-    T_{(i)}
-    =
-    \gen{
-      Z_1 \dotsm Z_j
-    \suchthat
-      1 \leq j \leq i,
-      Z_k \in \{X, Y\}
-    }_{\kf}
-    =
-    \gen{
-      \text{words in~$X$,~$Y$ of length~$\leq i$}
-    }
-  \]
-  The Weyl~algebra~$A$ inherits a filtration given by
-  \begin{align*}
-    A_{(i)}
-    =
-    \gen{
-      z_1 \dotsm z_j
-    \suchthat
-      1 \leq j \leq i,
-      z_k \in \{x, y\}
-    }_{\kf}
-    =
-    \gen{
-      \text{words in~$x$,~$y$ of length~$\leq i$}
-    }
-  \end{align*}
-  
-  We observe that the two elements~$x, y \in T$ commute up to smaller degree, i.e.\ the two products~$xy$ and~$yx$ are equal up to smaller degree.
-  Hence the associated elements~$[x]_1$ and~$[y]_1$ in~$\gr(A)$ do actually commute because
-  \[
-    [x]_1 [y]_1
-    =
-    [xy]_2
-    =
-    [yx - 1]_2
-    =
-    [yx]_2
-    =
-    [y]_1 [x]_1 \,.
-  \]
-  We will in the following show that~$\gr(A) \cong \kf[t,u]$ with~$[x]_1$ and~$[y]_1$ corresponding to~$t$ and~$u$.
-  
-  \begin{claim}
-    \label{subspace spanned by monomials}
-    For every~$i \geq 0$ the linear subspace~$A_{(i)}$ is spanned by the monomial~$x^n y^m$ with~$n + m \leq i$.
-  \end{claim}
-  
-  \begin{proof}
-    We show the statement by induction over~$i$.
-    It holds for~$i = 0$ that
-    \[
-      A_{(0)}
-      =
-      \kf
-      =
-      \gen{1}_{\kf}
-      =
-      \gen{x^0 y^0}_{\kf}
-    \]
-    Suppose now that the statement holds for some~$i \geq 0$.
-    We have
-    \[
-      T_{(i+1)}
-      =
-      x T_{(i)} \oplus y T_{(i)}
-    \]
-    and in the quotient~$A$ therefore
-    \[
-      A_{(i+1)}
-      =
-      x A_{(i)} + y A_{(i)} \,.
-    \]
-    We find by the induction hypothesis that the summand~$x A_{(i)}$ is spanned by the monomials~$x^{n+1} y^m$ with~$n+m \leq i$ and that the summand~$y A_{(i)}$ is spanned by the monomials~$y x^n y^m$ with~$n + m \leq i$.
-    We have for these generators of~$y A_{(i)}$ that
-    \[
-      y x^n y^m
-      =
-      (x^n y + n x^{n-1}) y^m
-      =
-      x^n y^{m+1} + n x^{n-1} y^m \,.
-    \]
-    This shows that~$A_{(i+1)}$ is spanned by the monomials~$x^n y^m$ with~$n+m \leq i+1$.
-   \end{proof}
-  
-  It follows that the homogeneous component~$\gr[i](A)$ is spanned by the residue classes~$[x^n y^m]_i$ with~$n + m = i$.
-  The collection of all these residue classes therefore spans~$\gr(A)$ as a vector space.
-  These generators commute:
-  
-  \begin{claim}
-    It holds for all~$i, j \geq 0$ and~$n, m, k, l \geq 0$ with~$i = n+m$ and~$j = k+l$ that
-    \[
-      [x^n y^m]_i \cdot [x^k y^l]_j
-      =
-      [x^{n+k} y^{m+l}]_{i+j} \,.
-    \]
-  \end{claim}
-  
-  \begin{proof}
-    For the case~$i = 0$ we find that~$n = m = 0$ and hence
-    \[
-      [x^0 y^0]_0 \cdot [x^k y^l]_j
-      =
-      [1]_0 \cdot [x^k y^l]_j
-      =
-      [x^k y^l]_j
-    \]
-    For~$i = 1$ we have the two cases~$n = 1$,~$m = 0$ and~$n = 0$,~$m = 1$.
-    We find in these cases that
-    \[
-      [x^1 y^0]_1 \cdot [x^k y^l]_j
-      =
-      [x]_1 \cdot [x^k y^l]_j
-      =
-      [x^{k+1} y^l]_{j+1}
-    \]
-    and
-    \begin{align*}
-      [x^0 y^1]_1 \cdot [x^k y^l]_j
-      &=
-      [y]_1 \cdot [x^k y^l]_j
-      \\
-      &=
-      [y x^k y^l]_{j+1}
-      \\
-      &=
-      [(x^k y + k x^{k-1}) y^l]_{j+1}
-      \\
-      &=
-      [x^k y^{l+1} + k x^{k-1} y^l]_{j+1}
-      \\
-      &=
-      [x^k y^{l+1}]_{j+1} + k [x^{k-1} y^l]_{j+1}
-      \\
-      &=
-      [x^k y^{l+1}]_{j+1}
-    \end{align*}
-    where we used that~$x y^k = y^k x + k y^{k-1}$ and that~$[z]_{j+1} = 0$ for all~$z \in A_{(j)}$.
-    It follows for the general case that
-    \begin{align*}
-      {}&
-      [x^n y^m]_i \cdot [x^k y^l]_j
-      \\
-      ={}&
-      \underbrace{ [x]_1 \dotsm [x]_1 }_{n}
-      \underbrace{ [y]_1 \dotsm [y]_1 }_{m}
-      \cdot
-      [x^k y^l]_j
-      \\
-      ={}&
-      \underbrace{ [x]_1 \dotsm [x]_1 }_{n}
-      \underbrace{ [y]_1 \dotsm [y]_1 }_{m-1}
-      \cdot
-      [x^{1+k}  y^l]_j
-      \\
-      ={}&
-      \dotsb
-      \\
-      ={}&
-      [x^{n+k} y^{m+l}]_{i+j}
-    \end{align*}
-    as claimed.
-  \end{proof}
-
-  We have now seen that~$\gr(A)$ is spanned by the monomials~$[x^n y^m]_{n+m}$ with~$n, m \geq 0$ and these monomials commute with each other.
-  It only remains to show that these monomials~$[x^n y^m]_{n+m}$ are linearly indepependent.
-  For this it sufficies to show the following:
-  
-  \begin{claim}
-    \label{linear independence of monomials}
-    The monomials~$x^n y^m$ with~$n, m \geq 0$ in~$A$ are linearly independent.
-  \end{claim}
-  
-  We will defer the proof of \cref{linear independence of monomials} to a later occasion, namely to \cref{linear independence for weyl algebra}.
-  
-  It follows from \cref{subspace spanned by monomials} and \cref{linear independence of monomials} that for every~$i \geq 0$ the quotient~$\gr[i](A) = A_{(i)} / A_{(i-1)}$ has the residue classes~$[x^n y^m]_{n+m}$ with~$n+m = i$ as a basis, and hence overall that the residue classes~$[x^n y^m]_{n+m}$ with~$n, m \geq 0$ form a basis of~$\gr(A)$.
-  
-  We find altogether that~$\gr(A) \cong \kf[t,u]$ with~$[x]_1$ and~$[y]_1$ corresponding to the variables~$x$ and~$y$.
-\end{example}
-
-
-\begin{remark}
-  The Weyl algebra is an example of a \defemph{skew polynomial ring}:
-  If~$R$ is a~{\algebra{$\kf$}} and~$\delta$ is a derivation of~$R$ then one can endow the polynomial vector space~$A = R[t]$ uniquely with the structure of a~{\algebra{$\kf$}}, different from the usual one (unless~$\delta = 0$), such that
-  \begin{itemize}
-    \item
-      the inclusion~$R \to A$,~$r \mapsto r t^0$ is a homomorphism of~{\algebras{$\kf$}},
-    \item
-      $t^i$ is the~{\howmanyth{$i$}} power of~$t$ in~$A$ and
-    \item
-      the variable~$t$ interacts with the elements~$r \in R$ via~$t r = r t + \delta(r)$.
-  \end{itemize}
-  The resulting~{\algebra{$\kf$}} is a \defemph{skew polynomial algebra}\index{skew polyomial algebra} over~$R$ and denoted by~\gls*{skew polynomial algebra}.
-  Observe that the multiplication in~$R[t;\delta]$ is built precisely so that the derivation~$[t,-]$ of~$R[t;\delta]$ acts on~$R \cong R t^0$ in the same way as~$\delta$.
-  The following are two special cases of skew polynomial algebras:
-  \begin{enumerate}
-    \item
-      If~$R$ is any~{\algebra{$\kf$}} and~$\delta = 0$ then~$R[t; \delta] = R[t]$ is the usual polynomial ring.
-    \item
-      If~$R = \kf[t]$ is the polynomial ring in one variable and~$\delta = \partial_t$ is the derivative with respect to the variable~$t$ than~$R[t;\delta] = R[t;\partial_t]$ is the Weyl~algebra.
-  \end{enumerate}
-%   Currently not needed and distracting.
-%
-%   Skew polynomial algebras can be further generalized:
-%   If~$\sigma \colon R \to R$ is an algebra homomorphism then a~{\linear{$\kf$}} map~$\delta \colon R \to R$ is a~{\derivation{$\sigma$}}\index{$\sigma$-derivation}\index{derivation!$\sigma$-} if
-%   \[
-%     \delta(rs)
-%     =
-%     \delta(r) s + \sigma(r) \delta(s)
-%   \]
-%   for all~$r, s \in R$.
-%   Then the polynomial vector space~$A = R[t]$ can be endowed uniquely with the structure of a~{\algebra{$\kf$}} such that
-%   \begin{itemize}
-%     \item
-%       the inclusion~$R \to A$,~$r \mapsto r t^0$ is a homomorphism of~{\algebras{$\kf$}},
-%     \item
-%       $t^i$ is the~{\howmanyth{$i$}} power of~$t$ in~$A$ and
-%     \item
-%       the variable~$t$ interacts with the elements~$r \in R$ via~$t r = \sigma(r) t + \delta(r)$.
-%   \end{itemize}
-%   The resulting algebra~$A$ is an \defemph{Ore extension}\index{Ore extension} of~$R$ and is denoted by~\gls*{ore extension}.
-\end{remark}
-
-
-\begin{remark}[Weyl and Heisenberg]
-  The Weyl~algebra~$A$ is connected to the {\threedimensional} Heisenberg~Lie~algebras~$\hlie$:
-  Recall that the Lie~algebra~$\hlie$ has a basis~$p$,~$q$,~$c$ on which the Lie~bracket is given by~$[p,c] = [q,c] = 0$ and~$[p,q] = c$.
-  We see that~$c$ is central in~$\hlie$.
-  The Weyl~algebra~$A$ results from the universal enveloping algebra~$\Univ(\hlie)$ by~\enquote{setting~$c = 1$}.
-  More precisely, we have that
-  \[
-    \Univ(\hlie)/(\class{c} - 1)
-    \cong
-    A
-  \]
-  with~$\class{p}$ and~$\class{q}$ corresponding to the elements~$y$ and~$x$ in the Weyl algebra.
-  To formally prove this we abbreviate~$\Univ(\hlie)/(\class{c} - 1)$ as~$B$.
-  
-  The unique {\linear{$\kf$}} map~$\hlie \to A$ given by
-  \[
-    p \mapsto y \,,
-    \quad
-    q \mapsto x \,,
-    \quad
-    c \mapsto 1
-  \]
-  is a homomorphism of Lie~algebras and therefore induces an algebra homomorphism~$\phi \colon \Univ(\hlie) \to A$.
-  The homomorphism~$\phi$ is given on the algebra generators~$\class{p}$,~$\class{q}$,~$\class{c}$ of~$\Univ(\hlie)$ by~$\phi(\class{p}) = y$,~$\phi(\class{q}) = x$ and~$\phi(\class{c}) \mapsto 1$.
-  It holds that~$\phi(\class{c} - 1) = \phi(\class{c}) - \phi(1) = 1 - 1 = 0$ so~$\phi$ descends to a well-defined algebra homomorphism
-  \[
-    \Phi
-    \colon
-    B
-    \to
-    A
-  \]
-  that is given on the remaining algebra generators~$\class{p}$ and~$\class{q}$ of~$B$ by~$\Phi(\class{p}) = y$ and~$\Phi(\class{q}) = x$.
-  
-  In the other direction we can start off with the unique algebra homomorphism~$\psi \colon \kf\gen{X,Y} \to B$ given on the free variables~$X$ and~$Y$ by
-  \[
-    X \mapsto \class{q} \,,
-    \quad
-    Y \mapsto \class{p} \,.
-  \]
-  Then
-  \[
-    \psi(YX)
-    =
-    \class{p} \, \class{q}
-    =
-    \class{q} \, \class{p} + \class{[p,q]}
-    =
-    \class{q} \, \class{p} + \class{c}
-    =
-    \class{q} \, \class{p} + 1
-    =
-    \psi(XY + 1)
-  \]
-  and therefore~$\psi(YX - XY - 1) = 0$.
-  It follows that~$\psi$ factors uniquely through an algebra homomorphism
-  \[
-    \Psi
-    \colon
-    A
-    \to
-    B
-  \]
-  that is given on the algebra generators~$x$ and~$y$ of~$A$ by~$\Psi(x) = \class{q}$ and~$\Psi(y) = \class{p}$.
-  
-  The two homomorphisms~$\Phi$ are~$\Psi$ are mutually inverse on the algebra generators~$y$ and~$x$ of~$A$ and~$\class{p}$ and~$\class{q}$ of~$B$.
-  This means that~$\Phi$ and~$\Psi$ are mutually inverse algebra isomorphisms.
-\end{remark}
-
-
-% Bad example: Already graded
-%
-% \begin{example}[Quantum plane]
-%   Let~$q \in \kf$ wit~$q \neq 0$.
-%   The \emph{quantum plane} is the~{\algebra{$\kf$}}~$A \defined \kf\gen{X,Y}/(YX - qXY)$.%
-%   \footnote{The usual polynomial ring~$\kf[x,y] \cong \kf\gen{X,Y}/(YX - XY)$ is the algebraic object corresponding to the plane~$\Aff^2 = k^2$ in the sense that~$\kf[x,y]$ is the algebra of (regular) functions on~$\Aff^2$.
-%   The given algebra~$A$ should therefore correspond to some (non-existing) plane, the functions on which don’t commute.}
-%   Let~$x, y \in A$ be the residue classes of~$X$ and~$Y$.
-%   The~{\algebra{$\kf$}}~$A$ inherits from the standard grading of the free algebra~$\kf\gen{X,Y}$ a filtration given by
-%   \[
-%     A_{(i)}
-%     =
-%     \gen{
-%       z_1 \dotsm z_j
-%     \suchthat
-%       0 \leq j \leq i,
-%       z_1, \dotsc, z_j \in \{x, y\}
-%     }_{\kf} \,.
-%   \]
-%   It can be shown as for the Weyl~algebra (actually easer than for the Weyl~algebra) for all~$i \geq 0$ the vector space~$A_{(i)}$ is spanned by the monomials~$x^n y^m$ with~$n + m \leq i$.
-%   The quotient vector space~$\gr[i](A)$ is therefore spanned for every~$i \geq 0$ by the residue classes~$[x^n y^m]_i$ with~$n + m = i$.
-%   The algebra~$\gr(A)$ is hence spanned by the collection of all such residue classes~$[x^n y^m]$ with~$n, m \geq 0$.
-% \end{example}
-
-
-\begin{warning}
-  For a filtered~{\algebra{$\kf$}} there does not exist a \enquote{canonical} algebra homomorphism~$A \to \gr(A)$.
-  There does not even have to exist any algebra homomorphism~$A \to \gr(A)$ as \cref{weyl algebra} shows:
-  If~$A \defined \kf\gen{X,Y}/(YX - XY - 1)$ denotes the Weyl algebra with the filtration from \cref{weyl algebra} then we have seen that~$\gr(A) = \kf[t,u]$ is the commutative polynomial ring in two variables.
-  Algebra homomorphisms~$A \to \gr(A)$ correspond bijectively to elements~$x, y \in \kf[t,u]$ which satisfy the commutator relation~$yx - xy -1 = 0$, i.e.~$yx = xy + 1$.
-  But no such element exist in~$\kf[t,u]$.
-  Hence there exist no algebra homorphism~$A \to \gr(A)$.
-\end{warning}
-
+\subsubsection{Functoriality}
 
 \begin{construction}
-  If~$f \colon A \to B$ is a homomorphism of filtered~{\algebras{$\kf$}} then for every~$i \geq 0$ the restriction~$f_{(i)}$ induces a linear map
+  Let~$A$ and~$B$ be two filtered~\algebra{$\kf$}.
+  
+  Let~$\Phi$ be a homomorphism of filtered algebras from~$A$ to~$B$.
+  Then for every natural number~$p$ the restriction~$\Phi_{(p)}$ induces a linear map
   \[
-    \gr[i](f)
+    \gr[p](\Phi)
     \colon
-    \gr[i](A)
+    \gr[p](A)
     \to
-    \gr[i](B) \,,
+    \gr[p](B) \,,
     \quad
-    [x]_i
+    \fclass{x}_p
     \mapsto
-    [f(x)]_i  \,.
+    [\Phi(x)]_p  \,.
   \]
   These linear maps come together to form a linear map
   \[
-    \gr(f)
+    \gr(\Phi)
     \colon
     \gr(A)
     \to
     \gr(B)  \,.
   \]
-  This map is already an algebra homomorphism because~$\gr(f)([1]_0) = [f(1)]_0 = [1]_0$ and
+  This map is already homomorphism of algebras because
   \begin{align*}
-    \gr(f)( [x]_i [y]_j )
-    =
-    \gr(f)( [xy]_{i+j} )
-    =
-    [f(xy)]_{i+j}
-    =
-    [f(x) f(y)]_{i+j}
+    \gr(\Phi)( \fclass{x}_p \cdot \fclass{y}_q )
     &=
-    [f(x)]_i [f(y)]_j
+    \gr(\Phi)( \fclass{xy}_{p+q} )
     \\
     &=
-    \gr(f)([x]_i) \gr(f)([y]_j) \,.
+    [ \Phi(xy) ]_{p+q}
+    \\
+    &=
+    [ \Phi(x) \cdot \Phi(y) ]_{p+q}
+    \\
+    &=
+    [ \Phi(x) ]_p \cdot [ \Phi(y) ]_q
+    \\
+    &=
+    \gr(\Phi)(\fclass{x}_p) \cdot \gr(\Phi)(\fclass{y}_q) \,.
   \end{align*}
-  for all~$i, j \geq 0$ and all~$[x]_i \in \gr[i](A)$ and~$[y]_j \in \gr[j](A)$.  
-  It holds for every filtered~{\algebra{$\kf$}}~$A$ that~$\gr(\id_A) = \id_{\gr(A)}$ and for all homomorphisms of filtered~{\algebras{$\kf$}}~$f \colon A \to B$ and~$g \colon B \to C$ that~$\gr(g \circ f) = \gr(g) \circ \gr(f)$.
+  for all~$p, q \geq 0$,~$\fclass{x}_p \in \gr[p](A)$,~$\fclass{y}_q \in \gr[q](A)$, and
+  \[
+    \gr(\Phi)([1]_0)
+    =
+    [ \Phi(1) ]_0
+    =
+    [1]_0 \,.
+  \]
+  The map~$\gr(\Phi)$ is thus a homomorphism of graded algebras.
+
+  It holds for every filtered~\algebra{$\kf$}~$A$ that~$\gr(\id_A) = \id_{\gr(A)}$.
+  It also holds for every homomorphism of filtered algebras~$\Phi$ from~$A$ to~$B$ and every homomorphism of filtered algebras~$\Psi$ from~$B$ to~$C$ that~$\gr(\Psi \circ \Phi) = \gr(\Psi) \circ \gr(\Phi)$.
   
-  We have hence constructed a functor~$\gr \colon \cfAlg{\kf} \to \cgAlg{\kf}$.
+  We have hence constructed a functor~$\gr$ from~$\cfAlg{\kf}$ to~$\cgAlg{\kf}$.
 \end{construction}
 
 
-\begin{lemma}
+\begin{proposition}
   Let~$A$ be a graded~{\algebra{$\kf$}}.
-  Then the linear map
-  \[
-    \varphi 
-    \colon
-    A
-    \to
-    \gr(A)
-  \]
-  given by~$\varphi(x) = [x]_i$ for all~$i \geq 0$ and~$x \in A_i$ is an isomorphism of graded~{\algebras{$\kf$}}.
-\end{lemma}
+  Then the linear map~$\Phi$ from~$A$ to~$\gr(A)$ given by~$\Phi(x) = \fclass{x}_p$ for all~$p \geq 0$,~$x \in A_p$ is an isomorphism of graded~algebras.
+\end{proposition}
 
 
 \begin{proof}
-  We have for all~$i \geq 0$ that~$A_{(i)} = \bigoplus_{j=0}^i A_j$ and hence
+  We have for every natural number~$p$ that~$A_{(p)} = \bigoplus_{q=0}^p A_q$ and hence
   \[
-    \gr[i](A)
+    \gr[p](A)
     =
-    A_{(i)} / A_{(i-1)}
+    A_{(p)} / A_{(p-1)}
     \cong
-    A_i
+    A_p
   \]
   as vector spaces.
-  It follows that~$\varphi$ is an isomorphism of vector spaces.
-  Moreover, we have for all homogeneous elements~$x \in A_i$ and~$y \in A_j$ with~$i, j \geq 0$ that
+  It follows that~$\Phi$ is an isomorphism of vector spaces.
+  We have for all natural numbers~$p$,~$q$ and homogeneous elements~$x$ in~$A_p$ and~$y$ in~$A_q$ that
   \[
-    \varphi(x) \varphi(y)
+    \Phi(x) \cdot \Phi(y)
     =
-    [x]_i [y]_j
+    \fclass{x}_p \cdot \fclass{y}_q
     =
-    [xy]_{i+j}
+    \fclass{xy}_{p+q}
     =
-    \varphi(xy)
+    \Phi(xy) \,,
   \]
-  where the last equality holds because~$xy \in A_{i+j}$.
-  This shows that~$\varphi$ is multiplicative and hence already an isomorphism of~{\algebras{$\kf$}}.
+  where the last equality holds because the element~$xy$ is homogeneous of degree~$p + q$.
+  This shows that~$\Phi$ is multiplicative and hence already an isomorphism of graded algebras.
 \end{proof}
 
 
-\begin{example}
-  Let~$A \defined \kf\gen{X, Y}/(YX - XY - 1)$ be the Weyl~algebra with the filtration from \cref{weyl algebra}.
-  Then~$\gr(A) \cong \kf[t,u]$ is commutative but~$A$ is not, hence~$\gr(A)$ and~$A$ are not isomorphic as algebras.
-  It follows that the filtration on~$A$ cannot come from a grading, as otherwise~$\gr(A) \cong A$ (already as graded~{\algebras{$\kf$}}).
-\end{example}
-
-
 \begin{warning}
-  If~$A$ is a filtered~{\algebra{$\kf$}} for which the filtration does not come from a grading then~$A$ and~$\gr(A)$ are not isomorphic as filtered algebras (where the filtration of~$\gr(A)$ is induced by the grading).
+  If~$A$ is a filtered~{\algebra{$\kf$}} for which the filtration does not come from a grading then~$A$ and~$\gr(A)$ are not isomorphic as filtered algebras (where the filtration of~$\gr(A)$ is induced by its grading).
 \end{warning}
 
+\subsubsection{Zero Divisors}
 
 \begin{definition}
   Let~$A$ be a ring.
   \begin{enumerate}
     \item
-      An element~$x \in A$ is a \defemph{left zero divisor}\index{zero divisor!left} if there exists some nonzero~$y \in A$ with~$xy = 0$.
+      An element~$x$ of~$A$ is a \defemph{left zero divisor}\index{zero divisor!left} if there exists a nonzero element~$y$ of~$A$ with~$xy = 0$.
     \item
-      An element~$x \in A$ is a \defemph{right zero divisor}\index{zero divisor!right} if there exists some nonzero~$y \in A$ with~$yx = 0$.
+      An element~$x$ of~$A$ is a \defemph{right zero divisor}\index{zero divisor!right} if there exists a nonzero element~$y$ of~$A$ with~$yx = 0$.
     \item
-      An element~$x \in A$ is a \defemph{zero divisor}\index{zero divisor} if it is a left zero divisor or a right zero divisor.
+      An element~$x$ of~$A$ is a \defemph{zero divisor}\index{zero divisor} if it is a left zero divisor or a right zero divisor.
   \end{enumerate}
 \end{definition}
 
@@ -963,11 +660,23 @@
   Let~$A$ be a ring.
   \begin{enumerate}
     \item
-      An element~$x \in A$ is a left zero divisor if and only if the left multiplication map~$A \to A$,~$y \mapsto xy$ is not injective.
-      It is a right zero divisor if and only if the right multiplication map~$A \to A$,~$y \mapsto yx$ is not injective.
+      An element~$x$ of~$A$ is a left zero divisor in~$A$ if and only if the left multiplication map
+      \[
+        A \to A \,,
+        \quad
+        y \mapsto xy
+      \]
+      is not injective.
+      The element~$x$ is a right zero divisor in~$A$ if and only if the right multiplication map
+      \[
+        A \to A \,,
+        \quad
+        y \mapsto yx
+      \]
+      is not injective.
     \item
-      The zero element~$0 \in A$ is both a left zero divisor and right zero divisor if~$A \neq 0$.
-      It is not a zero divisor for~$A = 0$.
+      The zero element of~$A$ is both a left zero divisor and right zero divisor if~$A$ is nonzero.
+      If~$A$ is the zero algebra then the zero element is not a zero divisor.
   \end{enumerate}
 \end{remark}
 
@@ -978,12 +687,12 @@
   \begin{enumerate}
     \item
       \label{associated graded has left zero divisors}
-      If~$\gr(A)$ doesn’t contain nonzero left zero divisors then neither does~$A$.
+      If~$\gr(A)$ doesn’t contain any nonzero left zero divisor then neither does~$A$.
     \item
       \label{associated graded has right zero divisors}
-      If~$\gr(A)$ doesn’t contain nonzero right zero divisors then neither does~$A$.
+      If~$\gr(A)$ doesn’t contain any nonzero right zero divisor then neither does~$A$.
     \item
-      If~$\gr(A)$ doesn’t contain nonzero zero divisors then neither does~$A$.
+      If~$\gr(A)$ doesn’t contain any nonzero zero divisor then neither does~$A$.
   \end{enumerate}
 \end{proposition}
 
@@ -992,11 +701,20 @@
   \leavevmode
   \begin{enumerate}
     \item
-      Suppose that~$A$ contains a nonzero left zero divisor~$x$.
-      Then there exists some nonzero~$y \in A$ with~$xy = 0$.
-      If~$x$ is of degree~$i$ and~$y$ is of degree~$j$ then~$[x]_i \neq 0$ and~$[y]_j \neq 0$ because both~$x$ and~$y$ are nonzero.
-      But~$[x]_i [y]_j = [xy]_{i+j} = [0]_{i+j} = 0$.
-      Hence~$[x]_i$ is again a nonzero left zero divisor.
+      Suppose that the algebra~$A$ contains a nonzero left zero divisor~$x$.
+      Then there exists some nonzero element~$y$ of~$A$ with~$xy = 0$.
+      If the element~$x$ is of degree~$p$ and the element~$y$ is of degree~$q$ then both~$\fclass{x}_p$ and~$\fclass{y}_q$ are nonzero.
+      But
+      \[
+        \fclass{x}_p \cdot \fclass{y}_q
+        =
+        \fclass{xy}_{p+q}
+        =
+        [0]_{p+q}
+        =
+        0 \,.
+      \]
+      This shows that the element~$\fclass{x}_p$ is again a nonzero left zero divisor.
     \item
       This can be shown in the same way as part~\ref*{associated graded has left zero divisors}.
     \item
@@ -1008,12 +726,13 @@
 
 \begin{remark}
   The converse of \cref{associated graded algebra and zero divisors} does not hold.
+  More explicitely, it may happen that the algebra~$\gr(A)$ has nonzero zero divisors even though~$A$ doesn’t have any.
   To see this let~$A$ be any~\algebra{$\kf$} with~$\kf \subsetneq A$ and consider the filtration
   \[
     A_{(0)}
     =
     \kf
-    \subseteq
+    \subsetneq
     A
     \subseteq
     A
@@ -1022,34 +741,44 @@
     \subseteq
     \dotsb
   \]
-  Then~$\gr[0](A) = \kf$,~$\gr[1](A) = A/{\kf} \neq 0$ and~$\gr[i](A) = 0$ for every~$i \geq 2$.
-  Hence~$\gr[1](A) \gr[1](A) = 0$ even though~$\gr[1](A) \neq 0$.
-  This means that the elements of~$\gr[1](A)$ are both left zero divisors and right zero divisors.
+  Then~$\gr[0](A) = \kf$, the homogeneous part~$\gr[1](A) = A / {\kf}$ is nonzero, but all homogeneous parts~$\gr[p](A)$ with~$p \geq 2$ vanish.
+  Thus~$\gr[1](A) \cdot \gr[1](A) = 0$ even though~$\gr[1](A)$ is nonzero.
+  This means that every elements of~$\gr[1](A)$ is both a left zero divisor and right zero divisor.
 \end{remark}
 
+\subsubsection{Ideals and Chain Conditions}
 
 \begin{proposition}
   \label{associated graded ideals}
   Let~$A$ be a filtered algebra. 
   \begin{enumerate}
     \item
-      Every left (resp.\ right) ideal~$I$ of~$A$ leads to a graded left (resp.\ right) ideal~$\gr(I)$ of~$A$ that is given by the homogeneous components~$\gr[i](I) = (A_{(i-1)} + I \cap A_{(i)}) / A_{(i-1)}$ for all~$i \geq 0$.%
-      \footnote{The term~$(A_{(i-1)} + I) \cap A_{(i)} = A_{(i-1)} + (I \cap A_{(i)})$ does not depend on the choice of parenthesization because the lattice of subspaces is modular.}
+      Let~$I$ be some kind of ideal of~$A$.
+      For every natural number~$p$ let
+      \[
+        \gr[p](I)
+        \defined
+        \bigl( A_{(p-1)} + I \cap A_{(p)} \bigr) / A_{(p-1)} \,,
+      \]
+      and let~$\gr[p](I) \defined \bigoplus_{p \geq 0} \gr[p](I)$.%
+      \footnote{The term~$(A_{(p-1)} + I) \cap A_{(p)} = A_{(p-1)} + (I \cap A_{(p)})$ does not depend on the choice of parenthesization because the lattice of subspaces is modular.}
+      This linear subspace~$\gr(I)$ of~$\gr(A)$ is a homogeneous ideal of~$A$, of the same kind as the original ideal~$I$.
     \item
       \label{pulling back generating set from graded ideal}
-      If~$S \subseteq I$ such that the associated elements~$[s]_{\deg(s)}$ with~$s \in S$ generate~$\gr(I)$ then~$S$ generates~$I$.
+      Let~$S$ be a subset of~$I$.
+      If the associated elements~$[s]_{\deg(s)}$ with~$s$ in~$S$ generate the homogeneous ideal~$\gr(I)$ then~$S$ generates the original ideal~$I$.
     \item
       The mapping
       \begin{align*}
         \{ \text{ideals in~$A$} \}
         &\to
-        \{ \text{graded ideals in~$\gr(A)$} \}  \,,
+        \{ \text{homogeneous ideals in~$\gr(A)$} \}  \,,
         \\
         I
         &\mapsto
         \gr(I)
       \end{align*}
-      is order preserving, i.e.\ if~$I \subseteq J$ then also~$\gr(I) \subseteq \gr(J)$, and if~$I$ is strictly contained in~$J$ then~$\gr(I)$ is also strictly contained in~$\gr(J)$.
+      is strictly order preserving, i.e.\ if~$I$ and~$J$ are ideals of~$A$ such that~$I$ is strictly contained in~$J$ then~$\gr(I)$ is also strictly contained in~$\gr(J)$.
   \end{enumerate}
 \end{proposition}
 
@@ -1058,46 +787,93 @@
   \leavevmode
   \begin{enumerate}
     \item
-      The graded components of~$\gr(A)$ can be described as~$\gr[j](A) = \{ [y]_j \suchthat y \in I \cap A_j \}$.
-      If~$I$ is a left ideal in~$A$ then it follows for every~$i \geq 0$ and~$[x]_i \in \gr[i](A)$ that
+      The graded components of~$\gr(A)$ can be described as
+      \begin{align*}
+        \gr[p](A)
+        &=
+        \bigl( A_{(p-1)} + I \cap A_{(p)} \bigr) / A_{(p-1)}
+        \\
+        &=
+        \{
+          y + A_{(p-1)}
+        \suchthat
+          y \in A_{(p-1)} + I \cap A_{(p)}
+        \}
+        \\
+        &=
+        \{
+          y + A_{(p-1)}
+        \suchthat
+          y \in I \cap A_{(p)}
+        \}
+        \\
+        &=
+        \{
+          \fclass{ y }_{p}
+        \suchthat
+          y \in I \cap A_{(p)}
+        \}
+      \end{align*}
+      for all~$p \geq 0$.
+
+      Suppose now that~$I$ is a left ideal of~$A$.
+      It holds for every element~$x$ of~$A_{(p)}$ and every element~$y$ of~$I \cap A_{(q)}$ that
       \[
         xy
         \in
-        A_i (I \cap A_j)
+        A_{(p)} (I \cap A_{(q)})
         \subseteq
-        A_i I + A_i A_j
+        A_{(p)} I \cap A_{(p)} A_{(q)}
         \subseteq
-        I + A_{i+j}
+        I \cap A_{(p+q)} \,,
       \]
-      and hence~$[x]_i [y]_j = [xy]_{i+j} \in \gr[i+j](I)$.
-      This then shows that~$\gr(A)$ is a left ideal in~$\gr(A)$.
-      The case that~$I$ is a right ideal can be treated in the same way.
+      whence the product~$\fclass{x}_p \cdot \fclass{y}_q = [xy]_{p+q}$ is contained in~$\gr[p+q](I)$.
+      Together with the above description of~$\gr[p](A)$ this shows that~$\gr(I)$ is a left ideal of~$\gr(A)$.
+
+      We can show in the same way that~$\gr(I)$ is a right ideal of~$\gr(A)$ if~$I$ is a right ideal of~$A$.
+      By combining these two cases it follows that~$\gr(I)$ is a two-sided ideal of~$\gr(A)$ if~$I$ is a two-sided ideal of~$A$.
     \item
-      Let~$x \in I$.
-      Then~$[x]_{\deg(x)} \in \gr(I)$ and therefore~$[x]_{\deg(x)} = \sum_{s \in S} b_s [s]_{\deg(s)}$ for some coefficients~$b_s \in \gr(A)$.
-      We can now replace each coefficient~$b_s$ by its homogeneous part of degree~$\deg(x) - \deg(s)$ to assume that~$b_s$ is homogeneous.
-      Then~$b_s = [a_s]_{\deg(x)-\deg(s)}$ for some~$a_s \in A_{(\deg(x)-\deg(s))}$ (with~$a_s = 0$ for~$\deg(s) > \deg(x)$) and therefore
+      Let~$x$ be an element of~$I$.
+      If~$x = 0$ then the assertion holds.
+
+      In general the element~$\fclass{x}_{\deg(x)}$ is contained in~$\gr(I)$ and is therefore of the form
+      \[
+        \fclass{x}_{\deg(x)}
+        =
+        \sum_{s \in S} b_s \cdot [s]_{\deg(s)}
+      \]
+      for some coefficients~$b_s$ in~$\gr(A)$.
+      We can now replace each coefficient~$b_s$ by its homogeneous component of degree~$\deg(x) - \deg(s)$ to assume that~$b_s$ is homogeneous.
+      This means that~$b_s$ is contained in~$\gr[\deg(x)-\deg(s)](A)$ and thus of the form~$b_s = [a_s]_{\deg(x)-\deg(s)}$ for some element~$a_s$ of~$A_{(\deg(x)-\deg(s))}$.
+      We have in particular~$a_s = 0$ whenever~$\deg(s) > \deg(x)$.
+      It now follows that
       \begin{align*}
-        [x]_{\deg(x)}
-        =
-        \sum_{s \in S} b_s [s]_{\deg(s)}
-        =
-        \sum_{s \in S} [a_s]_{\deg(x) - \deg(s)} [s]_{\deg(s)}
-        =
+        \fclass{x}_{\deg(x)}
+        &=
+        \sum_{s \in S} b_s \cdot [s]_{\deg(s)}
+        \\
+        &=
+        \sum_{s \in S} [a_s]_{\deg(x) - \deg(s)} \cdot [s]_{\deg(s)}
+        \\
+        &=
         \sum_{s \in S} [a_s s]_{\deg(x)}
-        =
+        \\
+        &=
         \left[ \sum_{s \in S} a_s s \right]_{\deg(x)} \,.
       \end{align*}
-      This means that~$x - \sum_{s \in S} a_s s \in A_{(\deg(x)-1)}$.
-      We can now procced by induction to express this difference as a linear combination of~$S$.
+      This means that the difference~$x - \sum_{s \in S} a_s s$ is contained in~$A_{(\deg(x)-1)}$.
+      We can now procced by induction to express this difference as a linear combination of~$S$ with coefficients in~$A$.
     \item
-      If~$I \subseteq J$ then~$\gr[i](I) \subseteq \gr[i](J)$ for every~$i \geq 0$ and hence~$\gr(I) \subseteq \gr(J)$.
-      It remains to show for~$I \subseteq J$ with~$\gr(I) = \gr(J)$ already~$I = J$.
+      Let~$I$ and~$J$ be two ideal of~$A$ such that~$I$ is contained in~$J$.
+      Then~$\gr[p](I)$ is contained in~$\gr[p](J)$ for all~$p \geq 0$, and hence~$\gr(I)$ is contained in~$\gr(J)$.
+      Suppose now that~$\gr(I)$ equals~$\gr(J)$.
+      We need to show that~$I$ already equals~$J$.
+
       The ideal~$\gr(I)$ is homogeneous and thus generated by homogeneous elements.
-      There hence exists some subset~$S \subseteq I$ such that~$\gr(I)$ is generated by~$[s]_{\deg(s)}$ for~$s \in S$.
-      (Here we use that the homogeneous elements of~$\gr(I)$ are precisely those of the form~$[x]_{\deg(x)}$ for~$x \in I$.)
-      It follows from~$\gr(I) = \gr(J)$ and part~\ref*{pulling back generating set from graded ideal} that~$S$ is a generating set of both~$I$ and~$J$.
-      Therefore~$I = J$.
+      There hence exists some subset~$S$ of~$I$ such that~$\gr(I)$ is generated by the elements~$[s]_{\deg(s)}$ with~$s$ in~$S$.
+      (Here we use that the homogeneous elements of~$\gr(I)$ are precisely those elements of the form~$\fclass{x}_{\deg(x)}$ with~$x$ in~$I$.)
+      It follows from the equality~$\gr(I) = \gr(J)$ and part~\ref*{pulling back generating set from graded ideal} that the set~$S$ is a generating set of both the ideals~$I$ and~$J$.
+      Thus~$I = J$.
     \qedhere
   \end{enumerate}
 \end{proof}
@@ -1105,7 +881,8 @@
 
 \begin{corollary}
   \label{universal enveloping reflects chain conditions}
-  If~$A$ is a filtered algebra whose associated graded algebra~$\gr(A)$ is left noetherian, right noetherian, left artinian or right artinian then the same holds for~$A$.
+  Let~$A$ be a fieltered~\algebra{$\kf$}.
+  If the associated graded algebra~$\gr(A)$ is left noetherian, right noetherian, left artinian or right artinian then the same property holds for~$A$.
 \end{corollary}
 
 
@@ -1122,32 +899,96 @@
     \item
       The idea of \cref{associated graded ideals} is taken from \cite[6.7,~6.9]{noncommutative_noetherian}.
     \item
-      If~$A$ is a filtered {\algebra{$\kf$}} then one may think for~$a \in A$ about~$[a]_{\deg(a)} \in \gr(A)$ as the \enquote{leading term of~$a$}.
-      Note that if~$A$ is already a graded {\algebra{$\kf$}} then under the identification~$\gr(A) = A$ the element~$[a]_{\deg(a)}$ is precisely the leading term of~$a$ in the usual sense.
+      Let~$A$ be a filtered~\algebra{$\kf$}.
+      If~$a$ is an element of~$A$ then one may think about the associated element~$[a]_{\deg(a)}$ of~$\gr(A)$ as the \enquote{leading term of~$a$}.
+      We note that if~$A$ is already a graded~{\algebra{$\kf$}} then under the identification of~$\gr(A)$ with~$A$ the element~$[a]_{\deg(a)}$ is precisely the leading term of~$a$ in the usual sense.
       
-      In view of this interpretation of~$[a]_{\deg(a)}$ one might compare the proof of part~\ref*{pulling back generating set from graded ideal} of \cref{associated graded ideals} to that of Hilbert’s basis theorem.
+      In view of this interpretation of~$[a]_{\deg(a)}$ one might compare the proof of part~\ref{pulling back generating set from graded ideal} of \cref{associated graded ideals} to the proof of Hilbert’s basis theorem.
       One may also compare the associated graded ideal~$\gr(I)$ to the \enquote{ideal of leading coefficients} as considered in the theory of Gröbner bases.
     \item
-      If~$I$ is an ideal in a filtered {\algebra{$\kf$}}~$A = \bigcup_{i \geq -1} A_{(i)}$ then~$I$ inherits from~$A$ a filtration given by~$I_{(i)} = I \cap A_{(i)}$.
+      Let~$A$ be a filtered~\algebra{$\kf$} and let~$I$ be an ideal of~$A$.
+      Then~$I$ inherits from~$A$ a filtration given by~$I_{(p)} = I \cap A_{(p)}$ for all~$p \geq 0$.
       Then
       \begin{align*}
-        \gr[i](I)
+        \gr[p](I)
         &=
-        (A_{(i-1)} + I \cap A_{(i)} ) / A_{(i-1)}
+        \bigl(A_{(p-1)} + I \cap A_{(p)} \bigr) / A_{(p-1)}
         \\
         &\cong
-        (I \cap A_{(i)}) / ( A_{(i-1)} \cap I \cap A_{(i)} )
+        \bigl( I \cap A_{(p)} \bigr) / \bigl( A_{(p-1)} \cap I \cap A_{(p)} \bigr)
         \\
         &=
-        (I \cap A_{(i)}) / (I \cap A_{(i-1)})
+        \bigl( I \cap A_{(p)} \bigr) / \bigl( I \cap A_{(p-1)} \bigr)
         \\
         &=
-        I_{(i)} / I_{(i-1)}
+        I_{(p)} / I_{(p-1)}
       \end{align*}
       by the second isomorphism theorem.
-      This justifies the notation~$\gr[i](I)$.
+      This justifies the notation~$\gr[p](I)$.
   \end{enumerate}
 \end{remark}
+
+\subsubsection{Bases}
+
+\begin{proposition}
+  \label{checking basis via associated graded}
+  Let~$A$ be filtered algebra and let~$s_i$ with~$i$ in~$I$ be elements of~$A$.
+  Suppose that~$s_i$ is contained in~$A_{(d_i)}$ with~$d_i \geq 0$ for all~$i \in I$.
+  If the elements~$\fclass{ s_i }_{d_i}$ form a vector space basis of~$\gr(A)$ then the elements~$s_i$ form a basis of~$A$.
+\end{proposition}
+
+
+\begin{proof}
+  We first show that the elements~$s_i$ span the algebra~$A$ as a vector space.
+  Let~$x$ be an element of~$A$.
+  This element is contained in~$A_{(d)}$ for some~$d \geq -1$.
+  We show that~$x$ is a linear combination of the elements~$s_i$ by induction over~$d$.
+  The assertion holds for~$d = -1$ because then~$x = 0$.
+
+  For the induction step we write the residue class~$\fclass{ x }_d$ as a linear combination
+  \[
+    \fclass{ x }_d
+    =
+    \sum_{i \in I}
+    \lambda_i \fclass{ s_i }_{d_i} \,.
+  \]
+  It folllows by comparing degrees that
+  \[
+    \fclass{ x }_d
+    =
+    \sum_{i \in I, d_i = d}
+    \lambda_i \fclass{ s_i }_d
+    =
+    \fclass*{
+      \sum_{i \in I, d_i = d}
+      \lambda_i s_i
+    }_d \,.
+  \]
+  This shows that the difference~$x - \sum_{i \in I, d_i = d} \lambda_i s_i$ is contained in~$A_{(d-1)}$.
+  It follows from the induction hypothesis that this difference can be written as the linear combination of the elements~$s_i$.
+  It follows that the element~$x$ can be written as such a linear combination.
+
+  We now show that the elements~$s_i$ are linearly independent.
+  We suppose that there exists a linear combination
+  \[
+    0
+    =
+    \lambda_1 s_{i_1} + \dotsb + \lambda_n s_{i_n}
+  \]
+  whose coefficients~$\lambda_1, \dotsc, \lambda_n$ are nonzero, with~$n \geq 1$.
+  We may assume that~$d_{i_1} \leq \dotsb \leq d_{i_n}$.
+  Let~$d \defined d_{i_n}$ be the largest occuring degree and let~$j$ be the minimal index with~$d_{i_j} = d$.
+  Then~$\fclass{ s_{i_k} }_d = 0$ for all~$k = 0, \dotsc, j-1$ and~$d_{i_j}, \dotsc, d_{i_n} = d$.
+  It follows that the elements~$\fclass{ s_{i_j} }_d, \dotsc, \fclass{ s_{i_n} }_d$ are linearly independent by assumption, and that
+  \[
+    0
+    =
+    \lambda_j \fclass{ s_{i_j} }_d + \dotsb + \lambda_n \fclass{ s_{i_n} }_d \,.
+  \]
+  Thus~$\lambda_j = \dotsc = \lambda_n$.
+  But this contradicts the assumption that these coefficients are nonzero.
+\end{proof}
+
 
 
 

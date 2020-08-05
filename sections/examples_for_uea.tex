@@ -1,10 +1,16 @@
-\subsection{Examples}
+\section{Examples}
 
 
 % TODO: UEA of semidirect product.
 
 
-\subsubsection{Abelian Lie~Algebras}
+\begin{convention}
+  Let~$\glie$ be a Lie~algebra.
+  For every element~$x$ of~$\glie$ the image of~$x$ of~$\Univ(\glie)$ is denoted by~$\class{x}$.
+\end{convention}
+
+
+\subsection{Abelian Lie~Algebras}
 
 
 \begin{examples}
@@ -17,23 +23,24 @@
     \cong
     \Symm(\glie)
   \]
-  with the canonical Lie~algebra homomorphism~$\glie \to \Univ(\glie)$ corresponding to the inclusion~$\glie \to \Symm(\glie)$.
-  This can also be seen more abstractly:
+  with the canonical homomorphism of Lie~algebras from~$\glie$ to~$\Univ(\glie)$ corresponding to the inclusion map from~$\glie$ to~$\Symm(\glie)$.
+
+  This can also be seen more abstractly, as follows.
   
-  We observe that if~$V$ is a vector space and~$A$ is an algebra then a linear map~$f \colon V \to A$ extends to an algebra homomorphism~$\Symm(V) \to A$ (necessarily uniquely) if and only if the image of~$f$ is contained in a commutative subalgebra of~$A$, if and only if the image of~$f$ is commutative.
-  It hence follows that for any~{\algebra{$\kf$}} we have bijections
+  We observe that if~$V$ is any~\vectorspace{$\kf$} and~$A$ is any~\algebra{$\kf$} then a linear map~$f$ from~$V$ to~$A$ extends to a homomorphism of algebras from~$\Symm(V)$ to~$A$ (necessarily uniquely) if and only if the image of~$f$ is contained in a commutative subalgebra of~$A$, if and only if the image of~$f$ is commutative in~$A$.
+  It follows from this observation that we have for any~{\algebra{$\kf$}} bijections
   \begin{align*}
     {}&
-    \{ \text{Lie~algebra homomorphisms~$\glie \to A$} \}
+    \{ \textstyle \text{Lie~algebra homomorphisms~$\glie \to A$} \}
     \\
     \cong{}&
-    \{ \text{{\linear{$\kf$}} maps~$\glie \to A$ with commutative image} \}
+    \{ \textstyle \text{{\linear{$\kf$}} maps~$\glie \to A$ with commutative image} \}
     \\
     \cong{}&
-    \{ \text{algebra homomorphisms~$\Symm(\glie) \to A$} \}
+    \{ \textstyle \text{algebra homomorphisms~$\Symm(\glie) \to A$} \} \,.
   \end{align*}
-  that are natural in~$A$.
-  This shows that the symmetric algebra~$\Symm(\glie)$ together with the inclusion~$\glie \to \Symm(\glie)$ satisfies the universal property of the universal enveloping algebra of~$\glie$.
+  These bijections are natural in~$A$.
+  This shows that the symmetric algebra~$\Symm(\glie)$ together with the inclusion from~$\glie$ to~$\Symm(\glie)$ satisfies the universal property of the universal enveloping algebra of~$\glie$.
 \end{examples}
 
 
@@ -42,16 +49,116 @@
 \end{example}
 
 
+\begin{definition}
+  \leavevmode
+  \begin{enumerate}
+    \item
+      Let~$A$ be an algebra.
+      An \defemph{augumentation} of~$A$ is a homomorphism of algebras~$\varepsilon$ from~$A$ to~$\kf$.
+    \item
+      An \defemph{augumented algebra} is a~\algebra{$\kf$}~$A$ together with an augumentation of~$A$.
+    \item
+      Let~$(A, \varepsilon)$ be an augumented algebra.
+      The kerrnel of~$\varepsilon$ is the \defemph{augumentation ideal} of~$A$.
+  \end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+  Augumented algebras are always nonzero.
+\end{remark}
+
+
+\begin{proposition}
+  \label{decomposition for augumented algebra}
+  Let~$(A, \varepsilon) $ be an augumented algebra.
+  Then~$A = \kf \oplus \ker(\varepsilon)$ as vector spaces.
+\end{proposition}
+
+
+\begin{proof}
+  Let~$\eta$ be the inclusion from~$\kf$ to~$A$.
+  The composito~$\varepsilon \circ \eta$ is the identity on~$\kf$ whence the composite~$\eta \circ \varepsilon$ is idempotent.
+  It follows that
+  \[
+    A
+    =
+    \im(\eta \circ \varepsilon)
+    \oplus \ker(\eta \circ \varepsilon) \,.
+  \]
+  It follows from the surjectivity of~$\varepsilon$ that~$\im(\eta \circ \varepsilon) = \im(\eta) = \kf$ and from the injectivity of~$\eta$ that~$\ker(\eta \circ \varepsilon) = \ker(\varepsilon)$.
+\end{proof}
+
+
+\begin{construction}
+  \label{construction of counit}
+  Let~$\glie$ be a Lie~algebra.
+  We have a unique homomorphism of Lie~algebras from~$\glie$ to~$0$.
+  This homomorphism of Lie~algebras induces a homomorphism of algebras
+  \[
+    \varepsilon
+    \colon
+    \Univ(\glie)
+    \to
+    \kf \,.
+  \]
+  This homomorphism of algebras is uniquely determined by the condition~$\varepsilon( \class{x} ) = 0$ for all~$x \in \glie$ because~$\Univ(\glie)$ is generated as an algebra by the image of~$\glie$ of~$\Univ(\glie)$.
+\end{construction}
+
+
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra.
+  The homomorphism of algebras~$\varepsilon$ from~$\Univ(\glie)$ to~$\kf$ from \cref{construction of counit} is the \defemph{counit} of~$\glie$.
+  Its makes~$\Univ(\glie)$ into an augumented algebra.
+\end{definition}
+
+
+\begin{remark}
+  Let~$\glie$ be a Lie~algebra.
+  We can regard~$\kf$ as the trivial representation of~$\glie$, and thus as a~\module{$\Univ(\glie)$}.
+  This~\module{$\Univ(\glie)$} structure can also be explained with help of the counit~$\varepsilon$, by regarding~$\varepsilon$ as a homomorphism of algebras from~$\Univ(\glie)$ to~$\End_{\kf}(\kf) = \kf$.
+\end{remark}
+
+
+\begin{proposition}
+  \label{augumentation ideal is spanned by monomials}
+  The augumentation ideal of~$\Univ(\glie)$ is spanned as a vector space by all the monomials~$\class{x_1} \dotsm \class{x_n}$ with~$n \geq 1$,~$x_1, \dotsc, x_n \in \glie$.
+\end{proposition}
+
+
+\begin{proof}
+  Let~$\varepsilon$ be the counit of~$\Univ(\glie)$, let~$U$ be the linear subspace of~$\Univ(\glie)$ spanned by all monomials~$\class{x_1} \dotsm \class{x_n}$ with~$n \geq 0$,~$x_1, \dotsc, x_n \in \glie$.
+  We have
+  \[
+    \varepsilon( \class{x_1} \dotsm \class{x_n} )
+    =
+    \varepsilon( \class{x_1} ) \dotsm \varepsilon( \class{x_n} )
+    =
+    0 \dotsm 0
+    =
+    0
+  \]
+  for each such monomial, whence the linear space~$U$ is contained in~$\ker(\varepsilon)$.
+  We know on the other hand that~$\Univ(\glie)$ is generated by~$\class{\glie}$ as an algebra.
+  This means that the monomials
+  \[
+    \class{x_1}  \dotsm \class{x_n}
+    \qquad
+    \text{with~$n \geq 0$,~$x_1, \dotsc, x_n \in \glie$}
+  \]
+  span the algebra~$\Univ(\glie)$ as a vector space.
+  We thus have~$\Univ(\glie) = \kf + U$.
+  Together with the decomposition~$\Univ(\glie) = \kf \oplus \ker(\varepsilon)$ and the inclusion~$U \subseteq \ker(\varepsilon)$ we find that~$U = \ker(\varepsilon)$.
+\end{proof}
 
 
 
-\subsubsection{The Opposite Lie~Algebra}
-
+\subsection{Opposite Lie~Algebra}
 
 \begin{example}
   \label{uea of opposite by first principles}
   Let~$\glie$ be a Lie~algebra.
-  Then for every other~{\algebra{$\kf$}}~$A$ we have bijections
+  We have for every~{\algebra{$\kf$}}~$A$ bijections
   \begin{align*}
     {}&
     \{ \text{algebra homomorphisms~$\Univ(\glie^\op) \to A$   } \}
@@ -70,119 +177,261 @@
   \end{align*}
   that are natural in~$A$.
   (We used implicitely that taking the underlying Lie~algebra of a~{\algebra{$\kf$}} commutes with taking opposites.)
-  It follows from Yoneda’s~lemma that~$\Univ(\glie^\op) \cong \Univ(\glie)^\op$, and that one such isomorphism is induced from the mapping~$\class{x} \mapsto \class{x}$ on the generators~$\class{x}$ with~$x \in \glie^{\op}$.
-  
-  More explicitely the map~$\glie \to \glie^{\op}$,~$x \mapsto x$ is an anti-isomorphism of Lie~algebras and hence the composition
+  It follows from Yoneda’s~lemma that~$\Univ(\glie^\op) \cong \Univ(\glie)^\op$.
+  The canonical homomorphism of Lie~algebras from~$\glie^{\op}$ to~$\Univ(\glie^{\op})$ corresponds to the homomorphism from~$\glie^{\op}$ to~$\Univ(\glie)^{\op}$ given by~$\class{x^{\op}} \mapsto \class{x}^{\op}$ for all~$x \in \glie$.
+
+  We can also derive the above isomorphism in a more explicit way, as we will now explain.
+
+  The map from~$\glie$ to~$\glie^{\op}$ given by$x \mapsto x^{\op}$ for all~$x \in \glie$ is an anti-isomorphism of Lie~algebras.
+  Similarly, the map from~$\Univ(\glie^{\op})$ to~$\Univ(\glie^{\op})^{\op}$ given by~$y \mapsto y^{\op}$ for all~$y \in \Univ(\glie^{\op})$ is an anti-isomorphism of algebras, and thus an anti-isomorphism of Lie~algebras. 
+  The composite
   \[
     \glie
-    \xto{x \mapsto x}
+    \xto{x \mapsto x^{\op}}
     \glie^{\op}
     \to
     \Univ(\glie^{\op})
-    \xto{x \mapsto x}
+    \xto{y \mapsto y^{\op}}
     \Univ(\glie^{\op})^{\op}
   \]
-  is again a homomorphism of Lie~algebras (as both~$\glie \to \glie^{\op}$ and~$\Univ(\glie^{\op}) \to \Univ(\glie^{\op})^{\op}$ are anti-homomorphisms).
-  This composition hence induces an algebra homomorphism~$\Univ(\glie) \to \Univ(\glie^{\op})^{\op}$, which is the same as an algebra homomorphism~$\varphi \colon \Univ(\glie^{\op}) \to \Univ(\glie)^{\op}$.
+  is therefore a homomorphism of Lie~algebras.
+  This composite hence induces a homomorphism of algebras~$\Phi$ from~$\Univ(\glie)$ to~$\Univ(\glie^{\op})^{\op}$.
   This is the unique algebra homomorphism that makes the square diagram
   \[
     \begin{tikzcd}
       \glie
-      \arrow{r}[above]{x \mapsto x}
+      \arrow{r}[above]{x \mapsto x^{\op}}
       \arrow{d}
       &
       \glie^{\op}
       \arrow{d}
       \\
-      \Univ(\glie)^{\op}
+      \Univ(\glie)
       \arrow[dashed]{r}[below]{\varphi}
       &
-      \Univ(\glie^{\op})
+      \Univ(\glie^{\op})^{\op}
     \end{tikzcd}
   \]
   commute.
-  One the other hand the composition
+  We can regard~$\Phi$ is an algebra homomorphism from~$\Univ(\glie)^{\op}$ to~$\Univ(\glie^{\op})$.
+  This homomorphism~$\Phi$ is uniquely determined by the identity
   \[
-    \glie^{\op}
-    \xto{x \mapsto x}
-    \glie
+    \Phi\Bigl( \class{x}^{\,\op} \Bigr)
+    =
+    \class{ x^{\op} } 
+  \]
+  for all~$x \in \glie$.
+
+  By switching the roles of~$\glie$ and~$\glie^{\op}$ we also have a homomorphism of algebras
+  \[
+    \Psi''
+    \colon
+    \Univ(\glie^{\op})^{\op}
     \to
-    \Univ(\glie)
-    \xto{x \mapsto x}
-    \Univ(\glie)^{\op}
+    \Univ( (\glie^{\op})^{\op} )
   \]
-  is a homomorphism of Lie~algebras and so induces an algebra homomorphism~$\psi \colon \Univ(\glie^{\op}) \to \Univ(\glie)^{\op}$.
-  This is the unique algebra homomorphism that makes the square diagram
+  which is given by
   \[
-    \begin{tikzcd}
-      \glie^{\op}
-      \arrow{r}[above]{x \mapsto x}
-      \arrow{d}
-      &
-      \glie
-      \arrow{d}
-      \\
-      \Univ(\glie^{\op})
-      \arrow[dashed]{r}[below]{\psi}
-      &
-      \Univ(\glie)^{\op}
-    \end{tikzcd}
+    \Psi''\Bigl( \class{y}^{\,\op} \Bigr)
+    =
+    \class{ y^{\op} }
   \]
-  commute.
-  It follows from the commutativity of the square diagram
+  for all~$y \in \glie^{\op}$
+  We have~$(\glie^{\op})^{\op}$ whence~$\Psi$ is a homomorphism of algebras~$\Phi'$ from~$\Univ(\glie^{\op})^{\op}$ to~$\Univ(\glie)$, that is given by
   \[
-    \begin{tikzcd}
-      \glie^{\op}
-      \arrow{r}[above]{x \mapsto x}
-      \arrow{d}
-      &
-      \glie^{\op}
-      \arrow{d}
-      \\
-      \Univ(\glie^{\op})
-      \arrow[dashed]{r}[below]{\varphi \psi}
-      &
-      \Univ(\glie^{\op})
-    \end{tikzcd}
+    \Psi'\biggl( \class{ x^{\op} }^{\,\op} \biggr)
+    =
+    \class{ (x^{\op})^{\op} }
+    =
+    \class{ x }
   \]
-  and the universal property of the universal enveloping algebra~$\Univ(\glie^{\op})$ that~$\varphi \psi = \id_{\Univ(\glie^{\op})}$.
-  It follows from the commutativtiy of the square diagram
+  for all~$x \in \glie$.
+  We can now regard~$\Psi'$ as a homomorphism of algebras~$\Phi$ from~$\Univ(\glie^{\op})$ to~$\Univ(\glie)^{\op}$, that is given by
   \[
-    \begin{tikzcd}
-      \glie
-      \arrow{r}[above]{x \mapsto x}
-      \arrow{d}
-      &
-      \glie
-      \arrow{d}
-      \\
-      \Univ(\glie)^{\op}
-      \arrow[dashed]{r}[below]{\psi \varphi}
-      &
-      \Univ(\glie)^{\op}
-    \end{tikzcd}
+    \Psi\Bigl( \class{ x }^{\,\op} \Bigr)
+    =
+    \class{ x }^{\op}
   \]
-  that~$\psi \varphi$ because the~{\algebra{$\kf$}}~$\Univ(\glie)$, and hence also~$\Univ(\glie)^{\op}$, is generated by the image of~$\glie$ as an algebra.
-  This shows that~$\varphi$ and~$\psi$ are mutually inverse isomorphism.
-  
-  This shows that we have an isomorphism of~{\algebras{$\kf$}}~$\Univ(\glie^\op) \cong \Univ(\glie)^\op$ that is induced by~$\class{x} \mapsto \class{x}$ on the generators~$\class{x}$ with~$x \in \glie^{\op}$.
+  for all~$x \in \glie$.
+
+  The composite~$\Phi \circ \Psi$ as a homomorphism of algebras from~$\Univ( \glie^{\op} )$ to~$\Univ( \glie^{\op} )$, given by
+  \[
+    (\Phi \circ \Psi)\Bigl( \class{ x^{\op} } \Bigr)
+    =
+    \Phi\Bigl( \Psi\Bigl( \class{ x^{\op} }  \Bigr) \Bigr)
+    =
+    \Phi\Bigl( \class{ x }^{\,\op} \Bigr)
+    =
+    \class{ x^{\op} }
+  \]
+  for all~$x \in \glie$, and thus
+  \[
+    (\Phi \circ \Psi)\bigl( \class{y} \bigr)
+    =
+    \class{ y }
+  \]
+  for all~$y \in \glie^{\op}$.
+  This shows that the composite~$\Phi \circ \Psi$ is the identity of~$\Univ( \glie^{\op} )$.
+
+  The composite~$\Psi \circ \Phi$ is a homomorphism of algebras from~$\Univ( \glie )^{\op}$ to~$\Univ( \glie )^{\op}$, given by
+  \[
+    (\Psi \circ \Phi)\Bigl( \class{x}^{\,\op} \Bigr)
+    =
+    \Psi\Bigl( \Phi\Bigl( \class{x}^{\,\op} \Bigr) \Bigr)
+    =
+    \Psi\Bigl( \class{ x^{\op} } \Bigr)
+    =
+    \class{x}^{\op} 
+  \]
+  for all~$x \in \glie$.
+  The algebra~$\Univ(\glie)$ is generated by the elements~$\class{x}$ with~$x$ in~$\glie$, whence the opposite algebra~$\Univ(\glie)^{\op}$ is generated by the elements~$\class{x}^{\,\op}$ with~$\glie$.
+  It therefore follows from the above calculation that the composite~$\Psi \circ \Phi$ is the identity of~$\Univ( \glie )^{\op}$.
+
+  We have altogether shows that the two homomorphisms of algebras~$\Phi$ and~$\Psi$ are mutually inverse isomorphisms.
 \end{example}
 
 
+\begin{construction}
+  \label{construction of antipode}
+  Let~$\glie$ be a Lie~algebra.
+  We have an isomorphism of Lie~algebras
+  \[
+    \glie
+    \to
+    \glie^{\op} \,,
+    \quad
+    x
+    \mapsto
+    - x^{\op} \,.
+  \]
+  This isomorphism of Lie~algebras induces an isomorphism of algebras
+  \[
+    S'
+    \colon
+    \Univ( \glie )
+    \to
+    \Univ( \glie^{\op} )
+  \]
+  which is uniquely determined by
+  \[
+    S'( \class{x} )
+    =
+    - \class{ x^{\op} }
+  \]
+  for all~$x \in \glie$.
+  Under the above isomorphism~$\Univ( \glie^{\op} ) \cong \Univ(\glie)^{\op}$ we can regard~$S'$ as an isomorphism of algebras
+  \[
+    S
+    \colon
+    \Univ( \glie )
+    \to
+    \Univ( \glie )^{\op}
+  \]
+  which is uniquely determined by
+  \[
+    S( \class{x} )
+    =
+    - \class{x}^{\,\op}
+  \]
+  for all~$x \in \glie$.
+\end{construction}
+
+
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra.
+  The isomorphism of algebras~$S$ from~$\Univ(\glie)$ to~$\Univ(\glie)^{\op}$ from \cref{construction of antipode} is the \defemph{antipode} of~$\Univ(\glie)$.
+\end{definition}
+
+
+\begin{remark}
+  Let~$\glie$ be a Lie~algebra.
+  For every representation~$M$ of~$\glie$ its dual~$M^*$ becomes again a representation of~$\glie$ via the action
+  \[
+    (x \act \varphi)(m)
+    =
+    - \varphi(m)
+  \]
+  for all~$x \in \glie$,~$\varphi \in M^*$,~$m \in M$.
+  In other words, for every~\module{$\Univ(\glie)$}~$M$ its dual~$M^*$ becomes again a~\module{$\Univ(\glie)$}.
+
+  This can also be explained via the antipode.
+  Let~$M$ be a~\module{$\Univ(\glie)$}.
+  The the dual~$M^*$ becomes a right~\module{$\Univ(\glie)$} via the multiplication
+  \[
+    (\varphi \cdot y)(m)
+    =
+    \varphi(ym)
+  \]
+  for all~$y \in \Univ(\glie)$,~$\varphi \in M^*$,~$m \in M$.
+  This right~\module{$\Univ(\glie)$} structure on~$M^*$ corresponds to a left~\module{$\Univ(\glie)^{\op}$} structure on~$M^*$ given by
+  \[
+    y^{\op} \cdot \varphi
+    =
+    \varphi \cdot y
+  \]
+  for all~$y \in \Univ(\glie)$,~$\varphi \in M^*$.
+  By using the isomorphism of algebras~$S$ from~$\Univ(\glie)$ to~$\Univ(\glie)^{\op}$ we can pull back this~\module{$\Univ(\glie)^{\op}$} structure to a~\module{$\Univ(\glie)$} structure given by
+  \[
+    y \cdot \varphi
+    =
+    S(y) \cdot \varphi
+  \]
+  for all~$y \in \Univ(\glie)$,~$\varphi \in M^*$.
+
+  For every element~$x$ of~$\glie$ we have
+  \[
+    (\class{x} \cdot \varphi)(m)
+    =
+    ( S(\class{x}) \cdot \varphi )(m)
+    =
+    ( - \class{x}^{\,\op} \cdot \varphi )(m)
+    =
+    ( \varphi \cdot (- \class{x}) )(m)
+    =
+    \varphi( - \class{x} \cdot m )
+    =
+    - \varphi( \class{x} \cdot m )
+  \]
+  for all~$\varphi \in M^*$,~$m \in M$.
+  Both constructed~\module{$\Univ(\glie)$} structures on~$M^*$ hence coincide.
+\end{remark}
 
 
 
-\subsubsection{Products of Lie~Algebras}
-
+\subsection{Direct Sum of Lie~algebras}
 
 \begin{recall}
   \label{homomorphism out of a tensor product}
   Let~$A$ and~$B$ be two~{\algebras{$\kf$}}.
-  Then the inclusions~$i \colon A \to A \tensor B$ and~$j \colon B \to A \tensor B$ are injective algebra homomorphisms.
-  We may therefore identify~$A$ and~$B$ with the subalgebras~$A \tensor 1$ and~$1 \tensor B$ of~$A \tensor B$.
-  Note that~$A$ and~$B$ commute in~$A \tensor B$ because
+  Then the inclusion maps
+  \begin{alignat*}{2}
+    \Iota_A
+    &\colon
+    A
+    \to
+    A \tensor B \,,
+    &
+    \quad
+    a
+    &\mapsto
+    a \tensor 1 \,,
+    \\
+    \Iota_B
+    &\colon
+    B
+    \to
+    A \tensor B \,,
+    &
+    \quad
+    b
+    &\mapsto
+    1 \tensor b
+  \end{alignat*}
+  are injective homomorphisms of algebras.
+  We may therefore identify the algebras~$A$ and~$B$ with the associated subalgebras~$A \tensor 1$ and~$1 \tensor B$ of~$A \tensor B$.
+  We note that~$A$ and~$B$ commute in~$A \tensor B$ because
   \[
-    i(a) j(b)
+    \Iota_A(a) \Iota_B(b)
     =
     (a \tensor 1) (b \tensor 1)
     =
@@ -190,270 +439,311 @@
     =
     (b \tensor 1) (a \tensor 1)
     =
-    j(b) i(a)
+    \Iota_B(b) \Iota_A(a)
   \]
-  for all~$a \in A$ and~$b \in B$.
+  for all~$a \in A$,~$b \in B$.
   
   Let~$C$ be another~{\algebra{$\kf$}}.
   
-  If~$f \colon A \tensor B \to C$ is an algebra homomorphism then the restrictions~$\phi = f \circ i$ and~$\psi = f \circ j$ are again algebra homomorphisms~$\phi \colon A \to C$ and~$\psi \colon B \to C$.
-  The images of~$\phi$ and~$\psi$ in~$C$ commute with each other because~$A$ and~$B$ commute in~$A \tensor B$.
+  If~$\Phi$ is a homomorphism of algebras from~$A \otimes B$ to~$C$ then the restrictions~$\Phi_A$ and~$\Phi_B$ given by~$\Phi_A = \Phi \circ \Iota_A$ and~$\Phi_B = \Phi \circ \Iota_B$ are again homomorphisms of algebras.
+  The images of~$\Phi_A$ and~$\Phi_B$ commute in~$C$ because~$A$ and~$B$ commute in~$A \tensor B$.
   More explicitely,
   \begin{align*}
-    \phi(a) \psi(b)
+    \Phi_A(a) \Phi_B(b)
     &=
-    f(a \tensor 1) f(1 \tensor b)
+    \Phi(a \tensor 1) \Phi(1 \tensor b)
     \\
     &=
-    f((a \tensor 1) (1 \tensor b))
+    \Phi( (a \tensor 1) (1 \tensor b) )
     \\
     &=
-    f(a \tensor b)
+    \Phi( a \tensor b )
     \\
     &=
-    f((1 \tensor b) (a \tensor 1))
+    \Phi( (1 \tensor b) (a \tensor 1) )
     \\
     &=
-    f(1 \tensor b) f(a \tensor 1)
+    \Phi(1 \tensor b) \Phi(a \tensor 1)
     \\
     &=
-    \psi(b) \phi(a)
+    \Phi_B(b) \Phi_A(a)
   \end{align*}
-  for all~$a \in A$ and~$b \in B$.
+  for all~$a \in A$,~$b \in B$.
   
-  If on the other hand~$\phi \colon A \to C$ and~$\psi \colon B \to C$ are two algebra homomorphisms whose images commute with each other then the map
+  Suppose on the other hand that~$\Psi_A$ is a homomorphism of algebras from~$A$ to~$C$ and that~$\Psi_B$ is a homomorphism of algebras from~$B$ to~$C$.
+  There exists a unique linear map~$\Psi$ from~$A \otimes B$ to~$C$ given by
   \[
-    f'
-    \colon
-    A \times B
-    \to
-    C \,,
-    \quad
-    (a,b)
+    \Psi(a \otimes b)
     \mapsto
-    \phi(a) \psi(b)
+    \Psi_A(a) \Psi_:(b)
   \]
-  is~{\bilinear{$\kf$}} and hence induces a~{\linear{$\kf$}} map
-  \[
-    f
-    \colon
-    A \tensor B
-    \to
-    C \,,
-    \quad
-    a \tensor b
-    \mapsto
-    \phi(a) \psi(b) \,.
-  \]
-  The map~$f$ is again an algebra homomorphism because
+  for all~$a \in A$,~$b \in B$.
+  Suppose that the images of~$\Psi_A$ and~$\Psi_B$ commute in~$C$.
+  The linear map~$\Psi$ is then again an homomorphism of algebras because
   \begin{align*}
-    f(a_1 \tensor b_1) f(a_2 \tensor b_2)
+    \Psi(a_1 \tensor b_1) \Psi(a_2 \tensor b_2)
     &=
-    \phi(a_1) \psi(b_1) \phi(a_2) \psi(b_2)
+    \Psi_A(a_1) \Psi_B(b_1) \Psi_A(a_2) \Psi_B(b_2)
     \\
     &=
-    \phi(a_1) \phi(a_2) \psi(b_1) \psi(b_2)
+    \Psi_A(a_1) \Psi_A(a_2) \Psi_B(b_1) \Psi_B(b_2)
     \\
     &=
-    \phi(a_1 a_2) \psi(b_1 b_2)
+    \Psi_A(a_1 a_2) \Psi_B(b_1 b_2)
     \\
     &=
-    f( (a_1 a_2) \tensor (b_1 b_2) )
+    \Psi( (a_1 a_2) \tensor (b_1 b_2) )
     \\
     &=
-    f( (a_1 \tensor b_1) (a_2 \tensor b_2) )
+    \Psi( (a_1 \tensor b_1) (a_2 \tensor b_2) )
   \end{align*}
-  for all simple tensors~$a \tensor b \in A \tensor B$.
+  for all~$a_1, a_2 \in A$,~$b_1, b_2 \in B$, as well as
+  \[
+    \Psi( 1_{A \otimes B} )
+    =
+    \Psi( 1_A \otimes 1_B )
+    =
+    \Psi_A( 1_A ) \Psi_B( 1_B )
+    =
+    1_C \cdot 1_C
+    =
+    1_C \,.
+  \]
   
-  These constructions are mutually inverse and hence result in a {\onetoonetext} correspondence
+  These above two constructions are mutually inverse and hence result in a {\onetoonetext} correspondence
   \begin{align*}
     \left\{
       \begin{tabular}{@{}c@{}}
         algebra homomorphisms \\
-        $f \colon A \tensor B \to C$
+        $\Phi \colon A \tensor B \to C$
       \end{tabular}
     \right\}
     &\onetoone
     \left\{
-      (\phi, \psi)
+      (\Phi_A, \Phi_B)
     \suchthat*
       \begin{tabular}{@{}c@{}}
-        algebra homomorphisms \\
-        $\phi \colon A \to C$ and~$\psi \colon B \to C$ \\
-        whose images commute with each other
+        algebra homomorphisms   \\
+        $\Phi_A \colon A \to C$ \\
+        $\Phi_B \colon B \to C$ \\
+        whose images commute
       \end{tabular}
     \right\}  \,,
     \\
-    f
+    \Phi
     &\mapsto
-    (f \circ i, f \circ j)  \,,
+    (\Phi \circ \Iota_A, \Phi \circ \Iota_B)  \,,
     \\
-    \biggl( a \tensor b \mapsto \phi(a)\psi(b) \biggr)
+    \biggl( a \tensor b \mapsto \Phi_A(a) \Phi_B(b) \biggr)
     &\mapsfrom
-    (\phi, \psi)  \,.
+    (\Phi_A, \Phi_B)  \,.
   \end{align*}
 \end{recall}
 
 
 \begin{example}
-  If~$\glie$ and~$\hlie$ be two Lie~algebras then
+  \label{explicit isomorphism for uea of direct sum}
+  Let~$\glie$ and~$\hlie$ be two Lie~algebras.
+  We show in the following that
   \[
-    \Univ(\glie \times \hlie)
+    \Univ(\glie \oplus \hlie)
     \cong
     \Univ(\glie) \tensor \Univ(\hlie) \,.
   \]
-  The isomorphism~$\Univ(\glie \times \hlie) \to \Univ(\glie) \tensor \Univ(\hlie)$ is given on the algebra generators~$\class{(x,y)}$ with~$(x,y) \in \glie \times \hlie$ by the mapping
+  The isomorphism from~$\Univ(\glie \oplus \hlie)$ to~$\Univ(\glie) \tensor \Univ(\hlie)$ is given on the algebra generators~$\class{(x,y)}$ with~$(x,y)$ in~$\glie \oplus \hlie$ by
   \[
     \class{(x,y)}
     \mapsto
     \class{x} \tensor 1 + 1 \tensor \class{y} \,.
   \]
-  The inverse~$\Univ(\glie) \tensor \Univ(\hlie) \to \Univ(\glie \times \hlie)$ is given on the simple tensors~$\class{x} \tensor \class{y}$ with~$x \in \Univ(\glie)$ and~$y \in \Univ(\hlie)$ by the mapping
+  The inverse isomorphism from~$\Univ(\glie) \tensor \Univ(\hlie)$ to~$\Univ(\glie \oplus \hlie)$ is given on the simple tensors~$\class{x} \tensor \class{y}$ with~$x$ in~$\Univ(\glie)$ and~$y$ in~$\Univ(\hlie)$ by
   \[
     \class{x} \tensor \class{y}
     \mapsto
-    i_*(\class{x}) \cdot j_*(\class{y})
+    \Univ( \iota_1 )( \class{x} )
+    \cdot
+    \Univ( \iota_2 )( \class{y} ) \,.
   \]
-  where~$i_*$ and~$j_*$ are the algebra homomorphisms induced by the inclusions of Lie~algebras~$i \colon \glie \to \glie \times \hlie$ and~$j \colon \hlie \to \glie \tensor \hlie$.
-  This can be seen in various ways:
+  Here we denote by~$\iota_1$ is the canonical homomorphism of Lie~algebras from~$\glie$ to~$\glie \oplus \hlie$ (i.e. the inclusion into the first sammand) and similarly by~$\iota_2$ is the canonical homomorphism of Lie~algebras from~$\hlie$ to~$\glie \oplus \hlie$ (i.e. the inclusion into the second summand).
+
+  We present two ways in which the above isomorphism(s) can be derived.
   \begin{itemize}
     \item
-      It follows from \cref{homomorphism out of a product} and \cref{homomorphism out of a tensor product} that we get for every~{\algebra{$\kf$}}~$A$ bijections
+      It follows from \cref{homomorphism out of direct sum} and \cref{homomorphism out of a tensor product} that we get for every~\algebra{$\kf$}~$A$ bijections
       \begin{align*}
         {}&
-        \{ \text{algebra homomorphisms~$F \colon \Univ(\glie \times \hlie) \to A$} \}
-        \\
-        \cong{}&
-        \{ \text{Lie~algebra homomorphisms~$f \colon \glie \times \hlie \to A$} \}
+        \left\{
+          \begin{tabular}{@{}c@{}}
+            algebra homomorphisms \\
+            $\Phi \colon \Univ(\glie \oplus \hlie) \to A$
+          \end{tabular}
+        \right\}
         \\
         \cong{}&
         \left\{
           \begin{tabular}{@{}c@{}}
             Lie~algebra homomorphisms \\
-            $\phi \colon \glie \to A$ and~$\psi \colon \hlie \to A$ \\
-            whose images commute with each other
+            $\varphi \colon \glie \oplus \hlie \to A$
+          \end{tabular}
+        \right\}
+        \\
+        \cong{}&
+        \left\{
+          ( \varphi_1, \varphi_2 )
+        \suchthat*
+          \begin{tabular}{@{}c@{}}
+            Lie~algebra homomorphisms \\
+            $\varphi_1 \colon \glie \to A$ and~$\varphi_2 \colon \hlie \to A$ \\
+            whose images commute
+          \end{tabular}
+        \right\}
+        \\
+        \cong{}&
+        \left\{
+          (\Phi_1, \Phi_2)
+        \suchthat*
+          \begin{tabular}{@{}c@{}}
+            algebra homomorphisms               \\
+            $\Phi_1 \colon \Univ(\glie) \to A$  \\
+            $\Phi_2 \colon \Univ(\hlie) \to A$  \\
+            whose images commute
           \end{tabular}
         \right\}
         \\
         \cong{}&
         \left\{
           \begin{tabular}{@{}c@{}}
-            algebra homomorphisms \\
-            $\Phi \colon \Univ(\glie) \to A$ and~$\Psi \colon \Univ(\hlie) \to A$ \\
-            whose images commute with each other
+             algebra homomorphims \\
+             $\Phi \colon \Univ(\glie) \tensor \Univ(\hlie) \to A$
           \end{tabular}
-        \right\}
-        \\
-        \cong{}&
-        \{ \text{algebra homomorphims~$F \colon \Univ(\glie) \tensor \Univ(\hlie) \to A$} \}  \,.
+        \right\} \,.
       \end{align*}
       The claimed isomorphism therefore follows from Yoneda’s lemma.
     \item
-      More explicitely let~$i \colon \glie \to \glie \times \hlie$ and~$j \colon \hlie \to \glie \times \hlie$ be the canonical inclusions.
-      Then for the induced algebra homomorphisms~$i_* \colon \Univ(\glie) \to \Univ(\glie \times \hlie)$ and~$j_* \colon \Univ(\hlie) \to \Univ(\glie \times \hlie)$ the images of~$i_*$ of~$j_*$ commute with each other.
-      Indeed, the algebra~$\Univ(\glie \times \hlie)$ is generated by the image of~$\glie \times \hlie$ in~$\Univ(\glie \times \hlie)$, and~$i(\glie)$ and~$j(\hlie)$ commute in~$\glie \times \hlie$.
-      Therefore
+      We can construct the isomorphism(s) more explicitely, as follows.
+
+      We note that for the induced homomorphisms of algebras
+      \begin{align*}
+        \Univ(\iota_1) &\colon \Univ(\glie) \to \Univ(\glie \oplus \hlie) \,, \\
+        \Univ(\iota_2) &\colon \Univ(\hlie) \to \Univ(\glie \oplus \hlie)
+      \end{align*}
+      the images of~$\Univ(\iota_1)$ and~$\Univ(\iota_2)$ commute.
+      Indeed, the algebra~$\Univ(\glie \oplus \hlie)$ is generated by the image of~$\glie \oplus \hlie$ in~$\Univ(\glie \oplus \hlie)$, and the images~$\iota_1(\glie)$ and~$\iota_2(\hlie)$ commute in~$\glie \oplus \hlie$.
+      Thus
       \[
-        i_*(\class{x}) j_*(\class{y})
+        \Univ(\iota_1)( \class{x} )
+        \cdot
+        \Univ(\iota_2)( \class{y} )
         =
-        \class{(x,0)} \class{(0,y)}
+        \class{(x,0)} \cdot \class{(0,y)}
         =
-        \class{(0,y)} \class{(x,0)}
+        \class{(0,y)} \cdot \class{(x,0)}
         =
-        j_*(\class{y}) i_*(\class{x}) \,,
+        \Univ(\iota_2)( \class{y} )
+        \cdot
+        \Univ(\iota_2)( \class{x} ) \,,
       \]
-      for all~$x \in \glie$ and~$y \in \hlie$, where we denote by~$\class{(-)}$ the corresponding elements of the {\uas}.
-      We used for the middle equality that~$(x,0)$ and~$(0,y)$ commute in~$\glie \times \hlie$ and hence also in~$\Univ(\glie \times \hlie)$.
-      
-      It follows that~$i_*$ and~$j_*$ induce a common algebra homomorphism
+      for all~$x \in \glie$,~$y \in \hlie$.
+      We used for the middle equality that the elements~$(x,0)$ and~$(0,y)$ commute in~$\glie \oplus \hlie$ and hence also in~$\Univ(\glie \oplus \hlie)$.
+      It follows from this observation that the two homomorphisms of algebras~$\Univ( \iota_1 )$ and~$\Univ( \iota_2 )$ induce a homomorphism of algebras
       \[
-        \phi
+        \Phi
         \colon
         \Univ(\glie) \tensor \Univ(\hlie)
         \to
-        \Univ(\glie \times \hlie) \,,
+        \Univ(\glie \oplus \hlie) \,.
       \]
-      that is given on elements by
+      This homomorphism is given on simple tensors by
       \[
-        \phi(x \tensor y)
+        \Phi(t \tensor u)
         =
-        i_*(x) j_*(y)
+        \Univ(\iota_1)(t) \cdot \Univ(\iota_2)(u)
       \]
-      for all simple tensors~$x \tensor y \in \Univ(\glie) \tensor \Univ(\hlie)$.
-      It holds in particular for all~$x \in \glie$ and~$y \in \glie$ that
+      for all~$t \in \Univ(\glie)$,~$u \in \Univ(\hlie)$.
+      It holds in particular for all~$x \in \glie$,~$y \in \glie$ that
       \[
-        \phi(\class{x} \tensor \class{y})
+        \Phi(\class{x} \tensor \class{y})
         =
-        i_*(\class{x}) j_*(\class{y})
+        \Univ(\iota_1)( \class{x} )
+        \cdot
+        \Univ(\iota_2)( \class{y} )
         =
-        \class{i(x)} \cdot \class{j(y)}
+        \class{ \iota_1(x) }
+        \cdot
+        \class{ \iota_2(y) }
         =
         \class{(x,0)} \cdot \class{(0,y)}  \,,
       \]
-      We observe that the map
+%      We observe that the map
+%      \[
+%        \psi'
+%        \colon
+%        \glie \times \hlie
+%        \to
+%        \Univ(\glie) \tensor \Univ(\hlie) \,,
+%        \quad
+%        (x,y)
+%        \mapsto
+%        \class{(x,0)} \tensor 1 + 1 \tensor \class{(0,y)} \,.
+%      \]
+
+      To construct the inverse~$\Psi$ of~$\Phi$ we observe that the equality
       \[
-        \psi'
+        \Psi\Bigl( \class{(x,0)} \Bigr)
+        =
+        \Psi\Bigl( \class{(x,0)} \cdot 1 \Bigr)
+        =
+        \Psi\Bigl( \Univ(\iota_1)( \class{x} ) \cdot \Univ(\iota_2)(1) \Bigr)
+        =
+        \Psi( \Phi( \class{x} \tensor 1 ) )
+        =
+        \class{x} \tensor 1
+      \]
+      has to hold for all~$x \in \glie$, and similarly
+      
+      \[
+        \Psi\Bigl( \class{(0,y)} \Bigr)
+        =
+        1 \tensor \class{y}
+      \]
+      for all~$y \in \hlie$.
+      It then follows that more generally
+      \[
+        \Psi\Bigl( \class{(x,y)} \Bigr)
+        =
+        \Psi\Bigl( \class{(x,0)} + \class{(0,y)} \Bigr)
+        =
+        \class{x} \tensor 1 + 1 \tensor \class{y}
+      \]
+      for all~$(x,y) \in \glie \oplus \hlie$.
+      
+      Motivated by these calculations we consider the map
+      \[
+        \psi
         \colon
-        \glie \times \hlie
+        \glie \oplus \hlie
         \to
         \Univ(\glie) \tensor \Univ(\hlie) \,,
         \quad
         (x,y)
         \mapsto
-        \class{(x,0)} \tensor 1 + 1 \tensor \class{(0,y)} \,.
+        \class{x} \otimes 1 + 1 \otimes{y} \,.
       \]
-      To construct the inverse~$\psi$ of~$\phi$ we observe that the equalities
-      \[
-        \psi( \class{(x,0)} )
-        =
-        \psi( \class{(x,0)} \cdot 1 )
-        =
-        \psi( i_*(\class{x}) \cdot j_*(1) )
-        =
-        \psi( \phi(\class{x} \tensor 1) )
-        =
-        \class{x} \tensor 1
-      \]
-      and similarly~$\psi( \class{(0,y)} ) = 1 \tensor \class{y}$ have to hold for all~$x \in \glie$ and~$y \in \glie$.
-      It then follows that more generally
-      \[
-        \psi( \class{(x,y)} )
-        =
-        \psi( \class{(x,0)} + \class{(0,y)} )
-        =
-        \class{x} \tensor 1 + 1 \tensor \class{y}
-      \]
-      for all~$(x,y) \in \glie \times \hlie$.
-      
-      Motivated by these observations we consider the map
-      \[
-        \psi'
-        \colon
-        \glie \times \hlie
-        \to
-        \Univ(\glie) \tensor \Univ(\hlie)
-      \]
-      that is given by
-      \[
-        \psi'((x,y))
-        =
-        \class{x} \tensor 1 + 1 \tensor \class{y} \,.
-      \]
-      This map is~{\linear{$\kf$}} and it is a homomorphism of Lie~algebras because
+      This map is a homomorphism of Lie~algebras because it is linear with
       \begin{align*}
         {}&
-        [\psi'((x_1, y_1)), \psi'((x_2, y_2))]
+        [\psi((x_1, y_1)), \psi((x_2, y_2))]
         \\
         ={}&
         [
-          \class{x_1} \tensor 1 + 1 \tensor \class{y_1},
+          \class{x_1} \tensor 1 + 1 \tensor \class{y_1} \,,
           \class{x_2} \tensor 1 + 1 \tensor \class{y_2}
         ]
         \\
         ={}&
           [\class{x_1} \tensor 1, \class{x_2} \tensor 1]
         + \underbrace{ [\class{x_1} \tensor 1, 1 \tensor \class{y_2}] }_{=0}
-        + \underbrace{ [1 \tensor \class{y_1}, \class{x_2} \tensor 1] }_{=0}
+        + \underbrace{ [1 \tensor \class{y_1} \,, \class{x_2} \tensor 1] }_{=0}
         + [1 \tensor \class{y_1}, 1 \tensor \class{y_2}]
         \\
         ={}&
@@ -465,50 +755,53 @@
         + 1 \tensor \class{[y_1, y_2]}  \,.
         \\
         ={}&
-        \psi'( ( [x_1, x_2], [y_1, y_2] ) )
+        \psi\bigl( ( [x_1, x_2], [y_1, y_2] ) \bigr)
         \\
         ={}&
-        \psi'( [(x_1, y_1), (x_2, y_2)] ) \,.
+        \psi\bigl( [(x_1, y_1), (x_2, y_2)] \bigr) \,.
       \end{align*}
-      It hence follows from the universal property of the {\ua}~$\Univ(\glie \times \hlie)$ that there exists a unique algebra homomorphism~$\psi \colon \Univ(\glie \times \hlie) \to \Univ(\glie) \tensor \Univ(\hlie)$ that makes the triangular diagram
+      for all~$(x_1, y_1), (x_2, y_2) \in \glie \oplus \hlie$.
+      It hence follows from the universal property of the {\ua}~$\Univ(\glie \oplus \hlie)$ that there exists a unique homomorphism of algebras~$\Psi$ from~$\Univ(\glie \oplus \hlie)$ to~$\Univ(\glie) \tensor \Univ(\hlie)$ that makes the triangular diagram
       \[
         \begin{tikzcd}[row sep = large]
-          \glie \times \hlie
-          \arrow{r}[above]{\psi'}
+          \glie \oplus \hlie
+          \arrow{r}[above]{\psi}
           \arrow{d}[left]{\class{(-)}}
           &
           \Univ(\glie) \tensor \Univ(\hlie)
           \\
-          \Univ(\glie \times \hlie)
-          \arrow[dashed]{ur}[below right]{\psi}
+          \Univ(\glie \oplus \hlie)
+          \arrow[dashed]{ur}[below right]{\Psi}
           &
           {}
         \end{tikzcd}
       \]
       commute.
-      This homomorphism~$\psi$ is given for all~$(x, y) \in \glie \times \hlie$ by
+      This homomorphism~$\psi$ is given by
       \[
-        \psi( \class{(x,y)} )
+        \Psi\Bigl( \class{(x,y)} \Bigr)
         =
         \class{x} \tensor 1 + 1 \tensor \class{y} \,.
       \]
+      for all~$(x,y) \in \glie \oplus \hlie$.
       
-      The homomorphisms~$\phi$ and~$\psi$ are mutually inverse:
-      It sufficies to check this on the generators~$\class{x} \tensor \class{y}$ of~$\Univ(\glie) \tensor \Univ(\hlie)$ with~$x \in \glie$ and~$y \in \hlie$, and on the generators~$\class{(x,y)}$ of~$\Univ(\glie \times \hlie)$ with~$(x,y) \in \glie \times \hlie$.
-      And indeed, we find that
+      We now check that the two homomorphisms~$\Phi$ and~$\Psi$ are mutually inverse.
+      We have on the one hand
       \begin{align*}
-        \phi( \psi( \class{(x,y)} ) )
+        \Phi\Bigl( \Psi\Bigl( \class{(x,y)} \Bigr) \Bigr)
         &=
-        \phi( \class{x} \tensor 1 + 1 \tensor \class{y} )
+        \Phi( \class{x} \tensor 1 + 1 \tensor \class{y} )
         \\
         &=
-        \phi( \class{x} \tensor 1 ) + \phi( 1 \tensor \class{y} )
+        \Phi( \class{x} \tensor 1 ) + \Phi( 1 \tensor \class{y} )
         \\
         &=
-        i_*(\class{x}) j_*(1) + i_*(1) j_*(\class{y})
+        \Univ(\iota_1)(\class{x}) \cdot \Univ(\iota_2)(1)
+        + \Univ(\iota_1)(1) \cdot \Univ(\iota_2)(\class{y})
         \\
         &=
-        \class{i(x)} + \class{j(y)}
+        \class{\iota_1(x)} \cdot 1
+        + 1 \cdot \class{\iota_2(y)}
         \\
         &=
         \class{(x,0)} + \class{(0,y)}
@@ -516,168 +809,452 @@
         &=
         \class{(x,y)}
       \end{align*}
-      and
+      for all~$(x,y) \in \glie \oplus \hlie$, and thus~$\Phi \circ \Psi = \id_{\Univ(\glie \oplus \hlie)}$.
+      We have on the other hand
       \begin{align*}
-        \psi( \phi( \class{x} \tensor \class{y} ) )
+        \Psi( \Phi( \class{x} \tensor \class{y} ) )
         &=
-        \psi( i_*(\class{x}) j_*(\class{y}) )
+        \Psi( \Univ(\iota_1)(\class{x}) \cdot \Univ(\iota_2)(\class{y}) )
         \\
         &=
-        \psi( \class{(x,0)} \class{(0,y)} )
+        \Psi\Bigl( \class{(x,0)} \class{(0,y)} \Bigr)
         \\
         &=
-        \psi( \class{(x,0)} ) \psi( \class{(0,y)} )
+        \Psi\Bigl( \class{(x,0)} \Bigr)
+        \Psi\Bigl( \class{(0,y)} \Bigr)
         \\
         &=
-        ( \class{x} \tensor 1 + 1 \tensor 0 ) ( 0 \tensor 1 + 1 \tensor \class{y} )
+        ( \class{x} \tensor 1 + 1 \tensor 0 )
+        \cdot ( 0 \tensor 1 + 1 \tensor \class{y} )
         \\
         &=
-        (\class{x} \tensor 1) (1 \tensor \class{y})
+        (\class{x} \tensor 1)
+        \cdot (1 \tensor \class{y})
         \\
         &=
-        \class{x} \tensor \class{y} \,.
+        \class{x} \tensor \class{y}
       \end{align*}
+      for all~$x \in \glie$ and~$y \in \hlie$, and thus~$\Psi \circ \Phi = \id_{\Univ(\glie) \otimes \Univ(\hlie)}$.
   \end{itemize}
 \end{example}
 
 
+\begin{construction}
+  \label{construction of comultiplication}
+  Let~$\glie$ be a Lie~algebra.
+  We have a homomorphism of Lie~algebras
+  \[
+    \delta
+    \colon
+    \glie
+    \to
+    \glie \oplus \glie \,,
+    \quad
+    x
+    \mapsto
+    (x,x) \,.
+  \]
+  This homomorphism of Lie~algebras extends a homomorphism of algebras
+  \[
+    \Delta'
+    \colon
+    \Univ(\glie)
+    \to
+    \Univ(\glie \oplus \glie) \,.
+  \]
+  As seen in \cref{explicit isomorphism for uea of direct sum} we have an isomorphism of algebras from~$\Univ(\glie \oplus \glie)$ to~$\Univ(\glie) \otimes \Univ(\glie)$ given by~$\class{(x,y)} \mapsto \class{x} \otimes 1 + 1 \otimes \class{y}$ for all~$x, y \in \glie$.
+  Under this isomorphism we can regard the homomorphism~$\Delta'$ as a homomorphism of algebras
+  \[
+    \Delta
+    \colon
+    \Univ(\glie)
+    \to
+    \Univ(\glie) \otimes \Univ(\glie) \,.
+  \]
+  This homomorphism is uniquely determined by
+  \[
+    \Delta( \class{x} )
+    =
+    \class{x} \otimes 1 + 1 \otimes \class{x}
+  \]
+  for all~$x \in \glie$.
+\end{construction}
+
+
+\begin{definition}
+  Let~$\glie$ be a Lie~algebra.
+  The algebra homomorphism~$\Delta$ from~$\Univ(\glie)$ to~$\Univ(\glie) \otimes \Univ(\glie)$ from \cref{construction of comultiplication} is the \defemph{comultiplication} of~$\glie$.
+\end{definition}
+
+
+\begin{remark}
+  Let~$\glie$ be a Lie~algebra.
+  For every two representations~$M$ and~$N$ of~$\glie$ the tensor product~$M \otimes_{\kf} N$ becomes again a representation of~$\glie$ via the aciton
+  \[
+    x \act (m \otimes n)
+    =
+    (x \act m) \otimes n + m \otimes (x \act n)
+  \]
+  for all~$x \in \glie$,~$m \in M$,~$n \in N$.
+  In other words, for every two~\modules{$\Univ(\glie)$}~$M$ and~$N$ the tensor product~$M \otimes_{\kf} N$ becomes again a~\module{$\Univ(\glie)$}.
+
+  This can be explained via the comultiplication~$\Delta$ of~$\glie$.
+  Indeed, suppose that~$M$ and~$N$ are two~\modules{$\Univ(\glie)$}.
+  These module structure correspond to algebra homomorphisms
+  \[
+    \Phi_M
+    \colon
+    \Univ(\glie)
+    \to
+    \End_{\kf}(M) \,,
+    \quad
+    \Phi_N
+    \colon
+    \Univ(\glie)
+    \to
+    \End_{\kf}(N) \,.
+  \]
+  We have now the the homomorphism of algebras
+  \[
+    \Delta
+    \colon
+    \Univ(\glie)
+    \to
+    \Univ(\glie) \otimes \Univ(\glie) \,,
+  \]
+  the homomorphism of algebras
+  \[
+    \Phi_M \otimes \Phi_N
+    \colon
+    \Univ(\glie) \otimes \Univ(\glie)
+    \to
+    \End_{\kf}(M) \otimes \End_{\kf}(N)
+  \]
+  and the homomorphism of algebras
+  \[
+    \Psi
+    \colon
+    \End_{\kf}(M) \otimes \End_{\kf}(N)
+    \to
+    \End_{\kf}(M \otimes_{\kf} N) \,,
+    \quad
+    f \otimes g
+    \mapsto
+    f \otimes g \,.
+  \]
+  The composite of the homomorphism is a homomorphism of algebras
+  \[
+    \Phi_{M \otimes N}
+    \colon
+    \Univ(\glie)
+    \to
+    \End_{\kf}(M \otimes N) \,.
+  \]
+  This homomorphism corresponds to a~\module{$\Univ(\glie)$} structure on~$M \otimes_{\kf} N$.
+  This module structure is given for every element~$x$ of~$\glie$ by
+  \begin{align*}
+    \class{x} \cdot (m \otimes n)
+    &=
+    \Phi_{M \otimes N}( \class{x} )( m \otimes n )
+    \\
+    &=
+    \Psi( (\Phi_M \otimes \Phi_N)( \Delta(\class{x}) ) )( m \otimes n)
+    \\
+    &=
+    \Psi( (\Phi_M \otimes \Phi_N)( \class{x} \otimes 1 + 1 \otimes \class{x} ) )( m \otimes n)
+    \\
+    &=
+    \Psi( \Phi_M(\class{x}) \otimes \Phi_N(1) + \Phi_M(1) \otimes \Phi_N(\class{x}) )( m \otimes n)
+    \\
+    &=
+    \Psi( \Phi_M(\class{x}) \otimes \id_N + \id_M \otimes \Phi_N(\class{x}) )( m \otimes n)
+    \\
+    &=
+    \Phi_M(\class{x})(m) \otimes \id_N(n) + \id_M(m) \otimes \Phi_N(\class{x})(n)
+    \\
+    &=
+    (\class{x} \cdot m) \otimes n + m \otimes (\class{x} \cdot n)
+  \end{align*}
+  for all~$m \in M$,~$n \in N$.
+  This is precisely the same module structure as above.
+\end{remark}
+
+
+\begin{remark}
+  Let~$\glie$ be a Lie~algebra.
+  The comultiplication~$\Delta$, counit~$\varepsilon$ and antipode~$S$ satisfy certain compatibility conditions.
+  More precisely, the comultiplication~$\Delta$ satisfies the following \defemph{coassociativity} diagram.
+  \[
+    \begin{tikzcd}[sep = large]
+      \Univ(\glie)
+      \arrow{r}[above]{\Delta}
+      \arrow{d}[left]{\Delta}
+      &
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{d}[right]{\Delta \otimes \id}
+      \\
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{r}[above]{\id \otimes \Delta}
+      &
+      \Univ(\glie) \otimes \Univ(\glie) \otimes \Univ(\glie)
+    \end{tikzcd}
+  \]
+  The comultiplication~$\Delta$ and counit~$\varepsilon$ satisfy the folloing \defemph{counital} diagram.
+  \[
+    \begin{tikzcd}[row sep = large]
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{d}[left]{\id \otimes \varepsilon}
+      &
+      \Univ(\glie)
+      \arrow{l}[above]{\Delta}
+      \arrow{r}[above]{\Delta}
+      \arrow[equal]{d}
+      &
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{d}[right]{\varepsilon \otimes \id}
+      \\
+      \Univ(\glie) \otimes \kf
+      \arrow{r}[above]{\cong}
+      &
+      \Univ(\glie)
+      &
+      \kf \otimes \Univ(\glie)
+      \arrow{l}[above]{\cong}
+    \end{tikzcd}
+  \]
+  The comultiplication~$\Delta$, counit~$\varepsilon$ and antipode~$S$ satisfy the following \defemph{antipode} diagram.
+  \[
+    \begin{tikzcd}[column sep = small, row sep = large]
+      {}
+      &
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{rr}{S \otimes \id}
+      &
+      {}
+      &
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{dr}{\mathrm{mult}}
+      &
+      {}
+      \\
+      \Univ(\glie)
+      \arrow{ur}[above left]{\Delta}
+      \arrow{rr}[above]{\varepsilon}
+      \arrow{dr}[below left]{\Delta}
+      &
+      {}
+      &
+      \kf
+      \arrow{rr}[above]{\mathrm{incl}}
+      &
+      {}
+      &
+      \Univ(\glie)
+      \\
+      {}
+      &
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{rr}[above]{\id \otimes S}
+      &
+      {}
+      &
+      \Univ(\glie) \otimes \Univ(\glie)
+      \arrow{ur}[below right]{\mathrm{mult}}
+      &
+      {}
+    \end{tikzcd}
+  \]
+  This means altogether that the algebra~$\Univ(\glie)$ together with the comultiplication~$\Delta$, counit~$\varepsilon$ and antipode~$S$ is a \defemph{Hopf algebra}.
+\end{remark}
 
 
 
-\subsubsection{Quotient Lie~Algebras}
+
+\subsection{Quotient Lie~Algebra}
 
 
 \begin{example}
-  Let~$\glie$ be a Lie~algebra, let~$I$ be an ideal in~$\glie$ and let~$\pi \colon \glie \to \glie/I$ be the canonical projection.
-  Then the induced algebra homomorphism~$\pi_* \colon \Univ(\glie) \to \Univ(\glie/I)$ induces an algebra isomorphism
+  Let~$\glie$ be a Lie~algebra, let~$I$ be an ideal of~$\glie$ and let~$\ideal{I}$ be the two-sided ideal of~$\Univ(\glie)$ generated by all elements of the form~$\class{x}$ with~$x$ in~$I$.
+  Let~$\pi$ be the canonical quotient homomorphism from~$\glie$ to~$\glie/I$.
+  Then the induced homomorphism of algebras~$\Univ(\pi)$ from~$\Univ(\glie)$ to~$\Univ(\glie/I)$ factors through~$\Univ(\glie) / \ideal{I}$, and induces an isomorphism
   \[
     \Univ(\glie/I)
     \cong
-    \Univ(\glie)/(I)
+    \Univ(\glie) / \ideal{I} \,,
   \]
-  where~$(I)$ denotes the two-sided ideal in~$\Univ(\glie)$ that is generated by all elements~$\class{x}$ with~$x \in I$.
+  which is is given by
+  \[
+    \class{ \class{x} }
+    \mapsto
+    \class{ \class{x} }
+  \]
+  for all~$x \in \glie$.
+
   Indeed, we have for every~{\algebra{$\kf$}}~$A$ bijections
   \begin{align*}
     {}&
-    \{ \text{algebra homomorphisms~$\Univ(\glie/I) \to A$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Psi \colon \Univ(\glie/I) \to A$} \}
     \\
     \cong{}&
-    \{ \text{Lie~algebra homomorphisms~$\glie/I \to A$} \}
+    \{ \textstyle\text{Lie~algebra homomorphisms~$\psi \colon \glie/I \to A$} \}
     \\
     \cong{}&
-    \{ \text{Lie~algebra homomorphisms~$f \colon \glie \to A$ with~$f(x) = 0$ for every~$x \in I$} \}
+    \{ \textstyle\text{Lie~algebra homomorphisms~$\varphi \colon \glie \to A$ with~$\varphi(x) = 0$ for all~$x \in I$} \}
     \\
     \cong{}&
-    \{ \text{algebra homomorphisms~$F \colon \Univ(\glie) \to A$ with~$F(\class{x}) = 0$ for every~$x \in I$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Phi \colon \Univ(\glie) \to A$ with~$\Phi(\class{x}) = 0$ for all~$x \in I$} \}
     \\
     ={}&
-    \{ \text{algebra homomorphisms~$F \colon \Univ(\glie) \to A$ with~$F(y) = 0$ for every~$y \in (I)$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Phi \colon \Univ(\glie) \to A$ with~$\Phi(y) = 0$ for all~$y \in \ideal{I}$} \}
     \\
     \cong{}&
-    \{ \text{algebra homomorphisms~$\Univ(\glie)/(I) \to A$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Psi \colon \Univ(\glie) / \ideal{I} \to A$} \} \,.
   \end{align*}
-  that are natural in~$A$.
-  Hence~$\Univ(\glie/I) \cong \Univ(\glie)/(I)$ by Yoneda’s lemma.
+  These bijections are natural in~$A$, whence~$\Univ(\glie/I) \cong \Univ(\glie) / \ideal{I}$ by Yoneda’s lemma.
   
-  More explicitely, the composition
+  More explicitely, the composite
   \[
     \glie
     \to
     \Univ(\glie)
     \to
-    \Univ(\glie)/(I)
+    \Univ(\glie) / \ideal{I} \,,
+    \quad
+    x \mapsto
+    \class{ \class{x} }
   \]
-  is a Lie~algebra homomorphisms that annihilates the ideal~$I$ and thus induces a Lie~algebra homomorphism~$\glie/I \to \Univ(\glie)/(I)$, which in turn induces an algebra homomorphism
+  is a homomorphisms of Lie~algebras.
+  This homomorphism annihilates the Lie~ideal~$I$ of~$\glie$ and thus induces a homomorphism of Lie~algebras
   \[
-    \varphi
-    \colon
+    \glie/I
+    \to
+    \Univ(\glie) / \ideal{I} \,,
+    \quad
+    \class{x}
+    \mapsto
+    \class{ \class{x} } \,,
+  \]
+  which in turn induces a homomorphism of algebras
+  \begin{alignat*}{3}
+    \Phi
+    &\colon
     \Univ(\glie/I)
     \to
-    \Univ(\glie)/(I)  \,.
-  \]
-  On the algebra generators~$\class{x}$ of~$\Univ(\glie)$ with~$x \in \glie$ this homomorphism~$\varphi$ is given by
-  \[
-    \varphi(\class{x})
-    =
-    \class{x} \,.
-  \]
-  On the other hand the projection~$\pi \colon \glie \to \glie/I$ induces an algebra homomorphism~$\Univ(\glie) \to \Univ(\glie/I)$ that annihilates all residue classes~$\class{x}$ with~$x \in I$, and hence induces an algebra homomorphism
-  \[
-    \psi
-    \colon
-    \Univ(\glie)/(I)
+    \Univ(\glie) / \ideal{I}  \,,
+    &
+    \quad
+    \class{ \class{x} }
+    &\mapsto
+    \class{ \class{x} }
+    &
+    \qquad
+    &\text{for all~$x \in \glie$.}
+  \intertext{
+  On the other hand, the quotient homomorphism~$\pi$ from~$\glie$ to~$\glie/I$ induces the homomorphism of algebras~$\Univ(\pi)$ from~$\Univ(\glie)$ to~$\Univ(\glie/I)$, given by
+  }
+    \Univ(\pi)
+    &\colon
+    \Univ(\glie)
     \to
-    \Univ(\glie/I)  \,.
-  \]
-  On the algebra generators~$\class{x}$ of~$\Univ(\glie)/(I)$ with~$x \in \glie$ this homomorphism is given by~$\class{x} \mapsto \class{x}$.
-  It follows that the two algebra homomorphisms~$\varphi$ and~$\psi$ are mutually inverse isomorphisms.
+    \Univ( \glie / I ) \,,
+    &
+    \quad
+    \class{x}
+    &\mapsto
+    \class{ \class{x} }
+    &
+    \qquad
+    &\text{for all~$x \in \glie$.}
+  \intertext{
+  This homomorphism annihilates all residue classes~$\class{x}$ with~$x$ in~$I$, and hence induces a homomorphism of algebras
+  }
+    \Psi
+    &\colon
+    \Univ(\glie) / \ideal{I}
+    \to
+    \Univ(\glie/I)  \,,
+    &
+    \quad
+    \class{ \class{x} }
+    &\mapsto
+    \class{ \class{x} }
+    &
+    \qquad
+    &\text{for all~$x \in \glie$.}
+  \end{alignat*}
+  We have thus constructed two mutually inverse algebra isomorphisms~$\Phi$ and~$\Psi$.
 \end{example}
 
 
 \begin{example}
   It follows from the previous example that for any Lie~algebra~$\glie$,
   \begin{align*}
-    \Univ(\glie/[\glie, \glie])
+    \Univ( \glie^{\ab} )
+    &=
+    \Univ( \glie/[\glie, \glie] )
+    \\
     &\cong
-    \Univ(\glie) / ([\glie, \glie])
+    \Univ(\glie) / \ideal{[\glie, \glie]}
     \\
     &=
     \Univ(\glie)
     /
-    (\class{[x,y]} \suchthat x, y \in \glie)
+    \ideal[\Big]{ \class{[x,y]} \suchthat x, y \in \glie }
     \\
     &=
     \Univ(\glie)
     /
-    (
+    \ideal{
       \class{x} \, \class{y} - \class{y} \, \class{x} 
     \suchthat
       x, y \in \glie
-    ) \,.
+    } \,.
   \end{align*}
-  The ideal~$(\class{x} \, \class{y} - \class{y} \, \class{x} \suchthat x, y \in \glie)$ is the commutator ideal of~$\Univ(\glie)$ because the elements~$\class{x}$ with~$x \in \glie$ are an algebra generating set of~$\Univ(\glie)$.
-  The universal enveloping algebra of the abelianization of~$\glie$ is hence the abelianization of the universal enveloping algebra of~$\glie$.
+  The ideal~$\ideal{ \class{x} \, \class{y} - \class{y} \, \class{x} \suchthat x, y \in \glie }$ is the commutator ideal of~$\Univ(\glie)$ because the elements~$\class{x}$ with~$x$ in~$\glie$ form an algebra generating set of~$\Univ(\glie)$.
+  The universal enveloping algebra of the abelianization of~$\glie$ is hence the abelianization (commutativization?) of the universal enveloping algebra of~$\glie$.
   
-  This can also be seen from Yoneda’s lemma, as we have for every commutative~{\algebra{$\kf$}}~$A$ bijections
+  This can also be seen from Yoneda’s lemma since we have for every commutative~{\algebra{$\kf$}}~$A$ bijections
   \begin{align*}
+    \SwapAboveDisplaySkip
     {}&
-    \{ \text{algebra homomorphisms~$\Univ(\glie/[\glie,\glie]) \to A$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Univ(\glie/[\glie,\glie]) \to A$} \}
     \\
     \cong{}&
-    \{ \text{Lie~algebra homomorphism~$\glie/[\glie, \glie] \to A$} \}
+    \{ \textstyle\text{Lie~algebra homomorphism~$\glie/[\glie, \glie] \to A$} \}
     \\
     \cong{}&
-    \{ \text{Lie~algebra homomorphisms~$\glie \to A$} \}
+    \{ \textstyle\text{Lie~algebra homomorphisms~$\glie \to A$} \}
     \\
     \cong{}&
-    \{ \text{algebra homomorphisms~$\Univ(\glie) \to A$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Univ(\glie) \to A$} \}
     \\
     \cong{}&
-    \{ \text{algebra homomorphisms~$\Univ(\glie)/I \to A$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Univ(\glie)/I \to A$} \}
   \end{align*}
-  that are natural in~$A$, where~$I$ denotes the commutator ideal of~$\Univ(\glie)$.
+  which are natural in~$A$, where~$I$ denotes the commutator ideal of~$\Univ(\glie)$.
 \end{example}
 
 
 
 
 
-\subsubsection{Free Lie~Algebras}
+\subsection{Free Lie~Algebra}
 
 
 \begin{definition}
   Let~$X$ be a set.
-  A~\defemph{free~{\liealgebra{$\kf$}} on~$X$}\index{free Lie algebra}\index{Lie algebra!free} is a~{\liealgebra{$\kf$}}~$F(X)$ together with a map~$\iota \colon X \to F(X)$ such that for every~{\liealgebra{$\kf$}}~$\glie$ and every map~$\phi \colon X \to \glie$ there exists a unique homomorphism of Lie~algebras~$\Phi \colon F(X) \to \glie$ with~$\phi = \Phi \circ \iota$, i.e.\ that makes the following triangular diagram commute:
+  A~\defemph{free~\liealgebra{$\kf$} on the set~$X$}\index{free Lie algebra}\index{Lie algebra!free} is a~\liealgebra{$\kf$}~$F(X)$ together with a set-theoretic map~$i$ from~$X$ to~$F(X)$ such that the following universal property holds:
+  for every~\liealgebra{$\kf$}~$\glie$ and every map~$f$ from~$X$ to~$\glie$ there exists a unique homomorphism of Lie~algebras~$\varphi$ from~$F(X)$ to~$\glie$ that makes the following triangular diagram commute.
   \[
     \begin{tikzcd}
       X
-      \arrow{dr}[above right]{\phi}
-      \arrow{d}[left]{\iota}
+      \arrow{dr}[above right]{f}
+      \arrow{d}[left]{i}
       &
       {}
       \\
       F(X)
-      \arrow[dashed]{r}[below]{\Phi}
+      \arrow[dashed]{r}[below]{\varphi}
       &
       \glie
     \end{tikzcd}
@@ -689,10 +1266,12 @@
   \leavevmode
   \begin{enumerate}
     \item
-      One may reformulate the above definition as saying that there exists for every~$x \in X$ an associated element~$\class{x} \in F(X)$ and that whenever~$\hlie$ is any Lie~algebra then there exist for every choice of images~$y_x \in \hlie$ with~$x \in X$ a unique homomorphism of Lie~algebras~$F(X) \to \hlie$ that maps~$\class{x}$ to~$y_x$.
+      A free Lie~algebra on a set~$X$ consists of a Lie~algebra~$X$ together with an element~$\class{x}$ of~$F(X)$ for every element~$x$ of~$X$, such that the following universal property holds:
+      for every Lie~algebra~$\glie$ and every famile~$(y_x)_{x \in X}$ of elements of~$\glie$ there exists a unique homomorphism of Lie~algebras~$\varphi$ from~$F(X)$ to~$\glie$ such that~$\varphi( \class{x} ) = y_x$ for all~$x \in X$.
     \item
-      As usual with free objects it follows that any two free Lie~algebras over a set~$X$ are unique up to unique isomorphism:
-      If~$F_1$ with~$\iota_1 \colon X \to F_1$ and~$F_2$ with~$\iota_2 \colon X \to F_2$ are two~free~{\liealgebras{$\kf$}} over~$X$ then there exist unique homomorphisms of Lie~algebras~$\phi \colon F_1 \to F_2$ and~$\psi \colon F_2 \to F_1$ that make the triangular diagrams
+      The free Lie~algebra on a set~$X$ is unique up to unique isomorphism, in the following sense.
+
+      If~$(F_1, i_1)$ and~$(F_2, i_2)$ are two free Lie~algebras on~$X$ then there exist unique homomorphisms of Lie~algebras~$\varphi$ from~$F_1$ to~$F_2$ and~$\psi$ from~$F_2$ to~$F_1$ that make the triangular diagrams
       \[
         \begin{tikzcd}[column sep = small]
           {}
@@ -704,7 +1283,7 @@
           {}
           \\
           F_1
-          \arrow[dashed]{rr}[below]{\phi}
+          \arrow[dashed]{rr}[below]{\varphi}
           &
           {}
           &
@@ -729,60 +1308,74 @@
         \end{tikzcd}
       \]
       commute.
-      The homomorphisms~$\phi$ and~$\psi$ are now mutually inverse isomorphisms.
-      We will therefore always talk about \emph{the} free~{\liealgebra{$\kf$}} over~$X$.
+      These homomorphisms~$\varphi$ and~$\psi$ are mutually inverse isomorphisms.
+
+      Because of this uniqueness we will talk about \emph{the} free~\liealgebra{$\kf$} on~$X$.
     \item
-      For every map between sets~$f \colon X \to Y$ there exists a unique homomorphism of Lie~algebras~$f_* \colon F(X) \to F(Y)$ that makes the square diagram
+      For every map~$f$ from a set~$X$ to a set~$Y$ there exists a unique homomorphism of Lie~algebras~$F(f)$ from~$F(X)$ to~$F(Y)$ that makes the square diagram
       \[
         \begin{tikzcd}
           X
           \arrow{r}[above]{f}
-          \arrow{d}[left]{\iota_X}
+          \arrow{d}
           &
           Y
-          \arrow{d}[right]{\iota_Y}
+          \arrow{d}
           \\
           F(X)
-          \arrow[dashed]{r}[below]{f_*}
+          \arrow[dashed]{r}[below]{F(f)}
           &
           F(Y)
         \end{tikzcd}
       \]
       commute.
-      It holds for every set~$X$ that~$(\id_X)_* = \id_{F(X)}$ and it holds for all composable maps of sets~$f \colon X \to Y$ and~$g \colon Y \to Z$ that~$(g \circ f)_* = g_* \circ f_*$.
-      We therefore get a functor~$F \colon \cSet \to \cLie{\kf}$.
+      It holds for every set~$X$ that~$F(\id_X) = \id_{F(X)}$, and it holds for all composable maps of sets~$f$ from~$X$ to~$Y$ and~$g$ from~$Y$ to~$Z$ that~$F(g \circ f) = F(g) \circ F(f)$.
+      The assignment~$F$ is thus a functor from the category~$\cSet$ to the category~$\cLie{\kf}$.
       
-      The universal property of the free Lie~algebra states that the functor~$F$ is left adjoint to the forgetful functor~$\cLie{\kf} \to \cSet$.
+      The universal property of the free Lie~algebra states that the functor~$F$ is left adjoint to the forgetful functor from~$\cLie{\kf}$ to~$\cSet$, which assigns to each Lie~algebra its underlying set.
   \end{enumerate}
 \end{remark}
 
 
 \begin{example}[Free Lie~algebras]
   \label{uea of free lie algebra}
-  Let~$I$ be a set and let~$F(I)$ be the free~{\liealgebra{$\kf$}} on~$I$.
-  We have for every~{\algebra{$\kf$}}~$A$ bijections
+  Let~$I$ be a set and let~$F(I)$ be the free~{\liealgebra{$\kf$}} on the set~$I$.
+  We have for every~\algebra{$\kf$}~$A$ bijections
   \begin{align*}
     {}&
-    \{ \text{algebra homomorphisms~$\Univ(F(I)) \to A$} \}
+    \{ \textstyle\text{algebra homomorphisms~$\Univ(F(I)) \to A$} \}
     \\
-    \cong&
-    \{ \text{Lie~algebra homomorphisms~$F(I) \to A$} \}
+    \cong{}&
+    \{ \textstyle\text{Lie~algebra homomorphisms~$F(I) \to A$} \}
     \\
-    \cong&
-    \{ \text{set-theoretic maps~$I \to A$} \}
+    \cong{}&
+    \{ \textstyle\text{set-theoretic maps~$I \to A$} \}
     \\\
-    \cong&
-    \{ \text{algebra homomorphisms~$\kf\gen{x_i \suchthat i \in I} \to A$} \} \,,
+    \cong{}&
+    \{ \textstyle\text{algebra homomorphisms~$\kf\gen{x_i \suchthat i \in I} \to A$} \} \,,
   \end{align*}
   and these bijections are natural in~$A$.
-  We hence find by Yoneda’s~lemma that~$\Univ(F(I)) \cong \kf\gen{x_i \suchthat i \in I}$.
-  More precisely, there exists for the composition~$I \to F(I) \to \Univ(F(I))$ a unique algebra homomorphism~$\phi \colon \kf\gen{x_i \suchthat i \in I} \to \Univ(F(I))$ that makes the diagram
+  We hence find by Yoneda’s~lemma that
   \[
-    \begin{tikzcd}
+    \Univ(F(I))
+    \cong
+    \kf\gen{x_i \suchthat i \in I} \,.
+  \]
+  More precisely, there exists for the composite
+  \[
+    I
+    \to
+    F(I)
+    \to
+    \Univ(F(I))
+  \]
+  a unique homomorphism of algebras~$\Phi$ from~$\kf\gen{x_i \suchthat i \in I}$ to~$\Univ(F(I))$ that makes the diagram
+  \[
+    \begin{tikzcd}[column sep = small]
         {}
       & I
         \arrow[bend right, out = -45, in=225]{ddl}[above left]{i \mapsto x_i}
-        \arrow[bend left]{dr}[above right]{\iota}
+        \arrow[bend left]{dr}
       & {}
       \\
         {}
@@ -791,18 +1384,20 @@
         \arrow{d}
       \\
         \kf\gen{x_i \suchthat i \in I}
-        \arrow[dashed]{rr}[below]{\phi}
+        \arrow[dashed]{rr}[below]{\Phi}
       & {}
       & \Univ(F(I))
     \end{tikzcd}
   \]
-  commute, and~$\phi$ is an isomorphism.
+  commute.
+  This homomorphism~$\Phi$ is an isomorphism.
 \end{example}
 
 
 \begin{remark}
   Lie~subalgebras of free Lie~algebras are again free by the Shirshov--Witt~theorem.
 \end{remark}
+
 
 
 
