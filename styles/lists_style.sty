@@ -3,32 +3,32 @@
 
 
 \setlist[enumerate]   { wide          = 0pt,
-                        leftmargin    = *,
-                        listparindent = \parindent,
-                        parsep        = 0pt
-                      }
+												leftmargin    = *,
+												listparindent = \parindent,
+												parsep        = 0pt
+											}
 \setlist[enumerate, 1]{ label         = {\arabic*.},
-                        ref           = {\arabic*}
-                      }
+												ref           = {\arabic*}
+											}
 \setlist[enumerate, 2]{ label         = {\alph*.},
-                        ref           = {\alph*}
-                      }
+												ref           = {\alph*}
+											}
 
 
 \setlist[itemize]    { wide          = 0pt,
-                       leftmargin    = *,
-                       listparindent = \parindent,
-                       parsep        = 0pt }
+											 leftmargin    = *,
+											 listparindent = \parindent,
+											 parsep        = 0pt }
 \setlist[itemize, 1]{ label = {\textbullet} }
 \setlist[itemize, 2]{ label = {\textopenbullet} }
 
 
 \setlist[description]{  wide          = 0pt,
-                        listparindent = \parindent,
-                        parsep        = 0pt }
+												listparindent = \parindent,
+												parsep        = 0pt }
 
 \renewcommand{\descriptionlabel}[1]{%
-  \hspace\labelsep \upshape\bfseries #1.%
+	\hspace\labelsep \upshape\bfseries #1.%
 }
 
 
@@ -43,34 +43,34 @@
 
 
 \setlist[enumerate*]    { wide          = 0pt,
-                          leftmargin    = *,
-                          labelindent   = \parindent,
-                          listparindent = \parindent,
-                          parsep        = 0pt
-                        }
+													leftmargin    = *,
+													labelindent   = \parindent,
+													listparindent = \parindent,
+													parsep        = 0pt
+												}
 \setlist[enumerate*, 1] { label         = {\arabic*.},
-                          ref           = {\arabic*}
-                        }
+													ref           = {\arabic*}
+												}
 \setlist[enumerate*, 2] { label         = {\alph*.},
-                          ref           = {\alph*}
-                        }
+													ref           = {\alph*}
+												}
 
 
 \setlist[itemize*]     {  wide          = 0pt,
-                          leftmargin    = *,
-                          labelindent   = \parindent,
-                          listparindent = \parindent,
-                          parsep        = 0pt }
+													leftmargin    = *,
+													labelindent   = \parindent,
+													listparindent = \parindent,
+													parsep        = 0pt }
 \setlist[itemize*, 1]  {  label         = {\textbullet} }
 \setlist[itemize*, 2]  {  label         = {\textopenbullet} }
 
 
 \setlist[description*]{ 
-                        leftmargin    = \parindent,
-                        labelindent   = \parindent,
-                        listparindent = \parindent,
-                        parsep        = 0pt
-                      }
+												leftmargin    = \parindent,
+												labelindent   = \parindent,
+												listparindent = \parindent,
+												parsep        = 0pt
+											}
 
 
 
@@ -84,27 +84,27 @@
 
 
 \setlist[equivalenceslist]  {   wide          = 0pt,
-                                leftmargin    = *,
-                                listparindent = \parindent,
-                                parsep        = 0pt }
+																leftmargin    = *,
+																listparindent = \parindent,
+																parsep        = 0pt }
 \setlist[equivalenceslist,1]  { label = {\roman*.},
-                                ref   = {\roman*} }
+																ref   = {\roman*} }
 \setlist[equivalenceslist,2]  { label = {\alph*.},
-                                ref   = {\alph*} }
+																ref   = {\alph*} }
 
 \setlist[equivalenceslist*] {   wide          = 0pt,
-                                leftmargin    = *,
-                                labelindent   = \parindent,
-                                listparindent = \parindent,
-                                parsep        = 0pt }
+																leftmargin    = *,
+																labelindent   = \parindent,
+																listparindent = \parindent,
+																parsep        = 0pt }
 \setlist[equivalenceslist*,1] { label = {\roman*.},
-                                ref   = {\roman*} }
+																ref   = {\roman*} }
 \setlist[equivalenceslist*,2] { label = {\alph*.},
-                                ref   = {\alph*} }
+																ref   = {\alph*} }
 
 \setlist[implicationlist] {     wide          = 0pt,
-                                before        = {\renewcommand{\makelabel}{\dotlabel}},
-                                listparindent = \parindent,
-                                parsep        = 0pt }
+																before        = {\renewcommand{\makelabel}{\dotlabel}},
+																listparindent = \parindent,
+																parsep        = 0pt }
 
 \newcommand{\dotlabel}[1]{\normalfont #1.}

@@ -67,59 +67,59 @@
 
 % arrows
 \renewcommand{\to}{
-  \mathchoice
-  {\longrightarrow}
-  {\rightarrow}
-  {\rightarrow}
-  {\rightarrow}
+	\mathchoice
+	{\longrightarrow}
+	{\rightarrow}
+	{\rightarrow}
+	{\rightarrow}
 }
 \newcommand{\from}{
-  \mathchoice
-  {\longleftarrow}
-  {\leftarrow}
-  {\leftarrow}
-  {\leftarrow}
+	\mathchoice
+	{\longleftarrow}
+	{\leftarrow}
+	{\leftarrow}
+	{\leftarrow}
 }
 \AtBeginDocument{
-  \let\oldmapsto\mapsto
-  \renewcommand{\mapsto}{
-    \mathchoice
-    {\longmapsto}
-    {\oldmapsto}
-    {\oldmapsto}
-    {\oldmapsto}
-  }
+	\let\oldmapsto\mapsto
+	\renewcommand{\mapsto}{
+		\mathchoice
+		{\longmapsto}
+		{\oldmapsto}
+		{\oldmapsto}
+		{\oldmapsto}
+	}
 }
 \AtBeginDocument{
-  \let\oldmapsfrom\mapsfrom
-  \renewcommand{\mapsfrom}{
-    \mathchoice
-    {\longmapsfrom}
-    {\oldmapsfrom}
-    {\oldmapsfrom}
-    {\oldmapsfrom}
-  }
+	\let\oldmapsfrom\mapsfrom
+	\renewcommand{\mapsfrom}{
+		\mathchoice
+		{\longmapsfrom}
+		{\oldmapsfrom}
+		{\oldmapsfrom}
+		{\oldmapsfrom}
+	}
 }
 \newcommand{\onetoone}{
-  \mathchoice
-  {\longleftrightarrow}
-  {\leftrightarrow}
-  {\leftrightarrow}
-  {\leftrightarrow}
+	\mathchoice
+	{\longleftrightarrow}
+	{\leftrightarrow}
+	{\leftrightarrow}
+	{\leftrightarrow}
 }
 \newcommand{\xto}[1]{
-  \mathchoice
-  {\xrightarrow{\enspace #1 \enspace}}
-  {\xrightarrow{#1}}
-  {\xrightarrow{#1}}
-  {\xrightarrow{#1}}
+	\mathchoice
+	{\xrightarrow{\enspace #1 \enspace}}
+	{\xrightarrow{#1}}
+	{\xrightarrow{#1}}
+	{\xrightarrow{#1}}
 }
 \newcommand{\xfrom}[1]{
-  \mathchoice
-  {\xleftarrow{\enspace #1 \enspace}}
-  {\xleftarrow{#1}}
-  {\xleftarrow{#1}}
-  {\xleftarrow{#1}}
+	\mathchoice
+	{\xleftarrow{\enspace #1 \enspace}}
+	{\xleftarrow{#1}}
+	{\xleftarrow{#1}}
+	{\xleftarrow{#1}}
 }
 
 
@@ -233,7 +233,7 @@
 \DeclareMathOperator{\ringchar}{char}
 \DeclareMathOperator{\diag}{diag}
 \NewDocumentCommand{\gr}{O{}}{
-  {\operatorname{gr}}{}_{#1}  % hell again
+	{\operatorname{gr}}{}_{#1}  % hell again
 }
 \newcommand{\id}{\mathrm{id}}
 \DeclareMathOperator{\Res}{Res}
@@ -276,14 +276,14 @@
 
 % decorations
 \RenewDocumentCommand{\check}{sm}{
-  \IfBooleanTF{#1}
-  {#2^{\vee}\!}
-  {#2^{\vee}}
+	\IfBooleanTF{#1}
+	{#2^{\vee}\!}
+	{#2^{\vee}}
 }
 \NewDocumentCommand{\dcheck}{sm}{
-  \IfBooleanTF{#1}
-  {#2^{\vee\vee}\!}
-  {#2^{\vee\vee}}
+	\IfBooleanTF{#1}
+	{#2^{\vee\vee}\!}
+	{#2^{\vee\vee}}
 }
 \newcommand{\ab}{\mathrm{ab}}
 \newcommand{\class}{\overline}
@@ -300,11 +300,11 @@
 
 % shortcuts
 \NewDocumentCommand{\dd}{ O{} m }{
-  \mathchoice
-  {\frac{\partial #1}{\partial #2}}
-  {\partial #1 / \partial #2}
-  {\partial #1 / \partial #2}
-  {\partial #1 / \partial #2}
+	\mathchoice
+	{\frac{\partial #1}{\partial #2}}
+	{\partial #1 / \partial #2}
+	{\partial #1 / \partial #2}
+	{\partial #1 / \partial #2}
 }
 \newcommand{\del}{\partial}
 \newcommand{\mc}[1]{\mathcal{#1}}
@@ -318,19 +318,19 @@
 {\restrict}%
 {s o m m}%
 {%
-  \IfBooleanTF{#1}
-  {%
-    \prerestrict*{#3}_{#4}
-  }
-  {%
-    \IfValueTF{#2}
-    {%
-      \prerestrict[#2]{#3}_{#4}
-    }
-    {%
-      #3\rvert_{#4}
-    }
-  }
+	\IfBooleanTF{#1}
+	{%
+		\prerestrict*{#3}_{#4}
+	}
+	{%
+		\IfValueTF{#2}
+		{%
+			\prerestrict[#2]{#3}_{#4}
+		}
+		{%
+			#3\rvert_{#4}
+		}
+	}
 }
 
 
@@ -340,19 +340,19 @@
 {\suchthat}%
 {so}
 {%
-  \IfValueTF{#2}
-  {%
-    \:#2|\:
-  }
-  {%
-    \IfBooleanTF{#1}
-    {%
-      \:\middle|\:
-    }
-    {%
-      \mathrel{|}      
-    }
-  }
+	\IfValueTF{#2}
+	{%
+		\:#2|\:
+	}
+	{%
+		\IfBooleanTF{#1}
+		{%
+			\:\middle|\:
+		}
+		{%
+			\mathrel{|}      
+		}
+	}
 }
 
 

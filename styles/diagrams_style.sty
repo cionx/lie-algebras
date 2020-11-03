@@ -1,98 +1,98 @@
 %%%%% COMPLICATED STUFF
 
 \NewDocumentCommand{\sldiagram}{soomo}{
-  \begingroup
-  % basic scaling of the image
-  \newcommand{\basescale}{0.7}
-  % read given dimensions, check if dimensions of different kind are given
-  \setsepchar{\\/,} % seperate first by \\ then the sublists by ,
-  \readlist{\dimensionlist}{#4}
-  \newcommand{\maxtypes}{\listlen\dimensionlist[]}
-  \newcommand{\maxcolumn}{\listlen\dimensionlist[1]}  % assumed to be the same for all types
-  \vcenter{\hbox{
-    % if no additional scaling set then use basescale
-    % if only first is set regard as global scaling
-    % if both are set regard as separate x-scaling and y-scaling
-    \IfValueTF{#2}
-    {
-      \IfValueTF{#3}
-      {
-        \begin{tikzpicture}[xscale = #2 * \basescale, yscale = #3 * \basescale]
-      }
-      {
-        \begin{tikzpicture}[scale = #2 * \basescale]
-      }
-      }
-      {
-        \begin{tikzpicture}[scale = \basescale]
-      }
-        % draw baseline and dot, deping on star
-        \IfBooleanTF{#1}
-        {
-          \draw (-0.5, 0) -- (\maxcolumn + 1.5, 0);
-          \draw (0,-0.5) node {$\dots$};
-          \draw (\maxcolumn+1,-0.5) node {$\dots$};
-        }
-        {
-          \draw (0.5, 0) -- (\maxcolumn + 0.5, 0);
-        }
-        % place labels
-        % check first if custom label are specified (assumed to have the same number of arguments as number of dimensions)
-        % otherwise use standard ones (assumes an odd number of columns)
-        \IfValueTF{#5}
-        {
-          \readlist{\labellist}{#5}
-          \foreach \i in {1, ..., \maxcolumn}
-          {
-            \draw (\i, -0.5) node {$\labellist[1,\i]$};
-          }
-        }
-        {
-          \foreach \i in {1, ..., \maxcolumn}
-          {
-            \pgfmathtruncatemacro{\currentweight}{\i - 0.5*\maxcolumn - 0.5}
-            \draw (\i, -0.4) node {$\currentweight$};
-          }
-        }
+	\begingroup
+	% basic scaling of the image
+	\newcommand{\basescale}{0.7}
+	% read given dimensions, check if dimensions of different kind are given
+	\setsepchar{\\/,} % seperate first by \\ then the sublists by ,
+	\readlist{\dimensionlist}{#4}
+	\newcommand{\maxtypes}{\listlen\dimensionlist[]}
+	\newcommand{\maxcolumn}{\listlen\dimensionlist[1]}  % assumed to be the same for all types
+	\vcenter{\hbox{
+		% if no additional scaling set then use basescale
+		% if only first is set regard as global scaling
+		% if both are set regard as separate x-scaling and y-scaling
+		\IfValueTF{#2}
+		{
+			\IfValueTF{#3}
+			{
+				\begin{tikzpicture}[xscale = #2 * \basescale, yscale = #3 * \basescale]
+			}
+			{
+				\begin{tikzpicture}[scale = #2 * \basescale]
+			}
+			}
+			{
+				\begin{tikzpicture}[scale = \basescale]
+			}
+				% draw baseline and dot, deping on star
+				\IfBooleanTF{#1}
+				{
+					\draw (-0.5, 0) -- (\maxcolumn + 1.5, 0);
+					\draw (0,-0.5) node {$\dots$};
+					\draw (\maxcolumn+1,-0.5) node {$\dots$};
+				}
+				{
+					\draw (0.5, 0) -- (\maxcolumn + 0.5, 0);
+				}
+				% place labels
+				% check first if custom label are specified (assumed to have the same number of arguments as number of dimensions)
+				% otherwise use standard ones (assumes an odd number of columns)
+				\IfValueTF{#5}
+				{
+					\readlist{\labellist}{#5}
+					\foreach \i in {1, ..., \maxcolumn}
+					{
+						\draw (\i, -0.5) node {$\labellist[1,\i]$};
+					}
+				}
+				{
+					\foreach \i in {1, ..., \maxcolumn}
+					{
+						\pgfmathtruncatemacro{\currentweight}{\i - 0.5*\maxcolumn - 0.5}
+						\draw (\i, -0.4) node {$\currentweight$};
+					}
+				}
 %       place symbols (circles by standard)
-        \edef\startheight{0}
-        \foreach \i in {1, ..., \maxcolumn}
-        {
-          \xdef\startheight{0}
-          \foreach \t in {1, ..., \maxtypes}
-          {
-            \newcommand{\newheight}{\dimensionlist[\t,\i]}
-            \ifnum \newheight > 0
-              \ifnum \t = 1
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[circle, inner sep=\basescale*1mm, draw, fill=black] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-              \ifnum \t = 2
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[diamond, inner sep=\basescale*0.8mm, draw, fill=green!55!black] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-              \ifnum \t = 3
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[regular polygon, regular polygon sides = 3, draw, inner sep=\basescale*0.55mm, fill=red] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-              \ifnum \t = 4
-                \foreach \j in {1, ..., \newheight}
-                {
-                  \node[star, inner sep=\basescale*0.7mm, draw, fill=yellow!85!black] at (\i, 0.4*\startheight + 0.4*\j) {};
-                }
-              \fi
-            \fi
-            \pgfmathparse{\startheight+\newheight}
-            \xdef\startheight{\pgfmathresult}
-          }
-        }
-        \end{tikzpicture}
-  }}
-  \endgroup
+				\edef\startheight{0}
+				\foreach \i in {1, ..., \maxcolumn}
+				{
+					\xdef\startheight{0}
+					\foreach \t in {1, ..., \maxtypes}
+					{
+						\newcommand{\newheight}{\dimensionlist[\t,\i]}
+						\ifnum \newheight > 0
+							\ifnum \t = 1
+								\foreach \j in {1, ..., \newheight}
+								{
+									\node[circle, inner sep=\basescale*1mm, draw, fill=black] at (\i, 0.4*\startheight + 0.4*\j) {};
+								}
+							\fi
+							\ifnum \t = 2
+								\foreach \j in {1, ..., \newheight}
+								{
+									\node[diamond, inner sep=\basescale*0.8mm, draw, fill=green!55!black] at (\i, 0.4*\startheight + 0.4*\j) {};
+								}
+							\fi
+							\ifnum \t = 3
+								\foreach \j in {1, ..., \newheight}
+								{
+									\node[regular polygon, regular polygon sides = 3, draw, inner sep=\basescale*0.55mm, fill=red] at (\i, 0.4*\startheight + 0.4*\j) {};
+								}
+							\fi
+							\ifnum \t = 4
+								\foreach \j in {1, ..., \newheight}
+								{
+									\node[star, inner sep=\basescale*0.7mm, draw, fill=yellow!85!black] at (\i, 0.4*\startheight + 0.4*\j) {};
+								}
+							\fi
+						\fi
+						\pgfmathparse{\startheight+\newheight}
+						\xdef\startheight{\pgfmathresult}
+					}
+				}
+				\end{tikzpicture}
+	}}
+	\endgroup
 }

@@ -22,6 +22,7 @@
 *.slo
 *.synctex.gz
 *.toc
+*.xdv
 *.xml
 .directory
 PBW Programm/*
