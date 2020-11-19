@@ -1,0 +1,232 @@
+\section{Irreducible and Semisimple Representations}
+
+
+\begin{definition}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$.
+	\begin{enumerate}
+		\item
+			The representation~$M$ is \defemph{irreducible}\index{irreducible representation} or \defemph{simple}\index{simple representation} if it is nonzero and its only subrepresentations are~$0$ and itself.
+		\item
+			The representation~$M$ is \defemph{indecomposable}\index{indecomposable representation} if it is nonzero and it does not admit any decomposition~$M = N_1 \oplus N_2$ into subrepresentations~$N_1$ and~$N_2$ apart from the two decompositions~$M = M \oplus 0$ and~$M = 0 \oplus M$.
+			If~$M$ is not indecomposable then it is \defemph{decomposable}
+		\item
+			The representation~$M$ is~\defemph{completely reducible}\index{completely reducible representations} or~\defemph{semisimple}\index{semisimple representations} if it admits a decomposition
+			\[
+				M = \bigoplus_{i \in I} N_i
+			\]
+			into irreducible subrepresentations~$N_i$.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			A representation is irreducible if and only if it admits precisely two subrepresentations.
+		\item
+			Every irreducible representation indecomposable, but the converse does not hold in general not hold true.
+		\item
+			A representation is irreducible if and only if it is both indecomposable and semisimple.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{example}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Every {\onedimensional} representation is irreducible.
+		\item
+			The adjoint representation of a Lie~algebra~$\glie$ is irreducible if and only if~$\glie$ is nonzero and contains no ideals beside~$0$ and~$\glie$ itself.
+			This is the case if and only if~$\glie$ is either {\onedimensional} (and thus abelian), or simple.
+	\end{enumerate}
+\end{example}
+
+
+\begin{proposition}[Characterization of semisimple representations]
+	Let~$M$ be a representation of a Lie~algebra~$\glie$.
+	The following conditions on~$M$ are equivalent.
+	\begin{equivalenceslist}
+		\item
+			The representation~$M$ is semisimple, i.e.~$M$ admits a decomposition~$M = \bigoplus_{i \in I} N_i$ into some irreducible subrepresentations~$N_i$ of~$M$.
+		\item
+			The representation~$M$ can be written as a (not necessarily direct) sum~$M = \sum_{i \in I} N_i$ for some irreducible subrepresentations~$N_i$ of~$M$.
+		\item
+			Every subrepresentation~$N$ of~$M$ admits a direct complement, i.e.\ there exists a subrepresentation~$P$ of~$M$ with~$M = N \oplus P$.
+	\end{equivalenceslist}
+\end{proposition}
+
+
+\begin{proof}
+	The proof is the same as for semisimple modules over a ring, which we won’t repeat here.
+\end{proof}
+
+
+\begin{corollary}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			Let~$M$ be a semisimple representation of~$\glie$.
+			Every subrepresentation of~$M$ is again semisimple.
+		\item
+			Let~$M$ be a semisimple representation of~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+			The quotient representation~$M/N$ is again semisimple.
+		\item
+			Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of semisimple representations of~$\glie$.
+			The direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$ is again semisimple.
+		\item
+			Let~$M$ be a representation of~$\glie$ and let~$N_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of simisimple subrepresentations of~$\glie$.
+			The intersection~$\bigcap_{\lambda \in \Lambda} N_\lambda$ and sum~$\sum_{\lambda \in \Lambda} N_\lambda$ are again semisimple.
+		\qed
+	\end{enumerate}
+\end{corollary}
+
+
+\begin{remark}
+	Let~$A$ be a~{\algebra{$\kf$}}.
+	Every simple~{\module{$A$}}~$M$ is cyclic and therefore satisfies the inequality~$\dim(M) \leq \dim(A)$.
+	It follows that if~$A$ is finite-dimensional, then all simple~{\modules{$A$}} are also finite-dimensional, with their dimensions uniformly bounded by the dimension of~$A$.
+	
+	The same does not hold for finite-dimensional Lie~algebras.
+	If~$\glie$ is a finite-dimensional Lie~algebra, then the irreducible representations of~$\glie$ do not have to be finite-dimensional.
+	Moreover, those irreducible representations that are finite-dimensional can have arbitrarily large dimension.
+	
+	Indeed, we will see in \cref{highest weight irreps for sl2} that the Lie~algebra~$\sllie(2,\kf)$ admitsfor every nonzero, finite dimension~$d$ precisely one irreducible representation of dimension~$d$ up to isomorphism (if the field~$\kf$ is algebraically closed), and that~$\sllie(2,\kf)$ also admits infinite-dimensional irreducible representations.
+	
+	But we note that the following statements still hold for every Lie~algebra~$\glie$.
+	\begin{enumerate}
+		\item
+			Every nonzero, finite-dimensional representation of~$\glie$ contains an irreducible subrepresentation.
+			Indeed, we can take any subrepresentation of minimal nonzero dimension.
+		\item
+			There exists a finite-dimensional irreducible representation~$M$ for~$\glie$.
+			Here we can take the one-dimensional trivial representation.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{proposition}(Schur’s lemma\footnote{Named after Issai Schur (1875--1941).})
+	\index{Schur’s lemma}
+	\label{schurs lemma}
+	Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	\begin{enumerate}
+		\item
+			If~$M$ is irreducible, then either~$f$ is injective or~$f = 0$, but not both.
+		\item
+			If~$N$ is irreducible, then either~$f$ is surjective or~$f = 0$, but not both.
+		\item
+			If both~$M$ and~$N$ are irreducible, then either~$f$ is bijective or~$f = 0$, but not both.
+		\item
+			If~$M$ is irreducible, then the endomorphism algebra~$\End_{\glie}(M)$ is a skew field extension of~$\kf$.
+		\item
+			\label{endomorphism algebra consists of scalars}
+			Let~$\kf$ be algebraically closed.
+			If~$M$ is both finite-dimensional and irreducible, then every endomorphism~$f$ of~$M$ is of the form~$f = \lambda \id_M$ for some scalar~$\lambda$ in~$\kf$.
+			Thus~$\End_{\glie}(M) = \kf$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			The kernel of~$f$ is a subrepresentation of~$M$ and so either~$\ker(f) = 0$ or~$\ker(f) = M$, but not both because~$M$ is nonzero.
+		\item
+			The image of~$f$ is a subrepresentation of~$N$ and so either~$\im(f) = N$ or~$\im(f) = 0$, but not both because~$N$ is nonzero.
+		\item
+			This is a combination of the previous two statements.
+		\item
+			This is a reformulation of the previous statement.
+			We only need to additionally observe that the algebra~$\End_{\glie}(M)$ is nonzero because~$M$ is nonzero (and thus~$\id_M$ is a nonzero element of~$\End_{\glie}(M)$).
+		\item
+			It follows from the finite-dimensionality of~$M$ that the endomorphism algebra~$\End_{\glie}(M)$ is finite-dimensional.
+			It also follows from the irreducibility of~$M$ that~$\End_{\glie}(M)$ is a skew field extension of~$\kf$.
+			We thus find that~$\End_{\glie}(M)$ is a finite-dimensional skew field extension of~$\kf$.
+			It now follows that~$\End_{\glie}(M)$ equals~$\kf$ because~$\kf$ is algebraically closed.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	One can extend part~\ref{endomorphism algebra consists of scalars} of Schur’s lemma to the case that~$\kf$ is algebraically closed and that the dimension of~$M$ is strictly smaller than the cardinality of~$\kf$.
+	This is a generalization of the above formulation because an algebraically closed field is always infinite.
+
+	To prove this generalization we follow \cite{quillen_endomorphism_simple_module_enveloping_algebra} (where the proof is attributed to \cite{diximier_representations_lie_nilpotent}).
+	Let~$M$ be an irreducible representation of a Lie~algebra~$\glie$ and let~$f$ be an endomorphism of of~$M$.
+	Suppose that the dimension of~$M$ is strictly smaller than the cardinality of~$\kf$, and that~$\kf$ is algebraically closed.
+	To show that~$f$ is a scalar multiple of the identity we proceed in two steps.
+
+	We show first that~$f$ is algebraic over~$\kf$, i.e. that there exists some nonzero polynomial~$P(x)$ in~$\kf[t]$ with~$p(f) = 0$.
+	Suppose otherwise.
+	The endomorphism~$P(f)$ is then nonzero for every nonzero polynomial~$P(t)$ in~$\kf[t]$, and thus an isomorphism of~$M$ by Schur’s lemma.
+	It follows that the homomorphism of~\algebras{$\kf$}
+	\[
+		\kf[t]
+		\to
+		\End_{\glie}(M) \,,
+		\quad
+		P(t)
+		\mapsto
+		P(f)
+	\]
+	extends to a homomorphism of~\algebras{$\kf$}
+	\[
+		\kf(t)
+		\to
+		\End_{\glie}(M) \,,
+		\quad
+		\frac{P(t)}{Q(t)}
+		\mapsto
+		P(f) Q(f)^{-1} \,.
+	\]
+	Through this homomorphisms of~\algebras{$\kf$} we can extend the~\vectorspace{$\kf$} structure of~$M$ to an~\vectorspace{$\kf(x)$} structure.
+	It follows for the~\dimension{$\kf$} of~$M$ that
+	\[
+		\dim_{\kf}(M)
+		=
+		\dim_{\kf(x)}(M) \cdot \dim_{\kf}(\kf(x)) \,.
+	\]
+	The dimension of~$M$ as a~\vectorspace{$\kf(x)$} is nonzero because~$M$ is nonzero (since it is irreducible as a~\representation{$\glie$}).
+	It follows that
+	\[
+		\dim_{\kf}(M)
+		\geq
+		\dim_{\kf}(\kf(x)) \,.
+	\]
+	But the~\dimension{$\kf$} of~$\kf(x)$ is larger or equal to the cardinality of~$\kf$ because the elements
+	\[
+		\frac{1}{t - \lambda}
+		\quad
+		\text{with~$\lambda \in \kf$}
+	\]
+	are linearly independent in~$\kf(x)$.
+	It thus follows that the~\dimension{$\kf$} of~$M$ is at least the cardinality of~$\kf$, contradicting our assumption.
+
+	We have shown that~$f$ is algebraic over~$\kf$
+	There hence exist some nonzero polynomial~$P(t)$ in~$\kf[t]$ with~$P(f) = 0$.
+	The polynomial~$P(x)$ decomposition into linear factors because the field~$\kf$ is algebraically closed.
+	We therefore have the equality
+	\[
+		P(t) = (t - \lambda_1) \dotsm (t - \lambda_r)
+	\]
+	for some~$r \geq 1$ and scalars~$\lambda_1, \dotsc, \lambda_r$ in~$\kf$.
+	It follows that the equality
+	\[
+		0
+		=
+		P(f)
+		=
+		(f - \lambda_1 \id_M) \circ \dotsb \circ (f - \lambda_r \id_M)
+	\]
+	holds in~$\End_{\glie}(M)$.
+	But~$\End_{\glie}(M)$ is a skew field by Schur’s lemma, so it follows that one of the factors~$f - \lambda_i$ vanishes.
+	This mains that~$f$ equals~$\lambda_i \id_M$.
+\end{remark}
+
+
+
+
+

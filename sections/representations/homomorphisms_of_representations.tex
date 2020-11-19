@@ -1,0 +1,668 @@
+\section{Homomorphisms of Representations}
+
+
+\begin{definition}
+	Let~$M$ und~$N$ be two representations of a~{\liealgebra{$\kf$}}~$\glie$.
+	\begin{enumerate}
+		\item
+			A~{\linear{$\kf$}} map~$f$ from~$M$ to~$N$ is a \defemph{homomorphism of representations}\index{homomorphism!of representations} if it satisfies the condition
+			\[
+				f(x \act m) = x \act f(m)
+				\qquad
+				\text{for all~$x \in \glie$ and~$m \in M$.}
+			\]
+		\item
+			The space of homomorphism from~$M$ to~$N$ is denoted by~$\Hom_{\glie}(M,N)$\glsadd{hom of representations}, and for~$N = M$ by~$\End_{\glie}(M)$\glsadd{end of representations}.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+	Let~$M$,~$N$, and~$P$ be representations of a Lie~algebra~$\glie$ over~$\kf$.
+	\begin{enumerate}
+		\item
+			Let
+			\[
+				\rho_M
+				\colon
+				\glie
+				\to
+				\gllie(M) \,,
+				\quad
+				\rho_N
+				\colon
+				\glie
+				\to
+				\gllie(N)
+			\]
+			be the homomorphism of Lie algebras that correspond to the representations~$M$ and~$N$.
+			A~{\linear{$\kf$}} map~$f$ from~$M$ to~$N$ is a homomorphism of representations if and only if it satisfies the equality
+			\[
+				f \circ \rho_M(x)
+				=
+				\rho_N(x) \circ f
+				\qquad
+				\text{for all~$x \in \glie$,}
+			\]
+			i.e.\ if and only if the square diagram
+			\[
+				\begin{tikzcd}[column sep = large]
+					M
+					\arrow{r}[above]{\rho_M(x)}
+					\arrow{d}[left]{f}
+					&
+					M
+					\arrow{d}[right]{f}
+					\\
+					N
+					\arrow{r}[above]{\rho_N(x)}
+					&
+					N
+				\end{tikzcd}
+			\]
+			commutes for every element~$x$ of~$\glie$.
+		\item
+			The identity map~$\id_M$ of~$M$ is a homomorphism of representations from~$M$ to~$M$.
+		\item
+			Let~$f$ be a homomorphism of representations from~$M$ to~$N$ and let~$g$ be a homomorphism of representations from~$N$ to~$P$.
+			The composite~$g \circ f$ is a homomorphism of representations from~$M$ to~$P$.
+		\item
+			Let~$f$ and~$g$ be two homomorphisms of representations from~$M$ to~$N$.
+			Their sum~$f + g$ is again a homomorphism of representations, and for every scalar~$\lambda$ in~$\kf$ the map~$\lambda f$ is again a homomorphism of representations.
+			This means that~$\Hom_{\glie}(M,N)$ is a~{\linear{$\kf$}} subspace of~$\Hom_{\kf}(M,N)$.
+		\item
+			The above observations show that the representations of~$\glie$ together with the homomorphisms of representations between them form a~(\linear{$\kf$}) category\index{category!of representations}.
+			We will denote this category by~$\cRep{\glie}$\glsadd{category lie algebra representation}.
+
+			The class of objects of~$\cRep{\glie}$ is given by the class of representations of~$\glie$.
+			The~\spaces{$\Hom$} of~$\cRep{\glie}$ are given by~$\Hom_{\cRep{\glie}}(M, N) = \Hom_{\glie}(M,N)$ for any two representations~$M$ and~$N$ of~$\glie$.
+			The composition of morphisms in~$\cRep{\glie}$ is the usual composition of functions.
+			The identity morphism of any represenation~$M$ of~$\glie$ is the usual identity function.
+		\item
+			The notions of an \defemph{isomorphism}\index{isomorphism!of representations}, \defemph{monomorphism}\index{monomorphism of representations}, \defemph{epimorphism}\index{epimorphism of representations}, \defemph{endomorphism}\index{endomorphisms of representations} and \defemph{automorphism}\index{automorphism!of representations} are defined in the usual category-theoretic way.
+		\item
+			If~$f$ is a bijective homomorphism of representations from~$M$ to~$N$ then its set-theoretic inverse~$f^{-1}$ is again a homomorphism of representations.
+			Indeed, we have
+			\[
+				f^{-1}(x \act m)
+				=
+				f^{-1}(x \act f(f^{-1}(m)))
+				=
+				f^{-1}(f(x \act f^{-1}(m)))
+				=
+				x \act f^{-1}(m)
+			\]
+			for all~$x \in \glie$ and~$m \in M$.
+			This shows that a homomorphism of representations is an isomorphism if and only if it bijective.
+		\item
+			One can show in the usual way by using kernels and cokernels -- which are again representations, as we will see below -- that the epimorphisms of representations are precisely the surjective homomorphisms, and the monomorphisms of representations are precisely the injective homomorphisms.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{lemma}
+	Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	The kernel\index{kernel} of~$f$ is a subrepresentation of~$M$ while the image\index{image} of~$f$ is a subrepresentation~$N$.
+	\qed
+\end{lemma}
+
+
+\begin{proposition}
+	\label{homomorphisms of representations as invariants}
+	Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$.
+	A linear map~$f$ from~$M$ to~$N$ is a homomorphism of representations if and only if it is invariant under the induced action of~$\glie$ on~$\Hom_{\kf}(M,N)$.
+	In other words,~$\Hom_{\glie}(M, N)$ equals~$\Hom_{\kf}(M,N)^{\glie}$.
+\end{proposition}
+
+
+\begin{proof}
+	We have
+	\begin{align*}
+		\SwapAboveDisplaySkip
+				{}& \text{$f$ is a homomorphism}  \\
+		\iff{}& \text{$f(x \act m) = x \act f(m)$ for all~$x \in \glie$,~$m \in M$}  \\
+		\iff{}& \text{$f(x \act m) - x \act f(m) = 0$ for all~$x \in \glie$,~$m \in M$}  \\
+		\iff{}& \text{$(x \act f)(m) = 0$ for all~$x \in \glie$,~$m \in M$} \\
+		\iff{}& \text{$x \act f = 0$ for all~$x \in \glie$}  \\
+		\iff{}& \text{$f$ is invariant,}
+	\end{align*}
+	as claimed.
+\end{proof}
+
+
+\begin{proposition}
+	Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	Then~$f$ restricts to a homomorphism of representations from~$M^{\glie}$ to~$N^{\glie}$.
+	\qed
+\end{proposition}
+
+
+\begin{remark}
+	\label{invariants are right adjoint}
+	Let~$\glie$ be a Lie~algebra.
+	Let~$\cReptriv{\glie}$\glsadd{category lie algebra trivial representations} be the full sucategory of~$\cRep{\glie}$ whose objects are the trivial~\representations{$\glie$}\index{category!of trivial representations}.
+	(This category is isomorphic to~$\cVect{\kf}$.)
+	Let~$T$ be the inclusion functor from~$\cReptriv{\glie}$ to~$\cRep{\glie}$.
+
+	We have a functor~$(\ph)^{\glie}$ from~$\cRep{\glie}$ to~$\cReptriv{\glie}$.
+	This functor assigns to each~\representation{$\glie$}~$M$ its space of invariants~$M^{\glie}$.
+	To each homomorphism of representations~$f$ from~$M$ to~$N$ it assigns the restriction of~$f$ to a homomorphism of representations from~$M^{\glie}$ to~$N^{\glie}$.
+
+	Let~$M$ be trivial~\representation{$\glie$} and let~$N$ be any~\representation{$\glie$}.
+	The inclusion map~$i$ from~$N^{\glie}$ to~$N$ is a homomorphism of representations, and it induces an isomorphism of vector spaces
+	\[
+		i_*
+		\colon
+		\Hom_{\glie}(M, N^{\glie})
+		\to
+		\Hom_{\glie}(M, N) \,,
+		\quad
+		f
+		\mapsto
+		i \circ f \,.
+	\]
+	This isomorphism is natural in both~$M$ and~$N$.
+	The functor~$(\ph)^{\glie}$ is therefore right adjoint to the inclusion functor~$T$.
+\end{remark}
+
+
+\begin{proposition}
+	\label{list of homomorphism of representations}
+	Let~$\glie$ be a Lie algebra.
+ \begin{enumerate}
+		\item
+			Let~$M$ be a representation of~$\glie$.
+			The natural isomorphisms of vector spaces
+			\begin{align*}
+				\kf \tensor M
+				\to
+				M \,,
+				\quad
+				\lambda \tensor m
+				\mapsto
+				\lambda m
+			\intertext{and}
+				M \tensor \kf
+				\to
+				M \,,
+				\quad
+				m \tensor \lambda
+				\mapsto
+				\lambda m
+			\end{align*}
+			are natural isomorphism of representations.
+		\item
+			Let~$M$ be a representation of~$\glie$.
+			The natural isomorphism of vector spaces
+			\[
+				\Hom_{\kf}( \kf, M )
+				\to
+				M \,,
+				\quad
+				f
+				\mapsto
+				f(1)
+			\]
+			is a natural isomorphism of representations.
+		\item
+			Let~$M$ and~$N$ be two representations of~$\glie$.
+			For every homomorphism of representations~$f$ from~$M$ to~$N$ its dual linear map
+			\[
+				f^*
+				\colon
+				N^*
+				\to
+				M^* \,,
+				\quad
+				m^*
+				\mapsto
+				m^* \circ f
+			\]
+			is again a homomorphism of representations.
+		\item
+			Let more generally~$M$,~$N$,~$P$ be three representations of~$\glie$.
+			For every homomorphism of representations~$f$ from~$M$ to~$N$ the linear map
+			\begin{alignat*}{2}
+				f^*
+				\colon
+				\Hom_{\kf}(N,P)
+				&\to
+				\Hom_{\kf}(M,P) \,,
+				&
+				\quad
+				g
+				&\mapsto
+				g \circ f
+			\intertext{is again a homomorphism of representations, and the linear map}
+				f_*
+				\colon
+				\Hom_{\kf}(P,M)
+				&\to
+				\Hom_{\kf}(P,N) \,,
+				&
+				\quad
+				g
+				&\mapsto
+				f \circ g
+			\end{alignat*}
+			is again a homomorphisms of representations.
+		\item
+			Let~$M$ and~$N$ be two representations of~$\glie$.
+			The natural linear map
+			\[
+				M^* \tensor N
+				\to
+				\Hom_{\kf}(M,N) \,,
+				\quad
+				m^* \tensor n
+				\mapsto
+				(m \mapsto m^*(m) n)
+			\]
+			is a natural homomorphism of representations.
+			If one (or both) of the representations~$M$ and~$N$ is finite-dimensional, then this natural homomorphism is already a natural isomorphism.
+		\item
+			Let~$M^1_1, \dotsc, M^1_{r_1}$ up to~$M^s_1, \dotsc, M^s_{r_s}$ be finitely many collections of finitely many representations of~$\glie$.
+			The natural isomorphism of vector spaces
+			\begin{align*}
+				\bigl(
+					M^1_1 \tensor \dotsb \tensor M^1_{r_1}
+				\bigr)
+				\tensor
+				\dotsb
+				\tensor
+				\bigl(
+					M^s_1 \tensor \dotsb \tensor M^s_{r_s}
+				\bigr)
+				&\to
+				M^1_1 \tensor \dotsb \tensor M^s_{r_s}
+			\shortintertext{given by}
+				(m^1_1 \tensor \dotsb \tensor m^1_{r_1})
+				\tensor
+				\dotsb
+				\tensor
+				(m^s_1 \tensor \dotsb \tensor m^s_{r_s})
+				&\mapsto
+				m^1_1 \tensor \dotsb \tensor m^s_{r_s}
+			\end{align*}
+			for all~$m^i_j \in M^i_j$ is a natural isomorphism of representations.
+		\item
+			Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$ and let~$N$ be another representation of~$\glie$.
+			The natural isomorphism of vector spaces
+			\begin{alignat*}{2}
+				\Biggl(
+					\bigoplus_{\lambda \in \Lambda}
+					M_\lambda
+				\Biggr)
+				\tensor
+				N
+				&\to
+				\bigoplus_{\lambda \in \Lambda}
+				{}
+				( M_\lambda \tensor N ) \,,
+				&\qquad
+				(m_\lambda)_\lambda \tensor n
+				&\mapsto
+				(m_\lambda \tensor n)_\lambda
+			\intertext{
+			is a natural isomorphism of representations.
+			Let similarly~$M$ be a representation of~$\glie$ and let~$N_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+			The natural isomorphism of vector spaces
+			}
+				M
+				\tensor
+				\Biggl(
+					\bigoplus_{\lambda \in \Lambda}
+					N_\lambda
+				\Biggr)
+				&\to
+				\bigoplus_{\lambda \in \Lambda}
+				{}
+				( M \tensor N_\lambda ) \,,
+				&\qquad
+				m \tensor (n_\lambda)_\lambda
+				&\mapsto
+				(m \tensor n_\lambda)_\lambda
+			\end{alignat*}
+			is a natural isomorphism of representations.
+		\item
+			Let~$M_1, \dotsc, M_r$ be representations of~$\glie$ and let~$\sigma$ be a permutation in~$\symm_r$.
+			The natural isomorphism of vector spaces
+			\begin{align*}
+				M_1 \tensor \dotsb \tensor M_r
+				&\to
+				M_{\sigma(1)} \tensor \dotsb \tensor M_{\sigma(r)} \,,
+				\\
+				m_1 \tensor \dotsb \tensor m_r
+				&\mapsto
+				m_{\sigma(1)} \tensor \dotsb \tensor m_{\sigma(r)}
+			\end{align*}
+			is a natural isomorphism of representations.
+		\item
+			Let~$M_1, \dotsc, M_r$ and~$N_1, \dotsc, N_r$ be representations of~$\glie$.
+			For all~$i = 1, \dotsc, n$ let
+			\[
+				f_i \colon M_i \to N_i
+			\]
+			be a homomorphisms of representations.
+			The linear map
+			\begin{align*}
+				f_1 \tensor \dotsb \tensor f_r
+				\colon
+				M_1 \tensor \dotsb \tensor M_r
+				&\to
+				N_1 \tensor \dotsb \tensor N_r \,,
+				\\
+				m_1 \tensor \dotsb \tensor m_r
+				&\mapsto
+				f(m_1) \tensor \dotsb \tensor f(m_r)
+			\end{align*}
+			is again a homomorphism of representations.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{corollary}
+	\label{invariants via internal hom}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	The map
+	\[
+		\Hom_{\glie}(\kf, M)
+		\to
+		M^{\glie} \,,
+		\quad
+		f
+		\mapsto
+		f(1)
+	\]
+	is a well-defined isomorphism of vector spaces.
+\end{corollary}
+
+
+\begin{proof}
+	The isomorphism of vector spaces
+	\[
+		\Hom_{\kf}(\kf, M)
+		\to
+		M \,,
+		\quad
+		f
+		\mapsto
+		f(1)
+	\]
+	is already an isomorphism of representations and thus restricts to an isomorphism
+	\[
+		\Hom_{\glie}(\kf, M)
+		=
+		\Hom_{\kf}(\kf, M)^{\glie}
+		\to
+		M^{\glie} \,,
+	\]
+	as desired.
+\end{proof}
+
+
+\begin{proposition}
+	\label{checking enriched tensor hom adjunction}
+	Let~$\glie$ be a Lie~algebra and let~$M$,~$N$ and~$P$ be representations of~$\glie$.
+	\begin{enumerate}
+		\item
+			The natural isomorphism of vector spaces
+			\[
+				f
+				\colon
+				\Hom_{\kf}( M \tensor_{\kf} N, P )
+				\to
+				\Hom_{\kf}( M, \Hom_{\kf}(N, P) )
+			\]
+			given by
+			\[
+				f(\beta)(m)(n)
+				=
+				\beta(m \tensor n)
+			\]
+			for all~$\beta \in \Hom_{\kf}( M \tensor_{\kf} N, P )$,~$m \in M$,~$n \in N$ is a natural isomorphism of representations.
+		\item
+			The above natural isomorphism of representations restricts to a natural isomorphism of vector spaces
+			\[
+				\Hom_{\glie}( M \tensor_{\kf} N, P )
+				\cong
+				\Hom_{\glie}( M, \Hom_{\kf}(N, P) ) \,.
+			\]
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				f( (x \act \beta) )(m)(n)
+				&=
+				(x \act \beta)(m \tensor n)
+				\\
+				&=
+				x \act \beta(m \tensor n)
+				- \beta( x \act (m \tensor n) )
+				\\
+				&=
+				x \act \beta(m \tensor n)
+				- \beta( (x \act m) \tensor n )
+				- \beta( m \tensor (x \act n) )
+			\end{align*}
+			as well as
+			\begin{align*}
+				( x \act f(\beta) )(m)(n)
+				&=
+				( x \act f(\beta)(m) - f(\beta)(x \act m) )(n)
+				\\
+				&=
+				( x \act f(\beta)(m) )(n)
+				- f(\beta)(x \act m)(n)
+				\\
+				&=
+				x \act f(\beta)(m)(n)
+				- f(\beta)(m)(x \act n)
+				- f(\beta)(x \act m)(n)
+				\\
+				&=
+				x \act \beta(m \tensor n)
+				- \beta( m \tensor (x \act n) )
+				- \beta( (x \act m) \tensor n )
+			\end{align*}
+			for all~$x \in \glie$,~$\beta \in \Hom_{\kf}(M \tensor N, P)$,~$m \in M$,~$n \in N$.
+		\item
+			By applying the functor~$(\ph)^{\glie}$ to the isomorphism
+			\[
+				\Hom_{\kf}( M \tensor_{\kf} N, P )
+				\cong
+				\Hom_{\kf}( M, \Hom_{\kf}(N, P) )
+			\]
+			we get a restricted isomorphism
+			\[
+				\Hom_{\glie}( M \tensor_{\kf} N, P )
+				\cong
+				\Hom_{\glie}( M, \Hom_{\kf}(N, P) ) \,
+			\]
+			as desired.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	\label{enriched tensor hom adjunction}
+	It follows from \cref{checking enriched tensor hom adjunction} that for any representation~$M$ of~$\glie$ the functor
+	\[
+		(\ph) \tensor_{\kf} M
+		\colon
+		\cRep{\glie}
+		\to
+		\cRep{\glie}
+	\]
+	is left adjoint\index{adjunction} to the functor
+	\[
+		\Hom_{\kf}(M, \ph)
+		\colon
+		\cRep{\glie}
+		\to
+		\cRep{\glie} \,.
+	\]
+\end{remark}
+
+
+\begin{proposition}[Homomorphism theorem]
+	\index{homomorphism theorem!for representations}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+	\begin{enumerate}
+		\item
+			The canonical projection map
+			\[
+				p
+				\colon
+				M
+				\to
+				M/N \,,
+				\quad
+				m
+				\mapsto
+				\class{m}
+			\]
+			is a homomorphism of representations.
+	\end{enumerate}
+	Let~$P$ be another representation of~$\glie$.
+	\begin{enumerate}[resume*]
+		\item
+			Let~$g$ be a homomorphism of representations from~$M/N$ to~$P$.
+			The composite~$g \circ p$ is a homomorphism of representations from~$M$ to~$P$ such that~$N$ is contained in the kernel of~$g \circ p$.
+		\item
+			Let~$f$ be a homomorphism of representations from~$M$ to~$P$.
+			The homomorphism~$f$ factors through a homomorphism of representations~$g$ from~$M/N$ to~$P$ that makes the diagram
+			\[
+				\begin{tikzcd}[row sep = large]
+					M
+					\arrow{r}[above]{f}
+					\arrow{d}[left]{p}
+					&
+					N
+					\\
+					M/N
+					\arrow[dashed]{ur}[below right]{g}
+					&
+					{}
+				\end{tikzcd}
+			\]
+			commute if and only if~$N$ is contained in the kernel of~$f$.
+			The homomorphism~$g$ is unique and it is given by
+			\[
+				g(\class{m}) = f(m)
+				\qquad
+				\text{for every~$m \in M$.}
+			\]
+			Its image and kernel are given by~$\im(g) = \im(f)$ and~$\ker(g) = \ker(f)/N$.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{corollary}[Isomorphism theorems]
+	\index{isomorphism theorems!for representations}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$.
+	\begin{enumerate}
+		\item
+			Let~$N$ be another representation of~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+			The homomorphism~$f$ induces a unique well-defined isomorphism of representations
+			\[
+				M/{\ker(f)}
+				\to
+				\im(f) \,,
+				\quad
+				\class{m}
+				\mapsto
+				f(m)  \,.
+			\]
+		\item
+			Let~$N$ and~$P$ be two subrepresentations of~$M$ such that~$N$ is contained in~$P$.
+			The quotient representation~$N/P$ is a subrepresentation of~$M/P$ and the natural isomorphism of vector spaces
+			\[
+				(M/P) / (N/P)
+				\to
+				M/N \,,
+				\quad
+				\class{\class{m}}
+				\mapsto
+				\class{m}
+			\]
+			is a natural isomorphism of representations.
+		\item
+			Let~$N$ and~$P$ be subrepresentations of~$M$.
+			Then~$P$ is a subrepresentation of the sum~$N+P$, the intersection~$N \cap P$ is a subrepresentation of~$P$, and the natural isomorphism of vector spaces
+			\[
+				N/(N \cap P)
+				\to
+				(N + P)/P  \,,
+				\quad
+				\class{n}
+				\mapsto
+				\class{n}
+			\]
+			is a natural isomorphism of representations.
+	\end{enumerate}
+\end{corollary}
+
+
+\begin{lemma}
+	Let~$M$ and~$N$ be two representations of a Lie~algebra~$\glie$ and let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	\begin{enumerate}
+		\item
+			Let~$P$ be a subrepresentation of~$M$.
+			The image~$f(P)$ is a subrepresentation of~$N$.
+		\item
+			Let~$P$ be a subrepresentation of~$N$.
+			The preimage~$f^{-1}(P)$ is a subrepresentation of~$M$.
+		\qed
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{proposition}[Correspondence theorem]
+	\index{correspondence theorem!for representations}
+	\label{correspondence theorem for representations}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+	Let~$p$ the canonical projection map from~$M$ to~$M/N$.
+	\begin{enumerate}
+		\item
+			Let~$P$ be a subrepresentation of~$M$ that contains~$N$.
+			The quotient representation~$P/N$ is a subrepresentation of~$M/N$, and this construction results in a {\onetoonetext} correspondence
+			\begin{align*}
+				\left\{
+					\begin{tabular}{@{}c@{}}
+						subrepresentations~$P$ of~$M$ \\
+						that contain~$N$
+					\end{tabular}
+				\right\}
+				&\longleftrightarrow
+				\{ \text{subrepresentations of~$M/N$} \}  \,,
+				\\
+				P
+				&\mapsto
+				P/N \,,
+				\\
+				p^{-1}(Q)
+				&\mapsfrom
+				Q  \,.
+			\end{align*}
+		\item
+			Let~$P$ be a subrepresentation of~$M$ containing~$N$.
+			Then it holds for the corresponding subrepre~$P/N$ of~$M/N$ that~$(M/N) / (P/N) \cong M/P$ by the third isomorphism theorem.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+

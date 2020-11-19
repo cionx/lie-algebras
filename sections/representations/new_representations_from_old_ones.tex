@@ -1,0 +1,661 @@
+\section{New Representations from Old Ones}
+
+
+\begin{proposition}
+	\label{new representations from old ones}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+			Then the product~$\prod_{\lambda \in \Lambda} M_\lambda$\glsadd{product of representations}\index{product of representations} becomes again a representation of~$\glie$ via the action given by
+			\[
+				x \act (m_\lambda)_\lambda
+				\defined
+				( x \act m_\lambda )_\lambda
+				\qquad
+				\text{for all~$x \in \glie$ and~$(m_\lambda)_\lambda \in \prod_{\lambda \in \Lambda} M_\lambda$.}
+			\]
+		\item
+			Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+			Then the direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$\glsadd{direct sum of representations}\index{direct sum of representations} becomes again a representation of~$\glie$ via the action given by
+			\[
+				x \act (m_\lambda)_\lambda
+				\defined
+				( x \act m_\lambda )_\lambda
+				\qquad
+				\text{for all~$x \in \glie$ and~$(m_\lambda)_\lambda \in \bigoplus_{\lambda \in \Lambda} M_\lambda$.}
+			\]
+		\item
+			Let~$M$ and~$N$ be two representations of~$\glie$.
+			Their tensor product~$M \tensor N$\index{tensor product of representations} becomes again a representation of~$\glie$ via the action
+			\[
+				x \act (m \tensor n)
+				\defined
+				(x \act m) \tensor n + m \tensor (x \act n)
+				\qquad
+				\text{for all~$x \in \glie$,~$m \in M$,~$n \in N$.}
+			\]
+			Let more generally~$M_1, \dotsc, M_r$ be a finite collection of representations of~$\glie$.
+			Then their tensor product~$M_1 \tensor \dotsb \tensor M_r$\glsadd{tensor product of representations} becomes again a representation of~$\glie$ via the action
+			\[
+				x \act (m_1 \tensor \dotsb \tensor m_r)
+				\defined
+				\sum_{i=1}^r
+								m_1
+				\tensor \dotsb
+				\tensor m_{i-1}
+				\tensor (x \act m_i)
+				\tensor m_{i+1}
+				\tensor \dotsb
+				\tensor m_r
+			\]
+			for all~$x \in \glie$ and all~$m_i \in M_i$ for~$i = 1, \dotsc, r$.
+		\item
+			Let~$M$ and~$N$ be two representations of~$\glie$.
+			The vector space~$\Hom_{\kf}(M,N)$\glsadd{internal hom representation}\index{Hom-representation@$\Hom$-representation} becomes again a representation of~$\glie$ via the action
+			\[
+				(x \act f)(m)
+				\defined
+				x \act f(m) - f(x \act m)
+			\]
+			for all~$x \in \glie$,~$f \in \Hom_{\kf}(M,N)$,~$m \in M$.
+			% TODO: Add abstract Herleitung: Have induced left and right actions, they commute, so have U(g) tensor U(g) module. Now use comult to get U(g) module.
+		\item
+			Every~{\vectorspace{$\kf$}}~$M$ becomes a representation of~$\glie$ via the \defemph{trivial action}\index{action!trivial}\index{trivial action} given by
+			\[
+				x \act m
+				\defined
+				0
+				\qquad
+				\text{for all~$x \in \glie$ and~$m \in M$.}
+			\]
+		\item
+			Let~$M$ be a representation of~$\glie$.
+			The dual space~$M^*$\glsadd{dual space representation}\index{dual space of representation} becomes again a representation of~$\glie$ via the action
+			\[
+				(x \act m^*)(m)
+				\defined
+				- m^*(x \act m)
+				\qquad
+				\text{for all~$x \in \glie$,~$m^* \in M^*$,~$m \in M$.}
+			\]
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have for all elements~$x$,~$y$ of~$\glie$ and every element~$(m_\lambda)_\lambda$ of~$\prod_{\lambda \in \Lambda} M_\lambda$ that
+			\begin{align*}
+				x \act y \act (m_\lambda)_\lambda
+				- y \act x \act (m_\lambda)_\lambda
+				&=
+				(x \act y \act m_\lambda)_\lambda
+				- (y \act x \act m_\lambda)_\lambda
+				\\
+				&=
+				(x \act y \act m_\lambda - y \act x \act m_\lambda)_\lambda
+				\\
+				&=
+				([x,y] \act m_\lambda)_\lambda
+				\\
+				&=
+				[x,y] \act (m_\lambda)_\lambda \,.
+			\end{align*}
+		\item
+			That the given formula gives an action of~$\glie$ on the direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$ follows from the same calculation as for the product~$\prod_{\lambda \in \Lambda} M_\lambda$.
+		\item
+			It sufficies by induction to consider the case~$r = 2$, i.e. the binary tensor product~$M \tensor N$.
+			We find in this case for every element~$x$ of~$\glie$, every element~$m$ of~$M$ and every element~$n$ of~$N$ that
+			\begin{align*}
+				x \act y \act (m \tensor n)
+				&=
+				x \act ( (y \act m) \tensor n
+				+ m \tensor (y \act n) )
+				\\
+				&=
+				x \act ( (y \act m) \tensor n)
+				+ x \act (m \tensor (y \act n) )
+				\\
+				&=
+				(x \act y \act m) \tensor n
+				+ (y \act m) \tensor (x \act n)
+				+ (x \act m) \tensor (y \act n)
+				+ m \tensor (x \act y \act n)
+			\end{align*}
+			and therefore
+			\begin{align*}
+				{}&
+				x \act y \act (m \tensor n)
+				- y \act x \act (m \tensor n)
+				\\
+				={}&
+				(x \act y \act m) \tensor n
+				+ m \tensor (x \act y \act n)
+				- (y \act x \act m) \tensor n
+				- m \tensor (y \act x \act n)
+				\\
+				={}&
+				(x \act y \act m - y \act x \act m) \tensor n
+				+ m \tensor (x \act y \act n - y \act x \act n)
+				\\
+				={}&
+				([x,y] \act m) \tensor n
+				+ m \tensor ([x,y] \act n) \,.
+			\end{align*}
+		\item
+			We find all elements~$x$,~$y$ of~$\glie$, every element~$f$ of~$\Hom_{\kf}(M, N)$ and every element~$m$ of~$M$ that
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				(x \act y \act f - y \act x \act f)(m)
+				&=
+				(x \act y \act f)(m) - (y \act x \act f)(m)
+				\\
+				&=
+				-(y \act f)(x \act m) + (x \act f(y \act m)
+				\\
+				&=
+				f(y \act x \act m) - f(x \act y \act m)
+				\\
+				&=
+				-f(x \act y \act m - y \act x \act m)
+				\\
+				&=
+				-f([x,y] \act m)
+				\\
+				&=
+				([x,y] \act f)(m)  \,,
+			\end{align*}
+			and therefore
+			\[
+				x \act y \act f - y \act x \act f
+				=
+				[x,y] \act f \,.
+			\]
+		\item
+			It holds for all element~$x$,~$y$ of~$\glie$ and every element~$m$ of~$M$ that
+			\[
+				x \act y \act m - y \act x \act m
+				=
+				0 - 0
+				=
+				0
+				=
+				[x,y] \act m \,.
+			\]
+		\item
+			The action of~$\glie$ on~$M$ together with the trivial action of~$\glie$ on~$\kf$ induce an action of~$\glie$ on~$\Hom_{\kf}(M, \kf) = M^*$.
+			This induced action is precisely the desired one.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	Let~$M$ be a representation of~$\glie$.
+	The action of~$\glie$ on the dual space~$M^*$ can also be explained in a more systematic way, as we will now explain.
+
+	Let~$\rho$ be the homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$ corresponding to the given representation~$M$.
+	The algebra anti-homomorphism
+	\[
+		\End_{\kf}(M)
+		\to
+		\End_{\kf}(M^*) \,,
+		\quad
+		f
+		\mapsto
+		f^*
+	\]
+	is in particular an anti-homomorphism of Lie~algebras from~$\gllie(M)$ to~$\gllie(M^*)$.
+	The resulting composition
+	\[
+		\glie
+		\xto{\rho}
+		\gllie(M)
+		\to
+		\gllie(M^*)
+	\]
+	is again an anti-homorphism of Lie~algebras.
+	This anti-homomorphism corresponds to a right action of~$\glie$ on~$M^*$ given by
+	\[
+		m^* \act x
+		\defined
+		\rho(x)^*(m^*)
+		=
+		m^* \circ \rho(x)
+	\]
+	for all~$x \in \glie$ ~$m^* \in M^*$.
+	This action can more explicitely be rewritten as
+	\[
+		(m^* \act x)(m)
+		=
+		m^*(x \act m)
+	\]
+	for all~$x \in \glie$,~$m^* \in M^*$,~$m \in M$.
+	This right action of~$\glie$ on~$M^*$ corresponds to a left action of~$\glie$ on~$M$ via the formula
+	\[
+		x \act m^*
+		\defined
+		-m^* \act x
+	\]
+	for all~$x \in \glie$ and~$m^* \in M^*$.
+	This left action can more explicitely be rewritten as
+	\[
+		(x \act m^*)(m)
+		=
+		-m^*(x \act m)
+	\]
+	for all~$x \in \glie$,~$m^* \in M^*$,~$m \in M$.
+	This is precisely the action of~$\glie$ on~$M^*$ that we have seen in \cref{new representations from old ones}.
+\end{remark}
+
+
+\begin{definition}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$.
+	A \defemph{subrepresentation}\index{subrepresentation} of~$M$ is a linear subpace~$N$ of~$M$ such that
+	\[
+		x \act n \in N
+		\qquad
+		\text{for all~$x \in \glie$ and~$n \in N$.}
+	\]
+\end{definition}
+
+
+\begin{remark}
+	Let~$(M, \rho)$ be a representation of a Lie~algebra~$\glie$.
+	A linear subspace~$N$ of~$M$ is a subrepresentation of~$M$ if and only if~$N$ is~{\invariant{$\rho(x)$}} for every element~$x$ of~$\glie$, in the sense that~$\rho(x)(N) \subseteq N$.
+\end{remark}
+
+
+\begin{examples}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			Let~$M$ be a representation of~$\glie$.
+			The linear subspaces~$0$ and~$M$ are subrepresentations of~$M$.%
+		\footnote{
+			These two subrepresentations are often called the \defemph{trivial} ones.
+			We will abstain from doing so because we will introduce the notion of a trivial representation in \cref{trivial representations}.
+		}
+		\item
+			Let~$M$ be a representation of~$\glie$.
+			Let~$N_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of subrepresentations~$N_\lambda$ of~$M$.
+			Then both the intersection~$\bigcap_{\lambda \in \Lambda} N_\lambda$\index{intersection!of subrepresentations} and the sum~$\sum_{\lambda \in \Lambda} N_\lambda$\index{sum!of subrepresentations} are again subrepresentations of~$M$.
+		\item
+			Let~$M_\lambda$ with~$\lambda$ in~$\Lambda$ be a collection of representations of~$\glie$.
+			The direct sum~$\bigoplus_{\lambda \in \Lambda} M_\lambda$ is a subrepresentation of the product~$\prod_{\lambda \in \Lambda} M_\lambda$.
+		\item
+			The subrepresentations of the adjoint representation of~$\glie$ are precisely the ideals of~$\glie$.
+		\item
+			Let~$M$ be any representation of~$\glie$.
+			The the linear subspace~$\glie M$ of~$M$ given by
+			\[
+				\glie M
+				\defined
+				\gen{
+					x \act m
+					\suchthat
+					x \in \glie,
+					m \in M
+				}_{\kf}
+				\glsadd{certain subrepresentation}
+			\]
+			is a subrepresentation of~$\glie$.
+			More generally, every linear subspace of~$M$ that contains~$\glie M$ is a subrepresentation of~$M$.
+	\end{enumerate}
+\end{examples}
+
+
+\begin{definition}
+	\label{trivial representations}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$.
+	\begin{enumerate}
+		\item
+			The representation~$M$ is \defemph{trivial}\index{trivial representation} if every element~$x$ of~$\glie$ acts with the zero endomorphism on~$M$, i.e. if~$x \act m = 0$ for all~$x \in \glie$ and~$m \in M$.
+		\item
+			An element~$m$ of~$M$ is \defemph{\invariant{$\glie$}}\index{invariant}, or simply~\defemph{invariant}, if
+			\[
+				x \act m = 0
+				\qquad
+				\text{for all~$x \in \glie$.}
+			\]
+			The set of invariants of~$M$\index{invariants} is denoted by
+			\[
+				M^{\glie}
+				\defined
+				\{
+					m \in M
+				\suchthat
+					\text{$x \act m = 0$ for every~$x \in \glie$}
+				\}  \,.
+				\glsadd{invariants of representation}
+			\]
+	\end{enumerate}
+\end{definition}
+
+
+% TODO: Explain connection to representations of groups.
+
+
+\begin{remark}
+	Let~$\glie$ be a~\liealgebra{$\kf$} and let~$M$ be a~\vectorspace{$\kf$}.
+	The vector space~$M$ can be made into a trivial~\representation{$\glie$} in precisely one way.
+	A trivial~\representation{$\glie$} is therefore \enquote{the same} as a vector space.
+
+	That every~\vectorspace{$\kf$}~$M$ can be made into a representation of~$\glie$ corresponds to the fact that there always exists a homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$, namely the zero homomorphism.
+\end{remark}
+
+
+
+\begin{example}
+	Let~$\glie$ be a Lie~algebra.
+	The space of invariants of the adjoint representation of~$\glie$ is given by
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		\glie^{\glie}
+		&=
+		\{
+			y \in \glie
+		\suchthat
+			\text{$x \act y = 0$ for all~$x \in \glie$}
+		\}
+		\\
+		&=
+		\{
+			y \in \glie
+		\suchthat
+			\text{$\ad(x)(y) = 0$ for all~$x \in \glie$}
+		\}
+		\\
+		&=
+		\{
+			y \in \glie
+		\suchthat
+			\text{$[x,y] = 0$ for all~$x \in \glie$}
+		\}
+		\\
+		&=
+		\centerlie(\glie) \,.
+	\end{align*}
+\end{example}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	The space of invariants~$M^{\glie}$ is the largest trivial subrepresentation of~$M$.
+	\qed
+\end{proposition}
+
+
+\begin{example}[Quotient representations]
+	\label{quotient representation}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+	The quotient vector space~$M/N$ inherits from~$M$ the structure of a~{\representation{$\glie$}} via the action of~$\glie$ on~$M/N$ given by
+	\[
+		x \act \class{m}
+		\defined
+		\class{x \act m}
+		\qquad
+		\text{for all~$x \in \glie$ acnd~$m \in M$}.
+	\]
+
+	Indeed, if two elements~$m_1$ and~$m_2$ of~$M$ result in the same element of~$M/N$ then the difference~$m_1 - m_2$ is contained in the subrepresentation~$N$.
+	The difference
+	\[
+		x \act m_1 - x \act m_2
+		=
+		x \act (m_1 - m_2)
+	\]
+	is again contained in~$N$, whence the element~$x \act m_1$ and~$x \act m_2$ become equal in~$M/N$.
+	We have thus a well-defined bilinear map
+	\[
+		\glie \times (M / N)
+		\to
+		M / N \,,
+		\quad
+		(x, \class{m})
+		\mapsto
+		\class{x \act m} \,.
+	\]
+	This is an action of~$\glie$ on~$M$ because we have for any two element~$x$,~$y$ of~$\glie$ and every element~$m$ of~$M$ that
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		[x,y] \act \class{m}
+		&=
+		\class{[x,y] \act m}
+		\\
+		&=
+		\class{x \act (y \act m) - y \act (x \act m)}
+		\\
+		&=
+		\class{x \act (y \act m)} - \class{y \act (x \act m)}
+		\\
+		&=
+		x \act (y \act \class{m}) - y \act (x \act \class{m}) \,.
+	\end{align*}
+	
+	Alternatively, let~$\rho$ be the homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$ corresponding to the action of~$\glie$ on~$M$.
+	Then the linear subspace~$N$ of~$M$ is~{\invariant{$\rho(x)$}} for all~$x \in \glie$, wence the endomorphism~$\rho(x)$ induces an endomorphism
+	\[
+		\induced{\rho(x)}
+		\colon
+		M/N
+		\to
+		M/N \,,
+		\quad
+		\class{m}
+		\mapsto
+		\class{\rho(x)(m)}
+	\]
+	for every element~$x$ of~$\glie$.
+	The resulting map
+	\[
+		\induced{\rho}
+		\colon
+		\glie
+		\to
+		\gllie(M/N) \,,
+		\quad
+		x
+		\mapsto
+		\induced{\rho(x)}
+	\]
+	is again a homomorphism of Lie~algebras because
+	\[
+		\induced{\rho}([x,y])
+		=
+		\induced{\rho([x,y])}
+		=
+		\induced{[\rho(x), \rho(y)]}
+		=
+		[\induced{\rho(x)}, \induced{\rho(y)}]
+		=
+		[\induced{\rho}(x), \induced{\rho}(y)]
+	\]
+	for all~$x, y \in \glie$.
+	The homomorphism~$\induced{\rho}$ makes~$M/N$ into a representation of~$\glie$ as desired.
+\end{example}
+
+
+\begin{definition}
+	Let~$M$ be a representation of a Lie~algebra~$\glie$ and let~$N$ be a subrepresentation of~$M$.
+	The representation~$M/N$\glsadd{quotient representation} from \cref{quotient representation} is the \defemph{quotient representation}\index{quotient representation} of~$M$ by~$N$.
+\end{definition}
+
+
+\begin{lemma}
+	Let~$\glie$ be a Lie~algebra, let~$M$ be a representation of~$\glie$, and let~$d$ be a natural number.
+	\begin{enumerate}
+		\item
+			The exterior power~$\Exterior^d(M)$\glsadd{exterior power}\index{exterior power} becomes a representation of~$\glie$ via the action
+			\[
+				x \act (m_1 \wedge \dotsb \wedge m_d)
+				\defined
+				\sum_{i=1}^d
+				m_1 \wedge \dotsb \wedge m_{i-1} \wedge (x \act m_i) \wedge m_{i+1} \wedge \dotsb \wedge m_d
+			\]
+			for all~$x \in \glie$ and~$m_1, \dotsc, m_d \in M$.
+		\item
+			The symmetric power~$\Symm^d(M)$\glsadd{symmetric power}\index{symmetric power} becomes a representation of~$\glie$ via the action
+			\[
+				x \act (m_1 \dotsm m_d)
+				\defined
+				\sum_{i=1}^d
+				m_1 \dotsm m_{i-1} {} (x \act m_i) {} m_{i+1} \dotsm m_d
+			\]
+			for all~$x \in \glie$ and~$m_1, \dotsc, m_d \in M$.
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			The exterior power~$\Exterior^d(M)$ is given by~$\Exterior^d(M) = M^{\tensor d} / N$ where the linear suspace~$N$ of~$M^{\tensor d}$ is given by
+			\[
+				N
+				=
+				\gen{
+					m_1 \tensor \dotsb \tensor m_d
+				\suchthat
+					\text{$m_1, \dotsc, m_d \in M$,~$m_i = m_j$ for some~$i \neq j$}
+				}_{\kf} \,.
+			\]
+			It sufficies to show that this linear subspace~$N$ is already a subrepresentation of~$M^{\tensor d}$.
+			To show this, let~$m_1 \tensor \dotsb \tensor m_d$ be a simple tensor in~$M^{\tensor d}$ with~$m_i = m_j$ for some~$i < j$.
+			It holds for every element~$x$ of~$\glie$ that
+			\[
+				x \act (m_1 \tensor \dotsb \tensor m_d)
+				=
+				\sum_{k=1}^d m_1
+				\tensor \dotsb \tensor m_{k-1}
+				\tensor (x \act m_k)
+				\tensor m_{k+1} \tensor \dotsb \tensor m_d  \,.
+			\]
+			The summands for~$k \neq i,j$ are again contained in~$N$ as the tensor factors in the~{\howmanyth{$i$}} and~{\howmanyth{$j$}} place remain unchanged, and hence remain equal.
+			With the vector~$n \defined m_i = m_j$ the two remaining summands may be rewritten as
+			\begin{align*}
+				{}&
+					m_1 \tensor \dotsb
+					\tensor (x \act n)
+					\tensor \dotsb
+					\tensor n
+					\tensor \dotsb \tensor m_d
+				\\
+				{}&
+				+ m_1 \tensor \dotsb
+					\tensor n
+					\tensor \dotsb
+					\tensor (x \act n)
+					\tensor \dotsb \tensor m_d
+				\\
+				={}&
+					m_1 \tensor \dotsb
+					\tensor ( (x \act n) + n )
+					\tensor \dotsb
+					\tensor ( (x \act n) + n )
+					\tensor \dotsb \tensor m_d
+				\\
+				{}&
+				- m_1 \tensor \dotsb
+					\tensor (x \act n)
+					\tensor \dotsb
+					\tensor (x \act n)
+					\tensor \dotsb \tensor m_d
+				\\
+				{}&
+				- m_1 \tensor \dotsb
+					\tensor n
+					\tensor \dotsb
+					\tensor n
+					\tensor \dotsb \tensor m_d  \,.
+			\end{align*}
+			This term is again contained in~$N$.
+			This shows altogether that~$N$ is indeed a subrepresentation of~$M^{\tensor d}$.
+		\item
+			Similarly to before we have to show that the linear subspace~$N$ of~$M^{\tensor d}$ given by
+			\[
+				N
+				\defined
+				\gen{
+					m_1 \tensor \dotsb \tensor m_d
+					- m_{\sigma(1)} \tensor \dotsb \tensor m_{\sigma(d)}
+				\suchthat
+					m_1, \dotsc, m_d \in M
+				}_{\kf}
+			\]
+			is a subrepresentation of~$M^{\tensor d}$.
+			We denote the permutation action of the symmetric group~$\Symm_d$ on the tensor power~$M^{\tensor d}$ from the right by
+			\[
+				t \act \sigma
+			\]
+			for all~$\sigma \in \symm_d$ and~$t \in M^{\tensor d}$.
+			This action is on simple tensors given by
+			\[
+				(m_1 \tensor \dotsb \tensor m_d) \act \sigma
+				=
+				m_{\sigma(1)} \tensor \dotsb \tensor m_{\sigma(d)}
+			\]
+			for all~$\sigma \in \symm_d$ and~$m_1, \dotsc, m_d \in M$.
+			We fix now an element~$x$ of~$\glie$ and denote for all indices~$i = 1, \dotsc, d$ by
+			\[
+				X_i
+				\colon
+				M^{\tensor d}
+				\to
+				M^{\tensor d}
+			\]
+			the linear map that is given on simple tensors by
+			\[
+				X_i(m_1 \tensor \dotsb \tensor m_d)
+				=
+				m_1 \tensor \dotsb \tensor m_{i-1}
+				\tensor (x \act m_i)
+				\tensor m_{i+1} \tensor \dotsb \tensor m_d
+			\]
+			for all~$m_1, \dotsc, m_d \in M$.
+			
+			We observe the relation
+			\begin{equation}
+				\label{interplay of permutation and multiplication}
+				X_i( t \act \sigma )
+				=
+				X_{\sigma(i)}(t) \act \sigma
+			\end{equation}
+			for all~$\sigma \in \symm_d$,~$i = 1, \dotsc, d$.
+			Indeed, let us consider for~$t$ a simple tensor~$m_1 \tensor \dotsb \tensor m_d$ with~$m_1, \dotsc, m_d \in M$.
+			On both sides of~\eqref{interplay of permutation and multiplication} we reorder the tensor factors in the same way (namley via~$\sigma$) and act with~$x$ on the same tensor factor (namely~$m_{\sigma(i)}$).
+			This shows the equality~\eqref{interplay of permutation and multiplication} for simple tensors.
+			It therefore also holds for arbitrary tensors, i.e. for all elements of~$M^{\tensor d}$.
+			
+			It follows for every element~$t$ of~$M^{\tensor d}$ that
+			\begin{align*}
+				x \act ( t - t \act \sigma )
+				&=
+				x \act t - x \act (t \act \sigma)
+				\\
+				&=
+				\sum_{i=1}^d X_i(t) - \sum_{i=1}^d X_i(t \act \sigma)
+				\\
+				&=
+				\sum_{i=1}^d X_i(t) - \sum_{i=1}^d X_{\sigma(i)}(t) \act \sigma
+				\\
+				&=
+				\sum_{i=1}^d X_i(t) - \sum_{i=1}^d X_i(t) \act \sigma
+				\\
+				&=
+				\sum_{i=1}^d \biggl( X_i(t) - X_i(t) \act \sigma \biggr) \,.
+			\end{align*}
+			The summands~$X_i(t) - X_i(t) \act \sigma$ are again contained in~$N$.
+			We have therefore shown that the linear subspace~$N$ of~$M^{\tensor d}$ is indeed a subrepresentation.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+
+
+

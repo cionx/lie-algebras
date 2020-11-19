@@ -1,0 +1,516 @@
+\section{Definition and Examples}
+
+
+\begin{definition}
+	Let~$\glie$ be a~{\liealgebra{$\kf$}}.
+	\begin{enumerate}
+		\item
+			A \defemph{representation}\index{representation} of~$\glie$ is a~{\vectorspace{$\kf$}}~$M$ together with a homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$.
+		\item
+			The \defemph{dimension}\index{dimension} of a representation~$(M, \rho)$ is the dimension of its underlying vector space~$M$.
+		\item
+			A representation~$(M, \rho)$ is~\defemph{faithful}\index{faithful} if the homomorphism~$\rho$ is injective.
+		\item
+			A \defemph{(left) action}\index{action!left}\index{left action} of~$\glie$ on a vector space~$M$ is a bilinear map
+			\[
+				\glie \times M \to M \,,
+				\quad
+				(x,m) \mapsto x \act m
+				\glsadd{action on an element}
+			\]
+			such that
+			\[
+				[x,y] \act m
+				=
+				x \act (y \act m) - y \act (x \act m)
+				\qquad
+				\text{for all~$x, y \in \glie$ and~$m \in M$.}
+			\]
+	\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}
+	\label{correspodence between representations and actions}
+	Let~$\glie$ be a~\liealgebra{$\kf$} and let~$M$ be a~\vectorspace{$\kf$}.
+	\begin{enumerate}
+		\item
+			Given a homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$, the formula
+			\[
+				x \act m \defined \rho(x)(m)
+				\qquad
+				\text{for all~$x \in \glie$ and~$m \in M$}
+			\]
+			defines an action of~$\glie$ on~$M$.
+		\item
+			Suppose on the other hand that~$\glie$ acts on~$M$.
+			Then for every element~$x$ of~$\glie$ the map
+			\[
+				\rho(x) \colon M \to M \,,
+				\quad
+				m \mapsto x \act m
+			\]
+			is~\linear{$\kf$}, and the resulting map
+			\[
+				\rho \colon \glie \to \gllie(M)
+			\]
+			is a homomorphism of Lie algebras.
+		\item
+			The above two constructions are mutually inverse and result in a {\onetoonetext} correspondence given by
+			\[
+				\left\{
+					\begin{tabular}{@{}c@{}}
+						homomorphism of
+						\\
+						Lie~algebras~$\glie \to \gllie(M)$
+					\end{tabular}
+				\right\}
+				\onetoone
+				\{
+					\text{actions of~$\glie$ on~$M$}
+				\} \,.
+			\]
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	We consider a map
+	\[
+		\alpha
+		\colon
+		\glie \times M
+		\to
+		M \,,
+		\quad
+		(x,m)
+		\mapsto
+		x \act m
+	\]
+	and the corresponding map
+	\[
+		\rho
+		\colon
+		\glie
+		\to
+		\Maps(M,M)
+	\]
+	given by
+	\begin{equation}
+		\label{action and homomorphism formula}
+		\rho(x)(m) = x \act m
+		\qquad
+		\text{for all~$x \in \glie$ and~$m \in M$.}
+	\end{equation}
+	The linearity of~$\alpha$ in the second argument is equivalent to~$\rho$ taking values in~$\gllie(M)$.
+	The additional linearity of~$\alpha$ in the first argument is equivalent to~$\rho$ being linear.
+	That~$\rho$ is a homomorphism of Lie~algebras (when corestricted to a map into~$\gllie(M)$) is equivalent to the condition
+	\[
+		[x,y] \act m
+		=
+		x \act (y \act m) - y \act (x \act m)
+		\qquad
+		\text{for all~$x, y \in \glie$ and~$m \in M$.}
+	\]
+	This shows overall that the map~$\alpha$ is an action of~$\glie$ on~$M$ if and only if the map~$\rho$ gives a homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$ (by corestriction).
+	That both constructions are mutually inverse follows from the formula~\eqref{action and homomorphism formula}.
+\end{proof}
+
+
+\begin{fluff}
+	Let~$\glie$ be a~\liealgebra{$\kf$}.
+	According to \cref{correspodence between representations and actions} we can equivalently characterize a representation of~$\glie$ as a~\vectorspace{$\kf$}~$M$ together with an action of~$\glie$ on~$M$.
+	In the following, we will most often work with this alternative characterization of representations via actions.
+	But we will use the original definition when it is useful to do so.
+\end{fluff}
+
+
+%\begin{remark}
+%  If~$(x_i)_{i \in I}$ is a basis of a Lie~algebra~$\glie$ then for a~{\linear{$\kf$}}~$\rho \colon \glie \to \gllie(M)$ to be a homomorphism of Lie~algebras it sufficies that~$\rho([x_i,x_j])= [\rho(x_i), \rho(x_j)]$ for all~$i, j \in I$.
+%  It therefore sufficies to check condition~\eqref{representation via action} for basis elements, i.e.\ it sufficies to check that
+%  \[
+%    x_i.(x_j.v) - x_j.(x_i.v)
+%    =
+%    [x_i, x_j].v
+%  \]
+%  for all~$i, j \in I$ and~$m \in M$.
+%\end{remark}
+
+
+\begin{fluff}
+	Ado’s theorem can be reformulated in the language of representations.
+\end{fluff}
+
+
+\begin{theorem}[Ado, second version]
+	\index{Ado’s theorem}
+	Every finite-dimensional Lie~algebra admits a finite-\hspace{0pt}dimensional, faithful representation.
+\end{theorem}
+
+
+\begin{examples}
+	\label{examples for representations}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$\glie$ be a Lie~subalgebra of~$\gllie(M)$ for some vector space~$M$.
+			Then the inclusion map from~$\glie$ to~$\gllie(M)$ is a homomorphism of Lie~algebras, which makes~$M$ into a faithful representation of~$\glie$.
+			The corresponding action of~$\glie$ on~$M$ is given by
+			\[
+				x \act m
+				=
+				x(m)
+				\qquad
+				\text{for all~$x \in \glie$,~$m \in M$.}
+			\]
+			This representation is the \defemph{natural representation}\index{natural representation} of~$\glie$.
+		\item
+			Let~$\glie$ be a Lie~subalgebra of~$\gllie(n, \kf)$ for natural number~$n$.
+			Then the inclusion map
+			\[
+				\glie
+				\to
+				\gllie(n, \kf)
+				\cong
+				\gllie(\kf^n)
+			\]
+			is a homomorphism of Lie~algebras.
+			This homomorphism makes~$\kf^n$ into a faithful representation of~$\gllie$.
+			The corresponding action of~$\glie$ on~$\kf^n$ is given by
+			\[
+				x \act m
+				=
+				x \cdot m
+				\qquad
+				\text{for all~$x \in \glie$ and~$m \in \kf^n$.}
+			\]
+			This representation is the the \defemph{natural representation}\index{natural representation} of~$\glie$.
+		\item
+			Let~$M$ be the polynomial algebra~$\kf[x_1, \dotsc, x_n]$ and let~$p'_1, \dotsc, p'_n, q'_1, \dotsc, q'_n, c$ be the endomorphisms of~$M$ given as follows:
+			$p'_i \defined \dd{x_i}$ is the~{\howmanyth{$i$}} partial derivate map,~$q'_i$ is the multiplication with the variable~$x_i$, and~$c' \defined \id_M$ is the identity function.
+			These endomorphisms are linearly independent and satisfy the relations
+			\begin{itemize*}
+				\item
+					$[p'_i, p'_j] = 0$ and $[q'_i, q'_j] = 0$ for all~$i, j = 1, \dotsc, n$,
+				\item
+					$[p'_i, c'] = 0$ and~$[q'_i, 0] = 0$ for every~$i = 1, \dotsc, n$,
+				\item
+					$[p'_i, q'_j] = \delta_{ij} c$ for all~$i, j = 1, \dotsc, n$.
+			\end{itemize*}
+			These relations are those of the Heisenberg Lie~algebra~$\heisenberglie$\index{Heisenberg Lie algebra} from \cref{examples for lie algebras}.
+			The unique linear map
+			\[
+				\rho
+				\colon
+				\heisenberglie
+				\to
+				\gllie(M)
+			\]
+			that is given on the basis~$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c$ of~$\heisenberglie$ by
+			\[
+				\rho(p_i) \defined p'_i \,,
+				\quad
+				\rho(p_i) \defined q'_i \,,
+				\quad
+				\rho(c) \defined c'
+			\]
+			is therefore a homomorphism of Lie~algebras.
+			We have thus constructed a representation of~$\heisenberglie$ on~$M = \kf[x_1, \dotsc, x_n]$.
+			Moreover, the elements~$p'_1, \dotsc, p'_n, q'_1, \dotsc, q'_n, c'$ of~$\gllie(M)$ are linearly independent, which means that~$\rho$ is injective.
+			This representation of~$\heisenberglie$ is therefore faithful.
+
+			This also shows that~$\heisenberglie$ is indeed a Lie~algebra, as it can be realized as a Lie~subalgebra of~$\gllie(M)$.
+		\item
+			Let~$\glie \defined \sllie(2, \kf)$.
+			Then the polynomial ring~$\kf[x,y]$ becomes a representation of~$\glie$ via the homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(\kf[x,y])$ given by
+			\[
+				\rho(e) = y \dd{x} \,,
+				\qquad
+				\rho(h) = y \dd{y} - x \dd{x} \,,
+				\qquad
+				\rho(f) = x \dd{y}  \,.
+			\]
+			The corresponding action of~$\sllie_2(\kf)$ on~$\kf[x,y]$ is given by
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				e \act (x^n y^m)
+				&=
+				n x^{n-1} y^{m+1} \,,
+				\\
+				h \act (x^n y^m)
+				&=
+				(m-n) x^n y^m \,,
+				\\
+				f \act (x^n y^m)
+				&=
+				m x^{n+1} y^{m-1}
+			\end{align*}
+			for all~$n, m \geq 0$.
+			This is indeed an action of~$\sllie(2, \kf)$ on~$\kf[x]$ because
+			\begin{gather*}
+				\begin{aligned}
+				e \act f \act (x^n y^m) - f \act e \act (x^n y^m)
+				&=
+				(n+1)m x^n y^m - n(m+1) x^n y^m
+				\\
+				&=
+				(m-n) x^n y^m
+				\\
+				&= h \act m
+				= [e,f] \act (x^n y^m) \,,
+				\end{aligned}
+			\shortintertext{as well as}
+				\begin{aligned}
+				h \act e \act (x^n y^m) - e \act h \act (x^n y^m)
+				&=
+				n(m-n+2) x^{n-1} y^{m+1} - n(m-n) x^{n-1} y^{m+1}
+				\\
+				&=
+				2 x^{n-1} y^{m+1}
+				\\
+				&=
+				2e \act (x^n y^m)
+				\\
+				&=
+				[h,e] \act (x^n y^m) \,,
+				\end{aligned}
+			\shortintertext{and}
+				\begin{aligned}
+					h \act f \act (x^n y^m) - f \act h \act (x^n y^m)
+					&=
+					m(m-n-2) x^{n+1} y^{m-1} - m(m-n) x^{n+1} y^{m-1}
+					\\
+					&=
+					-2 x^{n+1} y^{m-1}
+					\\
+					&=
+					-2 f \act (x^n y^{m-1})
+					\\
+					&=
+					[h,f] \act (x^n y^{m-1})
+				\end{aligned}
+			\end{gather*}
+			for all~$n, m \geq 0$.
+		\item
+			Then polynomial ring in one variable,~$\kf[x]$, is a representation of~$\sllie(2, \kf)$ via the homomorphism of Lie~algebras~$\rho$ from~$\sllie(2, \kf)$ to~$\gllie(\kf[x])$ that is given by
+			\[
+				\rho(e)
+				\defined
+				\dd{x} \,,
+				\qquad
+				\rho(h)
+				\defined
+				-2x\dd{x} \,,
+				\qquad
+				\rho(f)
+				\defined
+				-\dd{x} \,,
+			\]
+			on the standard basis~$e$,~$h$,~$f$ of~$\sllie(2, \kf)$.
+			The corresponding action of~$\sllie(2, \kf)$ on~$\kf[x]$ is given by
+			\[
+				e \act x^n = n x^{n-1} \,,
+				\qquad
+				h \act x^n = -2n x^n \,,
+				\qquad
+				f \act x^n = n x^{n+1}
+			\]
+			for every~$n \geq 0$.
+			This is indeed an action of~$\sllie(2, \kf)$ on~$\kf[x]$ because
+			\begin{gather*}
+				e \act f \act x^n - f \act e \act x^n
+				= -n(n+1) x^n + n(n-1) x^n
+				= -2n x^n
+				= h \act x^n
+				= [e,f] \act x^n \,,
+			\intertext{as well as}
+				h \act e \act x^n - e \act h \act x^n
+				= -2n(n-1) x^{n-1} + 2n^2 x^{n-1}
+				= 2n x^{n-1}
+				= 2e \act x^n
+				= [h,e] \act x^n \,,
+			\intertext{and}
+				h \act f \act x^n - f \act h \act x^n
+				= 2n(n+1) x^{n+1} - 2 n^2 x^{n+1}
+				= 2n x^{n+1}
+				= -2 f \act x^n
+				= [h,f] \act x^n
+			\end{gather*}
+			for every~$n \geq 0$.
+		\item
+			Let~$M$ be a representation of~$\glie$ with corresponding homomorphism of Lie~algebras~$\rho$ from~$\glie$ to~$\gllie(M)$.
+			Let~$\varphi$ be a homomorphism of Lie~algebras from~$\hlie$ to~$\glie$.
+			Then the composite~$\rho \circ \varphi$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\gllie(M)$, which makes the vector space~$M$ into a representation of~$\hlie$.
+			The corresponding action of~$\hlie$ on~$M$ is given by
+			\[
+				x \act m = \varphi(x) \act m
+				\qquad
+				\text{for all~$x \in \hlie$ and~$m \in M$,}
+			\]
+			where the right hand side denotes the action of~$\glie$ on~$M$ corresponding to the representation~$\rho$.
+		\item
+			Let~$A$ be a~\algebra{$\kf$} and let~$M$ be a left~\module{$A$}.
+			Then~$M$ is also a representation of~$A$ as a Lie~algebra because
+			\[
+				[a,b] \act m
+				=
+				(ab - ba) \act m
+				=
+				(ab - ba)m
+				=
+				abm - bam
+				=
+				a \act (b \act m) - b \act (a \act m)
+			\]
+			for all~$a, b \in A$ and~$m \in M$.
+		\item
+			The adjoint map
+			\[
+				\ad \colon \glie \to \gllie(\glie)
+			\]
+			is a homomorphism of Lie~algebras, which makes~$\glie$ into a representation of~$\glie$.
+	\end{enumerate}
+\end{examples}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra.
+	The representation of~$\glie$ given by the homomorphism of Lie~algebras
+	\[
+		\ad
+		\colon
+		\glie
+		\to
+		\gllie(\glie) \,,
+		\quad
+		x
+		\mapsto
+		\ad(x)
+		=
+		[x,-]
+	\]
+	is the \defemph{adjoint representation}\index{adjoint representation} of~$\glie$.
+\end{definition}
+
+
+\begin{remark}
+	It follows together with \cref{lie algebras act adjoint by derivations} that every Lie~algebras~$\glie$ acts on itself via derivations of itself through the adjoint representation.
+	The author suspects that this is where much of the structure of Lie~algebras comes from.
+\end{remark}
+
+
+\begin{remark}
+	\label{right representations}
+	Let~$\glie$ be a~{\liealgebra{$\kf$}} and let~$M$ be a~\vectorspace{$\kf$}.
+	A \defemph{right action}\index{action!right}\index{right action} of~$\glie$ on~$M$ is a~{\bilinear{$\kf$}} map
+	\[
+		M \times \glie
+		\to
+		M \,,
+		\quad
+		(m,x)
+		\mapsto
+		m \act x
+	\]
+	such that
+	\begin{equation}
+		\label{right action}
+		m \act [x,y]
+		=
+		(m \act x) \act y - (m \act y) \act x
+		\qquad
+		\text{for all~$x, y \in \glie$,~$m \in M$.}
+	\end{equation}
+	It turns out that left actions and right actions are equivalent concepts, as we will now explain.
+
+	We first note that \cref{correspodence between representations and actions} can be generalized to right actions:
+	a map
+	\[
+		M \times \glie
+		\to
+		M \,,
+		\quad
+		(m,x)
+		\mapsto
+		m \act x
+	\]
+	is a right action if and only if the map
+	\[
+		\rho
+		\colon
+		\glie
+		\to
+		\gllie(M)
+	\]
+	given by
+	\[
+		\rho(x)(m)
+		\defined
+		m \act x
+		\qquad
+		\text{for all~$x \in \glie$ and~$m \in M$}
+	\]
+	is an anti-homomorphism of Lie~algebras.
+	This means equivalently that~$\rho$ is a homomorphism of Lie~algebras from the opposite Lie~algebra~$\glie^{\op}$\index{opposite Lie algebra} to~$\gllie(M)$.
+	Such a homomorphism does in turn correspond to a left action of~$\glie^{\op}$ on~$M$, which is given by
+	\[
+		x^{\op} \act m
+		\defined
+		m \act x
+		\qquad
+		\text{for all~$x \in \glie$ and~$m \in M$.}
+	\]
+	We have thus found {\onetoonetext} correspondences between the following concepts.
+	\begin{equivalenceslist*}
+		\item
+			Right actions of~$\glie$ on~$M$.
+		\item
+			Left actions of~$\glie^{\op}$ on~$M$.
+		\item
+			Anti-homomorphisms of Lie~algebras from~$\glie$ to~$\gllie(M)$.
+		\item
+			Homomorphisms of Lie~algebras from~$\glie^{\op}$ to~$\gllie(M)$.
+	\end{equivalenceslist*}
+
+	We now recall \cref{lie algebra isomorphic to its opposite}, according to which the map
+	\[
+		\glie
+		\to
+		\glie^{\op} \,,
+		\quad
+		x
+		\mapsto
+		-x^{\op}
+	\]
+	is an isomorphism of Lie~algebras.
+	By using this isomorphism of Lie~algebras we can now translate between right actions of~$\glie$ on~$M$, left actions of~$\glie^{\op}$ on~$M$, and then left actions of~$\glie$ on~$M$.
+	More explicitely, if~$\glie$ acts on the vector space~$M$ from the right via
+	\[
+		M \times \glie
+		\to
+		M \,,
+		\quad
+		(m,x)
+		\mapsto
+		m \act x
+		\qquad
+		\text{for all~$x \in \glie$ and~$m \in M$,}
+	\]
+	then~$\glie$ acts on~$M$ from the left via
+	\[
+		x \act m
+		\defined
+		-m \act x
+		\qquad
+		\text{for all~$x \in \glie$ and~$m \in M$.}
+	\]
+
+	In the following we will sometimes encounter constructions which turn left actions into right actions.
+	We are now able to translate these right actions back into left actions.
+	In this way we only have to deal with left actions.
+\end{remark}
+
+
+
+
+
