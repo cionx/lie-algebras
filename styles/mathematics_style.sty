@@ -22,6 +22,7 @@
 \newcommand{\dimensional}[1]{#1\nobreakdash-\hspace{0pt}dimensional}
 \newcommand{\fold}[1]{#1\nobreakdash-fold}
 \newcommand{\functor}[1]{#1\nobreakdash-functor}
+\newcommand{\fourdimensional}{four-dimensional}
 \newcommand{\generating}[1]{#1\nobreakdash-\hspace{0pt}generating}
 \newcommand{\gon}[1]{#1\nobreakdash-gon}
 \newcommand{\graded}[1]{#1\nobreakdash-graded}
@@ -39,7 +40,7 @@
 \newcommand{\module}[1]{#1\nobreakdash-module}
 \newcommand{\modules}[1]{#1\nobreakdash-modules}
 \newcommand{\multilinear}[1]{#1\nobreakdash-multilinear}
-\newcommand{\onedimensional}{one\nobreakdash-\hspace{0pt}dimensional}
+\newcommand{\onedimensional}{one-dimensional}
 \newcommand{\onetoonetext}{one\nobreakdash-to\nobreakdash-one}
 \newcommand{\representation}[1]{#1\nobreakdash-\hspace{0pt}representation}
 \newcommand{\representations}[1]{#1\nobreakdash-\hspace{0pt}representations}
@@ -50,12 +51,11 @@
 \newcommand{\submodule}[1]{#1\nobreakdash-submodule}
 \newcommand{\subrepresentation}[1]{#1\nobreakdash-\hspace{0pt}subrepresentation}
 \newcommand{\subrepresentations}[1]{#1\nobreakdash-\hspace{0pt}subrepresentation}
-\newcommand{\threedimensional}{three\nobreakdash-\hspace{0pt}dimensional}
-\newcommand{\fourdimensional}{four\nobreakdash-\hspace{0pt}dimensional}
+\newcommand{\threedimensional}{three-dimensional}
 \newcommand{\trilinear}[1]{#1\nobreakdash-trilinear}
 \newcommand{\twococycle}{$2$\nobreakdash-cocycle}
 \newcommand{\twococycles}{$2$\nobreakdash-cocycles}
-\newcommand{\twodimensional}{two\nobreakdash-\hspace{0pt}dimensional}
+\newcommand{\twodimensional}{two-dimensional}
 \newcommand{\ua}{universal enveloping algebra}
 \newcommand{\uas}{universal enveloping algebras}
 \newcommand{\vectorspace}[1]{#1\nobreakdash-vector space}
@@ -124,6 +124,11 @@
 
 
 
+% place holder symbol
+\newcommand{\ph}{-}
+
+
+
 % numbers and fields
 \newcommand{\Natural}{\mathbb{N}}
 \newcommand{\Integer}{\mathbb{Z}}
@@ -149,6 +154,7 @@
 \newcommand{\cfAlg}[1]{#1\text{-}\catname{fAlg}}
 \newcommand{\cgAlg}[1]{#1\text{-}\catname{gAlg}}
 \newcommand{\cLie}[1]{#1\text{-}\catname{Lie}}
+\newcommand{\cLieab}[1]{\cLie{#1}^{\ab}}
 \newcommand{\cMod}[1]{#1\text{-}\catname{Mod}}
 \newcommand{\cMon}{\catname{Mon}}
 \newcommand{\cRep}[1]{#1\text{-}\catname{Rep}}
@@ -159,20 +165,23 @@
 
 
 % lie algebras
-\newcommand{\blie}{\mathfrak{b}}
+% generic lie algebras
 \newcommand{\clie}{\mathfrak{c}}
-\newcommand{\dlie}{\mathfrak{d}}
 \newcommand{\elie}{\mathfrak{e}}
 \newcommand{\glie}{\mathfrak{g}}
-\newcommand{\Hlie}{\mathfrak{H}}
 \newcommand{\hlie}{\mathfrak{h}}
 \newcommand{\klie}{\mathfrak{k}}
-\newcommand{\gllie}{\mathfrak{gl}}
 \newcommand{\rlie}{\mathfrak{r}}
-\newcommand{\sllie}{\mathfrak{sl}}
-\newcommand{\tlie}{\mathfrak{t}}
-\newcommand{\nlie}{\mathfrak{n}}
+% special lie algebras
+\newcommand{\afflie}{\mathfrak{aff}}
+\newcommand{\borellie}{\mathfrak{b}}
+\newcommand{\diaglie}{\mathfrak{d}}
+\newcommand{\gllie}{\mathfrak{gl}}
+\newcommand{\heisenberglie}{\mathfrak{H}}
 \newcommand{\looplie}{\mathcal{L}}
+\newcommand{\sllie}{\mathfrak{sl}}
+\newcommand{\trianglie}{\mathfrak{t}}
+\newcommand{\upperlie}{\mathfrak{n}}
 
 
 
@@ -194,6 +203,7 @@
 \DeclareMathOperator{\BF}{BF}
 \newcommand{\bigast}{\raisebox{-0.9ex}{\scalebox{3}{\ast}}}
 \DeclareMathOperator{\Boundary}{B}
+\DeclareMathOperator{\centergroup}{Z}
 \DeclareMathOperator{\centerlie}{Z}
 \DeclareMathOperator{\Chain}{C}
 \DeclareMathOperator{\Cycle}{Z}
@@ -292,10 +302,19 @@
 \newcommand{\induced}{\overline}
 \newcommand{\Lie}{\mathrm{Lie}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\trans}{\mathsf{t}}
+
+
 
 % larger bullet
 \let\oldbullet\bullet
 \renewcommand{\bullet}{{\scalebox{1.15}{\oldbullet}}}
+
+
+
+% iddots
+\newcommand{\iddots}{⋰}
+
 
 
 % shortcuts

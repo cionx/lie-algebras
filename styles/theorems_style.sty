@@ -1,5 +1,5 @@
 % counter for everything
-\newcounter{everything}[chapter]
+\newcounter{everything}[section]
 
 % theorem-like environemnts
 \theoremstyle{definition}
@@ -14,13 +14,14 @@
 \newtheorem{fluff}[everything]{}
 \newtheorem{lemma}[everything]{Lemma}
 \newtheorem{proposition}[everything]{Proposition}
+\newtheorem{question}[everything]{Question}
 \newtheorem{recall}[everything]{Recall}
 \newtheorem{remark}[everything]{Remark}
 \newtheorem{theorem}[everything]{Theorem}
 \newtheorem{warning}[everything]{Warning}
 
 % printing of counters
-\renewcommand{\theeverything}{\thechapter.\arabic{everything}}
+\renewcommand{\theeverything}{\thesection.\arabic{everything}}
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 \renewcommand{\theclaim}{\arabic{claim}}
 

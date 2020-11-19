@@ -1,19 +1,23 @@
 % set the style of the list of symbols
-\setglossarystyle{long}
-
-% adjust the table width to fill out the whole page
-% use longtabu from the tabu package for this
+\setglossarystyle{long3col}
 \renewenvironment{theglossary}%
-	{\begin{longtabu} to \textwidth {@{}lX[l]}}%
-	{\end{longtabu}}
+{\begin{longtable}{lp{\glsdescwidth}>{\raggedleft\arraybackslash}p{\glspagelistwidth}}}%
+{\end{longtable}}
 
 % fill space after description with dots
-\renewcommand{\glspostdescription}{\dotfill}
+%\renewcommand{\glspostdescription}{\dotfill}
 
 % allow for newly defined macros in the list of symbols
 \glsnoexpandfields
 
-% creating the actual list fo symbols
+% shortcut for new entries
+\newcommand{\newsymbol}[3]{%
+	\glsxtrnewsymbol[description={#2}]%
+	{#1}%
+	{#3}
+}
+
+% creating the actual list of symbols
 \makenoidxglossaries
 
 % inputing the list of symbols

@@ -1,58 +1,161 @@
-\glsnoexpandfields
-\glsxtrnewsymbol[description={adjoint representation}]{adjoint representation}{$\ad$}
-\glsxtrnewsymbol[description={associated graded algebra of~$\glie$}]{associated graded}{\ensuremath{\gr(A)}}
-\glsxtrnewsymbol[description={the space of bilinear forms~$V \times W \to \kf$}]{bilinear forms}{\ensuremath{\BF(V,W)}}
-\glsxtrnewsymbol[description={casimir element of~$\beta$}]{bilinear casimir}{\ensuremath{C_\beta}}
-\glsxtrnewsymbol[description={center of~$\glie$}]{center}{$\centerlie(\glie)$}
-\glsxtrnewsymbol[description={$i$-th term of the central series of~$\glie$}]{central series}{\ensuremath{\glie^i}}
-\glsxtrnewsymbol[description={centralizer of~$U$ in~$\glie$}]{centralizer of space}{\ensuremath{\centerlie_{\glie}(U)}}
-\glsxtrnewsymbol[description={centralizer of~$x$ in~$\glie$}]{centralizer of element}{\ensuremath{\centerlie_{\glie}(x)}}
-\glsxtrnewsymbol[description={commutator of~$X$ and~$Y$}]{commutator space}{\ensuremath{[X,Y]}}
-\glsxtrnewsymbol[description={space of derivations of~$A$}]{derivations}{\ensuremath{\Der(A)}}
-\glsxtrnewsymbol[description={$i$-th term of the derived series of~$\glie$}]{derived series}{\ensuremath{\glie^{(i)}}}
-\glsxtrnewsymbol[description={direct sum of the Lie~algebras~$\glie_\lambda$}]{direct sum of lie algebras}{\ensuremath{\bigoplus_{\lambda \in \Lambda} \glie_\lambda}}
-\glsxtrnewsymbol[description={exterior algebra of~$V$}]{exterior algebra}{\ensuremath{\Exterior(V)}}
-\glsxtrnewsymbol[description={category of filtered~{\algebras{$\kf$}}}]{filtered algebras}{\ensuremath{\cfAlg{\kf}}}
-\glsxtrnewsymbol[description={general linear Lie algebra}]{general lie matrix}{$\gllie(n, \kf)$}
-\glsxtrnewsymbol[description={general linear Lie algebra of~$V$}]{general lie endomorphism}{\ensuremath{\gllie(V)}}
-\glsxtrnewsymbol[description={category of graded~{\algebras{$\kf$}}}]{graded algebras}{\ensuremath{\cgAlg{\kf}}}
-\glsxtrnewsymbol[description={irreducible~{\representation{$\sllie_2(\kf)$}} of heighest weight~$\lambda$}]{sl2 irrep}{\ensuremath{\irr(\lambda)}}
-\glsxtrnewsymbol[description={interal semidirect product}]{internal semidirect product}{\ensuremath{\hlie \ltimes I}}
-\glsxtrnewsymbol[description={space of invariants for a representation~$V$ of~$\glie$}]{invariants}{\ensuremath{V^{\glie}}}
-\glsxtrnewsymbol[description={Killing form}]{killing form}{\ensuremath{\kappa}}
-\glsxtrnewsymbol[description={Lie bracket}]{lie bracket}{\ensuremath{[-,-]}}
-\glsxtrnewsymbol[description={Lie ideal}]{lie ideal}{\ensuremath{\ideal}}
-\glsxtrnewsymbol[description={loop Lie~algebra of~$\glie$}]{loop lie algebra}{\ensuremath{\looplie(\glie)}}
-\glsxtrnewsymbol[description={category of left~\modules{$A$}}]{module category}{\ensuremath{\cMod{A}}}
-\glsxtrnewsymbol[description={monoid algabra of~$M$}]{monoid algebra}{\ensuremath{\kf[M]}}
-\glsxtrnewsymbol[description={nilpotent part of~$x$}]{nilpotent part}{\ensuremath{x_n}}
-\glsxtrnewsymbol[description={normalizer of~$U$ in~$\glie$}]{normalizer}{\ensuremath{\normallie_{\glie}(U)}}
-\glsxtrnewsymbol[description={opposite algebra of~$A$}]{opposite algebra}{\ensuremath{A^{\op}}}
-\glsxtrnewsymbol[description={opposite Lie~algebra of~$\glie$}]{opposite lie algebra}{\ensuremath{\glie^{\op}}}
-\glsxtrnewsymbol[description={ordered monomial in~$(x_i)_{i \in I}$}]{ordered monomial}{\ensuremath{x_\alpha}}
-\glsxtrnewsymbol[description={Ore extension}]{ore extension}{\ensuremath{R[t;\sigma,\delta]}}
-\glsxtrnewsymbol[description={product of the Lie~algebras~$\glie_\lambda$}]{product of lie algebras}{\ensuremath{\prod_{\lambda \in \Lambda} \glie_\lambda}}
-\glsxtrnewsymbol[description={quotient Lie~algebra of~$\glie$ by~$I$}]{quotient lie algebra}{\ensuremath{\glie/I}}
-\glsxtrnewsymbol[description={quotient representation of~$V$ by~$U$}]{quotient representation}{\ensuremath{V/U}}
-\glsxtrnewsymbol[description={radical of~$\glie$}]{radical}{\ensuremath{\rad \glie}}
-\glsxtrnewsymbol[description={radical of~$\beta$}]{radical bilinear}{\ensuremath{\rad \beta}}
-\glsxtrnewsymbol[description={category of~{\representations{$\glie$}}}]{representation category}{\ensuremath{\cRep{\glie}}}
-\glsxtrnewsymbol[description={space of homomorphisms of representations~$V \to W$}]{rep homo}{\ensuremath{\Hom_{\glie}(V,W)}}
-\glsxtrnewsymbol[description={endomorphism algebra of a representation~$V$}]{rep endo}{\ensuremath{\End_{\glie}(V)}}
-\glsxtrnewsymbol[description={root space of~$\glie$ with respect to~$\alpha$}]{root space}{\ensuremath{\glie_\alpha}}
-\glsxtrnewsymbol[description={set of roots of~$\glie$ relative to~$\hlie$}]{roots}{\ensuremath{\Phi(\glie, \hlie)}}
-\glsxtrnewsymbol[description={semidirect product of~$\hlie$ by~$I$ over~$\theta$}]{semidirect product}{\ensuremath{\hlie \ltimes_\theta I}}
-\glsxtrnewsymbol[description={semisimple part of~$x$}]{semisimple part}{\ensuremath{x_s}}
-\glsxtrnewsymbol[description={skew polynomial algebra}]{skew polynomial algebra}{\ensuremath{R[t;\delta]}}
-\glsxtrnewsymbol[description={copy of~$\sllie_2(\kf)$ via a root~$\alpha$}]{sl2 copy}{\ensuremath{\sllie_2^\alpha}}
-\glsxtrnewsymbol[description={special linear Lie algebra}]{special lie matrix}{\ensuremath{\sllie(n, \kf)}}
-\glsxtrnewsymbol[description={special linear Lie algebra of~$V$}]{special lie endomorphism}{\ensuremath{\sllie(V)}}
-\glsxtrnewsymbol[description={standard basis vector of~$\sllie_2(\kf)$}]{standard basis e}{\ensuremath{e}}
-\glsxtrnewsymbol[description={standard basis vector of~$\sllie_2(\kf)$}]{standard basis f}{\ensuremath{f}}
-\glsxtrnewsymbol[description={standard basis vector of~$\sllie_2(\kf)$}]{standard basis h}{\ensuremath{h}}
-\glsxtrnewsymbol[description={Lie algebra of strictly upper triangular matrices}]{strictly triangular lie matrix}{\ensuremath{\nlie(n,\kf)}}
-\glsxtrnewsymbol[description={symmetric algebra of~$V$}]{symmetric algebra}{\ensuremath{\Symm(V)}}
-\glsxtrnewsymbol[description={tensor algebra of~$V$}]{tensor algebra}{\ensuremath{\Tensor(V)}}
-\glsxtrnewsymbol[description={Lie algebra of upper triangular matrices}]{triangular lie matrix}{\ensuremath{\tlie(n, \kf)}}
-\glsxtrnewsymbol[description={universal enveloping algebra of~$\glie$}]{universal enveloping algebra}{\ensuremath{\Univ(\glie)}}
-\glsxtrnewsymbol[description={weight space}]{weight space}{\ensuremath{V_\lambda}}
+% \newsymbol{label}{description}{symbol}
+
+\newsymbol{lie bracket}
+{Lie bracket}
+{$[\ph, \ph]$}
+
+\newsymbol{lie algebra}
+{Lie algebras}
+{$\glie, \hlie, \dotsc$}
+
+\newsymbol{general linear lie algebra matrix}
+{general linear Lie~algebra of~$n \times n$ matrices}
+{$\gllie(n, \kf)$}
+
+\newsymbol{general linear lie algebra endomorphism}
+{general linear Lie~algebra of~$V$}
+{$\gllie(V)$}
+
+\newsymbol{heisenberg lie algebra}
+{Heisenberg Lie~algebra}
+{$\heisenberglie$}
+
+\newsymbol{heisenberg basis}
+{basis of Heisenberg Lie~algebra}
+{$p_1, \dotsc, p_n, q_1, \dotsc, q_n, c$}
+
+\newsymbol{standard basis matrix}
+{standard basis matrix of~$\Mat(n \times m, \kf)$}
+{$E_{ij}$}
+
+\newsymbol{standard basis vector}
+{standard basis vector of~$\kf^n$}
+{$e_i$}
+
+\newsymbol{special linear lie algebra matrices}
+{special linear Lie~algebra of~$n \times n$ matrices}
+{$\sllie(n, \kf)$}
+
+\newsymbol{special linear lie algebra endomorphism}
+{special linear Lie~algebra of~$V$}
+{$\sllie(V)$}
+
+\newsymbol{upper triangular lie algebra}
+{Lie~algebra of upper triangular matrices of size~$n \times n$}
+{$\trianglie(n, \kf)$}
+
+\newsymbol{strictly upper triangular lie algebra}
+{Lie~algebra of strictly upper triangular matrices of size~$n \times n$}
+{$\upperlie(n, \kf)$}
+
+\newsymbol{diagonal lie algebra}
+{Lie~algebra of diagonal matrices of size~$n \times n$}
+{$\diaglie(n, \kf)$}
+
+\newsymbol{affine transformation lie algebra}
+{Lie~algebra of affine transformations of~$\kf^n$}
+{$\afflie(n, \kf)$}
+
+\newsymbol{commutator space}
+{commutator space of two subsets~$X$,~$Y$}
+{$[X, Y]$}
+
+\newsymbol{centralizer of subset}
+{centralizer of subset~$X$}
+{$\centerlie_{\glie}(X)$}
+
+\newsymbol{centralizer of element}
+{centralizer of an element~$x$}
+{$\centerlie_{\glie}(x)$}
+
+\newsymbol{center}
+{center of~$\glie$}
+{$\centerlie(\glie)$}
+
+\newsymbol{standard basis of sl2}
+{standard basis of~$\sllie(2, \kf)$}
+{$e$,~$h$,~$f$}
+
+\newsymbol{normalizer}
+{normalizer of a linear subspace~$U$}
+{$\normallie_{\glie}(U)$}
+
+\newsymbol{product of lie algebras}
+{product of the Lie~algebras~$\glie_\lambda$}
+{$\prod_{\lambda \in \Lambda} \glie$}
+
+\newsymbol{external direct sum of lie algebras}
+{(external) direct sum of the Lie~algebras~$\glie_\lambda$}
+{$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$}
+
+\newsymbol{quotient of lie algebra}
+{quotient of~$\glie$ by its ideal~$I$}
+{$\glie/I$}
+
+\newsymbol{abelianization of lie algebra}
+{abelianization of~$\glie$}
+{$\glie^{\ab}$}
+
+\newsymbol{extension of scalars of lie algebra}
+{extension of scalars of~$\glie$ from~$\kf$ to~$A$}
+{$A \tensor_{\kf} \glie$,~$\glie \tensor_{\kf} A$}
+
+\newsymbol{loop lie algebra}
+{loop Lie~algebra of~$\glie$}
+{$\looplie(\glie)$}
+
+\newsymbol{opposite algebra}
+{opposite algebra of~$A$}
+{$A^{\op}$}
+
+\newsymbol{opposite element}
+{element of~$A^\op$ corresponding to an element~$a$ of~$A$}
+{$a^{\op}$}
+
+\newsymbol{opposite lie algebra}
+{opposite Lie~algebra of~$\glie$}
+{$\glie^{\op}$}
+
+\newsymbol{adjoint map}
+{homomorphism of the adjoint representation}
+{$\ad$}
+
+\newsymbol{category lie algebras}
+{category of~\liealgebras{$\kf$}}
+{$\cLie{\kf}$}
+
+\newsymbol{category algebras}
+{category of~\algebras{$\kf$}}
+{$\cAlg{\kf}$}
+
+\newsymbol{category abelian lie algebras}
+{category of abelian~\liealgebras{$\kf$}}
+{$\cLieab{\kf}$}
+
+\newsymbol{derivations}
+{Lie~algebra of derivations of the \enquote{algebra}~$A$}
+{$\Der(A)$}
+
+\newsymbol{inner derivations}
+{space of inner derivations of~$\glie$}
+{$\InnDer(\glie)$}
+
+\newsymbol{outer derivations}
+{space of outer derivations of~$\glie$}
+{$\OutDer(\glie)$}
+
+\newsymbol{exponential}
+{exponential of~$f$}
+{$\exp(f)$}
+
+\newsymbol{automorphisms}
+{group of Lie~algebra homomorphisms of~$\glie$}
+{$\Aut(\glie)$}
+
+\newsymbol{inner automorphisms}
+{group of inner autorphisms of~$\glie$}
+{$\InnAut(\glie)$}
+
+\newsymbol{outer automorphisms}
+{group of outer derivations of~$\glie$}
+{$\OutAut(\glie)$}
