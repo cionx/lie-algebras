@@ -1,0 +1,1311 @@
+\section{Homomorphisms of Lie~Algebras}
+
+
+
+\subsection{Definition and Basic Examples}
+
+
+\begin{definition}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	A~\linear{$\kf$} map~$\varphi$ from~$\glie$ to~$\hlie$ is a \defemph{homomorphism of Lie~algebras}\index{homomorphism!of Lie algebras} if it satisfies the condition
+ \[
+	 \varphi([x,y])
+	 =
+	 [\varphi(x), \varphi(y)]
+	 \qquad
+	 \text{for all~$x, y \in \glie$.}
+ \]
+\end{definition}
+
+
+\begin{proposition}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras and let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+	Then
+	\[
+		[ \varphi(X), \varphi(Y) ]
+		=
+		\varphi( [X, Y] )
+	\]
+	for any two subsets~$X$ and~$Y$ of~$\glie$.
+	\qed
+\end{proposition}
+
+
+\begin{proposition}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras and let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+	\begin{enumerate}
+		\item
+			The image\index{image} of~$\varphi$ is a Lie~subalgebra of~$\hlie$.
+		\item
+			The kernel\index{kernel} of~$\varphi$ is an ideal of~$\glie$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			The image of~$\varphi$ is a linear subspace of~$\hlie$ because~$\varphi$ is linear.
+			We have
+			\[
+				[ \im(\varphi), \im(\varphi) ]
+				=
+				[ \varphi(\glie), \varphi(\glie) ]
+				=
+				\varphi( [\glie, \glie] )
+				\subseteq
+				\varphi(\glie)
+				=
+				\im(\varphi) \,,
+			\]
+			which shows that~$\im(\varphi)$ is indeed a Lie~subalgebra of~$\hlie$.
+		\item
+			The kernel of~$\varphi$ is a linear subspace of~$\glie$ because~$\varphi$ is linear.
+			We have
+			\[
+				\varphi( [\glie, \ker(\varphi)] )
+				=
+				[ \varphi(\glie), \varphi(\ker(\varphi)) ]
+				=
+				[ \varphi(\glie), 0 ]
+				=
+				0 \,,
+			\]
+			which shows that the commutator space~$[\glie, \ker(\varphi)]$ is again contained in~$\ker(\varphi)$.
+			This means that~$\ker(\varphi)$ is indeed an ideal in~$\glie$.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{examples}
+	\label{homomorphisms of lie algebras}
+	Let~$\glie$,~$\hlie$, and~$\klie$ be Lie~algebras.
+	\begin{enumerate}
+		\item
+			\label{identity is a homomorphism of lie algebras}
+			The identity map of~$\glie$ is a homomorphism of Lie~algebras from~$\glie$ to~$\glie$.
+		\item
+			\label{composite of homomorphisms of lie algebras}
+			Let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$ and let~$\psi$ be a homomorphism of Lie~algebras from~$\hlie$ to~$\klie$.
+			The composite~$\psi \circ \varphi$ is a homomorphism of Lie~algebras from~$\glie$ to~$\klie$.
+		\item
+			Let~$\hlie$ be a Lie~subalgebra of~$\glie$.
+			The inclusion map from~$\hlie$ to~$\glie$ is a homomorphism of Lie~algebras.
+		\item
+			Suppose that the Lie~algebras~$\glie$ and~$\hlie$ are both abelian.
+			Then any~\linear{$\kf$} map from~$\glie$ to~$\hlie$ is already a homomorphism of Lie~algebras.
+		\item
+			For every element~$x$ of~$\glie$ let~$\ad(x)$ be the linear map
+			\[
+				\ad(x)
+				\colon
+				\glie
+				\to
+				\glie \,,
+				\qquad
+				y
+				\mapsto
+				[x,y] \,.
+				\index{adjoint representation}
+			\]
+			It follows from the bilinearity of the Lie~bracket of~$\glie$ that this describes a~\linear{$\kf$} map
+			\[
+				\ad
+				\glsadd{adjoint map}
+				\colon
+				\glie
+				\to
+				\gllie(\glie) \,.
+			\]
+			It follows from the Jacobi~identity that the map~$\ad$ is already a homomorphism of Lie~algebras.
+			Indeed, we have for all element~$x$,~$y$,~$z$ of~$\glie$ that
+			\begin{align*}
+					\ad([x,y])(z)
+					&=
+					[[x,y], z]
+					\\
+					&=
+					[ [x,z], y ] + [ x, [y,z] ]
+					\\
+					&=
+					[x,[y,z]] - [y,[x,z]]
+					\\
+					&=
+					\ad(x)(\ad(y)(z)) - \ad(y)(\ad(x)(z))
+					\\
+					&=
+					( \ad(x) \ad(y) - \ad(y) \ad(x) )(z)
+					\\
+					&=
+					[\ad(x), \ad(y)](z) \,,
+			\end{align*}
+			and therefore~$\ad([x,y]) = [ \ad(x), \ad(y) ]$.
+		\item
+			\label{algebra homomorphisms are lie algebra homomorphisms}
+			Let~$A$ and~$B$ be two associative~{\algebras{$\kf$}}.
+			Every homomorphism of~{\algebras{$\kf$}}~$\Phi$ from~$A$ to~$B$ is also a homomorphism of Lie~algebras.
+			Indeed, we have for all elements~$a$,~$b$ of~$A$ that
+			\[
+				\Phi([a,b])
+				=
+				\Phi(ab - ba)
+				=
+				\Phi(a) \Phi(b) - \Phi(b) \Phi(a)
+				=
+				[\Phi(a), \Phi(b)] \,.
+			\]
+		\item
+			Let~$\glie$ be a Lie~algebra over an arbitary field~$\kf$.
+			If~$\varphi$ is a homomorphism of Lie~algebras from~$\sllie(2, \kf)$ to~$\glie$, then the images
+			\[
+				E \defined \varphi(e)  \,,
+				\qquad
+				H \defined \varphi(h)  \,,
+				\qquad
+				F \defined \varphi(f)
+			\]
+			satisfy the commutator relations
+			\begin{equation}
+				\label{relations for sl2 tripel}
+				[H, E] = 2E  \,,
+				\qquad
+				[H, F] = -2F  \,,
+				\qquad
+				[E, F] = H \,.
+			\end{equation}
+			Conversely, every such triple~$(E', H', F')$ of elements of~$\glie$ satisfying the above commutator relations (with~$X$ replaced by~$X'$ for~$X = E, H, F$) gives rise to a unique homomorphism of Lie~algebras~$\varphi'$ from~$\sllie(2, \kf)$ to~$\glie$ that is given by
+			\[
+				\varphi'(e) = E' \,,
+				\qquad
+				\varphi'(h) = H' \,,
+				\qquad
+				\varphi'(f) = F' \,.
+			\] 
+			These two constructions are mutually inverse.
+			We have thus constructed a bijection
+			\begin{align*}
+				\left\{
+					\begin{tabular}{c}
+						homomorphisms of \\
+						Lie~algebras~$\varphi \colon \sllie(2, \kf) \to \glie$
+					\end{tabular}
+				\right\}
+				&\to
+				\left\{
+					\begin{tabular}{c}
+						triples $(E, H, F)$ of elements of~$\glie$ \\
+						that satisfy the relations~\eqref{relations for sl2 tripel}
+					\end{tabular}
+				\right\} \,,
+				\\
+				\varphi
+				&\mapsto
+				\bigl( \varphi(e), \varphi(h), \varphi(f) \bigr) \,.
+			\end{align*}
+	%     Such triples will play an important role later on.
+	\end{enumerate}
+\end{examples}
+
+
+\begin{remark}
+	It follows from part~\ref{identity is a homomorphism of lie algebras} and part~\ref{composite of homomorphisms of lie algebras} of \cref{homomorphisms of lie algebras} that the~\liealgebras{$\kf$} form a category\index{category!of Lie algebras}.
+	We will denote this category by
+	\[
+		\cLie{\kf} \,.
+		\glsadd{category lie algebras}
+	\]
+	The class of objects of~$\cLie{\kf}$ is the class of~\liealgebras{$\kf$}.
+	For any two Lie~algebras~$\glie$ and~$\hlie$ over~$\kf$ we have
+	\[
+		\Hom_{\cLie{\kf}}(\glie, \hlie)
+		=
+		\{
+			\text{homomorphisms of Lie~algebras~$\textstyle \glie \to \hlie$} 
+		\} \,.
+	\]
+	The composition of morphisms in~$\cLie{\kf}$ is the usual composition of functions.
+	The identity morphism of an object of~$\cLie{\kf}$ is the usual identity function.
+
+	We have a forgetful functor
+	\[
+		\cLie{\kf}
+		\to
+		\cVect{\kf}
+	\]
+	that assigns to every~\liealgebra{$\kf$} its underlying~\vectorspace{$\kf$}.
+	It follows from part~\ref{algebra homomorphisms are lie algebra homomorphisms} of \cref{homomorphisms of lie algebras} that we also have a forgetful functor
+	\[
+		\cAlg{\kf}
+		\to
+		\cLie{\kf} \,,
+	\]
+	where~$\cAlg{\kf}$\glsadd{category algebras} denotes the category of~\algebras{$\kf$}\index{category!of algebras}.
+	The forgetful functor from~$\cAlg{\kf}$ to~$\cVect{\kf}$ is the composite of the forgetful functor from~$\cAlg{\kf}$ to~$\cLie{\kf}$ and the forgetful functor from~$\cLie{\kf}$ to~$\cVect{\kf}$.
+\end{remark}
+
+
+\begin{proposition}
+	\label{inverse of homomorphism of lie algebras is again a homomorphism of lie algebras}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras and let~$\varphi$ be a bijective homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+	The set-theoretic inverse map of~$\varphi$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\glie$.
+\end{proposition}
+
+
+\begin{proof}
+	The inverse~$\varphi^{-1}$ is~\linear{$\kf$} because the original map~$\varphi$ is~\linear{$\kf$}.
+	We also have
+	\[
+		\varphi^{-1}( [x,y] )
+		=
+		\varphi^{-1}( [ \varphi(\varphi^{-1}(x)), \varphi(\varphi^{-1}(y)) ] )
+		=
+		\varphi^{-1}( \varphi( [ \varphi^{-1}(x), \varphi^{-1}(y) ] ) )
+		=
+		[ \varphi^{-1}(x), \varphi^{-1}(y) ]
+	\]
+	for any two elements~$x$,~$y$ of~$\hlie$.
+	This shows that~$\varphi^{-1}$ is a homomorphism of Lie~algebras.
+\end{proof}
+
+
+\begin{remark}
+	We have the notion of an \defemph{isomorphism of~\liealgebras{$\kf$}}\index{isomorphism!of Lie algebras} because \liealgebras{$\kf$} form a category.
+	More explicitely, a homomorphism of Lie~algebras~$\varphi$ from a Lie~algebra~$\glie$ to a Lie~algebra~$\hlie$ is an isomorphism (of Lie~algebras) if and only if there exists a homomorphism of Lie~algebras~$\psi$ from~$\hlie$ to~$\glie$ such that both~$\psi \circ \varphi = \id_{\glie}$ and~$\varphi \circ \psi = \id_{\hlie}$.
+
+	We can now give a reinterpretation of \cref{inverse of homomorphism of lie algebras is again a homomorphism of lie algebras}:
+	a homomorphism of Lie~algebras is an isomorphism of Lie~algebras if and only if it is bijective.
+\end{remark}
+
+
+\begin{example}[Classification of abelian Lie~algebras]
+	\index{classification!of abelian Lie algebras}
+	Let~$\kf$ be any field.
+
+	Two abelian~{\liealgebras{$\kf$}} are isomorphic (as Lie~algebras) if and only if they are isomorphic as~{\vectorspaces{$\kf$}}, because every vector space isomorphism between them is already an isomorphism of Lie~algebras.
+	It follows that there exists precisely one abelian~{\liealgebra{$\kf$}} of each dimension up to isomorphism.
+\end{example}
+
+
+\begin{example}[Classification of {\onedimensional} Lie~algebras]
+	\index{classification!of one-dimensional Lie algebras}
+	\index{one-dimensional Lie algebras}
+	Let~$\kf$ be any field and let~$\glie$ be a~{\onedimensional}~\liealgebra{$\kf$}.
+	The Lie~bracket of~$\glie$ is zero since it is an alternating bilinear map on a one-dimensional vector space.
+	The Lie~algebra~$\glie$ is therefore abelian.
+	It follows that there exists precisely one {\onedimensional}~\liealgebra{$\kf$} up to isomorphism, namely the abelian one.
+\end{example}
+
+
+\begin{example}[Classification of {\twodimensional} Lie~algebras]
+	\index{classification!of two-dimensional Lie algebras}
+	\index{two-dimensional Lie algebras}
+	There exists precisely one {\twodimensional}, abelian~\liealgebra{$\kf$} up to isomorphism.
+
+	Let now~$\glie$ be a {\twodimensional}, non-abelian~\liealgebra{$\kf$}.
+	Let~$x'$,~$y'$ be any basis of~$\glie$.
+	The commutator space~$[\glie, \glie]$ is nonzero because~$\glie$ is non-abelian, and~$[\glie, \glie]$ is spanned by the single commutator~$[x',y']$ because the Lie~bracket is alternating.
+	We thus have~$[\glie, \glie] = \gen{ [x', y'] }_{\kf}$ with~$[x', y']$ being nonzero.
+
+	Let now~$x \defined [x',y']$ and let~$y$ be some element of~$\glie$ that is linearly independent to~$x$.
+	Then~$x$,~$y$ is a basis of~$\glie$, and we have seen above that the commutator~$[x,y]$.
+	This commutator is also contained in the commutator space~$[\glie, \glie]$, which is spanned by~$x$.
+	The element~$[x,y]$ is thus a nonzero scalar multiple of~$x$.
+	By rescaling the basis vector~$y$ we may therefore assume that~$[x,y]$ equals~$x$.
+
+	We have thus shown that any two-dimensional, non-abelian Lie~algebra admits a basis~$x$,~$y$ on that its Lie~bracket has a specific form, namely
+	\[
+		[x,y] = x \,.
+	\]
+	This shows that there exists at most one {\twodimensional}, non-abelian~\liealgebra{$\kf$} up to isomorphism.
+
+	To show the existence of such a two-dimensional, non-abelian~\liealgebra{$\kf$} we consider the two matrices
+	\[
+		x
+		\defined
+		\begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix}
+		=
+		E_{12}  \,,
+		\qquad
+		y
+		\defined
+		\begin{pmatrix}
+			0 & 0 \\
+			0 & 1
+		\end{pmatrix}
+		=
+		E_{22}  \,.
+	\]
+	We have
+	\[
+		[x,y]
+		=
+		[E_{12}, E_{22}]
+		=
+		E_{12} E_{22} - E_{22} E_{12}
+		=
+		E_{12} - 0
+		=
+		E_{12}
+		=
+		x \,.
+	\]
+	The linear subspace of~$\gllie(2, \kf)$ which is spanned by the two matrices~$x$ and~$y$ is therefore a Lie~subalgebra of~$\gllie(2, \kf)$.
+	The matrices~$x$ and~$y$ are linearly independent, whence this Lie~subalgebra is {\twodimensional}.
+	It is also non-abelian because the matrices~$x$ and~$y$ do not commute.
+
+	We have altogether shown that there exists precisely two {\twodimensional}~\liealgebras{$\kf$} up to isomorphism.
+	One of them is abelian, and the other one is non-abelian and admits a basis~$x$,~$y$ with~$[x,y] = x$.
+\end{example}
+
+\begin{example}[Three-dimensional Lie~algebras]
+	\label{infinitely many three-dimensional lie algebras}
+	\index{three-dimensional Lie algebras}
+	The number of isomorphism classes of {\threedimensional} Lie~algebras over a field~$\kf$ depends on the cardinality of~$\kf$.
+
+	If the field~$\kf$ is finite, then there exist only finitely many {\threedimensional} Lie~algebras up to isomorphism.
+	Indeed, every such Lie~algebra is isomorphic to the vector space~$\kf^3$ together with a suitable Lie~bracket~$[\ph, \ph]$ on~$\kf^3$.
+	But there exist only finitely many Lie~brackets on~$\kf^3$ because~$\kf^3$ is finite.
+
+	If the field~$\kf$ is infinite then there exist infinitely many {\threedimensional}~\liealgebras{$\kf$} up to isomorphism.
+	We show this by constructing a family of Lie~algebras~$\glie_\tau$ where~$\tau$ ranges through~$\kf$, such that~$\glie_\tau$ and~$\glie_\upsilon$ are isomorphic if and only if~$\tau = \upsilon$ or~$\tau \upsilon = 1$.
+
+	The Lie~algebra~$\glie_\tau$ is given by a the vector space with basis~$t$,~$x$,~$y$ together with the Lie~bracket given by
+	\[
+		[t, x] = x \,,
+		\quad
+		[t, y] = \tau y \,,
+		\quad
+		[x, y] = 0 \,.
+	\]
+	Such a Lie~algebra exists since it can be realized as the Lie~subalgebra of~$\gllie(3, \kf)$ that is spanned by the three matrices
+	\[
+		t
+		=
+		\begin{pmatrix}
+			0 &   &       \\
+				& 1 &       \\
+				&   & \tau
+		\end{pmatrix} \,,
+		\qquad
+		x
+		=
+		E_{21} 
+		=
+		\begin{pmatrix}
+			0 & 0 & 0 \\
+			1 & 0 & 0 \\
+			0 & 0 & 0
+		\end{pmatrix} \,,
+		\qquad
+		y
+		=
+		E_{31}
+		=
+		\begin{pmatrix}
+			0 & 0 & 0 \\
+			0 & 0 & 0 \\
+			1 & 0 & 0
+		\end{pmatrix} \,.
+	\]
+
+	We first observe that for~$\tau \neq 0$ we can replace the basis~$t$,~$x$,~$y$ of~$\glie_\tau$ by the slighty rescaled basis~$t'$,~$x'$,~$y'$ given by
+	\[
+		t' \defined \frac{t}{\tau} \,,
+		\quad
+		x' \defined x \,,
+		\quad
+		y' \defined y \,.
+	\]
+	The Lie~bracket of~$\glie_\tau$ is on this rescaled basis given by the relations
+	\[
+		[t', x'] = \frac{1}{\tau} x' \,,
+		\quad
+		[t', y'] = y' \,,
+		\quad
+		[y', x'] = 0 \,.
+	\]
+	We find from these relations that the unique linear map~$\varphi \colon \glie_{\tau} \to \glie_{1/\tau}$ given by
+	\[
+		\varphi(t') = t \,,
+		\quad
+		\varphi(x') = y \,,
+		\quad
+		\varphi(y') = x
+	\]
+	is an isomorphism of Lie~algebras.
+	This shows that~$\glie_{\tau}$ is isomorphic to~$\glie_{\upsilon}$ if~$\tau \neq 0$ and~$\upsilon = 1/\tau$, i.e. if~$\tau \upsilon = 1$.
+	
+	Let now~$\glie$ be~$\glie_\tau$ for some scalar~$\tau$ in~$\kf$.
+	The commutator space~$[\glie, \glie]$ is spanned by~$x$ and~$y$ if~$\tau$ is nonzero, and otherwise spanned by~$x$.
+	We can hence distinguish the Lie~algebra~$\glie_0$ from the Lie~algebras~$\glie_\upsilon$ for~$\upsilon \neq 0$ by considering the dimension of~$[\glie, \glie]$.
+
+	To further distinguish between the Lie~algebras~$\glie_\upsilon$ with~$\upsilon \neq 0$ let~$t'$ be some element of~$\glie$ that does not belong to the commutator space~$[\glie, \glie]$.
+	We find from the equality~$[\glie, \glie] = \gen{x,y}_{\kf}$ that the element~$t'$ is of the form
+	\[
+		t'
+		=
+		\alpha t + \beta x + \gamma y
+	\]
+	for some coefficients~$\alpha$,~$\beta$,~$\gamma$ in~$\kf$ with~$\alpha \neq 0$.
+	We consider the endomorphism
+	\[
+		\ad(t')
+		=
+		[t', \ph]
+		\colon
+		\glie
+		\to
+		\glie \,.
+	\]
+	With respect to the basis~$t$,~$x$,~$y$ of~$\glie$ we have
+	\[
+		\ad(t)
+		\equiv
+		\begin{pmatrix}
+			0 & 0 & 0     \\
+			0 & 1 & 0     \\
+			0 & 0 & \tau
+		\end{pmatrix} \,,
+		\quad
+		\ad(x)
+		\equiv
+		\begin{pmatrix*}[r]
+			 0  & 0 & 0 \\
+			-1  & 0 & 0 \\
+			 0  & 0 & 0
+		\end{pmatrix*} \,,
+		\quad
+		\ad(y)
+		\equiv
+		\begin{pmatrix*}[r]
+			0     & 0 & 0 \\
+			0     & 0 & 0 \\
+			-\tau & 0 & 0
+		\end{pmatrix*}
+	\]
+	and therefore
+	\begin{align*}
+		\ad(t')
+		&=
+		\ad(\alpha t + \beta x + \gamma y)
+		\\
+		&=
+		\alpha \ad(t) + \beta \ad(x) + \gamma \ad(y)
+		\\
+		&\equiv
+		\alpha
+		\begin{pmatrix}
+			0 & 0 & 0     \\
+			0 & 1 & 0     \\
+			0 & 0 & \tau
+		\end{pmatrix}
+		+
+		\beta
+		\begin{pmatrix*}[r]
+			 0  & 0 & 0 \\
+			-1  & 0 & 0 \\
+			 0  & 0 & 0
+		\end{pmatrix*}
+		+
+		\gamma
+		\begin{pmatrix*}[r]
+			0     & 0 & 0 \\
+			0     & 0 & 0 \\
+			-\tau & 0 & 0
+		\end{pmatrix*}
+		\\
+		&=
+		\begin{pmatrix}
+			 0          & 0       & 0           \\
+			-\beta      & \alpha  & 0           \\
+			-\gamma\tau & 0       & \alpha \tau
+		\end{pmatrix} \,.
+	\end{align*}
+	The eigenvalues of~$\ad(t')$ are thus given by~$0$,~$\alpha$, and~$\alpha \tau$.
+	We find from this that the two quotients of the two non-zero eigenvalues of~$\ad(t')$ are given by~$\tau$ and~$1 / \tau$.
+
+	The above calculations shows how the set~$\{ \tau, 1 / \tau \}$ can be reconstructed from the Lie~algebra~$\glie = \glie_\tau$:
+	the values~$\tau$ and~$1/\tau$ are precisely the quotients of the nonzero eigenvalues of~$\ad(t')$ where~$t'$ is any element of~$\glie$ not contained in the commutator space~$[\glie, \glie]$.
+	It follows that for~$\glie_\tau$ and~$\glie_\upsilon$ to be isomorphic we need the equality~$\{ \tau , 1/\tau \} = \{ \upsilon, 1/\upsilon \}$.
+	This means that~$\tau = \upsilon$ or~$\tau = 1 / \upsilon$, i.e.~$\tau \upsilon = 1$.
+\end{example}
+
+
+\subsection{Universal Property of the Product}
+
+
+\begin{proposition}[Universal property of the product]
+	\label{products of lie algebras}
+	\index{universal property!of product of Lie algebras}
+	Let~$\glie_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of~\liealgebras{$\kf$}.
+	\begin{enumerate}
+		\item
+			The canonical projection
+			\[
+			 \pi_\mu
+			 \colon
+			 \prod_{\lambda \in \Lambda} \glie_\lambda
+			 \to
+			 \glie_\mu \,,
+			 \quad
+			 ( x_\lambda )_\lambda
+			 \mapsto
+			 x_\mu
+			\]
+			is for every index~$\mu$ in~$\Lambda$ a homomorphism of Lie~algebras.
+		\item
+			Let~$\hlie$ be a~\liealgebra{$\kf$}.
+			A map~$\varphi$ from~$\hlie$ to~$\prod_{\lambda \in \Lambda} \glie$ is a homomorphism of Lie~algebras if and only if it is a homomorphisms of Lie~algebras in each coordinate, i.e.\ if and only if for every index~$\mu$ in~$\Lambda$ the composite~$\pi_\mu \circ \varphi$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\glie_\mu$.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			This holds because the Lie~algebra structure on~$\prod_{\lambda \in \Lambda} \glie_{\lambda}$ is defined componentwise.
+		\item
+			If~$\varphi$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\prod_{\lambda \in \Lambda} \glie_\lambda$, then the composite~$\pi_\mu \circ \varphi$ is for every index~$\mu$ in~$\Lambda$ a composite of homomorphism of Lie~algebras, and therefore again a homomorphism of Lie~algebras.
+
+			Suppose on the other hand that each composite~$\pi_\lambda \circ \varphi$ is a homomorphism of Lie~algebras.
+			The map~$\varphi$ is then linear in each coordinate, and thus linear.
+			We also have for every two elements~$x$,~$y$ of~$\hlie$ and for every index~$\mu$ in~$\Lambda$ the equalities
+			\begin{align*}
+				\pi_\mu\bigl( \varphi( [ x, y ] ) \bigr)
+				&=
+				(\pi_\mu \circ \varphi)( [x, y] )
+				\\
+				&=
+				[ (\pi_\mu \circ \varphi)(x), (\pi_\mu \circ \varphi)(y) ]
+				\\
+				&=
+				[ \pi_\mu( \varphi(x) ), \pi_\mu( \varphi(y) ) ]
+				\\
+				&=
+				\pi_\mu\bigl( [\varphi(x), \varphi(y)] \bigr) \,,
+			\end{align*}
+			and thus altogether the equality
+			\[
+				\varphi( [x,y] ) = [ \varphi(x), \varphi(y) ] \,.
+			\]
+			This shows that the linear map~$\varphi$ is a homomorphism of Lie~algebras.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	\Cref{products of lie algebras} shows that the category~$\cLie{\kf}$ has all small products.
+
+	Given three~\liealgebras{$\kf$}~$\glie$,~$\hlie_1$,~$\hlie_2$ and two homomorphisms of Lie~algebras
+	\[
+		\varphi_1 \colon \glie \to \hlie_1 \,,
+		\quad
+		\varphi_2 \colon \glie \to \hlie_2 \,,
+	\]
+	the set
+	\[
+		\{
+			x \in \glie
+		\suchthat
+			\varphi_1(x) = \varphi_2(x)
+		\}
+	\]
+	is a Lie~subalgebra of~$\glie$.
+	This then shows that the category~$\cLie{\kf}$ has binary equalizers.
+
+	Together, this shows that the category~$\cLie{\kf}$ has all small limits, i.e. it is complete.
+	We will see in \cref{existence of small colimits} that the category~$\cLie{\kf}$ also has all small colimits, i.e. that it is cocomplete.
+\end{remark}
+
+
+\subsection{Universal Property of the External Direct Sum}
+
+
+\begin{example}[Universal property of the external direct sum]
+	\label{homomorphism out of direct sum}
+	\index{universal property!of direct sum of Lie algebras}
+	Let~$\glie_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of~\liealgebras{$\kf$}.
+	For every index~$\mu$ in~$\Lambda$ we have a~\linear{$\kf$}, injective inclusion map
+	\[
+		\iota_\mu
+		\colon
+		\glie_\mu
+		\to
+		\bigoplus_{\lambda \in \Lambda} \glie_\lambda
+	\]
+	that is given by
+	\[
+		\iota_\mu(x)
+		=
+		(x_\lambda)_\lambda
+		\quad\text{with}\quad
+		x_\lambda
+		=
+		\begin{cases*}
+			x & if~$\lambda = \mu$, \\
+			0 & otherwise,
+		\end{cases*}
+		\qquad
+		\text{for all~$\lambda \in \Lambda$.}
+	\]
+	These inclusion maps are homomorphisms of Lie~algebras because the Lie~bracket on~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ is defined componentwise.
+	We can therefore regard every Lie~algebra~$\glie_\mu$ as a Lie~subalgebra of the direct sum~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ via the inclusion map~$\iota_\mu$.
+
+	Let~$\hlie$ be another~\liealgebra{$\kf$}.
+	We have a {\onetoonetext} correspondence
+	\begin{align}
+		\left\{
+			\begin{tabular}{c}
+				\linear{$\kf$} maps \\
+				$\varphi \colon \bigoplus_{\lambda \in \Lambda} \glie_\lambda \to \hlie$
+			\end{tabular}
+		\right\}
+		&\onetoone
+		\left\{
+			\begin{tabular}{c}
+				$(\varphi_\lambda)_\lambda$
+			\end{tabular}
+		\suchthat*
+			\begin{tabular}{c}
+				\linear{$\kf$} maps\\
+				$\varphi_\lambda \colon \glie_\lambda \to \hlie$
+			\end{tabular}
+		\right\}
+		\label{universal property of vector space direct sum}
+	\intertext{that is given by}
+		\SwapAboveDisplaySkip
+		\varphi
+		&\mapsto
+		(\varphi \circ \iota_\lambda)_\lambda \,,
+		\notag
+		\\
+		\biggl(
+			(x_\lambda)_\lambda
+			\mapsto
+			\sum_{\lambda \in \Lambda}
+			\varphi_\lambda(x_\lambda)
+		\biggr)
+		&\mapsfrom
+		(\varphi_\lambda)_\lambda \,.
+		\notag
+	\end{align}
+	We may think about the composite~$\varphi \circ \iota_\lambda$ as the restriction of~$\varphi$ to~$\glie_\lambda$, when~$\glie_\lambda$ is regarded as a Lie~subalgebra of~$\glie$ via the inclusion~$\iota_\lambda$.
+
+	If a~\linear{$\kf$} map~$\varphi$ from~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ to~$\hlie$ is a homomorphism of Lie~algebras, then each composite~$\varphi \circ \iota_\mu$ is a homomorphism of Lie~algebras from~$\glie_\mu$ to~$\hlie$, because it is a composite of two homomorphisms of Lie~algebras.
+	We note that the Lie~algebras~$\glie_\mu$ commute with each other in~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$, in the sense that
+	\[
+		[ \iota_\mu(\glie_\mu), \iota_\kappa(\glie_\kappa) ] = 0
+		\qquad
+		\text{for any two distinct indices~$\mu$ and~$\kappa$}.
+	\]
+	It follows that the images of the composites~$\varphi \circ \iota_\lambda$ commute with each other in~$\hlie$, because
+	\[
+		[
+			(\varphi \circ \iota_\mu)(\glie_\mu),
+			(\varphi \circ \iota_\kappa)(\glie_\kappa)
+		]
+		=
+		\varphi( [\iota_\mu(\glie_\mu), \iota_\kappa(\glie_\kappa)] )
+		=
+		\varphi(0)
+		=
+		0
+	\]
+	for any two distinct indices~$\mu$ and~$\kappa$.
+
+	Suppose on the other hand that~$\varphi_\lambda \colon \glie_\lambda \to \hlie$ with~$\lambda$ in~$\Lambda$ is a family of homomorphisms of Lie~algebras whose images commute with each other.
+	Let~$\varphi$ be the~\linear{$\kf$} from~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ to~$\hlie$ corresponding to the maps~$\varphi_\lambda$.
+	More explicitely, we have
+	\[
+		\varphi( (x_\lambda)_\lambda )
+		=
+		\sum_{\lambda \in \Lambda}
+		\varphi_\lambda(x_\lambda)
+		\qquad
+		\text{for every~$(x_\lambda)_\lambda \in \bigoplus_{\lambda \in \Lambda} \glie_\lambda$.}
+	\]
+	Then the map~$\varphi$ is again a homomorphism of Lie~algebras.
+	Indeed, let~$(x_\lambda)_\lambda$ and~$(y_\lambda)_\lambda$ be two elements of~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+	We have
+	\begin{align*}
+		[
+			\varphi( (x_\lambda)_\lambda ),
+			\varphi( (y_\lambda)_\lambda )
+		]
+		&=
+		\Biggl[
+			\sum_{\lambda \in \Lambda}
+			\varphi_\lambda( x_\lambda ) ,
+			\sum_{\mu \in \Lambda}
+			\varphi_\mu( y_\mu )
+		\Biggr]
+		\\
+		&=
+		\sum_{\lambda, \mu \in \Lambda}
+		\underbrace{
+			[ \varphi_\lambda( x_\lambda ) , \varphi_\mu( y_\mu ) ]
+		}_{
+			\text{$= 0$ for~$\lambda \neq \mu$}
+		}
+		\\
+		&=
+		\sum_{\lambda \in \Lambda} [ \varphi_\lambda( x_\lambda ), \varphi_\lambda( y_\lambda ) ]
+		\\
+		&=
+		\sum_{\lambda \in \Lambda} \varphi_\lambda( [ x_\lambda , y_\lambda ] )
+		\\
+		&=
+		\varphi( ([x_\lambda, y_\lambda])_\lambda )
+		\\
+		&=
+		\varphi( [ (x_\lambda)_\lambda, (y_\lambda)_\lambda ] ) \,.
+	\end{align*}
+	This shows that~$\varphi$ is indeed a homomorphism of Lie~algebras.
+
+	It follows from the above assertions that the {\onetoonetext} correspondence~\eqref{universal property of vector space direct sum} restricts to a {\onetoonetext} correspondence
+	\begin{align*}
+		\left\{
+			\begin{tabular}{c}
+				Lie~algebra \\
+				homomorphisms \\
+				$\varphi \colon \bigoplus_{\lambda \in \Lambda} \glie_\lambda \to \hlie$
+			\end{tabular}
+		\right\}
+		&\onetoone
+		\left\{
+			\begin{tabular}{c}
+				$(\varphi_\lambda)_\lambda$
+			\end{tabular}
+		\suchthat*
+			\begin{tabular}{c}
+				Lie~algebra homomorphisms \\
+				$\varphi_\lambda \colon \glie_\lambda \to \hlie$ whose images \\
+				commute with each other
+			\end{tabular}
+		\right\} \,.
+	\end{align*}
+\end{example}
+
+
+\subsection{Internal Direct Sums}
+
+
+\begin{example}
+	\label{direct sum of ideals}
+%  If~$I$ and~$J$ are two Lie~algebra over the same field~$\kf$ then their product~$I \times J$ contains the linear subspaces~$I' \defined I \times 0$ and~$J' \defined 0 \times J$ as ideals.
+%  These ideals are isomorphic to~$I$ and~$J$ as Lie~algebras via the isomorphisms
+%  \begin{alignat*}{2}
+%    I
+%    &\to
+%    I'  \,,
+%    &
+%    \quad
+%    x
+%    &\mapsto
+%    (x,0) \,,
+%    \\
+%    J
+%    &\to
+%    J'  \,,
+%    &
+%    \quad
+%    y
+%    &\mapsto
+%    (0,y) \,.
+%  \end{alignat*}
+	Let~$\glie$ be a Lie~algebra and let~$I_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of ideals of~$\glie$ such that~$I = \bigoplus_{\lambda \in \Lambda} I_\lambda$ as vector spaces.
+	In other words, the underlying vector space of~$\glie$ is the internal direct sum of the underlying vector spaces of the ideals~$I_\lambda$.
+	Let~$\glie$ be a~{\liealgebra{$\kf$}} and let~$I_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of ideals of~$\glie$ such that
+	\[
+		\glie
+		=
+		\bigoplus_{\lambda \in \Lambda}
+		I_\lambda
+	\]
+	as vector spaces.
+	It then follows for any two distinct indices~$\mu$ and~$\kappa$ that the ideals~$I_\mu$ and~$I_\kappa$ commute with each other in~$\glie$.
+	Indeed, the commutator subspace~$[I_\mu, I_\kappa]$ is contained in~$I_\mu$ because~$I_\mu$ is an ideal in~$\glie$.
+	This commutator subspace is for the same reason also contained in~$I_\kappa$.
+	It follows that~$[I_\mu, I_\kappa]$ is contained in~$I_\mu \cap I_\kappa = 0$, which means that~$[I_\mu, I_\kappa]$ vanishes.
+
+	It follows that the isomorphism of vector spaces
+	\[
+		\bigoplus_{\lambda \in \Lambda}
+		I_\lambda
+		\to
+		\glie \,,
+		\quad
+		(x_\lambda)_\lambda
+		\mapsto
+		\sum_{\lambda \in \Lambda} x_\lambda
+	\]
+	is an isomorphism of Lie~algebras.
+
+	Let~$\hlie$ be another~\liealgebra{$\kf$}.
+	It now follows from \cref{homomorphism out of direct sum} that a homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$\hlie$ is \enquote{the same} as a collection of Lie~algebra homomorphisms~$\varphi_\lambda$ from~$I_\lambda$ to~$\hlie$ where~$\lambda$ ranges through~$\Lambda$ and such that the images of~$\varphi_\mu$ and~$\varphi_\kappa$ commute in~$\hlie$ for any two distinct indices~$\mu$ and~$\kappa$.
+\end{example}
+
+
+\begin{definition}
+	In the situation of \cref{direct sum of ideals} the Lie~algebra~$\glie$ is the \defemph{internal direct sum}\index{internal direct sum of lie algebras}\index{direct sum of Lie algebras!internal} the ideals~$I_\lambda$.
+\end{definition}
+
+
+\subsection{Universal Property of the Quotient}
+
+
+\begin{theorem}[Homomorphism theorem]
+	\label{homomorphism theorem}
+	Let~$\glie$ be a Lie~algebra and let~$I$ be an ideal of~$\glie$.
+	\begin{enumerate}
+		\item
+			The canonical projection map
+			\[
+				\pi
+				\colon
+				\glie
+				\to
+				\glie/I \,,
+				\quad
+				x
+				\mapsto
+				\class{x}
+			\]
+			is a homomorphism of Lie~algebras.
+	\end{enumerate}
+	Let~$\hlie$ be another Lie~algebra.
+	\begin{enumerate}[resume*]
+		\item
+			Let~$\psi$ be a homomorphism of Lie~algebras from~$\glie/I$ to~$\hlie$.
+			The composite~$\psi \circ \pi$ is a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$ whose kernel contains~$I$.
+		\item
+			Let conversely~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+			The homomorphism~$\varphi$ factors through a homomorphism of Lie~algebras~$\psi$ from~$\glie/I$ to~$\hlie$ that makes the diagram
+			\[
+				\begin{tikzcd}
+					\glie
+					\arrow{r}[above]{\varphi}
+					\arrow{d}[left]{\pi}
+					&
+					\hlie
+					\\
+					\glie/I
+					\arrow[dashed]{ur}[below right]{\psi}
+					&
+					{}
+				\end{tikzcd}
+			\]
+			commute if and only if the ideal~$I$ is contained in the kernel of~$\ker(\varphi)$.
+			The homomorphism~$\psi$ is unique and given by
+			\[
+				\psi( \class{x} )
+				=
+				\varphi(x)
+				\qquad
+				\text{for every~$x \in \glie$.}
+			\]
+			The image and kernel of~$\psi$ are given by~$\im(\psi) = \im(\varphi)$ and~$\ker(\psi) = \ker(\varphi)/I$.
+		\qed
+	\end{enumerate}
+\end{theorem}
+
+
+%TODO: Add a proof.
+
+
+\begin{remark}
+	The homomorphism theorem is also known as the \defemph{universal property of the quotient}\index{universal property!of quotient Lie algebra}.
+\end{remark}
+
+
+\begin{corollary}[Isomorphism theorems]
+	\label{isomorphism theorems}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			\label{first isomorphism theorem}
+			Let~$\hlie$ be another Lie~algebra and let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+			The homomorphism~$\varphi$ induces a well-defined isomorphism of Lie~algebras
+			\[
+				\glie / {\ker(\varphi)}
+				\to
+				\im(\varphi)  \,,
+				\quad
+				\class{x}
+				\mapsto
+				\class{\varphi(x)} \,.
+			\]
+		\item
+			Let~$I$ and~$J$ be two ideals of~$\glie$ such that~$I$ is contained in~$J$.
+			The quotient~$J/I$ is an ideal of the Lie~algebra~$\glie/I$ and the natural isomorphism of vector spaces
+			\[
+				(\glie/I) / (J/I)
+				\to
+				\glie/I \,,
+				\quad
+				\class{ \class{x} }
+				\mapsto
+				\class{x}
+			\]
+			is already a natural isomorphism of Lie~algebras.
+		\item
+			Let~$\hlie$ is a Lie~subalgebra of~$\glie$ and let~$I$ is an ideal of~$\glie$.
+			Then the sum~$\hlie + I$ is a Lie~subalgebra of~$\glie$ that contains the ideal~$I$, and the intersection~$\hlie \cap I$ is an ideal of~$\hlie$.
+			The natural isomorphism of vector spaces
+			\begin{gather*}
+				\hlie/(\hlie \cap I)
+				\to
+				(\hlie + I)/I \,,
+				\quad
+				\class{x}
+				\mapsto
+				\class{x}
+			\end{gather*}
+			is already a natural isomorphism of Lie~algebras.
+		\qed
+	\end{enumerate}
+\end{corollary}
+
+
+%\begin{lemma}
+%  \label{homomorphisms respect commutators of sets}
+%  If~$\varphi \colon \glie \to \hlie$ is a homomorphism of Lie~algebras then
+%  \[
+%    \varphi([X,Y])
+%    =
+%    [\varphi(X), \varphi(Y)]
+%  \]
+%  for any two subsets~$X$,~$Y$ of~$\glie$.
+%  \qed
+%\end{lemma}
+
+
+\begin{proposition}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras and let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+	\begin{enumerate}
+		\item
+			For every Lie~subalgebra~$\klie$ of~$\hlie$ its preimage~$\varphi^{-1}(\klie)$ is a Lie~subalgebra of~$\glie$.
+		\item
+			For every Lie~subalgebra~$\klie$ of~$\glie$ its image~$\varphi(\klie)$ is a Lie~subalgebra of~$\hlie$.
+		\item
+			For every ideal~$I$ of~$\hlie$ its preimage~$\varphi^{-1}(I)$ is an ideal of~$\glie$.
+		\item
+			Suppose the homomorphism~$\varphi$ is surjective.
+			Then for every ideal of~$I$ of~$\glie$ its image~$\varphi(I)$ is an ideal of~$\hlie$.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{warning}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras and let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+	For an ideal~$I$ in~$\glie$ is it in general not true that the image~$\varphi(I)$ is an ideal of~$\hlie$.
+
+	Indeed, let~$\hlie$ be some Lie~algebra and let~$\glie$ be a Lie~subalgebra of~$\hlie$ that is not an ideal of~$\hlie$.
+	Then~$I \defined \glie$ is an ideal of~$\glie$ and the inclusion map~$\iota$ from~$\glie$ to~$\hlie$ is a homomorphism of Lie~algebras.
+	But the image~$\iota(I) = \hlie$ is by construction not an ideal of~$\hlie$.
+\end{warning}
+
+
+\begin{proposition}[Correspondence theorem]
+	\label{correspondence theorem}
+	Let~$I$ be an ideal of a Lie~algebra~$\glie$ and let
+	\[
+		\pi
+		\colon
+		\glie
+		\to
+		\glie / I
+	\]
+	denote the canonical quotient map.
+	\begin{enumerate}
+		\item
+			Let~$\hlie$ be a Lie~subalgebra of~$\glie$ that contains the ideal~$I$.
+			The quotient~$\hlie/I$ is a Lie~subalgebra of of~$\glie/I$, and this construction induces a {\onetoonetext} correspondence
+			\begin{align*}
+				\left\{
+					\begin{tabular}{@{}c@{}}
+						Lie~subalgebras $\hlie$ of~$\glie$ \\
+						containing~$I$
+					\end{tabular}
+				\right\}
+				&\longleftrightarrow
+				\{ \text{Lie~subalgebras~$\klie$ of~$\glie/I$} \} \,,
+				\\
+				\hlie
+				&\mapsto
+				\hlie/I \,,
+				\\
+				\pi^{-1}(\klie)
+				&\mapsfrom
+				\klie \,.
+		\intertext{
+		\item
+			This correspondence restricts to a {\onetoonetext} correspondence
+		}
+				\left\{
+					\begin{tabular}{@{}c@{}}
+						Lie~ideals~$J$ in~$\glie$ \\
+						containing~$I$
+					\end{tabular}
+				\right\}
+				&\longleftrightarrow
+				\{ \text{Lie~ideals~$K$ in~$\glie/I$} \} \,,
+				\\
+				J
+				&\mapsto
+				J/I \,,
+				\\
+				\pi^{-1}(K)
+				&\mapsfrom
+				K \,.
+			\end{align*}
+		\item
+			Let~$J$ be an ideal of~$\glie$ containing~$I$.
+			For the corresponding ideal~$J/I$ of~$\glie/I$ the resulting quotient Lie~algebras~$\glie/J$ and~$(\glie/I)/(J/I)$ are isomorphic via the third isomorphism theorem.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\subsection{Universal Property of the Abelianization}
+
+
+\begin{example}[Universal property of abelianization]
+	\index{universal property!of abelianization}
+	\label{universal property of abelianization}
+	Let~$\glie$ be a~\liealgebra{$\kf$} and let~$\hlie$ be an abelian~\liealgebra{$\kf$}.
+	If~$\varphi$ is any homomorphism of Lie~algebras from~$\glie$ to~$\hlie$ then the image of~$\varphi$ is a Lie~subalgebra of~$\glie$, which is then again abelian.
+	It follows from the isomorphism between~$\im(\varphi)$ and~$\glie / {\ker(\varphi)}$ that the quotiont Lie~algebra~$\glie / {\ker(\varphi)}$ is abelian.
+	The ideal~$\ker(\varphi)$ must therefore contain the commutator ideal~$[\glie, \glie]$, as seen in \cref{quotient is abelian iff moded out the commutator ideal}.
+	The homomorphism~$\varphi$ does therefore factor through a homomorphism from~$\glie^{\ab}$ to~$\hlie$.
+	This construction gives a {\onetoonetext} correspondence
+	\[
+		\left\{
+			\begin{tabular}{c}
+				homomorphisms of \\
+				Lie~algebras~$\glie \to \hlie$
+			\end{tabular}
+		\right\}
+		\onetoone
+		\left\{
+			\begin{tabular}{c}
+				homomorphisms of \\
+				Lie~algebras $\glie^{\ab} \to \hlie$
+			\end{tabular}
+		\right\}
+		=
+		\{
+			\textstyle
+			\text{linear maps~$\glie^{\ab} \to \hlie$}
+		\} \,.
+	\]
+\end{example}
+
+
+\begin{proposition}
+	\label{functoriality of abelianization}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} and let~$\varphi$ be a homomorphism of Lie~algebras from~$\glie$ to~$\hlie$.
+	The homomorphism~$\varphi$ induces a homomorphism of Lie~algebras
+	\[
+		\varphi^{\ab}
+		\colon
+		\glie^{\ab}
+		\to
+		\hlie^{\ab} \,,
+		\quad
+		\class{x}
+		\mapsto
+		\class{\varphi(x)} \,.
+	\]
+\end{proposition}
+
+
+\begin{proof}
+	The homomorphism~$\varphi$ maps the commutator ideal~$[\glie, \glie]$ into the commutator ideal~$[\hlie, \hlie]$.
+	It thus induces a homomorphism from~$\glie / [\glie, \glie]$ to~$\hlie / [\hlie, \hlie]$ as desired.
+\end{proof}
+
+
+\begin{remark}
+	Let~$\cLieab{\kf}$\glsadd{category abelian lie algebras} denote the full subcategory of~$\cLie{\kf}$ whose class of objects consists of those~\liealgebras{$\kf$} which are abelian.
+	Let~$U$ be the forgetful functor from~$\cLieab{\kf}$ to~$\cLie{\kf}$ (i.e. the inclusion functor).
+
+	We also have a functor~$(-)^{\ab}$ from~$\cLie{\kf}$ to~$\cLieab{\kf}$.
+	This functor assigns to each~\liealgebra{$\kf$}~$\glie$ its abelianization~$\glie^{\ab}$ and to each homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$\hlie$ the induced homomorphism of Lie~algebras~$\varphi^{\ab}$ from~$\glie^{\ab}$ to~$\hlie^{\ab}$ as introduced in~\cref{functoriality of abelianization}.
+
+	The discussion in \cref{universal property of abelianization} tells us that the abelianization functor~$(\ph)^{\ab}$ is left adjoint to the forgetful functor~$U$.
+\end{remark}
+
+
+\subsection{Universal Property of Extension of Scalars}
+
+
+\begin{proposition}[Universal property of extension of scalars]
+	\index{universal property!of extension of scalars}
+	Let~$\glie$ be a~\liealgebra{$\kf$}, let~$A$ be a commutative~\algebra{$\kf$} and let~$\hlie$ be an~\liealgebra{$A$}.
+	Every homomorphism of~\liealgebras{$\kf$}~$\varphi$ from~$\glie$ to~$\hlie$ extends uniquely to a homomorphism of~\liealgebras{$A$}~$\psi$ from~$A \tensor_{\kf} \glie$ to~$\hlie$.
+\end{proposition}
+
+
+\begin{proof}
+	We know from linear algebra that the homomorphism~$\varphi$ extends uniquely to an~\linear{$A$} map~$\psi$ from~$A \tensor_{\kf} \glie$ to~$\hlie$.
+	The compatibility of~$\psi$ with the Lie~brackets of~$A \tensor_{\kf} \glie$ and~$\hlie$ can be checked on an~\generating{$A$} set of~$A \tensor_{\kf} \glie$.
+	Such a generating set is given by~$\glie$, on which~$\psi$ agrees with~$\varphi$, and where it is therefore compatible with the Lie~brackets by assumption.
+\end{proof}
+
+
+\subsection{Anti-homomorphisms}
+
+
+\begin{recall}
+	\index{anti-homomorphism!of algebras@of \enquote{algebras}}
+	\label{anti-homomorphisms for general algebras}
+	Let~$A$ and~$B$ be two~\enquote{\algebras{$\kf$}}.
+	A map~$\Phi$ from~$A$ ot~$B$ is an \defemph{anti-homomorphism} if it is~{\linear{$\kf$}} and satisfies the condition
+	\[
+		\Phi(ab)
+		=
+		\Phi(b) \Phi(a)
+		\qquad
+		\text{for all~$a, b \in A$.}
+	\]
+	For a map~$\Phi$ from~$A$ to~$B$ the following conditions are equivalent.
+	\begin{equivalenceslist*}
+		\item
+			$\Phi$ is an anti-homomorphism from~$A$ to~$B$.
+		\item
+			$\Phi$ is a homomorphism from~$A^{\op}$ to~$B$.
+		\item
+			$\Phi$ is a homomorphism from~$A$ to~$B^{\op}$.
+		\item
+			$\Phi$ is an anti-homomorphism from~$A^{\op}$ to~$B^{\op}$.
+	\end{equivalenceslist*}
+
+	An anti-homomorphism~$\Phi$ from~$A$ to~$B$ is an \defemph{anti-isomorphism}\index{anti-isomorphism!of algebras@of \enquote{algebras}} if there exists another anti-homomorphism~$\Psi$ from~$B$ to~$A$ with both~$\Psi \circ \Phi = \id_A$ and~$\Phi \circ \Psi = \id_B$.
+	For a map~$\Phi$ from~$A$ to~$B$ the following conditions are equivalent.
+	\begin{equivalenceslist*}
+		\item
+			$\Phi$ is an anti-isomorphism from~$A$ to~$B$.
+		\item
+			$\Phi$ is an isomorphism from~$A^{\op}$ to~$B$.
+		\item
+			$\Phi$ is an isomorphism from~$A$ to~$B^{\op}$.
+		\item
+			$\Phi$ is an anti-isomorphism from~$A^{\op}$ to~$B^{\op}$.
+	\end{equivalenceslist*}
+
+	It follows in particular that an anti-homomorphism of~\enquote{\algebras{$\kf$}} is an anti-isomorphism if and only if it is bijective.
+\end{recall}
+
+
+\begin{fluff}
+	The general definitions of anti-homomorphisms and anti-isomorphisms for \enquote{algebras} from \cref{anti-homomorphisms for general algebras} can in particular be applied to Lie~algebras.
+	We will make this explicit now:
+\end{fluff}
+
+
+\begin{definition}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	\begin{enumerate}
+		\item
+			A map~$\varphi$ from~$\glie$ and~$\hlie$ is an \defemph{anti-homomorphism}\index{anti-homomorphism!of Lie algebras} of Lie~algebras if it is~\linear{$\kf$} and satisfies the condition
+			\[
+				\varphi([x,y]) = [\varphi(y), \varphi(x)]
+				\qquad
+				\text{for all~$x, y \in \glie$.}
+			\]
+		\item
+			An anti-homomorphism of Lie~algebras~$\varphi$ from~$\glie$ to~$\hlie$ is an \defemph{anti-isomorphism}\index{anti-isomorphism!of Lie algebras} if there exists an anti-homomorphism of Lie~algebras~$\psi$ from~$\hlie$ to~$\glie$ such that both~$\varphi \circ \psi = \id_{\hlie}$ and~$\psi \circ \varphi = \id_{\glie}$.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+	\label{characterizations of anti-homomorphisms for lie algebras}
+	The characterizations of anti-homomorphisms and anti-isomorphisms of \enquote{algebras} from \cref{anti-homomorphisms for general algebras} apply in particular to anti-homomorphisms and anti-isomorphisms of Lie~algebras.
+	We will therefore not spill out these equivalences a second time.
+	Instead, we advise the reader to take the equivalences in \cref{anti-homomorphisms for general algebras} and replace~$A$ by~$\glie$ and~$B$ by~$\hlie$.
+\end{remark}
+
+
+\begin{proposition}
+	\label{lie algebra isomorphic to its opposite}
+	Every Lie~algebra~$\glie$ is isomorphic to its opposite Lie~algebra~$\glie^{\op}$ via the map
+	\[
+		\glie
+		\to
+		\glie^{\op}\,,
+		\quad
+		x
+		\mapsto
+		-x^{\op}  \,.
+	\]
+\end{proposition}
+
+
+\begin{proof}
+	The map~$\varphi$ from~$\glie$ to~$\glie^{\op}$ given by~$x \mapsto -x^{\op}$ for every~$x \in \glie$ is linear, and it is an anti-homomorphism of Lie~algebras because
+	\[
+		\varphi([x, y])
+		=
+		-[x,y]^{\op}
+		=
+		-[ y^{\op}, x^{\op} ]
+		=
+		[ x^{\op}, y^{\op} ]
+		=
+		[ -x^{\op}, -y^{\op} ]
+		=
+		[ \varphi(x), \varphi(y) ]
+	\]
+	for all~$x, y \in \glie$.
+	It is also bijective, and thus an isomorphism of Lie~algebras.
+\end{proof}
+
+
+\begin{corollary}
+	We have for any two~\liealgebras{$\kf$}~$\glie$ and~$\hlie$ a {\onetoonetext} correspondence given by
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		\left\{
+			\begin{tabular}{c}
+				anti-homomorphisms \\
+				of Lie~algebras~$\glie \to \hlie$
+			\end{tabular} 
+		\right\}
+		&\onetoone
+		\left\{
+			\begin{tabular}{c}
+				homomorphisms \\
+				of Lie~algebras~$\glie \to \hlie$
+			\end{tabular}
+		\right\} \,,
+		\\
+		\varphi
+		&\mapsto
+		-\varphi \,,
+		\\
+		-\varphi
+		&\mapsfrom
+		\varphi \,.
+	\end{align*}
+\end{corollary}
+
+
+\begin{proof}
+	This is a combination of \cref{anti-homomorphisms for general algebras}, respectively \cref{characterizations of anti-homomorphisms for lie algebras}, and \cref{lie algebra isomorphic to its opposite}.
+\end{proof}
+
+
+
+
+

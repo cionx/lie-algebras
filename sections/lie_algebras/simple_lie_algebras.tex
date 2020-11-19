@@ -1,0 +1,299 @@
+\section{Simple Lie~Algebras}
+\label{simple lie algebras}
+
+
+\begin{definition}
+	A Lie~algebra~$\glie$ is \defemph{simple}\index{simple Lie algebra} if it is non-abelian and the only ideals of~$\glie$ are~$0$ and~$\glie$.
+\end{definition}
+
+
+\begin{remark}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Any simple Lie~algebra is in particular nonzero.
+		\item
+			A Lie~algebra is simple if and only if it is non-abelian and contains precisely two ideals.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{examples}
+	\label{examples for simple lie algebras}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			The Lie~algebra~$\gllie(n, \kf)$ isn’t simple.
+			For~$n = 0$ it is zero, for~$n = 1$ it is abelian, and for~$n \geq 1$ it contains~$\sllie(n,\kf)$ as a nonzero, proper ideal.
+		\item
+			The Lie~algebra~$\sllie(2, \kf)$ is simple if and only if the field~$\kf$ does not have characteristic~$2$.
+			To prove this we consider the standard basis
+			\[
+				e
+				=
+				\begin{pmatrix}
+					0 & 1 \\
+					0 & 0
+				\end{pmatrix} \,,
+				\qquad
+				h
+				=
+				\begin{pmatrix*}[r]
+					1 &  0  \\
+					0 & -1
+				\end{pmatrix*} \,,
+				\qquad
+				f
+				=
+				\begin{pmatrix}
+					0 & 0 \\
+					1 & 0
+				\end{pmatrix}
+			\]
+			of~$\sllie(2, \kf)$, on which the Lie~bracket of~$\sllie(2, \kf)$ is given by the relations
+			\[
+				[h,e] = 2e  \,,
+				\qquad
+				[h,f] = -2 f \,,
+				\qquad
+				[e,f] = h \,.
+			\]
+			
+			If the field~$\kf$ is of characteristic~$2$ then the element~$h$ spans a {\onedimensional} ideal, which then shows that~$\sllie(2, \kf)$ is not simple.
+			
+			Let us consider in the following the case that the field~$\kf$ is not of characteristic~$2$.
+			Let~$I$ be a nonzero ideal of~$\sllie(2, \kf)$ and let~$x$ be some nonzero element of~$I$.
+			We may write the element~$x$ as a linear combination
+			\[
+				x = \alpha e + \beta h + \gamma f
+			\]
+			for some scalar~$\alpha$,~$\beta$,~$\gamma$ in~$\kf$.
+			It follows that
+			\[
+				[e,x]
+				=
+				-2 \beta e + \gamma h \,,
+				\qquad \text{and thus}\qquad
+				[e,[e,x]]
+				=
+				-2 \gamma e \,.
+			\]
+			The elements~$[e,x]$ and~$[e,[e,x]]$ are both again contained in~$I$ because~$I$ is an ideal of~$\sllie(2, \kf)$.
+
+			It now follows that the ideal~$I$ contains the basis vector~$e$.
+			If the scalar~$\gamma$ is nonzero, then it follows from the equality~$[e,[e,x]] = -2 \gamma e$ that
+			\[
+				e
+				=
+				- \frac{ [e,[e,x]] }{ 2\gamma } \,.
+			\]
+			If~$\gamma$ vanishes but the scalar~$\beta$ is nonzero then it follows from the equality$[e,x] = -2 \beta e$ that
+			\[
+				e
+				=
+				-\frac{ [e,x] }{ 2\beta } \,.
+			\]
+			If both~$\beta$ and~$\gamma$ vanish then it follows that~$\alpha$ must be nonzero because~$x$ is nonzero, and it then follows from the equality~$x = \alpha e$ that
+			\[
+				e = \frac{x}{\alpha} \,.
+			\]
+			We find in each case that the basis vector~$e$ is contained in the ideal~$I$, because the elements~$x$,~$[e,x]$ and~$[e,[e,x]]$ are contained in~$I$.
+			
+			It further follows that the basis elements~$h$ and~$f$ are also contained in~$I$ because~$h = [e,f]$ and~$f = -[h,f]/2$.
+			We have thus altogether found that the ideals~$I$ contains all three standard basis vectors of~$\sllie(2 \kf)$, and must therefore equal~$\sllie(2, \kf)$.
+	\end{enumerate}
+\end{examples}
+
+
+\begin{proposition}
+	\label{commutator and center of simple}
+	Let~$\glie$ be a simple Lie~algebra.
+	Then~$\glie$ has trivial center and is perfect.
+\end{proposition}
+
+
+\begin{proof}
+	The Lie~algebra~$\glie$ is nonabelian because it is simple.
+	We therefore find that the commutator ideal~$[\glie, \glie]$ is a nonzero ideal of~$\glie$, and we also find that the center~$\centerlie(\glie)$ is a proper ideal of~$\glie$.
+	But~$\glie$ admits only two ideals because it is simple, namely the zero ideal and~$\glie$ itself.
+	It therefore follows that~$[\glie, \glie] = \glie$ and~$\centerlie(\glie) = 0$.
+\end{proof}
+
+
+\begin{corollary}
+	\label{ad is injective for simple}
+	Let~$\glie$ be a simple Lie~algebra.
+	The homomorphism of Lie~algebras~$\ad$ from~$\glie$ to~$\gllie(\glie)$ is injective.
+\end{corollary}
+
+
+\begin{proof}
+	The kernel of~$\ad$ is the center of~$\glie$, which vanishes by \cref{commutator and center of simple}.
+\end{proof}
+
+
+\begin{corollary}
+	Every finite-dimensional, simple Lie~algebra is isomorphic to a linear Lie~algebra.
+	\qed
+\end{corollary}
+
+
+\begin{fluff}
+	A famous theorem due to Ado -- that we will not attempt to prove in this lecture -- states that this conclusion actually holds for every finite-dimensional Lie~algebra.
+\end{fluff}
+
+
+\begin{theorem}[Ado, first version]
+	\label{Ado’s theorem}
+	Every finite-dimensional Lie~algebra is isomorphic to a linear Lie~algebra.
+\end{theorem}
+
+
+\begin{fluff}
+	We finish this \lcnamecref{simple lie algebras} by proving the general simplicity of~$\sllie(n, \kf)$.
+\end{fluff}
+
+
+\begin{theorem}[Simplicity of~$\sllie(n, \kf)$]
+	\label{sln is simple}
+	Let~$\kf$ be any field.
+	The Lie~algebra~$\sllie(n, \kf)$ is simple if and only if~$n \geq 2$ and the characteristic of~$\kf$ does not divide~$n$.
+\end{theorem}
+
+
+\begin{proof}
+	The assertion holds for~$n = 0$ and~$n = 1$ because~$\sllie(2, \kf)$ is then zero, and therefore not simple.
+	We have also proven the assertion for~$n = 2$ in \cref{examples for simple lie algebras}.
+	We will therefore assume in the following that~$n \geq 3$.
+
+	Suppose first that the characteristic of~$\kf$ divides~$n$.
+	The identity matrix is then contained in~$\sllie(n, \kf)$, which shows that the center of~$\sllie(n, \kf)$ is nonzero.
+	It follows from \cref{commutator and center of simple} that~$\sllie(n, \kf)$ is not simple.
+
+	Suppose in the following that the characteristic of~$\kf$ does not divide~$n$.
+	We abbrevite~$\sllie(n, \kf)$ as~$\glie$, and denote by~$\hlie$ its Lie~subalgebra of traceless diagonal matrices.
+	We consider the decomposition
+	\begin{equation}
+		\label{decomposition of sln for simplicity}
+		\glie
+		=
+		\hlie \oplus \bigoplus_{i \neq j} \gen{ E_{ij} }_{\kf} \,.
+	\end{equation}
+	Let~$I$ be a nonzero ideal of~$\glie$.
+	We show in the following that~$I$ already equals~$\glie$.
+	To do this let~$A$ be a nonzero matrix contained in~$I$.
+	With respect to the decomposition~\eqref{decomposition of sln for simplicity} we can write the matrix~$A$ as
+	\[
+		A = A' + \sum_{i \neq j} \alpha_{ij} E_{ij}
+	\]
+	for some coefficients~$\alpha_{ij}$ in~$\kf$.
+
+	Let us first show that the ideal~$I$ contains some nonzero diagonal matrix.
+	If all coefficients~$\alpha_{ij}$ vanish, then~$A = A'$ is this desired matrix.
+	Suppose otherwise that the coefficient~$\alpha_{ij}$ does not vanish for some indices~$i$ and~$j$.
+	For every~$k = 1, \dotsc, n$ let~$D_k$ be the diagonal matrix whose entries are~$1/n$, except for the~\howmanyth{$k$} one, which is~$1/n - 1$.
+	The matrix~$D_k$ has trace zero and is thus contained in~$\glie$.
+	It follows from \cref{background on diagonal matrices} that the commutator~$[D_i, A]$ arises from~$A$ by
+	\begin{itemize}
+		\item
+			deleting all diagonal entries of~$A$,
+		\item
+			multiplying the~\howmanyth{$i$} column with~$1$, and the~\howmanyth{$i$} row with~$-1$ (except for the deleted diagonal entry~$A_{ii}$), and
+		\item
+		  removing all other entries of~$A$.
+	\end{itemize}
+	It follows that the matrix~$[D_i, [D_j, A]]$ is again contained in~$I$ and that it is given by
+	\[
+		\widetilde{A}
+		\defined
+		- \alpha_{ij} E_{ij} - \alpha_{ji} E_{ji} \,.
+	\]
+	It follows that the matrix
+	\[
+		\Bigl[ E_{ji}, - \widetilde{A} \Bigr]
+		=
+		\alpha_{ij} ( E_{jj} - E_{ii} )
+	\]
+	is contained in~$I$.
+	This is the desired nonzero diagonal matrix in~$I$.
+
+	Let us now show that the ideal~$I$ contains some matrix~$E_{ij}$.
+	We consider for this a nonzero diagonal matrix~$D$ contained in~$I$.
+	The matrix~$D$ cannot be a scalar multiple of the identity matrix because the characteristic of~$\kf$ does not divide the size~$n$.
+	It follows that there exist two indices~$i$ and~$j$ such that the diagonal entries~$D_{ii}$ and~$D_{jj}$ are distinct.
+	It follows that the matrix
+	\[
+		\frac{1}{D_{ii} - D_{jj}} [D, E_{ij}]
+		=
+		E_{ij}
+	\]
+	is again contained in the ideal~$I$.
+
+	We now show that the ideal~$I$ contains every matrix~$E_{kl}$ where~$k$ and~$l$ are distinct.
+	We have already shown that the ideal~$I$ contains some matrix~$E_{ij}$.
+	We distinguish now between the following cases:
+	\begin{itemize}
+		\item
+			If~$(i,j) = (k,l)$ then~$E_{kl} = E_{ij}$ is contained in~$I$.
+		\item
+			If~$i = k$ but~$j \neq l$ then the matrix~$E_{jl}$ is contained in~$\glie$, and it follows that
+			\[
+				[ E_{ij}, E_{jl} ]
+				=
+				[ E_{kj}, E_{jl} ]
+				=
+				E_{kl}
+			\]
+			is indeed contained in~$I$.
+		\item
+			Similarly, if~$i \neq k$ but~$j = l$ then the matrix~$E_{ki}$ is contained in~$\glie$, and it follows that
+			\[
+				[ E_{ki}, E_{ij} ]
+				=
+				[ E_{ki}, E_{il} ]
+				=
+				E_{kl}
+			\]
+			is indeed contained in~$I$.
+		\item
+			Suppose that~$i \neq j$ and~$j \neq i$.
+			There exists an index~$k$ that is distinct from both~$i$ and~$j$ because~$n \geq 3$.
+			It follows that the matrix~$E_{ki}$ is contained in~$\glie$, and hence that the matrix
+			\[
+				[E_{ki}, E_{ij}]
+				=
+				E_{kj}
+			\]
+			is again contained in~$I$.
+			It follows from the previous case that~$E_{kl}$ is contained in~$I$.
+	\end{itemize}
+	It now follows that the Lie subalgebra~$\hlie$ of~$\glie$ is contained in~$I$.
+	Indeed, a vector space generating set of~$\hlie$ is given by the matrices~$E_{ii} - E_{jj}$ with~$i \neq j$.
+	We have already seen that the matrices~$E_{ij}$ and~$E_{ji}$ are contained in~$I$, whence it follows that
+	\[
+		[E_{ij}, E_{ji}]
+		=
+		E_{ii} - E_{jj}
+	\]
+	is contained in~$I$.
+
+	We have altogether shown that the ideal~$I$ contains both the Lie~subalgebra~$\hlie$ of~$\glie$ and all matrices~$E_{ij}$ with~$i \neq j$.
+	It follows from the decomposition~\eqref{decomposition of sln for simplicity} that~$I$ equals~$\glie$.
+\end{proof}
+
+
+\begin{remark}
+	It follows from \cref{sln is simple} and \cref{commutator and center of simple} that
+	\[
+		[\sllie(n, \kf), \sllie(n, \kf)]
+		=
+		\sllie(n, \kf) \,.
+	\]
+	In other words, every matrix of trace zero is a linear combination of commutators.
+	It was proven in \cite{albert_muckenhoupt_matrices_trace_zero} that every matrix of trace zero is already a commutator itself
+\end{remark}
+
+
+
+
+

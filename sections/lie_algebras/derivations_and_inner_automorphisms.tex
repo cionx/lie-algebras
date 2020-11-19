@@ -1,0 +1,1404 @@
+\section{Derivations and Inner Automorphisms}
+
+
+\subsection{Derivations}
+
+
+\begin{definition}
+	\label{definition of derivations}
+	\index{derivation!of an algebra@of an~\enquote{algebras}}
+	Let~$A$ be a~\enquote{\algebra{$\kf$}}.
+	A \defemph{derivation} of~$A$ is a~{\linear{$\kf$}} map~$\delta$ from~$A$ to~$A$ such that
+	\[
+		\delta(ab)
+		=
+		\delta(a) b + a \delta(b)
+		\qquad
+		\text{for all~$a, b \in A$.}
+	\]
+	The set of derivations of~$A$ is denoted by
+	\[
+		\Der(A)
+		\defined
+		\{
+			\delta
+			\colon
+			A
+			\textstyle\to
+			A
+		\suchthat
+			\text{$\delta$ is a derivation of~$A$}
+		\}  \,.
+		\glsadd{derivations}
+	\]
+\end{definition}
+
+
+\begin{proposition}
+	Let~$A$ be a~\enquote{\algebra{$\kf$}}.
+	The set~$\Der(A)$ is a Lie~subalgebra of~$\gllie(A)$.
+\end{proposition}
+
+
+\begin{proof}
+	For any two element~$a$,~$b$ of~$A$, the auxiliary map
+	\[
+		h_{ab}
+		\colon
+		\gllie(A)
+		\to
+		A \,,
+		\quad
+		\delta
+		\mapsto
+		\delta(ab) - \delta(a)b - a \delta(b)
+	\]
+	is linear.
+	It follows that
+	\[
+		\Der(A)
+		=
+		\bigcap_{a, b \in A}
+		\ker( h_{ab} )
+	\]
+	is a linear subspace of~$\gllie(A)$.
+	If~$\delta_1$ and~$\delta_2$ are any two derivations of~$A$ then
+	\[
+		\delta_1( \delta_2(ab) )
+		=
+		\delta_1( \delta_2(a) b + a \delta_2(b) )
+		=
+		\delta_1(\delta_2(a)) + \delta_2(a) \delta_1(b)
+		+ \delta_1(a) \delta_2(b) + a \delta_1( \delta_2(b) )
+	\]
+	for all~$a, b \in A$, and therefore
+	\begin{align*}
+		[\delta_1, \delta_2](ab)
+		&=
+		(\delta_1 \delta_2 - \delta_2 \delta_1)(ab)
+		\\
+		&=
+		\delta_1( \delta_2(ab) ) - \delta_2( \delta_1(ab) )
+		\\
+		&=
+		\delta_1(\delta_2(a)) b + a \delta_1(\delta_2(b))
+		- \delta_2(\delta_1(a)) b - a \delta_2(\delta_1(b))
+		\\
+		&=
+		(\delta_1 \delta_2 - \delta_2 \delta_1)(a) b
+		+ a (\delta_1 \delta_2 - \delta_2 \delta_1)(b)
+		\\
+		&=
+		[\delta_1, \delta_2](a) b + a [\delta_1, \delta_2](b) \,.
+	\end{align*}
+	This shows that the commutator~$[\delta_1, \delta_2]$ of any two derivations~$\delta_1$ and~$\delta_2$ of~$A$ is again such a derivation.
+	This means that the linear subspace~$\Der(A)$ of~$\gllie(A)$ is indeed a Lie~subalgebra.
+\end{proof}
+
+
+\begin{remark}
+	\label{derivations made explicit}
+	Let us unravel the definition of a derivation in some special cases.
+	\begin{enumerate}
+		\item
+			Let~$\glie$ be a Lie~algebra.
+			A derivation of~$\glie$\index{derivation!of Lie algebra} is a vector space endomorphism~$\delta$ of~$\glie$ such that
+			\[
+				\delta([x,y])
+				=
+				[\delta(x), y] + [x, \delta(y)]
+				\qquad
+				\text{for all~$x, y \in \glie$.}
+			\]
+		\item
+			Let~$A$ be a commutative~\algebra{$\kf$}.
+			A derivation of~$A$\index{derivation!of a commutative algebra} is a vector space endomorphism~$\delta$ of~$A$ such that
+			\[
+				\delta(ab)
+				=
+				\delta(a) b + a \delta(b)
+				\qquad
+				\text{for all~$a, b \in A$}.
+			\]
+			The~\vectorspace{$\kf$}~$\End_{\kf}(A)$ becomes an~\module{$A$} via the scalar multiplication
+			\[
+				(a \cdot f)(b)
+				\defined
+				a \cdot f(b)
+				\qquad
+				\text{for all~$a, b \in A$ and~$f \in \gllie(A)$.}
+			\]
+			It follows from the commutativity of~$A$ that~$\Der(A)$ is an~\submodule{$A$} of~$\End_{\kf}(A)$, because
+			\begin{align*}
+				(a \delta)(b c)
+				&=
+				a \delta(b c)
+				\\
+				&=
+				a ( \delta(b) c + b \delta(c) )
+				\\
+				&=
+				a \delta(b) c + a b \delta(c)
+				\\
+				&=
+				a \delta(b) c + b a \delta(c)
+				\\
+				&=
+				(a \delta)(b) c + b (a \delta)(c)
+			\end{align*}
+			for all~$a, b, c \in A$ and~$\delta \in \Der(A)$.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{example}
+	Let~$\glie$ be an abelian Lie~algebra.
+	Every~\linear{$\kf$} endomorphism~$\delta$ of~$\glie$ is already a derivation of~$\glie$ because
+	\[
+		\delta([x,y])
+		=
+		0
+		=
+		[0, y] + [x, 0]
+		=
+		[\delta(x), y] + [x, \delta(y)]
+	\]
+	for all~$x, y \in \glie$.
+	We thus have the equality~$\Der(\glie) = \gllie(\glie)$.
+\end{example}
+
+
+\begin{example}
+	\label{derivations of the two-dimensional non-abelian lie algebra}
+	Let~$\glie$ be the two-dimensional, nonabelian Lie~algebra.
+	We want to understand under what conditions a vector space endomorphism~$\delta$ of~$\glie$ is a derivation of~$\glie$.
+	We use for this the basis~$x$,~$y$ of~$\glie$ with~$[x,y] = y$.
+	With respect to this basis we can represent the endomorphism~$\delta$ by a matrix
+	\[
+		\delta
+		\equiv
+		\begin{pmatrix}
+			a_{11} & a_{12} \\
+			a_{21} & a_{22}
+		\end{pmatrix} \,.
+	\]
+	It sufficies to check the condition of a derivation for~$\delta$ on this basis.
+	In other words, we want to understand under what conditions the identities
+	\begin{alignat*}{2}
+		\delta( [x,x] ) &= [ \delta(x), x ] + [ x, \delta(x) ] \,,
+		&
+		\qquad
+		\delta( [y,y] ) &= [ \delta(y), y ] + [ y, \delta(y) ] \,,
+		\\
+		\delta( [x,y] ) &= [ \delta(x), y ] + [ x, \delta(y) ] \,,
+		&
+		\qquad
+		\delta( [y,x] ) &= [ \delta(y), x ] + [ y, \delta(x) ]
+	\end{alignat*}
+	hold.
+	The equations in the upper row are automatically satisfied because the Lie~bracket is alternating and skew-symmetric, whence both sides of these equations vanish.
+	The equations in the lower row are equivalent by the skew-symmetry of the Lie~bracket.
+	We therefore only have to worry about the single equation.
+	\begin{equation}
+		\label{equation for derivation of nonabelian two-dimensional lie algebra}
+		\delta( [x,y] )
+		=
+		[ \delta(x), y ] + [ x, \delta(y) ] \,.
+	\end{equation}
+	We have
+	\[
+		[x,y] = y \,,
+		\quad
+		\delta(x) = a_{11} x + a_{21} y \,,
+		\quad
+		\delta(y) = a_{12} x + a_{22} y \,.
+	\]
+	The required equation~\eqref{equation for derivation of nonabelian two-dimensional lie algebra} thus becomes
+	\begin{align*}
+		{}&
+		\delta( [x,y] )
+		=
+		[ \delta(x), y ] + [ x, \delta(y) ]
+		\\
+		\iff{}&
+		\delta( y )
+		=
+		[ \delta(x), y ] + [ x, \delta(y) ]
+		\\
+		\iff{}&
+		a_{12} x + a_{22} y
+		=
+		a_{11} [x,y] + a_{21} [y,y]
+		+ a_{12} [x,x] + a_{22} [x,y]
+		\\
+		\iff{}&
+		a_{12} x + a_{22} y
+		=
+		a_{11} y + a_{22} y
+		\\
+		\iff{}&
+		a_{11} = 0,
+		a_{12} = 0 \,.
+	\end{align*}
+
+	We have now seen that a vector space endomorphism of~$\glie$ is a derivation of~$\glie$ if and only if its image is contained in the span of~$y$.
+	It follows in particular that the Lie~algebra~$\Der(\glie)$ has a basis given by the two vector space endomorphisms~$e_1$ and~$e_2$ of~$\glie$ with
+	\[
+		e_1(x) = y \,,
+		\quad
+		e_1(y) = 0 \,,
+		\qquad
+		e_2(x) = 0 \,,
+		\quad
+		e_2(y) = y \,.
+	\]
+	We have
+	\[
+		[e_1, e_2](x)
+		=
+		e_1( e_2(x) ) - e_2( e_1(x) )
+		=
+		e_1(0) - e_2(y)
+		=
+		0 - y
+		=
+		- y
+	\]
+	and
+	\[
+		[e_1, e_2](y)
+		=
+		e_1( e_2(y) ) - e_2( e_1(y) )
+		=
+		e_1( y ) - e_2 ( 0 )
+		=
+		0 - 0
+		=
+		0 \,.
+	\]
+	We thus have~$[e_1, e_2] = -e_1$, or equivalently~$[e_2, e_1] = e_1$.
+	This shows that~$\Der(\glie)$ is again the two-dimensional, nonabelian Lie~algebra.
+\end{example}
+
+
+\begin{example}[Derivation of direct sum]
+	\index{derivation!of a direct sum}
+	\label{derivations of direct sum}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras.
+	We give in a following a description of the Lie~algebra~$\Der(\glie \oplus \hlie)$.
+
+	We recall that we may write every linear map~$f$ from~$\glie \oplus \hlie$ to~$\glie \oplus \hlie$ as a matrix
+	\[
+		\begin{pmatrix}
+			a & b \\
+			c & d
+		\end{pmatrix}
+	\]
+	whose entries~$a$,~$b$,~$c$ and~$d$ are linear maps.
+	These linear maps are given as the composites
+	\begin{align*}
+		a
+		&\colon 
+		\glie
+		\to
+		\glie \oplus \hlie
+		\xto{f}
+		\glie \oplus \hlie
+		\to
+		\glie \,,
+		\\
+		b
+		&\colon 
+		\hlie
+		\to
+		\glie \oplus \hlie
+		\xto{f}
+		\glie \oplus \hlie
+		\to
+		\glie \,,
+		\\
+		c
+		&\colon 
+		\glie
+		\to
+		\glie \oplus \hlie
+		\xto{f}
+		\glie \oplus \hlie
+		\to
+		\hlie \,,
+		\\
+		d
+		&\colon 
+		\hlie
+		\to
+		\glie \oplus \hlie
+		\xto{f}
+		\glie \oplus \hlie
+		\to
+		\hlie \,.
+	\end{align*}
+	The application of~$f$ to an element~$(x,y)$ of~$\glie \oplus \hlie$ is given by
+	\[
+		f( (x,y) )
+		=
+		( a(x) + b(y), c(x) + d(y) ) \,.
+	\]
+	(If one writes the pair~$(x,y)$ as a column vector, then this is the usual matrix-vector multiplication.)
+
+	The composition of linear endomorphisms of~$\glie \oplus \hlie$ corresponds to the multiplication of the corresponding matrices.
+	The commutator of two endomorphisms does therefore correpsond to the usual commutator of matrices.
+
+	Let now~$\delta$ be a linear endomorphism of~$\glie \oplus \hlie$ corresponding to a matrix with entries~$a$,~$b$,~$c$,~$d$ as above.
+	We need to find out what conditions these matrix entries have to satisfy for~$\delta$ to be a derivation, i.e. to satisfy the identity
+	\begin{equation}
+		\label{condition for derivation}
+		\delta( [x,y] )
+		=
+		[ \delta(x), y ] + [ x, \delta(y) ]
+	\end{equation}
+	for all~$x, y \in \glie \oplus \hlie$.
+	We may write these elements~$x$ and~$y$ as pairs~$x = (x_1, x_2)$ and~$y = (y_1, y_2)$ for elements~$x_1$,~$y_1$ of~$\glie$ and elements~$x_2$,~$y_2$ of~$\hlie$.
+	Then
+	\begin{align*}
+		\delta( [x, y] )
+		&=
+		\delta( [ (x_1, x_2), (y_1, y_2) ] )
+		\\
+		&=
+		\delta( ( [x_1, y_1], [x_2, y_2] ) )
+		\\
+		&=
+		\Bigl(
+			a( [x_1, y_1] ) + b( [x_2, y_2] ) , \;
+			c( [x_1, y_1] ) + d( [x_2, y_2] )
+		\Bigr)
+	\end{align*}
+	as well as
+	\begin{align*}
+		{}&
+		[ \delta(x), y ] + [ x, \delta(y) ]
+		\\
+		={}&
+		[ \delta( (x_1, x_2) ), (y_1, y_2) ]
+		+ [ (x_1, x_2), \delta( (y_1, y_2) ) ]
+		\\
+		={}&
+		[ ( a(x_1) + b(x_2), c(x_1) + d(x_2) ) , (y_1, y_2) ]
+		+ [ (x_1, x_2), ( a(y_1) + b(y_2), c(y_1) + d(y_2) ) ]
+		\\
+		={}&
+		( [ a(x_1) + b(x_2), y_1 ], [ c(x_1) + d(x_2), y_2 ] )
+		+ ( [ x_1, a(y_1) + b(y_2) ] , [ x_2, c(y_1) + d(y_2) ] )
+		\\
+		={}&
+		\Bigl(
+			[ a(x_1), y_1 ] + [ b(x_2), y_1 ] + [ x_1, a(y_1) ] + [ x_1, b(y_2) ] ,
+		\\
+		{}&
+		\phantom{ \Bigl( }
+			[ c(x_1), y_2 ] + [ d(x_2), y_2 ] + [ x_2, c(y_1) ] + [ x_2, d(y_2) ]
+		\Bigr) \,.
+	\end{align*}
+	We hence need that
+	\begin{align*}
+		a( [x_1, y_1] ) + b( [x_2, y_2] )
+		&=
+		[ a(x_1), y_1 ] + [ b(x_2), y_1 ] + [ x_1, a(y_1) ] + [ x_1, b(y_2) ] , \\
+		c( [x_1, y_1] ) + d( [x_2, y_2] )
+		&=
+		[ c(x_1), y_2 ] + [ d(x_2), y_2 ] + [ x_2, c(y_1) ] + [ x_2, d(y_2) ]
+	\end{align*}
+	for all~$x_1, y_1 \in \glie$ and all~$x_2, y_2 \in \hlie$.
+	By considering some special cases we can split up these conditions.
+	\begin{itemize}
+		\item
+			If both~$x_2$ and~$y_2$ vanish then we need for all~$x_1, y_1 \in \glie$ that
+			\[
+				a( [x_1, y_1] )
+				=
+				[a(x_1), y_1] + [x_1, a(y_1)] \,,
+				\qquad
+				c( [x_1, y_1] )
+				=
+				0 \,.
+			\]
+		\item
+			If both~$x_2$ and~$y_1$ vanish then we need for all~$x_1 \in \glie$ and~$y_2 \in \hlie$ that
+			\[
+				0
+				=
+				[ x_1, b(y_2) ] \,,
+				\qquad
+				0
+				=
+				[ c(x_1), y_2 ] \,.
+			\]
+		\item
+			If both~$x_1$ and~$y_2$ vanish then we need for all~$x_2 \in \glie$ and~$y \in \hlie$ that
+			\[
+				0
+				=
+				[ b(x_2), y_1 ] \,,
+				\qquad
+				0
+				=
+				[ x_2, c(y_1) ] \,.
+			\]
+		\item
+			If both~$x_1$ and~$y_1$ vanish then we need for all~$x_2, y_2 \in \ hlie$ that
+			\[
+				b( [x_2, y_2] )
+				=
+				0 \,,
+				\qquad
+				d( [x_2, y_2] )
+				=
+				[ d(x_2), y_2 ] + [ x_2, d(y_2) ] \,.
+			\]
+	\end{itemize}
+	We find from these special cases that the linear endomorphism~$\delta$ of~$\glie \oplus \hlie$ is a derivation of~$\glie \oplus \hlie$ if and only if the matrix entries~$a$,~$b$,~$c$,~$d$ satisfy the conditions
+	\begin{align*}
+		a( [x_1, x_2] ) &= [ a(x_1), x_2 ] + [ x_1, a(x_2) ] \,\\
+		d( [x_2, y_2] ) &= [ d(y_1), y_2 ] + [ y_1, d(y_2) ] \,\\
+		b( [x_2, y_2] ) &= 0 \,, \\
+		[ b(x_2), y_1]  &= 0 \,, \\
+		[ x_1, b(y_2) ] &= 0 \,, \\
+		c( [x_1, y_1] ) &= 0 \,, \\
+		[ c(x_1), y_2 ) &= 0 \,, \\
+		[ x_2, c(y_1) ] &= 0
+	\end{align*}
+	for all~$x_1, y_1 \in \glie$,~$x_2, y_2 \in \hlie$.
+	The first condition tells us that~$a$ needs to be a derivations of~$\glie$ and the second condition tells us that~$d$ needs to be a derivation of~$\hlie$.
+	The next three conditions tell us that~$b$ needs to take values in the center of~$\glie$ and needs to vanish on the commutator ideal~$[\hlie, \hlie]$.
+	This means that~$b$ needs to be a homomorphism of Lie~algebras from~$\hlie$ to~$\centerlie(\glie)$.
+	The last three conditions tell us in the same way that~$c$ needs to be a homomorphism of Lie~algebras from~$\glie$ to~$\centerlie(\hlie)$.
+
+	We have now seen the following:
+	We can identify the Lie~bracket of~$\gllie( \glie \oplus \hlie)$ as a vector space with
+	\[
+		\left\{
+			\begin{pmatrix}
+				a & b \\
+				c & d
+			\end{pmatrix}
+		\suchthat*
+			\begin{aligned}
+				a &\in \Hom_{\kf}(\glie, \glie),  \\
+				b &\in \Hom_{\kf}(\hlie, \glie),  \\
+				c &\in \Hom_{\kf}(\glie, \hlie),  \\
+				d &\in \Hom_{\kf}(\hlie, \hlie)   \\
+			\end{aligned}
+		\right\} \,.
+	\]
+	The commutator bracket of~$\gllie( \glie \oplus \hlie )$ corresponds under this description to the usual commutator bracket of matrices.
+	The Lie~subalgebra~$\Der(\glie \oplus \hlie)$ of~$\gllie( \glie \oplus \hlie )$ corresponds to the linear subspace (and thus Lie~subalgebra)
+	\[
+		\left\{
+			\begin{pmatrix}
+				a & b \\
+				c & d
+			\end{pmatrix}
+		\suchthat*
+			\begin{aligned}
+				a &\in \Der(\glie),                           \\
+				b &\in \Hom_{\Lie}(\hlie, \centerlie(\glie)), \\
+				c &\in \Hom_{\Lie}(\glie, \centerlie(\hlie)), \\
+				d &\in \Der(\hlie)
+			\end{aligned}
+		\right\} \,.
+	\]
+\end{example}
+
+
+\begin{remark}
+	\index{derivation!of a direct sum}
+	One can generalize~\cref{derivations of direct sum} to any finite direct sum~$\glie_1 \oplus \dotsb \oplus \glie_n$ of~\liealgebras{$\kf$}~$\glie_1, \dotsc, \glie_n$.
+	One finds from the above discussion by induction over~$n$ that under the identification of~$\gllie( \glie_1 \oplus \dotsb \oplus \glie_n )$ with
+	\[
+		\left\{
+			\begin{pmatrix}
+				a_{11}  & \cdots  & a_{1n}  \\
+				\vdots  & \ddots  & \vdots  \\
+				a_{n1}  & \cdots  & a_{nn}
+			\end{pmatrix}
+		\suchthat*
+			a_{ij} \in \Hom_{\kf}( \glie_j, \glie_i )
+		\right\}
+	\]
+	the Lie~subalgebra~$\Der(\glie_1 \oplus \dotsb \oplus \glie_n)$ corresponds to the Lie~subgalgebra
+	\[
+		\left\{
+			\begin{pmatrix}
+				a_{11}  & \cdots  & a_{1n}  \\
+				\vdots  & \ddots  & \vdots  \\
+				a_{n1}  & \cdots  & a_{nn}
+			\end{pmatrix}
+		\suchthat*
+			\begin{tabular}{@{}l@{}}
+				$a_{ii} \in \Der(\glie_i)$ for all~$1 = 1, \dotsc, n$, \\
+				$a_{ij} \in \Hom_{\Lie}(\glie_j, \centerlie(\glie_i))$ whenever~$i \neq j$
+			\end{tabular}
+		\right\} \,.
+	\]
+\end{remark}
+
+
+\begin{lemma}
+	\label{about the kernel of a derivation}
+	Let~$A$ be an~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$A$.
+	\begin{enumerate}
+		\item
+			If~$A$ is unital then~$\delta(1) = 0$.
+		\item
+			The set~$A' \defined \{ a \in A \suchthat \delta(a) = 0 \}$ is a subalgebra of~$A$.
+			If~$A$ is unital then~$A'$ is a unital subalgebra, in the sense that~$1 \in A'$.
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			It follows from the identity~$1 = 1 \cdot 1$ that
+			\[
+				\delta(1)
+				=
+				\delta(1 \cdot 1)
+				=
+				\delta(1) \cdot 1 + 1 \cdot \delta(1)
+				=
+				\delta(1) + \delta(1) \,.
+			\]
+			By subtracting the term~$\delta(1)$ from both sides of this equation we find that~$\delta(1) = 0$.
+		\item
+			The set~$A'$ is a linear subspace of the algebra~$A$ because the derivation~$\delta$ is~\linear{$\kf$}.
+			It holds for all~$a, b \in A'$ that
+			\[
+				\delta(ab)
+				=
+				\delta(a) b + a \delta(b)
+				=
+				0 \cdot b + a \cdot 0
+				=
+				0 \,,
+			\]
+			and thus~$ab \in A'$.
+			If~$A$ is unital then it follows from the previous assertion that~$\delta(1) = 0$ and thus~$1 \in A'$.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{proposition}
+	\label{dervation is uniquely determined by algebra generators}
+	Let~$A$ be a~\algebra{$\kf$} and let~$\delta_1$ and~$\delta_2$ be two derivations of~$A$.
+	Let~$X$ be an algebra generating set of~$A$ and suppose that~$\delta_1(x) = \delta_2(x)$ for every element~$x$ of~$X$.
+	Then already~$\delta_1 = \delta_2$.
+\end{proposition}
+
+
+\begin{proof}
+	The difference~$\delta \defined \delta_1 - \delta_2$ is again a derivation of~$A$.
+	It follows from \cref{about the kernel of a derivation} that the set
+	\[
+		A'
+		\defined
+		\{
+			a \in A
+		\suchthat
+			\delta_1(a) = \delta_2(a)
+		\}
+		=
+		\{
+			a \in A
+		\suchthat
+			\delta(a) = 0
+		\}
+	\]
+	is a subalgebra of~$A$.
+	This subalgebra contains by assumption the algebra generating set~$X$ of~$A$.
+	This means that~$A' = A$ and thus~$\delta_1 = \delta_2$.
+\end{proof}
+
+
+\begin{example}[Derivations of a polynomial algebra]
+	\index{derivation!of polynomial algebra}
+	\label{derivations of commutative polynomial algebra}
+	We consider the commutative~\algebra{$\kf$}
+	\[
+		A \defined \kf[x_1, \dotsc, x_n] \,.
+	\]
+	The partial derivative function
+	\[
+		\dd{x_i}
+		\colon
+		A
+		\to
+		A
+	\]
+	with~$i = 1, \dotsc, n$ satisfy the product rule
+	\[
+		\dd[(fg)]{x_i}
+		=
+		\dd[f]{x_i} g + f \dd[g]{x_i}
+		\qquad
+		\text{for all~$f, g \in A$},
+	\]
+	which means that each partial derivative function~$\dd{x_i}$ is a derivation of~$A$.
+	It follows from \cref{derivations made explicit} that for all polynomials~$f_1, \dotsc, f_n$ the~\linear{$A$} combination
+	\[
+		\delta
+		\defined
+		f_1 \dd{x_1} + \dotsb + f_n \dd{x_n}
+	\]
+	is again a derivation of~$A$.
+	We note that this derivation~$\delta$ is given on the algebra generators~$x_1, \dotsc, x_n$ of~$A$ by
+	\[
+		\delta(x_i)
+		=
+		\sum_{j=1}^n f_j \dd[x_i]{x_j}
+		=
+		\sum_{j=1}^n f_j \delta_{ij}
+		=
+		f_i
+	\]
+	for all~$i = 1, \dotsc, n$.
+	This shows in particular that the polynomials~$f_1, \dotsc, f_n$ are uniquely determined by the derivation~$\delta$, from which it follows that the derivations~$\dd{x_1}, \dotsc, \dd{x_n}$ are linearly independent over~$A$.
+
+	Suppose now that~$\delta$ is any derivation of~$A$.
+	For all~$i = 1, \dotsc, n$ let
+	\[
+		f_i \defined \delta(x_i) \,,
+	\]
+	and let overall~$\delta'$ be the derivation of~$A$ given by
+	\[
+		\delta'
+		\defined
+		f_1 \dd{x_1} + \dotsb + f_n \dd{x_n} \,.
+	\]
+	It follows from the above calculations that
+	\[
+		\delta'(x_i) = f_i = \delta(x_i)
+		\qquad
+		\text{for all~$i = 1, \dotsc, n$.}
+	\]
+	According to \cref{dervation is uniquely determined by algebra generators} this shows that~$\delta = \delta'$.
+	We have thus shown that the derivations~$\dd{x_1}, \dotsc, \dd{x_n}$ form an~\generating{$A$} set of~$\Der(A)$.
+
+	We have altogether shown that~$\Der(A)$ is free as an~\module{$A$} with basis given by the partial derivative functions~$\dd{x_1}, \dotsc, \dd{x_n}$.
+\end{example}
+
+
+\begin{proposition}
+	\label{derivation on inverse}
+	Let~$A$ be a~\algebra{$\kf$}, let~$\delta$ be a derivation of~$A$ and let~$a$ be a unit of~$A$.
+	The value~$\delta(a^{-1})$ is uniquely determined by the value~$\delta(a)$.
+\end{proposition}
+
+
+\begin{proof}
+	It follows from the identity~$1 = a \cdot a^{-1}$ that
+	\[
+		0
+		=
+		\delta(1)
+		=
+		\delta(a \cdot a^{-1})
+		=
+		\delta(a) a^{-1} + a \delta(a^{-1}) \,.
+	\]
+	and therefore~$\delta(a^{-1}) = - a^{-1} \delta(a) a^{-1}$.
+\end{proof}
+
+
+\begin{example}
+	\index{derivation!of Laurent polynomial algebra}
+	Thanks to \cref{derivation on inverse} we can generalize \cref{derivations of commutative polynomial algebra} to the algebra of Laurent~polynomials~$A \defined \kf[X_1, X_1^{-1}, \dotsc, X_n, X_n^{-1}]$.
+	We find that~$\Der(A)$ is free as an~\module{$A$} with basis~$\dd{x_1}, \dotsc, \dd{x_n}$.
+\end{example}
+
+
+\begin{remark}
+	For an~\algebra{$\kf$}~$A$ we consider the algebra derivations of~$A$ as well as the Lie~algebra derivations of~$A$.
+	These two notions do not need to coincide.
+
+	Every algebra dervation~$\delta$ of~$A$ is also a Lie~algebra derivation since we have
+	\begin{align*}
+		\delta([a,b])
+		&=
+		\delta(ab - ba)
+		\\
+		&=
+		\delta(ab) - \delta(ba)
+		\\
+		&=
+		( \delta(a) b + a \delta(b) ) - ( \delta(b) a + b \delta(a) )
+		\\
+		&=
+		\delta(a) b - b \delta(a) + a \delta(b) - \delta(b) a
+		\\
+		&=
+		[\delta(a), b] + [a, \delta(b)]
+	\end{align*}
+	for all~$a, b \in A$.
+
+	But not every algebra derivation of~$A$ also needs to be a Lie~algebra derivation of~$A$.
+	To see this, we can consider the case that~$A$ is commutative and nonzero.
+	Then~$A$ is abelian as a Lie~algebra and thus every vector space endomorphism of~$A$ is already a Lie~algebra derivation of~$A$.
+	But every algebra derivation~$\delta$ of~$A$ must satisfy the condition~$\delta(1) = 0$.
+	So~$\delta = \id_A$ is a Lie~algebra derivation of~$A$ that is not an algebra derivation.
+\end{remark}
+
+\subsection{Inner Derivations}
+
+\begin{proposition}
+	\label{lie algebras act adjoint by derivations}
+	
+	Let~$\glie$ be a Lie~algebra and let~$x$ be an element of~$\glie$.
+	The map
+	\[
+		\ad(x)
+		\colon
+		\glie
+		\to
+		\glie,
+		\quad
+		y
+		\mapsto
+		[x,y]
+	\]
+	is a derivation of~$\glie$.
+\end{proposition}
+
+
+\begin{proof}
+	The map~$\ad(x)$ is linear by the bilinearity of the Lie~bracket of~$\glie$.
+	It follows from the Jacobi~identity that
+	\[
+		\ad(x)([y,z])
+		=
+		[x,[y,z]]
+		=
+		[[x,y],z] + [y,[x,z]] \\
+		=
+		[\ad(x)(y), z] + [y, \ad(x)(z)]
+	\]
+	for all~$y,z \in \glie$.
+\end{proof}
+
+
+\begin{definition}
+	\label{definition of inner derivations}
+ Let~$\glie$ be a Lie~algebra.
+ A derivation of~$\glie$ is \defemph{inner}\index{derivation!inner}\index{inner!derivation} if it is of the form~$\ad(x)$ for some element~$x$ of~$\glie$.
+ The set of inner derivations of~$\glie$ is denoted by~$\InnDer(\glie)$.
+\end{definition}
+
+
+\begin{example}
+	Let~$\glie$ be the non-abelian, two-dimensional Lie~algebra.
+	Let~$x$,~$y$ be a basis of~$\glie$ such that~$[x,y] = y$.
+	The space of inner derivations of~$\glie$ is spanned by the two derivations~$\delta_x = [x,-]$ and~$\delta_y = [y,-]$.
+	These derivations are given by
+	\[
+		\delta_x(x) = 0 \,,
+		\quad
+		\delta_x(y) = y \,,
+		\qquad
+		\delta_y(x) = -y \,,
+		\quad
+		\delta_y(y) = 0 \,.
+	\]
+	We find from the calculation of~$\Der(\glie)$ in \cref{derivations of the two-dimensional non-abelian lie algebra} that~$\delta_x$ and~$\delta_y$ form a basis of~$\Der(\glie)$.
+	This shows that every derivation of~$\glie$ is inner, and that the homomorphism of Lie~algebras~$\ad$ from~$\glie$ to~$\Der(\glie)$ is an isomorphism of Lie~algebras.
+\end{example}
+
+
+\begin{lemma}
+	\label{commutator of any derivation and inner derivation}
+	Let~$\glie$ be a Lie~algebra, let~$\delta$ be a derivation of~$\glie$ and let~$x$ be an element of~$\glie$.
+	Then
+	\[
+		[\delta, \ad(x)] = \ad(\delta(x)) \,.
+	\]
+\end{lemma}
+
+
+\begin{proof}
+	We have
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		[\delta, \ad(x)](y)
+		&= 
+		( \delta \circ \ad(x) - \ad(x) \circ \delta )(y)
+		\\
+		&=
+		\delta([x,y]) - [x,\delta(y)]
+		\\
+		&=
+		[\delta(x),y] + [x,\delta(y)] - [x,\delta(y)]
+		\\
+		&=
+		[\delta(x),y]
+		\\
+		&=
+		\ad(\delta(x))(y)
+	\end{align*}
+	for all~$y \in \glie$, and thus~$[\delta, \ad(x)] = \ad(\delta(x))$.
+\end{proof}
+
+
+\begin{corollary}
+	\label{inner derivations are an ideal}
+	Let~$\glie$ be a Lie~algebra.
+	The set of inner derivations of~$\glie$ is an ideal of~$\Der(\glie)$.
+	It is denoted by~$\InnDer(\glie)$\glsadd{inner derivations}.
+\end{corollary}
+
+
+\begin{proof}
+	It follows from the linearity of the map~$\ad$ from~$\glie$ to~$\gllie(\glie)$ that~$\InnDer(\glie)$ is a linear subspace of~$\gllie(\glie)$, and thus a linear subspace of~$\Der(\glie)$ by \cref{lie algebras act adjoint by derivations}.
+	It follows from \cref{commutator of any derivation and inner derivation} that~$\InnDer(\glie)$ is already an ideal of~$\Der(\glie)$. 
+\end{proof}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra.
+	The quotient Lie~algebra~$\glie/{\centerlie(\glie)}$ is isomorphic to the linear Lie~algebra~$\InnDer(\glie)$.
+\end{proposition}
+
+
+\begin{proof}
+	The adjoint map~$\ad$ from~$\glie$ to~$\gllie(\glie)$ is a homomorphism of Lie~algebras that has~$\centerlie(\glie)$ as its kernel and~$\InnDer(\glie)$ as its image.
+	The assertion therefore follows from the \hyperref[first isomorphism theorem]{first isomorphism theorem}.
+\end{proof}
+
+
+\begin{remark}
+	Let~$\glie$ be a Lie~algebra.
+	The Lie~subalgebra~$\InnDer(\glie)$ of~$\gllie(\glie)$ is the canonical way of associating a linear Lie~algebra to~$\glie$.
+	We will see later that questions about the original Lie~algebra~$\glie$ can sometimes be reduced to a question about the linear Lie~algebra~$\InnDer(\glie)$, to whose elements we can apply linear algebra.
+\end{remark}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra.
+	The quotient Lie~algebra~$\Der(\glie) / {\InnDer(\glie)}$ is the Lie~algebra of \defemph{outer derivations}\index{derivation!outer}\index{outer!derivation} of~$\glie$.
+	It is denoted by~$\OutDer(\glie)$\glsadd{outer derivations}.
+\end{definition}
+
+
+\begin{remark}
+	If one thinks about Lie~algebras as \enquote{derived} versions of (Lie) groups, then derivations are derived versions of automorphisms, and inner derivations are derived versions of inner automorphisms.
+	We can therefore extend the comparision between groups and Lie~algebras from \cref{on the notion of ideals} to \cref{correspondence between groups and lie algebras}.
+	\begin{table}
+		\centering
+		\begin{tabular}{ll}
+			\toprule
+			group theory
+			&
+			Lie~algebra theory
+			\\
+			\midrule
+			subgroup
+			&
+			Lie~subalgebra
+			\\
+			normal subgroup
+			&
+			Lie~ideal
+			\\
+			automorphism
+			&
+			derivation
+			\\
+			inner automorphism
+			&
+			inner derivations
+			\\
+			outer automorphism
+			&
+			outer derivation
+			\\
+			\bottomrule
+		\end{tabular}
+		\caption{Correspondence between group theory and Lie~algebra theory.}
+		\label{correspondence between groups and lie algebras}
+	\end{table}
+
+	That the inner dervivations of a Lie~algebra~$\glie$ form an ideal of the Lie~algebra~$\Der(\glie)$ corresponds to the group theoretic statement that the inner automorphisms of a group~$G$ form a normal subgroup of the automorphism group~$\Aut(G)$.
+	Moreover, the center of~$\glie$ is precisely the kernel of the Lie~algebra homomorphism~$\ad \colon \glie \to \Der(\glie)$, just the center of~$G$ is precisely the kernel of the group homomorphism~$G \to \Aut(G)$.
+\end{remark}
+
+
+
+\subsection{Inner Automorphisms}
+
+
+\begin{recall}
+	Let~$V$ be a~\vectorspace{$\kf$} where~$\kf$ is a field of characteristic zero.
+	Let~$f$ be a nilpotent endomorphism of~$V$.
+	Then its exponential\index{exponential}
+	\[
+		\exp(f)
+		\defined
+		\sum_{n=0}^\infty
+		\frac{f^n}{n!}
+		\label{exponential}
+	\]
+	is again a well-defined endomorphism of~$V$.
+	If~$\alpha$ is an automorphism of~$V$ then the conjugate~$\alpha f \alpha^{-1}$ is again nilpotent, and the two resulting endomorphisms~$\exp(f)$ and~$\exp(\alpha f \alpha^{-1})$ are related via
+	\[
+		\exp( \alpha f \alpha^{-1} )
+		=
+		\sum_{n=0}^\infty
+		\frac{ (\alpha f \alpha^{-1})^n }{n!}
+		=
+		\sum_{n=0}^\infty
+		\frac{ \alpha f^n \alpha^{-1} }{n!}
+		=
+		\alpha
+		\Biggl(
+			\sum_{n=0}^\infty
+			\frac{f^n}{n!}
+		\Biggr)
+		\alpha^{-1}
+		=
+		\alpha \exp(f) \alpha^{-1} \,.
+	\]
+
+	Let now~$g$ be another nilpotent endomorphism of~$V$ and suppose that the endomorphisms~$f$ and~$g$ commute.
+	The sum~$f + g$ is then again nilpotent.
+	To be more precise, we have
+	\[
+		(f + g)^n
+		=
+		\sum_{k=0}^n
+		\binom{n}{k}
+		f^k g^{n-k}
+	\]
+	for every natural exponent~$n$.
+	If~$n'$ and~$n''$ are two natural exponents with
+	\[
+		f^{n'} = 0
+		\quad\text{and}\quad
+		g^{n''} = 0 \,,
+	\]
+	then by choosing the exponent~$n$ to be at least~$n' + n'' - 1$ we find that~$f^k = 0$ or~$g^{n-k} = 0$ for all~$k = 0, \dotsc, n$, and thus~$(f + g)^n = 0$.
+
+	We can therefore also consider the endomorphism~$\exp(f + g)$, and it follows from the commutativity of the endomorphisms~$f$ and~$g$ that
+	\begingroup
+	\allowdisplaybreaks
+	\begin{align*}
+		\exp(f + g)
+		&=
+		\sum_{n=0}^\infty
+		\frac{(f + g)^n}{n!}
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\frac{1}{n!}
+		\sum_{k=0}^n
+		\binom{n}{k}
+		f^k g^{n-k}
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\sum_{k=0}^n
+		\frac{f^k g^{n-k}}{k!(n-k)!}
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\sum_{k + l = n}
+		\frac{f^k g^l}{k! l!}
+		\\
+		&=
+		\sum_{k, l = 0}^\infty
+		\frac{f^k g^l}{k! l!}
+		\\
+		&=
+		\Biggl(
+			\sum_{k=0}^\infty
+			\frac{f^k}{k!}
+		\Biggr)
+		\Biggl(
+			\sum_{l=0}^\infty
+			\frac{g^l}{l!}
+		\Biggr)
+		\\
+		&=
+		\exp(f) \exp(g) \,.
+	\end{align*}
+	\endgroup
+	It follows in particular for~$g = -f$ that
+	\[
+		\exp(f) \exp(-f) = \exp(f - f) = \exp(0) = \id_V \,,
+	\]
+	and similarly that~$\exp(-f) \exp(f) = \id_V$.
+	This shows that the endomorphism~$\exp(f)$ of~$V$ is already an automorphism of~$V$, with inverse gilen by~$\exp(-f)$.
+\end{recall}
+
+
+\begin{lemma}
+	Let~$A$ be a~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$A$.
+	Then
+	\[
+		\delta^n(ab)
+		=
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\delta^k(a) \delta^{n-k}(b)
+		\qquad
+		\text{for all~$n \in \Natural$,~$a, b \in A$.}
+	\]
+\end{lemma}
+
+
+\begin{proof}[First proof]
+	We prove the formula by induction.
+	It holds for~$n = 0$.
+	If the formula holds for some exponent~$n$ then it also holds for the exponent~$n + 1$ because
+	\begingroup
+	\allowdisplaybreaks
+	\begin{align*}
+		\delta^{n+1}(ab)
+		&=
+		\delta( \delta^n(ab) )
+		\\
+		&=
+		\delta
+		\Biggl(
+			\sum_{k=0}^n
+			\binom{n}{k}
+			\delta^k(a) \delta^{n-k}(b)
+		\Biggr)
+		\\
+		&=
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\delta
+		\bigl(
+			\delta^k(a) \delta^{n-k}(b)
+		\bigr)
+		\\
+		&=
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\bigl(
+			\delta^{k+1}(a) \delta^{n-k}(b)
+			+
+			\delta^k(a) \delta^{n+1-k}(b)
+		\bigr)
+		\\
+		&=
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\delta^{k+1}(a) \delta^{n-k}(b)
+		+
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\delta^k(a) \delta^{n+1-k}(b)
+		\\
+		&=
+		\sum_{k=1}^{n+1}
+		\binom{n}{k-1}
+		\delta^{k}(a) \delta^{n+1-k}(b)
+		+
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\delta^k(a) \delta^{n+1-k}(b)
+		\\
+		&=
+		\delta^{n+1}(a) b
+		+
+		\sum_{k=1}^n
+		\binom{n}{k-1}
+		\delta^{k}(a) \delta^{n+1-k}(b)
+		+
+		\sum_{k=1}^n
+		\binom{n}{k}
+		\delta^k(a) \delta^{n+1-k}(b)
+		+
+		a \delta^{n+1}(b)
+		\\
+		&=
+		\delta^{n+1}(a) b
+		+
+		\sum_{k=1}^n
+		\Biggl(
+			\binom{n}{k-1}
+			+
+			\binom{n}{k}
+		\Biggr)
+		\delta^k(a) \delta^{n+1-k}(b)
+		+
+		a \delta^{n+1}(b)
+		\\
+		&=
+		\delta^{n+1}(a) b
+		+
+		\sum_{k=1}^n
+		\binom{n+1}{k}
+		\delta^k(a) \delta^{n+1-k}(b)
+		+
+		a \delta^{n+1}(b)
+		\\
+		&=
+		\sum_{k=0}^{n+1}
+		\binom{n+1}{k}
+		\delta^k(a) \delta^{n+1-k}(b)
+	\end{align*}
+	\endgroup
+	for all~$a, b \in A$.
+\end{proof}
+
+
+\begin{proof}[Second proof]
+	Let
+	\[
+		m
+		\colon
+		A \tensor A
+		\to
+		A \,,
+		\quad
+		a \tensor b
+		\mapsto
+		ab
+	\]
+	be the multiplication map of~$A$.
+	That~$\delta$ is a derivation of~$A$ means that
+	\[
+		\delta \circ m
+		=
+		m \circ (\delta \tensor \id + \id \tensor \delta) \,.
+	\]
+	The endomorphism~$\delta \tensor \id$ and~$\id \tensor \delta$ of~$A \tensor A$ commute.
+	It follows inductively that
+	\begin{align*}
+		\delta^n \circ m
+		&=
+		m \circ (\delta \tensor \id + \id \tensor \delta)^n
+		\\
+		&=
+		m \circ \sum_{k=0}^n \binom{n}{k} (\delta \tensor \id)^k (\id \tensor \delta)^{n-k}
+		\\
+		&=
+		m \circ \sum_{k=0}^n \binom{n}{k} (\delta^k \tensor \id) (\id \tensor \delta^{n-k})
+		\\
+		&=
+		m \circ \sum_{k=0}^n \binom{n}{k} \delta^k \tensor \delta^{n-k}
+		\\
+		&=
+		\sum_{k=0}^n \binom{n}{k} m \circ (\delta^k \tensor \delta^{n-k}) \,.
+	\end{align*}
+	It follows that
+	\[
+		\delta^n( ab )
+		=
+		(\delta^n \circ m)(a \tensor b)
+		=
+		\biggl( \sum_{k=0}^n m \circ \delta^k \tensor \delta^{n-k} \biggr)(a \tensor b)
+		=
+		\sum_{k=0}^n \binom{n}{k} \delta^k(a) \delta^{n-k}(b)
+	\]
+	for all~$a, b \in A$.
+\end{proof}
+
+
+\begin{proposition}
+	\label{exponential of derivation is automorphism}
+	Let~$A$ be a~\enquote{\algebra{$\kf$}} where~$\kf$ is a field of characteristic zero and let~$\delta$ be a nilpotent derivation of~$A$.
+	Then~$\exp(\delta)$ is an algebra automorphism of~$A$.
+\end{proposition}
+
+
+\begin{proof}
+	Let~$\alpha$ be~$\exp(\delta)$.
+	We have for any two element~$a$,~$b$ of~$A$ that
+	\begingroup
+	\allowdisplaybreaks
+	\begin{align*}
+		\alpha(ab)
+		&=
+		\sum_{n=0}^\infty
+		\frac{\delta^n}{n!}(ab)
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\frac{1}{n!}
+		\delta^n(ab)
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\frac{1}{n!}
+		\sum_{k=0}^n
+		\binom{n}{k}
+		\delta^k(a) \delta^{n-k}(b)
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\sum_{k=0}^n
+		\frac{\delta^k(a) \delta^{n-k}(b)}{k! (n-k)!}
+		\\
+		&=
+		\sum_{n=0}^\infty
+		\sum_{k+l=n}
+		\frac{\delta^k(a) \delta^{n-k}(b)}{k! l!}
+		\\
+		&=
+		\sum_{k,l = 0}^\infty
+		\frac{\delta^k(a) \delta^{n-k}(b)}{k! l!}
+		\\
+		&=
+		\Biggl(
+			\sum_{k=0}^\infty
+			\frac{\delta^k(a)}{k!}
+		\Biggr)
+		\Biggl(
+			\sum_{l=0}^\infty
+			\frac{\delta^l(b)}{l!}
+		\Biggr)
+		\\
+		&=
+		\Biggl(
+			\sum_{k=0}^\infty
+			\frac{\delta^k}{k!}
+		\Biggr)
+		(a)
+		\Biggl(
+			\sum_{l=0}^\infty
+			\frac{\delta^l}{l!}
+		\Biggr)
+		(b)
+		\\
+		&=
+		\alpha(a) \alpha(b) \,. 
+	\end{align*}
+	\endgroup
+	This shows that~$\alpha$ preserves multiplication.
+	It is also a vector space automorphism.
+	Together this shows that~$\alpha$ is an algebra automorphism.
+\end{proof}
+
+
+\begin{corollary}
+	Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+	Let~$x$ be an element of~$\glie$ such that~$\ad(x)$ is nilpotent.
+	Then~$\exp(\ad(x))$ is a Lie~algebra automorphism of~$\glie$.
+\end{corollary}
+
+
+\begin{proof}
+	We have seen in \cref{lie algebras act adjoint by derivations} that~$\ad(x)$ is a derivation of~$\glie$.
+	The assertion thus follows from \cref{exponential of derivation is automorphism}.
+\end{proof}
+
+
+\begin{definition}
+	Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+	\begin{enumerate}
+		\item
+			The group of Lie~algebra automorphisms of~$\glie$ is denoted by~$\Aut(\glie)$\glsadd{automorphisms}.
+		\item
+			The \defemph{group of inner automorphisms} of~$\glie$ is the subgroup of~$\Aut(\glie)$ that is generated by all automorphism of the form~$\exp(\ad(x))$ where~$x$ is any element of~$\glie$ for which~$\ad(x)$ is nilpotent.
+			The group of inner automorphisms of~$\glie$ is denoted by~$\InnAut(\glie)$\glsadd{inner automorphisms}.
+		\item
+			The elements of~$\InnAut(\glie)$ are the \defemph{inner automorphisms}\index{automorphism!inner}\index{inner!automorphism} of~$\glie$.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{lemma}
+	\label{adjoint and automorphisms}
+	Let~$\glie$ be a Lie~algebra.
+	Let~$x$ be any element of~$\glie$ and let~$\alpha$ be an automorphism of~$\glie$.
+	Then
+	\[
+		\ad(\alpha(x))
+		=
+		\alpha \circ \ad(x) \circ \alpha^{-1} \,.
+	\]
+\end{lemma}
+
+
+\begin{proof}
+	We have for every element~$y$ of~$\glie$ that
+	\[
+		\ad(\alpha(x))(\alpha(y))
+		=
+		[\alpha(x), \alpha(y)]
+		=
+		\alpha( [x,y] )
+		=
+		\alpha( \ad(x)(y) ) \,,
+	\]
+	and therefore overall
+	\[
+		\ad(\alpha(x)) \circ \alpha
+		=
+		\alpha \circ \ad(x) \,.
+	\]
+	Composing both sides of this equation with~$\alpha^{-1}$ from the right proves the assertion.
+\end{proof}
+
+
+\begin{lemma}
+	\label{conjugation of inner automorphism}
+	Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+	Let~$x$ be an element of~$\glie$ for which~$\ad(x)$ is nilpotent, and let~$\alpha$ be any automorphism of~$\glie$.
+	Then~$\ad(\alpha(x))$ is again nilpotent and
+	\[
+		\alpha \circ \exp(\ad(x)) \circ \alpha^{-1}
+		=
+		\exp( \alpha(x) ) \,.
+	\]
+\end{lemma}
+
+
+\begin{proof}
+	It follows from \cref{adjoint and automorphisms} that the endomorphism~$\ad(\alpha(x)) = \alpha \circ \ad(x) \circ \alpha^{-1}$ is a conjugate of the nilpotent endomorphism~$\ad(x)$, and thus again nilpotent.
+	We also find that
+	\[
+		\exp( \ad(\alpha(x)) )
+		=
+		\exp\bigl( \alpha \circ \ad(x) \circ \alpha^{-1} \bigr)
+		=
+		\alpha \circ \exp(\ad(x)) \circ \alpha^{-1} \,,
+	\]
+	as desired.
+\end{proof}
+
+
+\begin{proposition}
+	Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+	Then the subgroup~$\InnAut(\glie)$ of~$\Aut(\glie)$ is a normal.
+\end{proposition}
+
+
+\begin{proof}
+	The group~$\InnAut(\glie)$ is generated by the set of automorphisms
+	\[
+		\{
+			\exp(\ad(x))
+		\suchthat
+			\text{$x \in \glie$ such that~$\ad(x)$ is nilpotent}
+		\} \,.
+	\]
+	It follows from \cref{conjugation of inner automorphism} that this generating set is closed under the conjugation by any automorphism of~$\glie$.
+	It follows that~$\InnAut(\glie)$ is also closed under conjugation.
+\end{proof}
+
+
+\begin{definition}
+	Let~$\glie$ be a~\liealgebra{$\kf$} where~$\kf$ is a field of characteristic zero.
+	The quotient group~$\Aut(\glie) / {\InnAut(\glie)}$ is the \defemph{group of outer automorphisms} of~$\glie$.
+	It is denoted by~$\OutAut(\glie)$\glsadd{outer automorphisms}.
+	The elements of~$\OutAut(\glie)$ are the \defemph{outer automorphisms}\index{automorphism!outer}\index{outer!automorphism} of~$\glie$.
+\end{definition}
+
+
+
+
+

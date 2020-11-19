@@ -1,0 +1,1928 @@
+\section{Definition and Examples}
+
+
+\subsection{Definition and Basic Properties}
+
+
+\begin{definition}
+	Let~$\glie$ be a vector space over some field~$\kf$.
+	A~{\bilinear{$\kf$}} map
+	\[
+		[\ph, \ph]
+		\colon
+		\glie \times \glie
+		\to
+		\glie
+		\glsadd{lie bracket}
+	\]
+	is a \defemph{Lie~bracket}\index{Lie bracket} if it satisfies the following two conditions.
+	\begin{enumerate}
+		\item
+		$[\ph, \ph]$ is alternating, i.e.~$[x,x] = 0$ for every~$x \in \glie$.
+		\item
+		$[\ph, \ph]$ satisfies the \defemph{Jacobi~identity}\index{Jacobi identity!for elements}%
+		\footnote{
+			Named after Carl Gustav Jacob Jacobi\index{Jacobi, Carl Gustav Jacob}\index{Carl Gustav Jacob Jacobi} (1804--1851).
+		}
+		\[
+			[x,[y,z]] + [y,[z,x]] + [z,[x,y]]
+			=
+			0
+			\qquad
+			\text{for all~$x, y, z \in \glie$.}
+		\]
+	\end{enumerate}
+	A~{\vectorspace{$\kf$}}~$\glie$\glsadd{lie algebra} together with a Lie~bracket~$[\ph, \ph]$ on~$\glie$ is a~\defemph{\liealgebra{$\kf$}}\index{Lie algebra}.%
+	\footnote{
+		Named after Sophus Lie\index{Lie, Sophus}\index{Sophus Lie} (1842--1899).
+	}
+\end{definition}
+
+
+\begin{remark}
+	A Lie~bracket~$[\ph, \ph]$ on a vector space~$\glie$ is always antisymmetric\index{antisymmetric}, i.e.
+	\[
+		[y,x] = -[x,y]
+		\qquad
+		\text{for all~$x, y \in \glie$,}
+	\]
+	because
+	\[
+		0
+		=
+		[x+y, x+y]
+		=
+			\underbrace{ [x,x] }_{= 0}
+		+ [x,y]
+		+ [y,x]
+		+ \underbrace{ [y,y] }_{= 0}
+		=
+		[x,y] + [y,x] \,.
+	\]
+\end{remark}
+
+
+\begin{remark}
+	The Jacobi~identity can be rewritten as
+	\begin{alignat*}{2}
+		[x,[y,z]]
+		&=
+		[[x,y],z] + [y,[x,z]]
+		&\qquad
+		&\text{for all~$x, y, z \in \glie$}
+	\intertext{and equivalently as}
+		[[x,y],z]
+		&=
+		[[x,z],y] + [x,[y,z]]
+		&\qquad
+		&\text{for all~$x, y, z \in \glie$}
+	\end{alignat*}
+	by using the antisymmetry of the Lie~bracket.
+\end{remark}
+
+
+\begin{remark}
+	One can more generally define the notion of an~\liealgebra{$A$}, where~$A$ is any commutative ring.
+	Such a Lie~algebra consists of an~\module{$A$}~$\glie$ together with an~\bilinear{$A$} map~$[\ph, \ph] \colon \glie \times \glie \to \glie$ that is alternating and satisfies the Jacobi~identity.
+\end{remark}
+
+
+\begin{definition}
+	\label{definitions of an algebra}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			A~\defemph{\enquote{\algebra{$\kf$}}}\index{algebra@\enquote{algebra}} is a~\vectorspace{$\kf$}~$A$ together with a bilinear map~$A \times A \to A$.
+			This map is the \defemph{multiplication} of~$A$.
+		\item
+			A~\defemph{\algebra{$\kf$}}\index{algebra} is an~\enquote{\algebra{$\kf$}} that is both associative and unital.
+	\end{enumerate}
+\end{definition}
+
+
+\subsection{Some First Examples of Lie~Algebras}
+
+
+\begin{examples}
+	\label{examples for lie algebras}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Any associative \enquote{\algebra{$\kf$}}~$A$ becomes a~{\liealgebra{$\kf$}} via
+			\[
+				[a,b]
+				\defined
+				ab - ba
+				\qquad
+				\text{for all~$a, b \in A$.}
+			\]
+			Indeed, this map~$[\ph, \ph] \colon A \times A \to A$ is bilinear and alternating, and it follows from the associativity of the multiplication of~$A$ that
+			\begin{align*}
+				 {}&  [a,[b,c]] + [b,[c,a]] + [c,[a,b]] \\
+				={}&  [a, (bc-cb)] + [b, (ca-ac)] + [c, (ab-ba)] \\
+				={}&  a(bc-cb)-(bc-cb)a + b(ca-ac) - (ca-ac)b + c(ab-ba) - (ab-ba)c \\
+				={}&  \underbracket{abc}_{1}
+							- \underbracket{acb}_{2}
+							- \underbracket{bca}_{3}
+							+ \underbracket{cba}_{4}
+							+ \underbracket{bca}_{3}
+							- \underbracket{bac}_{5}
+							- \underbracket{cab}_{6}
+							+ \underbracket{acb}_{2}
+							+ \underbracket{cab}_{6}
+							- \underbracket{cba}_{4}
+							- \underbracket{abc}_{1}
+							+ \underbracket{bac}_{5} \\
+				={}&  0
+			\end{align*}
+			for all~$a, b, c \in A$.
+			The element~$[a,b]$ of~$A$ is the \defemph{commutator}\index{commutator} of the two elements~$a$ and~$b$.
+			This name stems from the fact that~$[a,b] = 0$ if and only if the elements~$a$ and~$b$ commute.
+
+			Let us emphazise some special cases of this general construction.
+			\begin{enumerate}
+				\item
+					The~{\algebra{$\kf$}} of~$(n \times n)$-matrices,~$\Mat(n, \kf)$, becomes a Lie~algebra via
+					\[
+						[A,B]
+						\defined
+						AB - BA
+						\qquad
+						\text{for all~$A, B \in \Mat(n, \kf)$.}
+					\]
+					This Lie~algebra is the \defemph{general linear Lie~algebra}\index{general linear Lie algebra}, and it is denoted by~$\gllie(n, \kf)$.\glsadd{general linear lie algebra matrix}
+				\item
+					For any~{\vectorspace{$\kf$}}~$V$ the~{\algebra{$\kf$}}~$\End_{\kf}(V)$ becomes a Lie~algebra via
+					\[
+						[f, g]
+						\defined
+						f \circ g - g \circ f
+						\qquad
+						\text{for all~$f, g \in \End_{\kf}(V)$.}
+					\]
+					This Lie~algebra is the \defemph{general linear Lie~algebra}\index{general linear Lie algebra} of~$V$, and it is denoted by~$\gllie(V)$.\glsadd{general linear lie algebra endomorphism}
+			\end{enumerate}
+		\item
+			The \defemph{Heisenberg Lie~algebra}%
+			\footnote{
+				Named after Werner Heisenberg\index{Heisenberg, Werner}\index{Werner Heisenberg} (1901--1976).
+			}%
+			~$\heisenberglie$\glsadd{heisenberg lie algebra}\index{Heisenberg Lie algebra} consists of the~\dimensional{$(2n+1)$}~{\vectorspace{$\kf$}} with basis
+			\[
+				p_1 \,, \dotsc \,, p_n \,,
+				\quad
+				q_1 \,, \dotsc \,, q_n \,,
+				\quad
+				c
+				\label{heisenberg basis}
+			\]
+			together with the Lie~bracket~$[\ph, \ph]$ that is given on these basis elements by
+			\begin{itemize*}
+				\item
+					$[p_i, p_j] = 0$ and~$[c_i, c_j] = 0$ for all~$i, j = 1, \dotsc, n$,
+				\item
+					$[p_i, c], [p_i, c] = 0$ for every~$i = 1, \dotsc, n$,
+				\item
+					$[p_i, q_j] = \delta_{ij} c$ for all~$i,j = 1, \dotsc, n$.
+			\end{itemize*}
+			In \cref{examples for representations} we will realize~$\heisenberglie$ as a Lie~subalgebra of~$\gllie(V)$ for a suitable~\vectorspace{$\kf$}~$V$.
+			This will in particular show that~$\heisenberglie$ is indeed a Lie~algebra.
+	\end{enumerate}
+\end{examples}
+
+
+\begin{remark}[Pre-Lie~algebras]
+	Let~$A$ be an~\enquote{\algebra{$\kf$}}.
+	Even if we don’t require the multiplication of~$A$ to be associative, we can still define a bilinear bracket~$[\ph, \ph]$ on~$A$ via
+	\[
+		[a,b]
+		\defined
+		ab-ba
+		\qquad
+		\text{for all~$a, b \in A$.}
+	\]
+	This bracket~$[\ph, \ph]$ is alternating.
+	We have seen in \cref{examples for lie algebras} that it satisfies the Jacobi~identity if the multiplication of~$A$ is associative, and is then a Lie~bracket.
+	But the converse does not hold true:
+	it may happen that~$[\ph, \ph]$ is a Lie~bracket even though~$A$ is not associative.
+	
+	One important example of this are \defemph{pre-Lie~algebras}\index{pre-Lie algebra}:
+	We say that~$A$ is a pre-Lie~algebra if its multiplication satisfies the condition
+	\begin{equation}
+		\label{abstract equation for pre-lie algebra}
+		[l_a, l_b]
+		=
+		l_{[a,b]}
+		\qquad
+		\text{for all~$a, b \in A$,}
+	\end{equation}
+	where the left hand side is the endomorphism commutator~$[l_a, l_b] = l_a l_b - l_b l_a$, and where we denote for every element~$a$ of~$A$ by~$l_a$ the left multiplication with~$a$, i.e. the map
+	\[
+		l_a
+		\colon
+		A
+		\to
+		A \,,
+		\quad
+		x
+		\mapsto
+		ax \,.
+	\]
+	Writing out the condition~\eqref{abstract equation for pre-lie algebra} yields the equivalent condition
+	\begin{alignat}{2}
+		\label{pre lie algebra condition written out}
+		a(bc) - b(ac)
+		&=
+		(ab-ba)c
+		&
+		\qquad
+		&\text{for all~$a, b, c \in A$,}
+	\intertext{or equivalently the condition}
+		a(bc) - (ab)c
+		&=
+		b(ac) - (ba)c
+		&
+		\qquad
+		&\text{for all~$a, b, c \in A$.}
+		\notag
+	\end{alignat}
+	If~$A$ is a pre-Lie~algebra, then the resulting commutator bracket~$[\ph, \ph]$ on~$A$ is still a Lie~bracket, even if~$A$ itself is not associative.
+	Indeed, the bracket~$[\ph, \ph]$ is alternating and it follows from the characterization~\eqref{pre lie algebra condition written out} of a pre-Lie~algebra that it also satisfies the Jacobi~identity, because
+	\begin{align*}
+		{}&
+		[a, [b,c] ] + [b, [c, a]] + [c, [a, b]]
+		\\
+		={}&
+		a (bc - cb) - (bc - cb) a
+		+ b (ca - ac) - (ca - ac) b
+		+ c (ab - ba) - (ab - ba) c
+		\\
+		={}&
+		a (bc) - a (cb) - (bc - cb) a
+		+ b (ca) - b (ac) - (ca - ac) b
+		+ c (ab) - c (ba) - (ab - ba) c
+		\\
+		={}&
+		\underbracket{a (bc)}_{1}
+		- \underbracket{a (cb)}_{2}
+		- \underbracket{b (ca)}_{3}
+		- \underbracket{c (ba)}_{4}
+		+ \underbracket{b (ca)}_{3}
+		- \underbracket{b (ac)}_{5}
+		- \underbracket{c (ab)}_{6}
+		- \underbracket{a (cb)}_{2}
+		+ \underbracket{c (ab)}_{6}
+		- \underbracket{c (ba)}_{4}
+		- \underbracket{a (bc)}_{1}
+		- \underbracket{b (ac)}_{5}
+		\\
+		={}&
+		0
+	\end{align*}
+	for all~$a, b, c \in A$.
+
+	Every associative \enquote{algebra} is in particular a pre-Lie~algebra, and thus we see that the Lie~algebra structure on an associative \enquote{algebra} actually comes from its pre-Lie~algebra structure.
+	The situation is hence as follows:
+	\[
+		\text{associative \enquote{algebra}}
+		\to
+		\text{pre-Lie~algebra}
+		\to
+		\text{Lie~algebra}
+	\]
+ Pre-Lie~algebras were first introduced by Gerstenhaber%
+ \footnote{
+	 Murray Gerstenhaber\index{Gerstenhaber, Murray}\index{Murray Gerstenhaber} (b. 1927).
+ }
+ and we refer to~\cite{gerstenhaber_cohomology_of_associative_ring} to see this concept in action.
+\end{remark}
+
+
+\subsection{Lie~subalgebras, Lie~ideals and Commutator Spaces}
+
+
+\begin{definition}
+	Let~$\glie$ be a~{\liealgebra{$\kf$}}.
+	\begin{enumerate}
+		\item
+			A \defemph{Lie~subalgebra}\index{Lie subalgebra}\index{subalgebra} of~$\glie$ is a~{\linear{$\kf$}} subspace~$\hlie$ of~$\glie$ such that
+			\begin{alignat*}{2}
+				[x,y] &\in \hlie
+				&\qquad
+				&\text{for all~$x, y \in \hlie$.}
+		\intertext{
+		\item
+			A \defemph{Lie~ideal}\index{Lie ideal} of~$\glie$, or simply~\defemph{ideal}\index{ideal} of~$\glie$ is a~{\linear{$\kf$}} subspace~$I$ of~$\glie$ such that
+			}
+				[x,y] &\in I
+				&\qquad
+				&\text{for all~$x \in \glie$,~$y \in I$.}
+			\end{alignat*}
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+	\label{on the notion of ideals}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			It is not necessary to distinguish between left ideals, right ideals and two-sided ideals of~$\glie$ (as one might be used to from ring theory) because the Lie~bracket of~$\glie$ is antisymmetric.
+		\item
+			Some people use the notation~$I \subideal \glie$ to express that~$I$ is an ideal of~$\glie$.
+			We will refrain from doing so, but still want the reader to be aware of this notation.
+		\item
+			Every ideal of~$\glie$ is in particular a Lie~subalgebra of~$\glie$.
+			This is different to the setting of rings%
+			\footnote{
+				We consider only unital rings, unless otherwise specified.
+			}, where a proper ideal is never a subring.
+			Lie~algebras do instead behave more like groups, where a normal subgroup is in particular a subgroup.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{remark}
+	Let~$\glie$ be a Lie~algebra.
+	Every Lie~subalgebra~$\hlie$ of~$\glie$ becomes a Lie~algebra in its own right by restricting the Lie~bracket of~$\glie$ to~$\hlie$.
+	It follows in particular that every ideal of~$\glie$ is again a Lie~algebra in its own right.
+	(This is different to the situation in ring theory, where the only ideal that is also a subring is the ring itself.)
+\end{remark}
+
+
+\begin{definition}
+	A~\liealgebra{$\kf$}~$\glie$ is~\defemph{linear}\index{linear Lie algebra} if it is a Lie~subalgebra of~$\gllie(V)$ for some finite-dimensional~\vectorspace{$\kf$}~$V$, or a Lie~subalgebra of~$\gllie(n, \kf)$ for some natural number~$n$.
+\end{definition}
+
+
+\begin{recall}
+	For calculations in~$\gllie(n, \kf)$ it is often useful to remember the identity
+	\begin{equation}
+		\label{product of basis matrices}
+		E_{ij} E_{kl}
+		=
+		\begin{cases*}
+			E_{il}  & if~$j = k$, \\
+			0       & otherwise,
+		\end{cases*}
+	\end{equation}
+	where the matrices~$E_{ij}$\glsadd{standard basis matrix} with~$i,j = 1, \dotsc, n$ are the standard basis matrices\index{standard basis matrices} of~$\gllie(n, \kf)$.
+	One may think about the matrix~$E_{ij}$ as \enquote{going from~$j$ to~$i$}.
+	The composition~$E_{ij} E_{kl}$ does then \enquote{go from~$l$ to~$i$} if the positions~$j$ and~$k$ match, and if they don’t fit, then this composition vanishes.
+	
+	This intuition can be formalized by observing that
+	\[
+		E_{ij} e_k
+		=
+		\begin{cases*}
+			e_i & if~$j = k$, \\
+			0   & otherwise,
+		\end{cases*}
+	\]
+	where~$e_1, \dotsc, e_n$\glsadd{standard basis vector} denotes the standard basis vectors\index{standard basis vectors} of~$\kf^n$.
+	The above formula tells us that the matrix~$E_{ij}$ maps one of the standard basis vectors (namely~$e_j$) to another standard basis vector (namely~$e_i$), but filters out all other standard basis vectors.
+	Composing two standard basis matrices therefore gives the desired result.
+
+	It follows from the identity~\eqref{product of basis matrices} that in particular
+	\[
+		[ E_{ij}, E_{kl} ]
+		=
+		E_{ij} E_{kl} - E_{kl} E_{ij}
+		=
+		\delta_{jk} E_{il} - \delta_{il} E_{kj}
+	\]
+	for all~$i, j, k, l = 1, \dotsc, n$.
+\end{recall}
+
+
+\begin{examples}[Linear Lie~algebras]
+	\label{examples for linear lie algebras}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			The two primordial examples for a linear~\liealgebra{$\kf$} are the general linear Lie~algebras~$\gllie(V)$ for some finite-dimensional~\vectorspace{$\kf$}~$V$ and~$\gllie(n, \kf)$ for some natural number~$n$.
+		\item
+			The linear subspace
+			\[
+				\sllie(n, \kf)
+				\defined
+				\{
+					A \in \gllie(n, \kf)
+				\suchthat
+					\tr(A) = 0
+				\}
+				\glsadd{special linear lie algebra matrices}
+			\]
+			of~$\gllie(n, \kf)$ is actually an ideal of~$\gllie(n, \kf)$, as we will see in \cref{examples of commutator ideals}.
+			The Lie~algebra~$\sllie(n, \kf)$ is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra}.
+		\item
+			Let~$V$ be a finite-dimensional vector space.
+			The linear subspace
+			\[
+				\sllie(V)
+				\defined
+				\{
+					f \in \gllie(V)
+				\suchthat
+					\tr(f) = 0
+				\}
+				\glsadd{special linear lie algebra endomorphism}
+			\]
+			is an ideal of~$\gllie(V)$.
+			This Lie~algebra is the \defemph{special linear Lie~algebra}\index{special linear Lie algebra} of~$V$.
+		\item
+			The set of upper triangular matrices\index{upper triangular matrices}, given by
+			\[
+				\trianglie(n, \kf)
+				\defined
+				\left\{
+					\begin{pmatrix}
+							a_{11}
+						& \cdots
+						& \cdots
+						& a_{1n}
+						\\
+							{}
+						& \ddots
+						& {}
+						& \vdots
+						\\
+							{}
+						& {}
+						& \ddots
+						& \vdots
+						\\
+							{}
+						& {}
+						& {}
+						& a_{nn}
+					\end{pmatrix}
+				\suchthat*
+					\text{$a_{ij} \in \kf$ for all~$1 \leq i \leq j \leq n$}
+				\right\} \,,
+				\glsadd{upper triangular lie algebra}
+			\]
+			is a Lie~subalgebra of~$\gllie(n, \kf)$.
+			This holds because the set~$\trianglie(n, \kf)$ is a~{\subalgebra{$\kf$}} of~$\Mat(n, \kf)$, and hence closed under the commutator bracket~$[A,B] = AB - BA$.
+			A basis of~$\trianglie(n, \kf)$ is given by the matrices~$E_{ij}$ with~$i \leq j$.
+
+		\item
+			The set of strictly upper triangular matrices\index{strictly upper triangular matrices}
+			\[
+				\upperlie(n, \kf)
+				\defined
+				\left\{
+					\begin{pmatrix}
+							0
+						& a_{12}
+						& \cdots
+						& a_{1n}
+						\\
+							{}
+						& \ddots
+						& \ddots
+						& \vdots
+						\\
+							{}
+						& {}
+						& \ddots
+						& a_{n-1,n}
+						\\
+							{}
+						& {}
+						& {}
+						& 0
+					\end{pmatrix}
+				\suchthat*
+					\text{$a_{ij} \in \kf$ for all~$1 \leq i < j \leq n$}
+				\right\}
+				\glsadd{strictly upper triangular lie algebra}
+			\]
+			is an ideal of~$\trianglie(n, \kf)$, as we will see in \cref{examples of commutator ideals}.
+			A basis of~$\upperlie(n, \kf)$ is given by the matrices~$E_{ij}$ with~$i < j$.
+		\item
+			The set of diagonal matrices\index{diagonal matrices}
+			\[
+				\diaglie(n, \kf)
+				=
+				\left\{
+					\begin{pmatrix}
+							d_1
+						& {}
+						& {}
+						\\
+							{}
+						& \ddots
+						& {}
+						\\
+							{}
+						& {}
+						& d_n
+					\end{pmatrix}
+				\suchthat*
+					d_1, \dotsc, d_n \in \kf
+				\right\}
+				\glsadd{diagonal lie algebra}
+			\]
+			is an~{\dimensional{$n$}} Lie~subalgebra of~$\gllie(n, \kf)$.
+			A basis of~$\diaglie(n, \kf)$ is given by the matrices~$E_{ii}$ with~$i = 1, \dotsc, n$.
+		\item
+			The linear subspace
+			\[
+				\afflie(n, \kf)
+				\defined
+				\begin{pmatrix}
+					\gllie(n, \kf)  & \kf^n \\
+					0               & 0
+				\end{pmatrix}
+				=
+				\left\{
+					\begin{pmatrix}
+						A & a \\
+						0 & 0
+					\end{pmatrix}
+				\suchthat*
+				\begin{array}{@{}c@{}}
+						A \in \gllie(n, \kf), \\
+						a \in \kf^n
+					\end{array}
+				\right\}
+				\glsadd{affine transformation lie algebra}
+			\]
+			of~$\gllie(n+1, \kf)$ is a Lie~subalgebra of~$\gllie(n+1, \kf)$.
+			Indeed, we have
+			\[
+				\begin{pmatrix}
+					A & a \\
+					0 & 0
+				\end{pmatrix}
+				\begin{pmatrix}
+					B & b \\
+					0 & 0
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					A B & A b \\
+					0   & 0
+				\end{pmatrix}
+			\]
+			for all~$A, B \in \gllie(n, \kf)$ and~$a, b \in \kf$, and thus
+			\[
+				\Biggl[
+					\begin{pmatrix}
+						A & a \\
+						0 & 0
+					\end{pmatrix}
+					,
+					\begin{pmatrix}
+						B & b \\
+						0 & 0
+					\end{pmatrix}
+				\Biggr]
+				=
+				\begin{pmatrix}
+					[A, B]  & A b - B a \\
+					0       & 0
+				\end{pmatrix} \,.
+			\]
+			This commutator is again contained in~$\afflie(n, \kf)$.
+			This Lie~algebra~$\afflie(n, \kf)$ is the \defemph{Lie~algebra of affine transformations of~$\kf^n$}\index{affine transformations}.
+	\end{enumerate}
+\end{examples}
+
+
+% TODO: Remark about the associated groups.
+
+
+\begin{definition}
+	Let~$\glie$ be a~\liealgebra{$\kf$} and let~$X$ and~$Y$ be two subsets of~$\glie$.
+	The linear subspace of~$\glie$ given by
+	\[
+		[X,Y]
+		\defined
+		\gen{
+			[x,y]
+		\suchthat
+			x \in X,
+			y \in Y
+		}_{\kf}
+		\glsadd{commutator space}
+	\]
+	is the \defemph{commutator space}\index{commutator space} of~$X$ and~$Y$.
+\end{definition}
+
+
+\begin{remark}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			For any two subsets~$X$ and~$Y$ of~$\glie$ we find that
+			\[
+				[X,Y] = -[Y,X] = [Y,X]
+			\]
+			because the Lie~bracket of~$\glie$ is anti-symmetric.
+		\item
+			For any two subsets~$X$ and~$Y$ of~$\glie$ we have
+			\[
+				[X, Y]
+				=
+				[ \gen{X}_{\kf}, \gen{Y}_{\kf} ] \,.
+			\]
+			To understand the commutator space~$[X, Y]$ we can therefore often assume that~$X$ and~$Y$ are linear subspace of~$\glie$.
+		\item
+			For every collection~$X_\lambda$ with~$\lambda \in \Lambda$ of subsets of~$\glie$ and every subset~$Y$ of~$\glie$ we have
+			\[
+				\left[ \sum_{\lambda \in \Lambda} X_\lambda, Y \right]
+				=
+				\sum_{\lambda \in \Lambda} [ X_\lambda, Y ]
+				\qquad\text{and}\qquad
+				\left[ \bigcap_{\lambda \in \Lambda} X_\lambda, Y \right]
+				\subseteq
+				\bigcap_{\lambda \in \Lambda} [ X_\lambda, Y ] \,.
+			\]
+		\item
+			For any three subsets~$X$,~$Y$, and~$Z$ of~$\glie$ it follows from the Jacobi~identity\index{Jacobi identity!for commutator spaces} that
+			\begin{align*}
+				[X, [Y, Z]]
+				&\subseteq
+				[[X, Y], Z] + [Y, [X, Z]]
+			\shortintertext{as well as}
+				[[X, Y], Z]
+				&\subseteq
+				[[X, Z], Y] + [X, [Y, Z]] \,.
+			\end{align*}
+	\end{enumerate}
+	We will sometimes use these identities to simplify some calculations.
+\end{remark}
+
+
+\begin{proposition}[Lie~subalgebras and ideals via commutator spaces]
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			A linear subspace~$\hlie$ of~$\glie$ is a Lie~subalgebra of~$\glie$ if and only if the commutator subspace~$[\hlie, \hlie]$ is again contained in~$\hlie$.
+		\item
+			A linear subspace~$I$ of~$\glie$ is an ideal of~$\glie$ if and only if the commutator subspace~$[\glie, I]$ is again contained in~$I$.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}[New Lie~subalgebras from old ones]
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			Let~$\hlie_\lambda$ with~$\lambda \in \Lambda$ be a collection of Lie~subalgebras of~$\glie$.
+			The intersection~$\bigcap_{\lambda \in \Lambda} \hlie_\lambda$\index{intersection!of Lie subalgebras} is again a Lie~subalgebra of~$\glie$.
+		\item
+			Let~$\hlie$ be a Lie~subalgebra of~$\glie$ and let~$I$ be an ideal of~$\glie$.
+			The sum~$\hlie + I$\index{sum!of Lie subalgebra and ideal} is again an ideal of~$\glie$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have
+			\[
+				\left[
+					\bigcap_{\lambda \in \Lambda} \glie_\lambda,
+					\bigcap_{\lambda \in \Lambda} \glie_\lambda
+				\right]
+				\subseteq
+				\bigcap_{\lambda, \mu \in \Lambda}
+				[\glie_\lambda, \glie_\mu]
+				\subseteq
+				\bigcap_{\substack{\lambda, \mu \in \Lambda \\ \lambda = \mu}}
+				[\glie_\lambda, \glie_\mu]
+				=
+				\bigcap_{\lambda \in \Lambda}
+				[\glie_\lambda, \glie_\lambda]
+				\subseteq
+				\bigcap_{\lambda \in \Lambda}
+				\glie_\lambda \,,
+			\]
+			which proves the assertion.
+		\item
+			We have
+			\[
+				[\hlie + I, \hlie + I]
+				\subseteq
+				[\hlie, \hlie] + [\hlie, I] + [I, \hlie] + [I, I]
+				\subseteq
+				\hlie + I + I + \hlie
+				=
+				\hlie + I \,,
+			\]
+			which proves the assertion.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{warning}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			Given a Lie~subalgebra~$\hlie$ of~$\glie$ and an ideal~$I$ of~$\glie$, their commutator space~$[\hlie, I]$\index{commutator space!of Lie subalgebra and ideal} is not necessarily again a Lie~subalgebra of~$\glie$.
+
+			Let, for example,~$\glie$ be the general linear Lie~algebra~$\gllie(n, \kf)$ for some~$n \geq 2$, let~$\hlie$ be the Lie~subalgebra of~$\glie$ of diagonal matrices~$\diaglie(n, \kf)$, and let~$I$ be~$\glie$ itself.
+			Then
+			\[
+				[\hlie, I]
+				=
+				\left\{
+				  \begin{pmatrix}
+						    &         & a_1 \\
+						    & \iddots &     \\
+						a_n &         &
+				  \end{pmatrix}
+				\suchthat*
+				  a_1, \dotsc, a_n \in \kf
+				\right\} \,.
+			\]
+			(This can be seen for cheap from the upcoming \cref{background on diagonal matrices}.)
+			We find in particular that the matrices~$E_{1n}$ and~$E_{n1}$ are contained in~$[\hlie, I]$, but that their commutator~$[E_{1n}, E_{n1}] = E_{11} - E_{nn}$ is not.
+		\item
+			Given two Lie~subalgebras~$\hlie$ and~$\klie$ of~$\glie$, their sum~$\hlie + \klie$\index{sum!of Lie subalgebras} is not necessarily a Lie~subalgebra of~$\glie$ again.
+
+			Indeed, let us consider thie Lie~algebra~$\glie = \gllie(n, \kf)$ for some~$n \geq 2$.
+			Let~$\hlie$ be the Lie~subalgebra of strictly upper triangular matrices -- i.e.~$\upperlie(n, \kf)$, and let~$\klie$ be the Lie~subalgebra of strictly lower triangular matrices -- i.e.~$\upperlie(n, \kf)^\trans$.
+			The sum~$\hlie + \klie$ consistst of all those matrices in~$\glie$ whose diagonal entries vanish.
+			It is in particular the cases that both~$E_{1n}$ and~$E_{n1}$ are contained in~$\hlie + \klie$ because~$n \geq 2$.
+			But their commutator is given by
+			\[
+				[E_{1n}, E_{n1}]
+				=
+				E_{1n} E_{n1} - E_{n1} E_{1n}
+				=
+				E_{11} - E_{nn} \,,
+			\]
+			which is a nonzero diagonal matrix because~$n \geq 2$.
+			We find that~$[E_{1n}, E_{n1}]$ is not again contained in~$\hlie + \klie$, whence~$\hlie + \klie$ is not again a Lie~subalgebra of~$\glie$.
+	\end{enumerate}
+\end{warning}
+
+
+\begin{proposition}[New ideals from old ones]
+	\label{construction of new ideals}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+		Let~$I_\lambda$ with~$\lambda \in \Lambda$ be a collection of ideals of~$\glie$.
+		Both the intersection~$\bigcap_{\lambda \in \Lambda} I_\lambda$\index{intersection!of ideals} and the sum~$\sum_{\lambda \in \Lambda} I_\lambda$\index{sum!of ideals} are again ideals of~$\glie$.
+		\item
+		Let~$I$ and~$J$ be two ideals of~$\glie$.
+		Their commutator space~$[I,J]$\index{commutator space!of ideals} is again an ideal of~$\glie$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have~%
+			$
+				[ \glie, \sum_{\lambda \in \Lambda} I_\lambda ]
+				=
+				\sum_{\lambda \in \Lambda} [ \glie, I_\lambda ]
+				\subseteq
+				\sum_{\lambda \in \Lambda} I_\lambda
+			$
+			and~%
+			$
+				[ \glie, \bigcap_{\lambda \in \Lambda} I_\lambda ]
+				\subseteq
+				\bigcap_{\lambda \in \Lambda} [ \glie, I_\lambda ]
+				\subseteq
+				\bigcap_{\lambda \in \Lambda} I_\lambda
+			$.
+		\item
+			We have
+			$
+				[ \glie, [I, J] ]
+				\subseteq
+				[ [\glie, I], J] + [ I, [\glie, J]]
+				\subseteq
+				[I, J] + [I, J]
+				=
+				[I, J]
+			$
+			by the Jacobi~identity.
+	 \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+\begin{example}
+	Any Lie~algebra~$\glie$ is an ideal of itself.
+	It thus follows from \cref{construction of new ideals} that the commutator space
+	\[
+		[\glie, \glie]
+		=
+		\gen{ [x,y] \suchthat x, y \in \glie }_{\kf}
+	\]
+	is again an ideal of~$\glie$.
+\end{example}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra.
+	The ideal~$[ \glie, \glie ]$ of~$\glie$ is the \defemph{commutator ideal}\index{commutator ideal} of~$\glie$, or the \defemph{derived Lie~algebra}\index{derived Lie algebra} of~$\glie$.
+\end{definition}
+
+
+\begin{example}
+	\label{examples of commutator ideals}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$\heisenberglie$ be the Heisenberg Lie~algebra from \cref{examples for lie algebras}.
+			The commutator ideal of~$\heisenberglie$ is one-dimensional and spanned by the basis element~$c$.
+		\item
+			The commutator ideal of the general linear Lie~algebra~$\gllie(n, \kf)$ is the special linear Lie~algebra~$\sllie(n, \kf)$\index{special linear Lie algebra}.
+			Indeed, we have for any two matrices~$A$ and~$B$ in~$\gllie(n, \kf)$ that
+			\[
+				\tr(AB) = \tr(BA)
+			\]
+			and therefore
+			\[
+					\tr( [A,B] )
+				= \tr(AB-BA)
+				= \tr(AB) - \tr(BA)
+				= \tr(AB) - \tr(AB)
+				= 0  \,.
+			\]
+			This shows that the commutator ideal of~$\gllie(n, \kf)$ is contained~$\sllie(n, \kf)$.
+			We observe on the other hand that~$\sllie(n, \kf)$ has a basis given by the matrices~$E_{ij}$ for~$i,j = 1, \dotsc, n$ and~$i \neq j$, together with the matrices~$E_{ii} - E_{i+1,i+1}$ for~$i = 2, \dotsc, n$.
+			Each of these matrices is a commutator, namely
+			\[
+				[E_{ij}, E_{jj}]
+				=
+				E_{ij} E_{jj} - \underbrace{ E_{jj} E_{ij} }_{=0}
+				=
+				E_{ij}
+			\]
+			for all~$i, j = 1, \dotsc, n$ with~$i \neq j$, and
+			\[
+				[E_{i,i+1}, E_{i+1,i}]
+				=
+				E_{i,i+1} E_{i+1,i} - E_{i+1,i} E_{i,i+1}
+				=
+				E_{ii} - E_{i+1,i+1}
+			\]
+			for all~$i = 2, \dotsc, n$.
+			This shows that~$\sllie(n, \kf)$ is contained in the commutator ideal of~$\gllie(n, \kf)$.
+
+			We have now shown that~$\sllie(n, \kf)$ is indeed the commutator ideal of~$\gllie(n, \kf)$.
+			This entails that~$\sllie(n, \kf)$ is an ideal of~$\gllie(n, \kf)$, as claimed in \cref{examples for linear lie algebras}.
+		\item
+			Let~$V$ be a finite-dimensional vector space.
+			The commutator ideal of~$\gllie(V)$ is~$\sllie(V)$.
+			% TODO: What happens if V is infinite-dimensional?
+			% TODO: Reference to [sln, sln] = sln under suitable conditions.
+		\item
+			The commutator ideal of~$\trianglie(n, \kf)$\index{upper triangular matrices} is~$\upperlie(n, \kf)$\index{strictly upper triangular matrices}.
+		
+			Indeed, for any two upper triangular matrices~$A$ and~$B$ their two products~$AB$ and~$BA$ are again upper triangular, and both products have the same diagonal entries.
+			The commutator~$[A,B] = AB - BA$ is therefore a strictly upper triangular matrix.
+			This shows that
+			\[
+				[\trianglie(n, \kf), \trianglie(n, \kf)]
+				\subseteq
+				\upperlie(n, \kf) \,.
+			\]
+			We know on the other hand that~$\upperlie(n, \kf)$ has as a basis the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$.
+			Each of those matrices can be written as a commutator, namely as
+			\[
+				[E_{ii}, E_{ij}]
+				=
+				E_{ii} E_{ij} - \underbrace{ E_{ij} E_{ii} }_{= 0}
+				=
+				E_{ij} \,,
+			\]
+			with~$E_{ii}$ contained in~$\trianglie(n, \kf)$ and~$E_{ij}$ contained in~$\upperlie(n, \kf)$.
+			This shows that
+			\[
+				\upperlie(n, \kf)
+				\subseteq
+				[\trianglie(n, \kf), \upperlie(n, \kf)] \,.
+			\]
+			It follows that
+			\[
+				[ \trianglie(n, \kf), \trianglie(n, \kf) ]
+				\subseteq
+				\upperlie(n, \kf)
+				\subseteq
+				[ \trianglie(n, \kf), \upperlie(n, \kf) ]
+				\subseteq
+				[ \trianglie(n, \kf), \trianglie(n, \kf) ] \,,
+			\]
+			and thus~$[ \trianglie(n, \kf), \trianglie(n, \kf) ] = \upperlie(n, \kf)$ as claimed.
+
+			That~$\upperlie(n, \kf)$ is the commutator ideal of~$\trianglie(n, \kf)$ entails that~$\upperlie(n, \kf)$ is indeed an ideal in~$\trianglie(n, \kf)$, as claimed in \cref{examples for linear lie algebras}.
+		\item
+			The commutator ideal of~$\afflie(n, \kf)$\index{affine transformations} is given by
+			\[
+				\begin{pmatrix}
+					\sllie(n, \kf)  & \kf^n \\
+					0               & 0
+				\end{pmatrix}
+				=
+				\Biggl\{
+					\begin{pmatrix}
+						A & a \\
+						0 & 0
+					\end{pmatrix}
+				\suchthat[\Bigg]
+					\begin{array}{@{}c@{}}
+						A \in \sllie(n, \kf), \\
+						a \in \kf^n
+					\end{array}
+				\Biggr\}
+			\]
+			To see this let us denote this linear subspace of~$\afflie(n, \kf)$ by~$C$.
+			The Lie~bracket on~$\afflie(n, \kf)$ is given by
+			\[
+				\Biggl[
+					\begin{pmatrix}
+						A & a \\
+						0 & 0
+					\end{pmatrix}
+					,
+					\begin{pmatrix}
+						B & b \\
+						0 & 0
+					\end{pmatrix}
+				\Biggr]
+				=
+				\begin{pmatrix}
+					[A, B]  & A b - B a \\
+					0       & 0
+				\end{pmatrix} \,.
+			\]
+			for all~$A, B \in \gllie(n, \kf)$ and~$a, b \in \kf^n$.
+			We see from this that the term~$[A, B]$ is contained in~$\sllie(n, \kf)$.
+			The commutator ideal of~$\afflie(n, \kf)$ is therefore contained in the subspace~$C$.
+
+			We observe on the other hand that
+			\begin{align*}
+				[ \afflie(n, \kf), \afflie(n, \kf) ]
+				&=
+				\Biggl[
+					\begin{pmatrix}
+						\gllie(n, \kf)  & \kf^n \\
+						0               & 0
+					\end{pmatrix}
+					,
+					\begin{pmatrix}
+						\gllie(n, \kf)  & \kf^n \\
+						0               & 0
+					\end{pmatrix}
+				\Biggr]
+				\\
+				&\supseteq
+				\Biggl[
+					\begin{pmatrix}
+						\gllie(n, \kf)  & 0 \\
+						0               & 0
+					\end{pmatrix}
+					,
+					\begin{pmatrix}
+						\gllie(n, \kf)  & 0 \\
+						0               & 0
+					\end{pmatrix}
+				\Biggr]
+				\\
+				&=
+				\begin{pmatrix}
+					[ \gllie(n, \kf), \gllie(n, \kf) ]  & 0  \\
+					0                                   & 0
+				\end{pmatrix}
+				\\
+				&=
+				\begin{pmatrix}
+					\sllie(n, \kf)  & 0 \\
+					0               & 0
+				\end{pmatrix} \,,
+			\end{align*}
+			as well as
+			\[
+				[ \afflie(n, \kf), \afflie(n, \kf) ]
+				\supseteq
+				\Biggl[
+					\begin{pmatrix}
+						\Id & 0 \\
+						0   & 0
+					\end{pmatrix}
+					,
+					\begin{pmatrix}
+						0 & \kf^n \\
+						0 & 0
+					\end{pmatrix}
+				\Biggr]
+				=
+				\begin{pmatrix}
+					0 & \Id \cdot \kf^n \\
+					0 & 0
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					0 & \kf^n \\
+					0 & 0
+				\end{pmatrix} \,,
+			\]
+			and thus together
+			\[
+				[ \afflie(n, \kf), \afflie(n, \kf) ]
+				\supseteq
+				\begin{pmatrix}
+					\sllie(n, \kf)  & 0 \\
+					0               & 0
+				\end{pmatrix}
+				+
+				\begin{pmatrix}
+					0 & \kf^n \\
+					0 & 0
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					\sllie(n, \kf)  & \kf^n \\
+					0               & 0
+				\end{pmatrix}
+				=
+				C \,.
+			\]
+			This shows altogether the desired equality~$[ \afflie(n, \kf), \afflie(n, \kf) ] = C$.
+	\end{enumerate}
+\end{example}
+
+
+\begin{definition}
+	A Lie~algebra~$\glie$ is \defemph{perfect}\index{perfect Lie algebra} if it equals its commutator ideal, i.e. if~$\glie = [\glie, \glie]$.
+\end{definition}
+
+
+\begin{example}
+	Let~$V$ be an infinite-dimensional vector space.
+	Then general linear Lie~algebra~$\gllie(V)$ is perfect.
+	In fact, every element of~$\gllie(V)$ is already a commutator itself.
+
+	To prove this we note that the vector space~$V$ is isomorphic to the direct sum~$V^{\oplus \Natural_{\geq 1}}$.
+	We may therefore assume that~$V = W^{\oplus \Natural_{\geq 1}}$ for some vector space~$W$.
+	We can thus represent every endomorphism~$f$ of~$V$ as a matrix
+	\[
+		f
+		\equiv
+		\begingroup
+		\renewcommand{\arraystretch}{1.3}
+		\begin{pmatrix}
+			f_{11}  & f_{12}  & f_{13}  & f_{14}  & \cdots  \\
+			f_{21}  & f_{22}  & f_{23}  & f_{24}  & \cdots  \\
+			f_{31}  & f_{32}  & f_{33}  & f_{34}  & \cdots  \\
+			f_{41}  & f_{42}  & f_{43}  & f_{44}  & \cdots  \\
+			\vdots  & \vdots  & \vdots  & \vdots  & \ddots
+		\end{pmatrix} \,.
+		\endgroup
+	\]
+	Each matrix entry~$f_{ij}$ is an endomorphism of~$W$, namely the composite~$\pi_i \circ f \circ \iota_j$, where~$\iota_j$ the inclusion from~$W$ into the~\howmanyth{$j$} direct summand of~$V$, and~$\pi_i$ the projection from~$V$ onto its~\howmanyth{$i$} direct summand.
+	This matrix is pointwise column-finite, in the sense that for every element~$w$ of~$W$ and every column index~$j$ the images~$f_{ij}(w)$ vanish for all but finitely many row indices~$i$.
+	Suppose conversely that we have given a family of endomorphismss~$g_{ij}$ of~$W$ with~$i, j \geq 1$ such that the resulting matrix is pointwise column-finite.
+	Then this matrix describes an endomorphism~$g$ of~$V$.
+
+	Let~$s$ be the shift endomorphism of~$V$ given by
+	\[
+		s( (w_1, w_2, w_3, \dotsc) )
+		=
+		( w_2, w_3, w_4, \dotsc )
+	\]
+	for all~$(w_1, w_2, w_3, \dotsc) \in V$.
+	As a matrix, this endomorphism is given by
+	\[
+		s
+		\equiv
+		\begin{pmatrix}
+			0 & 1 &   &   &         \\
+				& 0 & 1 &   &         \\
+				&   & 0 & 1 &         \\
+				&   &   & 0 & \ddots  \\
+				&   &   &   & \ddots
+		\end{pmatrix}
+	\]
+	We therefore have
+	\begin{align*}
+		[s, f]
+		&=
+		s f - f s
+		\\
+		&\equiv
+		\begin{pmatrix}
+			f_{21}  & f_{22}  & f_{23}  & f_{24}  & \cdots  \\
+			f_{31}  & f_{32}  & f_{33}  & f_{34}  & \cdots  \\
+			f_{41}  & f_{42}  & f_{43}  & f_{44}  & \cdots  \\
+			f_{51}  & f_{52}  & f_{53}  & f_{54}  & \cdots  \\
+			\vdots  & \vdots  & \vdots  & \vdots  & \ddots
+		\end{pmatrix}
+		-
+		\begin{pmatrix}
+			0       & f_{11}  & f_{12}  & f_{13}  & \cdots  \\
+			0       & f_{21}  & f_{22}  & f_{23}  & \cdots  \\
+			0	      & f_{31}  & f_{32}  & f_{33}  & \cdots  \\
+			0       & f_{41}  & f_{42}  & f_{43}  & \cdots  \\
+			\vdots  & \vdots  & \vdots  & \vdots  & \ddots
+		\end{pmatrix}
+		\\
+		&=
+		\begingroup
+		\renewcommand{\arraystretch}{1.5}
+		\arraycolsep=8pt
+		\begin{pmatrix}
+			f_{21}  & f_{22} - f_{11} & f_{23} - f_{12} & f_{24} - f_{13} & \cdots  \\
+			f_{31}  & f_{32} - f_{21} & f_{33} - f_{22} & f_{34} - f_{23} & \cdots  \\
+			f_{41}  & f_{42} - f_{31} & f_{43} - f_{32} & f_{44} - f_{33} & \cdots  \\
+			f_{51}  & f_{52} - f_{41} & f_{53} - f_{42} & f_{54} - f_{43} & \cdots  \\
+			\vdots  & \vdots          & \vdots          & \vdots          & \ddots
+		\end{pmatrix} \,.
+		\endgroup
+	\end{align*}
+	Let now~$g$ be an endomorphism of~$V$.
+	We can use the above explicit calculation of the commutator~$[s, f]$ to construct an endomorphism~$f$ with~$[s, f] = g$.
+
+	Indeed:
+	Starting with the first column we choose the entry~$f_{11}$ arbitrary and~$f_{i1}$ as~$g_{i-1,1}$ for every~$i \geq 2$.
+	Once the entries~$f_{ij}$ are constucted for all~$i \geq 1$ and~$j = 1, \dotsc, k$, we choose the entries~$f_{1,k+1}$ arbitrary and the entry~$f_{i,k+1}$ as~$g_{i-1, j+1} + f_{i-1, j}$ for every~$i \geq 2$.
+	The matrix described by these entries~$f_{ij}$ is pointwise column-finite because the matrix associated to~$g$ is pointwise column-finite.
+	It follows that the entries~$f_{ij}$ describe an endomorphism~$f$ of~$V$.
+	By construction, this endomorphism satisfies~$[s, f] = g$.
+
+	We have thus shown that every endomorphism of~$V$ is a commutator (namely a commutator of the form~$[s, f]$ for some endomorphism~$f$ of~$V$).
+\end{example}
+
+
+\begin{question}
+	In the above discussion, can we construct the inverse of~$[s, \ph]$ is a nicer way?
+\end{question}
+
+
+
+
+\subsection{Centralizers and the Center of a Lie~algebra}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			For every subset~$X$ of~$\glie$ its \defemph{centralizer}\index{centralizer} is the set
+			\[
+				\centerlie_{\glie}(X)
+				\defined
+				\{
+					z \in \glie
+				\suchthat
+					\text{$[z,x] = 0$ for every~$x \in X$}
+				\} \,.
+				\glsadd{centralizer of subset}
+			\]
+		\item
+			For any element~$x$ of~$\glie$ its \defemph{centralizer}\index{centralizer} is the set
+			\[
+				\centerlie_{\glie}(x)
+				\defined
+				\centerlie_{\glie}(\{x\})
+				=
+				\{
+					z \in \glie
+				\suchthat{} % don’t want \suchthat to interpret the following bracket as an optional argument
+					[z,x] = 0
+				\} \,.
+				\glsadd{centralizer of element}
+			\]
+		\item
+			The \defemph{center}\index{center} of~$\glie$ is the set
+			\[
+				\centerlie(\glie)
+				\defined
+				\centerlie_{\glie}(\glie)
+				=
+				\{
+					z \in \glie
+				\suchthat
+					\text{$[z,x] = 0$ for every~$x \in \glie$}
+				\} \,.
+				\glsadd{center}
+			\]
+	\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}
+	\label{structure of centralizers}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			For every subset~$X$ of~$\glie$ its centralizer~$\centerlie_{\glie}(X)$ is a Lie~subalgebra of~$\glie$.
+		\item
+			\label{centralizer of an ideal is again an ideal}
+			For every ideal~$I$ of~$\glie$ its centralizer~$\centerlie_{\glie}(I)$ is again an ideal of~$\glie$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				[ [ \centerlie_{\glie}(X), \centerlie_{\glie}(X) ], X ]
+				&\subseteq
+				[ [ \centerlie_{\glie}(X), X ], \centerlie_{\glie}(X) ]
+				+ [ \centerlie_{\glie}(X), [ \centerlie_{\glie}(X), X ] ]
+				\\
+				&=
+				[ 0, \centerlie_{\glie}(X) ]
+				+ [ \centerlie_{\glie}(X), 0 ]
+				\\
+				&=
+				0 \,,
+			\end{align*}
+			which shows that the commutator subspace~$[ \centerlie_{\glie}(X), \centerlie_{\glie}(X) ]$ is again contained in~$\centerlie_{\glie}(X)$.
+		\item
+			We have
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				[ [\glie, \centerlie_{\glie}(I)], I ]
+				&\subseteq
+				[ [\glie, I], \centerlie_{\glie}(I) ]
+				+ [ \glie, [ \centerlie_{\glie}(I), I] ]
+				\\
+				&\subseteq
+				[ I, \centerlie_{\glie}(I) ]
+				+ [ \glie, 0 ]
+				\\
+				&=
+				0 + 0
+				\\
+				&=
+				0 \,,
+			\end{align*}
+			which shows that the commutator space~$[\glie, \centerlie_{\glie}(I)]$ is again contained in~$\centerlie_{\glie}(I)$.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+% TODO: Give alternate proofs one representations have been introduced.
+
+
+\begin{corollary}
+	Let~$\glie$ be a Lie~algebra.
+	Its center~$\centerlie(\glie)$ is an ideal in~$\glie$.
+\end{corollary}
+
+
+\begin{proof}
+	We apply part~\ref{centralizer of an ideal is again an ideal} of~\cref{structure of centralizers} to the special case~$I = \glie$.
+\end{proof}
+
+
+\begin{fluff}
+	We will in the following compute some centralizers and centers.
+	For linear Lie~algebras this can sometimes be done nicely with the help of diagonal matrices.
+\end{fluff}
+
+
+\begin{recall}
+	\label{background on diagonal matrices}
+	Let~$D$ be a diagonal matrix in~$\gllie(n, \kf)$ with diagonal entries~$\lambda_1, \dotsc, \lambda_n$.
+	For any other matrix~$A$ in~$\gllie(n, \kf)$ the product~$DA$ results from~$A$ by multiplying for every~$i = 1, \dotsc, n$ the~\howmanyth{$i$} row of~$A$ by the scalar~$\lambda_i$.
+	Similarly, the product~$AD$ results from~$A$ by multiplying for every~$j = 1, \dotsc, n$ the~\howmanyth{$j$} column of~$A$ by the scalar~$\lambda_j$.
+	This means in formulae that
+	\[
+		(DA)_{ij}
+		=
+		\lambda_i A_{ij}
+		\quad\text{and}\quad
+		(AD)_{ij}
+		=
+		\lambda_j A_{ij}
+	\]
+	for all~$i, j = 1, \dotsc, n$.
+	It follows that
+	\[
+		[D, A]_{ij}
+		=
+		(DA - AD)_{ij}
+		=
+		(DA)_{ij} - (AD)_{ij}
+		=
+		\lambda_i A_{ij} - \lambda_j A_{ij}
+		=
+		(\lambda_i - \lambda_j) A_{ij}
+	\]
+	for all~$i, j = 1, \dotsc, n$.
+	We find in particular the following:
+	\begin{enumerate}
+		\item
+			The matrices~$E_{ij}$ are eigenvector of~$\ad_{\gllie(n, \kf)}(D)$ with corresponding eigenvalues~$\lambda_i - \lambda_j$ for all~$i, j = 1, \dotsc, n$.
+		\item
+			The matrix~$A$ commutes with the diagonal matrix~$D$ if and only if its entry~$A_{ij}$ vanishes for all those indices~$i, j = 1, \dotsc, n$ with~$\lambda_i \neq \lambda_j$.
+
+			Suppose that the diagonal entries of~$D$ are arranged in such a way that
+			\[
+				D
+				=
+				\diag
+				(
+					\underbrace{ \mu_1, \dotsc, \mu_1 }_{n_1},
+					\dotsc,
+					\underbrace{\mu_k, \dotsc, \mu_k}_{n_k}
+				)
+			\]
+			where the diagonal matrices~$\mu_1, \dotsc, \mu_k$ are pairwise distinct.
+			Then we can express the above condition on the commutativity with~$D$ as
+			\begin{align*}
+				\centerlie_{\gllie(n, \kf)}(D)
+				&=
+				\left\{
+					\begin{pmatrix}
+						A_1 &         &     \\
+								& \ddots  &     \\
+								&         & A_k
+					\end{pmatrix}
+				\suchthat*
+					\text{$A_i \in \gllie(n_i, \kf)$ for all~$i = 1, \dotsc, k$}
+				\right\}
+				\\
+				&=
+				\begin{pmatrix}
+					\gllie(n_1, \kf) &        &                   \\
+					                 & \ddots &                   \\
+					                 &        & \gllie(n_k, \kf)
+				\end{pmatrix} \,.
+			\end{align*}
+			We want to emphasize a special case of this general calculation:
+			If the diagonal entries of~$D$ are pairwise different, then it follows that every matrix that commutes with~$D$ is already diagonal itself.
+	\end{enumerate}
+\end{recall}
+
+
+\begin{lemma}
+	\label{center consists of diagonal matrices}
+	Let~$\glie$ be a Lie~subalgebra of~$\gllie(n, \kf)$.
+	\begin{enumerate}
+		\item
+			Suppose that the Lie~algebra~$\glie$ contains for any two indices~$i$,~$j$ with~$1 \leq i < j \leq n$ a diagonal matrix~$D$ with~$D_{ii} \neq D_{jj}$.
+			Then the center of~$\glie$ consists of diagonal matrices.
+		\item
+			Suppose furthermore that the Lie~algebra~$\glie$ contains for any two indices~$i$,~$j$ with~$1 \leq i < j \leq n$ at least one of the two matrices~$E_{ij}$ or~$E_{ji}$.
+			Then the center of~$\glie$ consists of scalar multiples of the identity matrix.
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$A$ be a matrix contained in the center of~$\glie$.
+			There exists by assumption for any two indices~$i$,~$j$ with~$1 \leq i < j \leq n$ a diagonal matrix~$D$ in~$\glie$ with~$D_{ii} \neq D_{jj}$.
+			The matrices~$A$ and~$D$ commute, whence it follows from \cref{background on diagonal matrices} that~$A_{ij} = 0$.
+			This shows that~$A$ is a diagonal matrix.
+		\item
+			Suppose that the matrix~$E_{ij}$ is contained in~$\glie$ for some two indices~$i$,~$j$ with~$1 \leq i < j \leq n$.
+			It then further follows from \cref{background on diagonal matrices} that
+			\[
+				0
+				=
+				[A, E_{ij}]
+				=
+				(A_{ii} - A_{jj}) E_{ij} \,,
+			\]
+			and thus~$A_{ii} = A_{jj}$.
+			If instead~$E_{ji}$ is contained in~$\glie$ then we also find that~$A_{ii} = A_{jj}$.
+			It follows overall that all diagonal entries of~$A$ are equal.
+			The diagonal matrix~$A$ is hence a scalar multiple of the identity matrix.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{example}
+	\label{examples of centers}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			It follows from \cref{center consists of diagonal matrices} that the center of~$\gllie(n, \kf)$ is spanned by the identity matrix for all~$n \geq 2$.
+			This also holds for~$n = 1$ (and~$n = 0$).
+		\item
+			It also follows from \cref{center consists of diagonal matrices} that the center of~$\trianglie(n, \kf)$ is spanned by the identity matrix for all~$n \geq 1$.
+			This assertion also holds for~$n = 1$ (and~$n = 0$).
+		\item
+			We will now determine the center of~$\upperlie(n, \kf)$ for all~$n \geq 0$.
+			For~$n = 0$ and~$n = 1$ we have~$\upperlie(n, \kf) = 0$ and thus~$\centerlie( \upperlie(n, \kf) ) = 0$.
+
+			We will now show that for~$n \geq 2$ the center of~$\upperlie(n, \kf)$ is spanned by the single matrix~$E_{1n}$.
+			Indeed, the Lie~algebra~$\upperlie(n, \kf)$ has the matrices~$E_{ij}$ with~$1 \leq i < j \leq n$ as a basis.
+			A matrix~$A$ in~$\upperlie(n, \kf)$ is therefore contained in the center of~$\upperlie(n, \kf)$ if and only if it satisfies
+			\[
+				[A, E_{ij}] = 0
+				\qquad
+				\text{for all~$1 \leq i < j \leq n$.}
+			\]
+
+			For the matrix~$E_{1n}$ we have~$E_{ij} E_{1n} = 0$ because~$j > 1$ and thus$~j \neq 1$, as well as~$E_{1n} E_{ij} = 0$ because~$i < n$ and thus~$i \neq n$.
+			We therefore have
+			\[
+				[E_{1n}, E_{ij}]
+				=
+				E_{1n} E_{ij} - E_{ij} E_{1n}
+				=
+				0 - 0
+				=
+				0
+			\]
+			for all~$1 \leq i < j \leq n$.
+			This shows that~$E_{1n}$ is indeed central in~$\upperlie(n, \kf)$.
+
+			Suppose now on the other hand that the matrix~$A$ is central in~$\upperlie(n, \kf)$.
+			We may write the matrix~$A$ as a linear combination
+			\[
+				A
+				=
+				\sum_{1 \leq i < j \leq n}
+				a_{ij} E_{ij} \,.
+			\]
+			It follows that
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				0
+				&=
+				[A, E_{1k}]
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n} 
+				a_{ij}
+				[ E_{ij}, E_{1k} ]
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n} 
+				a_{ij}
+				( E_{ij} E_{1k} - E_{1k} E_{ij} )
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n} 
+				a_{ij}
+				( \underbrace{\delta_{j1}}_{=0} E_{ik} - \delta_{ki} E_{1j} )
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n}
+				(-a_{ij}) \delta_{ki} E_{1j}
+				\\
+				&=
+				\sum_{j = k+1}^n
+				(-a_{kj}) E_{1j}
+			\end{align*}
+			for all~$k = 2, \dotsc, n$.
+			This tells us that all coefficients~$a_{ij}$ with~$j = 2, \dotsc, n$ vanish.
+			We find similarly that
+			\begin{align*}
+				0
+				&=
+				[A, E_{kn}]
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n}
+				a_{ij}
+				[E_{ij}, E_{kn}]
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n}
+				a_{ij}
+				( E_{ij} E_{kn} - E_{kn} E_{ij} )
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n}
+				a_{ij}
+				( \delta_{jk} E_{in} - \underbrace{\delta_{ni}}_{=0} E_{kj} )
+				\\
+				&=
+				\sum_{1 \leq i < j \leq n}
+				a_{ij} \delta_{jk} E_{in}
+				\\
+				&=
+				\sum_{i=1}^{k-1}
+				a_{ik} E_{in}
+			\end{align*}
+			for all~$k = 1, \dotsc, n-1$.
+			This tells us that all coefficients~$a_{ij}$ with~$j = 1, \dotsc, n-1$ vanish.
+			It shows altogether that~$A = a_{1n} E_{1n}$.
+		\item
+			We can also compute the center of~$\afflie(n, \kf)$.
+			An element
+			\[
+				\begin{pmatrix}
+					A & a \\
+					0 & 0
+				\end{pmatrix}
+			\]
+			with~$A \in \gllie(n, \kf)$ and~$a \in \kf^n$ is central in~$\afflie(n, \kf)$ if and only if
+			\[
+				0
+				=
+				\Biggl[
+					\begin{pmatrix}
+						A & a \\
+						0 & 0
+					\end{pmatrix}
+					,
+					\begin{pmatrix}
+						B & b \\
+						0 & 0
+					\end{pmatrix}
+				\Biggr]
+				=
+				\begin{pmatrix}
+					[A, B]  & A b - B a \\
+					0       & 0
+				\end{pmatrix}
+			\]
+			for all~$B \in \gllie(n, \kf)$ and~$b \in \kf^n$.
+			It sufficies to consider the special cases~$B = 0$ and~$b = 0$ by the bilinearity of the Lie~bracket of~$\afflie(n, \kf)$. 
+			In the special case~$B = 0$ we arrive at the condition
+			\[
+				A b = 0
+				\qquad
+				\text{for all~$b \in \kf^n$,}
+			\]
+			and in the special case~$b = 0$ we arrive at the two additional conditions
+			\[
+				[A, B] = 0 \,,
+				\quad
+				B a = 0
+				\qquad
+				\text{for all~$B \in \gllie(n, \kf)$}.
+			\]
+			The first condition tells us that~$A = 0$, and the third condition tells us that~$a = 0$.
+			We have thus shown that the center of~$\afflie(n, \kf)$ is trivial.
+	\end{enumerate}
+\end{example}
+
+
+\begin{question}
+	Is there a nice trick to compute the center of~$\upperlie(n, \kf)$?
+\end{question}
+
+
+\begin{definition}
+	A Lie~algebra~$\glie$ is \defemph{abelian}\index{abelian} if any two elements of~$\glie$ commute, i.e. if~$[x,y] = 0$ for all~$x, y \in \glie$.
+\end{definition}
+
+\begin{proposition}
+
+	Let~$\glie$ be a Lie~algebra.
+	The following three conditions on~$\glie$ are equivalent.
+	\begin{equivalenceslist}
+		\item
+			$\glie$ is abelian.
+		\item
+			$\centerlie(\glie) = \glie$.
+		\item
+			$[\glie, \glie] = 0$.
+		\qed
+	\end{equivalenceslist}
+\end{proposition}
+
+
+\begin{examples}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			A~{\algebra{$\kf$}}~$A$ is commutative if and only if it is abelian as a Lie~algebra.
+		\item
+			In any Lie~algebra~$\glie$ every element~$x$ of~$\glie$ spans a {\onedimensional} abelian Lie~subalgebra of~$\glie$, given by~$\gen{x}_{\kf} = \{ \lambda x \suchthat \lambda \in \kf \}$.
+		\item
+			Every vector space~$\glie$ can be made into an abelian Lie~algebra is precisely one way, namely by setting~$[x, y] \defined 0$ for all~$x, y \in \glie$.
+			In this sense, an abelian Lie~algebras is \enquote{the same} as a vector space.
+	\end{enumerate}
+\end{examples}
+
+
+\begin{lemma}
+	\label{center has codimension at least two for non-abelian}
+	Let~$\glie$ be a non-abelian Lie~algebra.
+	The codimension of~$\centerlie(\glie)$ in~$\glie$ it at least~$2$.
+\end{lemma}
+
+
+\begin{proof}
+	Suppose otherwise that the codimension of~$\centerlie(\glie)$ in~$\glie$ is at most~$1$.
+	We know that~$\centerlie(\glie)$ is a proper ideal of~$\glie$ becaus~$\glie$ is non-abelian.
+	We thus find that the codimension of~$\centerlie(\glie)$ in~$\glie$ is precisely~$1$.
+
+	Let~$x$ be some non-central element of~$\glie$.
+	It follows from the above observation that
+	\[
+		\glie
+		=
+		\centerlie(\glie) \oplus \gen{x}_{\kf}
+	\]
+	as vector spaces.
+	It follows that
+	\begin{align*}
+		[\glie, \glie]
+		&=
+		[ \centerlie(\glie) + \gen{x}_{\kf}, \centerlie(\glie) + \gen{x}_{\kf} ]
+		\\
+		&=
+		[ \centerlie(\glie), \centerlie(\glie) ]
+		+ [ \centerlie(\glie), \gen{x}_{\kf} ]
+		+ [ \gen{x}_{\kf}, \centerlie(\glie) ]
+		+ [ \gen{x}_{\kf}, \gen{x}_{\kf} ]
+		\\
+		&=
+		0 + 0 + 0 + 0
+		\\
+		&=
+		0 \,.
+	\end{align*}
+	But this shown that~$\glie$ is abelian -- a contradiction!
+\end{proof}
+
+
+\begin{remark}
+	One might compare \cref{center has codimension at least two for non-abelian} and its proof to a proposition from group theory and its proof:
+	If a group~$G$ is nonabelian, then the quotient~$G / {\centergroup(G)}$ is not cyclic.
+\end{remark}
+
+
+\begin{warning}
+	Let~$\glie$ be a Lie~algebra.
+	The reader who is already familiar with quotient Lie~algebras -- which we will introduce in \cref{definition of quotient representation} -- may wonder about a possible generalization of \cref{center has codimension at least two for non-abelian}:
+	if the quotient~$\glie / {\centerlie(\glie)}$ is abelian, then does it follow that~$\glie$ is abelian?
+
+	The answer to this question is no.
+	Indeed, one might consider for~$\glie$ the Lie~algebra~$\upperlie(3, \kf)$.
+	We have seen in \cref{examples of centers} that the center of~$\glie$ is one-dimensional and spanned by the matrix~$E_{13}$.
+	The quotient~$\glie / {\centerlie(\glie)}$ is thus spanned by the two residue classes~$\class{ E_{12} }$ and~$\class{ E_{23} }$.
+	Their commutator is
+	\[
+		\Bigl[ \class{ E_{12} }, \class{ E_{23} } \Bigr]
+		=
+		\class{ [ E_{12}, E_{23} ] }
+		=
+		\class{ E_{13} }
+		=
+		0 \,,
+	\]
+	which shows that~$\glie / {\centerlie(\glie)}$ is abelian.
+	But~$\glie$ is not abelian because the matrices~$E_{12}$ and~$E_{23}$ do not commute in~$\glie$.
+\end{warning}
+
+
+\begin{fluff}
+	The Lie~algebra~$\sllie(2,\kf)$ will play a crucial role in the second part of these notes.
+	We have already observed in the above discussion that~$\sllie(2,\kf)$ has a basis given by the three matrices
+	\[
+		e
+		\defined
+		\begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix} \,,
+		\qquad
+		h
+		\defined
+		\begin{pmatrix*}[r]
+			1 &  0  \\
+			0 & -1
+		\end{pmatrix*}  \,,
+		\qquad
+		f
+		\defined
+		\begin{pmatrix}
+			0 & 0 \\
+			1 & 0
+		\end{pmatrix} \,.
+	\]
+	The Lie~bracket~$[\ph, \ph]$ of~$\sllie(2, \kf)$ is on these basis elements given by
+	\[
+		[h, e]
+		=
+		2e  \,,
+		\qquad
+		[h, f]
+		=
+		-2 f \,,
+		\qquad
+		[e,f]
+		=
+		h \,.
+	\]
+	We will see these relations quite a lot later on.
+
+	The above basis of~$\sllie(2, \kf)$ is so important that we give it a special name.
+\end{fluff}
+
+
+\begin{definition}
+ Let~$\kf$ be any field.
+ The basis
+ \[
+		e
+		=
+		\begin{pmatrix}
+			0 & 1 \\
+			0 & 0
+		\end{pmatrix} \,,
+		\qquad
+		h
+		=
+		\begin{pmatrix*}[r]
+			1 &  0  \\
+			0 & -1
+		\end{pmatrix*}  \,,
+		\qquad
+		f
+		=
+		\begin{pmatrix}
+			0 & 0 \\
+			1 & 0
+		\end{pmatrix} \,.
+		\glsadd{standard basis of sl2}
+	\]
+	of the Lie~algebra~$\sllie(2, \kf)$ is its \defemph{standard basis}\index{standard basis}.
+\end{definition}
+
+
+\begin{remark}
+	Some authors prefer the letters~$x$,~$h$,~$y$ over~$e$,~$h$,~$f$.
+\end{remark}
+
+
+\begin{example}
+	We now determine the center of~$\sllie(n, \kf)$ for any field~$\kf$ and every natural number~$n$.
+
+	In the cases~$n = 0$ and~$n = 1$ we have~$\sllie(n, \kf) = 0$ and therefore also~$\centerlie( \sllie(n, \kf) ) = 0$.
+	We consider from now on the case~$n \geq 2$.
+
+	Suppose first that the characteristic of~$\kf$ is distinct from~$2$.
+	The Lie~algebra~$\sllie(n, \kf)$ does contain for any two indices~$i$,~$j$ with~$1 \leq i < j \leq n$ the diagonal matrix~$D$ with diagonal entries
+	\[
+		D_{kk}
+		\defined
+		\begin{cases*}
+			\phantom{-}1  & if~$k = i$, \\
+								-1  & if~$k = j$, \\
+			\phantom{-}0  & otherwise.
+		\end{cases*}
+	\]
+	The diagonal entries~$1$ and~$-1$ are distinct by assumption, whence it follows from \cref{center consists of diagonal matrices} that the center of~$\sllie(n, \kf)$ consists of scalar multiples of the identity matrix.
+
+	Suppose now that the characteristic of~$\kf$ is~$2$ and that~$n \geq 3$.
+	For any two indices~$i$,~$j$ with~$1 \leq i < j \leq n$ there exists then a third index~$k$ with~$k \neq i, j$.
+	It follows that~$\sllie(2, \kf)$ contains the diagonal matrix~$D$ given by
+	\[
+		D_{ll}
+		=
+		\begin{cases*}
+			1 & if~$l = i$ or~$l = k$, \\
+			0 & if~$l = j$,  \\
+			0 & otherwise.
+		\end{cases*}
+	\]
+	The matrix~$D$ is built so that its two diagonal entries~$D_{ii}$ and~$D_{jj}$ are distinct.
+	It follows from \cref{center consists of diagonal matrices} that the center of~$\sllie(n, \kf)$ consists of scalar multiples of the identity matrix.
+
+	Supose now that the characteristic of~$\kf$ is~$2$ and that~$n = 2$.
+	For the standard basis~$e$,~$h$,~$f$ of~$\sllie(2, \kf)$ we have
+	\[
+		[h, e] = 0 \,,
+		\quad
+		[h, f] = 0 \,,
+		\quad
+		[e, f] = h \,.
+	\]
+	We find that~$\sllie(2, \kf)$ is non-abelian and that~$h$ is central in~$\sllie(2, \kf)$.
+	It follows from \cref{center has codimension at least two for non-abelian} that the center of~$\sllie(2, \kf)$ is spanned by~$h$, which is the identity matrix (because~$1 = -1$).
+
+	We have now seen that for~$n \geq 2$ the center of~$\sllie(n, \kf)$ consists of scalar multiples of the identity matrix.
+	But the identity matrix is contained in~$\sllie(n, \kf)$ if and only if the characteristic of~$\kf$ divides~$n$.
+	We have thus shown that
+	\[
+		\centerlie( \sllie(n, \kf) )
+		=
+		\begin{cases*}
+			\gen{ \Id }_{\kf} & if~$\ringchar(\kf)$ divides~$n$, \\
+			0                 & otherwise,
+		\end{cases*}
+	\]
+	for every~$n \geq 2$.
+	This description also holds for the special~$n = 0$ and~$n = 1$.
+	However, the span~$\gen{ \Id }_{\kf}$ is only one-dimensional for~$n \geq 1$.
+\end{example}
+
+
+\subsection{Normalizers}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$U$ be a linear subspace of~$\glie$.
+	The set
+	\[
+		\normallie_{\glie}(U)
+		\defined
+		\{
+			x \in \glie
+		\suchthat
+			\text{$[x,y] \in U$ for every~$y \in U$}
+		\}
+		\glsadd{normalizer}
+	\]
+	is the \defemph{normalizer}\index{normalizer} of~$U$ in~$\glie$.
+\end{definition}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra and let~$U$ be a linear subspace of~$\glie$.
+	\begin{enumerate}
+		\item
+			The normalizer~$\normallie_{\glie}(U)$ is a Lie~subalgebras of~$\glie$.
+		\item
+			The linear subspace~$U$ is a Lie~subalgebra of~$\glie$ if and only if~$U$ is contained in~$\normallie_{\glie}(U)$.
+		\item
+			The linear subspace~$U$ is an ideal of~$\glie$ if and only if its normalizer~$\normallie_{\glie}(U)$ is all of~$\glie$.
+		\item
+			The centralizer~$\centerlie_{\glie}(U)$ is an ideal of the normalizer~$\normallie_{\glie}(U)$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				[ [ \normallie_{\glie}(U), \normallie_{\glie}(U) ], U ]
+				&\subseteq
+				[ [ \normallie_{\glie}(U), U ], \normallie_{\glie}(U) ]
+				+ [ \normallie_{\glie}(U), [ \normallie_{\glie}(U), U ] ]
+				\\
+				&\subseteq
+				[ U, \normallie_{\glie}(U) ]
+				+ [ \normallie_{\glie}(U), U ]
+				\\
+				&\subseteq
+				U + U
+				\\
+				&=
+				U \,,
+			\end{align*}
+			which shows that~$[ \normallie_{\glie}(U), \normallie_{\glie}(U) ]$ is again contained in~$\normallie_{\glie}(U)$.
+		\item
+			The linear subspace~$U$ is a Lie~subalgebra of~$\glie$ if and only if the commutator space~$[ U, U ]$ is again contained in~$U$, which is the case if and only if~$U$ is contained in~$\normallie_{\glie}(U)$.
+		\item
+			The linear subspace~$U$ is an ideal of~$\glie$ if and only if the commutator space~$[\glie, U]$ is again contained in~$U$, which means precisely that~$\glie$ is contained in the normalizer~$\normallie_{\glie}(U)$.
+			But~$\normallie_{\glie}(U)$ is aways contained in~$\glie$, whence this inclusion is then already an equality.
+		\item
+			It follows from the inclusion
+			\[
+				[\centerlie_{\glie}(U), U]
+				=
+				0
+				\subseteq
+				U
+			\]
+			that the centralizer~$\centerlie_{\glie}(U)$ is contained in the normalizer~$\normallie_{\glie}(U)$.
+			We have
+			\begin{align*}
+				[ [ \normallie_{\glie}(U), \centerlie_{\glie}(U) ], U ]
+				&\subseteq
+				[ [\normallie_{\glie}(U), U], \centerlie_{\glie}(U) ]
+				+ [ \normallie_{\glie}(U), [\centerlie_{\glie}(U),  U] ]
+				\\
+				&\subseteq
+				[ U, \centerlie_{\glie}(U) ]
+				+ [ \normallie_{\glie}(U), 0 ]
+				\\
+				&=
+				0 + 0
+				\\
+				&=
+				0
+			\end{align*}
+			by the Jacobi~identity.
+			This shows that the commutator space~$[ \normallie_{\glie}(U), \centerlie_{\glie}(U) ]$ is again contained in the centralizer~$\centerlie_{\glie}(U)$, which shows that~$\centerlie_{\glie}(U)$ is indeed an ideal of~$\normallie_{\glie}(U)$.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+
+
+

@@ -1,0 +1,496 @@
+\section{New Lie~Algebras From Old Ones}
+
+
+\subsection{Products of Lie~Algebras}
+
+
+\begin{proposition}
+	\label{construction of product lie algebra}
+	Let~$\glie_{\lambda}$ with~$\lambda$ in~$\Lambda$ be a family of Lie~algebras.
+	Then the bracket
+	\[
+		\bigl[ (x_\lambda)_\lambda, (y_\lambda)_\lambda \bigr]
+		\defined
+		( [x_\lambda, y_\lambda] )_\lambda
+		\qquad
+		\text{for all~$(x_\lambda)_\lambda, (y_\lambda)_\lambda \in \prod_{\lambda \in \Lambda} \glie_\lambda$}
+	\]
+	is a Lie~bracket on the vector space~$\prod_{\lambda \in \Lambda} \glie_\lambda$.
+	\qed
+\end{proposition}
+
+
+\begin{definition}
+	In the situation of \cref{construction of product lie algebra} the resulting Lie~algebra~$\prod_{\lambda \in \Lambda} \glie_\lambda$\glsadd{product of lie algebras} is the \defemph{product}\index{product of Lie algebras} of the Lie~algebras~$\glie_\lambda$.
+\end{definition}
+
+
+\subsection{External Direct Sums of Lie~Algebras}
+
+
+\begin{proposition}
+	\label{construction of direct sum of lie algebras}
+	Let~$\glie_\lambda$ with~$\lambda$ in~$\Lambda$ be a family of Lie~algebras.
+	Then the direct sum~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$ is a Lie~subalgebra of the product~$\prod_{\lambda \in \Lambda} \glie_\lambda$.
+\end{proposition}
+
+
+\begin{proof}
+	Let~$(x_\lambda)_\lambda$ and~$(y_\lambda)_\lambda$ be two elements of~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+	Then there exist only finitely many indices~$\lambda \in \Lambda$ for which one of the vectors~$x_\lambda$ or~$y_\lambda$ does not vanish.
+	There hence exist only finitely many indices~$\lambda \in \Lambda$ for which~$[x_\lambda, y_\lambda]$ does not vanish.
+	This shows that~$[ (x_\lambda)_\lambda, (y_\lambda)_\lambda ]$ is again contained in~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$.
+\end{proof}
+
+
+\begin{definition}
+	In the situation of \cref{construction of direct sum of lie algebras}, the resulting Lie~algebra~$\bigoplus_{\lambda \in \Lambda} \glie_\lambda$\glsadd{external direct sum of lie algebras}\index{external direct sum of Lie algebras}\index{direct sum of Lie algebras!external} is the \defemph{external direct sum} of the Lie~algebras~$\glie_\lambda$.
+\end{definition}
+
+
+\subsection{Quotients of Lie~Algebras}
+
+
+\begin{proposition}
+	\label{construction of quotient lie algebra}
+	Let~$\glie$ be a Lie~algebra and let~$I$ an ideal of~$\glie$.
+	The quotient vector space~$\glie/I$ inherits from~$\glie$ the structure of a Lie~algebra via the bracket
+	\[
+		[\class{x}, \class{y}]
+		\defined
+		\class{ [x,y] }
+		\qquad
+		\text{for all~$x, y \in \glie$.}
+	\]
+\end{proposition}
+
+
+\begin{proof}
+	The bilinear map~$[\ph, \ph]$ on~$\glie/I$ is well-defined:
+	Suppose that~$x$,~$y$ and~$x'$,~$y'$ are elements of~$\glie$ such that both~$x$ and~$x'$, as well as~$y$ and~$y'$ represent the same element of~$\glie / I$.
+	Then both differences~$x - x'$ and~$y - y'$ are contained in~$I$.
+	It follows that the difference
+	\begin{align*}
+		[x,y] - [x', y']
+		&=
+		[x' + (x-x'), y' + (y-y')] - [x', y']
+		\\
+		&=
+			\underbrace{[x', y-y']}_{\in I}
+		+ \underbrace{[x-x', y']}_{\in I}
+		+ \underbrace{[x-x', y-y']}_{\in I}
+	\end{align*}
+	is again contained in~$I$.
+
+	This means that~$[x, y]$ and~$[x', y']$ represent the same element of~$\glie / I$.
+	We have thus shown that the bracket on~$\glie/I$ is well-defined.
+	
+	It remains to show that the bracket~$[\ph, \ph]$ on~$\glie / I$ is bilinear and alternating, and that it satisfies the Jacobi~identity.
+	But these properties are inherited from the bracket of~$\glie$, as they can be checked on representatives for the residue classes in~$\glie / I$.
+\end{proof}
+
+
+\begin{definition}
+	\label{definition of quotient representation}
+	The Lie~algebra~$\glie / I$\glsadd{quotient of lie algebra} from \cref{construction of quotient lie algebra} is the \defemph{quotient}\index{quotient of Lie algebras} of~$\glie$ by~$I$.
+\end{definition}
+
+
+\subsection{Abelianization of Lie~Algebras}
+
+
+\begin{proposition}
+	\label{quotient is abelian iff moded out the commutator ideal}
+	Let~$\glie$ be a Lie~algebra and let~$I$ be an ideal of~$\glie$.
+	The quotient Lie~algebra~$\glie / I$ is abelian if and only if the ideal~$I$ contains the commutator ideal of~$\glie$.
+\end{proposition}
+
+
+\begin{proof}
+	We have the chain of equivalences
+	\begin{align*}
+		{}&
+		\text{$\glie / I$ is abelian}
+		\\
+		\iff{}&
+		\text{$[ \class{x}, \class{y}] = 0$ for all~$x, y \in \glie$}
+		\\
+		\iff{}&
+		\text{$\class{[x,y]} = 0$ for all~$x, y \in \glie$}
+		\\
+		\iff{}&
+		\text{$[x,y] \in I$ for all~$x, y \in \glie$}
+		\\
+		\iff{}&
+		[\glie, \glie] \subseteq I \,,
+	\end{align*}
+	which proves the assertion.
+\end{proof}
+
+
+\begin{fluff}
+	It follows from \cref{quotient is abelian iff moded out the commutator ideal} that~$\glie / [\glie, \glie]$ is the largest abelian quotient Lie~algebra of~$\glie$.
+	This Lie~algebra has a special name:
+\end{fluff}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra.
+	The quotient Lie~algebra~$\glie / [\glie, \glie]$ is the \defemph{abelianization}\index{abelianization} of~$\glie$.
+	It is denoted by~$\glie^{\ab}$\glsadd{abelianization of lie algebra}.
+\end{definition}
+
+
+\subsection{Extension of Scalars for Lie~Algebras}
+
+
+\begin{proposition}
+	\label{quasi extension of scalars for lie algebras}
+	
+	Let~$\glie$ be a Lie~algebra over a field~$\kf$ and let~$A$ be a commutative~{\algebra{$\kf$}}.
+	\begin{enumerate}
+		\item
+			The tensor product~$A \tensor_{\kf} \glie$ becomes an~\liealgebra{$A$} via the bracket
+			\begin{alignat*}{2}
+				[a \tensor x, b \tensor y]
+				&\defined
+				(ab) \tensor [x,y]
+				&\qquad
+				&\text{for all~$a, b \in A$ and~$x, y \in \glie$}.
+		\intertext{
+		\item
+			The tensor product~$\glie \tensor_{\kf} A$ becomes an~\liealgebra{$A$} via the bracket
+		}
+				[x \tensor a, y \tensor b]
+				&\defined
+				[x,y] \tensor (ab)
+				&\qquad
+				&\text{for all~$a, b \in A$ and~$x, y \in \glie$}.
+			\end{alignat*}
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	We prove only the first assertion, as the second one can be shown in the same way.
+
+	The Lie~bracket of~$\glie$ is~\bilinear{$\kf$} and can therefore be regarded as a~\linear{$\kf$} map
+	\[
+		l \colon \glie \tensor_{\kf} \glie \to \glie \,.
+	\]
+	By the functoriality of the extension of scalars we now get an induced~\linear{$A$} map
+	\[
+		\id_A \tensor l
+		\colon
+		A \tensor_{\kf} \glie \tensor_{\kf} \glie
+		\to
+		A \tensor_{\kf} \glie \,,
+	\]
+	which maps any simple tensor~$a \tensor x \tensor y$ onto the simple tensor~$a \tensor [x,y]$.
+	We now recall that there exists a unique isomorphism of~\modules{$A$}
+	\[
+		A \tensor_{\kf} \glie \tensor_{\kf} \glie
+		\cong
+		( A \tensor_{\kf} \glie ) \tensor_A ( A \tensor_{\kf} \glie )
+	\]
+	under which a simple tensor~$a \tensor x \tensor b \tensor y$ of the right hand side corresponds to the simple tensor~$(ab) \tensor x \tensor y$ of the left hand side.
+	By considering the composite
+	\[
+		(A \tensor_{\kf} \glie) \tensor_A (A \tensor_{\kf} \glie)
+		\to
+		A \tensor_{\kf} \glie \tensor_{\kf} \glie
+		\xto{\id_A \tensor l}
+		A \tensor_{\kf} \glie
+	\]
+	we get altogether an~{\linear{$A$}} map
+	\[
+		(A \tensor_{\kf} \glie) \tensor_A (A \tensor_{\kf} \glie)
+		\to
+		A \tensor_{\kf} \glie
+	\]
+	which maps any simple tensor~$a \tensor x \tensor b \tensor y$ onto the the simple tensor~$(ab) \tensor [x,y]$.
+	We may reinterpret this~\linear{$A$} map as an~\bilinear{$A$} map
+	\[
+		[\ph, \ph]
+		\colon
+		(A \tensor_{\kf} \glie) \times (A \tensor_{\kf} \glie)
+		\to
+		A \tensor_{\kf} \glie
+	\]
+	that is given on (pairs of) simple tensors by
+	\[
+		[a \tensor x, b \tensor y]
+		=
+		(ab) \tensor [x,y] \,.
+	\]
+	This~\bilinear{$A$} map is precisely the desired bracket.
+
+	It remains to show this bracket~$[\ph, \ph]$ on~$A \tensor_{\kf} \glie$ is already a Lie~bracket.
+	For this we need to show that it is alternating and that it satisfies the Jacobi~identity.
+
+	To see that it is alternating let~$t$ be an elements of~$A \tensor_{\kf} \glie$.
+	We may write this element as sums of simple tensors, say~$t = \sum_{i=1}^n a_i \tensor x_i$.
+	We can then compute the commutator~$[t, t]$ as
+	\[
+		[t, t]
+		=
+		\Biggl[
+			\sum_{i=1}^n a_i \tensor x_i,
+			\sum_{j=1}^n a_j \tensor x_j
+		\Biggr]
+		=
+		\sum_{i, j = 1}^n
+		[ a_i \tensor x_i, a_j \tensor x_j ]
+		=
+		\sum_{i, j = 1}^n
+		( a_i a_j ) \tensor [ x_i, x_j ] \,.
+	\]
+	The summands for~$i = j$ vanish since in this case~$[x_i, x_j] = [x_i, x_i] = 0$.
+	For~$i \neq j$ the two occuring summands~$(a_i a_j) \tensor [x_i, x_j]$ and~$(a_j a_i) \tensor [x_j, x_i]$ cancel each other because~$a_i a_j = a_j a_i$ while~$[x_i, x_j] = -[x_j, x_i]$.
+	Thus overall~$[t, t] = 0$.
+	This shows that the bracket~$[\ph, \ph]$ on~$A \tensor_{\kf} \glie$ is alternating.
+
+	It remains to show that the bracket on~$A \tensor_{\kf} \glie$ satisfies the Jacobi~identity.
+	We hence want to show that the map
+	\begin{gather*}
+		J
+		\colon
+		(A \tensor_{\kf} \glie) \times (A \tensor_{\kf} \glie) \times (A \tensor_{\kf} \glie)
+		\to
+		(A \tensor_{\kf} \glie)
+	\shortintertext{given by}
+		(t, u, v)
+		\mapsto
+		[t, [u, v]] + [u, [v, t]] + [v, [t, u]]
+	\end{gather*}
+	is the zero map.
+	The map~$J$ is~\trilinear{$A$} by the~\bilinearity{$A$} of the bracket~$[\ph, \ph]$ on~$A \tensor_{\kf} \glie$.
+	It hence sufficies to show that the map~$J$ is zero on an~\linear{$A$} generating set of~$A \tensor_{\kf} \glie$.
+	Such a generating set is given by the simple tensors~$1 \tensor x$ with~$x \in \glie$.
+	We find for these generators that
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		{}&
+		J(1 \tensor x, 1 \tensor y, 1 \tensor z)
+		\\
+		={}&
+			[1 \tensor x, [1 \tensor y, 1 \tensor z]]
+		+ [1 \tensor y, [1 \tensor z, 1 \tensor x]]
+		+ [1 \tensor z, [1 \tensor x, 1 \tensor y]]
+		\\
+		={}&
+		1 \tensor \bigl( [x, [y, z]] + [y, [z, x]] + [z, [x, y]] \bigr)
+		\\
+		={}&
+		1 \tensor 0
+		\\
+		={}&
+		0
+	\end{align*}
+	for all~$x, y, z \in \glie$ by the Jacobi~identity for~$\glie$.
+	It follows that~$J = 0$, as desired.
+\end{proof}
+
+
+\begin{definition}
+	The Lie~algebras~$A \tensor_{\kf} \glie$\glsadd{extension of scalars of lie algebra} and~$\glie \tensor_{\kf} A$\glsadd{extension of scalars of lie algebra} from \cref{quasi extension of scalars for lie algebras} are the \defemph{extension of scalars}\index{extension of scalars} of~$\glie$ from~$\kf$ to~$A$.
+\end{definition}
+
+
+\begin{example}
+	Let~$\Kf/\kf$ be a field extension and let~$\glie$ be a Lie~algebra over~$\kf$.
+	Then the tensor product~$\Kf \tensor_{\kf} \glie$ is a~\liealgebra{$\Kf$} via the Lie~bracket given by
+	\[
+		[\lambda \tensor x, \mu \tensor y]
+		= 
+		(\lambda \mu) \tensor [x,y]
+		\qquad
+		\text{for all simple tensor~$\lambda, \mu \in \Kf$ and~$x, y \in \glie$.}
+	\]
+	We can moreover regard~$\glie$ as an~\liesubalgebra{$\kf$} of~$\Kf \tensor_{\kf} \glie$ via the inclusion map
+	\[
+		\glie
+		\to
+		\Kf \tensor_{\kf} \glie \,,
+		\quad
+		x
+		\mapsto
+		1 \tensor x \,.
+	\]
+\end{example}
+
+
+\begin{example}
+	Let~$\glie$ be a Lie~algebra and let~$\kf[t, t^{-1}]$ be the~\algebra{$\kf$} of Laurent~polynomials over~$\kf$.
+	Then
+	\[
+		\looplie(\glie)
+		\defined
+		\glie \tensor_{\kf} \kf[t, t^{-1}]
+		\glsadd{loop lie algebra}
+	\]
+	with the Lie~bracket as in~\cref{quasi extension of scalars for lie algebras} is the \defemph{loop Lie~algebra} of~$\glie$.
+\end{example}
+
+
+% \begin{example}
+%   Another example for constructing new Lie~algebras out of old ones are \defemph{central extensions}:
+%   Let~$\glie$ be any~$\kf$-Lie~algebra.
+%   Then let
+%   \[
+%     \widetilde{\glie}
+%     \defined
+%     \glie \oplus \kf
+%     =
+%     \{
+%       x + \lambda c
+%     \suchthat
+%       x \in \glie,
+%       \lambda \in \kf
+%     \},
+%   \]
+%   where we understand~$c$ as a formal variable.
+%   Suppose that~$\kappa \colon \glie \times \glie \to \kf$ is a~{\bilinear{$\kf$}} map satisfying the following properties:
+%   \begin{enumerate}
+%   \item
+%     $\kappa$ is antisymmetric, i.e.~$\kappa(x,y) = -\kappa(y,x)$ for all~$x,y \in \glie$.
+%   \item
+%     $\kappa$ satisfies the \defemph{$2$-cocycle condition}
+%     \[
+%       \kappa([x,y],z) + \kappa([y,z],x) + \kappa([z,x],y) = 0
+%     \]
+%     for all~$x, y, z \in \glie$.
+%   \end{enumerate}
+%   Then~$\widetilde{\glie}$ becomes a Lie~algebra via
+%   \[
+%     [x + \lambda c, y + \mu c]
+%     \defined
+%     [x,y] + \kappa(x,y) c
+%   \]
+%   for all~$x, y \in \glie$ and~$\lambda, \mu \in \kf$.
+%   Note that the element~$c$ is central in~$\widetilde{\glie}$ in the sense that~$[x,c] = 0$ for all~$x \in \glie$.
+%   
+%   Take for example~$\glie \defined \gllie(n, \kf)$.
+%   We can then define a symmetric bilinear form~$(-,-)_{\tr}$ on~$\glie$ via
+%   \[
+%     (A,B)_{\tr}
+%     \defined
+%     \tr(AB)
+%   \]
+%   for all~$A, B \in \glie$.
+%   We can use~$(-,-)_{\tr}$ to define on the Loop~algebra~$\looplie(\glie)$ a~{\bilinear{$\kf[t,t^{-1}]$}} form~$(-,-)$ via
+%   \[
+%     \looplie(\glie) \times \looplie(\glie)
+%     \to
+%     \kf[t,t^{-1}] \,,
+%     \quad
+%     (x \tensor p, y \tensor q)
+%     \mapsto
+%     (x,y)_{\tr} \, pq \,.
+%   \]
+%   We get from this a bilinear form a~{\twococycle}~$\kappa \colon \looplie(\glie) \times \looplie(\glie) \to \kf$ via
+%   \[
+%     \kappa(a,b)
+%     \defined
+%     \Res\left( \frac{\partial a}{\partial t}, b \right) \,.
+%   \]
+%   The bilinear form~$\kappa$ is also antisymmetric:
+%   Let~$a = x \tensor t^i$ and~$b = y \tensor t^{j}$ with~$x,y \in \glie$ and~$i,j \in \Integer$.
+%   Then
+%   \begin{align*}
+%     \kappa(x \tensor t^i, y \tensor t^{j})
+%     &=
+%     \Res(i x \tensor t^{i-1}, y \tensor t^{j})
+%     \\
+%     &= 
+%     \Res(i t^{i+j-1} (x,y)_{\tr})
+%     \\
+%     &=
+%     \begin{cases}
+%       i (x,y)_{\tr} & \text{if~$i+j = 0$} \,,\\
+%                   0 & \text{otherwise}  \,.
+%     \end{cases}
+%   \end{align*}
+%   In the same way we find that
+%   \[
+%     \kappa(y \tensor t^{j}, x \tensor t^i)
+%     =
+%     \begin{cases}
+%        j (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
+%                    0 & \text{otherwise}  \,.
+%     \end{cases}
+%   \]
+%   Since~$(\cdot,\cdot)_{\tr}$ is symmetric we find that
+%   \begin{align*}
+%     \kappa(x \tensor t^i, y \tensor t^{j})
+%     &=
+%     \begin{cases}
+%     i (x,y)_{\tr} & \text{if~$i+j = 0$} \,, \\
+%                 0 & \text{otherwise}  \,,
+%     \end{cases} \\
+%     &=
+%     \begin{cases}
+%     -j (x,y)_{\tr} & \text{if~$i+j = 0$}  \,, \\
+%                   0 & \text{otherwise}  \,,
+%     \end{cases} \\
+%     &=
+%     -\kappa(y \tensor t^{j}, x \tensor t^i) \,.
+%   \end{align*}
+% \end{example}
+% 
+% 
+% \begin{remark}
+%   During the rest of these notes we will never see the Loop algebra again.
+% \end{remark}
+
+
+\subsection{The Opposite Lie~Algebra}
+
+
+\begin{recall}
+	If~$A$ is a~\enquote{\algebra{$\kf$}}, then we can form its \defemph{opposite \enquote{algebra}}~$A^{\op}$\glsadd{opposite algebra}\index{opposite algebra@opposite \enquote{algebra}}.
+
+	The \enquote{algebras}~$A$ and~$A^{\op}$ have the same underlying~\vectorspace{$\kf$}.
+	If we want to regard an element~$a$ of~$A$ as an element of~$A^{\op}$ then we write~$a^{\op}$\glsadd{opposite element} instead.
+	(So~$a = a^{\op}$ but~$a$ lives in~$A$ while~$a^{\op}$ lives in~$A^{\op}$.)
+	The multplication on~$A^{\op}$ is given by
+	\[
+		a^{\op} \cdot b^{\op}
+		\defined
+		(b \cdot a)^{\op}
+		\qquad
+		\text{for all~$a, b \in A$.}
+	\]
+	It holds that~$(A^{\op})^{\op} = A$, and~$(a^{\op})^{\op} = a$ for every element~$a$ of~$A$.
+
+	The \enquote{algebra}~$A$ is associative if and only if its opposite \enquote{algebra}~$A^{\op}$ is associative, and an element~$1$ of~$A$ is a multiplicative neutral element of~$A$ if and only if~$1^{\op}$ is a multiplicative neutral element of~$A^{\op}$.
+	It follows that~$A$ is a~{\algebra{$\kf$}} if and only if~$A^{\op}$ is a~\algebra{$\kf$}.
+\end{recall}
+
+
+\begin{proposition}
+	Let be a~\liealgebra{$\kf$} with Lie~bracket~$[\ph, \ph]$.
+	The opposite \enquote{algebra}~$\glie^{\op}$, whose bracket is given by
+	\[
+		[x^\op, y^\op]
+		=
+		[y,x]^{\op}
+		=
+		-[x,y]^{\op}
+		\qquad
+		\text{for all~$x, y \in \glie$,}
+	\]
+	is again a Lie~algebra.
+	\qed
+\end{proposition}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra.
+	The Lie~algebra~$\glie^{\op}$\glsadd{opposite lie algebra} is the \defemph{opposite Lie~algebra}\index{opposite Lie algebra} of~$\glie$.
+\end{definition}
+
+
+
+
+
