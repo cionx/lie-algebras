@@ -1,0 +1,1387 @@
+\section{General Extensions}
+
+
+\begin{definition}
+	A \defemph{short exact sequence of Lie~algebras}\index{short exact sequence of Lie algebras} is a short exact sequence
+	\begin{equation}
+		\label{general extension}
+		0 
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\end{equation}
+	of vector spaces where~$\hlie$,~$\elie$, and~$\glie$ are Lie algebras and both~$\varphi$ and~$\psi$ are homomorphisms of Lie algebras.
+	The short exact sequence~\eqref{general extension} is an~\defemph{extension}\index{extension of Lie algebras} of~$\elie$ by~$\glie$.
+\end{definition}
+
+
+\begin{remark}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			By abuse of notation we often say that \enquote{$\elie$ is an extension of~$\glie$ by~$\hlie$} when talking about an extension
+			of~$\glie$ by~$\hlie$ of the form
+			\[
+				0 
+				\to
+				\hlie
+				\to
+				\elie
+				\to
+				\glie
+				\to
+				0 \,.
+			\]
+		\item
+			Let
+			\[
+				0
+				\to
+				\hlie
+				\xto{\varphi}
+				\elie
+				\xto{\psi}
+				\glie
+				\to
+				0
+			\]
+			be a short exact sequence of Lie~algebras.
+			Then the homomorphism~$\varphi$ is injective and identifies the Lie~algebra~$\hlie$ with the kernel of~$\psi$, which is an ideal of~$\elie$.
+		\item
+			Let~$\glie$ and~$\hlie$ be two~\liealgebra{$\kf$}.
+			An extension~$\elie$ of~$\glie$ by~$\hlie$ encodes the following information:
+			the Lie~algebra structure of~$\hlie$, the Lie~algebra structure of~$\glie$, and some kind of interaction between~$\glie$ and~$\hlie$.
+			How exactly these informations are encoded into~$\elie$ relies on the specific choice of homomorphism~$\varphi$ and~$\psi$ that are part of the extension.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{example}
+	\label{generic short exact sequence}
+	Let~$I$ is an ideal of a Lie~algebra~$\glie$.
+	Let~$\iota$ be the inclusion map from~$I$ to~$\glie$ and let~$\pi$ be the canonical projection map from~$\glie$ to~$\glie/I$.
+	Then
+	\[
+		0
+		\to
+		I
+		\xto{\iota}
+		\glie
+		\xto{\pi}
+		\glie/I
+		\to
+		0
+	\]
+	is a short exact sequence of Lie~algebras.
+\end{example}
+
+
+\begin{definition}
+	\label{equivalence of extensions}
+	Let~$\hlie$ and~$\glie$ be two Lie~algebras and let
+	\[
+		0 
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+		\qquad\text{and}\qquad
+		0 
+		\to
+		\hlie
+		\xto{\varphi'}
+		\elie'
+		\xto{\psi'}
+		\glie
+		\to
+		0
+	\]
+	be two extensions of~$\glie$ by~$\hlie$.
+	These extensions are \defemph{equivalent}\index{equivalence of extensions}\index{extension of Lie algebras!equivalence} if there exists an isomorphism of Lie~algebras~$\alpha$ from~$\elie$ to~$\elie'$ that makes the following diagram commute.
+	\[
+		\begin{tikzcd}[column sep = large]
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi}
+			\arrow[equal]{d}
+			&
+			\elie
+			\arrow{r}[above]{\psi}
+			\arrow[dashed]{d}[right]{\alpha}
+			&
+			\glie
+			\arrow{r}
+			\arrow[equal]{d}
+			&
+			0
+			\\
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi'}
+			&
+			\elie'
+			\arrow{r}[above]{\psi'}
+			&
+			\glie
+			\arrow{r}
+			&
+			0
+		\end{tikzcd}
+	\]
+\end{definition}
+
+
+\begin{proposition}
+	Let~$\hlie$ and~$\glie$ be two Lie~algebras.
+	Equivalence of extensions is an equivalence relation on the class of extensions of~$\glie$ by~$\hlie$.
+	\qed
+\end{proposition}
+
+
+\begin{remark}
+	In \cref{equivalence of extensions} it sufficies to require for~$\varphi$ to be a homomorphism of Lie~algebras.
+	It then follows from the five lemma that~$\varphi$ is already an isomorphism of vector spaces, and thus an isomorphism of Lie~algebras.
+\end{remark}
+
+
+\begin{fluff}
+	In the following we want to classify certain classes of extensions.
+	But this needs some preparation.
+	We will start by showing that every extensions is, up to equivalence, of a certain standard form.
+\end{fluff}
+
+
+\begin{definition}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	An extension of~$\glie$ by~$\hlie$ is of \defemph{standard form}\index{standard extension of Lie algebras}\index{extension of Lie algebras!standard}, or simply \defemph{standard}%
+	\footnote{
+		This is not a standard definition.
+		It is made up by the author of these notes to make things more explicit.
+	}, if its underlying short exact sequence of vector spaces is given by
+	\[
+		0
+		\to
+		\hlie
+		\xto{\iota}
+		\glie \oplus \hlie
+		\xto{\pi}
+		\glie
+		\to
+		0 \,,
+	\]
+	where~$\iota$ denotes the inclusion map, given by~$c \mapsto (0,c)$, and~$\pi$ denotes the canonical projection map, given by~$(x,c) \mapsto x$.
+\end{definition}
+
+
+\begin{warning}
+	In a standard extension of~$\glie$ by~$\hlie$ the middle term~$\glie \oplus \hlie$ carries the structure of a Lie~algebra, which makes the inclusion map~$\iota$ and projection map~$\pi$ into homomorphisms of Lie~algebras.
+	But this Lie~algebra structure on the vector space~$\glie \oplus \hlie$ does not have to be given by the componentwise Lie~bracket of the direct sum!
+	We will see in \cref{structure of extensions} how such Lie~bracket on~$\glie \oplus \hlie$ has to look like.
+\end{warning}
+
+
+\begin{proposition}
+	\label{every extension is equivalent to a standard one}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	Every extension of~$\glie$ by~$\hlie$ is equivalent to a standard extension.
+\end{proposition}
+
+
+\begin{proof}
+	Let
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\]
+	be an extension of~$\glie$ by~$\hlie$.
+	This extension is in particular a short exact sequence of vector spaces, and it splits on the level of vector spaces.
+	There hence exists an isomorphism of vector spaces~$\alpha$ from~$\elie$ to~$\glie \oplus \hlie$ that makes the diagram
+	\begin{equation}
+		\label{constructing equivalence with standard extension}
+		\begin{tikzcd}[column sep = large]
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi}
+			\arrow[equal]{d}
+			&
+			\elie
+			\arrow{r}[above]{\psi}
+			\arrow[dashed]{d}[right]{\alpha}
+			&
+			\glie
+			\arrow{r}
+			\arrow[equal]{d}
+			&
+			0
+			\\
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\iota}
+			&
+			\glie \oplus \hlie
+			\arrow{r}[above]{\pi}
+			&
+			\glie
+			\arrow{r}
+			&
+			0
+		\end{tikzcd}
+	\end{equation}
+	commute.
+	We can pushforward the Lie~bracket of~$\elie$ to a Lie~bracket on~$\glie \oplus \hlie$ along~$\alpha$.
+	This makes~$\glie \oplus \hlie$ into a Lie~algebra and the map~$\alpha$ into an isomorphism of Lie~algebras.
+	It follows from the commutativity of the diagram~\eqref{constructing equivalence with standard extension} that
+	\[
+		\iota = \alpha \circ \varphi
+		\quad\text{and}\quad
+		\pi = \psi \circ \alpha^{-1}
+	\]
+	are again homomorphisms of Lie~algebras.
+	We hence find that
+	\[
+		0
+		\to
+		\hlie
+		\xto{\iota}
+		\glie \oplus \hlie
+		\xto{\pi}
+		\glie
+		\to
+		0
+	\]
+	is a standard extension of~$\glie$ by~$\hlie$.
+	This standard extension is equivalent to the original extension by the commutativity of the diagram~\eqref{constructing equivalence with standard extension}.
+\end{proof}
+
+
+\begin{fluff}
+	\label{general approach to extensions}
+	Let~$\hlie$ and~$\glie$ be Lie~algebras.
+	We will now investigate how the Lie~bracket on a standard extension of~$\glie$ by~$\hlie$ has to look like.
+	We will then also express under what conditions two standard extensions are equivalent.
+	The following discussion proceeds in multiple steps.
+	\begin{enumerate}
+		\item
+			We consider a standard extension
+			\[
+				0
+				\to
+				\hlie
+				\xto{\iota}
+				\elie
+				\xto{\pi}
+				\glie
+				\to
+				0 \,.
+			\]
+			We want to understand how the Lie~bracket on~$\elie$ looks like.
+			It follows from the bilinearity of the Lie~bracket~$[\ph, \ph]$ on~$\elie$ that
+			\begin{align*}
+				{}&
+				[(x, c), (y,d)]
+				\\
+				={}&
+					[(x,0), (y,0)]
+				+ [(x,0), (0,d)]
+				+ [(0,c), (y,0)]
+				+ [(0,c), (0,d)]
+				\\
+				={}&
+					[(x,0), (y,0)]
+				+ [(x,0), (0,d)]
+				- [(y,0), (0,c)]
+				+ [(0,c), (0,d)]
+			\end{align*}
+			for all~$(x,c), (y,d) \in \elie$.
+
+			We observe that
+			\[
+				\pi( [(x,0), (y,0)] )
+				=
+				[ \pi( (x,0) ), \pi( (y,0) ) ]
+				=
+				[x, y]
+			\]
+			because~$\pi$ is a homorphism of Lie~algebras.
+			The commutator~$[(x,0), (y,0)]$ is therefore of the form
+			\[
+				[(x,0), (y,0)]
+				=
+				( [x,y], \kappa(x,y) )
+			\]
+			for all~$x, y \in \glie$ for some function
+			\[
+				\kappa
+				\colon
+				\glie \times \glie
+				\to
+				\hlie \,.
+			\]
+			It follows from the bilinearity of the Lie~bracket~$[\ph, \ph]$ on~$\elie$ that this map~$\kappa$ is again bilinear.
+
+			We note that the two commutators~$[(x,0), (0,c)]$ and~$[(y,0), (0,d)]$ are again contained in~$0 \oplus \hlie$ because this is an ideal of~$\glie \oplus \hlie$, namely the kernel of the homomorphism~$\pi$.
+			It follows together with the bilinearity of the Lie~bracket~$[\ph, \ph]$ on~$\elie$ that there exists a unique linear map
+			\[
+				\theta'
+				\colon
+				\glie
+				\to
+				\gllie(\hlie)
+			\]
+			with
+			\[
+				[(z,0), (0,e)]
+				=
+				[0, \theta(z)(e)]
+			\]
+			for all~$z \in \glie$ and~$e \in \hlie$.
+			The map~$[(z,0), \ph] = \ad_{\glie \oplus \hlie}((z,0))$ is a derivation of~$\elie$ by \cref{lie algebras act adjoint by derivations}.
+			It follows that the map~$\theta'$ corestricts to a linear map
+			\[
+				\theta
+				\colon
+				\glie
+				\to
+				\Der(\hlie) \,.
+			\]
+			For this map~$\theta$ we now have
+			\[
+				[(x,0), (0,d)]
+				=
+				[0, \theta(x)(d)]
+				\quad\text{and}\quad
+				[(y,0), (0,e)]
+				=
+				[0, \theta(y)(e)] \,.
+			\]
+
+			The last remaining commutator~$[(0,c), (0,d)]$ can be computed by using that the inclusion map~$\iota$ is a homomorphism of Lie~algebras from~$\hlie$ to~$\elie$, and therefore
+			\[
+				[(0,c), (0,d)]
+				=
+				[\iota(c), \iota(d)]
+				=
+				\iota([c,d])
+				=
+				(0, [c,d]) \,.
+			\]
+
+			We find altogether that the Lie bracket on~$\elie$ can be expressed with the help of the two maps~$\kappa$ and~$\theta$ as
+			\begin{align*}
+				{}&
+				[ (x,c), (y,d) ]
+				\\
+				={}&
+				[(x,0), (y,0)]
+				+ [(x,0), (0,d)]
+				- [(y,0), (0,c)]
+				+ [(0,c), (0,d)]
+				\\
+				={}&
+					( [x,y], \kappa(x,y) )
+				+ ( 0, \theta(x)(d) )
+				- ( 0, \theta(y)(c) )
+				+ ( 0, [c,d] )
+				\\
+				={}&
+				(
+					[x,y],
+					\kappa(x,y) + \theta(x)(d) - \theta(y)(c) + [c,d]
+				) \,.
+			\end{align*}
+			The Lie~algebra structure of the standard extension~$\elie$ is therefore uniquely described by the two maps~$\kappa$ and~$\theta$.
+		\item
+			In the second step of this discussion we want to better understand the above map~$\kappa$ and~$\theta$.
+			To do so, let
+			\[
+				\kappa
+				\colon
+				\glie \times \glie
+				\to
+				\hlie
+			\]
+			be any bilinear map, and let
+			\[
+				\theta
+				\colon
+				\glie
+				\to
+				\Der(\hlie)
+			\]
+			be any linear map.
+			We define a bracket~$[\ph, \ph]$ on the vector space~$\glie \oplus \hlie$ via the previously deduced formula, i.e. via
+			\begin{equation}
+				\label{definition of lie bracket depending on kappa and theta}
+				[(x,c), (y,d)]
+				\defined
+				(
+					[x,y] ,
+					\kappa(x,y) + \theta(x)(d) - \theta(y)(c) + [c,d]
+				)
+			\end{equation}
+			for all~$(x,c), (y,d) \in \glie \oplus \hlie$.
+			This bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ is bilinear, and both the inclusion map~$\iota$ from~$\hlie$ to~$\glie \oplus \hlie$ and the canonical projection map~$\pi$ from~$\glie \oplus \hlie$ to~$\glie$ respect this bracket.
+			There is only thing missing for
+			\[
+				0
+				\to
+				\hlie
+				\xto{\iota}
+				\glie \oplus \hlie
+				\xto{\pi}
+				\glie
+				\to
+				0
+			\]
+			to be an extension of Lie~algebras, namely that the bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ makes it into a Lie~algebra, i.e. that it is actually a Lie~bracket.
+			For this we need~$[\ph, \ph]$ to be alternating and to satisfy the Jacobi identity.
+
+			We have for every element~$(x,c)$ of~$\glie \oplus \hlie$ that
+			\[
+				[(x,c), (x,c)]
+				=
+				( [x,x], \kappa(x,x) + \theta(x)(c) - \theta(x)(c) + [c,c] )
+				=
+				(0, \kappa(x,x) ) \,.
+			\]
+			We therefore find that the bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ is alternating if and only if the bilinear map~$\kappa$ is alternating.
+
+			We can also express the Jacobi identity\index{Jacobi identity!for standard extensions} for the bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ in terms of conditions on~$\kappa$ ond~$\theta$, as we will now painstakingly demonstrate.
+			We first calculate the iterated commutator
+			\[
+				[(x,c), [(y,d), (z,e)]]
+			\]
+			for all~$(x,c), (y,d), (z,e) \in \glie \oplus \hlie$ via the formula~\eqref{definition of lie bracket depending on kappa and theta} as
+			\begin{align}
+				% first term
+				{}&
+				[(x,c), [(y,d), (z,e)]]
+				\notag
+				\\
+				% second torm
+				={}&
+				[(x,c), ([y,z], \kappa(y,z) + \theta(y)(e) - \theta(z)(d) + [d,e])]
+				\notag
+				\\
+				% third term
+				={}&
+				\bigl(
+					[x, [y, z]], 
+				\notag
+				\\
+				{}&
+					\kappa( x, [y, z] )
+					+ \theta(x)
+						\bigl(
+							\kappa(y,z) + \theta(y)(e) - \theta(z)(d) + [d,e]
+						\bigr)
+				\notag
+				\\
+				{}&
+				\hphantom{\biggl(}
+					- \theta([y,z])(c)
+					+ \bigl[
+							c,
+							\kappa(y,z) + \theta(y)(e) - \theta(z)(d) + [d,e]
+						\bigr]
+				\bigr)
+				\notag
+				\\
+				% fourth term
+				={}&
+				\smash{\bigl(}
+					[x, [y, z]],
+				\notag
+				\\
+				{}&
+				\hphantom{\bigl(}
+					\kappa( x, [y, z] )
+					+ \theta(x)( \kappa(y,z) )
+				\label{ugly row 1}
+				\\
+				{}&
+				\hphantom{\bigl(}
+					+ \theta(x)( \theta(y)(e) )
+					- \theta(x)( \theta(z)(d) )
+				\label{ugly row 2}
+				\\
+				{}&
+				\hphantom{\bigl(}
+					+ \theta(x)( [d,e] )
+				\label{ugly row 3}
+				\\
+				{}&
+				\hphantom{\bigl(}
+					- \theta( [y,z] )(c)
+				\label{ugly row 4}
+				\\
+				{}&
+				\hphantom{\bigl(}
+					+ [c, \kappa(y,z)]
+				\label{ugly row 5}
+				\\
+				{}&
+				\hphantom{\bigl(}
+					+ [c, \theta(y)(e)]
+					- [c, \theta(z)(d)]
+				\label{ugly row 6}
+				\\
+				{}&
+				\hphantom{\bigl(}
+					+ [c, [d, c]]
+				\bigr) \,.
+				\label{ugly row 7}
+			\end{align}
+			For every expression~$F$ in the three arguments~$(x,c)$,~$(y,d)$,~$(z,e)$ of~$\glie \oplus \hlie$ we will in the following use the abbreviation
+			\[
+				\sum_{\cyc} F( (x,c), (y,d), (z,e) )
+				\glsadd{cyclic sum}
+			\]
+			to denote the cyclic sum\index{cyclic sum}
+			\[
+				F( (x,c), (y,d), (z,e) )
+				+ F( (y,d), (z,e), (x,c) )
+				+ F( (z,e), (x,c), (y,d) ) \,.
+			\]
+			We want to examine which conditions the two maps~$\kappa$ and~$\theta$ need to satisfy to ensure that
+			\[
+				\sum_{\cyc}
+				[(x,c), [(y,d), (z,e)]]
+				=
+				0
+				\qquad
+				\text{for all~$(x,c), (y,d), (z,e) \in \glie \oplus \hlie$.}
+			\]
+			We see from~\eqref{ugly row 1} that the first entry of~$\sum_{\cyc} [(x,c), [(y,d), (z,e)]]$ is given by the cyclic sum
+			\[
+				\sum_{\cyc} [x,[y,z]] \,.
+			\]
+			But this terms vanishes because the Lie~bracket of~$\glie$ satisfies the Jacobi identity.
+			We therefore only have to worry about the second entry of~$\sum_{\cyc} [(x,c), [(y,d), (z,e)]]$.
+			For this second entry we can make the following observations.
+			\begin{itemize*}
+				\item
+					For the term~\eqref{ugly row 7} we have
+					\[
+						\sum_{\cyc} [c,[d,e]] = 0
+					\]
+					because the Lie~bracket on~$\hlie$ satisfies the Jacobi identity.
+					We therefore do not have to worry about the term~\eqref{ugly row 7}.
+				\item
+					The term~\eqref{ugly row 3} can be expanded as
+					\[
+						\theta(x)([d,e])
+						=
+						[\theta(x)(d), e] + [d, \theta(x)(e)]
+					\]
+					because~$\theta(x)$ is a derivation on~$\hlie$.
+					We have
+					\[
+						\sum_{\cyc} [\theta(x)(d), e]
+						=
+						\sum_{\cyc} [\theta(y)(e), c]
+						=
+						-\sum_{\cyc} [c, \theta(y)(e)]
+					\]
+					and similarly
+					\[
+						\sum_{\cyc} [d, \theta(x)(e)]
+						=
+						\sum_{\cyc} [c, \theta(z)(d)] \,.
+					\]
+					With this we find that the cyclic sums of the term~\eqref{ugly row 3} and~\eqref{ugly row 6} cancel out.
+					We therefore do not have to worry about these terms from now on.
+				\item
+					In the special case~$c, d, e = 0$ all terms except~\eqref{ugly row 1} vanish.
+					We therefore find that~$\kappa$ and~$\theta$ have to satisfy the condition.
+					\[
+						\sum_{\cyc}
+						(
+							\kappa(x, [y,z])
+							+ \theta(x)( \kappa(y,z))
+						)
+						=
+						0 \,.
+					\]
+					By using that~$\kappa$ is alternating and therefore anti-symmetric, we may rewrite this condition as
+					\begin{align*}
+						0
+						&=
+						\sum_{\cyc}
+						(
+							\kappa(x, [y,z])
+							+ \theta(x)( \kappa(y,z))
+						)
+						\\
+						&=
+						\sum_{\cyc} \kappa(x, [y,z])
+						+
+						\sum_{\cyc} \theta(x)( \kappa(y,z))
+						\\
+						&=
+						-\sum_{\cyc} \kappa([y,z], x)
+						+
+						\sum_{\cyc} \theta(x)( \kappa(y,z))
+						\\
+						&=
+						-\sum_{\cyc} \kappa([x,y], z)
+						+
+						\sum_{\cyc} \theta(x)( \kappa(y,z)) \,,
+					\end{align*}
+					and therefore as
+					\[
+						\sum_{\cyc} \kappa([x,y], z)
+						=
+						\sum_{\cyc} \theta(x)( \kappa(y,z) ) \,.
+					\]
+					We have thus arrived at the condition
+					\begin{equation}
+						\label{nonabelian cocycle condition}
+						\begin{aligned}
+							{}&
+							\kappa([x,y], z)
+							+ \kappa([y, z], x)
+							+ \kappa([z, x], y)
+							\\
+							={}&
+							\theta(x)( \kappa(y,z) )
+							+ \theta(y)( \kappa(z,x) )
+							+ \theta(z)( \kappa(x,y) )
+						\end{aligned}
+					\end{equation}
+					for all~$x, y, z \in \glie$.
+
+					We have derived this condition on~$\kappa$ and~$\theta$ by considering the special case~$c, d, e = 0$.
+					However, as long as the condition~\eqref{nonabelian cocycle condition} is satisfied,  the term~\eqref{ugly row 1} will vanish in the cyclic sum of~$[(x,c), [(y,d), (z,e)]]$ for arbitrary~$c, d, e \in \hlie$.
+					So as long as condition~\eqref{nonabelian cocycle condition} is satisfied we do not have to worry about the term~\eqref{ugly row 1}.
+				\item
+					It remains to consider the terms~\eqref{ugly row 2},~\eqref{ugly row 4} and~\eqref{ugly row 5}.
+					For those terms we calculate that
+					\begin{align}
+						{}&
+						\sum_{\cyc}
+						\Bigl(
+							\theta(x)( \theta(y)(e) )
+							-
+							\theta(x)( \theta(z)(d) )
+							-
+							\theta([y,z])(c)
+							+
+							[c, \kappa(y,z)]
+						\Bigr)
+						\label{unrotated condition on kappa and theta}
+						\\
+						={}&
+						\sum_{\cyc}
+						\theta(x)( \theta(y)(e) )
+						-
+						\sum_{\cyc}
+						\theta(x)( \theta(z)(d) )
+						-
+						\sum_{\cyc}
+						\theta([y,z])(c)
+						+
+						\sum_{\cyc}
+						[c, \kappa(y,z)]
+						\notag
+						\\
+						={}&
+						\sum_{\cyc}
+						\theta(x)( \theta(y)(e) )
+						-
+						\sum_{\cyc}
+						\theta(y)( \theta(x)(e) )
+						-
+						\sum_{\cyc}
+						\theta([x,y])(e)
+						+
+						\sum_{\cyc}
+						[e, \kappa(x,y)]
+						\notag
+						\\
+						={}&
+						\sum_{\cyc}
+						\Bigl(
+							\theta(x)( \theta(y)(e) )
+							-
+							\theta(y)( \theta(x)(e)
+							-
+							\theta([x,y])(e)
+							+
+							[e, \kappa(x,y)]
+						\Bigr) \,.
+						\label{rotated conditon on kappa and theta}
+					\end{align}
+					We note that in the cyclic sum~\eqref{rotated conditon on kappa and theta} each summand depends on only of the three variables~$c$,~$d$,~$e$, und it does so in a linear way.
+					It follows that the sum~\eqref{rotated conditon on kappa and theta} vanishes for arbitrary choices of~$(x,c)$,~$(y,d)$,~$(z,e)$ if and only if each summand vanishes.
+					(Indeed, we can isolate one of the three summands by considering the special case~$c, d = 0$.
+					From this we see that this summand has to vanish on its own.
+					But we can also isolate the other two summands by consider the special cases~$c, e = 0$ and~$d, e = 0$.
+					So each summand has to vanish on its own.)
+
+					All three summands give the same condition, namely that
+					\[
+						\theta(x)( \theta(y)(e) )
+						-
+						\theta(y)( \theta(x)(e)
+						-
+						\theta([x,y])(e)
+						+
+						[e, \kappa(x,y)]
+						=
+						0
+					\]
+					for all~$x, y \in \glie$ and~$e \in \hlie$.
+					We may rewrite this condition as
+					\begin{equation}
+						\label{rewritten condition on kappa and theta}
+						\theta([x,y])
+						=
+						[\theta(x), \theta(y)]
+						-
+						\ad_{\hlie}( \kappa(x,y) )
+						\qquad
+						\text{for all~$x, y \in \glie$.}
+					\end{equation}
+			\end{itemize*}
+			We have altogether shown that the bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ satisfies the Jacobi identity if and only if it satisfies the two conditions~\eqref{nonabelian cocycle condition} and~\eqref{rewritten condition on kappa and theta}.
+
+			We have now shown that the bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ is a Lie~bracket if and only if the map~$\kappa$ is alternating and the two maps~$\kappa$ and~$\theta$ satisfy the compatibility conditions~\eqref{nonabelian cocycle condition} and~\eqref{rewritten condition on kappa and theta}
+	\end{enumerate}
+
+	We have overall constructed a bijection between Lie~brackets on~$\glie \oplus \hlie$ that make the short exact sequence
+	\[
+		0
+		\to
+		\hlie
+		\xto{\iota}
+		\glie \oplus \hlie
+		\xto{\pi}
+		\glie
+		\to
+		0
+	\]
+	into a standard extension of~$\glie$ by~$\hlie$, and certains pairs~$(\kappa, \theta)$ consisting of a map~$\kappa$ from~$\glie \times \glie$ to~$\hlie$ and a map~$\theta$ from~$\glie$ to~$\Der(\hlie)$.
+
+	We now wish to understand under what conditions two such pairs~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ give equivalent extensions.\index{equivalence of standard extensions}
+	For this we proceed again in multiple steps.
+
+	\begin{enumerate}[resume*]
+		\item
+			Let~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ be two pairs of maps
+			\[
+				\kappa_1, \kappa_2
+				\colon
+				\glie \times \glie
+				\to
+				\hlie \,,
+				\quad
+				\theta_1, \theta_2
+				\colon
+				\glie
+				\to
+				\Der(\hlie)
+			\]
+			such that the maps~$\kappa_1$ and~$\kappa_2$ are bilinear and alternating, the maps~$\theta_1$ and~$\theta_2$ are linear, and the compatibility conditions \eqref{nonabelian cocycle condition} and~\eqref{rewritten condition on kappa and theta} are satisfied for both~$\kappa_1$ and~$\theta_1$, as well as for~$\kappa_2$ and~$\theta_2$.
+			Let~$[\ph, \ph]_1$ and~$[\ph, \ph]_2$ be the Lie~brackets on~$\glie \oplus \hlie$ corresponding to the pairs~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$.
+			More explicitely, we have
+			\[
+				[(x,c), (y,d)]_i
+				=
+				(
+					[x,y],
+					\kappa_i(x,y) + \theta_i(x)(d) - \theta_i(y)(c) + [c,d]
+				)
+			\]
+			for all~$(x,c), (y,d) \in \glie \oplus \hlie$ and~$i = 1, 2$.
+
+			The two resulting extensions of~$\glie$ by~$\hlie$ given by~$[\ph, \ph]_1$ and~$[\ph, \ph]_2$ are equivalent if and only if there exists an homomorphism of Lie~algebras
+			\[
+				\alpha
+				\colon
+				( \glie \oplus \hlie, [\ph, \ph]_1 )
+				\to
+				( \glie \oplus \hlie, [\ph, \ph]_1 )
+			\]
+			that makes the following diagram commute.
+			\begin{equation}
+				\label{diagram for equivalence of standard extensions}
+				\begin{tikzcd}
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					\arrow[equal]{d}
+					&
+					\glie \oplus \hlie
+					\arrow{r}[above]{\pi}
+					\arrow[dashed]{d}[right]{\alpha}
+					&
+					\glie
+					\arrow{r}
+					\arrow[equal]{d}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					&
+					\glie \oplus \hlie
+					\arrow{r}[above]{\pi}
+					&
+					\glie
+					\arrow{r}
+					&
+					0
+				\end{tikzcd}
+			\end{equation}
+			We will now explain under what conditions on the pairs~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ such an isomorphism~$\alpha$ exists, and how it can be constructed.
+		\item
+			We first want to understand how a linear map
+			\[
+				\alpha
+				\colon
+				\glie \oplus \hlie
+				\to
+				\glie \oplus \hlie
+			\]
+			has to look like to make the diagram~\eqref{diagram for equivalence of standard extensions} commute.
+			The maps~$\iota$,~$\pi$ and~$\alpha$ are linear maps between direct sums, and can therefore be written in the usual matrix calculus as
+			\[
+				\iota
+				\equiv
+				\begin{pmatrix}
+					0
+					\\
+					1
+				\end{pmatrix} \,,
+				\quad
+				\alpha
+				\equiv
+				\begin{pmatrix}
+					\alpha_{11} & \alpha_{12} \\
+					\alpha_{21} & \alpha_{22}
+				\end{pmatrix} \,,
+				\quad
+				\pi
+				\equiv
+				\begin{pmatrix}
+					1 & 0
+				\end{pmatrix}
+			\]
+			for some unique linear maps
+			\[
+				\alpha_{11}
+				\colon
+				\glie
+				\to
+				\glie \,,
+				\quad
+				\alpha_{12}
+				\colon
+				\glie
+				\to
+				\hlie \,,
+				\quad
+				\alpha_{21}
+				\colon
+				\hlie
+				\to
+				\glie \,,
+				\quad
+				\alpha_{22}
+				\colon
+				\hlie
+				\to
+				\hlie \,.
+			\]
+			The commutativity of the diagram~\eqref{diagram for equivalence of standard extensions} can be encoded by the two conditions
+			\[
+				\begin{pmatrix}
+					\alpha_{11} & \alpha_{12} \\
+					\alpha_{21} & \alpha_{22}
+				\end{pmatrix}
+				\begin{pmatrix}
+					0 \\
+					1
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					0 \\
+					1
+				\end{pmatrix} \,,
+				\quad
+				\begin{pmatrix}
+					1 & 0
+				\end{pmatrix}
+				\begin{pmatrix}
+					\alpha_{11} & \alpha_{12} \\
+					\alpha_{21} & \alpha_{22}
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					1 & 0
+				\end{pmatrix} \,.
+			\]
+			We can apply the usual rules of matrix multiplication to find that these two conditions are furthermore equivalent to the combination of the three conditions
+			\[
+				\alpha_{11} = 1 \,,
+				\quad
+				\alpha_{12} = 0 \,,
+				\quad
+				\alpha_{22} = 1 \,.
+			\]
+			We have thus found that the diagram~\eqref{diagram for equivalence of standard extensions} commutes if and only if the linear map~$\alpha$ is of the form
+			\[
+				\alpha
+				=
+				\begin{pmatrix}
+					1       & 0 \\
+					\varphi & 1
+				\end{pmatrix}
+			\]
+			for some linear map
+			\[
+				\varphi
+				\colon
+				\glie
+				\to
+				\hlie \,.
+			\]
+			This means more explicitely that
+			\[
+				\alpha(x,c)
+				=
+				\alpha(x, \varphi(x) + c)
+				\qquad
+				\text{for all~$(x,c) \in \glie \oplus \hlie$.}
+			\]
+			We now understand how~$\alpha$ has to look like to make the diagram~\eqref{diagram for equivalence of standard extensions} commute.
+		\item
+			We will now examine what condition the linear map~$\varphi$ has to satisfy in terms of the two pairs~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ for~$\alpha$ to be a homomorphism of Lie~algebras.
+			The map~$\alpha$ is such a homomorphism if and only if the equality
+			\[
+				\alpha( [ t, u ]_1 )
+				=
+				[ t, u ]_2
+			\]
+			is satisfied for any two elements~$t$ and~$u$ of~$\glie \oplus \hlie$.
+			By the bilinearity of the Lie~brackets~$[\ph, \ph]_1$ and~$[\ph, \ph]_2$ and the linearity of~$\alpha$ it sufficies to consider the cases in which~$t$ is of the form~$(x,0)$ or~$(0,c)$, and similarly~$u$ is of the form~$(y,0)$ or~$(0,d)$.
+			\begin{itemize}
+				\item
+					For~$t = (x,0)$ and~$u = (y,0)$ we find on the one hand
+					\[
+						\alpha( [t,u] )
+						=
+						\alpha( [ (x,0) , (y,0) ] )
+						=
+						\alpha( [x,y], \kappa_1(x,y) )
+						=
+						( [x,y], \varphi( [x,y] ) + \kappa_1(x,y) )
+					\]
+					and on the other hand
+					\begin{align*}
+						[ \alpha(t), \alpha(u) ]
+						&=
+						[ \alpha(x,0), \alpha(y,0) ]
+						\\
+						&=
+						[ (x, \varphi(x)), (y, \varphi(y)) ]
+						\\
+						&=
+						( [x,y], \kappa_2(x,y) + \theta_2(x)(\varphi(y)) - \theta_2(y)(\varphi(x)) + [\varphi(x), \varphi(y)] ) \,.
+					\end{align*}
+					We thus arrive in this case at the condition
+					\[
+						\kappa_1(x,y)
+						=
+						\kappa_2(x,y)
+						+ \theta_2(x)(\varphi(y))
+						- \theta_2(y)(\varphi(x))
+						+ [\varphi(x), \varphi(y)]
+						- \varphi( [x,y] )
+					\]
+					for all~$x, y \in \glie$.
+				\item
+					For~$t = (x,0)$ and~$u = (0,d)$ we find on the one hand
+					\[
+						\alpha( [v,w] )
+						=
+						\alpha( [ (x,0), (0,d) ] )
+						=
+						\alpha( 0, \theta_1(x)(d) )
+						=
+						(0, \theta_1(x)(d))
+					\]
+					and on the other hand
+					\[
+						[ \alpha(t), \alpha(u) ]
+						=
+						[ \alpha(x,0), \alpha(0,d) ]
+						=
+						[ (x, \varphi(x)), (0,d) ]
+						=
+						( 0, \theta_2(x)(d) + [\varphi(x), d] ) \,.
+					\]
+					We therefore arrive in this case at the condition
+					\begin{equation}
+						\label{first occurance of condition}
+						\theta_1(x)(d)
+						=
+						\theta_2(x)(d)
+						+ [\varphi(x), d]
+					\end{equation}
+					for all~$x \in \glie$ and~$d \in \hlie$.
+				\item
+					In the case of~$t = (0,c)$ and~$u = (y,0)$ we find on the one hand
+					\[
+						\alpha( [t,u] )
+						=
+						\alpha( [ (0,c), (y,0) ] )
+						=
+						\alpha( 0, -\theta_1(y)(c) )
+						=
+						( 0, -\theta_1(y)(c) )
+					\]
+					and on the other hand
+					\[
+						[ \alpha(t), \alpha(u) ]
+						=
+						[ \alpha(0,c), \alpha(y,0) ]
+						=
+						[ (0,c), (y, \varphi(y) ]
+						=
+						( 0, -\theta_2(y)(c) + [c, \varphi(y)] ) \,.
+					\]
+					We therefore arrive in this case at the condition
+					\[
+						\theta_1(y)(c)
+						=
+						\theta_2(y)(c) + [\varphi(y), c]
+					\]
+					for all~$y \in \glie$ and~$c \in \hlie$.
+					But this is the same condition as in the previous case, i.e. condition~\eqref{first occurance of condition}.
+				\item 
+					In the case of~$t = (0,c)$ and~$u = (0,d)$ we have on the one hand
+					\[
+						\alpha( [t,u] )
+						=
+						\alpha( [ (0,c), (0,d) ] )
+						=
+						\alpha( 0, [c,d] )
+						=
+						(0, [c,d])
+					\]
+					and on the other hand
+					\[
+						[ \alpha(t), \alpha(u) ]
+						=
+						[ \alpha(0,c), \alpha(0,d) ]
+						=
+						[ (0,c), (0,d) ]
+						=
+						( 0, [c,d] ) \,.
+					\]
+					We don’t get any additional condition from this last case.
+			\end{itemize}
+			We find altogether that the map~$\alpha$ is a homomorphism of Lie~algebras if and only if the linear map~$\varphi$ satisfies the two conditions
+			\begin{gather*} 
+				\theta_1(x)
+				=
+				\theta_2(x)
+				+ \ad_{\hlie}(\varphi(x))
+			\shortintertext{and}
+				\kappa_1(x,y)
+				=
+				\kappa_2(x,y)
+				+ \theta_2(x)(\varphi(y))
+				- \theta_2(y)(\varphi(x))
+				+ [\varphi(x), \varphi(y)]
+				- \varphi( [x,y] )
+			\end{gather*}
+			for all~$x, y \in \glie$.
+	\end{enumerate}
+\end{fluff}
+
+
+\begin{fluff}
+	We have now classified standard extensions in terms of certain pairs~$(\kappa, \theta)$, and have examined under what condition two such pairs~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ give equivalent extensions.
+	This will greatly help us in the upcoming classifications of certain classes of extensions because every extension is equivalent to a standard one.
+
+	Let us now finish our discussion of general extensions by summarizing our findings.
+\end{fluff}
+
+
+\begin{theorem}[Structure of extensions]
+	\index{structure theorem!for extensions}
+	\index{extension of Lie algebras!structure theorem}
+	\label{structure of extensions}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	\begin{enumerate}
+		\item
+			Every extension of~$\glie$ by~$\hlie$ is equivalent to a standard extension of~$\glie$ by~$\hlie$.
+		\item
+			Given a standard extension~$\elie$ of~$\glie$ by~$\hlie$, the Lie~bracket~$[\ph, \ph]$ on~$\elie$ is of the form
+			\begin{equation}
+				\label{formula for lie bracket on standard extension}
+				[(x,c), (y,d)]
+				=
+				( [x,y], \kappa(x,y) + \theta(x)(d) - \theta(y)(c) + [c,d] )
+			\end{equation}
+			for all~$(x,c), (y,d) \in \elie$, for some bilinear map
+			\begin{equation}
+				\label{kappa function}
+				\kappa
+				\colon
+				\glie \times \glie
+				\to
+				\hlie
+			\end{equation}
+			and some linear map
+			\begin{equation}
+				\label{theta function}
+				\theta
+				\colon
+				\glie
+				\to
+				\Der(\hlie) \,.
+			\end{equation}
+			The maps~$\kappa$ and~$\theta$ are uniquely determined by the formulas
+			\begin{alignat*}{2}
+				[(x,0), (y,0)]
+				&=
+				([x,y], \kappa(x,y))
+				&
+				\qquad
+				&\text{for all~$x, y \in \glie$}
+			\shortintertext{and}
+				[(x,0), (0,c)]
+				&=
+				(0, \theta(x)(c))
+				&
+				\qquad
+				&\text{for all~$x \in \glie$ and~$c \in \hlie$.}
+			\end{alignat*}
+			The map~$\kappa$ is alternating, and the maps~$\kappa$ and~$\theta$ satisfy the two compatibility conditions
+			\begin{gather}
+				\begin{aligned}
+					{}&
+					\kappa([x,y], z)
+					+ \kappa([y,z], x)
+					+ \kappa([z,x], y)
+					\label{first compatibility condition for extensions}
+					\\
+					={}&
+					\theta(x)( \kappa(y,z) )
+					+ \theta(y)( \kappa(z,x) )
+					+ \theta(z)( \kappa(x,y) )
+				\end{aligned}
+			\shortintertext{and}
+				\theta([x,y])
+				=
+				[\theta(x), \theta(y)] - \ad_{\hlie}(\kappa(x,y))
+				\label{second compatibility condition for extensions}
+			\end{gather}
+			for all~$x, y, z \in \glie$.
+		\item
+			Let on the other hand~$\kappa$ be a bilinear map as in \eqref{kappa function} and let~$\theta$ be a linear map as in~\eqref{theta function}, such that~$\kappa$ is alternating and the two compatibility conditions~\eqref{first compatibility condition for extensions} and~\eqref{second compatibility condition for extensions} are satisfied.
+			Then the formula~\eqref{formula for lie bracket on standard extension} defines a Lie~bracket on the vector space~$\glie \oplus \hlie$ which makes it into a standard extension of~$\glie$ by~$\hlie$.
+		\item
+			The above two constructions are mutually inverse and result in a {\onetoonetext} correspondence
+			\[
+				\left\{
+					\begin{tabular}{c}
+						Lie~brackets on~$\glie \oplus \hlie$ \\
+						that make it into a \\
+						standard extension \\
+						of~$\glie$ by~$\hlie$
+					\end{tabular}
+				\right\}
+				\onetoone
+				\left\{
+					\begin{tabular}{c}
+						$(\kappa, \theta)$
+					\end{tabular}
+				\suchthat*
+					\begin{tabular}{c}
+						$\kappa \colon \glie \times \glie \to \hlie$ is bilinear, \\
+						$\theta \colon \glie \to \Der(\hlie)$ is linear, \\
+						$\kappa$ is alternating, and the \\
+						conditions~\eqref{first compatibility condition for extensions} and~\eqref{second compatibility condition for extensions} hold
+					\end{tabular}
+				\right\} \,.
+			\]
+	\end{enumerate}
+	Let now~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ be two pairs as described above, and let~$\elie_1$ and~$\elie_2$ be the standard extensions corresponding to these pairs.
+	\begin{enumerate}[resume*]
+		\item
+			Let~$\alpha$ be an equivalence of extensions from~$\elie_1$ to~$\elie_2$, i.e. a homomorphism of Lie~algebras
+			\[
+				\alpha
+				\colon
+				(\elie_1, [\ph, \ph]_1)
+				\to
+				(\elie_2, [\ph, \ph]_2)
+			\]
+			that makes the following diagram commute:
+			\[
+				\begin{tikzcd}
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					\arrow[equal]{d}
+					&
+					\elie_1
+					\arrow{r}[above]{\pi}
+					\arrow[dashed]{d}[right]{\alpha}
+					&
+					\glie
+					\arrow{r}
+					\arrow[equal]{d}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					&
+					\elie_2
+					\arrow{r}[above]{\pi}
+					&
+					\glie
+					\arrow{r}
+					&
+					0
+				\end{tikzcd}
+			\]
+			Then the map~$\alpha$ is of the form
+			\begin{equation}
+				\label{formula for equivalence depending on varphi}
+				\alpha(x,c)
+				=
+				\alpha(x, \varphi(x) + c)
+				\qquad
+				\text{for every~$(x,c) \in \elie_1$}
+			\end{equation}
+			for some linear map
+			\begin{equation}
+				\label{functional definition of varphi}
+				\varphi
+				\colon
+				\glie
+				\to
+				\hlie \,.
+			\end{equation}
+			The map~$\varphi$ is unique, and it satisfies the two conditions
+			\begin{gather} 
+				\label{first condition for equivalence}
+				\theta_1(x)
+				=
+				\theta_2(x)
+				+ \ad_{\hlie}(\varphi(x))
+			\shortintertext{and}
+				\label{second condition for equivalence}
+				\kappa_1(x,y)
+				=
+				\kappa_2(x,y)
+				+ \theta_2(x)(\varphi(y))
+				- \theta_2(y)(\varphi(x))
+				+ [\varphi(x), \varphi(y)]
+				- \varphi( [x,y] )
+			\end{gather}
+			for all~$x, y \in \glie$.
+		\item
+			Suppose on the other hand that~$\varphi$ is a linear map as in~\eqref{functional definition of varphi} which satisfies the two conditions~\eqref{first condition for equivalence} and~\eqref{second condition for equivalence}.
+			Then formula~\eqref{formula for equivalence depending on varphi} defines an equivalence of extensions~$\alpha$ from~$\elie_1$ to~$\elie_2$.
+		\item
+			The above two constructions are mutually inverse and result in a {\onetoonetext} correspondence
+			\[
+				\left\{
+					\begin{tabular}{c}
+						$\alpha$
+					\end{tabular}
+				\suchthat*
+					\begin{tabular}{c}
+						$\alpha \colon \elie_1 \to \elie_2$ is \\
+						an equivalence \\
+						of extensions
+					\end{tabular}
+				\right\}
+				\onetoone
+				\left\{
+					\begin{tabular}{c}
+						$\varphi$
+					\end{tabular}
+				\suchthat*
+					\begin{tabular}{c}
+						$\varphi \colon \glie \to \hlie$ is linear \\
+						and satisfies the two \\
+						conditions~\eqref{first condition for equivalence} and~\eqref{second condition for equivalence}
+					\end{tabular}
+				\right\}
+			\]
+			It holds in particular that the extensions~$\elie_1$ and~$\elie_2$ are equivalent if and only if there exists a linear map~$\varphi$ from~$\glie$ to~$\hlie$ satisfying conditions~\eqref{first condition for equivalence} and~\eqref{second condition for equivalence}.
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{remark}
+	The author of these notes learned about the general form of the compatibility conditions~\eqref{first condition for equivalence} and~\eqref{second condition for equivalence} from~\cite{nlab_extension_of_lie_algebras} and~\cite{nlab_nonabelian_lie_algebra_cohomology}, with further help from~\cite{alekseevsky_michor_ruppert_extension_of_lie_algebras}.
+	According to these sources, these two compatiblity conditions express that the pair~$(\kappa, \theta)$ is a~\cocycle{$2$}\index{2-cocycle}\index{coycle@2-cocycle} in nonabelian Lie~algebra cohomology\index{nonabelian Lie algebra cohomology}\index{Lie algebra cohomology!nonabelian}.
+\end{remark}
+
+
+\begin{warning}
+	Suppose that we are given any extension of Lie~algebras
+	\[
+		0 \to \hlie \to \elie \to \glie \to 0 \,.
+	\]
+	Then according to \cref{structure of extensions} this extension is equivalent to a standard extension~$\elie'$.
+	This equivalence is realized by a suitable isomorphism of vector spaces~$\alpha$ from~$\elie$ to~$\elie'$.
+
+	The Lie~bracket of~$\elie'$ can now be parametrized by a pair~$(\kappa, \theta)$ as explained in \cref{structure of extensions}.
+	The Lie~bracket of~$\elie$ can therefore be expressed by the pair~$(\kappa, \theta)$.
+	However, this pair~$(\kappa, \theta)$ does not only depend on the Lie~bracket of~$\elie$, but also on the choice of isomorphism~$\alpha$.
+\end{warning}
+
+
+\begin{definition}
+	In the bijection from \cref{structure of extensions} the standard extension corresponding to a pair~$(\kappa, \theta)$ is \defemph{the standard extension given by~$(\kappa, \theta)$}\index{standard extension of Lie algebras}, or simple \defemph{the standard extension~$(\kappa, \theta)$}.
+\end{definition}
+
+
+
+
+

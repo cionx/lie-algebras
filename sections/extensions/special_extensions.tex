@@ -1,0 +1,1460 @@
+\section{Special Kinds of Extensions}
+
+
+\begin{fluff}
+	We will now classify certain kinds of extensions up to equivalence.
+	For this we will show that the Lie~algebras in question are equivalent to standard extensions given by~$(\kappa, \theta)$ such that~$\kappa$ and~$\theta$ have to satisfy certain additional conditions.
+	We then express under what conditions two such pairs~$(\kappa_1, \theta_1)$ and~$(\kappa_2, \theta_2)$ give equivalent conditions.
+\end{fluff}
+
+
+
+\subsection{Trivial Extensions}
+
+
+\begin{example}
+	\label{construction of trivial extension}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	We consider the vector space~$\glie \oplus \hlie$ together with the componentwise Lie~bracket
+	\[
+		[ (x,c), (y,d) ]
+		=
+		( [x,y], [c,d] )
+	\]
+	for all~$(x,c), (y,d) \in \glie \oplus \hlie$.
+	This makes the vector space~$\glie \oplus \hlie$ into a standard extension of~$\glie$ by~$\hlie$.
+\end{example}
+
+
+\begin{definition}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	\begin{enumerate}
+		\item
+			The extension of~$\glie$ by~$\hlie$ from \cref{construction of trivial extension} is the \defemph{trivial extension}\index{trivial extension of Lie algebras}\index{extension of Lie algebras!trivial} of~$\glie$ by~$\hlie$.
+		\item
+			An arbitrary extension of~$\glie$ by~$\hlie$ is \defemph{trivial}\index{trivial extension of Lie algebras}\index{extension of Lie algebras!trivial} if it is equivalent to the trivial extension.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have choosen our definitions so that \emph{the} trivial extension is one specific extension, whereas \emph{being trivial} is a property of an extension.
+		\item
+			Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+			Under the correspondence from \cref{structure of extensions} the trivial extension of~$\glie$ by~$\hlie$ corresponds to the pair~$(\kappa, \theta)$ with~$\kappa = 0$ and~$\theta = 0$.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{definition}
+	Let
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\]
+	be an extension of Lie~algebras.
+	A \defemph{retract}\index{retract}\index{short exact sequence of Lie algebras!retract} of this extension is a homomorphism of Lie~algebras~$\rho$ from~$\elie$ to~$\hlie$ such that
+	\[
+		\rho \circ \varphi
+		=
+		\id_{\hlie} \,.
+	\]
+\end{definition}
+
+
+\begin{lemma}
+	\label{having a retract is invariant under equivalence of extensions}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} and let~$\elie$ be an extension of~$\glie$ by~$\hlie$ that admits a rectract.
+	Then every extension equivalent to~$\elie$ also admits a retract.
+\end{lemma}
+
+
+\begin{proof}
+	The extension~$\elie$ is given by a short exact sequence of Lie~algebras
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0 \,.
+	\]
+	Let
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi'}
+		\elie'
+		\xto{\psi'}
+		\glie
+		\to
+		0
+	\]
+	be an equivalent extension.
+	This means that there exists a homorphism of Lie~algebras~$\alpha$ from~$\elie$ to~$\elie'$ that makes the diagram
+	\[
+		\begin{tikzcd}
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi}
+			\arrow[equal]{d}
+			&
+			\elie
+			\arrow{r}[above]{\psi}
+			\arrow[dashed]{d}[right]{\alpha}
+			&
+			\glie
+			\arrow{r}
+			\arrow[equal]{d}
+			&
+			0
+			\\
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi'}
+			&
+			\elie'
+			\arrow{r}[above]{\psi'}
+			&
+			\glie
+			\arrow{r}
+			&
+			0
+		\end{tikzcd}
+	\]
+	commute.
+	If~$\rho$ is a retract for the second extension then the composite~$\rho \circ \alpha$ will be a retract for the first extension.
+	Indeed, we have~$\rho \circ \varphi' = \id_{\hlie}$ and therefore
+	\[
+		\rho \circ \alpha \circ \varphi
+		=
+		\rho \circ \varphi'
+		=
+		\id_{\hlie}
+	\]
+	by the commutativity of the above diagram.
+	This shows that the first extension admits a retract if the second one does.
+	The reverse implication follows from this first implication because equivalence of extensions is an equivalence relation.
+\end{proof}
+
+
+\begin{proposition}[Characterizations of trivial extensions]
+	\index{characterizationof trivial extensions of Lie algebras}
+	\index{trivial extension of Lie algebras}
+	\index{extension of Lie algebras!trivial}
+	For an extension of Lie algebras
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\]
+	the following conditions are equivalent.
+	\begin{equivalenceslist*}
+		\item
+			\label{extension is trivial}
+			The extension is trivial.
+		\item
+			\label{extension is equivalent to 0 0}
+			The extension is equivalent to the standard extension~$(\kappa, \theta)$ with~$\kappa = 0$ and~$\theta = 0$.
+		\item
+			\label{extension admits a retract}
+			The extension admits a retract.
+		\item
+			\label{image of h admits a direct complement}
+			There exists an ideal~$J$ of~$\elie$ such that~$\elie$ is the (internal) direct sum of the two ideals~$\varphi(\hlie)$ and~$J$.
+	\end{equivalenceslist*}
+%  Suppose furthermore that the underlying vector space of~$\elie$ is given by the direct sum~$\glie \oplus \hlie$.
+%  Let~$(\kappa, \theta)$ be the pair correspondung to the Lie~bracket of~$\elie$ under the bijection from \cref{structure of extensions}.
+%  Then the following condition is also equivalent to the ones above.
+%  \begin{equivalenceslist*}[resume*]
+%    \item
+%      \label{trivial via kappa and theta}
+%      There exists a linear map~$\varphi$ from~$\glie$ to~$\hlie$ such that
+%      \[
+%        \theta(x) = \ad_{\hlie}(\varphi(x)) \,,
+%        \quad
+%        \kappa(x,y) = [\varphi(x), \varphi(y)] - \varphi([x,y])
+%      \]
+%      for all~$x, y \in \glie$.
+%      % TODO: Give an explicit explanation of these conditions.
+%      % The first condition means that \theta takes values in \ad(\hlie), the Lie algebra of inner derivations
+%      % The second condition means that \kappa is the coboundary associated to \varphi.
+%      % But what about the interplay between these conditions?
+%  \end{equivalenceslist*}
+\end{proposition}
+
+\begin{proof}
+	We denote the trivial representation of~$\glie$ by~$\hlie$ as~$\glie \oplus \hlie$.
+	\begin{implicationlist}
+		\item[\ref{extension is trivial}~$\iff$~\ref{extension is equivalent to 0 0}]
+			The standard extension given by~$(0,0)$ is precisely the trivial extension.
+			This equivalence is therefore just a reformulation of the definition of a trivial extension.
+		\item[\ref{extension is trivial}~$\implies$~\ref{extension admits a retract}]
+			The trivial extension admits a retract, namly the canonical projection map from~$\glie \oplus \hlie$ to~$\hlie$, given by~$(x,c) \mapsto c$.
+			It follows from \cref{having a retract is invariant under equivalence of extensions} that every trivial representation admits a retract.
+		\item[\ref{extension admits a retract}~$\implies$~\ref{image of h admits a direct complement}]
+			Let~$\rho \colon \elie \to \hlie$ be a retract of the given extension.
+			We consider for the ideal~$J$ the kernel of~$\rho$.
+			The composite~$\varphi \circ \rho$ is an idempotent endomorphism of~$\elie$, whence~$\elie$ is the direct sum of the kernel and the image of~$\varphi \circ \rho$.
+			It follows from the condition~$\rho \circ \varphi = \id_{\hlie}$ that~$\rho$ is surjective and~$\varphi$ is injective, so
+			\[
+				\ker(\varphi \circ \rho) = \ker(\rho) = J \,,
+				\qquad
+				\im(\varphi \circ \rho) = \im(\varphi) = \varphi(\hlie) \,.
+			\]
+			We have thus shown that~$\elie$ is the direct sum of~$\varphi(\hlie)$ and~$J$.
+		\item[\ref{image of h admits a direct complement}~$\implies$~\ref{extension is trivial}]
+			It also follows from the injectivity of~$\varphi$ that~$\varphi$ restricts to an isomorphism of Lie~algebras from~$\hlie$ to~$\varphi(\hlie)$.
+			We denote the restriction by~$\varphi'$.
+			We similarly find that the homomorphism~$\psi$ restricts to an isomorphism~$\psi'$ from~$J$ to~$\glie$.
+			This follows from the fact that~$\psi$ is surjective and~$J$ is a precisely a direct complement to~$\varphi(\hlie)$, and thus a direct complement to the kernel of~$\psi$.
+
+			It follows from \cref{direct sum of ideals} that the map
+			\[
+				\alpha
+				\colon
+				J \oplus \varphi(\hlie)
+				\to
+				\elie \,,
+				\quad
+				(x, y)
+				\mapsto
+				x + y
+			\]
+			is an isomorphism of Lie~algebras.
+			This isomorphism makes the diagram
+			\[
+				\begin{tikzcd}[sep = large]
+					0
+					\arrow{r}
+					&
+					\varphi(\hlie)
+					\arrow{r}[above]{\iota}
+					\arrow{d}[right]{(\varphi')^{-1}}
+					&
+					J \oplus \varphi(\hlie)
+					\arrow{r}[above]{\pi}
+					\arrow[dashed]{d}[right]{\alpha}
+					&
+					J
+					\arrow{r}
+					\arrow{d}[right]{\psi'}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\varphi}
+					&
+					\elie
+					\arrow{r}[above]{\psi}
+					&
+					\glie
+					\arrow{r}
+					&
+					0
+				\end{tikzcd}
+			\]
+			commute, where~$\iota$ denotes the inclusion map and~$\pi$ denotes the canonical projection map.
+
+			We also find that the map
+			\[
+				\beta
+				\colon
+				\glie \oplus \hlie
+				\to
+				J \oplus \varphi(\hlie) \,,
+				\quad
+				(x,y)
+				\mapsto
+				\bigl( (\psi')^{-1}(x) , \varphi'(y) \bigr)
+			\]
+			is again an isomorphism of Lie~algebras.
+			This isomorphism makes the diagram
+			\[
+				\begin{tikzcd}[sep = large]
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					\arrow{d}[right]{\varphi'}
+					&
+					\glie \oplus \hlie
+					\arrow{r}[above]{\pi}
+					\arrow[dashed]{d}[right]{\beta}
+					&
+					\glie
+					\arrow{r}
+					\arrow{d}[right]{(\psi')^{-1}}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\varphi(\hlie)
+					\arrow{r}[above]{\iota}
+					&
+					J \oplus \varphi(\hlie)
+					\arrow{r}[above]{\pi}
+					&
+					J
+					\arrow{r}
+					&
+					0
+				\end{tikzcd}
+			\]
+			commute, where~$\iota$ denotes the respective inclusion maps, and~$\pi$ the respective canonical projection maps.
+
+			We have altogether the following commutative diagram:
+			\[
+				\begin{tikzcd}[sep = large]
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					\arrow{d}[right]{\varphi'}
+					&
+					\glie \oplus \hlie
+					\arrow{r}[above]{\pi}
+					\arrow[dashed]{d}[right]{\beta}
+					&
+					\glie
+					\arrow{r}
+					\arrow{d}[right]{(\psi')^{-1}}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\varphi(\hlie)
+					\arrow{r}[above]{\iota}
+					\arrow{d}[right]{(\varphi')^{-1}}
+					&
+					J \oplus \varphi(\hlie)
+					\arrow{r}[above]{\pi}
+					\arrow{d}[right]{\alpha}
+					&
+					J
+					\arrow{r}
+					\arrow{d}[right]{\psi'}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\varphi}
+					&
+					\elie
+					\arrow{r}[above]{\psi}
+					&
+					\glie
+					\arrow{r}
+					&
+					0
+				\end{tikzcd}
+			\]
+			By deleting the middle row of this commutative diagram we arrive at the following commutative diagram:
+			\[
+				\begin{tikzcd}[sep = large]
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\iota}
+					\arrow[equal]{d}
+					&
+					\glie \oplus \hlie
+					\arrow{r}[above]{\pi}
+					\arrow[dashed]{d}[right]{\alpha \circ \beta}
+					&
+					\glie
+					\arrow{r}
+					\arrow[equal]{d}
+					&
+					0
+					\\
+					0
+					\arrow{r}
+					&
+					\hlie
+					\arrow{r}[above]{\varphi}
+					&
+					\elie
+					\arrow{r}[above]{\psi}
+					&
+					\glie
+					\arrow{r}
+					&
+					0
+				\end{tikzcd}
+			\]
+			This shows that the homomorphismp~$\alpha \circ \beta$ gives an equivalence between the trivial extension~$\glie \oplus \hlie$ and the given extension.
+%    \item[\ref{extension is trivial}~$\iff$~\ref{trivial via kappa and theta}]
+%      Under the correspondence from \cref{structure of extensions} the trivial representation of corresponds to the pair~$(0,0)$.
+%      The claim thus follows from \cref{structure of extensions}.
+		\qedhere
+	\end{implicationlist}
+\end{proof}
+
+\begin{example}
+	We have a short exact sequence of Lie~algebras given by
+	\[
+		0
+		\to
+		\sllie(n, \kf)
+		\xto{\iota}
+		\gllie(n, \kf)
+		\xto{\tr}
+		\kf
+		\to
+		0
+	\]
+	where~$\iota$ denotes the inclusion map.
+	The general linear Lie~algebra~$\gllie(n, \kf)$ is thus an extension of the {\onedimensional} Lie~algebra~$\kf$ by the special linear Lie~algebra~$\sllie(n, \kf)$\index{special linear Lie algebra}.
+	If the characteristic of~$\kf$ does not divide the size~$n$ then the one-dimensional ideal~$\gen{ \Id }_{\kf}$ of~$\gllie(n, \kf)$ is a direct complement of~$\sllie(n, \kf)$.
+	We find in this case that the above extension is trivial.
+	% TODO: What happens if the characteristic does divide n?
+	% This problem should follow from a classification of ideals in gl, which should be done after root space decompositions have been introduced.
+\end{example}
+
+\begin{fluff}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	It may happen that a standard extension~$(\kappa, \theta)$ is trivial even if neither~~$\kappa$ nor~$\theta$ vanishes.
+	Indeed, the standard extension~$(\kappa, \theta)$ is trivial if and only if it is equivalent to the standard extension~$(0,0)$.
+	According to \cref{structure of extensions} this happens if and only if there exists a linear map~$\varphi$ from~$\glie$ to~$\Der(\hlie)$ such that
+	\[
+		\theta(x) = \ad_{\hlie}(\varphi(x)) \,,
+		\qquad
+		\kappa(x,y) = [\varphi(x), \varphi(y)] - \varphi([x,y])
+	\]
+	for all~$x, y \in \glie$.
+
+	Indeed, we observe that for any linear map~$\theta$ from~$\hlie$ to~$\Der(\hlie)$ we can define maps~$\kappa$ from~$\glie \times \glie$ to~$\hlie$ and~$\theta$ from~$\glie$ to~$\Der(\hlie)$ via the above two formulas.
+	The map~$\kappa$ is then bilinear and the map~$\theta$ is linear.
+	Moreover, the maps~$\kappa$ and~$\theta$ satisfy the compatibility conditions from \cref{structure of extensions} because
+	\begin{gather*}
+		\SwapAboveDisplaySkip
+		\begin{aligned}
+			{}&
+			\kappa([x,y], z) + \kappa([y,z], x) + \kappa([z,x], y)
+			\\
+			={}&
+			[\varphi([x,y]), \varphi(z)] - \varphi([[x,y],z])
+			\\
+			{}&
+			+ [\varphi([y,z]), \varphi(x)] - \varphi([[y,z],x])
+			\\
+			{}&
+			+ [\varphi([z,x]), \varphi(y)] - \varphi([[z,x],y])
+			\\
+			={}&
+			[\varphi([x,y]), \varphi(z)]
+			+ [\varphi([y,z]), \varphi(x)]
+			+ [\varphi([z,x]), \varphi(y)]
+			\\
+			{}&
+			- \varphi( [[x,y],z] + [[y,z],x] + [[z,x],y] )
+			\\
+			={}&
+			[\varphi([x,y]), \varphi(z)]
+			+ [\varphi([y,z]), \varphi(x)]
+			+ [\varphi([z,x]), \varphi(y)]
+		\end{aligned}
+	\shortintertext{and}
+		\begin{aligned}
+			{}&
+			\theta(x)(\kappa(y,z))
+			+ \theta(y)(\kappa(z,x))
+			+ \theta(z)(\kappa(x,y))
+			\\
+			={}&
+			[ \varphi(x), [\varphi(y), \varphi(z)] - \varphi([y,z]) ]
+			\\
+			{}&
+			+ [ \varphi(y), [\varphi(z), \varphi(x)] - \varphi([z,x]) ]
+			\\
+			{}&
+			+ [ \varphi(z), [\varphi(x), \varphi(y)] - \varphi([x,y]) ]
+			\\
+			={}&
+			[ \varphi(x), [\varphi(y), \varphi(z)] ]
+			+ [ \varphi(y), [\varphi(z), \varphi(x)] ]
+			+ [ \varphi(z), [\varphi(x), \varphi(y)] ]
+			\\
+			{}&
+			- [ \varphi(x), \varphi([y,z]) ]
+			- [ \varphi(y), \varphi([z,x]) ]
+			- [ \varphi(z), \varphi([x,y]) ]
+			\\
+			={}&
+			- [ \varphi(x), \varphi([y,z]) ]
+			- [ \varphi(y), \varphi([z,x]) ]
+			- [ \varphi(z), \varphi([x,y]) ]
+			\\
+			={}&
+			[ \varphi([x,y]), \varphi(z) ]
+			+ [ \varphi([y,z]), \varphi(x) ]
+			+ [ \varphi([z,x]), \varphi(y) ] \,,
+		\end{aligned}
+	\end{gather*}
+	as well as
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		{}&
+		[\theta(x), \theta(y)] - \ad_{\hlie}( \kappa(x,y) )
+		\\
+		={}&
+		[ \ad_{\hlie}(\varphi(x)), \ad_{\hlie}(\varphi(y)) ] - \ad_{\hlie}( [\varphi(x), \varphi(y)] - \varphi([x,y]) )
+		\\
+		={}&
+		\ad_{\hlie}( [\varphi(x), \varphi(y)] ) - \ad_{\hlie}( [\varphi(x), \varphi(y)] ) + \ad_{\hlie}( \varphi([x,y]) )
+		\\
+		={}&
+		\ad_{\hlie}( \varphi([x,y]) )
+		\\
+		={}&
+		\theta([x,y])
+	\end{align*}
+	for all~$x, y, z \in \glie$.
+	Hence every linear map~$\varphi$ from~$\glie$ to~$\hlie$ gives rise to a trivial standard extension.
+\end{fluff}
+
+
+
+\subsection{Abelian Extensions}
+
+\begin{definition}
+	An extension of Lie~algebras
+	\[
+		0 \to \hlie \to \elie \to \glie \to 0
+	\]
+	is \defemph{abelian}\index{abelian extension of Lie algebras}\index{extension of Lie algebras!abelian} if the Lie~algebra~$\hlie$ is abelian.
+\end{definition}
+
+
+\begin{fluff}
+	\label{discussing abelian extensions}
+	Let~$\glie$ be a~\liealgebra{$\kf$}.
+	We denote by~$\AbEx(\glie)$\glsadd{abelian extensions} the class of abelian extensions of~$\glie$.
+	To better understand the equivalence classes of abelian extensions we will split up the class~$\mathcal{A}$ into pairwise disjoint subclasses, such that no two equivalent abelian extensions are contained in the same subclass.
+
+	We denote for every abelian~\liealgebra{$\kf$}~$\hlie$ by~$\AbEx(\glie, \hlie)$\glsadd{abelian extensions by h} the class of abelian extensions of~$\glie$ by~$\hlie$.
+	This gives a disjoint decomposition
+	\[
+		\AbEx(\glie)
+		=
+		\coprod_{\hlie}
+		\AbEx(\glie, \hlie)
+	\]
+	where~$\hlie$ runs through the class of abelian~\liealgebras{$\kf$}.
+	There exist no equivalences of extensions between an extension in~$\AbEx(\glie, \hlie)$ and an extension in~$\AbEx(\glie, \klie)$ whenever~$\hlie$ and~$\klie$ are distinct.
+
+	Let~$\hlie$ be an abelian~\liealgebra{$\kf$}.
+	We want to further decompose the class~$\AbEx(\glie, \hlie)$.
+	Let for this
+	\[
+		0 \to \hlie \to \elie \to \glie \to 0
+	\]
+	be an extension of Lie~algebras.
+	We know that this extension is equivalent to some standard extensions~$(\kappa, \theta)$.
+	The parameter~$\theta$ is a linear map from~$\glie$ to~$\Der(\hlie)$ such that
+	\[
+		\theta( [x,y] )
+		=
+		[ \theta(x), \theta(y) ] + \ad_{\hlie}( \kappa(x,y) )
+	\]
+	for all~$x, y \in \elie$.
+	But the Lie~algebra~$\hlie$ is abelian, so the term~$\ad_{\hlie}( \kappa(x,y) )$ vanishes.
+	We thus find that~$\theta$ needs to be a homomorphism of Lie algebras from~$\glie$ to~$\Der(\hlie)$.
+	Moreover, since~$\hlie$ is abelian, we have~$\Der(\hlie) = \gllie(\hlie)$.
+	We thus find that~$\theta$ is a homomorphism of Lie~algebras from~$\glie$ to~$\gllie(\hlie)$.
+
+	If the given extension is equivalent to another standard extension~$(\kappa', \theta')$, then it follows from \cref{structure of extensions} that~$\theta = \theta' + \ad_{\hlie}(\varphi(\ph))$ for some linear map~$\varphi$ from~$\glie$ to~$\hlie$.
+	But we then have~$\ad_{\hlie}(\varphi(\ph)) = 0$ because~$\hlie$ is abelian, and therefore~$\theta = \theta'$.
+	This shows that the homomorphism~$\theta$ is unique.
+
+	We find from the above that we can further decompose the class~$\AbEx(\glie, \hlie)$ as
+	\[
+		\AbEx(\glie, \hlie)
+		=
+		\coprod_{\theta}
+		\AbEx(\glie, \hlie, \theta)
+		\glsadd{abelian extensions by h via theta}
+	\]
+	where~$\theta$ ranges through the set of Lie~algebra homomorphisms from~$\glie$ to~$\gllie(\hlie)$.
+	We thus have the disjoint decomposition
+	\[
+		\AbEx(\glie)
+		=
+		\coprod_{\hlie, \theta}
+		\AbEx(\glie, \hlie, \theta) \,.
+	\]
+
+	We can reparametrize this decomposition.
+	For this we note that a pair~$(\hlie, \theta)$ consisting of an abelian Lie~algebra~$\hlie$ and a homomorphism of Lie~algebras~$\theta$ from~$\glie$ to~$\hlie$ is the same as a representation~$M$ of~$\glie$, in the following way.
+	\index{representation!associated to an abelian extension}
+	Given on the one hand~$\hlie$ and~$\theta$ as above, the pair~$(\hlie, \theta)$ is a representation of~$\glie$, with the action of~$\glie$ on~$\hlie$ given by~$x \act c = \theta(x)(c)$ for all~$x \in \glie$ and~$c \in \hlie$.
+	Given on the other hand a representation~$(M, \rho)$ of~$\glie$ we regard~$M$ as an abelian Lie~algebra and let~$\theta$ be~$\rho$.
+	We have thus a decomposition
+	\[
+		\AbEx(\glie)
+		=
+		\coprod_M \AbEx(\glie, M)
+		\glsadd{abelian extensions associated to M}
+	\]
+	where~$M$ runs through the class of representations of~$\glie$.
+
+	To determine in which subclass~$\AbEx(\glie, M)$ a given abelian extension
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\]
+	is contained we proceed as follows.
+	We identify the abelian Lie~algebra~$\hlie$ with an abelian ideal of~$\elie$ via the homomorphism~$\varphi$.
+	For an element~$x$ of~$\elie$ let~$y$ be a preimage of~$x$ under~$\psi$.
+	We define an action of~$x$ act on~$\hlie$ via~$x \act c \defined [y, c]$.
+	This action is well-defined:
+	if~$y'$ is another preimage of~$x$ under~$\psi$ then the difference~$y - y'$ is contained in the kernel of~$\psi$, i.e. in~$\hlie$.
+	Then
+	\[
+		[y, c]
+		=
+		[y' + y - y', c]
+		=
+		[y', c] + [y - y', c]
+		=
+		[y', c] + 0
+		=
+		[y', c]
+	\]
+	for all~$c \in \hlie$ because~$\hlie$ is abelian.
+	This action of~$\glie$ on~$\hlie$ makes~$\hlie$ into a representation of~$\glie$.
+	This is precisely the desired representation~$M$ for which the given extension is contained in~$\AbEx(\glie, M)$.
+
+	Let us summarize our results.
+	To every abelian extension of~$\glie$ we have associated a representation~$M$ of~$\mathfrak{h}$.
+	For an abelian extension
+	\[
+		0
+		\to
+		\hlie
+		\to
+		\elie
+		\to
+		\glie
+		\to
+		0
+	\]
+	the associated representation~$M$ is given by~$\hlie$ as a vector space, and the action of an element~$x$ of~$\glie$ on~$M$ is given by taking a preimage~$y$ of~$x$ in~$\elie$ and acting with~$y$ on~$\hlie$ via the adjoint action of~$\elie$.
+	If two abelian extensions of~$\glie$ are equivalent then the resulting representations of~$\glie$ are equal.
+\end{fluff}
+
+
+\begin{theorem}[Structure of abelian extensions]
+	\index{structure theorem!for abelian extensions}
+	\index{abelian extension of Lie algebras!structure theorem}
+	\label{structure of abelian extensions}
+	Let~$\glie$ be a Lie algebra.
+	\begin{enumerate}
+		\item
+			Suppose that
+			\[
+				0
+				\to
+				\hlie
+				\to
+				\elie
+				\to
+				\glie
+				\to
+				0
+			\]
+			is an abelian extension of~$\glie$.
+			For every element~$x$ of~$\glie$ let~$y$ be a preimage of~$x$ in~$\elie$, and define an action of~$x$ on~$\hlie$ via~$x \act c = [y,c]$ for all~$c \in \hlie$.
+			This action makes~$\hlie$ into a representation of~$\glie$.
+		\item
+			If two abelian extensions of~$\glie$ are equivalent then their associated representations are equal.
+		\item
+			Let~$\AbEx(\glie)$ be the class of abelian extensions of~$\glie$.
+			For every representation~$M$ of~$\glie$ let~$\AbEx(\glie, M)$ be the subclass of~$\AbEx(\glie)$ consisting of all those abelian extensions of~$\elie$ whose associated representation is~$M$.
+			Then
+			\[
+				\AbEx(\glie)
+				=
+				\coprod_M \AbEx(\glie, M)
+			\]
+			where~$M$ ranges through the class of representations of~$\glie$.
+	\end{enumerate}
+	Let now~$M$ be a representation of~$\glie$.
+	Let~$\theta$ be the corresponding homomorphism of Lie~algebras from~$\glie$ to~$\gllie(M)$.
+	We regard~$M$ as an abelian Lie~algebra, which we denote by~$\hlie$, and regard~$\theta$ as a homomorphism of Lie~algebras from~$\glie$ to~$\Der(\hlie)$.
+	\begin{enumerate}[resume*]
+		\item
+			The standard extensions contained in~$\AbEx(\glie, M)$ are precisely those standard extensions of~$\glie$ by~$\hlie$ of the form~$(\kappa, \theta)$ with~$\theta$ as above.
+		\item
+			An alternating, bilinear map~$\kappa$ from~$\glie \times \glie$ to~$\hlie$ defines a standard extension~$(\kappa, \theta)$ of~$\glie$ by~$\hlie$, which is then necessarily contained in~$\AbEx(\glie, M)$, if and only if it satisfies the condition
+			\[
+				\kappa( [x,y], z ) + \kappa( [y,z], x ) + \kappa( [z,x], y )
+				=
+				x \act \kappa(y,z) + y \act \kappa(z,x) + z \act \kappa(x,y)
+			\]
+			for all~$x, y, z \in \glie$.%
+			\footnote{
+				We want to point out that the right hand side of this equation depends on~$\theta$.
+			}
+		\item
+			Two such maps~$\kappa_1$ and~$\kappa_2$ result in equivalent standard extensions~$(\kappa_1, \theta)$ and~$(\kappa_2, \theta)$ of~$\glie$ by~$\hlie$ if and only if there exists a linear map~$\varphi$ from~$\glie$ to~$\hlie$ such that
+			\[
+				\kappa_1(x,y)
+				- \kappa_2(x,y)
+				=
+				x \act \varphi(y)
+				- y \act \varphi(x)
+				- \varphi( [x,y] )
+			\]
+			for all~$x, y \in \glie$.
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+	This follows from \cref{structure of extensions} and the discussion in \cref{discussing abelian extensions}.
+\end{proof}
+
+
+
+\subsection{Central Extensions}
+
+\begin{definition}
+	An extension of Lie~algebras
+	\[
+		0 \to \hlie \to \elie \to \glie \to 0
+	\]
+	is \defemph{central}\index{central extension of Lie algebras}\index{extension of Lie algebras!central} if the image of~$\hlie$ in~$\elie$ is contained in the center of~$\elie$.
+\end{definition}
+
+
+\begin{remark}
+	Suppose that
+	\[
+		0 \to \hlie \to \elie \to \glie \to 0
+	\]
+	is a central extensions of Lie~algebras.
+	Then~$\hlie$ is isomorphic to its image in~$\elie$, and thus abelian.
+	This means that every central extension is in particular an abelian extension.
+	It therefore only makes sense to talk about central extensions of a Lie~algebras~$\glie$ by a Lie~algebra~$\hlie$ if the Lie~algebra~$\hlie$ is abelian, as otherwise there are now such extensions.
+\end{remark}
+
+
+\begin{proposition}
+	\label{central iff theta is zero}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} with~$\hlie$ being abelian.
+	A standard extension~$(\kappa, \theta)$ of~$\glie$ by~$\hlie$ is central if and only if~$\theta$ vanishes.
+\end{proposition}
+
+
+\begin{proof}
+	The Lie~bracket~$[\ph, \ph]$ of the standard extension~$(\kappa, \theta)$ is given by
+	\[
+		[ (x,c), (y,d) ]
+		=
+		( [x,y], \kappa(x,y) + \theta(x)(d) - \theta(y)(c) + [c,d] )
+	\]
+	for all~$(x,c), (y,d) \in \glie \oplus \hlie$.
+	We have~$[c,d] = 0$ for all~$c, d \in \hlie$ because the Lie~algebra~$\hlie$ is abelian.
+	Thus
+	\[
+		[ (x,c), (0,d) ]
+		=
+		( 0, \theta(x)(d) )
+	\]
+	for all~$(x,c) \in \glie \oplus \hlie$ and~$d \in \hlie$.
+	It follows that the image of~$\hlie$ in~$\glie \oplus \hlie$ is central if and only if
+	\[
+		\theta(x)(d) = 0
+		\qquad
+		\text{for all~$x \in \glie$ and~$d \in \hlie$,}
+	\]
+	i.e. if and only if~$\theta = 0$.
+\end{proof}
+
+
+
+\begin{theorem}[Structure of central extensions]
+	\index{structure theorem!for central extensions}
+	\index{central extension of Lie algebras!structure theorem}
+	\label{structure of central extensions}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} where~$\hlie$ is abelian.
+	\begin{enumerate}
+		\item
+			Every central extension of~$\glie$ by~$\hlie$ is equivalent to a central, standard extension of~$\glie$ by~$\hlie$.
+		\item
+			We have a {\onetoonetext} correspondence
+			\[
+				\left\{
+					\begin{tabular}{c}
+						central standard \\
+						extensions of~$\glie$ by~$\hlie$
+					\end{tabular}
+				\right\}
+				\onetoone
+				\left\{
+					\begin{tabular}{c}
+						bilinear, alternating maps \\
+						$\kappa \colon \glie \times \glie \to \hlie$ such that \\
+						$\kappa([x,y], z) + \kappa([y,z], x) + \kappa([z, x], y) = 0$
+					\end{tabular}
+				\right\}
+			\]
+			where the extension corresponding to a map~$\kappa$ is the standard extension~$(\kappa, 0)$.
+		\item
+			The Lie~bracket on the extension~$\elie$ corresponding to~$\kappa$ is given by
+			\[
+				[ (x,c), (y,d) ]
+				=
+				( [x,y], \kappa(x,y) )
+			\]
+			for all~$(x,c), (y,d) \in \elie$.
+		\item
+			Let
+			\[
+				\kappa_1, \kappa_2
+				\colon
+				\glie \times \glie
+				\to
+				\hlie
+			\]
+			be two maps as above, and let~$\elie_1$ and~$\elie_2$ be the correspond central extensions.
+			Then we have a {\onetoonetext} correspondence given by
+			\[
+				\left\{
+					\begin{tabular}{c}
+						equivalences \\ of extensions \\
+						$\alpha \colon \elie_1 \to \elie_2$
+					\end{tabular}
+				\right\}
+				\onetoone
+				\left\{
+					\begin{tabular}{c}
+						linear maps~$\varphi \colon \glie \to \hlie$ with \\
+						$\kappa_1(x,y) = \kappa_2(x,y) - \varphi([x,y])$ \\
+						for all~$x, y \in \glie$
+					\end{tabular}
+				\right\} \,.
+			\]
+			It follows in particular that the two extensions~$\elie_1$ and~$\elie_2$ are equivalent if and only if there exists a linear map~$\varphi$ from~$\glie$ to~$\hlie$ with
+			\[
+				\kappa_1(x,y)
+				=
+				\kappa_2(x,y)
+				-
+				\varphi([x,y])
+			\]
+			for all~$x, y \in \glie$.
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+	The \lcnamecref{structure of central extensions} follows from \cref{structure of extensions} thanks to \cref{central iff theta is zero}.
+\end{proof}
+
+
+\begin{remark}
+	Let~$\glie$ be a Lie~algebra.
+	Under the decomposition~$\AbEx(\glie) = \coprod_M \AbEx(\glie, M)$ from \cref{structure of abelian extensions}, the subclass of central extensions on the left hand side corresponds on the right hand side to~$\coprod_{M'} \AbEx(\glie, M')$ where~$M'$ ranges through the class of trivial representations of~$\glie$.
+\end{remark}
+
+
+%\begin{remark}
+%  One can also think about central extenions, and our above structure theorem about central extensions, in a homological way.
+%  We do so as follows:
+%  \begin{enumerate}
+%    \item
+%      Let~$\elie$ be a Lie~algebra.
+%      We can form a chain complex~$\Exterior^\bullet(\elie)$ whose~\howmanyth{$n$} term is given by the exterior power~$\Exterior^n(\elie)$ for every~$n \geq 0$, and which vanishes in negative degrees.
+%      The differential of this chain complex is given by the maps
+%      \begin{align*}
+%        d_n
+%        \colon
+%        \bigwedge^n(\elie)
+%        &\to
+%        \bigwedge^{n-1}(\elie) \,,
+%        \\
+%        x_1 \wedge \dotsb \wedge x_n
+%        &\mapsto
+%        \sum_{1 \leq i < j \leq n}
+%        (-1)^{i+j-1}
+%        [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+%      \end{align*}
+%      for every~$n \geq 1$, and~$d_n \defined 0$ for every~$n \leq 0$.
+%  \end{enumerate}
+%\end{remark}
+
+%\begin{example}[Central extensions]
+%  In the notation of \cref{general approach to extensions} we find that an extension
+%  \[
+%    0
+%    \to
+%    I
+%    \xto{\iota}
+%    \glie \oplus \hlie
+%    \xto{\pi}
+%    \glie
+%    \to
+%    0
+%  \]
+%  is central if and only
+%  \begin{equation}
+%    \label{central extension condition on elements}
+%    [(x,c), (0,d)] = 0
+%    \qquad
+%    \text{for all~$x \in \glie$ and~$c, d \in \hlie$.}
+%  \end{equation}
+%  We have
+%  \[
+%    [(x,c), (0,d)]
+%    =
+%    (0, \theta(x)(d) + [c,d])
+%    \qquad
+%    \text{for all~$x \in \glie$,~$c, d \in \hlie$,}
+%  \]
+%  so we find that the condition~\eqref{central extension condition on elements} is equivalent to the combination of the two conditions~$\theta = 0$ and also~$[c,d] = 0$ for all~$c, d \in \hlie$.
+%  Indeed, by choosing~$d = c$ we see that~$\theta(x)(c) = 0$ for all~$x \in \glie$ and~$c \in \hlie$, and thus~$\theta = 0$.
+%  And from this we then find that~$[c,d] = 0$ for all~$c, d \in \hlie$.
+%
+%  We now find from the general formula
+%  \begin{equation}
+%    \label{central extension formula}
+%    [ (x,c), (y,d) ]
+%    =
+%    ( [x,y], \kappa(x,y) )
+%  \end{equation}
+%  for all~$(x,c), (y,d) \in \glie \oplus \hlie$.
+%  
+%  Given any bilinear form~$\kappa \colon \glie \times \glie \to \hlie$ we have already seen that \eqref{central extension formula} defines a bilinear bracket on~$\glie \oplus \hlie$ that is alternating if and only if~$\kappa$ is alternating.
+%  We find for the Jacobi identity that
+%  \[
+%    [ (x,c), [ (y,d), (z,e) ] ]
+%    =
+%    [ (x,c), ([y,z], \kappa(y,z)) ]
+%    =
+%    ( [x,[y,z]], \kappa(x, [y,z]) )
+%  \]
+%  for all~$(x,c), (y,d), (z,e) \in \glie \oplus \hlie$ and therefore
+%  \begin{align*}
+%    {}&
+%      [(x,c), [(y,d), (z,e)]]
+%    + [(y,d), [(z,e), (x,c)]]
+%    + [(z,e), [(x,c), (y,d)]]
+%    \\
+%    ={}&
+%    (
+%      [x,[y,z]] + [y,[z,x]] + [z,[x,y]],
+%      \kappa(x, [y,z]) + \kappa(y, [z,x]) + \kappa(z, [x,y])
+%    )
+%    \\
+%    ={}&
+%    ( 0, \kappa(x, [y,z]) + \kappa(y, [z,x]) + \kappa(z, [x,y]) ) \,.
+%  \end{align*}
+%  We hence find that the bracket~$[\ph, \ph]$ on~$\glie \oplus \hlie$ satisfies the Jacobi identity if and only if the bilinear map~$\kappa$ satisfies the similar looking identity
+%  \[
+%    \kappa(x, [y,z]) + \kappa(y, [z,x]) + \kappa(z, [x,y])
+%    =
+%    0 \,.
+%  \]
+%  This condition is the \defemph{{\twococycle} condition}, and a bilinear map~$\kappa \colon \glie \to \glie \to \hlie$ that is both alternating is satisfies the {\twococycle} condition is a {\twococycle}.
+%  
+%  We have overall constructed for all Lie~algebras~$\glie$ and~$\hlie$ a {\onetoonetext} correspondence between
+%  \begin{itemize}
+%    \item
+%      Lie~brackets~$[\ph, \ph]$ on the vector space~$\glie \oplus \hlie$ that make the standard short exact sequence
+%      \[
+%        0
+%        \to
+%        I
+%        \to
+%        \glie
+%        \oplus
+%        I
+%        \to
+%        \glie
+%        \to
+%        0
+%      \]
+%      into a central extension of~$\glie$ by~$\hlie$ and
+%    \item
+%      {\twococycles}~$\kappa \colon \glie \times \glie \to \hlie$,
+%  \end{itemize}
+%  and this correspondence is given by~$[(x,c), (y,d)] = ([x,y], \kappa(x,y))$.
+%\end{example}
+
+
+
+\subsection{Split Extensions and Semidirect Products}
+
+\begin{fluff}
+	Another important kind of extensions are so called semidirect products.
+	We will give three characterizations of these extensions:
+	internal semidirect product, external semidirect products, and split extensions.
+	We will also explain the equivalence of these characterizations.
+\end{fluff}
+
+\subsubsection{Internal Semidirect Products}
+
+
+\begin{definition}
+	Let~$\elie$ be a Lie~algebra.
+	Let~$\glie$ be a Lie~subalgebra of~$\elie$ and let~$\hlie$ be an ideal of~$\elie$.
+	If~$\elie = \glie \oplus \hlie$ as vector spaces, then~$\elie$ is the \defemph{internal semidirect product} of~$\glie$ by~$\hlie$, or of~$\glie$ and~$\hlie$.
+	This is then denoted by~$\elie = \glie \ltimes \hlie$\glsadd{internal semidirect product}\index{internal semidirect product}\index{semidirect product!index}.
+\end{definition}
+
+
+\begin{fluff}
+	\label{calculating structure of internal semidirect product}
+	Let~$\elie$ be a Lie~algebra and suppose that~$\elie$ is the semidirect product of a Lie~subalgebra~$\glie$ by an ideal~$\hlie$.
+	The adjoint action of~$\elie$ on itself restricts to an action of~$\glie$ on~$\hlie$ because~$\hlie$ is an ideal of~$\elie$.
+	The action of~$\elie$ on itself happens by derivatations, whence the action of~$\glie$ on~$\hlie$ is also by derivations.
+	This action is given by a homomorphism of Lie~algebras
+	\[
+		\theta
+		\colon
+		\glie
+		\to
+		\Der(\hlie) \,.
+	\]
+	Any two elements of~$\elie$ may be written uniquely as sums~$x + c$ and~$y + d$ with~$x$,~$y$ in~$\glie$ and~$c$,~$d$ in~$\hlie$.
+	The Lie~bracket of~$\elie$ can be expressed in terms of the homomorphisms~$\theta$ as
+	\begin{align*}
+		[x + c, y + d]_{\elie}
+		&=
+		[x, y]_{\elie}
+		+ [x, d]_{\elie}
+		+ [c, y]_{\elie}
+		+ [c, d]_{\elie}
+		\\
+		&=
+		[x, y]_{\elie}
+		+ [x, d]_{\elie}
+		- [y, c]_{\elie}
+		+ [c, d]_{\elie}
+		\\
+		&=
+		[x, y]_{\glie}
+		+ \theta(x)(d)
+		- \theta(y)(c)
+		+ [c, d]_{\hlie} \,.
+	\end{align*}
+	The term~$[x,y]_{\glie}$ is again contained in the Lie~subalgebra~$\glie$, and the term~$\theta(x)(d) - \theta(y)(c) + [c,d]_{\hlie}$ is again contained in the ideal~$\hlie$.
+\end{fluff}
+
+
+\begin{example}
+	The Lie~algebra~$\trianglie(n, \kf)$\index{upper triangular matrices} is the direct sum of its Lie~subalgebra of diagonal matrices~$\diaglie(n, \kf)$\index{diagonal matrices} and its ideal of strictly upper triangular matrices~$\upperlie(n, \kf)$\index{strictly upper triangular matrices}.
+	The Lie~algebra~$\trianglie(n, \kf)$ is thus the internal semidirect product of~$\diaglie(n, \kf)$ by~$\upperlie(n, \kf)$.
+\end{example}
+
+
+\begin{example}
+	\label{affine lie algebra is an internal semidirect product}
+	The Lie~algebra of affine transformations~$\afflie(n, \kf)$\index{affine transformations} contains the Lie~subalgebra
+	\[
+		\glie
+		\defined
+		\begin{pmatrix}
+			\gllie(n, \kf)  & 0 \\
+			0               & 0
+		\end{pmatrix}
+	\]
+	and the ideal
+	\[
+		\hlie
+		\defined
+		\begin{pmatrix}
+			0 & \kf^n \\
+			0 & 0
+		\end{pmatrix} \,.
+	\]
+	We have~$\afflie(n, \kf) = \glie \oplus \hlie$ as vector spaces.
+	The Lie~algebra~$\afflie(n, \kf)$ is therefore the internal semidirect product of~$\glie$ by~$\hlie$.
+\end{example}
+
+
+% TODO: Express aff(n,k) as an external semidirect product.
+
+
+\begin{example}
+	Let~$\heisenberglie$ be the Heisenberg Lie~algebra\index{Heisenberg Lie algebra} from \cref{examples for lie algebras}.
+	The linear subspace~$\hlie$ of~$\heisenberglie$ spanned by the elements~$p_1, \dotsc, p_n, c$ is an ideal of~$\heisenberglie$, and the linear subspace~$\glie$ of~$\heisenberglie$ spanned by the elements~$q_1, \dotsc, q_n$ is a Lie~subalgebra of~$\elie$.
+	The Lie~algebra~$\heisenberglie$ is thus the internal semidirect product of~$\glie$ by~$\hlie$.
+\end{example}
+
+\subsubsection{External Semidirect Products}
+
+\begin{definition}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} and let~$\theta$ be a homomorphism of Lie~algebras from~$\glie$ to~$\Der(\hlie)$.
+	The standard extension~$(\theta, 0)$ of~$\glie$ by~$\hlie$ is the \defemph{external semidirect product}\index{external semidirect product}\index{semidirect product!external} of~$\glie$ by~$\hlie$ along~$\theta$.
+	It is denoted by~$\glie \ltimes_\theta \hlie$\glsadd{external semidirect product}.
+\end{definition}
+
+
+\begin{remark}
+	An external semidirect product~$\glie \ltimes_\theta \hlie$ is given by the external direct sum~$\glie \oplus \hlie$ on the level of vector spaces.
+	Its Lie~bracket is given by
+	\[
+		[ (x,c), (y,d) ]
+		=
+		( [x,y], \theta(x)(d) - \theta(y)(c) + [c,d] )
+	\]
+	for all~$(x,c), (y,d) \in \glie \ltimes_\theta \hlie$.
+	We have in particular
+	\[
+		[(x,0), (0,c)]
+		=
+		( 0, \theta(x)(c) )
+	\]
+	for all~$x \in \glie$ and~$c \in \hlie$.
+\end{remark}
+
+
+\begin{fluff}
+	\label{internal semidirect product is also external}
+	Let~$\elie$ be a Lie~algebra, let~$\glie$ be a Lie~subalgebra of~$\elie$ and let~$\hlie$ be an ideal of~$\elie$.
+	Suppose that~$\elie$ is the internal semidirect product of~$\glie$ by~$\hlie$.
+	We have seen in~\cref{calculating structure of internal semidirect product} that the Lie~bracket on~$\elie$ is uniquely determined by the Lie~brackets of~$\glie$ and~$\hlie$ and a certain homomorphism of Lie~algebras~$\theta$ from~$\glie$ to~$\Der(\hlie)$.
+	Let~$\elie_{\ext}$ be the external semidirect product of~$\glie$ by~$\hlie$ along~$\theta$.
+	Then the linear map
+	\[
+		\varphi
+		\colon
+		\elie_{\ext}
+		\to
+		\elie \,,
+		\quad
+		(x, c)
+		\mapsto
+		x + c
+	\]
+	is an isomorphism of vector spaces, and according to the calculations in \cref{calculating structure of internal semidirect product} it is an isomorphism of Lie~algebras.
+	In this way, we see that every internal semidirect product is isomorphic to an external semidirect product.
+\end{fluff}
+
+
+\begin{fluff}
+	Let on the other hand~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$} and let~$\theta$ be a homomorphism of Lie~algebras from~$\glie$ to~$\Der(\hlie)$.
+	Let~$\elie$ be the external semidirect product of~$\glie$ by~$\hlie$ along~$\theta$.
+	Then~$\elie = \glie \oplus \hlie$ as vector spaces, where the right hand side denotes an external direct sum.
+	The linear subspace~$\glie'$ of~$\elie$ given by~$\glie' \defined \glie \oplus 0$ is a Lie~subalgebra of~$\elie$, and the linear subspace~$\hlie'$ given by~$\hlie' \defined 0 \oplus \hlie$ is an ideal of~$\elie$.
+	We also see that~$\elie = \elie' \oplus \hlie'$ on the level of vector spaces, where the right hand side denotes an internal direct sum.
+	We see from this that~$\elie$ is the internal direct sum of~$\glie'$ by~$\hlie'$.
+
+	We know from \cref{calculating structure of internal semidirect product} that the Lie~bracket of~$\elie$ can be expressed by the Lie~brackets of~$\glie'$ and~$\hlie'$ together with a certain homomorphism of Lie~algebras~$\theta'$ from~$\glie'$ to~$\Der(\hlie')$.
+	We can identify~$\glie'$ and~$\hlie'$ with~$\glie$ and~$\hlie$ via the isomorphism of Lie~algebras
+	\begin{alignat*}{2}
+		\glie
+		&\to
+		\glie' \,,
+		&\quad
+		x
+		&\mapsto
+		(x, 0) \,,
+		\\
+		\hlie
+		&\to
+		\hlie' \,,
+		&\quad
+		c
+		&\mapsto
+		(0, c) \,.
+	\end{alignat*}
+	The homomorphism~$\theta'$ corresponds to the original homomorphism~$\theta$ under these isomorphism.
+
+	We have now explained how every external semidirect product can be regarded as an internal semidirect product.
+\end{fluff}
+
+
+\begin{example}
+	Let~$\glie$ be a Lie~algebra and let~$\hlie$ be a representation of~$\glie$.
+	We may regard~$\hlie$ as an abelian Lie~algebra.
+	Then~$\Der(\hlie) = \gllie(\hlie)$.
+	We can therefore regard the homomorphism of Lie~algebras~$\rho$ that corresponds to the action of~$\glie$ on~$\hlie$ as a homomorphism of Lie~algebras from~$\glie$ to~$\Der(\hlie)$.
+	This allows us to form the external semidirect product~$\glie \ltimes_\rho \hlie$.
+	It is given by the vector space~$\glie \oplus \hlie$ together with the Lie~bracket given by
+	\[
+		[ (x, c), (y, d) ]
+		=
+		( [x,y], x \act d - y \act c )
+	\]
+	for all~$x, y \in \glie$ and~$c, d \in \hlie$.
+\end{example}
+
+
+\begin{example}
+	Let~$\hlie$ be the abelian two-dimensional Lie~algebra with basis~$x$,~$y$ and let~$\glie$ be the one-dimensional Lie~algebra with basis~$t$.
+	Then~$\Der(\hlie) = \gllie(\hlie)$ as seen in \cref{derivations of abelian lie algebra}, and every element~$f$ of~$\gllie(\hlie)$ determines a unique homomorphism of Lie algebras from~$\glie$ to~$\Der(\hlie)$ that maps~$t$ to~$f$.
+	We denote for every scalar~$\tau$ in~$\kf$ by~$f_\tau$ the endomorphism of~$\hlie$ given by
+	\[
+		f_\tau(x) = x \,,
+		\quad
+		f_\tau(y) = \tau y \,,
+	\]
+	and by~$\theta_\tau$ the resulting homomorphism of Lie~algebras from~$\glie$ to~$\Der(\hlie)$ that maps~$t$ to~$f_\tau$.
+	The external semidirect product~${\kf} \ltimes_{\theta_t} \hlie$ has the elements~$x$,~$y$,~$t$ as a basis, and its Lie~bracket is given on this basis by
+	\[
+		[x,y] = 0 \,,
+		\quad
+		[t,x] = x \,,
+		\quad
+		[t,y] =  \tau y \,.
+	\]
+	We have thus constructed the Lie~algebras~$\glie_\tau$ from \cref{infinitely many three-dimensional lie algebras} as semidirect products.
+\end{example}
+
+\subsubsection{Split Extensions}
+
+\begin{definition}
+	Let
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\]
+	be an extension of Lie~algebras.
+	A \defemph{section}\index{section}\index{short exact sequence of Lie algebras!section} or \defemph{split}\index{split}\index{short exact sequence of Lie algebras!split} of this extension is a homomorphism of Lie~algebras~$\sigma$ from~$\glie$ to~$\elie$ such that
+	\[
+		\psi \circ \sigma
+		=
+		\id_{\glie} \,.
+	\]
+	The extension \defemph{splits} if it admits a split.
+\end{definition}
+
+
+\begin{lemma}
+	\label{having a section is invariant under equivalence of extensions}
+	Let~$\glie$ and~$\hlie$ be two~\liealgebras{$\kf$}.
+	If an extension~$\elie$ of~$\glie$ by~$\hlie$ admits a split, then every extension of~$\glie$ by~$\hlie$ that is equivalent to~$\elie$ also admits a split.
+\end{lemma}
+
+
+\begin{proof}
+	Let the extension~$\elie$ be given by
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0 \,2
+	\]
+	and let
+	\[
+		0
+		\to
+		\hlie
+		\xto{\varphi'}
+		\elie'
+		\xto{\psi'}
+		\glie
+		\to
+		0
+	\]
+	be an extensions of~$\glie$ by~$\hlie$ that is equivalent to~$\elie$.
+	Let~$\alpha$ be an isomorphism of Lie~algebras from~$\elie$ to~$\elie'$ which makes the diagram
+	\[
+		\begin{tikzcd}
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi}
+			\arrow[equal]{d}
+			&
+			\elie
+			\arrow{r}[above]{\psi}
+			\arrow[dashed]{d}[right]{\alpha}
+			&
+			\glie
+			\arrow{r}
+			\arrow[equal]{d}
+			&
+			0
+			\\
+			0
+			\arrow{r}
+			&
+			\hlie
+			\arrow{r}[above]{\varphi'}
+			&
+			\elie'
+			\arrow{r}[above]{\psi'}
+			&
+			\glie
+			\arrow{r}
+			&
+			0
+		\end{tikzcd}
+	\]
+	commute.
+	If~$\sigma$ is a split for the first extension, then the composite~$\alpha \circ \sigma$ is a split for the second extension.
+	This shows that the second extension admits a split if the first one does.
+	The converse implication follows from this first implication because equivalence of extensions is an equivalence relation.
+\end{proof}
+
+
+\begin{proposition}
+	Let~$\glie$ and~$\hlie$ be two Lie~algebras and let
+	\begin{equation}
+		\label{extension that may split}
+		0
+		\to
+		\hlie
+		\xto{\varphi}
+		\elie
+		\xto{\psi}
+		\glie
+		\to
+		0
+	\end{equation}
+	be an extension of~$\glie$ by~$\hlie$.
+	The following conditions on this extension are equivalent.
+	\begin{equivalenceslist}
+		\item
+			\label{the extension splits}
+			The extension~\eqref{extension that may split} splits.
+		\item
+			\label{is an internal semidirect product}
+			There exists a Lie~subalgebra~$\glie'$ of~$\elie$ such that~$\elie$ is the internal semidirect product of~$\glie'$ by~$\varphi(\hlie)$.
+		\item
+			\label{is an external semidirect product}
+			The extension~\eqref{extension that may split} is isomorphic (as extensions) to an external semidirect product of~$\glie$ by~$\hlie$.
+	\end{equivalenceslist}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{implicationlist}
+		\item[\ref{the extension splits}~$\implies$~\ref{is an internal semidirect product}]
+			There exists by assumption a split~$\sigma$ for the extension~\eqref{extension that may split}, i.e. a homomorphism of Lie~algebras from~$\glie$ to~$\elie$ with~$\sigma \circ \psi = \id_{\glie}$.
+			Let~$\glie'$ be the image of~$\sigma$.
+			The composite~$\varepsilon \defined \sigma \circ \psi$ is an idempotent endomorphism of Lie~algebras of~$\elie$.
+			It follows that
+			\[
+				\elie
+				=
+				\im(\varepsilon) \oplus \ker(\varepsilon)
+			\]
+			as vector spaces, with~$\im(\varepsilon)$ being a Lie~subalgebra of~$\elie$ and~$\ker(\varepsilon)$ beinan ideal of~$\elie$.
+			The homomorphism~$\psi$ is surjective, so
+			\[
+				\im(\varepsilon)
+				=
+				\im(\sigma \circ \psi)
+				=
+				\im(\sigma)
+				=
+				\glie' \,.
+			\]
+			The homomorphism~$\sigma$ is injective (because it admits a left inverse, namely~$\psi$), so
+			\[
+				\ker(\varepsilon)
+				=
+				\ker(\sigma \circ \psi)
+				=
+				\ker(\psi)
+				=
+				\im(\varphi)
+				=
+				\varphi(\hlie) \,.
+			\]
+			We have overall shown that~$\elie$ is the internal semidirect product of~$\glie'$ by~$\varphi(\hlie)$.
+		\item[\ref{is an internal semidirect product}~$\implies$~\ref{is an external semidirect product}]
+			This follows from the discussion in \cref{internal semidirect product is also external} by noting that the constructed isomorphism of Lie~algebras~$\varphi$ is already an isomorphism of extensions.
+		\item[\ref{is an external semidirect product}~$\implies$~\ref{the extension splits}]
+			According to \cref{having a section is invariant under equivalence of extensions} we may assume that~$\elie$ is an external semidirect product of~$\glie$ by~$\hlie$ along a homomorphism of Lie~algebras~$\theta$ from~$\glie$ to~$\Der(\hlie)$.
+			The linear map
+			\[
+				\glie
+				\to
+				\elie \,,
+				\quad
+				x
+				\mapsto
+				(x,0)
+			\]
+			is then a homomorphism of Lie~algebras, and the desired split.
+		\qedhere
+	\end{implicationlist}
+\end{proof}
+
+
+\begin{remark}
+	\label{each class of abelian extensions contains precisely one split extension}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	We regard the underlying vector space of~$M$ as an abelian Lie~algebra~$\hlie$ and denote by~$\theta$ the homomorphism of Lie~algebras from~$\hlie$ to~$\Der(\hlie) = \gllie(\hlie) = \gllie(M)$ that corresponds to the action of~$\elie$ on~$M$.
+	We consider the resulting class of abelian extensions~$\AbEx(\glie, M)$ from~\cref{structure of abelian extensions}.
+
+	The external semidirect product~$(0,\theta)$ is an abelian extension of~$\glie$ by~$\hlie$.
+	We have seen in~\cref{structure of abelian extensions} that this extension is contained in~$\AbEx(\glie, M)$.
+
+	Suppose on the other hand that~$\elie$ is some split extension of~$\glie$ by~$\hlie$ contained in~$\AbEx(\glie, M)$.
+	The extension~$\elie$ is then isomorphic to a standard extension of the form~$(0, \theta')$.
+	It follows from \cref{structure of abelian extensions} that~$\theta' = \theta$.
+
+	We have thus shown that the class of extensions~$\AbEx(\glie, M)$ contains precisely one split extension up to equivalence.
+\end{remark}
+
+
+
+
+
