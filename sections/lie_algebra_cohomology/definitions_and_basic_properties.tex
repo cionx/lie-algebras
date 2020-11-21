@@ -1,0 +1,921 @@
+\section{Definitions and Basic Properties}
+
+\begin{recall}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$X_\bullet$ be a chain complex and let~$n$ be some integer.
+			The linear subspace~$\ker(d_n)$ of~$X_n$ is denoted by~$\Cycle_n(X_\bullet)$\glsadd{cycles} and its elements are the~\defemph{\cycles{$n$}}\index{cycles} of~$X_\bullet$.
+			The linear subspace~$\im(d_{n+1})$ of~$X_n$ is denoted by~$\Boundary_n(X_\bullet)$\glsadd{boundaries} and its elements are the~\defemph{\boundaries{$n$}}\index{boundaries} of~$X_\bullet$.
+			It follows from the condition~$d_n \circ d_{n+1} = 0$ that~$\Boundary_n(X_\bullet)$ is a linear subspace of~$\Cycle_n(X_\bullet)$.
+			The quotient vector space~$\Cycle_n(X_\bullet) / {\Boundary_n(X_\bullet)}$ is the~\defemph{\howmanyth{$n$} homology}\index{homology} of~$X_\bullet$.
+			It is denoted by~$\Homology_n(X_\bullet)$\glsadd{homology}.
+		\item
+			Let~$X^\bullet$ be a cochain complex and let~$n$ be some integer.
+			The linear subspace~$\ker(d^n)$ of~$X^n$ is denoted by~$\Cycle^n(X^\bullet)$\glsadd{cocycles} and its elements are the~\defemph{\cocycles{$n$}}\index{cocycles} of~$X$.
+			The linear subspace~$\im(d^{n-1})$ of~$X^n$ is denoted by~$\Boundary^n(X^\bullet)$\gls{coboundaries} and its elements are the~\defemph{\coboundaries{$n$}}\index{coboundaries} of~$X$.
+			It follows from the condition~$d^n \circ d^{n-1} = 0$ that~$\Boundary^n(X^\bullet)$ is a linear subspace of~$\Cycle^n(X^\bullet)$.
+			The quotient vector space~$\Cycle^n(X^\bullet) / {\Boundary^n(X^\bullet)}$ is the~\defemph{\howmanyth{$n$} cohomology}\index{cohomology} of~$X$.
+			It is denoted by~$\Homology^n(X^\bullet)$\glsadd{cohomology}.
+	\end{enumerate}
+\end{recall}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	\begin{enumerate}
+		\item
+			The chain complex~$\Chain_\bullet(\glie, M)$\glsadd{lie algebra chain complex} from \cref{construction of lie algebra homology and cohomology} is the \defemph{Lie algebra chain complex}\index{Lie algebra cochain complex} of~$\glie$ with coefficients in~$M$.
+			The homology of this chain complex is the \defemph{Lie algebra homology}\index{Lie algebra homology} of~$\glie$ with coefficients in~$M$, and it is denoted by~$\Homology_\bullet(\glie, M)$\glsadd{lie algebra homology}.
+		\item
+			The cochain complex~$\Chain^\bullet(\glie, M)$\glsadd{lie algebra cochain complex} from \cref{construction of lie algebra homology and cohomology} is the \defemph{Lie algebra cochain complex}\index{Lie algebra cochain complex} of~$\glie$ with coefficients in~$M$.
+			The cohomology of this chain complex is the \defemph{Lie algebra cohomology}\index{Lie algebra cohomology} of~$\glie$ with coefficients in~$M$, and it is denoted by~$\Homology^\bullet(\glie, M)$\glsadd{lie algebra cohomology}\glsadd{lie algebra cohomology}.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{recall}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			A \defemph{homomorphism}\index{homomorphism!of chain complexes} of chain complexes from~$X_\bullet$ to~$Y_\bullet$ is a family~$(f_n)_{n \in \Integer}$\glsadd{homomorphism of chain complexes} of linear maps~$f_n$ from~$X_n$ to~$Y_n$ such that the following diagram commutes.
+			\[
+				\begin{tikzcd}[sep = large]
+					\dotsb
+					&
+					X_{n-1}
+					\arrow{l}
+					\arrow{d}[right]{f_{n-1}}
+					&
+					X_n
+					\arrow{l}[above]{d_n}
+					\arrow{d}[right]{f_n}
+					&
+					X_{n+1}
+					\arrow{l}[above]{d_{n+1}}
+					\arrow{d}[right]{f_{n+1}}
+					&
+					\dotsb
+					\arrow{l}
+					\\
+					\dotsb
+					&
+					Y_{n-1}
+					\arrow{l}
+					&
+					Y_n
+					\arrow{l}[above]{d_n}
+					&
+					Y_{n+1}
+					\arrow{l}[above]{d_{n+1}}
+					&
+					\dotsb
+					\arrow{l}
+				\end{tikzcd}
+			\]
+			If~$f_\bullet = (f_n)_{n \in \Integer}$ is a homomorphism of chain complexes from~$X_\bullet$ to~$Y_\bullet$, then
+			\[
+				f_n( \Cycle_n(X_\bullet) )
+				\subseteq
+				\Cycle_n(Y_\bullet)
+				\quad\text{and}\quad
+				f_n( \Boundary_n(X_\bullet) )
+				\subseteq
+				\Boundary_n(Y_\bullet)
+			\]
+			for every integer~$n$.
+			It follows that the homomorphism~$f_\bullet$ induces a linear map\index{induced map!on homology}
+			\[
+				\Homology_n( f_\bullet )
+				\colon
+				\Homology_n( X_\bullet )
+				\to
+				\Homology_n( Y_\bullet ) \,,
+				\quad
+				\class{ x }
+				\mapsto
+				\class{ f_n(x) }
+				\glsadd{induced map on homology}
+			\]
+			for every integer~$n$.
+		\item
+			A \defemph{homomorphism}\index{homomorphism!of cochain complexes} of cochain complexes from~$X^\bullet$ to~$Y^\bullet$ is a family~$(f^n)_{n \in \Integer}$\glsadd{homomorphism of cochain complexes} of linear maps~$f^n$ from~$X^n$ to~$Y^n$ such that the following diagram commutes.
+			\[
+				\begin{tikzcd}[sep = large]
+					\dotsb
+					\arrow{r}
+					&
+					X^{n-1}
+					\arrow{d}[right]{f^{n-1}}
+					\arrow{r}[above]{d^{n-1}}
+					&
+					X^n
+					\arrow{d}[right]{f^n}
+					\arrow{r}[above]{d^n}
+					&
+					X^{n+1}
+					\arrow{d}[right]{f^{n+1}}
+					\arrow{r}
+					&
+					\dotsb
+					\\
+					\dotsb
+					\arrow{r}
+					&
+					Y^{n-1}
+					\arrow{r}[above]{d^{n-1}}
+					&
+					Y^n
+					\arrow{r}[above]{d^n}
+					&
+					Y^{n+1}
+					\arrow{r}
+					&
+					\dotsb
+				\end{tikzcd}
+			\]
+			If~$f^\bullet = (f^n)_{n \in \Integer}$ is a homomorphism of chain complexes from~$X^\bullet$ to~$Y^\bullet$, then
+			\[
+				f^n( \Cycle^n(X^\bullet) )
+				\subseteq
+				\Cycle^n(Y^\bullet)
+				\quad\text{and}\quad
+				f^n( \Boundary^n(X^\bullet) )
+				\subseteq
+				\Boundary^n(Y^\bullet)
+			\]
+			for every integer~$n$.
+			It follows that the homomorphism~$f^\bullet$ induces a linear map\index{induced map!on cohomology}
+			\[
+				\Homology^n( f^\bullet )
+				\colon
+				\Homology^n( X^\bullet )
+				\to
+				\Homology^n( Y^\bullet ) \,,
+				\quad
+				\class{ x }
+				\mapsto
+				\class{ f^n(x) }
+				\glsadd{induced map on cohomology}
+			\]
+			for every integer~$n$.
+	\end{enumerate}
+\end{recall}
+
+
+\begin{proposition}
+	\label{construction of induced homomorphism of (co)chain complexes}
+	Let~$\glie$ be a Lie~algebra and let~$M$ and~$N$ be two representations of~$\glie$.
+	Let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	\begin{enumerate}
+		\item
+			For every integer~$n$ let
+			\[
+				f_n
+				\defined
+				\begin{cases*}
+					\id \tensor f & if~$n \geq 0$, \\
+					0             & if~$n < 0$.
+				\end{cases*}
+			\]
+			This family~$(f_n)_{n \in \Integer}$ is a homomorphism of chain complexes from~$\Chain_\bullet(\glie, M)$ to~$\Chain_\bullet(\glie, N)$.
+		\item
+			For every integer~$n$ let
+			\[
+				f^n
+				\colon
+				\Chain^n(\glie, M)
+				\to
+				\Chain^n(\glie, N) \,,
+				\quad
+				\omega
+				\mapsto
+				f \circ \omega
+			\]
+			if~$n \geq 0$, and~$f^n = 0$ if~$n < 0$.
+			This family~$(f^n)_{n \in \Integer}$ is a homomorphism of chain complexes from~$\Chain^\bullet(\glie, M)$ to~$\Chain^\bullet(\glie, N)$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We need to show that
+			\[
+				f_{n-1} \circ d_n
+				=
+				d_n \circ f_n
+			\]
+			for every integer~$n$.
+			This identity holds for~$n \leq 0$ because then both sides map into the zero vector space.
+			For~$n \geq 1$ we have
+			\begin{align*}
+				{}&
+				f_{n-1}( d_n( x_1 \wedge \dotsb \wedge x_n \tensor m ) )
+				\\
+				={}&
+				f_{n-1}
+				\Biggl(
+					\sum_{1 \leq i < j \leq n}
+					(-1)^{i + j}
+					[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \tensor m
+				\\
+				{}&
+					\phantom{
+						f_{n-1}
+						\Biggl(
+					}
+					+
+					\sum_{i=1}^n
+					(-1)^i
+					x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \tensor (x_i \act m)
+				\Biggr)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i + j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \tensor f(m)
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \tensor f(x_i \act m)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i + j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \tensor f(m)
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \tensor ( x_i \act f(m) )
+				\\
+				={}&
+				d_n( x_1 \wedge \dotsb \wedge x_n \tensor f(m) )
+				\\
+				={}&
+				d_n( f_n( x_1 \wedge \dotsb \wedge x_n \tensor m ) )
+			\end{align*}
+			for all~$x_1, \dotsc, x_n \in \glie$ and~$m \in M$.
+		\item
+			We need to show that
+			\[
+				f^{n+1} \circ d^n
+				=
+				d^n \circ f^n
+			\]
+			for every integer~$n$.
+			This holds for~$n < 0$ because then both sides are the zero map.
+			For~$n \geq 0$ we have
+			\begingroup
+			\allowdisplaybreaks
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				{}&
+				f^{n+1}( d^n(\omega) )(x_1, \dotsc, x_{n+1})
+				\\
+				={}&
+				f( d^n(\omega)(x_1, \dotsc, x_{n+1}) )
+				\\
+				={}&
+				f
+				\Biggl(
+					\sum_{1 \leq i < j \leq n+1}
+					(-1)^{i+j}
+					\omega( [x_i, x_j], x_1, \dotsc, \widehat{x_i}, \dotsc, \widehat{x_j}, \dotsc, x_{n+1} )
+				\\
+				{}&
+				\phantom{
+					f
+					\Biggl(
+				}
+					+
+					\sum_{i=1}^{n+1}
+					(-1)^{i+1}
+					x_i \act \omega(x_1, \dotsc, \widehat{x_i}, \dotsc, x_{n+1})
+				\Biggr)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j}
+				f( \omega( [x_i, x_j], x_1, \dotsc, \widehat{x_i}, \dotsc, \widehat{x_j}, \dotsc, x_{n+1} ) )
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				x_i \act f( \omega(x_1, \dotsc, \widehat{x_i}, \dotsc, x_{n+1}) )
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j}
+				f^n(\omega)( [x_i, x_j], x_1, \dotsc, \widehat{x_i}, \dotsc, \widehat{x_j}, \dotsc, x_{n+1} )
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				x_i \act f^n(\omega)(x_1, \dotsc, \widehat{x_i}, \dotsc, x_{n+1})
+				\\
+				={}&
+				d^n( f^n(\omega) )(x_1, \dotsc, x_{n+1})
+			\end{align*}
+			\endgroup
+			for all~$\omega \in \Chain^n(\glie, M)$ and~$x_1, \dotsc, x_n \in \glie$.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ and~$N$ be two representations of~$\glie$.
+	Let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	\begin{enumerate}
+		\item
+			The induced homomorphism of chain complexes from~$\Chain_\bullet(\glie, M)$ to~$\Chain_\bullet(\glie, N)$ from \cref{construction of induced homomorphism of (co)chain complexes} is denoted by~$\Chain_\bullet(f)$\glsadd{homomorphism of lie algebra chain complex}\index{induced homomorphism!of Lie algebra chain complexes}.
+			The homomorphism from~$\Homology_\bullet(\glie, M)$ to~$\Homology_\bullet(\glie, N)$ induced by~$\Chain_\bullet(f)$\index{induced map!on Lie algebra homology} is denoted by~$\Homology_\bullet(f)$\glsadd{homomorphism of lie algebra homology}.
+		\item
+			The induced homomorphism of cochain complexes from~$\Chain^\bullet(\glie, M)$ to~$\Chain^\bullet(\glie, N)$ from \cref{construction of induced homomorphism of (co)chain complexes} is denoted by~$\Chain^\bullet(f)$\glsadd{homomorphism of lie algebra cochain complex}\index{induced homomorphism!of Lie algebra cochain complexes}.
+			The homomorphism from~$\Homology^\bullet(\glie, M)$ to~$\Homology^\bullet(\glie, N)$ induced by~$\Chain^\bullet(f)$\index{induced map!on Lie algebra cohomology} is denoted by~$\Homology^\bullet(f)$\glsadd{homomorphism of lie algebra cohomology}.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{remark}
+	For every integer~$n$ we have functors
+	\begin{alignat*}{2}
+		\Chain_n(\glie, \ph)
+		&\colon
+		\cRep{\glie}
+		\to
+		\cVect{\kf} \,,
+		&
+		\qquad
+		\Homology_n(\glie, \ph)
+		&\colon
+		\cRep{\glie}
+		\to
+		\cVect{\kf} \,,
+	\intertext{as well as functors}
+		\Chain^n(\glie, \ph)
+		&\colon
+		\cRep{\glie}
+		\to
+		\cVect{\kf} \,,
+		&
+		\qquad
+		\Homology^n(\glie, \ph)
+		&\colon
+		\cRep{\glie}
+		\to
+		\cVect{\kf} \,.
+	\end{alignat*}
+\end{remark}
+
+
+\begin{recall}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$X_\bullet$ be a chain complex.
+			A \defemph{subcomplex} of~$X_\bullet$ is a family~$(S_n)_{n \in \Integer}$ of linear subspaces~$S_n$ of~$X_n$ such that
+			\[
+				d_n( S_n )
+				\subseteq
+				S_{n-1}
+			\]
+			for every integer~$n$.
+			If~$(S_n)_{n \in \Integer}$ is a subcomplex, then it becomes a chain complex in its own right by restricting the differentials of~$X_\bullet$.
+		\item
+			Let~$X^\bullet$ be a chain complex.
+			A \defemph{subcomplex} of~$X^\bullet$ is a family~$(S^n)_{n \in \Integer}$ of linear subspaces~$S^n$ of~$X^n$ such that
+			\[
+				d^n( S^n )
+				\subseteq
+				S^{n+1}
+			\]
+			for every integer~$n$.
+			If~$(S^n)_{n \in \Integer}$ is a subcomplex, then it becomos a cochain complex in its own right by restricting the differentials of~$X^\bullet$.
+	\end{enumerate}
+\end{recall}
+
+
+\begin{example}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$X_\bullet$ and~$Y_\bullet$ be two chain complexes and let~$f_\bullet$ be a homomorphism of chain complexes from~$X_\bullet$ to~$Y_\bullet$.
+			Then
+			\[
+				d_n( \im(f_n) )
+				\subseteq
+				\im( f_{n-1} )
+			\]
+			for every integer~$n$.
+			The sequence~$( \im(f_n) )_{n \in \Integer}$ is therefore a subcomplex of~$Y_\bullet$.
+			This subcomplex is the \defemph{image} of~$f_\bullet$, and it is denoted by~$\im( f_\bullet )$\glsadd{chain complex image}.
+			Similarly
+			\[
+				d_n( \ker(f_n) )
+				\subseteq
+				\ker( f_{n-1} )
+			\]
+			for every integer~$n$.
+			The sequence~$( \ker(f_n) )_{n \in \Integer}$ is therefore a subcomplex of~$X_\bullet$.
+			This subcomplex is the \defemph{kernel}\index{kernel} of~$f_\bullet$, and it is denoted by~$\ker( f_\bullet )$\glsadd{chain complex kernel}.
+		\item
+			Let~$X^\bullet$ and~$Y^\bullet$ be two chain complexes and let~$f^\bullet$ be a homomorphism of chain complexes from~$X^\bullet$ to~$Y^\bullet$.
+			Then
+			\[
+				d^n( \im(f^n) )
+				\subseteq
+				\im( f^{n+1} )
+			\]
+			for every integer~$n$.
+			The sequence~$( \im(f^n) )_{n \in \Integer}$ is therefore a subcomplex of~$Y^\bullet$.
+			This subcomplex is the \defemph{image}\index{image} of~$f^\bullet$, and it is denoted by~$\im( f^\bullet )$\glsadd{cochain complex image}.
+			Similarly
+			\[
+				d^n( \ker(f^n) )
+				\subseteq
+				\ker( f^{n+1} )
+			\]
+			for every integer~$n$.
+			The sequence~$( \ker(f^n) )_{n \in \Integer}$ is therefore a subcomplex of~$X^\bullet$.
+			This subcomplex is the \defemph{kernel} of~$f^\bullet$, and it is denoted by~$\ker( f^\bullet )$\glsadd{cochain complex kernel}.
+	\end{enumerate}
+\end{example}
+
+
+\begin{recall}
+	\label{long exact sequence is homology and cohomology}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			A sequence
+			\[
+				\dotsb
+				\to
+				X_\bullet
+				\xto{f_\bullet}
+				Y_\bullet
+				\xto{g_\bullet}
+				Z_\bullet
+				\to
+				\dotsb
+			\]
+			of of chain complexes is \defemph{exact}\index{exactness for chain complexes} at~$Y_\bullet$ if the image of~$f_\bullet$ equals the kernel of~$g_\bullet$.
+			This happens if and only if the sequence of vector spaces
+			\[
+				\dotsb
+				\to
+				X_n
+				\xto{f_n}
+				Y_n
+				\xto{g_n}
+				Z_n
+				\to
+				\dotsb
+			\]
+			is exact at~$Y_n$ for every integer~$n$.
+			An exact sequence of the form
+			\[
+				0
+				\to
+				X_\bullet
+				\to
+				Y_\bullet
+				\to
+				Z_\bullet
+				\to
+				0
+			\]
+			is a \defemph{short exact sequence}\index{short exact sequence!of chain complexes} of chain complexes.%
+			\footnote{
+				Here~$0$ denotes the zero chain complex, whose components and entries all are zero.
+			}
+			This means precisely that for every integer~$n$ the sequence of vector spaces
+			\[
+				0
+				\to
+				X_n
+				\to
+				Y_n
+				\to
+				Z_n
+				\to
+				0
+			\]
+			is short exact.
+			The homologies of the chain complexes~$X_\bullet$,~$Y_\bullet$,~$Z_\bullet$ fit then into a long exact sequence\index{long exact sequence!of homology}
+			\[
+				\begin{tikzcd}[column sep = large]
+					{}
+					&
+					\dotsb
+					\arrow{r}
+					\arrow[d, phantom, ""{coordinate, name=Y}]
+					&
+					\Homology_{n+1}( Z_\bullet )
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Y)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology_n( X_\bullet )
+					\arrow{r}[above]{ \Homology_n( f_\bullet ) }
+					&
+					\Homology_n( Y_\bullet )
+					\arrow{r}[above]{ \Homology_n( g_\bullet ) }
+					\arrow[d, phantom, ""{coordinate, name=Z}]
+					&
+					\Homology_n( Z_\bullet )
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Z)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology_{n-1}( X_\bullet )
+					\arrow{r}
+					&
+					\dotsb
+					&
+					{}
+				\end{tikzcd}
+			\]
+		\item
+			A sequence
+			\[
+				\dotsb
+				\to
+				X^\bullet
+				\xto{f^\bullet}
+				Y^\bullet
+				\xto{g^\bullet}
+				Z^\bullet
+				\to
+				\dotsb
+			\]
+			of of chain complexes is \defemph{exact}\index{exactness for cochain complexes} at~$Y^\bullet$ if the image of~$f^\bullet$ equals the kernel of~$g^\bullet$.
+			This happens if and only if the sequence of vector spaces
+			\[
+				\dotsb
+				\to
+				X^n
+				\xto{f^n}
+				Y^n
+				\xto{g^n}
+				Z^n
+				\to
+				\dotsb
+			\]
+			is exact at~$Y^n$ for every integer~$n$.
+			An exact sequence of the form
+			\[
+				0
+				\to
+				X^\bullet
+				\to
+				Y^\bullet
+				\to
+				Z^\bullet
+				\to
+				0
+			\]
+			is a \defemph{short exact sequence}\index{short exact sequence!of cochain complexes} of cochain complexes.
+			This means precisely that for every integer~$n$ the sequence of vector spaces
+			\[
+				0
+				\to
+				X^n
+				\to
+				Y^n
+				\to
+				Z^n
+				\to
+				0
+			\]
+			is short exact.
+			The cohomologies of the cochain complexes~$X^\bullet$,~$Y^\bullet$,~$Z^\bullet$ fit then into a long exact sequence\index{long exact sequence!of cohomology}
+			\[
+				\begin{tikzcd}[column sep = large]
+					{}
+					&
+					\dotsb
+					\arrow{r}
+					\arrow[d, phantom, ""{coordinate, name=Y}]
+					&
+					\Homology^{n-1}( Z^\bullet )
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Y)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology^n( X^\bullet )
+					\arrow{r}[above]{ \Homology^n( f^\bullet ) }
+					&
+					\Homology^n( Y^\bullet )
+					\arrow{r}[above]{ \Homology^n( g^\bullet ) }
+					\arrow[d, phantom, ""{coordinate, name=Z}]
+					&
+					\Homology^n( Z^\bullet )
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Z)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology^{n+1}( X^\bullet )
+					\arrow{r}
+					&
+					\dotsb
+					&
+					{}
+				\end{tikzcd}
+			\]
+	\end{enumerate}
+\end{recall}
+
+
+\begin{recall}
+	\label{exactness for vector spaces}
+	Let
+	\[
+		0
+		\to
+		U
+		\xto{f}
+		V
+		\xto{g}
+		W
+		\to
+		0
+	\]
+	be a short exact sequence of vector spaces and let~$E$ be another vector space.
+	\begin{enumerate}
+		\item
+			The sequence
+			\[
+				0
+				\to
+				E \tensor U
+				\xto{\id_E \tensor f}
+				E \tensor V
+				\xto{\id_E \tensor g}
+				E \tensor W
+				\to
+				0
+			\]
+			is again short exact.
+		\item
+			The sequence
+			\[
+				0
+				\to
+				\Hom_{\kf}(E, U)
+				\xto{f_*}
+				\Hom_{\kf}(E, V)
+				\xto{g_*}
+				\Hom_{\kf}(E, W)
+				\to
+				0
+			\]
+			is again short exact.
+	\end{enumerate}
+\end{recall}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra and let
+	\[
+		0
+		\to
+		N
+		\xto{f}
+		M
+		\xto{g}
+		P
+		\to
+		0
+	\]
+	be a short exact sequence of representations of~$\glie$.
+	\begin{enumerate}
+		\item
+			The resulting sequence
+			\begin{equation}
+				\label{short exact sequence for lie algebra chain complex}
+				0
+				\to
+				\Chain_\bullet(\glie, N)
+				\xto{ \Chain_\bullet(f) }
+				\Chain_\bullet(\glie, M)
+				\xto{ \Chain_\bullet(f) }
+				\Chain_\bullet(\glie, P)
+				\to
+				0
+			\end{equation}
+			of chain complexes is again short exact.
+		\item
+			The Lie algebra homologies of~$\glie$ with coefficients in~$N$,~$M$,~$P$ fit into a long exact sequence\index{long exact sequence!of Lie algebra homology}
+			\[
+				\begin{tikzcd}[column sep = large]
+					{}
+					&
+					\dotsb
+					\arrow{r}
+					\arrow[d, phantom, ""{coordinate, name=Y}]
+					&
+					\Homology_{n+1}(\glie, P)
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Y)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology_n(\glie, N)
+					\arrow{r}[above]{ \Homology_n(f) }
+					&
+					\Homology_n(\glie, M)
+					\arrow{r}[above]{ \Homology_n(g) }
+					\arrow[d, phantom, ""{coordinate, name=Z}]
+					&
+					\Homology_n(\glie, P)
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Z)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology_{n-1}(\glie, N)
+					\arrow{r}
+					&
+					\dotsb
+					&
+					{}
+				\end{tikzcd}
+			\]
+		\item
+			The resulting sequence
+			\begin{equation}
+				\label{short exact sequence for lie algebra cochain complex}
+				0
+				\to
+				\Chain^\bullet(\glie, N)
+				\xto{ \Chain^\bullet(f) }
+				\Chain^\bullet(\glie, M)
+				\xto{ \Chain^\bullet(f) }
+				\Chain^\bullet(\glie, P)
+				\to
+				0
+			\end{equation}
+			of cochain complexes is again short exact.
+		\item
+			The Lie algebra cohomologies of~$\glie$ with coefficients in~$N$,~$M$,~$P$ fit into a long exact sequence\index{long exact sequence!of Lie algebra cohomology}
+			\[
+				\begin{tikzcd}[column sep = large]
+					{}
+					&
+					\dotsb
+					\arrow{r}
+					\arrow[d, phantom, ""{coordinate, name=Y}]
+					&
+					\Homology^{n-1}(\glie, P)
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Y)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology^n(\glie, N)
+					\arrow{r}[above]{ \Homology^n(f) }
+					&
+					\Homology^n(\glie, M)
+					\arrow{r}[above]{ \Homology^n(g) }
+					\arrow[d, phantom, ""{coordinate, name=Z}]
+					&
+					\Homology^n(\glie, P)
+					\arrow[ dll,
+						rounded corners,
+						to path={ -- ([xshift=2ex]\tikztostart.east)
+											|- (Z)
+											-| ([xshift=-2ex]\tikztotarget.west)
+											-- (\tikztotarget) }
+					]
+					\\[1em]
+					\Homology^{n+1}(\glie, N)
+					\arrow{r}
+					&
+					\dotsb
+					&
+					{}
+				\end{tikzcd}
+			\]
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			The exactness of the given sequence can be checked degreewise, i.e. it sufficies to show that for every integer~$n$ the sequence
+			\[
+				0
+				\to
+				\Chain_n(\glie, N)
+				\xto{\Chain_n(f)}
+				\Chain_n(\glie, M)
+				\xto{\Chain_n(g)}
+				\Chain_n(\glie, P)
+				\to
+				0
+			\]
+			is exact.
+			If~$n$ is negative, then this is the zero short exact sequence.
+			For~$n \geq 0$ this is the sequence
+			\[
+				0
+				\to
+				\Exterior^n(\glie) \tensor N
+				\xto{\id \tensor f}
+				\Exterior^n(\glie) \tensor M
+				\xto{\id \tensor g}
+				\Exterior^n(\glie) \tensor P
+				\to
+				0 \,.
+			\]
+			The exactness of this sequence follows from \cref{exactness for vector spaces}.
+		\item
+			The short exact sequence of chain complexes~\eqref{short exact sequence for lie algebra chain complex} gives a long exact sequence in homology as explained in \cref{long exact sequence is homology and cohomology}.
+		\item
+			The exactness of the given sequence can be checked degreewise, i.e. it sufficies to show that for every integer~$n$ the sequence
+			\[
+				0
+				\to
+				\Chain^n(\glie, N)
+				\xto{\Chain^n(f)}
+				\Chain^n(\glie, M)
+				\xto{\Chain^n(g)}
+				\Chain^n(\glie, P)
+				\to
+				0
+			\]
+			is exact.
+			If~$n$ is negative, then this is the zero short exact sequence.
+			For~$n \geq 0$ this is the sequence
+			\[
+				0
+				\to
+				\Alt^n(\glie, N)
+				\xto{f_*}
+				\Alt^n(\glie, M)
+				\xto{g_*}
+				\Alt^n(\glie, P)
+				\to
+				0 \,.
+			\]
+			Under the natural isomorphism~$\Alt^n(\glie, \ph) \cong \Hom_{\kf}( \Exterior^n(\glie), \ph)$ this sequence becomes
+			\[
+				0
+				\to
+				\Hom\Bigl( \Exterior^n(\glie), N \Bigr)
+				\xto{f_*}
+				\Hom\Bigl( \Exterior^n(\glie), N \Bigr)
+				\xto{g_*}
+				\Hom\Bigl( \Exterior^n(\glie), N \Bigr)
+				\to
+				0 \,.
+			\]
+			The exactness of this sequence follows from \cref{exactness for vector spaces}.
+		\item
+			The short exact sequence of cochain complexes~\eqref{short exact sequence for lie algebra cochain complex} gives a long exact sequence in cohomology as explained in \cref{long exact sequence is homology and cohomology}.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+
+
+

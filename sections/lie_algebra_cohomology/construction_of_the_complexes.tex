@@ -1,0 +1,1218 @@
+\section{Construction of the Complexes}
+
+\begin{recall}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			A \defemph{chain complex}\index{chain complex} of vector spaces consists of a sequence of vector spaces~$(X_n)_{n \in \Integer}$ together with linear maps~$d_n$ from~$X_n$ to~$X_{n-1}$ for every integer~$n$ such that
+			\[
+				d_{n-1} \circ d_n = 0
+			\]
+			for every integer~$n$.
+			Such a chain complex can be graphically depicted as a diagram
+			\[
+				\dotsb
+				\from
+				X_{n-2}
+				\xfrom{d_{n-1}}
+				X_{n-1}
+				\xfrom{d_n}
+				X_n
+				\xfrom{d_{n+1}}
+				X_{n+1}
+				\from
+				\dotsb
+			\]
+			We often denote such a chain complex~$( (X_n)_{n \in \Integer}, (d_n)_{n \in \Integer} )$ as~$(X_\bullet, d_\bullet)$\glsadd{chain complex}, or simply as~$X_\bullet$\glsadd{chain complex}.
+			The maps~$d_n$ are the \defemph{differentials}\glsadd{differential}\index{differential} of the chain complex.
+		\item
+			A \defemph{cochain complex}\index{cochain complex} of vector spaces consists of a sequence of vector spaces~$(X^n)_{n \in \Integer}$ together with linear maps~$d^n$ from~$X^n$ to~$X^{n+1}$ for every integer~$n$ such that
+			\[
+				d^{n+1} \circ d^n = 0
+			\]
+			for every integer~$n$.
+			Such a cochain complex can be graphically depicted as a diagram
+			\[
+				\dotsb
+				\to
+				X^{n-1}
+				\xto{d^{n-1}}
+				X^n
+				\xto{d^n}
+				X^{n+1}
+				\xto{d^{n+1}}
+				X^{n+2}
+				\to
+				\dotsb
+			\]
+			We often denote such a cochain complex~$( (X^n)_{n \in \Integer}, (d^n)_{n \in \Integer} )$ as~$(X^\bullet, d^\bullet)$, or simply as~$X^\bullet$\glsadd{cochain complex}.
+			The maps~$d^n$ are the \defemph{differentials}\glsadd{differential}\index{differential} of the cochain complex.
+	\end{enumerate}
+\end{recall}
+
+
+\begin{remark}
+	We have choosen our indexing convention so that the index of a differental coincides with the index of its domain.
+\end{remark}
+
+
+\begin{lemma}
+	\label{alternating in multiple arguments}
+	Let~$\glie$ be a Lie~algebra and let~$x_1, \dotsc, x_n$ be elements of~$\glie$.
+	Then
+	\begin{equation}
+		\label{generalization of alternating}
+		\sum_{1 \leq i < j \leq n}
+		(-1)^{i+j}
+		[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+		=
+		0
+	\end{equation}
+	whenever~$x_r$ equals~$x_s$ for two distinct indices~$r$ and~$s$.
+\end{lemma}
+
+
+\begin{proof}
+	We may assume that~$r < s$.
+	We denote the expression on the left hand side of~\eqref{generalization of alternating} by~$h_n(x_1, \dotsc, x_n)$.
+	We show the identity by induction over~$n$.
+	It holds for~$n = 0$ and~$n = 1$ because the sum is empty.
+	For~$n \geq 2$ we split off the summands with~$j = n$, which gives us the formula
+	\begin{align*}
+		h_n(x_1, \dotsc, x_n)
+		=
+		h_{n-1}(x_1, \dotsc, x_{n-1}) \wedge x_n
+		+
+		\sum_{p=1}^{n-1}
+		(-1)^{p+n}
+		[x_p, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_p} \wedge \dotsb \wedge x_{n-1} \,.
+	\end{align*}
+	We now distinguish between two cases.
+
+	Suppose first that~$s < n$.
+	Then~$h_{n-1}(x_1, \dotsc, x_{n-1}) = 0$ by induction.
+	In the sum
+	\[
+		\sum_{p=1}^{n-1}
+		(-1)^{p+n}
+		[x_p, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_p} \wedge \dotsb \wedge x_{n-1}
+	\]
+	only those summands with~$p = r, s$ are possibly nonzero.
+	We thus need to show that these two summands
+	\[
+		(-1)^{r+n}
+		[x_r, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_{n-1}
+	\]
+	and
+	\[
+		(-1)^{s+n}
+		[x_s, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_{n-1}
+	\]
+	cancel out.
+	This holds because the simple wedges
+	\[
+		[x_r, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_{n-1}
+		=
+		[x_r, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_s \wedge \dotsb \wedge x_{n-1}
+	\]
+	and
+	\[
+		[x_s, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_{n-1}
+		=
+		[x_s, x_n] \wedge x_1 \wedge \dotsb \wedge x_r \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_{n-1}
+	\]
+	differ only by the sign~$(-1)^{s-r-1}$.
+
+	Suppose now that~$s = n$.
+	Then~$x_r = x_s = x_n$.
+	In the term
+	\[
+		h_{n-1}(x_1, \dotsc, x_n)
+		=
+		\sum_{1 \leq i < j \leq n-1}
+		(-1)^{i+j}
+		[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+	\]
+	those summands~$i, j \neq r$ contain~$x_r$ as a wedge factor.
+	When passing from~$h_{n-1}(x_1, \dotsc, x_{n-1})$ to~$h_{n-1}(x_1, \dotsc, x_{n-1}) \wedge x_n$ all those summands disappear because~$x_r = x_n$.
+	We therefore only have to worry about those summands with~$i = r$ or~$j = r$, in the sense that
+	\begin{equation}
+		\label{first term as sum of two sums}
+		\begin{aligned}
+			h_{n-1}(x_1, \dotsc, x_{n-1}) \wedge x_n
+			={}&
+			\sum_{i=1}^{r-1}
+			(-1)^{i+r}
+			[x_i, x_r] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_n
+			\\
+			{}&
+			+
+			\sum_{j=r+1}^{n-1}
+			(-1)^{r+j}
+			[x_r, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \,.
+		\end{aligned}
+	\end{equation}
+	We have to show that this term is the negative of
+	\[
+		\sum_{p=1}^{n-1}
+		(-1)^{p+n}
+		[x_p, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_p} \wedge \dotsb \wedge x_{n-1} \,.
+	\]
+	We note that in this sum, the summand for~$p = r$ vanishes since~$x_r = x_n$ and thus~$[x_r, x_n] = 0$.
+	This sum can therefore be split up into
+	\begin{equation}
+		\label{second term as sum of two sums}
+		\begin{aligned}
+			{}&
+			\sum_{i=1}^{r-1}
+			(-1)^{i+n}
+			[x_i, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1}
+			\\
+			{}&
+			+
+			\sum_{j=r+1}^{n-1}
+			(-1)^{j+n}
+			[x_j, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1} \,.
+		\end{aligned}
+	\end{equation}
+
+	It follows for every position~$i = 1, \dotsc, r-1$ from the equality~$x_r = x_n$ that
+	\begin{align*}
+		{}&
+		[x_i, x_r] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_n
+		\\
+		={}&
+		[x_i, x_r] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_{n-1} \wedge x_n
+		\\
+		={}&
+		[x_i, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_{n-1} \wedge x_r
+		\\
+		={}&
+		(-1)^{n-r-1}
+		[x_i, x_r] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1}
+	\end{align*}
+	and therefore
+	\begin{align*} 
+		{}&
+		\sum_{i=1}^{r-1}
+		(-1)^{i+r}
+		[x_i, x_r] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_n
+		\\
+		={}&
+		\sum_{i=1}^{r-1}
+		(-1)^{i+n-1}
+		[x_i, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1}
+		\\
+		={}&
+		-
+		\sum_{i=1}^{r-1}
+		(-1)^{i+n}
+		[x_i, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \,.
+	\end{align*}
+	This shows that the first sum in~\eqref{first term as sum of two sums} cancels out the first sum in~\eqref{second term as sum of two sums}.
+
+	It follows similarly for every position~$j = r+1, \dotsc, n-1$ from the equality~$x_n = x_r$ that
+	\begin{align*}
+		{}&
+		[x_r, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+		\\
+		={}&
+		[x_r, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1} \wedge x_n
+		\\
+		={}&
+		[x_n, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1} \wedge x_r
+		\\
+		={}&
+		(-1)^{n-r}
+		[x_n, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+	\end{align*}
+	and therefore
+	\begin{align*}
+		{}&
+		\sum_{j = r+1}^{n-1}
+		(-1)^{r+j}
+		[x_r, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+		\\
+		={}&
+		\sum_{j = r+1}^{n-1}
+		(-1)^{j+n}
+		[x_n, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+		\\
+		={}&
+		-\sum_{j = r+1}^{n-1}
+		(-1)^{j+n}
+		[x_j, x_n] \wedge x_1 \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+	\end{align*}
+	This shows that the second sum in~\eqref{first term as sum of two sums} cancels out the second sum in~\eqref{second term as sum of two sums}.
+\end{proof}
+
+
+\begin{remark}
+	One may think about \cref{alternating in multiple arguments} as a generalization of the alternating property of the Lie~bracket to multiple elements.
+	We also note that the above proof of \cref{alternating in multiple arguments} used that the Lie~bracket~$[\ph, \ph]$ is alternating, and did not use the Jacobi identity.
+\end{remark}
+
+
+\begin{definition}
+	Let~$V$ and~$W$ be two~\vectorspaces{$\kf$}.
+	The vector space of multilinear, alternating maps\index{alternating maps} from~$V \times \dotsb \times V$ to~$W$ is denoted by
+	\[
+		\Alt^n(V,W) \,.
+		\glsadd{alternating maps}
+	\]
+\end{definition}
+
+
+\begin{recall}
+	\label{expressing alt with exterior powers}
+	We can identify the vector space~$\Alt^n(V, W)$ with~$\Hom_{\kf}( \Exterior^n(V), W)$ by the universal property of the exterior power.
+	More explicitely, for any element~$\omega'$ of~$\Hom_{\kf}( \Exterior^n(V), W)$ the corresponding element~$\omega$ of~$\Alt^n(V,W)$ is given by
+	\[
+		\omega(v_1, \dotsc, v_n)
+		=
+		\omega'( v_1 \wedge \dotsb \wedge v_n )
+	\]
+	for all~$v_1, \dotsc, v_n \in V$.
+\end{recall}
+
+
+\begin{definition}
+	\label{construction of lie algebra homology and cohomology}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	\begin{enumerate}
+		\item
+			For every integer~$n$ let
+			\[
+				\Chain_n(\glie, M)
+				\defined
+				\begin{cases*}
+					\Exterior^n(\glie) \tensor M  & if~$n \geq 0$,  \\
+					0                             & otherwise.
+				\end{cases*}
+				\glsadd{lie algebra chain complex}
+			\]
+		\item
+			For every integer~$n$ let
+			\[
+				\Chain^n(\glie, M)
+				\defined
+				\begin{cases*}
+					\Alt^n(\glie, M)  & if~$n \geq 0$,  \\
+					0                 & otherwise.
+				\end{cases*}
+				\glsadd{lie algebra cochain complex}
+			\]
+	\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	\begin{enumerate}
+		\item
+			There exists for every integer~$n$ with~$n \geq 1$ a unique linear map
+			\[
+				d_n
+				\colon
+				\Chain_n(\glie, M)
+				\to
+				\Chain_{n-1}(\glie, M)
+			\]
+			given by
+			\begin{align*}
+				x_1 \wedge \dotsb \wedge x_n \tensor m
+				\mapsto
+				{}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i+j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \tensor m
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \tensor (x_i \act m)
+			\end{align*}
+			for all~$x_1, \dotsc, x_n \in \glie$ and~$m \in M$.
+		\item
+			Let~$d_n$ be the zero map from~$\Chain_n(\glie, M)$ to~$\Chain_{n-1}(\glie, M)$ for every integer~$n$ with~$n \leq 0$.
+			The composition~$d_{n-1} \circ d_n$ vanishes for every integer~$n$.
+	\end{enumerate}
+	We have thus constructed a chain complex~$\Chain_\bullet(\glie, M)$.
+	\begin{enumerate}[resume*]
+		\item
+			There exists for every integer~$n$ with~$n \geq 0$ a unique linear map
+			\[
+				d^n
+				\colon
+				\Chain^n( \glie, M )
+				\to
+				\Chain^{n+1}( \glie, M)
+			\]
+			given by
+			\begin{align*}
+				d^n(\omega)(x_1, \dotsc, x_{n+1})
+				\mapsto
+				{}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j} \omega([x_i, x_j], x_1, \dotsc, \widehat{x_i}, \dotsc, \widehat{x_j}, \dotsc, x_{n+1})
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				x_i \act \omega(x_1, \dotsc, \widehat{x_i}, \dotsc, x_{n+1})
+			\end{align*}
+			for all~$x_1, \dotsc, x_{n+1} \in \glie$ and~$m \in M$.
+		\item
+			Let~$d^n$ be the zero map from~$\Chain^n(\glie, M)$ to~$\Chain^{n+1}(\glie, M)$ for every integer~$n$ with~$n < 0$.
+			The composition~$d^{n+1} \circ d^n$ vanishes for every integer~$n$.
+	\end{enumerate}
+	We have thus constructed a cochain complex~$\Chain^\bullet(\glie, M)$.
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			There exists a multilinear map
+			\[
+				\widetilde{d_n}
+				\colon
+				\underbrace{ \glie \times \dotsb \times \glie }_{n} {} \times M
+				\to
+				\Exterior^{n-1}(\glie) \tensor M
+			\]
+			given by
+			\begin{align}
+				(x_1, \dotsc, x_n, m)
+				\mapsto
+				{}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i+j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n \tensor m
+				\label{first term for homology}
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \tensor (x_i \act m)
+				\label{second term for homology}
+			\end{align}
+			for all~$x_1, \dotsc, x_n \in \glie$ and~$m \in M$.
+			It sufficies to show that this map is alternating in~$x_1, \dotsc, x_n$, i.e. that
+			\[
+				\widetilde{d_n}(x_1, \dotsc, x_n, m) = 0
+			\]
+			whenever there exist two indices~$r$ and~$s$ with~$1 \leq r < s \leq n$ and~$x_r = x_s$.%
+%      \footnote{
+%        If this condition holds then we can consider for every fixed element~$m$ of~$M$ the resulting mulilinear map~$\widetilde{h_m}$ given by~$\widetilde{d_n}(-, -, \dotsc, -, m)$.
+%        This map is then multilinear and alternating, and thus induces a linear map~$h_m$ from~$\Exterior^n(\glie)$ to~$\Exterior^{n-1}(\glie) \tensor M$.
+%        It follows from the multilinearity of the original map~$\widetilde{d_n}$ that the resulting family of linear maps~$(h_m)_{m \in M}$ assembles into a bilinear map from~$\Exterior^n(\glie) \times M$ into~$\Exterior^{n-1}(\glie) \tensor M$.
+%        This bilinear map corresponds to the desired linear map~$d_n$ under the universal property of the tensor product.
+%      }
+
+			Suppose that~$x_r = x_s$ for~$r$,~$s$ as above.
+			The term~\eqref{first term for homology} vanshes by \cref{alternating in multiple arguments}
+			For the term~\eqref{second term for homology} we note that every summand with~$i \neq r, s$ vanishes since~$x_r = x_s$.
+			The two remaining summands are given by
+			\begin{equation}
+				\label{first summand for second term}
+				(-1)^r x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_n \tensor (x_r \act m)
+			\end{equation}
+			and
+			\begin{equation}
+				\label{second summand for second term}
+				(-1)^s x_1 \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_n \tensor (x_s \act m) \,.
+			\end{equation}
+			The tensor factors~$x_r \act m$ and~$x_s \act m$ are equal because~$x_r$ equals~$x_s$.
+			The simple wedges
+			\[
+				x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_n
+				=
+				x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_s \wedge \dotsb \wedge x_n
+			\]
+			and
+			\[
+				x_1 \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_n
+				=
+				x_1 \wedge \dotsb \wedge x_r \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_n
+			\]
+			differ only by the sign~$(-1)^{s-r-1}$ because~$x_r$ equals~$x_s$.
+			The two summands~\eqref{first summand for second term} and~~\eqref{second summand for second term} differ therefore only by the sign~$-1$.
+			They hence cancel out in the sum~\eqref{second term for homology}, as desired and required.
+		\item
+			The adjoint action of~$\glie$ on itself together with the action of~$\glie$ on~$M$ induce for every natural number~$n$ an action of~$\glie$ on~$\Exterior^n(V) \tensor M$.
+			This action is given by
+			\begin{align*}
+				x \act (x_1 \wedge \dotsb \wedge x_n \tensor m)
+				&=
+				(x \act (x_1 \wedge \dotsb \wedge x_n)) \tensor m
+				+ x_1 \wedge \dotsb \wedge x_n \tensor (x \act m)
+				\\
+				&=
+				\sum_{i=1}^n x_1 \wedge \dotsb \wedge (x \act x_i) \wedge \dotsb \wedge x_n \tensor m
+				+ x_1 \wedge \dotsb \wedge x_n \tensor (x \act m) \,.
+				\\
+				&=
+				\sum_{i=1}^n x_1 \wedge \dotsb \wedge (x \act x_i) \wedge \dotsb \wedge x_n \tensor m
+				+ x_1 \wedge \dotsb \wedge x_n \tensor (x \act m) \,.
+			\end{align*}
+
+			We now observe for every~$n \geq 2$ that
+			\begin{equation}
+				\label{important identity for homology}
+				d_n( x \wedge t \tensor m )
+				=
+				- x \wedge d_{n-1}( t \tensor m)
+				- x \act (t \tensor m)
+			\end{equation}
+			for all~$x \in \glie$,~$t \in \Exterior^{n-1}(\glie)$,~$m \in M$.
+			To show this identity, it sufficies to consider for~$t$ a simple wedge~$x_1 \wedge \dotsb \wedge x_{n+1}$ where~$x_1, \dotsc, x_{n-1}$ are elements of~$\glie$.
+			By setting
+			\[
+				y_1 \defined x \,,
+				\quad
+				y_2 \defined x_1 \,,
+				\quad
+				\dotsc \,,
+				\quad
+				y_n \defined x_{n-1}
+			\]
+			we find that
+			\begin{align}
+				{}&
+				d_n( x \wedge (x_1 \dotsb \wedge x_{n-1}) \tensor m )
+				\notag
+				\\
+				={}&
+				d_n ( x \wedge x_1 \dotsb \wedge x_{n-1} \tensor m )
+				\notag
+				\\
+				={}&
+				d_n ( y_1 \wedge \dotsb \wedge y_n \tensor m )
+				\notag
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i + j}
+				[y_i, y_j] \wedge y_1 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge \widehat{y_j} \wedge \dotsb \wedge y_n
+				\tensor m
+				\label{first term to be expanded for homology}
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				y_1 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge y_n \tensor (y_i \act m) \,.
+				\label{second term to be expanded for homology}
+			\end{align}
+			We expand the term~\eqref{first term to be expanded for homology} as
+			\begingroup
+			\allowdisplaybreaks
+			\begin{align*}
+				{}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i + j}
+				[y_i, y_j] \wedge y_1 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge \widehat{y_j} \wedge \dotsb \wedge y_n
+				\tensor m
+				\\
+				={}&
+				\sum_{2 \leq i < j \leq n}
+				(-1)^{i + j}
+				[y_i, y_j] \wedge y_1 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge \widehat{y_j} \wedge \dotsb \wedge y_n
+				\tensor m
+				\\
+				{}&
+				+
+				\sum_{j=2}^n
+				(-1)^{j+1}
+				[y_1, y_j] \wedge y_2 \wedge \dotsb \wedge \widehat{y_j} \wedge \dotsb \wedge y_n
+				\tensor m
+				\\
+				={}&
+				-
+				\sum_{2 \leq i < j \leq n}
+				(-1)^{i + j}
+				y_1 \wedge [y_i, y_j] \wedge y_2 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge \widehat{y_j} \wedge \dotsb \wedge y_n
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{j=2}^n
+				y_2 \wedge \dotsb \wedge [y_1, y_j] \wedge \dotsb \wedge y_n
+				\tensor m
+				\\
+				={}&
+				-
+				\sum_{2 \leq i < j \leq n}
+				(-1)^{i + j}
+				x \wedge [x_{i-1}, x_{j-1}] \wedge x_1 \wedge \dotsb \wedge \widehat{x_{i-1}} \wedge \dotsb \wedge \widehat{x_{j-1}} \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{j=2}^n
+				x_1 \wedge \dotsb \wedge [x, x_{j-1}] \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				={}&
+				-
+				\sum_{1 \leq i < j \leq n-1}
+				(-1)^{i + j}
+				x \wedge [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{j=1}^{n-1}
+				x_1 \wedge \dotsb \wedge [x, x_j] \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+			\end{align*}
+			\endgroup
+			We also expand the term~\eqref{second term to be expanded for homology} as
+			\begin{align*}
+				{}&
+				\sum_{i=1}^n
+				(-1)^i
+				y_1 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge y_n \tensor (y_i \act m)
+				\\
+				={}&
+				\sum_{i=2}^n
+				(-1)^i
+				y_1 \wedge \dotsb \wedge \widehat{y_i} \wedge \dotsb \wedge y_n \tensor (y_i \act m)
+				-
+				y_2 \wedge \dotsb \wedge y_n \tensor (y_1 \act m)
+				\\
+				={}&
+				\sum_{i=2}^n
+				(-1)^i
+				x \wedge x_1 \wedge \dotsb \wedge \widehat{x_{i-1}} \wedge \dotsb \wedge x_{n-1} \tensor (x_{i-1} \act m)
+				-
+				x_1 \wedge \dotsb \wedge x_{n-1} \tensor (x \act m)
+				\\
+				={}&
+				\sum_{i=1}^{n-1}
+				(-1)^{i+1}
+				x \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \tensor (x_i \act m)
+				-
+				x_1 \wedge \dotsb \wedge x_{n-1} \tensor (x \act m)
+				\\
+				={}&
+				-
+				\sum_{i=1}^{n-1}
+				(-1)^i
+				x \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \tensor (x_i \act m)
+				-
+				x_1 \wedge \dotsb \wedge x_{n-1} \tensor (x \act m)
+			\end{align*}
+			Putting these calculations together we find that
+			\begingroup
+			\allowdisplaybreaks
+			\begin{align*}
+				{}&
+				d_n( x \wedge (x_1 \wedge \dotsb \wedge x_n) \tensor m )
+				\\
+				% first group of terms
+				={}&
+				-
+				\sum_{1 \leq i < j \leq n-1}
+				(-1)^{i + j}
+				x \wedge [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{j=1}^{n-1}
+				x_1 \wedge \dotsb \wedge [x, x_j] \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{i=1}^{n-1}
+				(-1)^i
+				x \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \tensor (x_i \act m)
+				-
+				x_1 \wedge \dotsb \wedge x_{n-1} \tensor (x \act m)
+				\\
+				% second group of terms
+				={}&
+				-
+				\sum_{1 \leq i < j \leq n-1}
+				(-1)^{i + j}
+				x \wedge [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{i=1}^{n-1}
+				(-1)^i
+				x \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \tensor (x_i \act m)
+				\\
+				{}&
+				-
+				\sum_{j=1}^{n-1}
+				x_1 \wedge \dotsb \wedge [x, x_j] \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				-
+				x_1 \wedge \dotsb \wedge x_{n-1} \tensor (x \act m)
+				\\
+				% third group of terms
+				={}&
+				-
+				x \wedge
+				\Biggl(
+				\sum_{1 \leq i < j \leq n-1}
+				(-1)^{i + j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				\\
+				{}&
+				-
+				\sum_{i=1}^{n-1}
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n-1} \tensor (x_i \act m)
+				\Biggr)
+				\\
+				{}&
+				-
+				\sum_{j=1}^{n-1}
+				x_1 \wedge \dotsb \wedge [x, x_j] \wedge \dotsb \wedge x_{n-1}
+				\tensor m
+				-
+				x_1 \wedge \dotsb \wedge x_{n-1} \tensor (x \act m)
+				\\
+				={}&
+				- x \wedge d_{n-1}(x_1 \wedge \dotsb \wedge x_{n-1} \tensor m)
+				- x \act (x_1 \wedge \dotsb \wedge x_{n-1} \tensor m) \,.
+			\end{align*}
+			\endgroup
+			We have thus shown the identity~\eqref{important identity for homology}.
+
+			We now show that the linear maps~$d_n$ are actually homomorphisms of representations for every~$n \geq 1$.
+			We show this by induction over~$n$.
+			For~$n = 1$ we have~$\Exterior^1(\glie) = \glie$ and
+			\begin{align*}
+				x \act d_1(x_1 \tensor m)
+				&=
+				- x \act x_1 \act m
+				\\
+				&=
+				- ( [x, x_1] \act m + x_1 \act x \act m )
+				\\
+				&=
+				- [x, x_1] \act m - x_1 \act x \act m
+				\\
+				&=
+				d_1( [x, x_1] \tensor m )
+				+ d_1( x_1 \tensor (x \act m) )
+				\\
+				&=
+				d_1\bigl( [x, x_1] \tensor m + x_1 \tensor (x \act m) \bigr)
+				\\
+				&=
+				d_1( x \act (x_1 \tensor m) ) \,.
+			\end{align*}
+			This shows that~$d_1$ is a homomorphism of representations.
+			If~$d_n$ is a homomorphism of representations for some~$n \geq 1$, then we have for every element~$x$ of~$\glie$, every element~$x_1$ of~$\glie$, every element~$t$ of~$\Exterior^n(\glie)$ and every element~$m$ of~$M$ that
+			\begingroup
+			\allowdisplaybreaks
+			\begin{align*}
+				{}&
+				d_{n+1}( x \act (x_1 \wedge t \tensor m) )
+				\\
+				={}&
+				d_{n+1}
+				\bigl(
+					[x, x_1] \wedge t \tensor m
+					+ x_1 \wedge (x \act t) \tensor m
+					+ x_1 \wedge t \tensor (x \act m)
+				\bigr)
+				\\
+				={}&
+				d_{n+1}\bigl( [x, x_1] \wedge t \tensor m \bigr)
+				+ d_{n+1}\bigl( x_1 \wedge (x \act t) \tensor m \bigr)
+				+ d_{n+1}\bigl( x_1 \wedge t \tensor (x \act m) \bigr)
+				\\
+				={}&
+				- [x, x_1] \wedge d_n(t \tensor m)
+				- [x, x_1] \act (t \tensor m)
+				- x_1 \wedge d_n( (x \act t) \tensor m )
+				- x_1 \act ( (x \act t) \tensor m )
+				\\
+				{}&
+				- x_1 \wedge d_n( t \tensor (x \act m) )
+				- x_1 \act ( t \tensor (x \act m) )
+				\\
+				={}&
+				- [x, x_1] \wedge d_n(t \tensor m)
+				- [x, x_1] \act (t \tensor m)
+				- x_1 \wedge d_n( (x \act t) \tensor m )
+				- x_1 \wedge d_n( t \tensor (x \act m) )
+				\\
+				{}&
+				- x_1 \act ( (x \act t) \tensor m )
+				- x_1 \act ( t \tensor (x \act m) )
+				\\
+				={}&
+				- [x, x_1] \wedge d_n(t \tensor m)
+				- [x, x_1] \act (t \tensor m)
+				- x_1 \wedge d_n\bigl( (x \act t) \tensor m + t \tensor (x \act m) \bigr)
+				\\
+				{}&
+				- x_1 \act \bigl( (x \act t) \tensor m + t \tensor (x \act m) \bigr)
+				\\
+				={}&
+				- [x, x_1] \wedge d_n(t \tensor m)
+				- [x, x_1] \act (t \tensor m)
+				- x_1 \wedge d_n( x \act (t \tensor m) )
+				- x_1 \act ( x \act (t \tensor m) )
+				\\
+				={}&
+				- [x, x_1] \wedge d_n(t \tensor m)
+				- [x, x_1] \act (t \tensor m)
+				- x_1 \wedge ( x \act d_n(t \tensor m) )
+				- x_1 \act ( x \act (t \tensor m) )
+				\\
+				={}&
+				- [x, x_1] \wedge d_n(t \tensor m)
+				- x_1 \wedge ( x \act d_n(t \tensor m) )
+				- [x, x_1] \act (t \tensor m)
+				- x_1 \act ( x \act (t \tensor m) )
+				\\
+				={}&
+				- x \act ( x_1 \wedge d_n(t \tensor m) )
+				- x \act x_1 \act (t \tensor m)
+				\\
+				={}&
+				x \act ( - x_1 \wedge d_n(t \tensor m) - x_1 \act (t \tensor m) )
+				\\
+				={}&
+				x \act d_{n+1}( x_1 \wedge t \tensor m ) \,.
+			\end{align*}
+			\endgroup
+			This shows that~$d_{n+1}$ is also a homomorphism of representations.
+
+			For every element~$x$ of~$\glie$ let~$\theta_n^x$ denote the action of~$x$ on~$\Exterior^n(\glie) \tensor M$, i.e. the linear map
+			\[
+				\theta_n^x
+				\colon
+				\Exterior^n(\glie) \tensor M
+				\to
+				\Exterior^n(\glie) \tensor M \,,
+				\quad
+				z
+				\mapsto
+				x \act z \,.
+			\]
+			We also have for every element~$x$ of~$\glie$ an auxiliary linear map
+			\[
+				\sigma_n^x
+				\colon
+				\Exterior^n(\glie)
+				\to
+				\Exterior^{n+1}(\glie)
+			\]
+			that is given by
+			\[
+				\sigma_n^x( t \tensor m)
+				=
+				x \wedge t \tensor m
+			\]
+			for all~$t \in \Exterior^n(\glie)$ and~$m \in M$.
+			We have shown in~\eqref{important identity for homology} that
+			\[
+				d_n \circ \sigma_{n-1}^x
+				=
+				- \sigma_{n-1}^x \circ d_{n-1}
+				- \theta_{n-1}^x
+			\]
+			for all~$x \in \glie$ and~$n \geq 2$.
+			We have also shown that
+			\[
+				d_n \circ \theta_n^x
+				=
+				\theta_{n-1}^x \circ d_n
+			\]
+			for all~$x \in \glie$ and~$n \geq 1$.
+
+			We can now show the desired identity
+			\[
+				d_{n-1} \circ d_n = 0
+			\]
+			for every integer~$n$ with~$n$ by induction over~$n$.
+			The identity holds for~$n \leq 1$ because then~$d_{n-1}$ vanishes.
+			It also holds for~$n = 2$ because
+			\begin{align*}
+				d_1( d_2( x_1 \wedge x_2 \tensor m) )
+				&=
+				d_1( -[x_1, x_2] \tensor m - x_2 \wedge (x_1 \act m) + x_1 \wedge (x_2 \act m) )
+				\\
+				&=
+				- d_1( [x_1, x_2] \tensor m )
+				- d_1( x_2 \wedge (x_1 \act m) )
+				+ d_1( x_1 \wedge (x_2 \act m) )
+				\\
+				&=
+				[x_1, x_2] \act m
+				+ x_2 \act (x_1 \act m)
+				- x_1 \act (x_2 \act m)
+				\\
+				&=
+				0
+			\end{align*}
+			for all~$x_1, x_2 \in \glie$ and~$m \in M$.%
+			\footnote{
+				It should be noted that the condition~$d_1 \circ d_2 = 0$ is satisfied precisely because~$M$ is a representation of~$\glie$.
+			}
+			For~$n \geq 3$ it sufficies to show that
+			\[
+				d_{n-1}( d_n( x \wedge t \tensor m) )
+				=
+				0
+			\]
+			for all~$x \in \glie$,~$t \in \Exterior^{n-1}(\glie)$,~$m \in M$.
+			It hence sufficies to show that
+			\[
+				d_{n-1} \circ d_n \circ \sigma_{n-1}^x = 0 \,.
+			\]
+			for all~$x \in \glie$.
+			We have
+			\begin{align*}
+				d_{n-1} \circ d_n \circ \sigma_{n-1}^x
+				&=
+				d_{n-1} \circ (- \sigma_n^x \circ d_{n-1} - \theta_{n-1}^x)
+				\\
+				&=
+				- d_{n-1} \circ \sigma_{n-1}^x \circ d_{n-1}
+				- d_{n-1} \circ \theta_{n-1}^x
+				\\
+				&=
+				- ( - \sigma_{n-2}^x \circ d_{n-2} - \theta_{n-2}^x ) \circ d_{n-1}
+				- d_{n-1} \circ \theta_{n-1}^x
+				\\
+				&=
+				\sigma_{n-2} \circ d_{n-2} \circ d_{n-1}
+				+ \theta_{n-2}^x \circ d_{n-1}
+				- d_{n-1} \circ \theta_{n-1}^x
+				\\
+				&=
+				\sigma_{n-1} \circ 0
+				+ 0
+				\\
+				&=
+				0
+			\end{align*}
+			because~$d_{n-2} \circ d_{n-1} = 0$ by induction hypothesis and because~$\theta_{n-2}^x \circ d_{n-1} = d_{n-1} \circ \theta_{n-1}^x$.
+		\item
+			We identify~$\Alt^n(\glie, M)$ with~$\Hom_{\kf}( \Exterior^n(\glie), M)$ as explained in \cref{expressing alt with exterior powers}.
+			Let~$\omega$ be an element of~$\Hom_{\kf}( \Exterior^n(\glie), M )$.
+			We get a map
+			\[
+				\kappa'
+				\colon
+				\underbrace{ \glie \times \dotsb \times \glie }_{n+1}
+				\to
+				M
+			\]
+			given by
+			\begin{align*}
+				\kappa'(x_1, \dotsc, x_{n+1})
+				\defined
+				{}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j}
+				\omega
+				(
+					[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1}
+				)
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				x_i \act \omega(x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1})
+			\end{align*}
+			for all~$x_1, \dotsc, x_n \in \glie$.
+			This map is multilinear, and we claim that is it also alternating.
+			To show this we assume that~$x_r = x_s$ for some indices~$r$,~$s$ with~$1 \leq r < s \leq n+1$.
+			We have
+			\begin{align}
+				\kappa'(x_1, \dotsc, x_{n+1})
+				\defined
+				{}&
+				\omega
+				\Biggl(
+					\sum_{1 \leq i < j \leq n+1}
+					(-1)^{i+j}
+					[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1}
+				\Biggr)
+				\label{first term for cohomology}
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				x_i \act \omega(x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1})
+				\label{second term for cohomology}
+			\end{align}
+			It follows from \cref{alternating in multiple arguments} that the term~\eqref{first term for cohomology} vanishes.
+			For the term~\eqref{second term for cohomology} we note that the summands for~$i \neq r,s$ vanish since~$\omega$ is alternating and~$x_r = x_s$.
+			It remains to show that the two summands
+			\[
+				(-1)^{r+1}
+				x_r \act \omega(x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_{n+1})
+			\]
+			and
+			\[
+				(-1)^{s+1}
+				x_s \act \omega(x_1 \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_{n+1})
+			\]
+			cancel out.
+			This holds because the two simple wedges
+			\[
+				x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_{n+1}
+				=
+				x_1 \wedge \dotsb \wedge \widehat{x_r} \wedge \dotsb \wedge x_s \wedge \dotsb \wedge x_{n+1}
+			\]
+			and
+			\[
+				x_1 \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_{n+1}
+				=
+				x_1 \wedge \dotsb \wedge x_r \wedge \dotsb \wedge \widehat{x_s} \wedge \dotsb \wedge x_{n+1}
+			\]
+			differ only by the sign~$(-1)^{s-r-1}$, because~$x_r = x_s$.
+
+			The map~$\kappa'$ is multilinear and alternating and thus induces a linear map~$\kappa$ from~$\Exterior^{n+1}(\glie)$ to~$M$ by the universal property of the exterior power.
+			This map~$\kappa$ is precisely the desired linear map~$d^n(\omega)$.
+			We have thus shows that the element~$d^n(\omega)$ of~$\Hom_{\kf}( \Exterior^{n+1}(\glie), M)$ is well-defined.
+			The map~$d^n$ is thus well-defined.
+			It is also linear.
+		\item
+			The claimed identity~$d^{n+1} \circ d^n = 0$ holds whenever~$n < 0$ since then~$d^n = 0$.
+			In the following we consider the case~$n \geq 0$.
+
+			The dual space~$M^*$ is again a representation of~$\glie$ via the action
+			\[
+				(x \act \varphi)(m)
+				=
+				- x \act \varphi(m)
+			\]
+			for all~$x \in \glie$,~$\varphi \in M^*$,~$m \in M$.
+			We may dualize the linear map
+			\[
+				d_{n+1}
+				\colon
+				\Exterior^{n+1}(\glie) \tensor M^*
+				\to
+				\Exterior^n(\glie) \tensor M^*
+			\]
+			to get a linear map
+			\[
+				d_{n+1}^*
+				\colon
+				\Bigl( \Exterior^n(\glie) \tensor M^* \Bigr)^*
+				\to
+				\Bigl( \Exterior^{n+1}(\glie) \tensor M^* \Bigr)^* \,.
+			\]
+			We have for every natural number~$k$ the isomorphisms
+			\begin{align*}
+				\Bigl( \Exterior^k(\glie) \tensor M^* \Bigr)^*
+				&=
+				\Hom\Bigl( \Exterior^k(\glie) \tensor M^*, \kf \Bigr)
+				\\
+				&\cong
+				\Hom\Bigl( \Exterior^k(\glie), \Hom_{\kf}( M^*, \kf ) \Bigr)
+				\\
+				&=
+				\Hom\Bigl( \Exterior^k(\glie), M^{**} \Bigr)
+				\\
+				&\cong
+				\Alt^k( \glie, M^{**} ) \,.
+			\end{align*}
+			The inclusion map
+			\[
+				\ev
+				\colon
+				M
+				\to
+				M^{**} \,,
+				\quad
+				m
+				\mapsto
+				\ev_m
+			\]
+			given by~$\ev_m(\varphi) = \varphi(m)$ for all~$m \in M$ and~$\varphi \in M^*$ induces for every natural number~$k$ an inclusion map
+			\[
+				\Alt^k(\glie, M)
+				\to
+				\Alt^k(\glie, M^{**}) \,,
+				\quad
+				\omega
+				\mapsto
+				{\ev} \circ \omega \,.
+			\]
+			Overall we may regard the vector space~$\Alt^k(\glie, M)$ as linear subspace of~$( \Exterior^k(\glie) \tensor M^* )^*$ for every natural number~$k$.
+
+			We claim that under these identifications, the linear map~$d_{n+1}^*$ restricts to a linear map from~$\Alt^n(\glie, M)$ to~$\Alt^{n+1}(\glie, M)$, and that this restriction is precisely the linear map~$d^n$.
+			To see this we make the identification of~$\Alt^k(\glie, \kf)$ with~$( \Exterior^k(\glie) \tensor M^* )^*$ more explicit.
+			Let~$\omega$ be an element of~$\Alt^k(\glie, M)$.
+			The resulting element~$\omega_1$ of~$\Alt^k(\glie, M^{**})$ is given by
+			\[
+				\omega_1(x_1, \dotsc, x_k)
+				=
+				\ev_{\omega(x_1, \dotsc, x_k)}
+			\]
+			for all~$x_1, \dotsc, x_k \in \glie$.
+			The corresponding element~$\omega_2$ of~$\Hom_{\kf}( \Exterior^k(\glie), M^{**} )$ is given by
+			\[
+				\omega_2(t)
+				=
+				\ev_{\omega(t)}
+			\]
+			for all~$t \in \Exterior^k(\glie)$.
+			The corresponding element~$\omega_3$ of~$( \Exterior^k(\glie) \tensor M^* )^*$ is given by
+			\[
+				\omega_3(t \tensor \varphi)
+				=
+				\omega_2(t)(\varphi)
+				=
+				\ev_{\omega(t)}(\varphi)
+				=
+				\varphi(\omega(t))
+			\]
+			for all~$t \in \Exterior^k(\glie)$,~$\varphi \in M^*$.
+			Instead of~$\omega_3$ we write~$\overline{\omega}$.
+			We have thus seen that the linear inclusion
+			\[
+				\overline{ (\ph) }
+				\colon
+				\Alt^k(\glie, M)
+				\to
+				\Bigl( \Exterior^k(\glie) \tensor M^* \Bigr)^*
+			\]
+			is explicitely given by
+			\[
+				\overline{\omega}(t \tensor \varphi)
+				=
+				\varphi(\omega(t))
+			\]
+			for all~$t \in \Exterior^k(\glie)$ and~$\varphi \in M^*$.
+
+			In this notation our claim becomes
+			\begin{equation}
+				\label{embedding of cochain complex into dual of chain complex}
+				d_{n+1}^*( \overline{\omega} )
+				=
+				\overline{ d^n(\omega) }
+				\qquad
+				\text{for every~$\omega \in \Alt^n(\glie, M)$.}
+			\end{equation}
+			Ths identity follows from the calculation
+			\begingroup
+			\allowdisplaybreaks
+			\begin{align*}
+				{}&
+				d_{n+1}^*( \overline{\omega} )(x_1 \wedge \dotsb \wedge x_{n+1} \tensor \varphi)
+				\\
+				={}&
+				\overline{\omega}( d_{n+1}( x_1 \wedge \dotsb \wedge x_{n+1} \tensor \varphi ) )
+				\\
+				={}&
+				\overline{\omega}
+				\Biggl(
+					\sum_{1 \leq i < j \leq n+1}
+					(-1)^{i+j}
+					[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1} \tensor \varphi
+				\\
+				{}&
+				\phantom{
+					\omega
+					\Biggl(
+				}
+					+
+					\sum_{i=1}^{n+1}
+					(-1)^i
+					x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} \tensor (x_i \act \varphi)
+				\Biggr)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j}
+				\overline{\omega}
+				(
+					[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1} \tensor \varphi
+				)
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^i
+				\overline{\omega}
+				(
+					x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} \tensor (x_i \act \varphi)
+				)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j}
+				\varphi( \omega( [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1} ) )
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^i
+				(x_i \act \varphi)( \omega( x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} ) )
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+j}
+				\varphi( \omega( [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1} ) )
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				\varphi( x_i \act \omega( x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} ) )
+				\\
+				={}&
+				\varphi
+				\Biggl(
+					\sum_{1 \leq i < j \leq n+1}
+					(-1)^{i+j}
+					\omega( [x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1} )
+				\\
+					{}&
+					\phantom{
+						\varphi\Biggl(
+					}
+					+
+					\sum_{i=1}^{n+1}
+					(-1)^{i+1}
+					x_i \act \omega( x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} )
+				\Biggr)
+				\\
+				={}&
+				\varphi( d^n(\omega)(x_1 \wedge \dotsb \wedge x_n) )
+				\\
+				={}&
+				\overline{ d^n(\omega) } (x_1 \wedge \dotsb \wedge x_n \tensor \varphi)
+			\end{align*}
+			\endgroup
+			for all~$x_1, \dotsc, x_n \in \glie$ and~$\varphi \in M^*$.
+			It now follows from the identity~$d_{n+1} \circ d_{n+2} = 0$ by dualizing that~$d_{n+2}^* \circ d_{n+1}^* = 0$, and thus~$d^{n+1} \circ d^n = 0$ by restriction.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	The above proof is motivated by \cite[\S~3.1]{kumar_lie_cohomology}.
+\end{remark}
+
+
+
+
+

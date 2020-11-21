@@ -1,0 +1,803 @@
+
+\section{Computation in Small Degrees}
+
+
+\begin{fluff}
+	We will now compute Lie algebra cohomology and Lie algebra homology in certain degrees.
+\end{fluff}
+
+
+
+\subsection{Cohomology and Homology in Negative Degrees}
+\index{Lie algebra homology!in negative degrees}
+\index{Lie algebra cohomology!in negative degrees}
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	The chain complex~$\Chain_\bullet(\glie, M)$ vanishes in negative degrees, and the same goes for the cochain complex~$\Chain^\bullet(\glie, M)$.
+	It follows that both the Lie algebra homology~$\Homology_\bullet(\glie, M)$ and the Lie algebra cohomology~$\Homology^\bullet(\glie, M)$ vanish in negative degrees.
+\end{fluff}
+
+
+
+\subsection{Cohomology and Homology in Large Degrees}
+\index{Lie algebra homology!in large degrees}
+\index{Lie algebra cohomology!in large degrees}
+
+\begin{fluff}
+	Let~$\glie$ be a finite-dimensional Lie~algebra.
+	Then~$\Exterior^n(\glie) = 0$ whenever~$n$ exceeds the dimension of~$\glie$.
+	It follows for every representation~$M$ of~$\glie$ that
+	\[
+		\Chain_n(\glie, M)
+		=
+		\Exterior^n(\glie) \tensor M
+		=
+		0
+	\]
+	and
+	\[
+		\Chain^n(\glie, M)
+		=
+		\Alt^n(\glie, M)
+		\cong
+		\Hom_{\kf}\Bigl( \Exterior^n(\glie), M \Bigr)
+		=
+		0
+	\]
+	for all~$n > \dim(\glie)$, and thus
+	\[
+		\Homology_n(\glie, M) = 0
+		\quad\text{and}\quad
+		\Homology^n(\glie, M) = 0
+	\]
+	for all~$n > \dim(\glie)$.
+\end{fluff}
+
+
+
+\subsection{Zeroth Cohomology}
+\index{zeroth Lie algebra cohomology}
+\index{Lie algebra cohomology!zeroth}
+
+\begin{fluff}
+	\label{zeroth cohomology}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	Then
+	\[
+		\Chain^0(\glie, M)
+		=
+		\Hom\Bigl( \Exterior^0(\glie), M \Bigr)
+		\cong
+		\Hom_{\kf}( \kf, M )
+		\cong
+		M
+	\]
+	and
+	\[
+		\Chain^1(\glie, M)
+		=
+		\Hom\Bigl( \Exterior^1(\glie), M \Bigr)
+		\cong
+		\Hom_{\kf}( \glie, M ) \,.
+	\]
+	The differential~$d^1$ is under these identifications given by the linear map
+	\[
+		M
+		\to
+		\Hom_{\kf}(\glie, M) \,,
+		\quad
+		m
+		\mapsto
+		( x \mapsto x \act m ) \,.
+	\]
+	It follows that under these identifications we have
+	\[
+		\Cycle^0(\glie, M)
+		=
+		\ker(d^1)
+		\cong
+		\{
+			m \in M
+		\suchthat
+			x \cdot m
+		\}
+		=
+		M^{\glie} \,.
+	\]
+	We also have~$\Boundary^0(\glie, M) = 0$ (because~$\Chain^{-1}(\glie, M) = 0$) and thus
+	\[
+		\Homology^0(\glie, M)
+		=
+		\Cycle^0(\glie, M) / { \Boundary^0(\glie, M) }
+		=
+		\Cycle^0(\glie, M) / 0
+		\cong
+		\Cycle^0(\glie, M)
+		\cong
+		M^{\glie} \,.
+	\]
+	This isomorphism is moreover natural in~$M$, whence
+	\[
+		\Homology^0(\glie, \ph)
+		\cong
+		(\ph)^{\glie} \,.
+		\index{invariants}
+	\]
+\end{fluff}
+
+
+
+\subsection{Zeroth Homology}
+\index{zeroth Lie algebra homology}
+\index{Lie algebra homology!zeroth}
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	The quotient representation
+	\[
+		M / \glie M
+	\]
+	is the representation of~\defemph{coinvariants}\index{coinvariants} of~$M$.
+	It is denoted by~$M_{\glie}$\glsadd{coinvariants}.
+\end{definition}
+
+
+\begin{proposition}[Functoriality of Coinvariants]
+	\label{functoriality of coinvariants}
+	Let~$\glie$ be a Lie~algebra and let~$M$ and~$N$ be two representations of~$\glie$.
+	Let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	Then~$f$ induces a homomorphism of representations
+	\[
+		M_{\glie}
+		\to
+		N_{\glie} \,,
+		\quad
+		\class{m}
+		\mapsto
+		\class{f(m)} \,.
+	\]
+\end{proposition}
+
+
+\begin{proof}
+	This holds because the homomorphisms~$f$ maps the subrepresentation~$\glie M$ of~$M$ into the subrepresentation~$\glie N$ of~$N$.
+\end{proof}
+
+
+\begin{remark}
+	Let~$\glie$ be a Lie~algebra.
+	\begin{enumerate}
+		\item
+			The representation~$M_{\glie}$ is the largest quotient representation of~$M$ on which~$\glie$ acts trivially.
+		\item
+			We can extend our discussion from \cref{invariants are right adjoint} as follows.
+
+			We have a functor~$(\ph)_{\glie}$ from~$\cRep{\glie}$ to~$\cReptriv{\glie}$\index{category!of trivial representations}.
+			This functor assigns to each~\representation{$\glie$}~$M$ its space of coinvariants~$M_{\glie}$.
+			To each homomorphism of representations~$f$ from~$M$ to~$N$ it assigns the induced homomorphism of representations from~$M_{\glie}$ and~$N_{\glie}$ as explained in \cref{functoriality of coinvariants}.
+
+			If~$M$ is any~\representation{$\glie$} and~$N$ is any trivial~\representation{$\glie$}, then the quotient map~$p$ from~$M$ to~$M_{\glie}$ induces an isomorphism of vector spaces
+			\[
+				p^*
+				\colon
+				\Hom_{\glie}(M_{\glie}, N)
+				\to
+				\Hom_{\glie}(M, N) \,,
+				\quad
+				f
+				\mapsto
+				f \circ p \,.
+			\]
+			This isomorphism is natural in both~$M$ and~$N$.
+			The functor~$(\ph)_{\glie}$ is therefore left adjoint\index{adjunction} to the inclusion functor~$T$ from~$\cReptriv{\glie}$ to~$\cRep{\glie}$.
+			We have overall the adjunctions\index{adjunction}
+			\[
+				(\ph)_{\glie}
+				\leftadjoint
+				T
+				\leftadjoint
+				(\ph)^{\glie} \,.
+			\]
+		\item
+			The category~$\cReptriv{\glie}$ is isomorphic to~$\cVect{\kf}$ via the restriction of the forgetful functor from~$\cRep{\glie}$ to~$\cVect{\kf}$.
+			We will therefore often regard both~$(\ph)^{\glie}$ and~$(\ph)_{\glie}$ as functors from~$\cRep{\glie}$ to~$\cVect{\kf}$.
+	\end{enumerate}
+\end{remark}
+
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	We have
+	\[
+		\Chain_0(\glie, M)
+		=
+		\Exterior^0(\glie) \tensor M
+		\cong
+		\kf \tensor M
+		\cong
+		M
+	\]
+	and
+	\[
+		\Chain_1(\glie, M)
+		=
+		\Exterior^1(\glie) \tensor M
+		\cong
+		\glie \tensor M \,.
+	\]
+	Under these isomorphisms, the differential~$d_1$ corresponds to the linear map
+	\[
+		\glie \tensor M
+		\to
+		M \,,
+		\quad
+		x \tensor m
+		\mapsto
+		- x \act m \,.
+	\]
+	It follows that
+	\[
+		\Boundary_0(\glie, M)
+		=
+		\im(d_1)
+		\cong
+		\glie M
+	\]
+	under the above identification of~$\Chain_0(\glie, M)$ with~$M$.
+	We also have
+	\[
+		\Cycle_0(\glie, M)
+		=
+		\Chain_0(\glie, M)
+	\]
+	because~$d_{-1} = 0$.
+	Under the above identification of~$\Chain_0(\glie, M)$ with~$M$ we hence find that~$\Cycle_0(\glie, M)$ corresponds to~$M$.
+	It follows that
+	\[
+		\Homology_0(\glie, M)
+		=
+		\Cycle_0(\glie, M) / { \Boundary_0(\glie, M) }
+		\cong
+		M / \glie M
+		=
+		M_{\glie} \,.
+		\index{coinvariants}
+	\]
+	This isomorphism is moreover natural in~$M$, whence
+	\[
+		\Homology_0(\glie, \ph)
+		\cong
+		(\ph)_{\glie} \,.
+	\]
+\end{fluff}
+
+
+
+\subsection{First Cohomology}
+\index{first Lie algebra cohomology}
+\index{Lie algebra cohomology!first}
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	A map~$\delta$ from~$\glie$ to~$M$ is a \defemph{derivation}\index{derivation!of a representation} if it is linear and satisfies the condition
+	\[
+		\delta( [x,y] )
+		=
+		x \act \delta(y) - y \act \delta(x)
+	\]
+	for all~$x, y \in \glie$.
+	The set of derivations of~$M$ is denoted by~$\Der(\glie, M)$\glsadd{derivations of module}.
+\end{definition}
+
+
+% TODO: Explain this in the general context of derivations of a module.
+
+
+\begin{proposition}
+	\label{inner derivations of representations}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	The map
+	\[
+		\glie
+		\to
+		M \,,
+		\quad
+		x
+		\mapsto
+		x \act m
+	\]
+	is for every element~$m$ of~$M$ a derivation of~$M$.
+\end{proposition}
+
+
+\begin{proof}
+	We denote this map by~$\delta$ and compute that
+	\[
+		\delta([x,y])
+		=
+		[x,y] \act m
+		=
+		x \act y \act m - y \act x \act m
+		=
+		x \act \delta(y) - y \act \delta(x)
+	\]
+	for all~$x, y \in \glie$.
+\end{proof}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	A derivation~$\delta$ of~$M$ is \defemph{inner}\index{inner derivation!of a representation} if there exists an element~$m$ of~$M$ with
+	\[
+		\delta(x) = x \act m
+		\qquad
+		\text{for all~$x \in \glie$.}
+	\]
+	The set of inner dervations of~$M$ is denoted by~$\InnDer(\glie, M)$\glsadd{inner derivations of module}.
+\end{definition}
+
+
+\begin{remark}
+	Let~$\glie$ be a Lie~algebra.
+	For the adjoint representation of~$\glie$ the above notions of derivations and inner derivations coincide with the notions from \cref{definition of derivations} and \cref{definition of inner derivations}.
+\end{remark}
+
+
+\begin{proposition}
+	Let~$\glie$ be Lie~algebra and let~$M$ be a representation of~$\glie$.
+	\begin{enumerate}
+		\item
+			The set~$\Der(\glie, M)$ is a linear subspace of~$\Hom_{\kf}(\glie, M)$.
+		\item
+			The set~$\InnDer(\glie, M)$ is a linear subspace of~$\Der(\glie, M)$.
+		\qed
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{definition}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	The quotient vector space~$\Der(\glie, M) / { \InnDer(\glie, M) }$ is the space of \defemph{outer derivations}\index{outer derivation!of a representation} of~$M$.
+	It is denoted by~$\OutDer(\glie, M)$\glsadd{outer derivations of module}.
+\end{definition}
+
+
+\begin{proposition}
+	\label{functiorality of outer derivations}
+	Let~$\glie$ be a Lie~algebra and let~$M$ and~$N$ be two representations of~$\glie$.
+	Let~$f$ be a homomorphism of representations from~$M$ to~$N$.
+	\begin{enumerate}
+		\item
+			The linear map~$f_* \colon \Der(\glie, M) \to \Der(\glie, N)$ given by~$\delta \mapsto f \circ \delta$ is a well-defined.
+		\item
+			The map~$f_*$ maps the inner derivations of~$M$ to inner derivations of~$N$.
+		\item
+			The map~$f_*$ induces a linear map from~$\OutDer(\glie, M)$ to~$\OutDer(\glie, N)$ given by~$\class{\delta} \mapsto \class{f \circ \delta}$.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			Let~$\delta$ be a derivation of~$M$.
+			Then
+			\begin{align*}
+				(f \circ \delta)([x,y])
+				&=
+				f( \delta([x,y]) )
+				\\
+				&=
+				f( x \act \delta(y) - y \act \delta(x) )
+				\\
+				&=
+				f( x \act \delta(y) ) - f( y \act \delta(x) )
+				\\
+				&=
+				x \act f( \delta(y) ) - y \act f( \delta(x) )
+				\\
+				&=
+				x \act (f \circ \delta)(y) - y \act (f \circ \delta)(x)
+			\end{align*}
+			for all~$x, y \in \glie$.
+			This shows that the composite~$f \circ \delta$ is again a derivation.
+		\item
+			For every element~$m$ of~$M$ let~$\delta_m$ denote the resulting inner derivation of~$M$.
+			Then
+			\[
+				f_*(\delta_m)(x)
+				=
+				(f \circ \delta_m)(x)
+				=
+				f( \delta_m(x) )
+				=
+				f( x \act m )
+				=
+				x \act f(m)
+				=
+				\delta_{f(m)}(x)
+			\]
+			for all~$x \in \glie$ and thus~$f_*( \delta_m ) = \delta_{f(m)}$.
+		\item
+			The linear map~$f_*$ from~$\Der(\glie, M)$ to~$\Der(\glie, N)$ maps the linear subspace~$\InnDer(\glie, M) )$ of~$\Der(\glie, M)$ into the linear subspace~$\InnDer(\glie, N)$ of~$\Der(\glie, N)$.
+			It thus induces a well-defined linear map from~$\Der(\glie, M) / {\InnDer(\glie, M)}$ to~$\Der(\glie, N) / {\InnDer(\glie, N)}$ which is given by~$\class{\delta} \mapsto \class{f_*(\delta)}$.
+			This is the desired induced map.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	It follows with the help of~\cref{functiorality of outer derivations} that we have functors
+	\[
+		\Der(\glie, \ph),
+		\,
+		\InnDer(\glie, \ph),
+		\,
+		\OutDer(\glie, \ph)
+		\colon
+		\cRep{\glie}
+		\to
+		\cVect{\kf} \,.
+	\]
+\end{remark}
+
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	We will now compute~$\Homology^1(\glie, M)$.
+	
+	As in \cref{zeroth cohomology}, we will identify~$\Chain^0(\glie, M)$ with~$M$ and~$\Chain^1(\glie, M)$ with~$\Hom_{\kf}(\glie, M)$.
+	The differential~$d^0$ is under these identifications given by the linear map
+	\[
+		d^0
+		\colon
+		M
+		\to
+		\Hom_{\kf}(\glie, M) \,,
+		\quad
+		d^1(m)(x)
+		=
+		x \act m \,.
+	\]
+	The differential~$d^1$ is under these identifications given by the linear map
+	\[
+		d^1
+		\colon
+		\Hom_{\kf}(\glie, M)
+		\to
+		\Alt^2(\glie, M) \,,
+	\]
+	given by
+	\[
+		d^1(\varphi)(x_1, x_2)
+		=
+		- \varphi( [x_1, x_2] )
+		- x_1 \act \varphi(x_2)
+		+ x_2 \act \varphi(x_1)
+	\]
+	for all~$\varphi \in \Hom_{\kf}(\glie, M)$ and~$x_1, x_2 \in \glie$.
+
+	We see from these explicit descriptions that an element~$\delta$ of~$\Hom_{\kf}(\glie, M)$ is a~\cocycle{$1$} if and only if is satisfies the identity
+	\[
+		\delta( [x_1, x_2] )
+		=
+		x_1 \act \delta(x_2) - x_2 \act \delta(x_1) \,,
+	\]
+	for all~$x_1, x_2 \in \glie$, i.e. if and only if~$\delta$ is a derivation.
+	We also see that an element~$\delta$ of~$\Hom_{\kf}(\glie, M)$ is a~\coboundary{$1$} if and only if there exists an element~$m$ of~$M$ such that
+	\[
+		\delta(x)
+		=
+		x \act m
+	\]
+	for all~$x \in \glie$, i.e. if and only if~$\delta$ is an inner derivation.
+	
+	We see from these computations that
+	\[
+		\Homology^1(\glie, M)
+		=
+		\Cycle^1(\glie, M) / {\Boundary^1(\glie, M)}
+		\cong
+		\Der(\glie, M) / {\InnDer(\glie, M)}
+		=
+		\OutDer(\glie, M) \,.
+	\]
+	The above isomorphism~$\Chain^1(\glie, M) \cong \Hom_{\kf}(\glie, M)$ is natural in~$M$, and so the induced isomorphism~$\Homology^1(\glie, M) \cong \OutDer(\glie, M)$ is again natural in~$M$.
+	We have thus shown that
+	\[
+		\Homology^1(\glie, \ph)
+		\cong
+		\OutDer(\glie, \ph) \,.
+	\]
+\end{fluff}
+
+
+\begin{example}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a trivial representation of~$\glie$.
+	A linear map~$\delta$ from~$\glie$ to~$M$ is a derivation if and only if it vanishes on the commutator~$[\glie, \glie]$.
+	The only inner derivation of~$M$ is the zero map.
+	It follows that
+	\[
+		\OutDer(\glie, M)
+		\cong
+		\Der(\glie, M)
+		\cong
+		\Hom_{\kf}( \glie / [\glie, \glie], M )
+		=
+		\Hom_{\kf}( \glie^{\ab},  M ) \,.
+	\]
+\end{example}
+
+
+
+\subsection{First Homology}
+\index{first Lie algebra homology}
+\index{Lie algebra homology!first}
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra.
+	We will compute~$\Homology_1(\glie, \kf)$, where we denote by~$\kf$ the trivial representation of~$\glie$.
+
+	We have
+	\[
+		\Chain_n(\glie, \kf)
+		=
+		\Exterior^n(\glie) \tensor \kf
+		\cong
+		\Exterior^n(\glie)
+	\]
+	for every natural number~$n$.
+	Under these identifications the differential~$d_n$ for~$n \geq 1$ is given by
+	\[
+		d_n(x_1 \wedge \dotsb \wedge x_n)
+		=
+		\sum_{1 \leq i < j \leq n}
+		(-1)^{i+j}
+		[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+	\]
+	for all~$x_1, \dotsc, x_n \in \glie$.
+
+	For the computation of~$\Homology_1(\glie, \kf)$ we also identify~$\Exterior^0(\glie)$ with~$\kf$ and identify~$\Exterior^1(\glie)$ with~$\glie$.
+	We have thus identified the chain complex~$\Chain_\bullet(\glie, \kf)$ with a chain complex of the form
+	\[
+		\dotsb
+		\to
+		\Exterior^2(\glie)
+		\xto{- [\ph, \ph]}
+		\glie
+		\xto{0}
+		\kf
+		\to
+		0
+		\to
+		0
+		\to
+		\dotsb \,,
+	\]
+	where the term~$\glie$ sits in degree~$1$.
+	We now see that
+	\[
+		\Homology_1(\glie, \kf)
+		=
+		\Cycle_1(\glie, \kf) / { \Boundary_1(\glie, \kf) }
+		\cong
+		\glie / [\glie, \glie]
+		=
+		\glie^{\ab} \,.
+		\index{abelianization}
+	\]
+\end{fluff}
+
+
+\begin{recall}
+	Let~$Y$ be a vector space.
+	To any chain complex
+	\[
+		\dotsb
+		\to
+		X_{n+1}
+		\xto{d_{n+1}}
+		X_n
+		\xto{d_n}
+		X_{n-1}
+		\to
+		\dotsb
+	\]
+	we can apply the functor~$(\ph) \tensor Y$ to get a new chain complex
+	\[
+		\dotsb
+		\to
+		X_{n+1} \tensor Y
+		\xto{d_{n+1} \tensor \id}
+		X_n \tensor Y
+		\xto{d_n \tensor \id}
+		X_{n-1} \tensor Y
+		\to
+		\dotsb
+	\]
+	This chain complex is denoted by~$X_\bullet \tensor Y$\glsadd{tensor product of chain complex and module}.
+	It holds that
+	\[
+		\Boundary_n( X_\bullet \tensor Y )
+		=
+		\im( d_{n+1} \tensor \id_Y )
+		=
+		\im( d_{n+1} ) \tensor \im( \id_Y )
+		=
+		\Boundary_n( X_\bullet ) \tensor Y
+	\]
+	for every integer~$n$, as well as
+	\[
+		\Cycle_n( X_\bullet \tensor Y )
+		=
+		\ker( d_n \tensor \id_Y )
+		=
+		\ker( d_n ) \tensor Y + X_n \tensor \ker( \id_Y )
+		=
+		\Cycle_n( X_\bullet ) \tensor Y
+	\]
+	for every integer~$n$.
+	It follows that
+	\begin{align*}
+		\Homology_n( X_\bullet \tensor Y )
+		&=
+		\Cycle_n( X_\bullet \tensor Y) / { \Boundary_n( X_\bullet \tensor Y ) }
+		\\
+		&\cong
+		\Cycle_n( X_\bullet ) \tensor Y / { \Boundary_n( X_\bullet) \tensor Y }
+		\\
+		&\cong
+		( \Cycle_n( X_\bullet ) / { \Boundary_n( X_\bullet ) } ) \tensor Y
+		\\
+		&=
+		\Homology_n( X_\bullet ) \tensor Y
+	\end{align*}
+	for every integer~$n$.
+\end{recall}
+
+
+\begin{example}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	Let~$N$ be a trivial representation of~$\glie$.
+	Then
+	\[
+		\Chain_\bullet(\glie, M \tensor N)
+		\cong
+		\Chain_\bullet(\glie, M) \tensor N
+	\]
+	and therefore
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		\Homology_n(\glie, M \tensor N)
+		&=
+		\Homology_n( \Chain_\bullet(\glie, M \tensor N) )
+		\\
+		&\cong
+		\Homology_n( \Chain_\bullet(\glie, M) \tensor N )
+		\\
+		&\cong
+		\Homology_n( \Chain_\bullet(\glie, M) ) \tensor N
+		\\
+		&\cong
+		\Homology_n(\glie, M) \tensor N \,.
+	\end{align*}
+\end{example}
+
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a trivial representation of~$\glie$.
+	Then
+	\[
+		\Homology_1(\glie, M)
+		\cong
+		\Homology_1(\glie, \kf \tensor M)
+		\cong
+		\Homology_1(\glie, \kf) \tensor M
+		\cong
+		\glie^{\ab} \tensor M \,.
+	\]
+\end{fluff}
+
+
+
+
+
+\subsection{Second Cohomology}
+\index{second Lie algebra cohomology}
+\index{Lie algebra cohomology!second}
+
+%\begin{fluff}
+%  Let~$\hlie$ be a Lie~algebra and let~$I$ be an abelian Lie~algebra.
+%  We may equivalently regard~$I$ simply as a vector space, or equivalently as a trivial representation of~$\hlie$.
+%
+%  An element~$\kappa$ of~$\Chain^2(\hlie, I) = \Alt^2(\hlie, I)$ is a cocycle if and only if it satisfies the identity
+%  \[
+%    \kappa([x_1, x_2], x_3) - \kappa([x_1, x_3], x_2) + \kappa(x_1, [x_2, x_3])
+%    =
+%    0
+%  \]
+%  for all~$x_1, x_2, x_3 \in \hlie$.
+%  We have seen in \cref{structure of central extensions} that this means that~$\kappa$ defines a central extension of~$\hlie$ by~$I$.
+%
+%  A two-coycle~$\omega$ is a coboundary if and only if there exists an element~$\varphi$ of~$\Alt^1(\hlie, I)$, i.e. of~$\Hom_{\kf}(\hlie, I)$, such that
+%  \[
+%    \omega(x_1, x_2)
+%    =
+%    -\varphi([x_1, x_2])
+%  \]
+%  for all~$x_1, x_2 \in \hlie$.
+%  It follows from \cref{structure of central extensions} that two two-coycles~$\kappa_1$ und~$\kappa_2$ define equivalent central extensions if and only if their difference~$\kappa_1 - \kappa_2$ is a two-coboundary.
+%  
+%  We find overall that~$\Homology^2(\hlie, I)$ is in {\onetoonetext} correspondence with the equivalence classes of central extensions of~$\hlie$ by~$I$.
+%\end{fluff}
+
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	Let~$\AbEx(\glie, M)$ be the corresponding class of abelian extensions of~$\glie$ as in \cref{structure of abelian extensions}.
+
+	An element~$\kappa$ of~$\Chain^2(\glie, M) = \Alt^2(\glie, M)$ is a cocycle if and only if it satisfies the identity
+	\begin{align*}
+		0
+		={}&
+		- \kappa([x_1, x_2], x_3)
+		+ \kappa([x_1, x_3], x_2)
+		- \kappa([x_2, x_3], x_1)
+		\\
+		{}&
+		+ x_1 \act \kappa(x_2, x_3)
+		- x_2 \act \kappa(x_1, x_3)
+		+ x_3 \act \kappa(x_1, x_2)
+	\end{align*}
+	for all~$x_1, x_2, x_3 \in \glie$, or equivalently
+	\begin{align*}
+		{}&
+		\kappa([x_1, x_2], x_3)
+		+ \kappa([x_2, x_3], x_1)
+		+ \kappa([x_3, x_1], x_2)
+		\\
+		={}&
+		x_1 \act \kappa(x_2, x_3)
+		+ x_2 \act \kappa(x_3, x_1)
+		+ x_3 \act \kappa(x_1, x_2)
+	\end{align*}
+	for all~$x_1, x_2, x_3 \in \glie$.
+	It follows from \cref{structure of abelian extensions} that every such~\cocycle{$2$}~$\kappa$ defines an abelian extension\index{abelian extension of Lie algebras}\index{extension of Lie algebras!abelian} of~$\glie$ contained in~$\AbEx(\glie, M)$, and that every extension in~$\AbEx(\glie, M)$ is of this form up to equivalence.
+	For a two-coycle~$\kappa$ the associated abelian extension is more explicitely given by the vector space~$\glie \oplus M$ together with the Lie bracket given by
+	\[
+		[(x, m), (y, n)]
+		=
+		( [x,y], x \act n - y \act m + \kappa(x,y) )
+	\]
+	for all~$(x,m), (y,n) \in \glie \oplus M$.
+
+	A~\cocycle{$2$}~$\omega$ is a coboundary if and only if there exists an element~$\varphi$ of~$\Alt^1(\glie, M)$, i.e a linear map~$\varphi$ from~$\glie$ to~$M$, such that
+	\[
+		\omega(x_1, x_2)
+		=
+		x_1 \act \varphi(x_2)
+		- x_2 \act \varphi(x_1)
+		- \varphi( [x_1, x_2] )
+	\]
+	for all~$x_1, x_2 \in \glie$.
+	It follows from \cref{structure of abelian extensions} that two~\cocycles{$2$}~$\kappa_1$ and~$\kappa_2$ define equivalent abelian extensions if and only if their difference~$\kappa_1 - \kappa_2$ is a~\coboundary{$2$}.
+
+	We have overall constructed a {\onetoonetext} correspondence between~$\Homology^2(\glie, M)$ and the set of equivalence classes of extensionse in~$\AbEx(\glie, M)$\glsadd{abelian extensions associated to M}.
+
+	We have also seen in \cref{each class of abelian extensions contains precisely one split extension} that the zero element of~$\Homology^2(\glie, M)$ corresponds to the unique equivalence classes of split extensions in~$\AbEx(\glie, M)$.
+\end{fluff}
+
+
+\begin{fluff}
+	As a special case of the above discussion let~$\glie$ be a Lie~algebra and let~$M$ be an abelian Lie~algebra.
+	We may regard~$M$ as a trivial representation of~$\glie$.
+	We then have a {\onetoonetext} correspondence between~$\Homology^2(\glie, M)$ and the set of equivalence classes of central extensions of~$\glie$ by~$M$.
+\end{fluff}
+
+
+
+
+
