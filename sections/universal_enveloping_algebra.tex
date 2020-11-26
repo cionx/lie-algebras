@@ -3,340 +3,348 @@
 
 
 \begin{convention}
-  For this \lcnamecref{universal enveloping algebra} we fix the following conventions.
-  
-  The field~$\kf$ is arbitrary.
-  We denote by~{\algebras{$\kf$}} the category~\algebras{$\kf$}.
-  If~$A$ is a~{\algebra{$\kf$}} then by an~\defemph{\module{$A$}}\index{module} we mean a left, unitial~{\module{$A$}}.
-  The resulting category of~{\modules{$A$}} is denoted by~$\cMod{A}$.
+	For this \lcnamecref{universal enveloping algebra} we fix the following conventions.
+	
+	The field~$\kf$ is arbitrary.
+	We denote by~$\cAlg{\kf}$\glsadd{category algebras} the category of~\algebras{$\kf$}.
+	If~$A$ is a~\algebra{$\kf$}, then by an~\defemph{\module{$A$}} we mean a left, unitial~\module{$A$}.
+	The resulting category of~\modules{$A$}\index{category!of A-modules@of $A$-modules} is denoted by~$\cMod{A}$\glsadd{category modules}.
 \end{convention}
 
-% 
-% \begin{fluff}
-%   If~$A$ and~$B$ are two~{\algebras{$\kf$}} and~$\varphi \colon A \to B$ is a homomorphism of~{\algebras{$\kf$}} then~$\varphi$ induces for every other~{\algebra{$\kf$}}~$C$ a map~$\varphi^*_C \colon \Hom_{\cAlg{\kf}}(B,C) \to \Hom_{\cAlg{\kf}}(A,C)$.
-%   These induced maps are compatible in the sense that for all~{\algebras{$\kf$}}~$C$ and~$D$ and every homomorphism of~{\algebras{$\kf$}}~$f \colon C \to D$ the following square diagram commutes:
-%   \[
-%     \begin{tikzcd}
-%       \Hom_{\cAlg{\kf}}(A,C)
-%       \arrow{r}[above]{\varphi^*_C}
-%       \arrow{d}[left]{f_*}
-%       &
-%       \Hom_{\cAlg{\kf}}(B,C)
-%       \arrow{d}[right]{f_*}
-%       \\
-%       \Hom_{\cAlg{\kf}}(A,D)
-%       \arrow{r}[below]{\varphi^*_D}
-%       &
-%       \Hom_{\cAlg{\kf}}(B,D)
-%     \end{tikzcd}
-%   \]
-%   If~$\varphi$ is an isomorphism then the induced map~$\varphi^*_C$ is for every~{\algebra{$\kf$}}~$C$ a bijection.
-%   
-%   The following \lcnamecref{yoneda lemma very weak version}, which is a weak form of Yoneda’s lemma applied to the category of~{\algebras{$\kf$}}, gives a converse to this observation.
-% \end{fluff}
-% 
-
-\begin{proposition}[Yoneda for~{\algebras{$\kf$}}]
-  \label{yoneda lemma very weak version}
-  Let~$A$ and~$B$ be two~{\algebras{$\kf$}}.
-  \begin{enumerate}
-    \item
-      Let~$\Phi$ be a homomorphism of~{\algebras{$\kf$}} from~$A$ to~$B$.
-      This homomorphism induces for every other~{\algebra{$\kf$}}~$T$ a map
-      \[
-        \Phi^*_T
-        \colon
-        \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T) \,,
-        \quad
-        \Psi
-        \mapsto
-        \Psi \circ \Phi \,.
-      \]
-      These induced maps are compatible in the sense that for any two~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$\Psi$ from~$T$ to~$U$ the following square diagram commutes.
-      \[
-        \begin{tikzcd}
-          \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{r}[above]{\Phi^*_T}
-          \arrow{d}[left]{\Psi_*}
-          &
-          \Hom_{\cAlg{\kf}}(A,T)
-          \arrow{d}[right]{\Psi_*}
-          \\
-          \Hom_{\cAlg{\kf}}(B,U)
-          \arrow{r}[below]{\Phi^*_U}
-          &
-          \Hom_{\cAlg{\kf}}(A,U)
-        \end{tikzcd}
-      \]
-      If~$\Phi$ is an isomorphism then the induced map~$\Phi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
-    \item
-      \label{natural homomorphisms}
-      Let conversely~$(\eta_T)_T$ be a family of maps
-      \[
-        \eta_T
-        \colon
-        \Hom_{\cAlg{\kf}}(B,T)
-        \to
-        \Hom_{\cAlg{\kf}}(A,T)
-      \]
-      where~$T$ runs through the class of~{\algebras{$\kf$}}, and suppose that for all~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$\Psi$ from~$T$ to~$U$ the square diagram
-      \begin{equation}
-        \label{natural square}
-        \begin{tikzcd}
-          \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{r}[above]{\eta_T}
-          \arrow{d}[left]{\Psi_*}
-          &
-          \Hom_{\cAlg{\kf}}(A,T)
-          \arrow{d}[right]{\Psi_*}
-          \\
-          \Hom_{\cAlg{\kf}}(B,U)
-          \arrow{r}[below]{\eta_U}
-          &
-          \Hom_{\cAlg{\kf}}(A,U)
-        \end{tikzcd}
-      \end{equation}
-      commutes.
-      Then there exists an algebra homomorphism~$\Phi$ from~$A$ to~$B$ such that~$\eta_T = \Phi^*_T$ for every~{\algebra{$\kf$}}~$T$.
-      This homomorphism~$\Phi$ is unique and it is given by~$\Phi = \eta_B(\id_B)$.
-    \item
-      \label{onetoone correspondence morphisms and natural trans}
-      The above constructions give a {\onetoonetext} correspondence
-      \begin{align*}
-        \left\{
-          \begin{tabular}{@{}c@{}}
-            algebra homomorphism \\
-            $\Phi \colon A \to B$
-          \end{tabular}
-        \right\}
-        &\onetoone
-        \left\{
-          \begin{tabular}{@{}c@{}}
-            families~$(\eta_T)_T$ of maps \\
-            $\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ \\
-            such that the square diagram~\eqref{natural square} commutes \\
-            for every algebra homomorphism~$f \colon T \to U$
-          \end{tabular}
-        \right\}  \,,
-      \\
-        \Phi
-        &\mapsto
-        (\Phi^*_T)_T \,,
-      \\
-        \eta_B(\id_B)
-        &\mapsfrom
-        (\eta_T)_T  \,.
-      \end{align*}
-    \item
-      If in part~\ref*{natural homomorphisms} every map~$\eta_T$ is bijective then the corresponding algebra homomorphism~$\Phi$ is bijective.
-      The {\onetoonetext} correspondence from part~\ref*{onetoone correspondence morphisms and natural trans} therefore restricts to a {\onetoonetext} correspondence.
-      \[
-        \left\{
-          \begin{tabular}{@{}c@{}}
-            algebra isomorphism \\
-            $\Phi \colon A \to B$
-          \end{tabular}
-        \right\}
-        \onetoone
-        \left\{
-          \begin{tabular}{@{}c@{}}
-            families~$(\eta_T)_T$ of bijections \\
-            $\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ \\
-            such that the square diagram~\eqref{natural square} commutes \\
-            for every algebra homomorphism~$f \colon T \to U$
-          \end{tabular}
-        \right\}  \,.
-      \]
-  \end{enumerate}
-\end{proposition}
 
 
-\begin{proof}
-  \leavevmode
-  \begin{enumerate}
-    \item
-      The maps~$\eta_T$ are well-defined because the composite of two algebra homomorphism is again an algebra homomorphism.
-      The square diagram~\eqref{natural square} commutes because
-      \[
-        \Psi_*( \Phi^*_T( \Theta ) )
-        =
-        \Psi_* (\Theta \circ \Phi)
-        =
-        \Psi \circ \Theta \circ \Phi
-        =
-        \Phi^*_U(\Psi \circ \Theta)
-        =
-        \Phi^*_U(\Psi_*(\Theta))
-      \]
-      for all~$\Theta \in \Hom_{\cAlg{\kf}}(B,T)$.
-    \item
-      Suppose first that there exists a homorphism of algebras~$\Phi$ from~$A$ to~$B$ with~$(\eta_T)_T = (\Phi^*_T)_T$.
-      Then
-      \[
-        \eta_B(\id_B)
-        =
-        \Phi^*_B(\id_B)
-        =
-        \id_B \circ \Phi
-        =
-        \Phi \,.
-      \]
-      This shows the uniqueness of~$\Phi$.
-
-      To show the existence of the desired homomorphism~$\Phi$ we set~$\Phi \defined \eta_B(\id_B)$.
-      This is an element of~$\Hom_{\cAlg{\kf}}(A,B)$, and thus a homomorphism of algebras from~$A$ to~$B$.
-      If~$T$ is any~{\algebra{$\kf$}} then it follows for every element~$\Psi$ of~$\Hom_{\cAlg{\kf}}(B,T)$ from the commutativity of the square diagram
-      \[
-        \begin{tikzcd}
-          \Hom_{\cAlg{\kf}}(B,B)
-          \arrow{r}[above]{\eta_B}
-          \arrow{d}[left]{\Psi_*}
-          &
-          \Hom_{\cAlg{\kf}}(A,B)
-          \arrow{d}[right]{\Psi_*}
-          \\
-          \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{r}[below]{\eta_T}
-          &
-          \Hom_{\cAlg{\kf}}(A,T)
-        \end{tikzcd}
-      \]
-      that
-      \[
-        \eta_T(\Psi)
-        =
-        \eta_T(\Psi \circ \id_B)
-        =
-        \eta_T(\Psi_*(\id_B))
-        =
-        \Psi_*(\eta_B(\id_B))
-        =
-        \Psi_*(\Phi)
-        =
-        \Psi \circ \Phi \,.
-      \]
-    \item
-      If~$\Phi$ is a algebra homomorphism from~$A$ to~$B$ then
-      \[
-        \Phi^*_B(\id_B)
-        =
-        \id_B \circ \Phi
-        =
-        \Phi \,.
-      \]
-      Together with part~\ref*{onetoone correspondence morphisms and natural trans} this shows that both constructions are inverse to each other.
-    \item
-      If the homomorphism~$\Phi$ is an isomorphism then the map~$\Phi^*_T$ is bijective for every~{\algebra{$\kf$}} because the two maps~$\Phi^*_T$ and~$(\Phi^{-1})^*_T$ are mutually inverse.
-
-      Suppose on the other hand that the map~$\Phi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
-      Then the family~$( (\Phi^*_T)^{-1} )_T$ makes for every algebra homomorphism~$\Psi$ from~$T$ to~$U$ the square diagram
-      \[
-        \begin{tikzcd}[column sep = large]
-          \Hom_{\cAlg{\kf}}(A,T)
-          \arrow{r}[above]{ (\Phi^*_T)^{-1} }
-          \arrow{d}[left]{\Psi_*}
-          &
-          \Hom_{\cAlg{\kf}}(B,T)
-          \arrow{d}[right]{\Psi_*}
-          \\
-          \Hom_{\cAlg{\kf}}(A,U)
-          \arrow{r}[below]{ (\Phi^*_U)^{-1} }
-          &
-          \Hom_{\cAlg{\kf}}(B,U)
-        \end{tikzcd}
-      \]
-      commute.
-      There hence exists by part~\ref*{natural homomorphisms} a (unique) algebra homomorphism~$\Theta$ from~$B$ to~$A$ for which~$(\Phi^*_T)^{-1}$ equals~$\Theta^*_T$ for every~{\algebra{$\kf$}}~$T$.
-      We find for the composition~$\Theta \circ \Phi$ that
-      \[
-        (\Theta \circ \Phi)^*_T
-        =
-        \Phi^*_T \circ \Theta^*_T
-        =
-        \Phi^*_T \circ (\Phi^*_T)^{-1}
-        =
-        \id_{\Hom_{\cAlg{\kf}}(A,T)}
-        =
-        (\id_A)^*_T
-      \]
-      for every~{\algebra{$\kf$}}~$T$.
-%       It hence follows from the commutativity of the diagram
-%       \[
-%         \begin{tikzcd}
-%           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow[bend left]{rr}[above]{\varphi^*_T \circ \psi^*_T}
-%           \arrow{r}[above]{\psi^*_T}
-%           \arrow{d}[left]{f_*}
-%           &
-%           \Hom_{\cAlg{\kf}}(B,T)
-%           \arrow{r}[above]{\varphi^*_T}
-%           \arrow{d}[left]{f_*}
-%           &
-%           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{d}[left]{f_*}
-%           \\
-%           \Hom_{\cAlg{\kf}}(A,U)
-%           \arrow{r}[above]{\psi^*_U}
-%           \arrow[bend right]{rr}[below]{\varphi^*_U \circ \psi^*_U}
-%           &
-%           \Hom_{\cAlg{\kf}}(B,U)
-%           \arrow{r}[above]{\varphi^*_U}
-%           &
-%           \Hom_{\cAlg{\kf}}(A,U)
-%         \end{tikzcd}
-%       \]
-%       that the outer square diagram
-%       \[
-%         \begin{tikzcd}[column sep = large]
-%           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{r}[above]{(\psi \circ \varphi)^*_T}
-%           \arrow{d}[left]{f_*}
-%           &
-%           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{d}[right]{f_*}
-%           \\
-%           \Hom_{\cAlg{\kf}}(A,U)
-%           \arrow{r}[below]{(\psi \circ \varphi)^*_U}
-%           &
-%           \Hom_{\cAlg{\kf}}(A,U)
-%         \end{tikzcd}
-%       \]
-%       commutes.
-%       If we replace~$\psi \circ \varphi$ in this diagram by the identity~$\id_A$ then the resulting square diagram
-%       \[
-%         \begin{tikzcd}[column sep = large]
-%           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{r}[above]{(\id_A)^*_T}
-%           \arrow{d}[left]{f_*}
-%           &
-%           \Hom_{\cAlg{\kf}}(A,T)
-%           \arrow{d}[right]{f_*}
-%           \\
-%           \Hom_{\cAlg{\kf}}(A,U)
-%           \arrow{r}[below]{(\id_A)^*_U}
-%           &
-%           \Hom_{\cAlg{\kf}}(A,U)
-%         \end{tikzcd}
-%       \]
-%       also commutes.
-      Hence~$\Theta \circ \Phi = \id_A$ by the uniqueness in part~\ref*{natural homomorphisms}.
-      We find in the same way that also~$\Phi \circ \Theta = \id_B$.
-      This shows that~$\Phi$ and~$\Theta$ are mutually inverse isomorphisms.
-    \qedhere
-  \end{enumerate}
-\end{proof}
 
 
-\begin{definition}
-  A family~$(\eta_T)_T$ of maps~$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$, where~$A$ and~$B$ are two~{\algebras{$\kf$}} and~$T$ ranges over all~{\algebras{$\kf$}}, is \defemph{natural}\index{natural} if the square diagram~\eqref{natural square} commutes for ever homomorphism of algebras~$\Psi$ from~$A$ to~$B$.
-\end{definition}
-
-
-\begin{remark}
-  \Cref{yoneda lemma very weak version} holds with the same proof for every kind of mathematical structure that has a suitable notion of homomorphisms between them, i.e.\ in every category.
-  It is then know as the \defemph{Yoneda lemma}\index{Yoneda lemma}, which is one of the most important statement in all of category theory (and mathematics).
-\end{remark}
-
+%\section{Yoneda’s Lemma for Algebras}
+%
+%
+%% \begin{fluff}
+%%   If~$A$ and~$B$ are two~{\algebras{$\kf$}} and~$\varphi \colon A \to B$ is a homomorphism of~{\algebras{$\kf$}} then~$\varphi$ induces for every other~{\algebra{$\kf$}}~$C$ a map~$\varphi^*_C \colon \Hom_{\cAlg{\kf}}(B,C) \to \Hom_{\cAlg{\kf}}(A,C)$.
+%%   These induced maps are compatible in the sense that for all~{\algebras{$\kf$}}~$C$ and~$D$ and every homomorphism of~{\algebras{$\kf$}}~$f \colon C \to D$ the following square diagram commutes:
+%%   \[
+%%     \begin{tikzcd}
+%%       \Hom_{\cAlg{\kf}}(A,C)
+%%       \arrow{r}[above]{\varphi^*_C}
+%%       \arrow{d}[left]{f_*}
+%%       &
+%%       \Hom_{\cAlg{\kf}}(B,C)
+%%       \arrow{d}[right]{f_*}
+%%       \\
+%%       \Hom_{\cAlg{\kf}}(A,D)
+%%       \arrow{r}[below]{\varphi^*_D}
+%%       &
+%%       \Hom_{\cAlg{\kf}}(B,D)
+%%     \end{tikzcd}
+%%   \]
+%%   If~$\varphi$ is an isomorphism then the induced map~$\varphi^*_C$ is for every~{\algebra{$\kf$}}~$C$ a bijection.
+%%
+%%   The following \lcnamecref{yoneda lemma very weak version}, which is a weak form of Yoneda’s lemma applied to the category of~{\algebras{$\kf$}}, gives a converse to this observation.
+%% \end{fluff}
+%
+%
+%
+%\begin{proposition}[Yoneda’s lemma for~{\algebras{$\kf$}}]
+%	\label{yoneda lemma very weak version}
+%	Let~$A$ and~$B$ be two~{\algebras{$\kf$}}.
+%	\begin{enumerate}
+%		\item
+%			Let~$\Phi$ be a homomorphism of~{\algebras{$\kf$}} from~$A$ to~$B$.
+%			This homomorphism induces for every other~{\algebra{$\kf$}}~$T$ a map
+%			\[
+%				\Phi^*_T
+%				\colon
+%				\Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T) \,,
+%				\quad
+%				\Psi
+%				\mapsto
+%				\Psi \circ \Phi \,.
+%			\]
+%			These induced maps are compatible in the sense that for any two~{\algebras{$\kf$}}~$T$ and~$U$ and every homomorphism of~{\algebras{$\kf$}}~$\Psi$ from~$T$ to~$U$ the following square diagram commutes.
+%			\[
+%				\begin{tikzcd}
+%					\Hom_{\cAlg{\kf}}(B,T)
+%					\arrow{r}[above]{\Phi^*_T}
+%					\arrow{d}[left]{\Psi_*}
+%					&
+%					\Hom_{\cAlg{\kf}}(A,T)
+%					\arrow{d}[right]{\Psi_*}
+%					\\
+%					\Hom_{\cAlg{\kf}}(B,U)
+%					\arrow{r}[below]{\Phi^*_U}
+%					&
+%					\Hom_{\cAlg{\kf}}(A,U)
+%				\end{tikzcd}
+%			\]
+%			If~$\Phi$ is an isomorphism, then the induced map~$\Phi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
+%		\item
+%			\label{natural homomorphisms}
+%			Let conversely~$(\eta_T)_T$ be a family of maps
+%			\[
+%				\eta_T
+%				\colon
+%				\Hom_{\cAlg{\kf}}(B,T)
+%				\to
+%				\Hom_{\cAlg{\kf}}(A,T)
+%			\]
+%			where~$T$ runs through the class of~{\algebras{$\kf$}}, and suppose that for any two~\algebras{$\kf$}~$T$ and~$U$ and every homomorphism of~\algebras{$\kf$}~$\Psi$ from~$T$ to~$U$ the square diagram
+%			\begin{equation}
+%				\label{natural square}
+%				\begin{tikzcd}
+%					\Hom_{\cAlg{\kf}}(B,T)
+%					\arrow{r}[above]{\eta_T}
+%					\arrow{d}[left]{\Psi_*}
+%					&
+%					\Hom_{\cAlg{\kf}}(A,T)
+%					\arrow{d}[right]{\Psi_*}
+%					\\
+%					\Hom_{\cAlg{\kf}}(B,U)
+%					\arrow{r}[below]{\eta_U}
+%					&
+%					\Hom_{\cAlg{\kf}}(A,U)
+%				\end{tikzcd}
+%			\end{equation}
+%			commutes.
+%			Then there exists an algebra homomorphism~$\Phi$ from~$A$ to~$B$ such that~$\eta_T = \Phi^*_T$ for every~{\algebra{$\kf$}}~$T$.
+%			This homomorphism~$\Phi$ is unique and given by~$\Phi = \eta_B(\id_B)$.
+%		\item
+%			\label{onetoone correspondence morphisms and natural trans}
+%			The above constructions give a {\onetoonetext} correspondence
+%			\begin{align*}
+%				\left\{
+%					\begin{tabular}{c}
+%						algebra homomorphism \\
+%						$\Phi \colon A \to B$
+%					\end{tabular}
+%				\right\}
+%				&\onetoone
+%				\left\{
+%					\begin{tabular}{c}
+%						families~$(\eta_T)_T$ of maps \\
+%						$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ \\
+%						such that the square diagram~\eqref{natural square} commutes \\
+%						for every algebra homomorphism~$f \colon T \to U$
+%					\end{tabular}
+%				\right\}  \,,
+%			\\
+%				\Phi
+%				&\mapsto
+%				(\Phi^*_T)_T \,,
+%			\\
+%				\eta_B(\id_B)
+%				&\mapsfrom
+%				(\eta_T)_T  \,.
+%			\end{align*}
+%		\item
+%			A homomorphism of algebras~$\Phi$ from~$A$ to~$B$ is an isomorphism if and only if the map~$\Phi^*_T$ is bijective for every~\algebra{$\kf$}~$T$.
+%			The {\onetoonetext} correspondence from part~\ref*{onetoone correspondence morphisms and natural trans} therefore restricts to a {\onetoonetext} correspondence.
+%			\[
+%				\left\{
+%					\begin{tabular}{c}
+%						algebra isomorphism \\
+%						$\Phi \colon A \to B$
+%					\end{tabular}
+%				\right\}
+%				\onetoone
+%				\left\{
+%					\begin{tabular}{c}
+%						families~$(\eta_T)_T$ of bijections \\
+%						$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$ \\
+%						such that the square diagram~\eqref{natural square} commutes \\
+%						for every algebra homomorphism~$f \colon T \to U$
+%					\end{tabular}
+%				\right\}  \,.
+%			\]
+%	\end{enumerate}
+%\end{proposition}
+%
+%
+%\begin{proof}
+%	\leavevmode
+%	\begin{enumerate}
+%		\item
+%			The maps~$\eta_T$ are well-defined because the composite of two homomorphisms of algebras is again a homomorphism of algebras.
+%			The square diagram~\eqref{natural square} commutes because
+%			\[
+%				\Psi_*( \Phi^*_T( \Theta ) )
+%				=
+%				\Psi_* (\Theta \circ \Phi)
+%				=
+%				\Psi \circ \Theta \circ \Phi
+%				=
+%				\Phi^*_U(\Psi \circ \Theta)
+%				=
+%				\Phi^*_U(\Psi_*(\Theta))
+%			\]
+%			for every~$\Theta \in \Hom_{\cAlg{\kf}}(B,T)$.
+%		\item
+%			Suppose first that there exists a homorphism of algebras~$\Phi$ from~$A$ to~$B$ with~$(\eta_T)_T = (\Phi^*_T)_T$.
+%			Then
+%			\[
+%				\eta_B(\id_B)
+%				=
+%				\Phi^*_B(\id_B)
+%				=
+%				\id_B \circ \Phi
+%				=
+%				\Phi \,.
+%			\]
+%			This shows the uniqueness of~$\Phi$ as well as the claimed formula for~$\Phi$.
+%
+%			To show the existence of the desired homomorphism~$\Phi$ we set~$\Phi$ to be~$\eta_B(\id_B)$.
+%			This is an element of~$\Hom_{\cAlg{\kf}}(A,B)$, and thus a homomorphism of algebras from~$A$ to~$B$.
+%			If~$T$ is any~\algebra{$\kf$}, then it follows for every element~$\Psi$ of~$\Hom_{\cAlg{\kf}}(B,T)$ from the commutativity of the square diagram
+%			\[
+%				\begin{tikzcd}
+%					\Hom_{\cAlg{\kf}}(B,B)
+%					\arrow{r}[above]{\eta_B}
+%					\arrow{d}[left]{\Psi_*}
+%					&
+%					\Hom_{\cAlg{\kf}}(A,B)
+%					\arrow{d}[right]{\Psi_*}
+%					\\
+%					\Hom_{\cAlg{\kf}}(B,T)
+%					\arrow{r}[below]{\eta_T}
+%					&
+%					\Hom_{\cAlg{\kf}}(A,T)
+%				\end{tikzcd}
+%			\]
+%			that
+%			\[
+%				\eta_T(\Psi)
+%				=
+%				\eta_T(\Psi \circ \id_B)
+%				=
+%				\eta_T(\Psi_*(\id_B))
+%				=
+%				\Psi_*(\eta_B(\id_B))
+%				=
+%				\Psi_*(\Phi)
+%				=
+%				\Psi \circ \Phi \,.
+%			\]
+%			This shows that~$\eta_T = \Phi^*_T$, as claimed.
+%		\item
+%			Let~$\Phi$ be a homomorphism of algebras from~$A$ to~$B$.
+%			Then
+%			\[
+%				\Phi^*_B(\id_B)
+%				=
+%				\id_B \circ \Phi
+%				=
+%				\Phi \,.
+%			\]
+%			Together with part~\ref*{onetoone correspondence morphisms and natural trans} this shows that the two constructions are mutually inverse.
+%		\item
+%			If the homomorphism~$\Phi$ is an isomorphism, then the map~$\Phi^*_T$ is bijective for every~{\algebra{$\kf$}} because the two maps~$\Phi^*_T$ and~$(\Phi^{-1})^*_T$ are mutually inverse.
+%
+%			Suppose on the other hand that the map~$\Phi^*_T$ is a bijection for every~{\algebra{$\kf$}}~$T$.
+%			Then the family of maps~$( (\Phi^*_T)^{-1} )_T$ makes for every homomorphism of algebras~$\Psi$ from~$T$ to~$U$ the square diagram
+%			\[
+%				\begin{tikzcd}[column sep = large]
+%					\Hom_{\cAlg{\kf}}(A,T)
+%					\arrow{r}[above]{ (\Phi^*_T)^{-1} }
+%					\arrow{d}[left]{\Psi_*}
+%					&
+%					\Hom_{\cAlg{\kf}}(B,T)
+%					\arrow{d}[right]{\Psi_*}
+%					\\
+%					\Hom_{\cAlg{\kf}}(A,U)
+%					\arrow{r}[below]{ (\Phi^*_U)^{-1} }
+%					&
+%					\Hom_{\cAlg{\kf}}(B,U)
+%				\end{tikzcd}
+%			\]
+%			commute.
+%			There hence exists by part~\ref*{natural homomorphisms} a (unique) homomorphism of algebras~$\Theta$ from~$B$ to~$A$ for which~$(\Phi^*_T)^{-1}$ equals~$\Theta^*_T$ for every~{\algebra{$\kf$}}~$T$.
+%			We find for the composite~$\Theta \circ \Phi$ that
+%			\[
+%				(\Theta \circ \Phi)^*_T
+%				=
+%				\Phi^*_T \circ \Theta^*_T
+%				=
+%				\Phi^*_T \circ (\Phi^*_T)^{-1}
+%				=
+%				\id_{\Hom_{\cAlg{\kf}}(A,T)}
+%				=
+%				(\id_A)^*_T
+%			\]
+%			for every~{\algebra{$\kf$}}~$T$.
+%%       It hence follows from the commutativity of the diagram
+%%       \[
+%%         \begin{tikzcd}
+%%           \Hom_{\cAlg{\kf}}(A,T)
+%%           \arrow[bend left]{rr}[above]{\varphi^*_T \circ \psi^*_T}
+%%           \arrow{r}[above]{\psi^*_T}
+%%           \arrow{d}[left]{f_*}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(B,T)
+%%           \arrow{r}[above]{\varphi^*_T}
+%%           \arrow{d}[left]{f_*}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(A,T)
+%%           \arrow{d}[left]{f_*}
+%%           \\
+%%           \Hom_{\cAlg{\kf}}(A,U)
+%%           \arrow{r}[above]{\psi^*_U}
+%%           \arrow[bend right]{rr}[below]{\varphi^*_U \circ \psi^*_U}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(B,U)
+%%           \arrow{r}[above]{\varphi^*_U}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(A,U)
+%%         \end{tikzcd}
+%%       \]
+%%       that the outer square diagram
+%%       \[
+%%         \begin{tikzcd}[column sep = large]
+%%           \Hom_{\cAlg{\kf}}(A,T)
+%%           \arrow{r}[above]{(\psi \circ \varphi)^*_T}
+%%           \arrow{d}[left]{f_*}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(A,T)
+%%           \arrow{d}[right]{f_*}
+%%           \\
+%%           \Hom_{\cAlg{\kf}}(A,U)
+%%           \arrow{r}[below]{(\psi \circ \varphi)^*_U}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(A,U)
+%%         \end{tikzcd}
+%%       \]
+%%       commutes.
+%%       If we replace~$\psi \circ \varphi$ in this diagram by the identity~$\id_A$ then the resulting square diagram
+%%       \[
+%%         \begin{tikzcd}[column sep = large]
+%%           \Hom_{\cAlg{\kf}}(A,T)
+%%           \arrow{r}[above]{(\id_A)^*_T}
+%%           \arrow{d}[left]{f_*}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(A,T)
+%%           \arrow{d}[right]{f_*}
+%%           \\
+%%           \Hom_{\cAlg{\kf}}(A,U)
+%%           \arrow{r}[below]{(\id_A)^*_U}
+%%           &
+%%           \Hom_{\cAlg{\kf}}(A,U)
+%%         \end{tikzcd}
+%%       \]
+%%       also commutes.
+%			Hence~$\Theta \circ \Phi = \id_A$ by the uniqueness in part~\ref*{natural homomorphisms}.
+%			We find in the same way that also~$\Phi \circ \Theta = \id_B$.
+%			This shows that~$\Phi$ and~$\Theta$ are mutually inverse isomorphisms.
+%		\qedhere
+%	\end{enumerate}
+%\end{proof}
+%
+%
+%\begin{definition}
+%	A family~$(\eta_T)_T$ of maps~$\eta_T \colon \Hom_{\cAlg{\kf}}(B,T) \to \Hom_{\cAlg{\kf}}(A,T)$, where~$A$ and~$B$ are two~{\algebras{$\kf$}} and~$T$ ranges over all~{\algebras{$\kf$}}, is \defemph{natural}\index{natural} if the square diagram~\eqref{natural square} commutes for ever homomorphism of algebras~$\Psi$ from~$A$ to~$B$.
+%\end{definition}
+%
+%
+%\begin{remark}
+%	\Cref{yoneda lemma very weak version} holds with the same proof for every kind of mathematical structure that has a suitable notion of homomorphisms between them, i.e.\ in every category.
+%	It is then know as the \defemph{Yoneda lemma}\index{Yoneda lemma}, which is one of the most important statement in all of category theory (and mathematics).
+%\end{remark}
 
 
 \input{sections/tensor_algebra_and_symmetric_algebra}
