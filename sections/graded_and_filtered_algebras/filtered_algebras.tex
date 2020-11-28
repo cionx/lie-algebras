@@ -6,7 +6,7 @@
 
 \begin{definition}
 	Let~$A$ be a~\algebra{$\kf$}.
-	A \defemph{filtration} of~$A$ is an increasing sequence
+	A \defemph{filtration}\index{filtration} of~$A$ is an increasing sequence
 	\[
 		A_{(0)}
 		\subseteq
@@ -16,8 +16,8 @@
 		\subseteq
 		\dotsb
 	\]
-	of linear subspaces~$A_{(p)}$ of~$A$ such that~$A = \bigcup_{p \geq 0} A_{(p)}$ and~$A_{(p)} A_{(q)} \subseteq A_{(p+q)}$ for all~$p, q \geq 0$, as well as~$1 \in A_{(0)}$.
-	A \defemph{filtered~\algebra{$\kf$}} is a~\algebra{$\kf$}~$A$ together with a filtration of~$A$.
+	of linear subspaces~$A_{(p)}$\glsadd{filtered part} of~$A$ such that~$A = \bigcup_{p \geq 0} A_{(p)}$ and~$A_{(p)} A_{(q)} \subseteq A_{(p+q)}$ for all~$p, q \geq 0$, as well as~$1 \in A_{(0)}$.
+	A \defemph{filtered~\algebra{$\kf$}}\index{filtered algebra} is a~\algebra{$\kf$}~$A$ together with a filtration of~$A$.
 \end{definition}
 
 
@@ -40,10 +40,10 @@
 	Let~$A$ and~$B$ be two filtered~\algebras{$\kf$}.
 	\begin{enumerate}
 		\item
-			A~\defemph{homomorphism of filtered algebras} from~$A$ to~$B$ is a homomorphism of algebras~$\Phi$ from~$A$ to~$B$ such that the image~$\Phi( A_{(p)} )$ is contained in~$B_{(p)}$ for every~$p \geq 0$.
+			A~\defemph{homomorphism of filtered algebras}\index{homomorphism!of filtered algebras} from~$A$ to~$B$ is a homomorphism of algebras~$\Phi$ from~$A$ to~$B$ such that the image~$\Phi( A_{(p)} )$ is contained in~$B_{(p)}$ for every~$p \geq 0$.
 		\item
 			Let~$\Phi$ be a homomorphism of filtered algebras from~$A$ to~$B$.
-			Then the restiction of~$\Phi$ to a linear map from~$A_{(p)}$ to~$B_{(p)}$ is denoted by~$\Phi_{(p)}$ for every~$p \geq 0$.
+			Then the restiction of~$\Phi$ to a linear map from~$A_{(p)}$ to~$B_{(p)}$ is denoted by~$\Phi_{(p)}$\glsadd{restricted homomorphism of filtered algebras} for every~$p \geq 0$.
 	\end{enumerate}
 \end{definition}
 
@@ -58,7 +58,7 @@
 			Their composite~$\Psi \circ \Phi$ is a homomorphism of filtered algebras from~$A$ to~$C$.
 	\end{enumerate}
 	These observations show that filtered~\algebras{$\kf$} together with the homomorphisms of filtered algebras between them form a category.
-	We will denote this category by~$\cfAlg{\kf}$.
+	We will denote this category by~$\cfAlg{\kf}$\glsadd{category filtered algebras}\index{category!of filtered algebras}.
 	\begin{enumerate}[resume*]
 		\item
 			Let us spell out the resulting definition of an isomorphism of filtered~\algebras{$\kf$}:
@@ -125,7 +125,7 @@
 			This construction gives us therefore a forgetful functor from~$\cgAlg{\kf}$ to~$\cfAlg{\kf}$.
 		\item 
 			Let~$A$ be a filtered algebra, let~$I$ is a two-sided ideal of~$A$ andl let~$\Pi$ be the canonical quotient homomorphism from~$A$ to~$A/I$.
-			The quotient algebra~$A/I$ inherits from~$A$ a filtration given by
+			The quotient algebra~$A/I$ inherits from~$A$ a filtration\index{quotient!of filtered algebras} given by
 			\[
 				(A/I)_{(p)}
 				\defined
@@ -147,7 +147,7 @@
 			They can hence be endowed with the resulting filtrations.
 		\item
 			Let~$\glie$ be a Lie~algebra.
-			The universal enveloping algebra~$\Univ(\glie)$ inherits from the tensor algebra~$\Tensor(\glie)$ a filtration~$\Univ(\glie) = \bigcup_{p \geq 0} \Univ(\glie)_{(p)}$.
+			The universal enveloping algebra~$\Univ(\glie)$ inherits from the tensor algebra~$\Tensor(\glie)$ a filtration~$\Univ(\glie) = \bigcup_{p \geq 0} \Univ(\glie)_{(p)}$\index{filtration!on the universal enveloping algebra}.
 			This filtration is given by
 			\[
 				\Univ(\glie)_{(p)}
@@ -187,7 +187,7 @@
 			Let us give a special case of the previous example.
 
 			Let~$G$ be a group and let~$S$ be a generating set of~$G$.
-			The \defemph{length} of an element~$g$ of~$G$ with respect to the generating set~$S$ is given by
+			The \defemph{length}\index{length} of an element~$g$ of~$G$ with respect to the generating set~$S$ is given by
 			\[
 				\ell_S(g)
 				\defined
@@ -204,7 +204,7 @@
 					\end{tabular}
 				\right\}  \,.
 			\]
-			The length function~$\ell_S$ is subadditive in the sense that
+			The length function~$\ell_S$\glsadd{length function} is subadditive in the sense that
 			\[
 				\ell_S(gh)
 				\leq
@@ -245,7 +245,7 @@
 
 \begin{definition}
 	Let~$A$ be a filtered algebra.
-	The \defemph{degree} of an element~$x$ of~$A$ is given by
+	The \defemph{degree}\index{degree} of an element~$x$ of~$A$ is given by
 	\[
 		\deg(x)
 		\defined
@@ -256,6 +256,7 @@
 		\suchthat
 			x \in A_{(p)}
 		\} \,.
+		\glsadd{degree in filtered algebra}
 	\]
 \end{definition}
 
@@ -304,7 +305,7 @@
 
 \begin{definition}
 	Let~$A$ be filtered algebra.
-	Two elements~$x$ and~$y$ ~$A$ are \defemph{equal up to smaller degree} if either~$x = y$ or~$\deg(x-y) < \deg(x), \deg(y)$.%
+	Two elements~$x$ and~$y$ of~$A$ are \defemph{equal up to smaller degree}\index{equal up to smaller degree} if either~$x = y$ or~$\deg(x-y) < \deg(x), \deg(y)$.%
 	\footnote{
 		We have to explicitely include the case~$x = y$ since we want~$0$ to be equal up to smaller degree to itself, but we don’t have~$-\infty < -\infty$.
 	}
@@ -451,9 +452,10 @@
 		\gr[p](A)
 		\defined
 		A_{(p)} / A_{(p-1)}
+		\glsadd{homogeneous part of associated graded algebra}
 	\]
 	where we use for~$p = 0$ the convention~$A_{(-1)} = 0$ from \cref{filtration conventions}.
-	We denote the residue class of an element~$x$ of~$A_{(p)}$ in~$\gr[p](A)$ by~$\fclass{x}_p$.
+	We denote the residue class of an element~$x$ of~$A_{(p)}$ in~$\gr[p](A)$ by~$\fclass{x}_p$\glsadd{graded residue class}.
 	
 	The multiplication of~$A$ restricts for all~$p, q \geq 0$ to a bilinear map
 	\[
@@ -513,6 +515,7 @@
 		\gr(A)
 		\defined
 		\bigoplus_{p \geq 0} \gr[p](A)
+		\glsadd{associated graded algebra}
 	\]
 	the partial multiplications~$\mu_{p,q}$ assemble into a single multiplication
 	\[
@@ -523,13 +526,13 @@
 		\gr(A)
 	\]
 	that makes~$\gr(A)$ into a graded~{\algebra{$\kf$}}.
-	The multiplicative neutral element of~$\gr(A)$ is given by~$\fclass{1]}_0$.
+	The multiplicative neutral element of~$\gr(A)$ is given by~$\fclass{1}_0$.
 \end{construction}
 
 
 \begin{definition}
 	Let~$A$ be a filtered~\algebra{$\kf$}.
-	The graded algebra~$\gr(A)$ resulting from~$A$ by \cref{construction of associated graded} is the \defemph{associated graded algebra} of~$A$.
+	The graded algebra~$\gr(A)$ resulting from~$A$ by \cref{construction of associated graded} is the \defemph{associated graded algebra}\index{associated graded algebra} of~$A$.
 \end{definition}
 
 
@@ -604,7 +607,7 @@
 
 \begin{definition}
 	Let~$A$ be a filtered~\algebra{$\kf$}.
-	The map~$\gamma$ from \cref{construction of canonical map from filtered to graded} is the \defemph{canonical map} from~$A$ to~$\gr(A)$.
+	The map~$\gamma$\glsadd{canonical map into associated graded algebra} from \cref{construction of canonical map from filtered to graded} is the \defemph{canonical map}\index{canonical map} from~$A$ to~$\gr(A)$.
 \end{definition}
 
 
@@ -656,6 +659,7 @@
 		\gr(A)
 		\to
 		\gr(B)  \,.
+		\label{associated graded algebra on morphisms}
 	\]
 	This map is already homomorphism of algebras because
 	\begin{align*}
@@ -683,7 +687,7 @@
 		=
 		\fclass{ 1 }_0 \,.
 	\]
-	The map~$\gr(\Phi)$ is thus a homomorphism of graded algebras.
+	The map~$\gr(\Phi)$ is thus a homomorphism of graded algebras\index{induced homomorphism!of associated graded algebras}.
 
 	It holds for every filtered~\algebra{$\kf$}~$A$ that~$\gr(\id_A) = \id_{\gr(A)}$.
 	It also holds for every homomorphism of filtered algebras~$\Phi$ from~$A$ to~$B$ and every homomorphism of filtered algebras~$\Psi$ from~$B$ to~$C$ that~$\gr(\Psi \circ \Phi) = \gr(\Psi) \circ \gr(\Phi)$.
@@ -693,7 +697,7 @@
 
 
 \begin{remark}
-	The functor~$\gr$ from~$\cfAlg{\kf}$ to~$\cgAlg{\kf}$ doesn’t seem to have any nice adjointness property.
+	As far as the author is aware, the functor~$\gr$ from~$\cfAlg{\kf}$ to~$\cgAlg{\kf}$ doesn’t seem to have any nice adjointness property.
 \end{remark}
 
 
@@ -740,11 +744,11 @@
 	Let~$A$ be a ring.
 	\begin{enumerate}
 		\item
-			An element~$x$ of~$A$ is a \defemph{left zero divisor} if there exists a nonzero element~$y$ of~$A$ with~$xy = 0$.
+			An element~$x$ of~$A$ is a \defemph{left zero divisor}\index{left zero divisor}\index{zero divisor!left} if there exists a nonzero element~$y$ of~$A$ with~$xy = 0$.
 		\item
-			An element~$x$ of~$A$ is a \defemph{right zero divisor} if there exists a nonzero element~$y$ of~$A$ with~$yx = 0$.
+			An element~$x$ of~$A$ is a \defemph{right zero divisor}\index{right zero divisor}\index{zero divisor!right} if there exists a nonzero element~$y$ of~$A$ with~$yx = 0$.
 		\item
-			An element~$x$ of~$A$ is a \defemph{zero divisor} if it is a left zero divisor or a right zero divisor.
+			An element~$x$ of~$A$ is a \defemph{zero divisor}\index{zero divisor} if it is a left zero divisor or a right zero divisor.
 	\end{enumerate}
 \end{definition}
 
@@ -854,7 +858,7 @@
 				\defined
 				\bigl( A_{(p-1)} + I \cap A_{(p)} \bigr) / A_{(p-1)} \,,
 			\]
-			and let~$\gr(I) \defined \bigoplus_{p \geq 0} \gr[p](I)$.%
+			and let~$\gr(I) \defined \bigoplus_{p \geq 0} \gr[p](I)$\glsadd{induced homogeneous ideal}\index{associated graded ideal}.%
 			\footnote{
 				The term~$(A_{(p-1)} + I) \cap A_{(p)} = A_{(p-1)} + (I \cap A_{(p)})$ does not depend on the choice of parenthesization because the lattice of linear subspaces of~$A$ is modular.
 			}
@@ -866,6 +870,7 @@
 		\item
 			The mapping
 			\begin{align*}
+				\SwapAboveDisplaySkip
 				\{ \text{ideals in~$A$} \}
 				&\to
 				\{ \text{homogeneous ideals in~$\gr(A)$} \}  \,,
@@ -991,7 +996,7 @@
 \begin{corollary}
 	\label{universal enveloping reflects chain conditions}
 	Let~$A$ be a filtered~\algebra{$\kf$}.
-	If the associated graded algebra~$\gr(A)$ is left noetherian, right noetherian, left artinian or right artinian, then the same property holds for~$A$.
+	If the associated graded algebra~$\gr(A)$ is left noetherian, right noetherian, left artinian or right artinian, then the same property holds for~$A$.\index{noetherian}\index{artinian}
 \end{corollary}
 
 
@@ -1012,8 +1017,8 @@
 			One may think about the associated element~$\fclass{a}_{\deg(a)}$ of~$\gr(A)$ as the \enquote{leading term of~$a$}.
 			We note that if~$A$ is already a graded~{\algebra{$\kf$}} then under the identification of~$\gr(A)$ with~$A$ the element~$\fclass{a}_{\deg(a)}$ is precisely the leading term of~$a$ in the usual sense.
 			
-			In view of this interpretation of~$\fclass{a}_{\deg(a)}$ one might compare the proof of part~\ref{pulling back generating set from graded ideal} of \cref{associated graded ideals} to the proof of Hilbert’s basis theorem.
-			One may also compare the associated graded ideal~$\gr(I)$ to the \enquote{ideal of leading coefficients} as considered in the theory of Gröbner bases.
+			In view of this interpretation of~$\fclass{a}_{\deg(a)}$ one might compare the proof of part~\ref{pulling back generating set from graded ideal} of \cref{associated graded ideals} to the proof of Hilbert’s basis theorem\index{Hilbert’s basis theorem}.
+			One may also compare the associated graded ideal~$\gr(I)$ to the \enquote{ideal of leading coefficients} as considered in the theory of Gröbner bases\index{Gröbner basis}.
 		\item
 			Let~$A$ be a filtered~\algebra{$\kf$} and let~$I$ be an ideal of~$A$.
 			Then~$I$ inherits from~$A$ a filtration given by~$I_{(p)} = I \cap A_{(p)}$ for all~$p \geq 0$.

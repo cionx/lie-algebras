@@ -4,7 +4,7 @@
 \begin{definition}
 	\label{definition of graded algebras}
 	Let~$A$ be a~\algebra{$\kf$}.
-	A \defemph{grading} or \defemph{gradation} of~$A$ is a direct sum decomposition
+	A \defemph{grading}\index{grading} or \defemph{gradation}\index{gradation} of~$A$ is a direct sum decomposition
 	\[
 		A
 		=
@@ -17,7 +17,8 @@
 		A_{p+q}
 	\]
 	for all~$p, q \geq 0$.
-	A \defemph{graded~\algebra{$\kf$}} is a~\algebra{$\kf$}~$A$ together with a grading~$A = \bigoplus_{p \geq 0} A_p$.
+	A \defemph{graded~\algebra{$\kf$}}\index{graded algebra} is a~\algebra{$\kf$}~$A$ together with a grading~$A = \bigoplus_{p \geq 0} A_p$.
+	The direct summand~$A_p$\glsadd{homogeneous part} is the~\howmanyth{$p$} \defemph{homogeneous part}\index{homogeneous!part} of~$A$.
 \end{definition}
 
 
@@ -28,7 +29,7 @@
 
 \begin{remark}
 	Let~$(S, +)$ be an abelian monoid.
-	An~\defemph{\grading{$S$}} of a~\algebra{$\kf$}~$A$ is a direct sum decomposition
+	An~\defemph{\grading{$S$}}\index{grading} of a~\algebra{$\kf$}~$A$ is a direct sum decomposition
 	\[
 		A
 		=
@@ -42,7 +43,7 @@
 		A_{s + t}
 	\]
 	for all~$s, t \in S$.
-	An~\defemph{\graded{$S$}}~\algebra{$\kf$} is a~\algebra{$\kf$}~$A$ together with an~\grading{$S$}~$A = \bigoplus_{s \in S} A_s$.
+	An~\defemph{\graded{$S$}~\algebra{$\kf$}}\index{graded algebra} is a~\algebra{$\kf$}~$A$ together with an~\grading{$S$}~$A = \bigoplus_{s \in S} A_s$.
 
 	We see now that a graded~\algebra{$\kf$} in the sense of \cref{definition of graded algebras} is the special case of an~\graded{$\Natural$}~\algebra{$\kf$}.
 	We will restrict our attention troughout these notes to~{\gradings{$\Natural$}}, and refer to the excellent \cite[II.{\S}11, III.{\S}3]{bourbaki_algebra_1} for more general gradings.
@@ -53,10 +54,10 @@
 	Let~$A$ be a graded~{\algebra{$\kf$}} with grading~$A = \bigoplus_{p \geq 0} A_p$.
 	\begin{enumerate}
 		\item
-			An element~$x$ of~$A$ is \defemph{homogeneous} of \defemph{degree}~$p$ if~$x$ is contained in the direct summand~$A_p$.
+			An element~$x$ of~$A$ is \defemph{homogeneous}\index{homogeneous!element} of \defemph{degree}~$p$ if~$x$ is contained in the direct summand~$A_p$.
 		\item
 			Let~$x$ be an element of~$A$ and let~$x = \sum_{p \geq 0} x_p$ be the decomposition of~$x$ with respect to the grading~$A = \bigoplus_{p \geq 0} A_p$.
-			The summands~$x_p$ are the~\defemph{homogeneous components} of~$x$, and the decomposition~$x = \sum_{p \geq 0} x_p$ is the~\defemph{homogeneous decomposition} of~$x$.
+			The summands~$x_p$ are the~\defemph{homogeneous components}\index{homogeneous!component} of~$x$, and the decomposition~$x = \sum_{p \geq 0} x_p$\glsadd{homogeneous summand} is the~\defemph{homogeneous decomposition}\index{homogeneous!decomposition} of~$x$.
 	\end{enumerate}
 \end{definition}
 
@@ -162,7 +163,7 @@
 			Similarly, both the symmetric algebra~$\Symm(V)$ and the exterior algebra~$\Exterior(V)$ have gradings given by~$\Symm(V)_p = \Symm^p(V)$ and~$\Exterior(V)_p = \Exterior^p(V)$ for every~$p \geq 0$.
 		\item
 			Let~$M$ be a multiplicative monoid and let~$M = \coprod_{p \geq 0} M_p$ be a grading of~$M$, i.e. a disjoint decomposition of~$M$ into subsets~$M_p$ with~$p \geq 0$ such that~$M_p \cdot M_q \subseteq M_{p+q}$ for all~$p, q \geq 0$.
-			The monoid algebra~$\kf[M]$ inhericts a grading from~$M$ via
+			The monoid algebra~$\kf[M]$\index{monoid algebra} inhericts a grading from~$M$ via
 			\[
 				\kf[M]_p
 				\defined
@@ -207,7 +208,7 @@
 
 \begin{convention}
 	Let~$V$ be a vector space.
-	We will always regard the tensor algebra~$\Tensor(V)$, the symmetric algebra~$\Symm(V)$, and the exterior algebra~$\Exterior(V)$ is graded algebras, as explained above.
+	We will always regard the tensor algebra~$\Tensor(V)$\glsadd{tensor algebra}\index{tensor algebra}\index{grading!on the tensor algebra}, the symmetric algebra~$\Symm(V)$\glsadd{symmetric algebra}\index{symmetric algebra}\index{grading!on the symmetric algebra}, and the exterior algebra~$\Exterior(V)$\glsadd{exterior algebra}\index{exterior algebra}\index{grading!on the exterior algebra} is graded algebras, as explained above.
 	For every index set~$I$ we will regard the commutative polynomial algebra~$\kf[ x_i \suchthat i \in I]$ and the noncommutative polynomial algebra~$\kf\gen{ x_i \suchthat i \in I}$ as graded~\algebras{$\kf$} such that each variable~$x_i$ is homogeneous of degree~$1$.
 \end{convention}
 
@@ -279,10 +280,10 @@
 	Let~$A$ and~$B$ be two graded~\algebras{$\kf$}.
 	\begin{enumerate}
 		\item
-			A \defemph{homomorphism of graded~\algebras{$\kf$}} from~$A$ to~$B$ is a homomorphism of~\algebras{$\kf$}~$\Phi$ from~$A$ to~$B$ such that the image~$\Phi(A_p)$ is contained in the homogeneous part~$B_p$ for every~$p \geq 0$.
+			A \defemph{homomorphism of graded~\algebras{$\kf$}}\index{homomorphism!of graded algebras} from~$A$ to~$B$ is a homomorphism of~\algebras{$\kf$}~$\Phi$ from~$A$ to~$B$ such that the image~$\Phi(A_p)$ is contained in the homogeneous part~$B_p$ for every~$p \geq 0$.
 		\item
 			Let~$\Phi$ be a homomorphism of graded algebras from~$A$ to~$B$.
-			The restriction of~$\Phi$ to a linear map from~$A_p$ to~$B_p$ is denoted by~$\Phi_p$ for every~$p \geq 0$.
+			The restriction of~$\Phi$ to a linear map from~$A_p$ to~$B_p$ is denoted by~$\Phi_p$\glsadd{restricted homomorphism of graded algebras} for every~$p \geq 0$.
 	\end{enumerate}
 \end{definition}
 
@@ -300,13 +301,13 @@
 					Their composite~$\Psi \circ \Phi$ is a homomorphism of graded algebras from~$A$ to~$C$.
 			\end{enumerate}
 			It follows from these observations that the graded~\algebras{$\kf$} together with the homomorphisms of graded~\algebras{$\kf$} between them form a category.
-			We will denote this category by~$\cgAlg{\kf}$.
+			We will denote this category by~$\cgAlg{\kf}$\glsadd{category graded algebras}\index{category!of graded algebras}.
 		\item
 			Let~$\Phi$ be a homomorphism of graded~\algebras{$\kf$} from~$A$ to~$B$.
 			The following conditions on the homomorphism~$\Phi$ are equivalent.
 			\begin{equivalenceslist}
 				\item
-					The homomorphism~$\Phi$ is an isomorphism of graded~{\algebras{$\kf$}}, i.e.\ there exists a homomorphism of graded algebras~$\Psi$ from~$B$ to~$A$ such that~$\Psi \circ \Phi = \id_A$ and~$\Phi \circ \Psi = \id_B$.
+					The homomorphism~$\Phi$ is an isomorphism\index{isomorphism!of graded algebras} of graded~{\algebras{$\kf$}}, i.e.\ there exists a homomorphism of graded algebras~$\Psi$ from~$B$ to~$A$ such that~$\Psi \circ \Phi = \id_A$ and~$\Phi \circ \Psi = \id_B$.
 				\item
 					The homomorphism~$\Phi$ is bijective.
 				\item
@@ -443,7 +444,7 @@
 
 \begin{definition}
 	Let~$A$ be a graded~\algebra{$\kf$}.
-	An ideal~$I$ of~$A$ (of any kind) is \defemph{homogeneous} if it satisfies the equivalent conditions from \cref{characterizations of homogeneous ideals}.
+	An ideal~$I$ of~$A$ (of any kind) is \defemph{homogeneous}\index{homogeneous ideal} if it satisfies the equivalent conditions from \cref{characterizations of homogeneous ideals}.
 	If~$I$ is a homogeneous ideal of~$A$, then the intersection~$I \cap A_p$ is denoted by~$I_p$ for every~$p \geq 0$.
 \end{definition}
 
@@ -455,6 +456,7 @@
 
 
 \begin{proposition}
+	\label{construction of quotients of graded algebras}
 	Let~$A$ be a graded~\algebra{$\kf$} and let~$I$ be a two-sided homogeneous ideal of~$A$.
 	Let~$\Pi$ be the quotient homomorphism of algebras from~$A$ to~$A/I$.
 	\begin{enumerate}
@@ -517,6 +519,12 @@
 		\qedhere
 	\end{enumerate}
 \end{proof}
+
+
+\begin{definition}
+	Let~$A$ be a graded~\algebra{$\kf$} and let~$I$ be a homogeneous ideal of~$A$.
+	The quotient algebra~$A/I$ together with the induced grading from \cref{construction of quotients of graded algebras} is the \defemph{quotient graded algebra}\index{quotient!of graded Lie algebras} of~$A$ by~$I$.
+\end{definition}
 
 
 \begin{examples}
