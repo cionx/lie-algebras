@@ -7,27 +7,27 @@
 \begin{definition}
 	\label{definition of derivations}
 	\index{derivation!of an algebra@of an~\enquote{algebras}}
-	Let~$A$ be a~\enquote{\algebra{$\kf$}}.
-	A \defemph{derivation} of~$A$ is a~{\linear{$\kf$}} map~$\delta$ from~$A$ to~$A$ such that
+	Let~$\Aalg$ be a~\enquote{\algebra{$\kf$}}.
+	A \defemph{derivation} of~$\Aalg$ is a~\linear{$\kf$} map~$\delta$ from~$\Aalg$ to~$\Aalg$ such that
 	\[
 		\delta(ab)
 		=
 		\delta(a) b + a \delta(b)
 		\qquad
-		\text{for all~$a, b \in A$.}
+		\text{for all~$a, b \in \Aalg$.}
 	\]
-	The set of derivations of~$A$ is denoted by
+	The set of derivations of~$\Aalg$ is denoted by
 	\[
-		\Der(A)
+		\Der(\Aalg)
 		\defined
 		\{
 			\delta
 			\colon
-			A
+			\Aalg
 			\textstyle\to
-			A
+			\Aalg
 		\suchthat
-			\text{$\delta$ is a derivation of~$A$}
+			\text{$\delta$ is a derivation of~$\Aalg$}
 		\}  \,.
 		\glsadd{derivations}
 	\]
@@ -35,19 +35,19 @@
 
 
 \begin{proposition}
-	Let~$A$ be a~\enquote{\algebra{$\kf$}}.
-	The set~$\Der(A)$ is a Lie~subalgebra of~$\gllie(A)$.
+	Let~$\Aalg$ be a~\enquote{\algebra{$\kf$}}.
+	The set~$\Der(\Aalg)$ is a Lie~subalgebra of~$\gllie(\Aalg)$.
 \end{proposition}
 
 
 \begin{proof}
-	For any two element~$a$,~$b$ of~$A$, the auxiliary map
+	For any two element~$a$,~$b$ of~$\Aalg$, the auxiliary map
 	\[
 		h_{ab}
 		\colon
-		\gllie(A)
+		\gllie(\Aalg)
 		\to
-		A \,,
+		\Aalg \,,
 		\quad
 		\delta
 		\mapsto
@@ -56,13 +56,13 @@
 	is linear.
 	It follows that
 	\[
-		\Der(A)
+		\Der(\Aalg)
 		=
-		\bigcap_{a, b \in A}
+		\bigcap_{a, b \in \Aalg}
 		\ker( h_{ab} )
 	\]
-	is a linear subspace of~$\gllie(A)$.
-	If~$\delta_1$ and~$\delta_2$ are any two derivations of~$A$, then
+	is a linear subspace of~$\gllie(\Aalg)$.
+	If~$\delta_1$ and~$\delta_2$ are any two derivations of~$\Aalg$, then
 	\[
 		\delta_1( \delta_2(ab) )
 		=
@@ -71,7 +71,7 @@
 		\delta_1(\delta_2(a)) + \delta_2(a) \delta_1(b)
 		+ \delta_1(a) \delta_2(b) + a \delta_1( \delta_2(b) )
 	\]
-	for all~$a, b \in A$, and therefore
+	for all~$a, b \in \Aalg$, and therefore
 	\begin{align*}
 		[\delta_1, \delta_2](ab)
 		&=
@@ -91,8 +91,8 @@
 		&=
 		[\delta_1, \delta_2](a) b + a [\delta_1, \delta_2](b) \,.
 	\end{align*}
-	This shows that the commutator~$[\delta_1, \delta_2]$ of any two derivations~$\delta_1$ and~$\delta_2$ of~$A$ is again such a derivation.
-	This means that the linear subspace~$\Der(A)$ of~$\gllie(A)$ is indeed a Lie~subalgebra.
+	This shows that the commutator~$[\delta_1, \delta_2]$ of any two derivations~$\delta_1$ and~$\delta_2$ of~$\Aalg$ is again such a derivation.
+	This means that the linear subspace~$\Der(\Aalg)$ of~$\gllie(\Aalg)$ is indeed a Lie~subalgebra.
 \end{proof}
 
 
@@ -546,13 +546,13 @@
 
 \begin{lemma}
 	\label{about the kernel of a derivation}
-	Let~$A$ be an~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$A$.
+	Let~$\Aalg$ be an~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$\Aalg$.
 	\begin{enumerate}
 		\item
-			If~$A$ is unital, then~$\delta(1) = 0$.
+			If~$\Aalg$ is unital, then~$\delta(1) = 0$.
 		\item
-			The set~$A' \defined \{ a \in A \suchthat \delta(a) = 0 \}$ is a subalgebra of~$A$.
-			If~$A$ is unital, then~$A'$ is a unital subalgebra in the sense that~$1 \in A'$.
+			The set~$\Aalg' \defined \{ a \in A \suchthat \delta(a) = 0 \}$ is a subalgebra of~$\Aalg$.
+			If~$\Aalg$ is unital, then~$\Aalg'$ is a unital subalgebra in the sense that~$1$ is contained in~$\Aalg'$.
 	\end{enumerate}
 \end{lemma}
 
@@ -1042,7 +1042,7 @@
 
 
 \begin{lemma}
-	Let~$A$ be a~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$A$.
+	Let~$\Aalg$ be a~\enquote{\algebra{$\kf$}} and let~$\delta$ be a derivation of~$\Aalg$.
 	Then
 	\[
 		\delta^n(ab)
@@ -1051,7 +1051,7 @@
 		\binom{n}{k}
 		\delta^k(a) \delta^{n-k}(b)
 		\qquad
-		\text{for all~$n \in \Natural$,~$a, b \in A$.}
+		\text{for all~$n \geq 0$ and~$a, b \in \Aalg$.}
 	\]
 \end{lemma}
 
@@ -1151,7 +1151,7 @@
 		\delta^k(a) \delta^{n+1-k}(b)
 	\end{align*}
 	\endgroup
-	for all~$a, b \in A$.
+	for all~$a, b \in \Aalg$.
 \end{proof}
 
 
@@ -1160,22 +1160,22 @@
 	\[
 		m
 		\colon
-		A \tensor A
+		\Aalg \tensor \Aalg
 		\to
-		A \,,
+		\Aalg \,,
 		\quad
 		a \tensor b
 		\mapsto
 		ab
 	\]
-	be the multiplication map of~$A$.
-	That~$\delta$ is a derivation of~$A$ means that
+	be the multiplication map of~$\Aalg$.
+	That~$\delta$ is a derivation of~$\Aalg$ means that
 	\[
 		\delta \circ m
 		=
 		m \circ (\delta \tensor \id + \id \tensor \delta) \,.
 	\]
-	The endomorphism~$\delta \tensor \id$ and~$\id \tensor \delta$ of~$A \tensor A$ commute.
+	The endomorphism~$\delta \tensor \id$ and~$\id \tensor \delta$ of~$\Aalg \tensor \Aalg$ commute.
 	It follows inductively that
 	\begin{align*}
 		\delta^n \circ m
@@ -1204,20 +1204,20 @@
 		=
 		\sum_{k=0}^n \binom{n}{k} \delta^k(a) \delta^{n-k}(b)
 	\]
-	for all~$a, b \in A$.
+	for all~$a, b \in \Aalg$.
 \end{proof}
 
 
 \begin{proposition}
 	\label{exponential of derivation is automorphism}
-	Let~$A$ be a~\enquote{\algebra{$\kf$}} where~$\kf$ is a field of characteristic zero and let~$\delta$ be a nilpotent derivation of~$A$.
-	Then~$\exp(\delta)$ is an algebra automorphism of~$A$.
+	Let~$\Aalg$ be a~\enquote{\algebra{$\kf$}} where~$\kf$ is a field of characteristic zero and let~$\delta$ be a nilpotent derivation of~$\Aalg$.
+	Then~$\exp(\delta)$ is an algebra automorphism of~$\Aalg$.
 \end{proposition}
 
 
 \begin{proof}
 	Let~$\alpha$ be~$\exp(\delta)$.
-	We have for any two element~$a$,~$b$ of~$A$ that
+	We have for any two element~$a$,~$b$ of~$\Aalg$ that
 	\begingroup
 	\allowdisplaybreaks
 	\begin{align*}

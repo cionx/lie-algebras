@@ -92,8 +92,8 @@
 	\leavevmode
 	\begin{enumerate}
 		\item
-			A~\defemph{\enquote{\algebra{$\kf$}}}\index{algebra@\enquote{algebra}} is a~\vectorspace{$\kf$}~$A$ together with a bilinear map~$A \times A \to A$.
-			This map is the \defemph{multiplication} of~$A$.
+			A~\defemph{\enquote{\algebra{$\kf$}}}\index{algebra@\enquote{algebra}} is a~\vectorspace{$\kf$}~$\Aalg$ together with a bilinear map~$\Aalg \times \Aalg \to \Aalg$.
+			This map is the \defemph{multiplication} of~$\Aalg$.
 		\item
 			A~\defemph{\algebra{$\kf$}}\index{algebra} is an~\enquote{\algebra{$\kf$}} that is both associative and unital.
 	\end{enumerate}
@@ -167,7 +167,7 @@
 			\footnote{
 				Named after Werner Heisenberg\index{Heisenberg, Werner}\index{Werner Heisenberg} (1901--1976).
 			}%
-			~$\heisenberglie$\glsadd{heisenberg lie algebra}\index{Heisenberg Lie algebra} consists of the~\dimensional{$(2n+1)$}~{\vectorspace{$\kf$}} with basis
+			~$\heisenberglie(n, \kf)$\glsadd{heisenberg lie algebra}\index{Heisenberg Lie algebra} consists of the~\dimensional{$(2n+1)$}~{\vectorspace{$\kf$}} with basis
 			\[
 				p_1 \,, \dotsc \,, p_n \,,
 				\quad
@@ -192,31 +192,31 @@
 
 
 \begin{remark}[Pre-Lie~algebras]
-	Let~$A$ be an~\enquote{\algebra{$\kf$}}.
-	Even if we don’t require the multiplication of~$A$ to be associative, we can still define a bilinear bracket~$[\ph, \ph]$ on~$A$ via
+	Let~$\Aalg$ be an~\enquote{\algebra{$\kf$}}.
+	Even if we don’t require the multiplication of~$\Aalg$ to be associative, we can still define a bilinear bracket~$[\ph, \ph]$ on~$\Aalg$ via
 	\[
 		[a,b]
 		\defined
 		ab-ba
 		\qquad
-		\text{for all~$a, b \in A$.}
+		\text{for all~$a, b \in \Aalg$.}
 	\]
 	This bracket~$[\ph, \ph]$ is alternating.
-	We have seen in \cref{examples for lie algebras} that it satisfies the Jacobi~identity if the multiplication of~$A$ is associative, and is then a Lie~bracket.
+	We have seen in \cref{examples for lie algebras} that this bracket satisfies the Jacobi~identity if the multiplication of~$\Aalg$ is associative, and that this bracket is then a Lie~bracket.
 	But the converse does not hold true:
-	it may happen that~$[\ph, \ph]$ is a Lie~bracket even though~$A$ is not associative.
+	it may happen that~$[\ph, \ph]$ is a Lie~bracket even though~$\Aalg$ is not associative.
 	
 	One important example of this are \defemph{pre-Lie~algebras}\index{pre-Lie algebra}:
-	We say that~$A$ is a pre-Lie~algebra if its multiplication satisfies the condition
+	We say that~$\Aalg$ is a pre-Lie~algebra if its multiplication satisfies the condition
 	\begin{equation}
 		\label{abstract equation for pre-lie algebra}
 		[l_a, l_b]
 		=
 		l_{[a,b]}
 		\qquad
-		\text{for all~$a, b \in A$,}
+		\text{for all~$a, b \in \Aalg$,}
 	\end{equation}
-	where the left hand side is the endomorphism commutator~$[l_a, l_b] = l_a l_b - l_b l_a$, and where we denote for every element~$a$ of~$A$ by~$l_a$ the left multiplication with~$a$, i.e. the map
+	where the left hand side is the endomorphism commutator~$[l_a, l_b] = l_a l_b - l_b l_a$, and where we denote for every element~$a$ of~$\Aalg$ by~$l_a$ the left multiplication with~$a$, i.e. the map
 	\[
 		l_a
 		\colon
@@ -236,17 +236,17 @@
 		(ab-ba)c
 		&
 		\qquad
-		&\text{for all~$a, b, c \in A$,}
+		&\text{for all~$a, b, c \in \Aalg$,}
 	\intertext{or equivalently the condition}
 		a(bc) - (ab)c
 		&=
 		b(ac) - (ba)c
 		&
 		\qquad
-		&\text{for all~$a, b, c \in A$.}
+		&\text{for all~$a, b, c \in \Aalg$.}
 		\notag
 	\end{alignat}
-	If~$A$ is a pre-Lie~algebra, then the resulting commutator bracket~$[\ph, \ph]$ on~$A$ is still a Lie~bracket, even if~$A$ itself is not associative.
+	If~$\Aalg$ is a pre-Lie~algebra, then the resulting commutator bracket~$[\ph, \ph]$ on~$\Aalg$ is still a Lie~bracket, even if~$\Aalg$ itself is not associative.
 	Indeed, the bracket~$[\ph, \ph]$ is alternating and it follows from the characterization~\eqref{pre lie algebra condition written out} of a pre-Lie~algebra that it also satisfies the Jacobi~identity, because
 	\begin{align*}
 		{}&
@@ -279,7 +279,7 @@
 		={}&
 		0
 	\end{align*}
-	for all~$a, b, c \in A$.
+	for all~$a, b, c \in \Aalg$.
 
 	Every associative \enquote{algebra} is in particular a pre-Lie~algebra, and thus we see that the Lie~algebra structure on an associative \enquote{algebra} actually comes from its pre-Lie~algebra structure.
 	The situation is hence as follows:
@@ -840,8 +840,8 @@
 	\leavevmode
 	\begin{enumerate}
 		\item
-			Let~$\heisenberglie$ be the Heisenberg Lie~algebra from \cref{examples for lie algebras}.
-			The commutator ideal of~$\heisenberglie$ is one-dimensional and spanned by the basis element~$c$.
+			Let~$\heisenberglie(n, \kf)$ be the Heisenberg Lie~algebra from \cref{examples for lie algebras}.
+			The commutator ideal of~$\heisenberglie(n, \kf)$ is one-dimensional and spanned by the basis element~$c$.
 		\item
 			The commutator ideal of the general linear Lie~algebra~$\gllie(n, \kf)$ is the special linear Lie~algebra~$\sllie(n, \kf)$\index{special linear Lie algebra}.
 			Indeed, we have for any two matrices~$A$ and~$B$ in~$\gllie(n, \kf)$ that
