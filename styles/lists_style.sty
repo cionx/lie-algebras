@@ -136,14 +136,37 @@
 \newcommand{\addperiod}[1]{#1.}
 \newcommand{\dotlabel}[1]{\normalfont #1.}
 
-
-
 % shortcuts for implicationslist
 
 \newcommand{\textimp}[2]{\ref{#1}~$\implies$~\ref{#2}}
 \newcommand{\textiff}[2]{\ref{#1}~$\iff$~\ref{#2}}
 \newcommand{\impitem}[2]{\item[\textimp{#1}{#2}]}
 \newcommand{\iffitem}[2]{\item[\textiff{#1}{#2}]}
+
+
+
+% list for case distinctions
+
+\newlist{casedistinction}{enumerate}{2}
+
+\setlist[casedistinction, 1]{
+	wide          = 0pt,
+	leftmargin    = *,
+	listparindent = \parindent,
+	parsep        = 0pt,
+	label         = {\bfseries Case~\arabic*.},
+	ref           = {\arabic*}
+}
+
+\setlist[casedistinction, 2]{
+	wide          = 0pt,
+	ref           = {\arabic*},
+	label         = {\bfseries Case~\arabic{casedistinctioni}.\alph*.},
+	ref           = {\arabic*}
+}
+
+\crefname{casedistinctioni}{Case}{Cases}
+\Crefname{casedistinctioni}{Case}{Cases}
 
 
 
