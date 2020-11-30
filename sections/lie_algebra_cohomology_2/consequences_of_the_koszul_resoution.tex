@@ -1,0 +1,649 @@
+\section{Consequences of the Koszul Resolution}
+
+
+\begin{fluff}
+	With help of the Koszul complex we can now give an alternative description of Lie algebra homology and Lie algebra cohomology.
+\end{fluff}
+
+
+\begin{construction}
+	\label{lie algebra homology and cohomology via koszul complex}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	\begin{enumerate}
+		\item
+			Let
+			\[
+				\dotsb
+				\to
+				\Exterior^2(\glie) \otimes_{\kf} \Univ(\glie)
+				\xto{d_2}
+				\glie \otimes_{\kf} \Univ(\glie)
+				\xto{d_1}
+				\Univ(\glie)
+				\xto{\varepsilon}
+				\kf
+				\to
+				0
+			\]
+			be the right Koszul resolution of~$\glie$.
+			By removing the term~$\kf$ from this resolution we get the chain complex
+			\begin{equation}
+				\label{shortened right koszul resolution}
+				\dotsb
+				\to
+				\Exterior^2(\glie) \otimes_{\kf} \Univ(\glie)
+				\xto{d_2}
+				\glie \otimes_{\kf} \Univ(\glie)
+				\xto{d_1}
+				\Univ(\glie)
+				\to
+				0 \,.
+			\end{equation}
+			We can then apply the functor~$(\ph) \otimes_{\Univ(\glie)} M$ to~\eqref{shortened right koszul resolution} to get a new chain complex given by
+			\[
+				\dotsb
+				\to
+				\Exterior^2(\glie) \otimes_{\kf} \Univ(\glie) \otimes_{\Univ(\glie)} M
+				\xto{\! d_2 \otimes \id \!}
+				\glie \otimes_{\kf} \Univ(\glie) \otimes_{\Univ(\glie)} M
+				\xto{\! d_1 \otimes \id\! }
+				\Univ(\glie) \otimes_{\Univ(\glie)} M
+				\to
+				0
+			\]
+			The differentials of this chain complex are given by
+			\begin{align*}
+				{}&
+				(d_n \otimes \id)(x_1 \wedge \dotsb \wedge x_n \otimes y \otimes m)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i+j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+				\otimes y \otimes m
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \otimes (x_i y) \otimes m \,.
+			\end{align*}
+			We can simplify this chain complex by using the isomorphism
+			\begin{equation}
+				\label{isomorphism for triple tensor product}
+				\Exterior^n(\glie) \otimes_{\kf} \Univ(\glie) \otimes_{\Univ(\glie)} M
+				\cong
+				\Exterior^n(\glie) \otimes_{\kf} M
+			\end{equation}
+			that is given by
+			\[
+				t \otimes y \otimes m
+				\mapsto
+				t \otimes (y \cdot m)
+			\]
+			for all~$t \in \Exterior^n(\glie)$,~$y \in \Univ(\glie)$,~$m \in M$.
+			We thus arrive at a chain complex
+			\[
+				\dotsb
+				\to
+				\Exterior^2(\glie) \otimes_{\kf} M
+				\xto{\del_2}
+				\glie \otimes_{\kf} M
+				\xto{\del_1}
+				M
+				\to
+				0 \,.
+			\]
+			To compute the differentials for this chain complex we take the above formula for~$d_n \otimes \id$, apply the isomorphism~\eqref{isomorphism for triple tensor product}, and then set~$y  = 1$.
+			We find that
+			\begin{align*}
+				{}&
+				\del_n(x_1 \wedge \dotsb \wedge x_n \otimes m)
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i+j}
+				[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+				\otimes m
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^i
+				x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n \otimes (x_i \cdot m)
+			\end{align*}
+			for all~$m \in M$ and~$x_1, \dotsc, x_n \in \glie$.
+			We have thus constructed the Lie algebra chain complex~$\Chain_\bullet(\glie, M)$\index{Lie algebra chain complex} from the Koszul resolution.
+		\item
+			Let
+			\[
+				\dotsb
+				\to
+				\Univ(\glie) \otimes_{\kf} \Exterior^2(\glie)
+				\xto{d_2}
+				\Univ(\glie) \otimes_{\kf} \glie
+				\xto{d_1}
+				\Univ(\glie)
+				\xto{\varepsilon}
+				\kf
+				\to
+				0
+			\]
+			be the Koszul resolution of~$\glie$.
+			By removing the term~$\kf$ from this resolution we get the chain complex
+			\begin{equation}
+				\label{shortened koszul resolution}
+				\dotsb
+				\to
+				\Univ(\glie) \otimes_{\kf} \Exterior^2(\glie)
+				\xto{d_2}
+				\Univ(\glie) \otimes_{\kf} \glie
+				\xto{d_1}
+				\Univ(\glie)
+				\to
+				0
+			\end{equation}
+			We can also apply the functor~$\Hom_{\Univ(\glie)}(-, M)$ to the chain complex~\eqref{shortened koszul resolution} to arrive at a cochain complex
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				0
+				\to
+				\Hom_{\Univ(\glie)}( \Univ(\glie), M )
+				&\xto{d_1^*}
+				\Hom_{\Univ(\glie)}( \Univ(\glie) \otimes_{\kf} \glie, M )
+				\\
+				&\xto{d_2^*}
+				\Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes_{\kf} \Exterior^2(\glie), M \Bigr)
+				\\
+				&\xto{d_3^*}
+				\Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes_{\kf} \Exterior^3(\glie), M \Bigr)
+				\to
+				\dotsb
+			\end{align*}
+			The differential of this cochain complex is given by
+			\begin{align*}
+				d_n^*(f)( y \otimes x_1 \wedge \dotsb \wedge x_n )
+				={}&
+				f( d_n(y \otimes x_1 \wedge \dotsb \wedge x_n) )
+				\\
+				={}&
+				\sum_{1 \leq i < j \leq n}
+				(-1)^{i+1}
+				f
+				(
+					y \otimes
+					[x_i, x_j] \wedge x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_n
+				)
+				\\
+				{}&
+				+
+				\sum_{i=1}^n
+				(-1)^{i+1}
+				f( (y x_i) \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_n )
+			\end{align*}
+			for all~$f \in \Hom( \Univ(\glie) \otimes_{\kf} \Exterior^{n-1}(\glie), M )$ and~$y \in \Univ(\glie)$,~$x_1, \dotsc, x_n \in \glie$.
+			We have by the universal property of the extension of scalars an isomorphism of vector spaces
+			\[
+				\Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes \Exterior^n( \glie, M ) \Bigr)
+				\cong
+				\Hom_{\kf}\Bigl( \Exterior^n(\glie), M \Bigr)
+			\]
+			for every~$n \geq 0$, given by
+			\begin{align*}
+				\SwapAboveDisplaySkip
+				f
+				&\mapsto
+				\bigl( t \mapsto f(1 \otimes t) \bigr) \,, \\
+				\bigl( y \otimes t \mapsto y \cdot g(t) \bigr)
+				&\mapsfrom
+				g \,.
+			\end{align*}
+			The above cochain complex is thus isomorphic to the cochain complex given by
+			\[
+				0
+				\to
+				\Hom_{\kf}( \kf, M )
+				\xto{\del_0}
+				\Hom_{\kf}( \glie, M )
+				\xto{\del_1}
+				\Hom_{\kf}\Bigl( \Exterior^2(\glie), M \Bigr)
+				\to
+				\dotsb
+			\]
+			and differentials
+			\begin{align*}
+				\del_n(f)(x_1 \wedge \dotsb \wedge x_{n+1})
+				={}&
+				\sum_{1 \leq i < j \leq n+1}
+				(-1)^{i+1}
+				f
+				(
+					[x_i, x_j] \wedge
+					x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge \widehat{x_j} \wedge \dotsb \wedge x_{n+1}
+				)
+				\\
+				{}&
+				+
+				\sum_{i=1}^{n+1}
+				(-1)^{i+1}
+				x_i \cdot f( \otimes x_1 \wedge \dotsb \wedge \widehat{x_i} \wedge \dotsb \wedge x_{n+1} )
+			\end{align*}
+			for all~$f \in \Hom_{\kf}( \Exterior^n(\glie), M )$ and~$x_1, \dotsc, x_{n+1} \in \glie$.
+
+			By further identifying for every~$n \geq 0$ the vector space~$\Hom_{\kf}( \Exterior^n(\glie), M )$ with~$\Alt^n(\glie, M)$ we arrive at the Lie algebra cochain complex~$\Chain^\bullet(\glie, M)$\index{Lie algebra cochain complex}.
+	\end{enumerate}
+
+	We have thus seen that the Lie~algebra chain complex~$\Chain_\bullet(\glie, M)$ and Lie~algebra cochain complex~$\Chain^\bullet(\glie, M)$ arise from the Koszul resolutions of~$\glie$ by applying the functors~$(\ph) \tensor_{\Univ(\glie)} M$ and~$\Hom_{\Univ(\glie)}(M, \ph)$.
+\end{construction}
+
+
+\begin{proposition}
+	\label{invariant and coinvariants via hom and tensor}
+	Let~$\glie$ be a Lie~algebra and let~$M$ be a representation of~$\glie$.
+	\begin{enumerate}
+		\item
+			The map
+			\[
+				\Hom_{\Univ(\glie)}(\kf, M)
+				\to
+				M^{\glie} \,,
+				\quad
+				f
+				\mapsto
+				f(1)
+			\]
+			is a well-defined isomorphism of vector spaces.
+		\item
+			The map
+			\[
+				\kf \otimes_{\Univ(\glie)} M
+				\to
+				M_{\glie} \,,
+				\quad
+				1 \otimes m
+				\mapsto
+				\class{ m }
+			\]
+			is a well-defined isomorphism of vector spaces.
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	\leavevmode
+	\begin{enumerate}
+		\item
+			We have already seen this in \cref{invariants via internal hom}.
+		\item
+			The counit~$\varepsilon$ of~$\Univ(\glie)$ induces an isomorphism of~\module{$\Univ(\glie)$}
+			\[
+				\Univ(\glie) / I
+				\to
+				\kf \,,
+				\quad
+				\class{x}
+				\mapsto
+				\varepsilon(x)
+			\]
+			where~$I$ is the augumentation ideal of~$\Univ(\glie)$.
+			It follows that
+			\[
+				\kf \otimes_{\Univ(\glie)} M
+				\cong
+				( \Univ(\glie) / I ) \otimes_{\Univ(\glie)} M
+				\cong
+				M / I M \,,
+			\]
+			and this isomorphism is given by
+			\[
+				1 \otimes m
+				=
+				\varepsilon(1) \otimes m
+				\mapsto
+				\class{1} \otimes m
+				\mapsto
+				\class{ 1 \cdot m }
+				=
+				\class{ m }
+			\]
+			for every~$m \in M$.
+			The augumentation ideal~$I$ of~$\Univ(\glie)$ is generated by~$\glie$ as a left ideal of~$\Univ(\glie)$, whence
+			\[
+				M / I M
+				=
+				M / \ideal{\glie} M
+				=
+				M / \glie M
+				=
+				M_{\glie} \,.
+			\]
+			We have altogether shown the claimed isomorphism.
+		\qedhere
+	\end{enumerate}
+\end{proof}
+
+
+\begin{remark}
+	\label{invariants and coinvariants via hom and tensor as functors}
+	The isomorphisms from \cref{invariant and coinvariants via hom and tensor} are natural in~$M$ and thus assemble into isomorphisms of functors
+	\[
+		(\ph)^{\glie}
+		\cong
+		\Hom_{\Univ(\glie)}( \kf, - )
+		\quad\text{and}\quad
+		(\ph)_{\glie}
+		\cong
+		\kf \otimes_{\Univ(\glie)} (\ph) \,.
+	\]
+\end{remark}
+
+
+\begin{fluff}
+	Let~$\glie$ be a Lie~algebra.
+	The Koszul complex of~$\glie$ is a free, and thus projective, resolution of~$\kf$ as a left~\module{$\Univ(\glie)$}.
+	We can therefore use this resolution to compute the right derived functors~$\Ext_{\Univ(\glie)}^n(\kf, \ph)$\index{Ext@$\Ext$} with~$n \geq 0$.
+	We can similarly use the right Koszul resolution to compute the left derived functors~$\cramped{\Tor^{\Univ(\glie)}_n(\kf, \ph)}$\index{Tor@$\Tor$} with~$n \geq 0$.
+	We see from \cref{lie algebra homology and cohomology via koszul complex} that the result of these computations are precisely the Lie algebra cohomology\index{Lie algebra cohomology} of~$\glie$ and Lie algebra homology\index{Lie algebra homology} of~$\Univ(\glie)$.
+	We thus have
+	\[
+		\Homology_n(\glie, \ph)
+		\cong
+		\Tor^{\Univ(\glie)}_n(\kf, \ph)
+		\quad\text{and}\quad
+		\Homology^n(\glie, \ph)
+		\cong
+		\Ext^n_{\Univ(\glie)}(\kf, \ph)
+	\]
+	for all~$n \geq 0$.
+	In other words, the Lie algebra cohomology of~$\glie$ is given by the right derived functors of~$\Hom_{\glie}(\kf, \ph)$, and the Lie algebra homology of~$\glie$ is given by the left derived functors of~$\kf \otimes_{\Univ(\glie)} (\ph)$.
+	It follows from \cref{invariants and coinvariants via hom and tensor as functors} that the Lie algebra cohomology of~$\glie$ is given by the right derived functors of~$(\ph)^{\glie}$, and the Lie~algebra homology of~$\glie$ is given by the left derived functors of~$(\ph)_{\glie}$.
+\end{fluff}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra and let~$I$ be the augumentation ideal\index{augumentation ideal} of~$\glie$.
+	Let~$M$ be a representation of~$\glie$.
+	The restriction map
+	\[
+		R
+		\colon
+		\Hom_{\Univ(\glie)}(I, M)
+		\to
+		\Der(\glie, M) \,,
+		\index{derivation!of a representation}
+		\quad
+		d
+		\mapsto
+		\restrict{d}{\glie}
+	\]
+	is well-defined isomorphism of vector spaces.
+\end{proposition}
+
+
+\begin{proof}[First proof]
+	We first note that the augumentation ideal~$I$ is a~\submodule{$\Univ(\glie)$} of~$\Univ(\glie)$.
+	It therefore makes sense to consider~$\Hom_{\Univ(\glie)}(I, M)$.
+
+	We know from the exactness of the Koszul complex that we have an exact sequence
+	\[
+		\Univ(\glie) \otimes \Exterior^2(\glie)
+		\xto{d_2}
+		\Univ(\glie) \otimes \glie
+		\xto{d_1}
+		I
+		\to
+		0 \,.
+	\]
+	This sequence is right-exact, so we may apply the contravariant~\functor{$\Hom$}~$\Hom_{\Univ(\glie)}(\ph, M)$ to get the left-exact sequence of vector spaces
+	\[
+		0
+		\to
+		\Hom_{\Univ(\glie)}(I, M)
+		\xto{d_1^*}
+		\Hom_{\Univ(\glie)}( \Univ(\glie) \otimes \glie, M )
+		\xto{d_2^*}
+		\Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes \Exterior^2(\glie), M \Bigr) \,.
+	\]
+	We have by the universal property of the extension of scalars the linear {\onetoonetext} correspondence
+	\begin{align*}
+		\SwapAboveDisplaySkip
+		\Hom_{\Univ(\glie)}( \Univ(\glie) \otimes \glie, M )
+		&\onetoone
+		\Hom_{\kf}( \glie, M ) \,,
+		\\
+		f
+		&\mapsto
+		\bigl( x \mapsto f(1 \otimes x) \bigr) \,,
+		\\
+		\bigl( \induced{g} \colon y \otimes x \mapsto y \cdot g(x) \bigr)
+		&\mapsfrom
+		g \,.
+	\end{align*}
+	Under this isomorphism, we have now the exact sequence
+	\begin{equation}
+		\label{left exact sequence for derivations}
+		0
+		\to
+		\Hom_{\Univ(\glie)}(I, M)
+		\xto{\del_1}
+		\Hom_{\kf}( \glie, M )
+		\xto{\del_2}
+		\Hom_{\Univ(\glie)}\Bigl( \Univ(\glie) \otimes \Exterior^2(\glie), M \Bigr) \,.
+	\end{equation}
+	
+	We have
+	\[
+		\del_1(f)(x)
+		=
+		d_1^*(f)(1 \otimes x)
+		=
+		f( d_1(1 \otimes x) )
+		=
+		f(1 \cdot x)
+		=
+		f(x) \,.
+	\]
+	In other words~$\del_1$ is precisely the restriction map~$R$.
+	It follows from the left-exactness of the sequence~\eqref{left exact sequence for derivations} that the restriction map~$R$ identifies~$\Hom_{\Univ(\glie)}(I, M)$ with a certain linear subspace of~$\Hom_{\kf}(\glie, M)$, namely the kernel of~$\del_2$.
+
+	We also have
+	\begin{align*}
+		\del_2(g)(y \otimes x_1 \wedge x_2)
+		&=
+		d_2^*(\induced{g})(y \otimes x_1 \wedge x_2)
+		\\
+		&=
+		\induced{g}( d_2( y \otimes x_1 \wedge x_2 ) )
+		\\
+		&=
+		\induced{g}
+		(
+			- y \otimes [x_1, x_2]
+			+ (y x_1) \otimes x_2
+			- (y x_2) \otimes x_1
+		)
+		\\
+		&=
+		- y \cdot g([x_1, x_2])
+		+ (y x_1) \cdot g(x_2)
+		+ (y x_2) \cdot g(x_1)
+		\\
+		&=
+		- y \cdot g([x_1, x_2])
+		+ y \cdot x_1 \cdot g(x_2)
+		- y \cdot x_2 \cdot g(x_1)
+		\\
+		&=
+		y \cdot
+		(
+			x_1 \cdot g(x_2) - x_2 \cdot g(x_1) - g([x_1, x_2])
+		) 
+	\end{align*}
+	for all~$g \in \Hom_{\kf}(\glie, M)$ and~$y \in \Univ(\glie)$,~$x_1, x_2 \in \glie$.
+	It follows that an element~$g$ of~$\Hom_{\kf}(\glie, M)$ is contained in the kernel of~$\del_2$ if and only if it satisfies the condition
+	\[
+		x_1 \cdot g(x_2) - x_2 \cdot g(x_1)
+		=
+		g([x_1, x_2])
+	\]
+	for all~$x_1, x_2 \in \glie$, i.e. if and only if~$g$ is a derivation from~$\glie$ to~$M$.
+	We thus find that the kernel of~$\del_2$ is the space of derivations from~$\glie$ to~$M$.
+
+	We have altogether shown that the restriction map~$R$ identifies the space of homomorphisms~$\Hom_{\Univ(\glie)}(I, M)$ with the space of derivations~$\Der(\glie, M)$.
+\end{proof}
+
+
+\begin{proof}[Second proof]
+	We first note that the augumentation ideal~$I$ is a~\submodule{$\Univ(\glie)$} of~$\Univ(\glie)$.
+	It therefore makes sense to consider~$\Hom_{\Univ(\glie)}(I, M)$.
+	Now we calculate for every homomorphisms of~\modules{$\Univ(\glie)$}~$d$ from~$I$ to~$M$ that
+	\[
+		d([x,y])
+		=
+		d(xy - yx)
+		=
+		d(xy) - d(yx)
+		=
+		x \cdot d(y) - y \cdot d(x)
+	\]
+	for all~$x, y \in \glie$.
+	The restriction~$\restrict{d}{\glie}$ is therefore a derivation from~$\glie$ to~$M$, which shows that the map~$R$ is well-defined.
+	It is also linear.
+
+	We begin by showing that every derivation~$\delta$ from~$\glie$ to~$M$ extends to a homomorphism of~\modules{$\Univ(\glie)$} from~$I$ to~$M$.
+	We know from the exactness of the Koszul complex that we have an exact sequence
+	\[
+		\Univ(\glie) \otimes \Exterior^2(\glie)
+		\xto{d_2}
+		\Univ(\glie) \otimes \glie
+		\xto{d_1}
+		I
+		\to
+		0 \,.
+	\]
+	It follows from the universal property of the extension of scalars that the derivation~$\delta$ -- which is in particular a linear map -- extends to a homomorphism of~\modules{$\Univ(\glie)$}~$d'$ from~$\Univ(\glie) \otimes \glie$ to~$M$ given by
+	\[
+		d'(y \otimes x)
+		=
+		y \cdot \delta(x)
+	\]
+	for all~$y \in \Univ(\glie)$ and~$x \in \glie$.
+	This homomorphism~$d'$ vanishes on the image of~$d_2$ because
+	\begin{align*}
+		d'( d_2(y \otimes x_1 \wedge x_2) )
+		&=
+		d'
+		(
+			- y \otimes [x_1, x_2]
+			+ (y x_1) \otimes x_2
+			- (y x_2) \otimes x_1
+		)
+		\\
+		&=
+		- y \cdot \delta([x_1, x_2])
+		+ (y x_1) \cdot \delta(x_2)
+		- (y x_2) \cdot \delta(x_1)
+		\\
+		&=
+		- y \cdot \delta([x_1, x_2])
+		+ y \cdot x_1 \cdot \delta(x_2)
+		- y \cdot x_2 \cdot \delta(x_1)
+		\\
+		&=
+		y \cdot
+		(
+			x_1 \cdot \delta(x_2)
+			- x_2 \cdot \delta(x_1)
+			- \delta([x_1, x_2])
+		)
+		\\
+		&=
+		y \cdot 0
+		\\
+		&=
+		0 \,,
+	\end{align*}
+	where we have used that~$\delta([x_1, x_2]) = x_1 \cdot \delta(x_2) - x_2 \cdot \delta(x_1)$ because~$\delta$ is a derivation.
+	It follows that~$d'$ factors through a homomorphism of~\modules{$\Univ(\glie)$} from~$I$ to~$M$.
+	This homomorphism satisfies the equalities
+	\[
+		d(x)
+		=
+		d( d_1(1 \otimes x) )
+		=
+		d'( 1 \otimes x )
+		=
+		1 \cdot \delta(x)
+		=
+		\delta(x)
+	\]
+	for every~$x \in \glie$.
+	It is therefore an extension of~$\delta$.
+	We have thus shown the surjectivity of~$R$.
+
+	It follows from \cref{augumentation ideal is spanned by monomials} that the augumentation ideal~$I$ is generated by~$\glie$ as an ideal, and thus as a~\module{$\Univ(\glie)$}.
+	Every homomorphism of~\modules{$\Univ(\glie)$}~$d$ from~$I$ to~$M$ is therefore uniquely determined by its restriction~$\restrict{d}{\glie}$.
+	This shows the injectivity of~$R$.
+\end{proof}
+
+
+\begin{recall}
+	\label{homological algebra for pulling out an exact functor}
+	Let~$\Acat$,~$\Bcat$ and~$\Ccat$ be three abelian categories such that the categories~$\Acat$ and~$\Bcat$ admit enough injectives.
+	Let~$F$ be an exact functor from~$\Acat$ to~$\Bcat$ that maps injectives to injectives.
+	Let~$G$ be a left exact functor from~$\Bcat$ to~$\Ccat$.
+	Then the composite~$G \circ F$ is again left exact, and we have for every~$n \geq 0$ an isomorphism
+	\[
+		\Right^n (G \circ F)
+		\cong
+		(\Right^n G) \circ F \,.
+		\glsadd{right derived functor}
+		\index{right derived functor}
+	\]
+	
+	Indeed, by precomposing the~\functor{$\delta$}~$\Right^\bullet G$ with the exact functor~$F$ yields a~\functor{$\delta$}, which one might denote by~$(\Right^\bullet G) \circ F$.
+	Every injective object of~$\Acat$ is mapped by~$F$ to an injective object of~$\Bcat$, which is then annihilated by~$\Right^n G$ for every~$n \geq 1$.
+	This shows that the functors~$(\Right^n G) \circ F$ for~$n \geq 1$ annihilate all injective objects of~$\Acat$.
+	The~\functor{$\delta$}~$(\Right^\bullet G) \circ F$ is therefore universal.
+	We also have~$(\Right^0 G) \circ F \cong G \circ F$ because~$\Right^0 G \cong G$.
+	We thus find that the universal~\functor{$\delta$}~$(\Right^\bullet G) \circ F$ is the right derived functor of~$G \circ F$.
+\end{recall}
+
+
+\begin{proposition}
+	Let~$\glie$ be a Lie~algebra and let~$M$,~$N$ be two representations of~$\glie$.
+	Then
+	\[
+		\Ext_{\Univ(\glie)}^n(M, N)
+		\cong
+		\Homology^n(\glie, \Hom_{\kf}(M, N)) \,.
+	\]
+\end{proposition}
+
+
+\begin{proof}
+	The functor~$\Hom_{\kf}(M, \ph)$ exact.
+	It also maps injectives to injectives because it is right adjoint to the exact functor~$(\ph) \otimes_{\kf} M$ by \cref{enriched tensor hom adjunction}.
+	It follows from \cref{homological algebra for pulling out an exact functor} that
+	\begin{align*}
+		\Ext_{\Univ(\glie)}^n(M, \ph)
+		&\cong
+		\Right^n \Hom_{\Univ(\glie)}(M, \ph)
+		\\
+		&=
+		\Right^n \Hom_{\kf}(M, \ph)^{\glie}
+		\\
+		&=
+		\Right^n \bigl( (\ph)^{\glie} \circ \Hom_{\kf}(M, \ph) \bigr)
+		\\
+		&\cong
+		\Right^n\bigl( (\ph)^{\glie} \bigr) \circ \Hom_{\kf}(M, \ph)
+		\\
+		&\cong
+		\Homology^n(\glie, \ph) \circ \Hom_{\kf}(M, \ph)
+		\\
+		&=
+		\Homology^n(\glie, \Hom_{\kf}(M, \ph)) \,,
+	\end{align*}
+	as claimed.
+\end{proof}
