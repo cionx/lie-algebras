@@ -8,4 +8,4 @@ A compiled version of the notes can be downloaded [here][1].
 
 For comments and corrections feel free to contact me at `jendrikstelzner (at) uni-bonn.de`.
 
-[1]: https://lecture-notes-bonn.gitlab.io/lie-algebras/lie-algebra-notes.pdf
+[1]: https://lecture-notes-bonn.gitlab.io/original/lie-algebras/lie-algebra-notes.pdf
